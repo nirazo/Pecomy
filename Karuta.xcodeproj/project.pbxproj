@@ -9,9 +9,7 @@
 /* Begin PBXBuildFile section */
 		D27BB9D21B36F4A900F8D902 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27BB9D11B36F4A900F8D902 /* AppDelegate.swift */; };
 		D27BB9D41B36F4A900F8D902 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27BB9D31B36F4A900F8D902 /* ViewController.swift */; };
-		D27BB9D71B36F4A900F8D902 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D27BB9D51B36F4A900F8D902 /* Main.storyboard */; };
 		D27BB9D91B36F4A900F8D902 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D27BB9D81B36F4A900F8D902 /* Images.xcassets */; };
-		D27BB9DC1B36F4A900F8D902 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D27BB9DA1B36F4A900F8D902 /* LaunchScreen.xib */; };
 		D27BB9E81B36F4A900F8D902 /* KarutaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27BB9E71B36F4A900F8D902 /* KarutaTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -30,9 +28,7 @@
 		D27BB9D01B36F4A900F8D902 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D27BB9D11B36F4A900F8D902 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D27BB9D31B36F4A900F8D902 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		D27BB9D61B36F4A900F8D902 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D27BB9D81B36F4A900F8D902 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		D27BB9DB1B36F4A900F8D902 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		D27BB9E11B36F4A900F8D902 /* KarutaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KarutaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D27BB9E61B36F4A900F8D902 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D27BB9E71B36F4A900F8D902 /* KarutaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarutaTests.swift; sourceTree = "<group>"; };
@@ -79,9 +75,7 @@
 			children = (
 				D27BB9D11B36F4A900F8D902 /* AppDelegate.swift */,
 				D27BB9D31B36F4A900F8D902 /* ViewController.swift */,
-				D27BB9D51B36F4A900F8D902 /* Main.storyboard */,
 				D27BB9D81B36F4A900F8D902 /* Images.xcassets */,
-				D27BB9DA1B36F4A900F8D902 /* LaunchScreen.xib */,
 				D27BB9CF1B36F4A900F8D902 /* Supporting Files */,
 			);
 			path = Karuta;
@@ -192,8 +186,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D27BB9D71B36F4A900F8D902 /* Main.storyboard in Resources */,
-				D27BB9DC1B36F4A900F8D902 /* LaunchScreen.xib in Resources */,
 				D27BB9D91B36F4A900F8D902 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -234,25 +226,6 @@
 			targetProxy = D27BB9E21B36F4A900F8D902 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		D27BB9D51B36F4A900F8D902 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D27BB9D61B36F4A900F8D902 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		D27BB9DA1B36F4A900F8D902 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D27BB9DB1B36F4A900F8D902 /* Base */,
-			);
-			name = LaunchScreen.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		D27BB9E91B36F4A900F8D902 /* Debug */ = {
@@ -340,7 +313,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = Karuta/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -350,7 +325,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = Karuta/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
