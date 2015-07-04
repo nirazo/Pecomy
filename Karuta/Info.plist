@@ -30,5 +30,7 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>現在地に基づいた店舗の推薦を行うために位置情報を使用します</string>
 </dict>
 </plist>
