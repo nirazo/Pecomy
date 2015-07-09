@@ -1,5 +1,5 @@
 //
-//  KRTAppDelegate.swift
+//  AppDelegate.swift
 //  Karuta
 //
 //  Created by Kenzo on 2015/06/21.
@@ -9,16 +9,15 @@
 import UIKit
 
 @UIApplicationMain
-class KRTAppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var navVC: UINavigationController?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        var viewController : KRTMainViewController = KRTMainViewController()
-        self.navVC = UINavigationController(rootViewController: viewController)
-        self.navVC?.setNavigationBarHidden(true, animated: false)
+        let viewController : KRTMainViewController = KRTMainViewController()
+        var navVC = UINavigationController(rootViewController: viewController)
+        navVC.setNavigationBarHidden(true, animated: false)
         self.window!.rootViewController = navVC
         self.window!.makeKeyAndVisible()
         

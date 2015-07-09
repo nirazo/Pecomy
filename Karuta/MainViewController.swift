@@ -13,7 +13,7 @@ import Alamofire_SwiftyJSON
 
 class KRTMainViewController: UIViewController {
 
-    let locationManager: KRTLocationManager = KRTLocationManager()
+    let locationManager: KarutaLocationManager = KarutaLocationManager()
     
     var isLocationAcquired = false
     var canCallNextCard = true
@@ -39,7 +39,7 @@ class KRTMainViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    func acquireFirstCard() -> () {
+    func acquireFirstCard() {
         self.locationManager.fetchWithCompletion({ (location) -> () in
             println("success!!")
             self.acquireCardWithLatitude(Double(location!.coordinate.latitude),
@@ -63,7 +63,7 @@ class KRTMainViewController: UIViewController {
     */
     func acquireCardWithLatitude(latitude: Double, longitude: Double, like: String?, shopId: Int, reset: Bool, success: (Bool)->(), failure: (NSError)->()) {
         var params: Dictionary<String, AnyObject> = [
-            "device_id" : KRTConst.deviceID,
+            "device_id" : Const.deviceID,
             "latitude" : latitude,
             "longitude" : longitude,
             "shop_id" : "",
@@ -77,7 +77,7 @@ class KRTMainViewController: UIViewController {
             params.updateValue(like!, forKey: "answer")
         }
         
-        Alamofire.request(.GET, KRTConst.API_CARD_BASE, parameters: params, encoding: .URL).responseSwiftyJSON({(request, response, json, error) in
+        Alamofire.request(.GET, Const.API_CARD_BASE, parameters: params, encoding: .URL).responseSwiftyJSON({(request, response, json, error) in
             if error == nil {
                 let card: JSON = json["card"]
                 let shopName: String = card["title"].string!
@@ -94,59 +94,6 @@ class KRTMainViewController: UIViewController {
             }
         })
     }
-    
-    
-//    - (BOOL)acquireCardWithLatitude:(double)latitude longitude:(double)longitude like:(NSString *)like shopId:(NSInteger)shopId reset:(BOOL)reset success: (void (^)(BOOL))success failure: (void (^)(NSError *))failure {
-//    NSMutableDictionary *params = @{
-//    @"device_id"    : 	DEVICE_ID,
-//    @"latitude"     : 	[NSString stringWithFormat:@"%f",latitude],
-//    @"longitude"    : 	[NSString stringWithFormat:@"%f",longitude],
-//    @"shop_id"      : 	@"",
-//    @"answer"       : 	@"",
-//    @"reset"        :   @(reset)
-//    }.mutableCopy;
-//    
-//    if (shopId != INT_MAX) {
-//    params[@"shop_id"] = @(shopId);
-//    }
-//    if (like) {
-//    params[@"answer"] = like;
-//    }
-//    
-//    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-//    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-//    BOOL hasResult = false;
-//    [manager GET: API_CARD_BASE
-//    parameters:params
-//    success:^(NSURLSessionDataTask *task, id responseObject) {
-//    // 通信に成功
-//    NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
-//    NSDictionary *cardDict = jsonDict[@"card"];
-//    if (cardDict) {
-//    NSString *shopName = cardDict[@"title"];
-//    NSURL *shopImageUrl = [NSURL URLWithString:cardDict[@"image_url"]];
-//    NSInteger shopID = [cardDict[@"shop_id"] integerValue];
-//    NSInteger maxPrice = [cardDict[@"price_max"] integerValue];
-//    NSInteger minPrice = [cardDict[@"price_min"] integerValue];
-//    double distance = [cardDict[@"distance_meter"] doubleValue];
-//    
-//    self.stackedCard = [self createCardWithShopID:shopID
-//    shopName:shopName
-//    imageURL:shopImageUrl
-//    maxPrice:maxPrice
-//    minPrice:minPrice
-//    distance:distance];
-//    [self displayStackedCard];
-//    }
-//    success([[jsonDict valueForKey:@"result_available"] boolValue]);
-//    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-//    NSLog(@"Error: %@", error);
-//    failure(error);
-//    }];
-//    return hasResult;
-//    }
-
-
 
 }
 

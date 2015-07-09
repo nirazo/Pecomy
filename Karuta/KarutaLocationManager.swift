@@ -1,5 +1,5 @@
 //
-//  KRTLocationManager.swift
+//  KarutaLocationManager.swift
 //  Karuta
 //
 //  Created by Kenzo on 2015/06/22.
@@ -10,13 +10,13 @@ import UIKit
 import CoreLocation
 
 //possible errors
-enum KRTLocationManagerErrors: Int {
+enum KarutaLocationManagerErrors: Int {
     case AuthorizationDenied
     case AuthorizationNotDetermined
     case InvalidLocation
 }
 
-class KRTLocationManager: NSObject, CLLocationManagerDelegate {
+class KarutaLocationManager: NSObject, CLLocationManagerDelegate {
     
     private var locationManager: CLLocationManager?
     
@@ -31,14 +31,14 @@ class KRTLocationManager: NSObject, CLLocationManagerDelegate {
     private var didCompleteWithFailure = LocationErrorClosure?()
     
     
-    private func _didCompleteWithSuccess(location: CLLocation?) {
+    private func didCompleteWithSuccess(location: CLLocation?) {
         locationManager?.stopUpdatingLocation()
         didCompleteWithSuccess?(location: location)
         locationManager?.delegate = nil
         locationManager = nil
     }
     
-    private func _didCompleteWithError(error: NSError?) {
+    private func didCompleteWithError(error: NSError?) {
         locationManager?.stopUpdatingLocation()
         didCompleteWithFailure?(error: error)
         locationManager?.delegate = nil
@@ -50,24 +50,24 @@ class KRTLocationManager: NSObject, CLLocationManagerDelegate {
         case .AuthorizedWhenInUse:
             self.locationManager!.startUpdatingLocation()
         case .Denied:
-            _didCompleteWithError(NSError(domain: self.classForCoder.description(),
-                code: KRTLocationManagerErrors.AuthorizationDenied.rawValue,
+            didCompleteWithError(NSError(domain: self.classForCoder.description(),
+                code: KarutaLocationManagerErrors.AuthorizationDenied.rawValue,
                 userInfo: nil))
         default:
             break
         }
     }
     
-    internal func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
-        _didCompleteWithError(error)
+    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
+        didCompleteWithError(error)
     }
     
-    internal func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         if let location = locations[0] as? CLLocation {
-            _didCompleteWithSuccess(location)
+            didCompleteWithSuccess(location)
         } else {
-            _didCompleteWithError(NSError(domain: self.classForCoder.description(),
-                code: KRTLocationManagerErrors.InvalidLocation.rawValue,
+            didCompleteWithError(NSError(domain: self.classForCoder.description(),
+                code: KarutaLocationManagerErrors.InvalidLocation.rawValue,
                 userInfo: nil))
         }
     }

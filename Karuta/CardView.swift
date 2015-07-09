@@ -1,5 +1,5 @@
 //
-//  KRTCardView.swift
+//  CardView.swift
 //  Karuta
 //
 //  Created by Kenzo on 2015/07/04.
@@ -9,7 +9,7 @@
 import UIKit
 import MDCSwipeToChoose
 
-class KRTCardView: UIView {
+class CardView: UIView {
     
     init(frame: CGRect, shopID: Int, shopName: String, imageURL: NSURL, maxPrice: Int, minPrice: Int, distance: Double, options: MDCSwipeToChooseViewOptions) {
         super.init(frame: frame)

@@ -9,12 +9,12 @@ PODS:
   - SwiftyJSON (2.2.0)
 
 DEPENDENCIES:
-  - Alamofire (~> 1.2.3)
+  - Alamofire (= 1.2.3)
   - Alamofire-SwiftyJSON (from `https://github.com/SwiftyJSON/Alamofire-SwiftyJSON.git`)
-  - MDCSwipeToChoose (~> 0.2.2)
-  - SDWebImage (~> 3.7.2)
-  - SnapKit (~> 0.12.0)
-  - SwiftyJSON (~> 2.2.0)
+  - MDCSwipeToChoose (= 0.2.2)
+  - SDWebImage (= 3.7.2)
+  - SnapKit (= 0.12.0)
+  - SwiftyJSON (= 2.2.0)
 
 EXTERNAL SOURCES:
   Alamofire-SwiftyJSON:
