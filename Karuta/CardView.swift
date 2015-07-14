@@ -7,15 +7,51 @@
 //
 
 import UIKit
+import SDWebImage
 import MDCSwipeToChoose
 
-class CardView: UIView {
+class CardView: MDCSwipeToChooseView {
+    
+    var shopID: Int?
+    var shopName: String?
+    var imageURL: NSURL?
+    var maxPrice: Int?
+    var minPrice: Int?
+    var distance: Double?
     
     init(frame: CGRect, shopID: Int, shopName: String, imageURL: NSURL, maxPrice: Int, minPrice: Int, distance: Double, options: MDCSwipeToChooseViewOptions) {
-        super.init(frame: frame)
+        options.likedText = "like"
+        options.likedColor = UIColor.blueColor()
+        options.nopeText = "dislike"
+        options.nopeColor = UIColor.redColor()
+        super.init(frame: frame, options: options)
+    
+        self.shopID = shopID;
+        self.shopName = shopName;
+        self.imageURL = imageURL;
+        self.maxPrice = maxPrice;
+        self.minPrice = minPrice;
+        self.distance = distance;
+        
+        self.backgroundColor = UIColor.whiteColor()
     }
 
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func drawRect(rect: CGRect) {
+        super.drawRect(rect)
+        // 画像
+        let photo = UIImage(named: "noimage");
+        self.imageView.image = photo;
+        self.imageView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.width);
+        
+        self.imageView.sd_setImageWithURL(self.imageURL, completed: {[weak self](image: UIImage!, error: NSError!, cacheType: SDImageCacheType, imageURL: NSURL!) in
+            self?.imageView.alpha = 0
+            UIView.animateWithDuration(0.5, delay: 0.0, options: .CurveEaseInOut, animations: {() -> Void in
+                self?.imageView.alpha = 1
+                }, completion: nil)
+        })
     }
 }

@@ -14,10 +14,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        self.setDefaultAppearance()
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        let viewController : KRTMainViewController = KRTMainViewController()
+        let viewController : MainViewController = MainViewController()
         var navVC = UINavigationController(rootViewController: viewController)
-        navVC.setNavigationBarHidden(true, animated: false)
         self.window!.rootViewController = navVC
         self.window!.makeKeyAndVisible()
         
@@ -44,6 +44,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    func setDefaultAppearance(){
+        // UINavigationBarのスタイルを設定
+        UINavigationBar.appearance().barTintColor = Const.KARUTA_THEME_COLOR
+        UINavigationBar.appearance().tintColor = Const.KARUTA_THEME_TEXT_COLOR
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: Const.KARUTA_THEME_TEXT_COLOR]
     }
 
 
