@@ -239,6 +239,11 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
         let backButton = UIBarButtonItem(title: "戻る", style: .Plain, target: nil, action: nil)
         self.navigationItem.backBarButtonItem = backButton
         resultVC.navigationItem.title = "あなたのBEST"
+        
+        // カードリセットしてnew card呼び出し
+        self.resetCards()
+        self.acquireFirstCard()
+        
         self.navigationController?.pushViewController(resultVC, animated: true)
     }
     
