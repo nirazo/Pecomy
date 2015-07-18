@@ -107,10 +107,8 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
     func acquireCardWithLatitude(latitude: Double, longitude: Double, like: String?, syncId: String?, reset: Bool, success: (Bool)->(), failure: (NSError)->()) -> Bool {
         var params: Dictionary<String, AnyObject> = [
             "device_id" : Const.DEVICE_ID,
-//            "latitude" : latitude,
-//            "longitude" : longitude,
-            "latitude" : 35.607243,
-            "longitude" : 139.734685,
+            "latitude" : latitude,
+            "longitude" : longitude,
             "reset" : reset
         ]
         
@@ -135,7 +133,11 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
                     
                     let syncID: String! = json["sync_id"].string!
                     
-                    let cardView = self.createCardWithSyncID(syncID!, shopName: shopName, imageURL: shopImageUrl, maxPrice: maxPrice, minPrice: minPrice, distance: distance)
+                    var rect = CGRect(x: 0, y: 0, width: self.view.frame.width*0.8, height: self.view.frame.height*0.5)
+                    
+                    rect.offset(dx: (self.view.frame.width - rect.size.width)/2, dy: (self.view.frame.height - rect.size.height)/2 - 40)
+                    
+                    let cardView = self.createCardWithFrame(rect, syncID: syncID!, shopName: shopName, imageURL: shopImageUrl, maxPrice: maxPrice, minPrice: minPrice, distance: distance)
                     self.stackedCards.append(cardView)
                     
                     // カード取得・表示については2枚取得する際に変更
@@ -159,19 +161,12 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
     func displayStackedCard() {
         for card in self.stackedCards {
             self.view.addSubview(card)
-            card.snp_makeConstraints { (make) in
-                make.width.width.equalTo(self.view).multipliedBy(0.8)
-                make.height.height.equalTo(self.view).multipliedBy(0.5)
-                make.centerX.equalTo(self.view)
-                make.centerY.equalTo(self.view).offset(-40)
-            }
-            println("card added!!")
         }
         self.stackedCards.removeAll()
     }
     
     // カードを作成
-    func createCardWithSyncID(syncID: String, shopName: String, imageURL: NSURL, maxPrice: Int, minPrice: Int, distance: Double) -> CardView {
+    func createCardWithFrame(frame: CGRect, syncID: String, shopName: String, imageURL: NSURL, maxPrice: Int, minPrice: Int, distance: Double) -> CardView {
         var options = MDCSwipeToChooseViewOptions()
         options.delegate = self
         options.onPan = { state in
@@ -181,7 +176,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
                 // 右スワイプ
             }
         }
-        let cardView = CardView(frame: CGRectZero, syncID: syncID, shopName: shopName, imageURL: imageURL, maxPrice: maxPrice, minPrice: minPrice, distance: distance, options: options)
+        let cardView = CardView(frame: frame, syncID: syncID, shopName: shopName, imageURL: imageURL, maxPrice: maxPrice, minPrice: minPrice, distance: distance, options: options)
         return cardView
     }
     
@@ -268,7 +263,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
         } else {
             UIView.animateWithDuration(0.16, animations: {() in
                 view.transform = CGAffineTransformIdentity
-                view.center = view.superview!.center
+                //view.center = view.superview!.center
             })
             return false
         }
