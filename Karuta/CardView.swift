@@ -12,21 +12,21 @@ import MDCSwipeToChoose
 
 class CardView: MDCSwipeToChooseView {
     
-    var shopID: Int?
+    var syncID: String?
     var shopName: String?
     var imageURL: NSURL?
     var maxPrice: Int?
     var minPrice: Int?
     var distance: Double?
     
-    init(frame: CGRect, shopID: Int, shopName: String, imageURL: NSURL, maxPrice: Int, minPrice: Int, distance: Double, options: MDCSwipeToChooseViewOptions) {
+    init(frame: CGRect, syncID: String, shopName: String, imageURL: NSURL, maxPrice: Int, minPrice: Int, distance: Double, options: MDCSwipeToChooseViewOptions) {
         options.likedText = "like"
         options.likedColor = UIColor.blueColor()
         options.nopeText = "dislike"
         options.nopeColor = UIColor.redColor()
         super.init(frame: frame, options: options)
     
-        self.shopID = shopID;
+        self.syncID = syncID;
         self.shopName = shopName;
         self.imageURL = imageURL;
         self.maxPrice = maxPrice;

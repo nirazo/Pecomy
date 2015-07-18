@@ -88,7 +88,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
             self.acquireCardWithLatitude(Double(location!.coordinate.latitude),
                 longitude: Double(location!.coordinate.longitude),
                 like: nil,
-                shopId: Int(INT_MAX),
+                syncId: nil,
                 reset: true,
                 success: {(Bool) in
                 }
@@ -104,19 +104,18 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
     /**
     カードを取得
     */
-    func acquireCardWithLatitude(latitude: Double, longitude: Double, like: String?, shopId: Int, reset: Bool, success: (Bool)->(), failure: (NSError)->()) -> Bool {
+    func acquireCardWithLatitude(latitude: Double, longitude: Double, like: String?, syncId: String?, reset: Bool, success: (Bool)->(), failure: (NSError)->()) -> Bool {
         var params: Dictionary<String, AnyObject> = [
             "device_id" : Const.DEVICE_ID,
 //            "latitude" : latitude,
 //            "longitude" : longitude,
             "latitude" : 35.607243,
             "longitude" : 139.734685,
-            "shop_id" : "",
             "reset" : reset
         ]
         
-        if (shopId != Int(INT_MAX)) {
-            params.updateValue(shopId, forKey: "shop_id")
+        if (syncId != nil) {
+            params.updateValue(syncId!, forKey: "sync_id")
         }
         if ((like) != nil) {
             params.updateValue(like!, forKey: "answer")
@@ -130,12 +129,13 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
                     let card: JSON = json["card"]
                     let shopName: String = card["title"].string!
                     let shopImageUrl: NSURL = card["image_url"].URL!
-                    let shopID: Int = card["shop_id"].int!
                     let maxPrice: Int = card["price_max"].int!
                     let minPrice: Int = card["price_min"].int!
                     let distance: Double = card["distance_meter"].double!
                     
-                    let cardView = self.createCardWithShopID(shopID, shopName: shopName, imageURL: shopImageUrl, maxPrice: maxPrice, minPrice: minPrice, distance: distance)
+                    let syncID: String! = json["sync_id"].string!
+                    
+                    let cardView = self.createCardWithSyncID(syncID!, shopName: shopName, imageURL: shopImageUrl, maxPrice: maxPrice, minPrice: minPrice, distance: distance)
                     self.stackedCards.append(cardView)
                     
                     // カード取得・表示については2枚取得する際に変更
@@ -171,7 +171,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
     }
     
     // カードを作成
-    func createCardWithShopID(shopID: Int, shopName: String, imageURL: NSURL, maxPrice: Int, minPrice: Int, distance: Double) -> CardView {
+    func createCardWithSyncID(syncID: String, shopName: String, imageURL: NSURL, maxPrice: Int, minPrice: Int, distance: Double) -> CardView {
         var options = MDCSwipeToChooseViewOptions()
         options.delegate = self
         options.onPan = { state in
@@ -181,7 +181,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
                 // 右スワイプ
             }
         }
-        let cardView = CardView(frame: CGRectZero, shopID: shopID, shopName: shopName, imageURL: imageURL, maxPrice: maxPrice, minPrice: minPrice, distance: distance, options: options)
+        let cardView = CardView(frame: CGRectZero, syncID: syncID, shopName: shopName, imageURL: imageURL, maxPrice: maxPrice, minPrice: minPrice, distance: distance, options: options)
         return cardView
     }
     
@@ -224,7 +224,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
 
     func closeResult() {
         self.resetCards()
-        self.acquireCardWithLatitude(self.currentLatitude!, longitude: self.currentLongitude!, like: nil, shopId: Int(INT_MAX), reset: true, success: {(hasResult: Bool) in
+        self.acquireCardWithLatitude(self.currentLatitude!, longitude: self.currentLongitude!, like: nil, syncId: nil, reset: true, success: {(hasResult: Bool) in
             if (hasResult) {
                 self.acquireResults()
             }
@@ -282,7 +282,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
             answer = "like"
         }
         var cardView = view as! CardView
-        self.acquireCardWithLatitude(self.currentLatitude!, longitude: self.currentLongitude!, like: answer, shopId: cardView.shopID!, reset: false,
+        self.acquireCardWithLatitude(self.currentLatitude!, longitude: self.currentLongitude!, like: answer, syncId: cardView.syncID, reset: false,
             success: {(hasResult: Bool) in
                 if (hasResult) {
                     self.acquireResults()
