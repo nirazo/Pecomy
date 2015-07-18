@@ -67,7 +67,7 @@ class ResultViewController: UITableViewController, UITableViewDataSource, UITabl
         let shopJson = self.shopList[indexPath.row]
         
         /**cellにimage追加 */
-        let imageURL = NSURL(string: shopJson["image_url"].string!)
+        let imageURL = NSURL(string: shopJson["image_url"].array![0].string!)
         cell.setRestaurantImage(imageURL!)
         
         cell.numberLabel.text = "Best" + String(indexPath.row+1)

@@ -103,7 +103,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
                         longitude: Double(location!.coordinate.longitude),
                         like: nil,
                         syncId: nil,
-                        reset: true,
+                        reset: false,
                         success: {(Bool) in
                             
                         }
@@ -141,13 +141,12 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
         
         var hasResult = false;
         Alamofire.request(.GET, Const.API_CARD_BASE, parameters: params, encoding: .URL).responseSwiftyJSON({(request, response, json, error) in
+            println("url: \(request)")
             if error == nil {
-                // 店が見つかった場合場合
+                // 店が見つかった場合
                 if (json["message"] == nil) {
                     let card: JSON = json["card"]
                     let shopName = card["title"].string!
-                    let a = card["image_url"]
-                    println("images: \(a)")
                     let shopImageUrlsString = card["image_url"].array!
                     let maxPrice = card["price_max"].int!
                     let minPrice = card["price_min"].int!
