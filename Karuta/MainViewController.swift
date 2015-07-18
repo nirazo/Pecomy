@@ -17,6 +17,8 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
 
     let locationManager: KarutaLocationManager = KarutaLocationManager()
     
+    var contentView = UIView()
+    
     var isLocationAcquired = false
     var canCallNextCard = true
     var stackedCards = [CardView]()
@@ -42,6 +44,11 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
         var backgroundImage = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
         self.view.backgroundColor = UIColor(patternImage: backgroundImage!)
+        
+        // カードを配置するための透明ビュー
+        contentView.frame = self.view.frame
+        contentView.backgroundColor = UIColor.clearColor()
+        self.view.addSubview(self.contentView)
         
         // ボタン配置
         var likeButton = UIButton()
@@ -91,6 +98,19 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
                 syncId: nil,
                 reset: true,
                 success: {(Bool) in
+                    // とりあえず直で2回呼びます
+                    self.acquireCardWithLatitude(Double(location!.coordinate.latitude),
+                        longitude: Double(location!.coordinate.longitude),
+                        like: nil,
+                        syncId: nil,
+                        reset: true,
+                        success: {(Bool) in
+                            
+                        }
+                        ,
+                        failure: {(NSError) in
+                        }
+                    )
                 }
                 ,
                 failure: {(NSError) in
@@ -125,11 +145,18 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
                 // 店が見つかった場合場合
                 if (json["message"] == nil) {
                     let card: JSON = json["card"]
-                    let shopName: String = card["title"].string!
-                    let shopImageUrl: NSURL = card["image_url"].URL!
-                    let maxPrice: Int = card["price_max"].int!
-                    let minPrice: Int = card["price_min"].int!
+                    let shopName = card["title"].string!
+                    let a = card["image_url"]
+                    println("images: \(a)")
+                    let shopImageUrlsString = card["image_url"].array!
+                    let maxPrice = card["price_max"].int!
+                    let minPrice = card["price_min"].int!
                     let distance: Double = card["distance_meter"].double!
+                    
+                    var shopImageUrls = [NSURL]()
+                    for urlString in shopImageUrlsString {
+                        shopImageUrls.append(NSURL(string: urlString.string!)!)
+                    }
                     
                     let syncID: String! = json["sync_id"].string!
                     
@@ -137,7 +164,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
                     
                     rect.offset(dx: (self.view.frame.width - rect.size.width)/2, dy: (self.view.frame.height - rect.size.height)/2 - 40)
                     
-                    let cardView = self.createCardWithFrame(rect, syncID: syncID!, shopName: shopName, imageURL: shopImageUrl, maxPrice: maxPrice, minPrice: minPrice, distance: distance)
+                    let cardView = self.createCardWithFrame(rect, syncID: syncID!, shopName: shopName, imageUrls: shopImageUrls, maxPrice: maxPrice, minPrice: minPrice, distance: distance)
                     self.stackedCards.append(cardView)
                     
                     // カード取得・表示については2枚取得する際に変更
@@ -160,13 +187,14 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
     // カードを表示
     func displayStackedCard() {
         for card in self.stackedCards {
-            self.view.addSubview(card)
+            self.contentView.addSubview(card)
+            self.contentView.sendSubviewToBack(card)
         }
         self.stackedCards.removeAll()
     }
     
     // カードを作成
-    func createCardWithFrame(frame: CGRect, syncID: String, shopName: String, imageURL: NSURL, maxPrice: Int, minPrice: Int, distance: Double) -> CardView {
+    func createCardWithFrame(frame: CGRect, syncID: String, shopName: String, imageUrls: [NSURL], maxPrice: Int, minPrice: Int, distance: Double) -> CardView {
         var options = MDCSwipeToChooseViewOptions()
         options.delegate = self
         options.onPan = { state in
@@ -176,7 +204,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
                 // 右スワイプ
             }
         }
-        let cardView = CardView(frame: frame, syncID: syncID, shopName: shopName, imageURL: imageURL, maxPrice: maxPrice, minPrice: minPrice, distance: distance, options: options)
+        let cardView = CardView(frame: frame, syncID: syncID, shopName: shopName, imageUrls: imageUrls, maxPrice: maxPrice, minPrice: minPrice, distance: distance, options: options)
         return cardView
     }
     
@@ -208,7 +236,6 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
     }
     
     func displayResultViewWithShopList(shopList: JSON) {
-        println("results: \(shopList)")
         var resultVC = ResultViewController(shopList: shopList)
         let backButton = UIBarButtonItem(title: "戻る", style: .Plain, target: nil, action: nil)
         self.navigationItem.backBarButtonItem = backButton
@@ -241,11 +268,8 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
     }
     
     func swipeTopCardToWithDirection(direction: MDCSwipeDirection) {
-        for cv in self.view.subviews {
-            if let card = cv as? CardView {
-                card.mdc_swipe(direction)
-            }
-        }
+        var card = self.contentView.subviews[self.contentView.subviews.count-1] as! CardView
+        card.mdc_swipe(direction)
     }
     
     
