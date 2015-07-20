@@ -49,7 +49,6 @@ code_sign() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework 'Alamofire.framework'
-  install_framework 'Alamofire_SwiftyJSON.framework'
   install_framework 'MDCSwipeToChoose.framework'
   install_framework 'SDWebImage.framework'
   install_framework 'SnapKit.framework'
@@ -57,7 +56,6 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework 'Alamofire.framework'
-  install_framework 'Alamofire_SwiftyJSON.framework'
   install_framework 'MDCSwipeToChoose.framework'
   install_framework 'SDWebImage.framework'
   install_framework 'SnapKit.framework'

@@ -20,8 +20,24 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>Fabric</key>
+	<dict>
+		<key>APIKey</key>
+		<string>0f089c54e22e9e890bd0329f29839c99a9c5040c</string>
+		<key>Kits</key>
+		<array>
+			<dict>
+				<key>KitInfo</key>
+				<dict/>
+				<key>KitName</key>
+				<string>Crashlytics</string>
+			</dict>
+		</array>
+	</dict>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>現在地に基づいた店舗の推薦を行うために位置情報を使用します</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
@@ -30,7 +46,5 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
-    <key>NSLocationWhenInUseUsageDescription</key>
-    <string>現在地に基づいた店舗の推薦を行うために位置情報を使用します</string>
 </dict>
 </plist>

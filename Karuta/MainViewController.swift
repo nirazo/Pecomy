@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
-import Alamofire_SwiftyJSON
+//import Alamofire_SwiftyJSON
 import MDCSwipeToChoose
 import SnapKit
 
@@ -92,15 +92,18 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
             println("success!!")
             self.currentLatitude = Double(location!.coordinate.latitude);
             self.currentLongitude = Double(location!.coordinate.longitude);
-            self.acquireCardWithLatitude(Double(location!.coordinate.latitude),
-                longitude: Double(location!.coordinate.longitude),
+//            self.currentLatitude = 35.607762
+//            self.currentLongitude = 139.734562
+            
+            self.acquireCardWithLatitude(Double(self.currentLatitude!),
+                longitude: Double(self.currentLongitude!),
                 like: nil,
                 syncId: nil,
                 reset: true,
                 success: {(Bool) in
                     // とりあえず直で2回呼びます
-                    self.acquireCardWithLatitude(Double(location!.coordinate.latitude),
-                        longitude: Double(location!.coordinate.longitude),
+                    self.acquireCardWithLatitude(Double(self.currentLatitude!),
+                        longitude: Double(self.currentLongitude!),
                         like: nil,
                         syncId: nil,
                         reset: false,
@@ -140,10 +143,13 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
         }
         
         var hasResult = false;
-        Alamofire.request(.GET, Const.API_CARD_BASE, parameters: params, encoding: .URL).responseSwiftyJSON({(request, response, json, error) in
-            println("url: \(request)")
-            if error == nil {
+        
+        Alamofire.request(.GET, Const.API_CARD_BASE, parameters: params, encoding: .URL).responseJSON {(request, response, data, error) in
+            var json = JSON.nullJSON
+            if error == nil && data != nil {
+                json = SwiftyJSON.JSON(data!)
                 // 店が見つかった場合
+                println("response data: \(json)")
                 if (json["message"] == nil) {
                     let card: JSON = json["card"]
                     let shopName = card["title"].string!
@@ -174,12 +180,14 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
                 } else {
                     println("cannot find!")
                 }
-                
+            
+            println("url: \(request)")
+            
             } else {
                 println("fail to get card")
                 failure(error!)
             }
-        })
+        }
         return hasResult
     }
     
@@ -223,15 +231,18 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
     */
     func acquireResults() {
         let params = ["device_id": Const.DEVICE_ID]
-        Alamofire.request(.GET, Const.API_RESULT_BASE, parameters: params, encoding: .URL).responseSwiftyJSON({(request, response, json, error) in
-            if error == nil {
+        
+        Alamofire.request(.GET, Const.API_RESULT_BASE, parameters: params, encoding: .URL).responseJSON {(request, response, data, error) in
+            var json = JSON.nullJSON
+            if error == nil && data != nil {
+                json = SwiftyJSON.JSON(data!)
                 let results = json["results"]
                 println("call present result!!")
                 self.displayResultViewWithShopList(results)
             } else {
                 println("failed to get result!!")
             }
-        })
+        }
     }
     
     func displayResultViewWithShopList(shopList: JSON) {
@@ -272,8 +283,10 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
     }
     
     func swipeTopCardToWithDirection(direction: MDCSwipeDirection) {
-        var card = self.contentView.subviews[self.contentView.subviews.count-1] as! CardView
-        card.mdc_swipe(direction)
+        if (self.contentView.subviews.count > 0) {
+            var card = self.contentView.subviews[self.contentView.subviews.count-1] as! CardView
+            card.mdc_swipe(direction)
+        }
     }
     
     

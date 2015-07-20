@@ -23,6 +23,8 @@
 		D27BB9D91B36F4A900F8D902 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D27BB9D81B36F4A900F8D902 /* Images.xcassets */; };
 		D27BB9E81B36F4A900F8D902 /* KarutaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27BB9E71B36F4A900F8D902 /* KarutaTests.swift */; };
 		D28A7A0C1B47AE900025371A /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A7A0B1B47AE900025371A /* CardView.swift */; };
+		D2BABE641B5A5DB6005E8356 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2BABE621B5A5DB6005E8356 /* Fabric.framework */; };
+		D2BABE651B5A5DB6005E8356 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2BABE631B5A5DB6005E8356 /* Crashlytics.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +60,8 @@
 		D27BB9E61B36F4A900F8D902 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D27BB9E71B36F4A900F8D902 /* KarutaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarutaTests.swift; sourceTree = "<group>"; };
 		D28A7A0B1B47AE900025371A /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		D2BABE621B5A5DB6005E8356 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		D2BABE631B5A5DB6005E8356 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		D2C785F71B47C2A900517D55 /* Karuta-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Karuta-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -67,6 +71,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				82743658913CE160AF673A82 /* Pods_Karuta.framework in Frameworks */,
+				D2BABE651B5A5DB6005E8356 /* Crashlytics.framework in Frameworks */,
+				D2BABE641B5A5DB6005E8356 /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,6 +182,8 @@
 		F8EF51686E29749944A50697 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D2BABE621B5A5DB6005E8356 /* Fabric.framework */,
+				D2BABE631B5A5DB6005E8356 /* Crashlytics.framework */,
 				CA78955690AB624AB9D7F4AE /* Pods_Karuta.framework */,
 			);
 			name = Frameworks;
@@ -194,6 +202,7 @@
 				D27BB9CA1B36F4A900F8D902 /* Resources */,
 				96E3CF8C5FC94B7B5CCDD799 /* Embed Pods Frameworks */,
 				FAFBED2465E6647CCBAEE62A /* Copy Pods Resources */,
+				D2BABE611B5A5D75005E8356 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -314,6 +323,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Karuta/Pods-Karuta-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		D2BABE611B5A5D75005E8356 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 0f089c54e22e9e890bd0329f29839c99a9c5040c ef218175b8ad70668aabb5fdbbfae2c25d0f1a40a0f70aa08494fbb96d0e8e30";
+		};
 		FAFBED2465E6647CCBAEE62A /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -401,7 +423,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -433,17 +455,17 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_OPTIMIZATION_LEVEL = "-Ounchecked";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -455,6 +477,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Karuta/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -472,19 +498,24 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_OPTIMIZATION_LEVEL = s;
 				INFOPLIST_FILE = Karuta/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -D RELEASE";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Karuta/Karuta-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_OPTIMIZATION_LEVEL = "-Ounchecked";
 			};
 			name = Release;
 		};
 		D27BB9EF1B36F4A900F8D902 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 375106292F5446FE65E648DD /* Pods-Karuta.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -504,6 +535,7 @@
 		};
 		D27BB9F01B36F4A900F8D902 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3B06ABC94A9E1B8E1D89BFDB /* Pods-Karuta.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
