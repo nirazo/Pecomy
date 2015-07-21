@@ -90,10 +90,10 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
     func acquireFirstCard() {
         self.locationManager.fetchWithCompletion({ (location) in
             println("success!!")
-            self.currentLatitude = Double(location!.coordinate.latitude);
-            self.currentLongitude = Double(location!.coordinate.longitude);
-//            self.currentLatitude = 35.607762
-//            self.currentLongitude = 139.734562
+//            self.currentLatitude = Double(location!.coordinate.latitude);
+//            self.currentLongitude = Double(location!.coordinate.longitude);
+            self.currentLatitude = 35.607762
+            self.currentLongitude = 139.734562
             
             self.acquireCardWithLatitude(Double(self.currentLatitude!),
                 longitude: Double(self.currentLongitude!),
@@ -304,7 +304,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
         } else {
             UIView.animateWithDuration(0.16, animations: {() in
                 view.transform = CGAffineTransformIdentity
-                //view.center = view.superview!.center
+                view.center = view.superview!.center
             })
             return false
         }
