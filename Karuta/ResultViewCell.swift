@@ -120,20 +120,6 @@ class ResultViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func updateLayout() {
-        // セルの枠線
-        self.cellView.layer.borderColor = UIColor.grayColor().CGColor
-        self.cellView.layer.borderWidth = 0.5
-        self.cellView.layer.cornerRadius = CORNER_RADIUS
-        self.cellView.layer.masksToBounds = true
-        
-        // ドロップシャドウ
-        self.cellView.layer.masksToBounds = false
-        self.cellView.layer.shadowOffset = CGSizeMake(0.5, 1.0)
-        self.cellView.layer.shadowOpacity = 0.5
-        self.cellView.layer.shadowColor = UIColor.grayColor().CGColor
-        self.cellView.layer.shadowRadius = 0.7
-    }
     
     override func drawRect(rect: CGRect) {
         self.cellView.backgroundColor = UIColor.whiteColor()

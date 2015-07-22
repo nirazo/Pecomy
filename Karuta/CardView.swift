@@ -21,6 +21,7 @@ class CardView: MDCSwipeToChooseView {
     var distance: Double = 0.0
     var imageUrls = [NSURL]()
     var restaurantImageViews = [UIImageView]()
+    var contentsView = UIView()
     
     init(frame: CGRect, syncID: String, shopName: String, imageUrls: [NSURL], maxPrice: Int, minPrice: Int, distance: Double, options: MDCSwipeToChooseViewOptions) {
         options.likedText = "like"
@@ -39,7 +40,7 @@ class CardView: MDCSwipeToChooseView {
         self.minPrice = minPrice;
         self.distance = distance;
         
-        self.backgroundColor = UIColor.whiteColor()
+        //self.backgroundColor = UIColor.whiteColor()
     }
 
     required init(coder aDecoder: NSCoder) {
@@ -70,11 +71,12 @@ class CardView: MDCSwipeToChooseView {
         UIColor.whiteColor().setStroke()
         verticalLine.lineWidth = 2
         verticalLine.stroke()
-
         
         for i in 0..<self.numOfPictures {
-            self.addSubview(self.restaurantImageViews[i])
+            self.contentView.addSubview(self.restaurantImageViews[i])
         }
+        
+        // 画像のダウンロード
         self.acquireImages()
     }
     

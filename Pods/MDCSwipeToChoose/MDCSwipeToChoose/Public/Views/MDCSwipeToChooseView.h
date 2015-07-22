@@ -48,6 +48,13 @@
 @property (nonatomic, strong) UIView *nopeView;
 
 /*!
+ * Custmize.
+ * 影をつけるため、コンテンツは全てcontentViewに配備することとする。
+ * この下に影用のビューを用意する。
+ */
+@property (nonatomic, strong) UIView *contentView;
+
+/*!
  * The designated initializer takes a `frame` and a set of options to customize
  * the behavior of the view.
  */
