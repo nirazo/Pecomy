@@ -26,10 +26,6 @@ class ResultViewCell: UITableViewCell {
     var distantLabel = UILabel()
     var shopUrl = NSURL()
     var cellView = UIView()
-    
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//    }
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -59,61 +55,6 @@ class ResultViewCell: UITableViewCell {
         self.titleLabel.font = UIFont.systemFontOfSize(12)
         self.titleLabel.numberOfLines = 1
         self.cellView.addSubview(self.titleLabel)
-        
-//        // カテゴリ
-//        self.categoryLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 30)];
-//        self.categoryLabel.font = [UIFont systemFontOfSize:12];
-//        //self.categoryLabel.backgroundColor = [UIColor redColor];
-//        
-//        // 値段（Min, 〜, Max, 円）
-//        self.priceMinLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 50, 30)];
-//        self.priceMinLabel.font = [UIFont systemFontOfSize:12];
-//        //self.priceMinLabel.backgroundColor = [UIColor blueColor];
-//        
-//        self.priceConnectLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 20, 30)];
-//        self.priceConnectLabel.text = @"〜";
-//        self.priceConnectLabel.textAlignment = NSTextAlignmentCenter;
-//        self.priceConnectLabel.font = [UIFont systemFontOfSize:12];
-//        //self.priceConnectLabel.backgroundColor = [UIColor redColor];
-//        
-//        self.priceMaxLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 50, 30)];
-//        self.priceMaxLabel.font = [UIFont systemFontOfSize:12];
-//        //self.priceMaxLabel.backgroundColor = [UIColor blueColor];
-//        
-//        self.priceYenLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 20, 30)];
-//        self.priceYenLabel.text = @"円";
-//        self.priceYenLabel.font = [UIFont systemFontOfSize:12];
-//        //self.priceMaxLabel.backgroundColor = [UIColor blueColor];
-//        
-//        // 距離（ここから, xx, m）
-//        self.distantPrefixLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 60, 30)];
-//        self.distantPrefixLabel.font = [UIFont systemFontOfSize:12];
-//        self.distantPrefixLabel.text = @"ここから";
-//        //self.distantPrefixLabel.backgroundColor = [UIColor redColor];
-//        
-//        self.distantLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 60, 30)];
-//        self.distantLabel.font = [UIFont systemFontOfSize:12];
-//        //self.distantLabel.backgroundColor = [UIColor blueColor];
-//        
-//        self.distantSuffixLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 15, 30)];
-//        self.distantSuffixLabel.font = [UIFont systemFontOfSize:12];
-//        self.distantSuffixLabel.text = @"m";
-//        //self.distantSuffixLabel.backgroundColor = [UIColor redColor];
-//        
-//        [self.cellView addSubview:self.titleLabel];
-//        [self.cellView addSubview:self.numberLabel];
-//        [self.cellView addSubview:self.pictureView];
-//        [self.cellView addSubview:self.restaurantNameLabel];
-//        [self.cellView addSubview:self.categoryLabel];
-//        [self.cellView addSubview:self.priceMinLabel];
-//        [self.cellView addSubview:self.priceConnectLabel];
-//        [self.cellView addSubview:self.priceMaxLabel];
-//        [self.cellView addSubview:self.priceYenLabel];
-//        [self.cellView addSubview:self.distantPrefixLabel];
-//        [self.cellView addSubview:self.distantLabel];
-//        [self.cellView addSubview:self.distantSuffixLabel];
-        
-        //self.updateLayout()
     }
 
     required init(coder aDecoder: NSCoder) {
@@ -170,28 +111,6 @@ class ResultViewCell: UITableViewCell {
         }
     }
     
-//    - (void)updateLayout {
-//
-//    self.cellView.frame = CGRectOffset(self.cellView.frame, cornerRadius, cornerRadius);
-//    self.cellView.backgroundColor = [UIColor whiteColor];
-//    
-//    self.numberLabel.frame = CGRectOffset(self.numberLabel.frame, CGRectGetMaxX(self.titleLabel.frame), 0);
-//    
-//    self.pictureView.frame = CGRectOffset(self.pictureView.frame, cornerRadius, CGRectGetMaxY(self.titleLabel.frame));
-//    
-//    CGFloat rightSideLabelOriginX = CGRectGetMaxX(self.pictureView.frame) + 20;
-//    
-//    self.restaurantNameLabel.frame =  CGRectOffset(self.restaurantNameLabel.frame, rightSideLabelOriginX, 0);
-//    self.categoryLabel.frame = CGRectOffset(self.categoryLabel.frame, rightSideLabelOriginX, CGRectGetMaxY(self.restaurantNameLabel.frame));
-//    self.priceMinLabel.frame = CGRectOffset(self.priceMinLabel.frame, rightSideLabelOriginX, CGRectGetMaxY(self.categoryLabel.frame));
-//    self.priceConnectLabel.frame = CGRectOffset(self.priceConnectLabel.frame, CGRectGetMaxX(self.priceMinLabel.frame), CGRectGetMaxY(self.categoryLabel.frame));
-//    self.priceMaxLabel.frame = CGRectOffset(self.priceMaxLabel.frame, CGRectGetMaxX(self.priceConnectLabel.frame), CGRectGetMaxY(self.categoryLabel.frame));
-//    self.priceYenLabel.frame = CGRectOffset(self.priceYenLabel.frame, CGRectGetMaxX(self.priceMaxLabel.frame), CGRectGetMaxY(self.categoryLabel.frame));
-//    self.distantPrefixLabel.frame = CGRectOffset(self.distantPrefixLabel.frame, rightSideLabelOriginX, CGRectGetMaxY(self.priceMinLabel.frame));
-//    self.distantLabel.frame = CGRectOffset(self.distantLabel.frame, CGRectGetMaxX(self.distantPrefixLabel.frame), self.distantPrefixLabel.frame.origin.y);
-//    self.distantSuffixLabel.frame = CGRectOffset(self.distantSuffixLabel.frame, CGRectGetMaxX(self.distantLabel.frame), self.distantPrefixLabel.frame.origin.y);
-//    
-   
     func setRestaurantImage(imageUrl: NSURL) {
         self.pictureView.sd_setImageWithURL(imageUrl, completed: {[weak self](image: UIImage!, error: NSError!, cacheType: SDImageCacheType, imageURL: NSURL!) in
             self?.pictureView.alpha = 0

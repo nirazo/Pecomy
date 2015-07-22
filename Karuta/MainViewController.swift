@@ -90,10 +90,10 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
     func acquireFirstCard() {
         self.locationManager.fetchWithCompletion({ (location) in
             println("success!!")
-//            self.currentLatitude = Double(location!.coordinate.latitude);
-//            self.currentLongitude = Double(location!.coordinate.longitude);
-            self.currentLatitude = 35.607762
-            self.currentLongitude = 139.734562
+            self.currentLatitude = Double(location!.coordinate.latitude);
+            self.currentLongitude = Double(location!.coordinate.longitude);
+//            self.currentLatitude = 35.607762
+//            self.currentLongitude = 139.734562
             
             self.acquireCardWithLatitude(Double(self.currentLatitude!),
                 longitude: Double(self.currentLongitude!),
@@ -165,11 +165,11 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
                     
                     let syncID: String! = json["sync_id"].string!
                     
-                    var rect = CGRect(x: 0, y: 0, width: self.view.frame.width*0.8, height: self.view.frame.height*0.5)
+//                    var rect = CGRect(x: 0, y: 0, width: self.view.frame.width*0.8, height: self.view.frame.height*0.5)
+//                    
+//                    rect.offset(dx: (self.view.frame.width - rect.size.width)/2, dy: (self.view.frame.height - rect.size.height)/2 - 40)
                     
-                    rect.offset(dx: (self.view.frame.width - rect.size.width)/2, dy: (self.view.frame.height - rect.size.height)/2 - 40)
-                    
-                    let cardView = self.createCardWithFrame(rect, syncID: syncID!, shopName: shopName, imageUrls: shopImageUrls, maxPrice: maxPrice, minPrice: minPrice, distance: distance)
+                    let cardView = self.createCardWithFrame(self.baseCardRect(), syncID: syncID!, shopName: shopName, imageUrls: shopImageUrls, maxPrice: maxPrice, minPrice: minPrice, distance: distance)
                     self.stackedCards.append(cardView)
                     
                     // カード取得・表示については2枚取得する際に変更
@@ -194,6 +194,8 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
     // カードを表示
     func displayStackedCard() {
         for card in self.stackedCards {
+            card.bounds.origin.y = card.bounds.origin.y - self.cardOffsetY()
+            println("y: \(card.bounds.origin.y)")
             self.contentView.addSubview(card)
             self.contentView.sendSubviewToBack(card)
         }
@@ -204,12 +206,13 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
     func createCardWithFrame(frame: CGRect, syncID: String, shopName: String, imageUrls: [NSURL], maxPrice: Int, minPrice: Int, distance: Double) -> CardView {
         var options = MDCSwipeToChooseViewOptions()
         options.delegate = self
-        options.onPan = { state in
-            if (state.thresholdRatio == 1.0 && state.direction == .Left) {
-                // 左スワイプ
-            } else {
-                // 右スワイプ
-            }
+        options.onPan = { [weak self] state in
+                if(self!.numOfDisplayedCard() > 1){
+                    var frame:CGRect = self!.baseCardRect()
+                    var secondCard = self!.contentView.subviews[0] as! CardView
+                    secondCard.frame = CGRect(x: frame.origin.x, y: frame.origin.y-(state.thresholdRatio * 10.0), width: CGRectGetWidth(frame), height: CGRectGetHeight(frame))
+                }
+
         }
         let cardView = CardView(frame: frame, syncID: syncID, shopName: shopName, imageUrls: imageUrls, maxPrice: maxPrice, minPrice: minPrice, distance: distance, options: options)
         return cardView
@@ -217,12 +220,42 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
     
     // カード全部消す
     func resetCards() {
-        for cv in self.view.subviews {
+        for cv in self.contentView.subviews {
             if cv.dynamicType === CardView.self {
                 cv.removeFromSuperview()
             }
         }
     }
+    
+    // カードの枚数に応じてカードのオフセットを返す
+    func cardOffsetY() -> CGFloat {
+        var offset: CGFloat = 0
+        for cv in self.contentView.subviews {
+            if cv.dynamicType === CardView.self {
+                offset += 10
+            }
+        }
+        return offset
+    }
+        
+    // 表示されてるカードの枚数を返す
+    func numOfDisplayedCard() -> Int {
+        var num = 0
+        for cv in self.contentView.subviews {
+            if cv.dynamicType === CardView.self {
+                num++
+            }
+        }
+        return num
+    }
+    
+    // カードのベースとなるCGRectを返す
+    func baseCardRect() -> CGRect{
+        var rect = CGRect(x: 0, y: 0, width: self.view.frame.width*0.8, height: self.view.frame.height*0.5)
+        rect.offset(dx: (self.view.frame.width - rect.size.width)/2, dy: (self.view.frame.height - rect.size.height)/2 - 40)
+        return rect
+    }
+    
     
     //MARK: - Result related methods
     
