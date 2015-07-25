@@ -49,6 +49,28 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
         contentView.backgroundColor = UIColor.clearColor()
         self.view.addSubview(self.contentView)
         
+        // フッター
+        var footerBar = UIView(frame: CGRectZero)
+        footerBar.backgroundColor = Const.KARUTA_THEME_TEXT_COLOR
+        var footerText = UILabel(frame: CGRectZero)
+        footerText.text = NSLocalizedString("SearchingRestaurant", comment: "")
+        footerText.textColor = Const.KARUTA_THEME_COLOR
+        footerText.textAlignment = .Center
+        
+        self.view.addSubview(footerBar)
+        footerBar.snp_makeConstraints { (make) in
+            make.width.equalTo(self.view)
+            make.height.equalTo(self.view.snp_height).multipliedBy(0.07)
+            make.bottom.equalTo(self.view)
+        }
+        
+        footerBar.addSubview(footerText)
+        footerText.snp_makeConstraints { (make) in
+            make.width.equalTo(footerBar)
+            make.height.equalTo(footerBar)
+            make.center.equalTo(footerBar)
+        }
+
         // ボタン配置
         var likeButton = UIButton()
         likeButton.setImage(UIImage(named: "like_normal"), forState: .Normal)
@@ -67,18 +89,17 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
             make.width.equalTo(self.view).multipliedBy(0.25)
             make.height.equalTo(self.view.snp_width).multipliedBy(0.25)
             make.centerX.equalTo(self.view).offset(-self.view.frame.width/4)
-            make.bottom.equalTo(self.view.snp_bottom).offset(-self.view.frame.width/4)
+            make.bottom.equalTo(footerBar.snp_top).offset(-20)
         }
         
         likeButton.snp_makeConstraints { (make) in
-            make.width.equalTo(self.view).multipliedBy(0.25)
-            make.height.equalTo(self.view.snp_width).multipliedBy(0.25)
+            make.width.equalTo(dislikeButton)
+            make.height.equalTo(dislikeButton)
             make.centerX.equalTo(self.view).offset(self.view.frame.width/4)
-            make.bottom.equalTo(self.view.snp_bottom).offset(-self.view.frame.width/4)
+            make.bottom.equalTo(dislikeButton)
         }
         
         self.acquireFirstCard()
-        println("start to get location..")
     }
 
     override func didReceiveMemoryWarning() {
@@ -153,6 +174,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
                     let shopImageUrlsString = card["image_url"].array!
                     let maxPrice = card["price_max"].int!
                     let minPrice = card["price_min"].int!
+                    let priceRange = card["price_range"].string!
                     let distance: Double = card["distance_meter"].double!
                     
                     var shopImageUrls = [NSURL]()
@@ -162,7 +184,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
                     
                     let syncID: String! = json["sync_id"].string!
                     
-                    let cardView = self.createCardWithFrame(self.baseCardRect(), syncID: syncID!, shopName: shopName, imageUrls: shopImageUrls, maxPrice: maxPrice, minPrice: minPrice, distance: distance)
+                    let cardView = self.createCardWithFrame(self.baseCardRect(), syncID: syncID!, shopName: shopName, imageUrls: shopImageUrls, priceRange:priceRange, distance: distance)
                     self.stackedCards.append(cardView)
                     
                     // カード取得・表示については2枚取得する際に変更
@@ -202,7 +224,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
     }
     
     // カードを作成
-    func createCardWithFrame(frame: CGRect, syncID: String, shopName: String, imageUrls: [NSURL], maxPrice: Int, minPrice: Int, distance: Double) -> CardView {
+    func createCardWithFrame(frame: CGRect, syncID: String, shopName: String, imageUrls: [NSURL], priceRange: String, distance: Double) -> CardView {
         var options = MDCSwipeToChooseViewOptions()
         options.delegate = self
         options.onPan = { [weak self] state in
@@ -213,7 +235,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
                 }
 
         }
-        let cardView = CardView(frame: frame, syncID: syncID, shopName: shopName, imageUrls: imageUrls, maxPrice: maxPrice, minPrice: minPrice, distance: distance, options: options)
+        let cardView = CardView(frame: frame, syncID: syncID, shopName: shopName, imageUrls: imageUrls, priceRange: priceRange, distance: distance, options: options)
         return cardView
     }
     
@@ -250,8 +272,8 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
     
     // カードのベースとなるCGRectを返す
     func baseCardRect() -> CGRect{
-        var rect = CGRect(x: 0, y: 0, width: self.view.frame.width*0.8, height: self.view.frame.height*0.55)
-        rect.offset(dx: (self.view.frame.width - rect.size.width)/2, dy: (self.view.frame.height - rect.size.height)/2 - 50)
+        var rect = CGRect(x: 0, y: 0, width: self.view.frame.width*0.8, height: self.view.frame.height*0.6)
+        rect.offset(dx: (self.view.frame.width - rect.size.width)/2, dy: (self.view.frame.height - rect.size.height)/2 - 40)
         return rect
     }
     

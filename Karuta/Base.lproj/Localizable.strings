@@ -1,0 +1,9 @@
+/* 
+  Localizable.strings
+  Karuta
+
+  Created by Kenzo on 2015/07/25.
+  Copyright (c) 2015年 Karuta. All rights reserved.
+*/
+"SearchingRestaurant" = "Searching your favorite restaurant...";
+"YourBest" = "Your best";

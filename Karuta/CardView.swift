@@ -13,17 +13,18 @@ import MDCSwipeToChoose
 class CardView: MDCSwipeToChooseView {
     let numOfPictures = 3
     let separatorLineWidth : CGFloat = 1.0
+    let textMarginX: CGFloat = 10.0
+    let textMarginY: CGFloat = 4.0
     
     var syncID = ""
     var shopName = ""
-    var maxPrice = Int(INT_MAX)
-    var minPrice = 0
+    var priceRange = ""
     var distance: Double = 0.0
     var imageUrls = [NSURL]()
     var restaurantImageViews = [UIImageView]()
     var contentsView = UIView()
     
-    init(frame: CGRect, syncID: String, shopName: String, imageUrls: [NSURL], maxPrice: Int, minPrice: Int, distance: Double, options: MDCSwipeToChooseViewOptions) {
+    init(frame: CGRect, syncID: String, shopName: String, imageUrls: [NSURL], priceRange: String, distance: Double, options: MDCSwipeToChooseViewOptions) {
         options.likedText = "like"
         options.likedColor = UIColor.blueColor()
         options.nopeText = "dislike"
@@ -36,12 +37,11 @@ class CardView: MDCSwipeToChooseView {
         }
         super.init(frame: frame, options: options)
     
-        self.syncID = syncID;
-        self.shopName = shopName;
-        self.imageUrls = imageUrls;
-        self.maxPrice = maxPrice;
-        self.minPrice = minPrice;
-        self.distance = distance;
+        self.syncID = syncID
+        self.shopName = shopName
+        self.imageUrls = imageUrls
+        self.priceRange = priceRange
+        self.distance = distance
     }
 
     required init(coder aDecoder: NSCoder) {
@@ -75,6 +75,50 @@ class CardView: MDCSwipeToChooseView {
         for i in 0..<self.numOfPictures {
             self.contentView.addSubview(self.restaurantImageViews[i])
         }
+        
+        // レストラン名のラベル
+        var restaurantNameLabel = UILabel(frame: CGRect(x: textMarginX,
+            y: CGRectGetMaxY(self.restaurantImageViews[1].frame) + textMarginY,
+            width: self.frame.width*3/4,
+            height: (self.frame.height - CGRectGetMaxY(self.restaurantImageViews[1].frame))/4))
+        restaurantNameLabel.text = self.shopName
+        restaurantNameLabel.numberOfLines = 1
+        restaurantNameLabel.textColor = Const.KARUTA_THEME_COLOR
+        self.addSubview(restaurantNameLabel)
+        
+        // アイコン
+        var iconImageView = UIImageView(image: UIImage(named: "rice"))
+        iconImageView.frame = CGRect(x: CGRectGetMaxX(restaurantNameLabel.frame),
+            y: CGRectGetMaxY(self.restaurantImageViews[1].frame) + (self.frame.height - CGRectGetMaxY(self.restaurantImageViews[1].frame))/4,
+            width: (self.frame.height - CGRectGetMaxY(self.restaurantImageViews[1].frame))/2,
+            height: (self.frame.height - CGRectGetMaxY(self.restaurantImageViews[1].frame))/2)
+        self.addSubview(iconImageView)
+        
+        // 距離ラベル
+        var distanceLabel = UILabel(frame: CGRect(x: textMarginX,
+            y: CGRectGetMaxY(restaurantNameLabel.frame) + self.textMarginY,
+            width: restaurantNameLabel.frame.width,
+            height: restaurantNameLabel.frame.height))
+        distanceLabel.text = "ここから\(Int(self.distance))m"
+        distanceLabel.font = UIFont(name: distanceLabel.font.fontName, size: 12)
+        distanceLabel.numberOfLines = 0
+        distanceLabel.sizeToFit()
+        distanceLabel.textColor = UIColor.grayColor()
+        self.addSubview(distanceLabel)
+        
+        // 値段ラベル
+        var priceLabel = UILabel(frame: CGRect(x: textMarginX,
+            y: CGRectGetMaxY(distanceLabel.frame),
+            width: restaurantNameLabel.frame.width,
+            height: (self.frame.height - CGRectGetMaxY(distanceLabel.frame))))
+        var replacedString = self.priceRange.stringByReplacingOccurrencesOfString("  +", withString: "\n", options: NSStringCompareOptions.RegularExpressionSearch, range: nil)
+        priceLabel.text = replacedString
+        priceLabel.numberOfLines = 2
+        priceLabel.sizeToFit()
+        priceLabel.textColor = Const.KARUTA_THEME_COLOR
+        priceLabel.font = UIFont(name: priceLabel.font.fontName, size: 12)
+        self.addSubview(priceLabel)
+        
         
         // 画像のダウンロード
         self.acquireImages()
