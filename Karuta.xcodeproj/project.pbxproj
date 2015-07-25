@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		82743658913CE160AF673A82 /* Pods_Karuta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA78955690AB624AB9D7F4AE /* Pods_Karuta.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		D203D3141B3E739600FC9DB8 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = D203D3131B3E739600FC9DB8 /* Const.swift */; };
-		D2092A271B6356B5008046D9 /* Pods-Karuta.debug_fixed_location.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = D2092A261B6356B5008046D9 /* Pods-Karuta.debug_fixed_location.xcconfig */; };
-		D2092A291B6356FE008046D9 /* Pods-Karuta.release_fixed_location.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = D2092A281B6356FE008046D9 /* Pods-Karuta.release_fixed_location.xcconfig */; };
 		D23070731B4C30D100833167 /* KarutaLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23070721B4C30D100833167 /* KarutaLocationManager.swift */; };
 		D2597E1B1B522840000938B4 /* noimage.png in Resources */ = {isa = PBXBuildFile; fileRef = D2597E1A1B522840000938B4 /* noimage.png */; };
 		D2597E1E1B523862000938B4 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2597E1D1B523862000938B4 /* ResultViewController.swift */; };
@@ -243,7 +241,7 @@
 		D27BB9C41B36F4A900F8D902 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = Karuta;
 				TargetAttributes = {
 					D27BB9CB1B36F4A900F8D902 = {
@@ -281,13 +279,11 @@
 			files = (
 				D2597E2F1B54089A000938B4 /* dislike_normal.png in Resources */,
 				D2597E1B1B522840000938B4 /* noimage.png in Resources */,
-				D2092A291B6356FE008046D9 /* Pods-Karuta.release_fixed_location.xcconfig in Resources */,
 				D2597E2B1B53BD94000938B4 /* like_normal.png in Resources */,
 				D2597E2C1B53BD94000938B4 /* like_tapped.png in Resources */,
 				D2597E241B524534000938B4 /* Oimachi.png in Resources */,
 				D27BB9D91B36F4A900F8D902 /* Images.xcassets in Resources */,
 				D2597E301B54089A000938B4 /* dislike_tapped.png in Resources */,
-				D2092A271B6356B5008046D9 /* Pods-Karuta.debug_fixed_location.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
