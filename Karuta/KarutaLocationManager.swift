@@ -33,14 +33,24 @@ class KarutaLocationManager: NSObject, CLLocationManagerDelegate {
     
     private func didCompleteWithSuccess(location: CLLocation?) {
         locationManager?.stopUpdatingLocation()
-        didCompleteWithSuccess?(location: location)
+        #if FIXED_LOCATION
+            var stubLocation = CLLocation(latitude: Const.FIXED_LATITUDE, longitude: Const.FIXED_LONGITUDE)
+            didCompleteWithSuccess?(location: stubLocation)
+        #else
+            didCompleteWithSuccess?(location: location)
+        #endif
         locationManager?.delegate = nil
         locationManager = nil
     }
     
     private func didCompleteWithError(error: NSError?) {
         locationManager?.stopUpdatingLocation()
-        didCompleteWithFailure?(error: error)
+        #if FIXED_LOCATION
+            var stubLocation = CLLocation(latitude: Const.FIXED_LATITUDE, longitude: Const.FIXED_LONGITUDE)
+            didCompleteWithSuccess?(location: stubLocation)
+        #else
+            didCompleteWithFailure?(error: error)
+        #endif
         locationManager?.delegate = nil
         locationManager = nil
     }

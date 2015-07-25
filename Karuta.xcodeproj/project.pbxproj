@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		82743658913CE160AF673A82 /* Pods_Karuta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA78955690AB624AB9D7F4AE /* Pods_Karuta.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		D203D3141B3E739600FC9DB8 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = D203D3131B3E739600FC9DB8 /* Const.swift */; };
+		D2092A271B6356B5008046D9 /* Pods-Karuta.debug_fixed_location.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = D2092A261B6356B5008046D9 /* Pods-Karuta.debug_fixed_location.xcconfig */; };
+		D2092A291B6356FE008046D9 /* Pods-Karuta.release_fixed_location.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = D2092A281B6356FE008046D9 /* Pods-Karuta.release_fixed_location.xcconfig */; };
 		D23070731B4C30D100833167 /* KarutaLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23070721B4C30D100833167 /* KarutaLocationManager.swift */; };
 		D2597E1B1B522840000938B4 /* noimage.png in Resources */ = {isa = PBXBuildFile; fileRef = D2597E1A1B522840000938B4 /* noimage.png */; };
 		D2597E1E1B523862000938B4 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2597E1D1B523862000938B4 /* ResultViewController.swift */; };
@@ -42,6 +44,8 @@
 		3B06ABC94A9E1B8E1D89BFDB /* Pods-Karuta.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Karuta.release.xcconfig"; path = "Pods/Target Support Files/Pods-Karuta/Pods-Karuta.release.xcconfig"; sourceTree = "<group>"; };
 		CA78955690AB624AB9D7F4AE /* Pods_Karuta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Karuta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D203D3131B3E739600FC9DB8 /* Const.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
+		D2092A261B6356B5008046D9 /* Pods-Karuta.debug_fixed_location.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-Karuta.debug_fixed_location.xcconfig"; path = "Pods/Target Support Files/Pods-Karuta/Pods-Karuta.debug_fixed_location.xcconfig"; sourceTree = "<group>"; };
+		D2092A281B6356FE008046D9 /* Pods-Karuta.release_fixed_location.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-Karuta.release_fixed_location.xcconfig"; path = "Pods/Target Support Files/Pods-Karuta/Pods-Karuta.release_fixed_location.xcconfig"; sourceTree = "<group>"; };
 		D23070721B4C30D100833167 /* KarutaLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarutaLocationManager.swift; sourceTree = "<group>"; };
 		D2597E1A1B522840000938B4 /* noimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noimage.png; sourceTree = "<group>"; };
 		D2597E1D1B523862000938B4 /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
@@ -89,8 +93,10 @@
 		97BD974091507500A5B02BC4 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
+				D2092A261B6356B5008046D9 /* Pods-Karuta.debug_fixed_location.xcconfig */,
 				375106292F5446FE65E648DD /* Pods-Karuta.debug.xcconfig */,
 				3B06ABC94A9E1B8E1D89BFDB /* Pods-Karuta.release.xcconfig */,
+				D2092A281B6356FE008046D9 /* Pods-Karuta.release_fixed_location.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -275,11 +281,13 @@
 			files = (
 				D2597E2F1B54089A000938B4 /* dislike_normal.png in Resources */,
 				D2597E1B1B522840000938B4 /* noimage.png in Resources */,
+				D2092A291B6356FE008046D9 /* Pods-Karuta.release_fixed_location.xcconfig in Resources */,
 				D2597E2B1B53BD94000938B4 /* like_normal.png in Resources */,
 				D2597E2C1B53BD94000938B4 /* like_tapped.png in Resources */,
 				D2597E241B524534000938B4 /* Oimachi.png in Resources */,
 				D27BB9D91B36F4A900F8D902 /* Images.xcassets in Resources */,
 				D2597E301B54089A000938B4 /* dislike_tapped.png in Resources */,
+				D2092A271B6356B5008046D9 /* Pods-Karuta.debug_fixed_location.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,6 +395,168 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		D2092A1F1B6351F7008046D9 /* Debug_fixed_location */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug_fixed_location;
+		};
+		D2092A201B6351F7008046D9 /* Debug_fixed_location */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D2092A261B6356B5008046D9 /* Pods-Karuta.debug_fixed_location.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = Karuta/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DDEBUG -DFIXED_LOCATION";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Karuta/Karuta-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug_fixed_location;
+		};
+		D2092A211B6351F7008046D9 /* Debug_fixed_location */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D2092A261B6356B5008046D9 /* Pods-Karuta.debug_fixed_location.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = KarutaTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Karuta.app/Karuta";
+			};
+			name = Debug_fixed_location;
+		};
+		D2092A221B635211008046D9 /* Release_fixed_location */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Ounchecked";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release_fixed_location;
+		};
+		D2092A231B635211008046D9 /* Release_fixed_location */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D2092A281B6356FE008046D9 /* Pods-Karuta.release_fixed_location.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_OPTIMIZATION_LEVEL = s;
+				INFOPLIST_FILE = Karuta/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DRELEASE -DFIXED_LOCATION";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Karuta/Karuta-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Ounchecked";
+			};
+			name = Release_fixed_location;
+		};
+		D2092A241B635211008046D9 /* Release_fixed_location */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D2092A281B6356FE008046D9 /* Pods-Karuta.release_fixed_location.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = KarutaTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Karuta.app/Karuta";
+			};
+			name = Release_fixed_location;
+		};
 		D27BB9E91B36F4A900F8D902 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -484,7 +654,7 @@
 				INFOPLIST_FILE = Karuta/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -D DEBUG";
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DDEBUG";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Karuta/Karuta-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -506,7 +676,7 @@
 				INFOPLIST_FILE = Karuta/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -D RELEASE";
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DRELEASE";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Karuta/Karuta-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Ounchecked";
@@ -556,7 +726,9 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D27BB9E91B36F4A900F8D902 /* Debug */,
+				D2092A1F1B6351F7008046D9 /* Debug_fixed_location */,
 				D27BB9EA1B36F4A900F8D902 /* Release */,
+				D2092A221B635211008046D9 /* Release_fixed_location */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -565,7 +737,9 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D27BB9EC1B36F4A900F8D902 /* Debug */,
+				D2092A201B6351F7008046D9 /* Debug_fixed_location */,
 				D27BB9ED1B36F4A900F8D902 /* Release */,
+				D2092A231B635211008046D9 /* Release_fixed_location */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -574,7 +748,9 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D27BB9EF1B36F4A900F8D902 /* Debug */,
+				D2092A211B6351F7008046D9 /* Debug_fixed_location */,
 				D27BB9F01B36F4A900F8D902 /* Release */,
+				D2092A241B635211008046D9 /* Release_fixed_location */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

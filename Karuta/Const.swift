@@ -18,8 +18,16 @@ struct Const {
         static let API_CARD_BASE = "http://52.68.156.26:10090/card"
         static let API_RESULT_BASE = "http://52.68.156.26:10090/results"
     #else
-        static let API_CARD_BASE = "http://radioplant.bookside.net/card"
-        static let API_RESULT_BASE = "http://radioplant.bookside.net/results"
+        static let API_CARD_BASE = "http://52.68.156.26:10090/card"
+        static let API_RESULT_BASE = "http://52.68.156.26:10090/results"
+    #endif
+    
+    #if FIXED_LOCATION
+        static let FIXED_LATITUDE: Double = 35.607762
+        static let FIXED_LONGITUDE: Double = 139.734562
+    #else
+        static let FIXED_LATITUDE: Double = 0.0
+        static let FIXED_LONGITUDE: Double = 0.0
     #endif
     
     static let KARUTA_THEME_COLOR = UIColor(red: 207.0/255.0, green: 83.0/255.0, blue: 41.0/255.0, alpha: 1.0)
@@ -27,5 +35,5 @@ struct Const {
     
     static let KARUTA_TITLE = "Karuta"
     
-    static let ROW_HEIGHT_RESULTVIEW: CGFloat = 150.0;    
+    static let ROW_HEIGHT_RESULTVIEW: CGFloat = 150.0;
 }

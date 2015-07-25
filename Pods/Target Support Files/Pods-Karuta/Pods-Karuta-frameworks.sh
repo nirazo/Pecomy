@@ -54,7 +54,21 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework 'SnapKit.framework'
   install_framework 'SwiftyJSON.framework'
 fi
+if [[ "$CONFIGURATION" == "Debug_fixed_location" ]]; then
+  install_framework 'Alamofire.framework'
+  install_framework 'MDCSwipeToChoose.framework'
+  install_framework 'SDWebImage.framework'
+  install_framework 'SnapKit.framework'
+  install_framework 'SwiftyJSON.framework'
+fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework 'Alamofire.framework'
+  install_framework 'MDCSwipeToChoose.framework'
+  install_framework 'SDWebImage.framework'
+  install_framework 'SnapKit.framework'
+  install_framework 'SwiftyJSON.framework'
+fi
+if [[ "$CONFIGURATION" == "Release_fixed_location" ]]; then
   install_framework 'Alamofire.framework'
   install_framework 'MDCSwipeToChoose.framework'
   install_framework 'SDWebImage.framework'

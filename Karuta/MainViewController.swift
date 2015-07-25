@@ -9,7 +9,6 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
-//import Alamofire_SwiftyJSON
 import MDCSwipeToChoose
 import SnapKit
 
@@ -92,8 +91,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
             println("success!!")
             self.currentLatitude = Double(location!.coordinate.latitude);
             self.currentLongitude = Double(location!.coordinate.longitude);
-//            self.currentLatitude = 35.607762
-//            self.currentLongitude = 139.734562
+            println("location: \(self.currentLatitude), \(self.currentLongitude)")
             
             self.acquireCardWithLatitude(Double(self.currentLatitude!),
                 longitude: Double(self.currentLongitude!),
@@ -120,7 +118,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
                 }
             )
         }, failure: { (error) in
-            println("failure...")
+            println("failed to get location...")
         })
     }
     
