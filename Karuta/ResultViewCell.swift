@@ -45,7 +45,7 @@ class ResultViewCell: UITableViewCell {
         // 店舗画像
         self.pictureView = UIImageView()
         self.pictureView.backgroundColor = UIColor.blueColor()
-        self.pictureView.contentMode = UIViewContentMode.ScaleAspectFill
+        self.pictureView.contentMode = .ScaleAspectFill
         self.pictureView.clipsToBounds = true
         self.cellView.addSubview(self.pictureView)
         

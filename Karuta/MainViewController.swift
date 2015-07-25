@@ -91,7 +91,6 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
             println("success!!")
             self.currentLatitude = Double(location!.coordinate.latitude);
             self.currentLongitude = Double(location!.coordinate.longitude);
-            println("location: \(self.currentLatitude), \(self.currentLongitude)")
             
             self.acquireCardWithLatitude(Double(self.currentLatitude!),
                 longitude: Double(self.currentLongitude!),
@@ -163,10 +162,6 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
                     
                     let syncID: String! = json["sync_id"].string!
                     
-//                    var rect = CGRect(x: 0, y: 0, width: self.view.frame.width*0.8, height: self.view.frame.height*0.5)
-//                    
-//                    rect.offset(dx: (self.view.frame.width - rect.size.width)/2, dy: (self.view.frame.height - rect.size.height)/2 - 40)
-                    
                     let cardView = self.createCardWithFrame(self.baseCardRect(), syncID: syncID!, shopName: shopName, imageUrls: shopImageUrls, maxPrice: maxPrice, minPrice: minPrice, distance: distance)
                     self.stackedCards.append(cardView)
                     
@@ -193,9 +188,15 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
     func displayStackedCard() {
         for card in self.stackedCards {
             card.bounds.origin.y = card.bounds.origin.y - self.cardOffsetY()
-            println("y: \(card.bounds.origin.y)")
+            card.alpha = 0
             self.contentView.addSubview(card)
             self.contentView.sendSubviewToBack(card)
+            UIView.animateWithDuration(0.3,
+                animations: {
+                    card.alpha = 1
+                }) { finished in
+            }
+
         }
         self.stackedCards.removeAll()
     }
@@ -249,8 +250,8 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
     
     // カードのベースとなるCGRectを返す
     func baseCardRect() -> CGRect{
-        var rect = CGRect(x: 0, y: 0, width: self.view.frame.width*0.8, height: self.view.frame.height*0.5)
-        rect.offset(dx: (self.view.frame.width - rect.size.width)/2, dy: (self.view.frame.height - rect.size.height)/2 - 40)
+        var rect = CGRect(x: 0, y: 0, width: self.view.frame.width*0.8, height: self.view.frame.height*0.55)
+        rect.offset(dx: (self.view.frame.width - rect.size.width)/2, dy: (self.view.frame.height - rect.size.height)/2 - 50)
         return rect
     }
     
@@ -322,7 +323,6 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
     
     
     //MARK: - MDCSwipeToChooseDelegate Callbacks
-    
     // This is called when a user didn't fully swipe left or right.
     func viewDidCancelSwipe(view: UIView!) {
         println("Couldn't decide, huh?")

@@ -29,7 +29,10 @@ class CardView: MDCSwipeToChooseView {
         options.nopeText = "dislike"
         options.nopeColor = UIColor.redColor()
         for i in 0..<self.numOfPictures {
-            self.restaurantImageViews.append(UIImageView(image: UIImage(named: "noimage")))
+            var imageView = UIImageView(image: UIImage(named: "noimage"))
+            imageView.contentMode = .ScaleAspectFill
+            imageView.clipsToBounds = true
+            self.restaurantImageViews.append(imageView)
         }
         super.init(frame: frame, options: options)
     
@@ -39,8 +42,6 @@ class CardView: MDCSwipeToChooseView {
         self.maxPrice = maxPrice;
         self.minPrice = minPrice;
         self.distance = distance;
-        
-        //self.backgroundColor = UIColor.whiteColor()
     }
 
     required init(coder aDecoder: NSCoder) {
@@ -51,7 +52,7 @@ class CardView: MDCSwipeToChooseView {
         super.drawRect(rect)
         
         // 画像
-        self.restaurantImageViews[0].frame = CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height*0.4 - self.separatorLineWidth)
+        self.restaurantImageViews[0].frame = CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height*0.45 - self.separatorLineWidth)
         self.restaurantImageViews[1].frame = CGRect(x: 0, y: CGRectGetMaxY(self.restaurantImageViews[0].frame) + self.separatorLineWidth, width: self.frame.size.width/2 - self.separatorLineWidth/2, height: self.frame.size.height*0.3)
         self.restaurantImageViews[2].frame = CGRect(x: self.frame.size.width/2 + self.separatorLineWidth, y: self.restaurantImageViews[1].frame.origin.y, width: self.frame.size.width/2 - self.separatorLineWidth/2, height: self.frame.size.height*0.3)
         
@@ -64,7 +65,6 @@ class CardView: MDCSwipeToChooseView {
         horizontalLine.stroke()
         
         // 縦線
-        // 横線
         var verticalLine = UIBezierPath()
         verticalLine.moveToPoint(CGPointMake(self.frame.width/2, CGRectGetMaxY(self.restaurantImageViews[0].frame)))
         verticalLine.addLineToPoint(CGPointMake(self.frame.width/2, CGRectGetMaxY(self.restaurantImageViews[1].frame)))
