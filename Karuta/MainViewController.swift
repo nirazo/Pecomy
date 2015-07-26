@@ -167,13 +167,12 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
             if error == nil && data != nil {
                 json = SwiftyJSON.JSON(data!)
                 // 店が見つかった場合
-                println("response data: \(json)")
+                //println("response data: \(json)")
                 if (json["message"] == nil) {
                     let card: JSON = json["card"]
+                    let shopID = card["shop_id"].string!
                     let shopName = card["title"].string!
                     let shopImageUrlsString = card["image_url"].array!
-                    let maxPrice = card["price_max"].int!
-                    let minPrice = card["price_min"].int!
                     let priceRange = card["price_range"].string!
                     let distance: Double = card["distance_meter"].double!
                     
@@ -184,7 +183,10 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
                     
                     let syncID: String! = json["sync_id"].string!
                     
-                    let cardView = self.createCardWithFrame(self.baseCardRect(), syncID: syncID!, shopName: shopName, imageUrls: shopImageUrls, priceRange:priceRange, distance: distance)
+                    let restaurant = Restaurant(shopID: shopID, shopName: shopName, priceRange: priceRange, distance: distance, imageUrls: shopImageUrls)
+                    
+                    let cardView = self.createCardWithFrame(self.baseCardRect(), restaurant: restaurant, syncID: syncID)
+                    
                     self.stackedCards.append(cardView)
                     
                     // カード取得・表示については2枚取得する際に変更
@@ -224,7 +226,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
     }
     
     // カードを作成
-    func createCardWithFrame(frame: CGRect, syncID: String, shopName: String, imageUrls: [NSURL], priceRange: String, distance: Double) -> CardView {
+    func createCardWithFrame(frame: CGRect, restaurant: Restaurant, syncID: String) -> CardView {
         var options = MDCSwipeToChooseViewOptions()
         options.delegate = self
         options.onPan = { [weak self] state in
@@ -235,7 +237,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
                 }
 
         }
-        let cardView = CardView(frame: frame, syncID: syncID, shopName: shopName, imageUrls: imageUrls, priceRange: priceRange, distance: distance, options: options)
+        let cardView = CardView(frame: frame, restaurant: restaurant, syncID:syncID, options: options)
         return cardView
     }
     
@@ -291,16 +293,34 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
             if error == nil && data != nil {
                 json = SwiftyJSON.JSON(data!)
                 let results = json["results"]
+                
+                // Restaurantクラスを生成
+                var restaurants = [Restaurant]()
+                for i in 0..<results.count {
+                    let shopID = results[i]["shop_id"].string!
+                    let shopName = results[i]["title"].string!
+                    let shopImageUrlsString = results[i]["image_url"].array!
+                    let priceRange = results[i]["price_range"].string!
+                    let distance: Double = results[i]["distance_meter"].double!
+                    
+                    var shopImageUrls = [NSURL]()
+                    for urlString in shopImageUrlsString {
+                        shopImageUrls.append(NSURL(string: urlString.string!)!)
+                    }
+                    restaurants.append(Restaurant(shopID: shopID, shopName: shopName, priceRange: priceRange, distance: distance, imageUrls: shopImageUrls))
+                }
+                
                 println("call present result!!")
-                self.displayResultViewWithShopList(results)
+                println("restaurants: \(restaurants.count)")
+                self.displayResultViewWithShopList(restaurants)
             } else {
                 println("failed to get result!!")
             }
         }
     }
     
-    func displayResultViewWithShopList(shopList: JSON) {
-        var resultVC = ResultViewController(shopList: shopList)
+    func displayResultViewWithShopList(restaurants: [Restaurant]) {
+        var resultVC = ResultViewController(restaurants: restaurants)
         let backButton = UIBarButtonItem(title: "戻る", style: .Plain, target: nil, action: nil)
         self.navigationItem.backBarButtonItem = backButton
         resultVC.navigationItem.title = "あなたのBEST"

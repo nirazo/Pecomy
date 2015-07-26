@@ -17,6 +17,7 @@ class CardView: MDCSwipeToChooseView {
     let textMarginY: CGFloat = 4.0
     
     var syncID = ""
+    var shopID = ""
     var shopName = ""
     var priceRange = ""
     var distance: Double = 0.0
@@ -24,7 +25,7 @@ class CardView: MDCSwipeToChooseView {
     var restaurantImageViews = [UIImageView]()
     var contentsView = UIView()
     
-    init(frame: CGRect, syncID: String, shopName: String, imageUrls: [NSURL], priceRange: String, distance: Double, options: MDCSwipeToChooseViewOptions) {
+    init(frame: CGRect, restaurant: Restaurant, syncID:String, options: MDCSwipeToChooseViewOptions) {
         options.likedText = "like"
         options.likedColor = UIColor.blueColor()
         options.nopeText = "dislike"
@@ -37,11 +38,12 @@ class CardView: MDCSwipeToChooseView {
         }
         super.init(frame: frame, options: options)
     
+        self.shopID = restaurant.shopID
+        self.shopName = restaurant.shopName
+        self.imageUrls = restaurant.imageUrls
+        self.priceRange = restaurant.priceRange
+        self.distance = restaurant.distance
         self.syncID = syncID
-        self.shopName = shopName
-        self.imageUrls = imageUrls
-        self.priceRange = priceRange
-        self.distance = distance
     }
 
     required init(coder aDecoder: NSCoder) {

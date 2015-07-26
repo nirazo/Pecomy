@@ -11,11 +11,11 @@ import SwiftyJSON
 
 class ResultViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
 
-    var shopList: JSON!
+    var restaurants: [Restaurant]!
     
-    init(shopList: JSON) {
+    init(restaurants: [Restaurant]) {
         super.init(style: .Plain)
-        self.shopList = shopList
+        self.restaurants = restaurants
     }
     
     override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
@@ -56,7 +56,8 @@ class ResultViewController: UITableViewController, UITableViewDataSource, UITabl
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.shopList.count
+        println("count: \(self.restaurants.count)")
+        return self.restaurants.count
     }
 
     
@@ -64,11 +65,11 @@ class ResultViewController: UITableViewController, UITableViewDataSource, UITabl
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! ResultViewCell
         cell.backgroundColor = UIColor.clearColor()
         cell.selectionStyle = .None
-        let shopJson = self.shopList[indexPath.row]
+        let restaurant = self.restaurants[indexPath.row]
         
         /**cellにimage追加 */
-        let imageURL = NSURL(string: shopJson["image_url"].array![0].string!)
-        cell.setRestaurantImage(imageURL!)
+//        let imageURL = NSURL(string: shopJson["image_url"].array![0].string!)
+        cell.setRestaurantImage(restaurant.imageUrls[0])
         
         cell.numberLabel.text = "Best" + String(indexPath.row+1)
 
