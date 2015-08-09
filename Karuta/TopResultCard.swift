@@ -1,17 +1,16 @@
 //
-//  CardView.swift
+//  TopResultCard.swift
 //  Karuta
 //
-//  Created by Kenzo on 2015/07/04.
+//  Created by Kenzo on 2015/08/09.
 //  Copyright (c) 2015年 Karuta. All rights reserved.
 //
 
 import UIKit
 import SDWebImage
-import MDCSwipeToChoose
 
-class CardView: MDCSwipeToChooseView {
-    
+class TopResultCard: UIView {
+
     let numOfImages = 3
     
     let separatorLineWidth : CGFloat = 1.0
@@ -27,18 +26,12 @@ class CardView: MDCSwipeToChooseView {
     var restaurantImageViews = [UIImageView]()
     var contentsView = UIView()
     
-    init(frame: CGRect, restaurant: Restaurant, syncID:String, options: MDCSwipeToChooseViewOptions) {
-        options.likedText = "like"
-        options.likedColor = UIColor.blueColor()
-        options.nopeText = "dislike"
-        options.nopeColor = UIColor.redColor()
-        
+    init(frame: CGRect, restaurant: Restaurant) {
         self.shopID = restaurant.shopID
         self.shopName = restaurant.shopName
         self.imageUrls = restaurant.imageUrls
         self.priceRange = restaurant.priceRange
         self.distance = restaurant.distance
-        self.syncID = syncID
         
         for i in 0..<self.numOfImages {
             var imageView = UIImageView(image: UIImage(named: "noimage"))
@@ -47,10 +40,10 @@ class CardView: MDCSwipeToChooseView {
             self.restaurantImageViews.append(imageView)
         }
         
-        super.init(frame: frame, options: options)
-
+        super.init(frame: frame)
+        
     }
-
+    
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -80,7 +73,7 @@ class CardView: MDCSwipeToChooseView {
         verticalLine.stroke()
         
         for i in 0..<self.imageUrls.count {
-            self.contentView.addSubview(self.restaurantImageViews[i])
+            self.addSubview(self.restaurantImageViews[i])
         }
         
         // レストラン名のラベル

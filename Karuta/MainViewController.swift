@@ -37,7 +37,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
         self.navigationItem.title = Const.KARUTA_TITLE
         
         // 背景画像設定（とりあえず固定で...）
-        var image = UIImage(named: "Oimachi")
+        var image = UIImage(named: "background")
         UIGraphicsBeginImageContext(self.view.frame.size);
         image!.drawInRect(self.view.bounds)
         var backgroundImage = UIGraphicsGetImageFromCurrentImageContext();
@@ -167,11 +167,13 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
             if error == nil && data != nil {
                 json = SwiftyJSON.JSON(data!)
                 // 店が見つかった場合
-                //println("response data: \(json)")
+                println("response data: \(json)")
                 if (json["message"] == nil) {
                     let card: JSON = json["card"]
-                    let shopID = card["shop_id"].string!
+                    
+                    let shopID: String = card["shop_id"].stringValue
                     let shopName = card["title"].string!
+                    
                     let shopImageUrlsString = card["image_url"].array!
                     let priceRange = card["price_range"].string!
                     let distance: Double = card["distance_meter"].double!
@@ -180,7 +182,6 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
                     for urlString in shopImageUrlsString {
                         shopImageUrls.append(NSURL(string: urlString.string!)!)
                     }
-                    
                     let syncID: String! = json["sync_id"].string!
                     
                     let restaurant = Restaurant(shopID: shopID, shopName: shopName, priceRange: priceRange, distance: distance, imageUrls: shopImageUrls)

@@ -33,7 +33,13 @@ struct Const {
     static let KARUTA_THEME_COLOR = UIColor(red: 207.0/255.0, green: 83.0/255.0, blue: 41.0/255.0, alpha: 1.0)
     static let KARUTA_THEME_TEXT_COLOR = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 1.0)
     
+    static let RANKING_TOP_COLOR = UIColor(red: 255.0/255.0, green: 180.0/255.0, blue: 0/255.0, alpha: 1.0)
+    static let RANKING_SECOND_COLOR = UIColor(red: 124.0/255.0, green: 132.0/255.0, blue: 139.0/255.0, alpha: 1.0)
+    static let RANKING_THIRD_COLOR = UIColor(red: 135.0/255.0, green: 110.0/255.0, blue: 63.0/255.0, alpha: 1.0)
+    
     static let KARUTA_TITLE = "Karuta"
     
-    static let ROW_HEIGHT_RESULTVIEW: CGFloat = 150.0;
+    static let KARUTA_RANK_COLOR = [UIColor(red: 255/255.0, green: 180.0/255.0, blue: 0.0/255.0, alpha: 1.0),
+        UIColor(red: 124.0/255.0, green: 132.0/255.0, blue: 139.0/255.0, alpha: 1.0),
+        UIColor(red: 135.0/255.0, green: 110.0/255.0, blue: 63.0/255.0, alpha: 1.0)]
 }

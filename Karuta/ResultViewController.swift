@@ -11,6 +11,7 @@ import SwiftyJSON
 
 class ResultViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
 
+    let ROW_HEIGHT_RESULTVIEW: CGFloat = 165;
     var restaurants: [Restaurant]!
     
     init(restaurants: [Restaurant]) {
@@ -30,7 +31,7 @@ class ResultViewController: UITableViewController, UITableViewDataSource, UITabl
         super.viewDidLoad()
         
         // 背景画像設定（とりあえず固定で...）
-        var image = UIImage(named: "Oimachi")
+        var image = UIImage(named: "background")
         UIGraphicsBeginImageContext(self.view.frame.size);
         image!.drawInRect(self.view.bounds)
         var backgroundImage = UIGraphicsGetImageFromCurrentImageContext();
@@ -40,7 +41,7 @@ class ResultViewController: UITableViewController, UITableViewDataSource, UITabl
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.registerClass(ResultViewCell.self, forCellReuseIdentifier: "Cell")
-        self.tableView.rowHeight = Const.ROW_HEIGHT_RESULTVIEW
+        self.tableView.rowHeight = self.ROW_HEIGHT_RESULTVIEW
         self.tableView.separatorStyle = .None
     }
 
@@ -59,7 +60,6 @@ class ResultViewController: UITableViewController, UITableViewDataSource, UITabl
         println("count: \(self.restaurants.count)")
         return self.restaurants.count
     }
-
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! ResultViewCell
@@ -67,9 +67,11 @@ class ResultViewController: UITableViewController, UITableViewDataSource, UITabl
         cell.selectionStyle = .None
         let restaurant = self.restaurants[indexPath.row]
         
-        /**cellにimage追加 */
-//        let imageURL = NSURL(string: shopJson["image_url"].array![0].string!)
-        cell.setRestaurantImage(restaurant.imageUrls[0])
+        // cellにrestaurantをセット
+        cell.setupWithRestaurant(restaurant)
+        
+        // 色セット
+        cell.numberLabel.backgroundColor = cell.numberLabelColor(indexPath.row)
         
         cell.numberLabel.text = "Best" + String(indexPath.row+1)
 
