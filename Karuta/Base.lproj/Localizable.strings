@@ -9,6 +9,9 @@
 "LocationAlertMessage" = "Please turn on the location service to use Karuta.";
 "LocationAlertSettingButtonTitle" = "Setting";
 "LocationAlertCancelButtonTitle" = "Cancel";
+"LocationRetryAlertTitle" = "Failed to get location";
+"LocationRetryAlertTMessage" = "Please try again";
+"LocationRetryAlertRetryButtonTitle" = "Retry";
 "SearchingRestaurant" = "Searching your favorite restaurant...";
 "YourBest" = "Your best";
 "CloseTutorial" = "start";

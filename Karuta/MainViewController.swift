@@ -150,7 +150,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
                 }
             )
         }, failure: { (error) in
-            println("failed to get location: \(error?.code)")
+            self.showRetryToGetLocationAlert()
         })
     }
     
@@ -421,6 +421,20 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
             }, failure: {(error: NSError) in
             }
         )
+    }
+    
+    // 位置情報取得リトライのアラート表示
+    func showRetryToGetLocationAlert() {
+        let alertController = UIAlertController(title:NSLocalizedString("LocationRetryAlertTitle", comment: ""),
+            message: NSLocalizedString("LocationRetryAlertMessage", comment: ""),
+            preferredStyle: .Alert)
+        let retryAction = UIAlertAction(title: NSLocalizedString("LocationRetryAlertRetryButtonTitle", comment: ""),
+            style: .Default, handler: { (action) in
+                self.acquireFirstCard()
+        })
+        alertController.addAction(retryAction)
+        presentViewController(alertController, animated: true, completion: nil)
+
     }
     
     //MARK: - KarutaLocationProtocol
