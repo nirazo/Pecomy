@@ -19,7 +19,7 @@ class ResultViewController: UIViewController {
     
     init(restaurants: [Restaurant]) {
         self.restaurants = restaurants
-        super.init(nibName: nil, bundle: nil)        
+        super.init(nibName: nil, bundle: nil)
     }
 
     required init(coder aDecoder: NSCoder) {
@@ -31,8 +31,11 @@ class ResultViewController: UIViewController {
         self.view.backgroundColor = UIColor.whiteColor()
         self.edgesForExtendedLayout = .None
         
+        
         // 1位
         self.topResultCard = TopResultCard(frame: CGRectZero, restaurant: self.restaurants[0])
+        let tr = UITapGestureRecognizer(target: self, action: "resultTapped:")
+        self.topResultCard?.addGestureRecognizer(tr)
         self.view.addSubview(topResultCard!)
         
         switch self.restaurants.count {
@@ -70,12 +73,12 @@ class ResultViewController: UIViewController {
         
         var secondResultCard: OtherResultCard
         secondResultCard = OtherResultCard(frame: CGRectZero, restaurant: self.restaurants[1], color: Const.RANKING_SECOND_COLOR)
+        let tr = UITapGestureRecognizer(target: self, action: "resultTapped:")
+        secondResultCard.addGestureRecognizer(tr)
         self.view.addSubview(secondResultCard)
         secondResultCard.snp_makeConstraints { (make) in
             make.left.equalTo(topResultCard!)
             make.width.equalTo(topResultCard!)
-            //make.height.equalTo(self.view).multipliedBy(0.60)
-            //make.centerX.equalTo(self.view)
             make.top.equalTo(topResultCard!).offset(RESULT_MARGIN)
             make.bottom.equalTo(self.view).offset(-RESULT_MARGIN)
         }
@@ -91,17 +94,20 @@ class ResultViewController: UIViewController {
         }
         
         var secondResultCard = OtherResultCard(frame: CGRectZero, restaurant: self.restaurants[1], color: Const.RANKING_SECOND_COLOR)
+        let tr_second = UITapGestureRecognizer(target: self, action: "resultTapped:")
+        secondResultCard.addGestureRecognizer(tr_second)
         self.view.addSubview(secondResultCard)
         secondResultCard.snp_makeConstraints { (make) in
             make.left.equalTo(topResultCard!)
             make.width.equalTo(topResultCard!).multipliedBy(0.50).offset(-RESULT_MARGIN/2)
-//            make.height.equalTo(self.view).multipliedBy(0.50)
             make.top.equalTo(topResultCard!.snp_bottom).offset(RESULT_MARGIN)
             make.bottom.equalTo(self.view).offset(-RESULT_MARGIN)
         }
         
         // 3位
         var thirdResultCard = OtherResultCard(frame: CGRectZero, restaurant: self.restaurants[2], color: Const.RANKING_THIRD_COLOR)
+        let tr_third = UITapGestureRecognizer(target: self, action: "resultTapped:")
+        thirdResultCard.addGestureRecognizer(tr_third)
         self.view.addSubview(thirdResultCard)
         thirdResultCard.snp_makeConstraints { (make) in
             make.left.equalTo(secondResultCard.snp_right).offset(RESULT_MARGIN)
@@ -117,6 +123,13 @@ class ResultViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    // 結果をタップした時の挙動
+    func resultTapped(sender:UITapGestureRecognizer) {
+        let resultCard = sender.view as! ResultCardBase
+        let detailView = RestaurantDetailViewController(url: resultCard.url)
+        self.navigationController?.pushViewController(detailView, animated: true)
     }
 
 }

@@ -9,7 +9,7 @@
 import UIKit
 import SDWebImage
 
-class OtherResultCard: UIView {
+class OtherResultCard: ResultCardBase {
     // 描画系定数
     private let NUM_OF_IMAGES = 1
     private let CORNER_RADIUS: CGFloat = 5.0
@@ -17,32 +17,10 @@ class OtherResultCard: UIView {
     private let TEXT_MARGIN_X: CGFloat = 10.0
     private let TEXT_MARGIN_Y: CGFloat = 5.0
     
-    private var syncID = ""
-    private var shopID = ""
-    private var shopName = ""
-    private var priceRange = ""
-    private var distance: Double = 0.0
-    private var imageUrls = [NSURL]()
-    private var restaurantImageViews = [UIImageView]()
-    private var contentView = UIView()
-    private var borderColor = UIColor.clearColor()
+    var borderColor = UIColor.clearColor()
     
     init(frame: CGRect, restaurant: Restaurant?, color: UIColor) {
-        self.shopID = restaurant!.shopID
-        self.shopName = restaurant!.shopName
-        self.imageUrls = restaurant!.imageUrls
-        self.priceRange = restaurant!.priceRange
-        self.distance = restaurant!.distance
-        
-        for i in 0..<self.NUM_OF_IMAGES {
-            var imageView = UIImageView(image: UIImage(named: "noimage"))
-            imageView.contentMode = .ScaleAspectFill
-            imageView.clipsToBounds = true
-            self.restaurantImageViews.append(imageView)
-        }
-        
-        super.init(frame: frame)
-        self.backgroundColor = UIColor.clearColor()
+        super.init(frame: frame, restaurant: restaurant!, imageNum: NUM_OF_IMAGES)
         self.borderColor = color
     }
     

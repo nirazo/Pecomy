@@ -182,9 +182,12 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
                     for urlString in shopImageUrlsString {
                         shopImageUrls.append(NSURL(string: urlString.string!)!)
                     }
+                    
+                    let url = NSURL(string: card["url"].string!)
+                    
                     let syncID: String! = json["sync_id"].string!
                     
-                    let restaurant = Restaurant(shopID: shopID, shopName: shopName, priceRange: priceRange, distance: distance, imageUrls: shopImageUrls)
+                    let restaurant = Restaurant(shopID: shopID, shopName: shopName, priceRange: priceRange, distance: distance, imageUrls: shopImageUrls, url: url!)
                     
                     let cardView = self.createCardWithFrame(self.baseCardRect(), restaurant: restaurant, syncID: syncID)
                     
@@ -307,12 +310,14 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
                     let shopImageUrlsString = results[i]["image_url"].array!
                     let priceRange = results[i]["price_range"].string!
                     let distance: Double = results[i]["distance_meter"].double!
+                    let url = NSURL(string: results[i]["url"].string!)
                     
                     var shopImageUrls = [NSURL]()
                     for urlString in shopImageUrlsString {
                         shopImageUrls.append(NSURL(string: urlString.string!)!)
                     }
-                    restaurants.append(Restaurant(shopID: shopID, shopName: shopName, priceRange: priceRange, distance: distance, imageUrls: shopImageUrls))
+                    
+                    restaurants.append(Restaurant(shopID: shopID, shopName: shopName, priceRange: priceRange, distance: distance, imageUrls: shopImageUrls, url: url!))
                 }
                 
                 println("call present result!!")
