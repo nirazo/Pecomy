@@ -19,11 +19,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Fabric.with([Crashlytics()])
         self.setDefaultAppearance()
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        let viewController : MainViewController = MainViewController()
-        var navVC = UINavigationController(rootViewController: viewController)
-        self.window!.rootViewController = navVC
-        self.window!.makeKeyAndVisible()
         
+        // 起動2回目以降
+        if (NSUserDefaults.standardUserDefaults().boolForKey(Const.UD_KEY_HAS_LAUNCHED)) {
+            let viewController = MainViewController()
+            var navVC = UINavigationController(rootViewController: viewController)
+            self.window!.rootViewController = navVC
+        } else {
+            // 初回起動
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey: Const.UD_KEY_HAS_LAUNCHED)
+            NSUserDefaults.standardUserDefaults().synchronize()
+            
+            let viewController = TutorialViewController()
+            self.window?.rootViewController = viewController
+        }
+        self.window!.makeKeyAndVisible()
         return true
     }
 

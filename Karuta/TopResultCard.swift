@@ -83,7 +83,7 @@ class TopResultCard: ResultCardBase {
         // レストラン名のラベル
         var restaurantNameLabel = UILabel()
         restaurantNameLabel.text = self.shopName
-        restaurantNameLabel.font = UIFont(name: "HiraKakuProN-W6", size: 14)
+        restaurantNameLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 14)
         restaurantNameLabel.numberOfLines = 2
         restaurantNameLabel.textColor = Const.RANKING_TOP_COLOR
         restaurantNameLabel.sizeToFit()
@@ -102,7 +102,7 @@ class TopResultCard: ResultCardBase {
         priceLabel.numberOfLines = 2
         priceLabel.sizeToFit()
         priceLabel.textColor = Const.RANKING_TOP_COLOR
-        priceLabel.font = UIFont(name: "HiraKakuProN-W6", size: 12)
+        priceLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 12)
         self.contentView.addSubview(priceLabel)
         
         priceLabel.snp_makeConstraints { (make) in
@@ -114,7 +114,7 @@ class TopResultCard: ResultCardBase {
         // 距離ラベル
         var distanceLabel = UILabel()
         distanceLabel.text = "ここから\(Int(self.distance))m"
-        distanceLabel.font = UIFont(name: "HiraKakuProN-W3", size: 10)
+        distanceLabel.font = UIFont(name: Const.KARUTA_FONT_NORMAL, size: 10)
         distanceLabel.numberOfLines = 0
         distanceLabel.sizeToFit()
         distanceLabel.textColor = UIColor.grayColor()
@@ -129,7 +129,7 @@ class TopResultCard: ResultCardBase {
         // 矢印ラベル
         var arrawLabel = UILabel()
         arrawLabel.text = ">"
-        arrawLabel.font = UIFont(name: "HiraKakuProN-W6", size: 20)
+        arrawLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 20)
         arrawLabel.numberOfLines = 1
         arrawLabel.sizeToFit()
         arrawLabel.textColor = Const.RANKING_TOP_COLOR
@@ -181,7 +181,7 @@ class TopResultCard: ResultCardBase {
 //        }
 //        var telNumLabel = UILabel()
 //        telNumLabel.text = "050-5571-1724"
-//        telNumLabel.font = UIFont(name: "HiraKakuProN-W6", size: 15)
+//        telNumLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 15)
 //        telNumLabel.numberOfLines = 1
 //        telNumLabel.textColor = UIColor.blackColor()
 //        telNumLabel.textAlignment = .Center
@@ -202,7 +202,7 @@ class TopResultCard: ResultCardBase {
 //        }
 //        var mapLabel: UILabel = UILabel()
 //        mapLabel.text = "地図"
-//        mapLabel.font = UIFont(name: "HiraKakuProN-W6", size: 14)
+//        mapLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 14)
 //        mapLabel.numberOfLines = 1
 //        mapLabel.textColor = Const.RANKING_TOP_COLOR
 //        mapLabel.textAlignment = .Center

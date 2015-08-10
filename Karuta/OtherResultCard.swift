@@ -73,7 +73,7 @@ class OtherResultCard: ResultCardBase {
         // レストラン名のラベル
         var restaurantNameLabel = UILabel()
         restaurantNameLabel.text = self.shopName
-        restaurantNameLabel.font = UIFont(name: "HiraKakuProN-W6", size: 10)
+        restaurantNameLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 10)
         restaurantNameLabel.numberOfLines = 2
         restaurantNameLabel.textColor = self.borderColor
         restaurantNameLabel.sizeToFit()
@@ -92,7 +92,7 @@ class OtherResultCard: ResultCardBase {
         priceLabel.numberOfLines = 2
         priceLabel.sizeToFit()
         priceLabel.textColor = self.borderColor
-        priceLabel.font = UIFont(name: "HiraKakuProN-W6", size: 9)
+        priceLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 9)
         self.contentView.addSubview(priceLabel)
         
         priceLabel.snp_makeConstraints { (make) in
@@ -104,7 +104,7 @@ class OtherResultCard: ResultCardBase {
         // 距離ラベル
         var distanceLabel = UILabel()
         distanceLabel.text = "ここから\(Int(self.distance))m"
-        distanceLabel.font = UIFont(name: "HiraKakuProN-W3", size: 9)
+        distanceLabel.font = UIFont(name: Const.KARUTA_FONT_NORMAL, size: 9)
         distanceLabel.numberOfLines = 1
         distanceLabel.sizeToFit()
         distanceLabel.textColor = UIColor.grayColor()
@@ -117,7 +117,7 @@ class OtherResultCard: ResultCardBase {
         }
         
         // ランキングラベル
-        var rankingLabel = UIImageView(frame: CGRectMake(0, 0, 30, 30))
+        var rankingLabel = UIImageView(frame: CGRectMake(0, 0, 35, 35))
         var image: UIImage
         switch self.rank {
         case 1:

@@ -93,7 +93,7 @@ class CardView: MDCSwipeToChooseView {
         restaurantNameLabel.text = self.shopName
         restaurantNameLabel.numberOfLines = 1
         restaurantNameLabel.textColor = Const.KARUTA_THEME_COLOR
-        restaurantNameLabel.font = UIFont(name: "HiraKakuProN-W6", size: 14)
+        restaurantNameLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 14)
         self.addSubview(restaurantNameLabel)
         
         // アイコン
@@ -114,7 +114,7 @@ class CardView: MDCSwipeToChooseView {
         distanceLabel.numberOfLines = 0
         distanceLabel.sizeToFit()
         distanceLabel.textColor = UIColor.grayColor()
-        distanceLabel.font = UIFont(name: "HiraKakuProN-W3", size: 9)
+        distanceLabel.font = UIFont(name: Const.KARUTA_FONT_NORMAL, size: 9)
         self.addSubview(distanceLabel)
         
         // 値段ラベル
@@ -127,7 +127,7 @@ class CardView: MDCSwipeToChooseView {
         priceLabel.numberOfLines = 2
         priceLabel.sizeToFit()
         priceLabel.textColor = Const.KARUTA_THEME_COLOR
-        priceLabel.font = UIFont(name: "HiraKakuProN-W6", size: 12)
+        priceLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 12)
         self.addSubview(priceLabel)
         
         
