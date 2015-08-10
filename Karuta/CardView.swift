@@ -12,11 +12,13 @@ import MDCSwipeToChoose
 
 class CardView: MDCSwipeToChooseView {
     
-    let numOfImages = 3
+    let NUM_OF_IMAGES = 3
     
-    let separatorLineWidth : CGFloat = 1.0
-    let textMarginX: CGFloat = 10.0
-    let textMarginY: CGFloat = 4.0
+    let CORNER_RADIUS = 5
+    
+    let SEPARATOR_LINE_WIDTH : CGFloat = 1.0
+    let TEXT_MARGIN_X: CGFloat = 10.0
+    let TEXT_MARGIN_Y: CGFloat = 10.0
     
     var syncID = ""
     var shopID = ""
@@ -40,7 +42,7 @@ class CardView: MDCSwipeToChooseView {
         self.distance = restaurant.distance
         self.syncID = syncID
         
-        for i in 0..<self.numOfImages {
+        for i in 0..<self.NUM_OF_IMAGES {
             var imageView = UIImageView(image: UIImage(named: "noimage"))
             imageView.contentMode = .ScaleAspectFill
             imageView.clipsToBounds = true
@@ -59,9 +61,9 @@ class CardView: MDCSwipeToChooseView {
         super.drawRect(rect)
         
         // 画像
-        self.restaurantImageViews[0].frame = CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height*0.45 - self.separatorLineWidth)
-        self.restaurantImageViews[1].frame = CGRect(x: 0, y: CGRectGetMaxY(self.restaurantImageViews[0].frame) + self.separatorLineWidth, width: self.frame.size.width/2 - self.separatorLineWidth/2, height: self.frame.size.height*0.3)
-        self.restaurantImageViews[2].frame = CGRect(x: self.frame.size.width/2 + self.separatorLineWidth, y: self.restaurantImageViews[1].frame.origin.y, width: self.frame.size.width/2 - self.separatorLineWidth/2, height: self.frame.size.height*0.3)
+        self.restaurantImageViews[0].frame = CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height*0.45 - self.SEPARATOR_LINE_WIDTH)
+        self.restaurantImageViews[1].frame = CGRect(x: 0, y: CGRectGetMaxY(self.restaurantImageViews[0].frame) + self.SEPARATOR_LINE_WIDTH, width: self.frame.size.width/2 - self.SEPARATOR_LINE_WIDTH/2, height: self.frame.size.height*0.3)
+        self.restaurantImageViews[2].frame = CGRect(x: self.frame.size.width/2 + self.SEPARATOR_LINE_WIDTH, y: self.restaurantImageViews[1].frame.origin.y, width: self.frame.size.width/2 - self.SEPARATOR_LINE_WIDTH/2, height: self.frame.size.height*0.3)
         
         // 横線
         var horizontalLine = UIBezierPath()
@@ -84,13 +86,14 @@ class CardView: MDCSwipeToChooseView {
         }
         
         // レストラン名のラベル
-        var restaurantNameLabel = UILabel(frame: CGRect(x: textMarginX,
-            y: CGRectGetMaxY(self.restaurantImageViews[1].frame) + textMarginY,
+        var restaurantNameLabel = UILabel(frame: CGRect(x: TEXT_MARGIN_X,
+            y: CGRectGetMaxY(self.restaurantImageViews[1].frame) + TEXT_MARGIN_Y,
             width: self.frame.width*3/4,
             height: (self.frame.height - CGRectGetMaxY(self.restaurantImageViews[1].frame))/4))
         restaurantNameLabel.text = self.shopName
         restaurantNameLabel.numberOfLines = 1
         restaurantNameLabel.textColor = Const.KARUTA_THEME_COLOR
+        restaurantNameLabel.font = UIFont(name: "HiraKakuProN-W6", size: 14)
         self.addSubview(restaurantNameLabel)
         
         // アイコン
@@ -102,8 +105,8 @@ class CardView: MDCSwipeToChooseView {
         self.addSubview(iconImageView)
         
         // 距離ラベル
-        var distanceLabel = UILabel(frame: CGRect(x: textMarginX,
-            y: CGRectGetMaxY(restaurantNameLabel.frame) + self.textMarginY,
+        var distanceLabel = UILabel(frame: CGRect(x: TEXT_MARGIN_X,
+            y: CGRectGetMaxY(restaurantNameLabel.frame),
             width: restaurantNameLabel.frame.width,
             height: restaurantNameLabel.frame.height))
         distanceLabel.text = "ここから\(Int(self.distance))m"
@@ -111,10 +114,11 @@ class CardView: MDCSwipeToChooseView {
         distanceLabel.numberOfLines = 0
         distanceLabel.sizeToFit()
         distanceLabel.textColor = UIColor.grayColor()
+        distanceLabel.font = UIFont(name: "HiraKakuProN-W3", size: 9)
         self.addSubview(distanceLabel)
         
         // 値段ラベル
-        var priceLabel = UILabel(frame: CGRect(x: textMarginX,
+        var priceLabel = UILabel(frame: CGRect(x: TEXT_MARGIN_X,
             y: CGRectGetMaxY(distanceLabel.frame),
             width: restaurantNameLabel.frame.width,
             height: (self.frame.height - CGRectGetMaxY(distanceLabel.frame))))
@@ -123,7 +127,7 @@ class CardView: MDCSwipeToChooseView {
         priceLabel.numberOfLines = 2
         priceLabel.sizeToFit()
         priceLabel.textColor = Const.KARUTA_THEME_COLOR
-        priceLabel.font = UIFont(name: priceLabel.font.fontName, size: 12)
+        priceLabel.font = UIFont(name: "HiraKakuProN-W6", size: 12)
         self.addSubview(priceLabel)
         
         

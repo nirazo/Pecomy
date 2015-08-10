@@ -13,8 +13,9 @@
 		D2092A311B63B99F008046D9 /* rice.png in Resources */ = {isa = PBXBuildFile; fileRef = D2092A301B63B99F008046D9 /* rice.png */; };
 		D2092A341B64D721008046D9 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2092A331B64D721008046D9 /* Restaurant.swift */; };
 		D23070731B4C30D100833167 /* KarutaLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23070721B4C30D100833167 /* KarutaLocationManager.swift */; };
+		D24B291F1B772EFF00419B9B /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24B291E1B772EFF00419B9B /* ResultViewController.swift */; };
 		D2597E1B1B522840000938B4 /* noimage.png in Resources */ = {isa = PBXBuildFile; fileRef = D2597E1A1B522840000938B4 /* noimage.png */; };
-		D2597E1E1B523862000938B4 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2597E1D1B523862000938B4 /* ResultViewController.swift */; };
+		D2597E1E1B523862000938B4 /* ResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2597E1D1B523862000938B4 /* ResultTableViewController.swift */; };
 		D2597E201B523883000938B4 /* ResultViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2597E1F1B523883000938B4 /* ResultViewCell.swift */; };
 		D2597E241B524534000938B4 /* Oimachi.png in Resources */ = {isa = PBXBuildFile; fileRef = D2597E231B524534000938B4 /* Oimachi.png */; };
 		D2597E2B1B53BD94000938B4 /* like_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = D2597E271B53BD94000938B4 /* like_normal.png */; };
@@ -58,8 +59,9 @@
 		D2092A301B63B99F008046D9 /* rice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rice.png; sourceTree = "<group>"; };
 		D2092A331B64D721008046D9 /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		D23070721B4C30D100833167 /* KarutaLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarutaLocationManager.swift; sourceTree = "<group>"; };
+		D24B291E1B772EFF00419B9B /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		D2597E1A1B522840000938B4 /* noimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noimage.png; sourceTree = "<group>"; };
-		D2597E1D1B523862000938B4 /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		D2597E1D1B523862000938B4 /* ResultTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultTableViewController.swift; sourceTree = "<group>"; };
 		D2597E1F1B523883000938B4 /* ResultViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewCell.swift; sourceTree = "<group>"; };
 		D2597E231B524534000938B4 /* Oimachi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Oimachi.png; sourceTree = "<group>"; };
 		D2597E271B53BD94000938B4 /* like_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = like_normal.png; sourceTree = "<group>"; };
@@ -147,10 +149,11 @@
 		D2597E1C1B523831000938B4 /* Result */ = {
 			isa = PBXGroup;
 			children = (
-				D2597E1D1B523862000938B4 /* ResultViewController.swift */,
+				D2597E1D1B523862000938B4 /* ResultTableViewController.swift */,
 				D2597E1F1B523883000938B4 /* ResultViewCell.swift */,
 				D2DD659F1B7714CA0046A50C /* TopResultCard.swift */,
 				D2DD65A11B7714DA0046A50C /* OtherResultCard.swift */,
+				D24B291E1B772EFF00419B9B /* ResultViewController.swift */,
 			);
 			name = Result;
 			sourceTree = "<group>";
@@ -414,7 +417,8 @@
 				D28A7A0C1B47AE900025371A /* CardView.swift in Sources */,
 				D2DD65A21B7714DA0046A50C /* OtherResultCard.swift in Sources */,
 				D27BB9D21B36F4A900F8D902 /* AppDelegate.swift in Sources */,
-				D2597E1E1B523862000938B4 /* ResultViewController.swift in Sources */,
+				D2597E1E1B523862000938B4 /* ResultTableViewController.swift in Sources */,
+				D24B291F1B772EFF00419B9B /* ResultViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

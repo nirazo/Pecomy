@@ -287,7 +287,11 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
     結果（ここへ行け！リスト）を取得
     */
     func acquireResults() {
-        let params = ["device_id": Const.DEVICE_ID]
+        var params: Dictionary<String, AnyObject> = [
+            "device_id": Const.DEVICE_ID,
+            "latitude" : self.currentLatitude!,
+            "longitude" : self.currentLongitude!
+        ]
         
         Alamofire.request(.GET, Const.API_RESULT_BASE, parameters: params, encoding: .URL).responseJSON {(request, response, data, error) in
             var json = JSON.nullJSON
@@ -298,7 +302,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
                 // Restaurantクラスを生成
                 var restaurants = [Restaurant]()
                 for i in 0..<results.count {
-                    let shopID = results[i]["shop_id"].string!
+                    let shopID = results[i]["shop_id"].stringValue
                     let shopName = results[i]["title"].string!
                     let shopImageUrlsString = results[i]["image_url"].array!
                     let priceRange = results[i]["price_range"].string!
