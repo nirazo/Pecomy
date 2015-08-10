@@ -5,6 +5,10 @@
   Created by Kenzo on 2015/07/25.
   Copyright (c) 2015年 Karuta. All rights reserved.
 */
+"LocationAlertTitle" = "位置情報サービスが無効です";
+"LocationAlertMessage" = "Karutaを使用するには、『プライバシー > 位置情報サービス』より位置情報サービスの利用をオンにして下さい";
+"LocationAlertSettingButtonTitle" = "設定";
+"LocationAlertCancelButtonTitle" = "キャンセル";
 "SearchingRestaurant" = "あなたの好きなお店をサーチ中です";
 "YourBest" = "あなたのBEST";
 "CloseTutorial" = "はじめる";

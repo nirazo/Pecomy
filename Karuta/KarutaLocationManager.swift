@@ -16,9 +16,14 @@ enum KarutaLocationManagerErrors: Int {
     case InvalidLocation
 }
 
+protocol KarutaLocationManagerProtocol {
+    func showLocationEnableAlert()
+}
+
 class KarutaLocationManager: NSObject, CLLocationManagerDelegate {
     
     private var locationManager: CLLocationManager?
+    var delegate: KarutaLocationManagerProtocol!
     
     deinit {
         locationManager?.delegate = nil
@@ -60,11 +65,9 @@ class KarutaLocationManager: NSObject, CLLocationManagerDelegate {
         case .AuthorizedWhenInUse:
             self.locationManager!.startUpdatingLocation()
         case .Denied:
-            didCompleteWithError(NSError(domain: self.classForCoder.description(),
-                code: KarutaLocationManagerErrors.AuthorizationDenied.rawValue,
-                userInfo: nil))
+            self.delegate.showLocationEnableAlert()
         default:
-            break
+            locationManager!.requestWhenInUseAuthorization()
         }
     }
     
@@ -83,6 +86,12 @@ class KarutaLocationManager: NSObject, CLLocationManagerDelegate {
     }
     
     func fetchWithCompletion(success: LocationClosure, failure: LocationErrorClosure) {
+        
+        if (!CLLocationManager.locationServicesEnabled()) {
+            println("can't use location")
+            delegate.showLocationEnableAlert()
+        }
+        
         didCompleteWithSuccess = success
         didCompleteWithFailure = failure
         

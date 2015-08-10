@@ -12,7 +12,7 @@ import SwiftyJSON
 import MDCSwipeToChoose
 import SnapKit
 
-class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
+class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLocationManagerProtocol {
 
     let locationManager: KarutaLocationManager = KarutaLocationManager()
     
@@ -34,6 +34,9 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "enterForeground:", name:"applicationWillEnterForeground", object: nil)
+        
         self.navigationItem.title = Const.KARUTA_TITLE
         
         // 背景画像設定（とりあえず固定で...）
@@ -101,6 +104,14 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
         
         self.acquireFirstCard()
     }
+    
+    // observer
+    func enterForeground(notification: NSNotification){
+        if self.currentLatitude == nil || self.currentLongitude == nil {
+            println("enterrrrrr")
+            self.acquireFirstCard()
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -108,6 +119,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
     
     // MARK: - Card related methods
     func acquireFirstCard() {
+        self.locationManager.delegate = self
         self.locationManager.fetchWithCompletion({ (location) in
             println("success!!")
             self.currentLatitude = Double(location!.coordinate.latitude);
@@ -138,7 +150,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
                 }
             )
         }, failure: { (error) in
-            println("failed to get location...")
+            println("failed to get location: \(error?.code)")
         })
     }
     
@@ -409,6 +421,24 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate {
             }, failure: {(error: NSError) in
             }
         )
+    }
+    
+    //MARK: - KarutaLocationProtocol
+    func showLocationEnableAlert() {
+        let alertController = UIAlertController(title:NSLocalizedString("LocationAlertTitle", comment: ""),
+            message: NSLocalizedString("LocationAlertMessage", comment: ""),
+            preferredStyle: .Alert)
+        let settingAction = UIAlertAction(title: NSLocalizedString("LocationAlertSettingButtonTitle", comment: ""),
+            style: .Default, handler: { (action) in
+                let url = NSURL(string: UIApplicationOpenSettingsURLString)
+                UIApplication.sharedApplication().openURL(url!)
+        })
+        let cancelAction = UIAlertAction(title: NSLocalizedString("LocationAlertCancelButtonTitle", comment: ""),
+            style: .Default, handler: nil)
+        
+        alertController.addAction(settingAction)
+        alertController.addAction(cancelAction)
+        presentViewController(alertController, animated: true, completion: nil)
     }
     
 }

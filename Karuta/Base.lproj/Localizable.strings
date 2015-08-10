@@ -5,6 +5,10 @@
   Created by Kenzo on 2015/07/25.
   Copyright (c) 2015年 Karuta. All rights reserved.
 */
+"LocationAlertTitle" = "Location service is not allowed";
+"LocationAlertMessage" = "Please turn on the location service to use Karuta.";
+"LocationAlertSettingButtonTitle" = "Setting";
+"LocationAlertCancelButtonTitle" = "Cancel";
 "SearchingRestaurant" = "Searching your favorite restaurant...";
 "YourBest" = "Your best";
 "CloseTutorial" = "start";
