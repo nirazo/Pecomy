@@ -16,6 +16,9 @@
 		D24B291F1B772EFF00419B9B /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24B291E1B772EFF00419B9B /* ResultViewController.swift */; };
 		D24B29211B78748A00419B9B /* ResultCardBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24B29201B78748A00419B9B /* ResultCardBase.swift */; };
 		D24B29241B78775300419B9B /* RestaurantDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24B29231B78775300419B9B /* RestaurantDetailViewController.swift */; };
+		D24B29281B78804800419B9B /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = D24B29251B78804800419B9B /* first.png */; };
+		D24B29291B78804800419B9B /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = D24B29261B78804800419B9B /* second.png */; };
+		D24B292A1B78804800419B9B /* third.png in Resources */ = {isa = PBXBuildFile; fileRef = D24B29271B78804800419B9B /* third.png */; };
 		D2597E1B1B522840000938B4 /* noimage.png in Resources */ = {isa = PBXBuildFile; fileRef = D2597E1A1B522840000938B4 /* noimage.png */; };
 		D2597E1E1B523862000938B4 /* ResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2597E1D1B523862000938B4 /* ResultTableViewController.swift */; };
 		D2597E201B523883000938B4 /* ResultViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2597E1F1B523883000938B4 /* ResultViewCell.swift */; };
@@ -64,6 +67,9 @@
 		D24B291E1B772EFF00419B9B /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		D24B29201B78748A00419B9B /* ResultCardBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultCardBase.swift; sourceTree = "<group>"; };
 		D24B29231B78775300419B9B /* RestaurantDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDetailViewController.swift; sourceTree = "<group>"; };
+		D24B29251B78804800419B9B /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
+		D24B29261B78804800419B9B /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
+		D24B29271B78804800419B9B /* third.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = third.png; sourceTree = "<group>"; };
 		D2597E1A1B522840000938B4 /* noimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noimage.png; sourceTree = "<group>"; };
 		D2597E1D1B523862000938B4 /* ResultTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultTableViewController.swift; sourceTree = "<group>"; };
 		D2597E1F1B523883000938B4 /* ResultViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewCell.swift; sourceTree = "<group>"; };
@@ -143,6 +149,9 @@
 		D2597E191B522832000938B4 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				D24B29251B78804800419B9B /* first.png */,
+				D24B29261B78804800419B9B /* second.png */,
+				D24B29271B78804800419B9B /* third.png */,
 				D2DD65A91B771ADD0046A50C /* back_04.png */,
 				D2DD65A71B771A5D0046A50C /* back_03.png */,
 				D2DD65A51B7718A90046A50C /* background.png */,
@@ -333,12 +342,15 @@
 			files = (
 				D2DD65AA1B771ADD0046A50C /* back_04.png in Resources */,
 				D2597E2F1B54089A000938B4 /* dislike_normal.png in Resources */,
+				D24B29281B78804800419B9B /* first.png in Resources */,
 				D2DD65A81B771A5D0046A50C /* back_03.png in Resources */,
 				D2597E1B1B522840000938B4 /* noimage.png in Resources */,
 				D2092A311B63B99F008046D9 /* rice.png in Resources */,
 				D2597E2B1B53BD94000938B4 /* like_normal.png in Resources */,
+				D24B292A1B78804800419B9B /* third.png in Resources */,
 				D2597E2C1B53BD94000938B4 /* like_tapped.png in Resources */,
 				D2597E241B524534000938B4 /* Oimachi.png in Resources */,
+				D24B29291B78804800419B9B /* second.png in Resources */,
 				D2DD65A41B7717D50046A50C /* back_02.png in Resources */,
 				D2092A2C1B637460008046D9 /* Localizable.strings in Resources */,
 				D2DD65A61B7718A90046A50C /* background.png in Resources */,

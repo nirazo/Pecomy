@@ -17,11 +17,13 @@ class OtherResultCard: ResultCardBase {
     private let TEXT_MARGIN_X: CGFloat = 10.0
     private let TEXT_MARGIN_Y: CGFloat = 5.0
     
+    var rank = 0
     var borderColor = UIColor.clearColor()
     
-    init(frame: CGRect, restaurant: Restaurant?, color: UIColor) {
+    init(frame: CGRect, restaurant: Restaurant?, rank: Int) {
         super.init(frame: frame, restaurant: restaurant!, imageNum: NUM_OF_IMAGES)
-        self.borderColor = color
+        self.rank = rank
+        self.borderColor = Const.KARUTA_RANK_COLOR[rank-1]
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -110,10 +112,28 @@ class OtherResultCard: ResultCardBase {
         
         distanceLabel.snp_makeConstraints { (make) in
             make.left.equalTo(restaurantNameLabel)
-            //make.top.equalTo(priceLabel.snp_bottom).offset(TEXT_MARGIN_Y*3)
             make.bottom.equalTo(self).offset(-TEXT_MARGIN_Y)
             make.width.equalTo(restaurantNameLabel)
         }
+        
+        // ランキングラベル
+        var rankingLabel = UIImageView(frame: CGRectMake(0, 0, 30, 30))
+        var image: UIImage
+        switch self.rank {
+        case 1:
+            image = UIImage(named: "first")!
+        case 2:
+            image = UIImage(named: "second")!
+        case 3:
+            image = UIImage(named: "third")!
+        default:
+            image = UIImage()
+        }
+        
+        rankingLabel.image = image
+        rankingLabel.center = CGPointMake(10, 10)
+        rankingLabel.setTranslatesAutoresizingMaskIntoConstraints(true)
+        self.addSubview(rankingLabel)
         
         // 画像のダウンロード
         self.acquireImages()

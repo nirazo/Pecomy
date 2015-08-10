@@ -11,7 +11,7 @@ import UIKit
 class ResultViewController: UIViewController {
     
     // 結果同士のマージン
-    let RESULT_MARGIN: CGFloat = 10
+    let RESULT_MARGIN: CGFloat = 15
 
     var restaurants: [Restaurant]
     
@@ -72,7 +72,7 @@ class ResultViewController: UIViewController {
         }
         
         var secondResultCard: OtherResultCard
-        secondResultCard = OtherResultCard(frame: CGRectZero, restaurant: self.restaurants[1], color: Const.RANKING_SECOND_COLOR)
+        secondResultCard = OtherResultCard(frame: CGRectZero, restaurant: self.restaurants[1], rank: 2)
         let tr = UITapGestureRecognizer(target: self, action: "resultTapped:")
         secondResultCard.addGestureRecognizer(tr)
         self.view.addSubview(secondResultCard)
@@ -93,7 +93,7 @@ class ResultViewController: UIViewController {
             make.top.equalTo(self.view).offset(RESULT_MARGIN)
         }
         
-        var secondResultCard = OtherResultCard(frame: CGRectZero, restaurant: self.restaurants[1], color: Const.RANKING_SECOND_COLOR)
+        var secondResultCard = OtherResultCard(frame: CGRectZero, restaurant: self.restaurants[1], rank: 2)
         let tr_second = UITapGestureRecognizer(target: self, action: "resultTapped:")
         secondResultCard.addGestureRecognizer(tr_second)
         self.view.addSubview(secondResultCard)
@@ -105,7 +105,7 @@ class ResultViewController: UIViewController {
         }
         
         // 3位
-        var thirdResultCard = OtherResultCard(frame: CGRectZero, restaurant: self.restaurants[2], color: Const.RANKING_THIRD_COLOR)
+        var thirdResultCard = OtherResultCard(frame: CGRectZero, restaurant: self.restaurants[2], rank: 3)
         let tr_third = UITapGestureRecognizer(target: self, action: "resultTapped:")
         thirdResultCard.addGestureRecognizer(tr_third)
         self.view.addSubview(thirdResultCard)

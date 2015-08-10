@@ -140,6 +140,13 @@ class TopResultCard: ResultCardBase {
             make.centerY.equalTo(priceLabel)
         }
         
+        // ランキングラベル
+        var rankingLabel = UIImageView(image: UIImage(named: "first"))
+        rankingLabel.bounds = CGRectMake(0, 0, 45, 45)
+        rankingLabel.center = CGPointMake(10, 10)
+        rankingLabel.setTranslatesAutoresizingMaskIntoConstraints(true)
+        self.addSubview(rankingLabel)
+        
 //        // 水平線
 //        var horizontalLineView = UIView()
 //        horizontalLineView.backgroundColor = Const.RANKING_TOP_COLOR
