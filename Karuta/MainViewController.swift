@@ -13,8 +13,16 @@ import MDCSwipeToChoose
 import SnapKit
 
 class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLocationManagerProtocol {
-
-    let locationManager: KarutaLocationManager = KarutaLocationManager()
+    
+    let PROGRESS_HEIGHT: CGFloat = 8.0
+    let FOOTER_HEIGHT: CGFloat = 34.0
+    
+    // like, dislikeのスワイプ増分
+    let INCREMENT_LIKE: Float = 0.125
+    let INCREMENT_DISLIKE: Float = 0.02
+    
+    let locationManager = KarutaLocationManager()
+    let progressViewController = CardProgressViewController()
     
     var contentView = UIView()
     
@@ -25,6 +33,9 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     var currentLongitude: Double?
     
     var isResultDisplayedOnce = false
+    
+    var currentProgress: Float = 0.0
+    
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nil, bundle: nil)
@@ -59,14 +70,15 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
         footerBar.backgroundColor = Const.KARUTA_THEME_TEXT_COLOR
         var footerText = UILabel(frame: CGRectZero)
         footerText.text = NSLocalizedString("SearchingRestaurant", comment: "")
+        footerText.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 12)
         footerText.textColor = Const.KARUTA_THEME_COLOR
         footerText.textAlignment = .Center
         
         self.view.addSubview(footerBar)
         footerBar.snp_makeConstraints { (make) in
             make.width.equalTo(self.view)
-            make.height.equalTo(self.view.snp_height).multipliedBy(0.07)
-            make.bottom.equalTo(self.view)
+            make.height.equalTo(FOOTER_HEIGHT)
+            make.bottom.equalTo(self.view).offset(-PROGRESS_HEIGHT)
         }
         
         footerBar.addSubview(footerText)
@@ -74,6 +86,16 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
             make.width.equalTo(footerBar)
             make.height.equalTo(footerBar)
             make.center.equalTo(footerBar)
+        }
+        
+        // プログレスバー
+        self.addChildViewController(self.progressViewController)
+        self.view.addSubview(self.progressViewController.view)
+        self.progressViewController.view.snp_makeConstraints { (make) in
+            make.left.equalTo(self.view)
+            make.width.equalTo(self.view)
+            make.top.equalTo(footerBar.snp_bottom)
+            make.bottom.equalTo(self.view)
         }
 
         // ボタン配置
@@ -110,7 +132,6 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     // observer
     func enterForeground(notification: NSNotification){
         if self.currentLatitude == nil || self.currentLongitude == nil {
-            println("enterrrrrr")
             self.acquireFirstCard()
         }
     }
@@ -122,10 +143,13 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     }
     
     func reset() {
+        self.isLocationAcquired = false
         self.isResultDisplayedOnce = false
         self.resetCards()
         self.currentLatitude = nil
         self.currentLongitude = nil
+        self.currentProgress = 0.0
+        self.progressViewController.reset()
     }
 
     override func didReceiveMemoryWarning() {
@@ -426,6 +450,11 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
         var answer = "dislike"
         if (direction == .Right) {
             answer = "like"
+            self.currentProgress += INCREMENT_LIKE
+            self.progressViewController.progressWithRatio(self.currentProgress)
+        } else {
+            self.currentProgress += INCREMENT_DISLIKE
+            self.progressViewController.progressWithRatio(self.currentProgress)
         }
         var cardView = view as! CardView
         self.acquireCardWithLatitude(self.currentLatitude!, longitude: self.currentLongitude!, like: answer, syncId: cardView.syncID, reset: false,
