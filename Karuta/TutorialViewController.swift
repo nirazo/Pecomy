@@ -65,6 +65,7 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
     func closeTutorial(sender: UIButton) {
         let viewController = MainViewController()
         var navVC = UINavigationController(rootViewController: viewController)
+        navVC.navigationBar.barTintColor = Const.KARUTA_THEME_COLOR
         navVC.modalTransitionStyle = UIModalTransitionStyle.CoverVertical
         
         self.presentViewController(navVC, animated: true, completion: nil)
