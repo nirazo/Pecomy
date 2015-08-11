@@ -30,10 +30,10 @@ class CardView: MDCSwipeToChooseView {
     var contentsView = UIView()
     
     init(frame: CGRect, restaurant: Restaurant, syncID:String, options: MDCSwipeToChooseViewOptions) {
-        options.likedText = "like"
-        options.likedColor = UIColor.blueColor()
-        options.nopeText = "dislike"
-        options.nopeColor = UIColor.redColor()
+        options.likedText = "行きたい！"
+        options.likedColor = Const.CARD_LIKE_COLOR
+        options.nopeText = "イマイチ..."
+        options.nopeColor = Const.CARD_DISLIKE_COLOR
         
         self.shopID = restaurant.shopID
         self.shopName = restaurant.shopName

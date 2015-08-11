@@ -97,7 +97,7 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 65.f;
                                              color:self.options.likedColor
                                              angle:self.options.likedRotationAngle];
     self.likedView.alpha = 0.f;
-    //[self.imageView addSubview:self.likedView];
+    [self addSubview:self.likedView];
 }
 
 - (void)constructNopeImageView {
@@ -111,7 +111,7 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 65.f;
                                             color:self.options.nopeColor
                                             angle:self.options.nopeRotationAngle];
     self.nopeView.alpha = 0.f;
-    //[self.imageView addSubview:self.nopeView];
+    [self addSubview:self.nopeView];
 }
 
 - (void)setupSwipeToChoose {

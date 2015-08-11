@@ -53,4 +53,8 @@ struct Const {
     // ネットワーク周り
     static let STATUS_CODE_CARD_NOT_FOUND = 404
     static let STATUS_CODE_CARD_BAD_REQUEST = 400
+    
+    // カード上のテキスト
+    static let CARD_LIKE_COLOR = (UIColor(red: 151.0/255.0, green: 205.0/255.0, blue: 72.0/255.0, alpha: 1.0))
+    static let CARD_DISLIKE_COLOR = (UIColor(red: 3.0/255.0, green: 183.0/255.0, blue: 241.0/255.0, alpha: 1.0))
 }
