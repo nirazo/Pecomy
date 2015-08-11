@@ -33,9 +33,9 @@ class CardView: MDCSwipeToChooseView {
     var isFlicked = false
     
     init(frame: CGRect, restaurant: Restaurant, syncID:String, options: MDCSwipeToChooseViewOptions) {
-        options.likedText = "行きたい！"
+        options.likedText = NSLocalizedString("CardLikeText", comment: "")
         options.likedColor = Const.CARD_LIKE_COLOR
-        options.nopeText = "イマイチ..."
+        options.nopeText = NSLocalizedString("CardDislikeText", comment: "")
         options.nopeColor = Const.CARD_DISLIKE_COLOR
         
         self.shopID = restaurant.shopID
@@ -47,8 +47,9 @@ class CardView: MDCSwipeToChooseView {
         
         for i in 0..<self.NUM_OF_IMAGES {
             var imageView = UIImageView(image: UIImage(named: "noimage"))
-            imageView.contentMode = .ScaleAspectFill
+            imageView.contentMode = .ScaleAspectFit
             imageView.clipsToBounds = true
+            imageView.backgroundColor = Const.KARUTA_CARD_IMAGE_BACK_COLOR
             self.restaurantImageViews.append(imageView)
         }
         
@@ -84,7 +85,7 @@ class CardView: MDCSwipeToChooseView {
         verticalLine.lineWidth = 2
         verticalLine.stroke()
         
-        for i in 0..<self.imageUrls.count {
+        for i in 0..<NUM_OF_IMAGES {
             self.contentView.addSubview(self.restaurantImageViews[i])
         }
         
@@ -142,8 +143,8 @@ class CardView: MDCSwipeToChooseView {
         if (self.imageUrls.count > 0) {
             for i in 0..<self.imageUrls.count {
                 self.restaurantImageViews[i].sd_setImageWithURL(self.imageUrls[i], completed: {[weak self](image: UIImage!, error: NSError!, cacheType: SDImageCacheType, imageURL: NSURL!) in
-                    self!.restaurantImageViews[i].alpha = 0
                     UIView.animateWithDuration(0.5, delay: 0.0, options: .CurveEaseInOut, animations: {() -> Void in
+                        self?.restaurantImageViews[i].contentMode = .ScaleAspectFill
                         self!.restaurantImageViews[i].alpha = 1
                         }, completion: nil)
                     })

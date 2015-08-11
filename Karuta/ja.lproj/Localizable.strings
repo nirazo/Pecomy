@@ -20,3 +20,5 @@
 "SearchingRestaurant" = "あなたの好きなお店をサーチ中です";
 "YourBest" = "あなたのBEST";
 "CloseTutorial" = "はじめる";
+"CardLikeText" = "行きたい！";
+"CardDislikeText" = "イマイチ...";

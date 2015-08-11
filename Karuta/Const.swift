@@ -44,6 +44,7 @@ struct Const {
         UIColor(red: 135.0/255.0, green: 110.0/255.0, blue: 63.0/255.0, alpha: 1.0)]
     
     static let KARUTA_RESULT_BACK_COLOR = UIColor(red: 238.0/255.0, green: 236.0/255.0, blue: 233.0/255.0, alpha: 1.0)
+    static let KARUTA_CARD_IMAGE_BACK_COLOR = UIColor(red: 231.0/255.0, green: 232.0/255.0, blue: 233.0/255.0, alpha: 1.0)
     
     // フォント
     static let KARUTA_FONT_NORMAL = "HiraKakuProN-W3"
