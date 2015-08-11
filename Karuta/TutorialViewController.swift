@@ -11,7 +11,7 @@ import UIKit
 class TutorialViewController: UIViewController, UIScrollViewDelegate {
 
     var pageControl: UIPageControl!
-    let imgTitleArr = ["tutorial_01", "tutorial_02", "tutorial_03", "tutorial_04",]
+    let imgTitleArr = ["tutorial_01", "tutorial_02", "tutorial_03", "tutorial_04","tutorial_06"]
     
     override func viewDidLoad() {
         let width = self.view.frame.maxX
@@ -63,7 +63,6 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func closeTutorial(sender: UIButton) {
-        println("button tapped!!")
         let viewController = MainViewController()
         var navVC = UINavigationController(rootViewController: viewController)
         navVC.modalTransitionStyle = UIModalTransitionStyle.CoverVertical

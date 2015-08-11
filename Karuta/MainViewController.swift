@@ -24,6 +24,8 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     var currentLatitude: Double?
     var currentLongitude: Double?
     
+    var isResultDisplayedOnce = false
+    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nil, bundle: nil)
     }
@@ -112,6 +114,19 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
             self.acquireFirstCard()
         }
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        if (self.currentLatitude == nil || self.currentLongitude == nil) {
+            self.acquireFirstCard()
+        }
+    }
+    
+    func reset() {
+        self.isResultDisplayedOnce = false
+        self.resetCards()
+        self.currentLatitude = nil
+        self.currentLongitude = nil
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -179,8 +194,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
             if error == nil && data != nil {
                 json = SwiftyJSON.JSON(data!)
                 // 店が見つかった場合
-                println("response data: \(json)")
-                if (json["message"] == nil) {
+                if (response!.statusCode != Const.STATUS_CODE_CARD_NOT_FOUND) {
                     let card: JSON = json["card"]
                     
                     let shopID: String = card["shop_id"].stringValue
@@ -205,19 +219,22 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
                     
                     self.stackedCards.append(cardView)
                     
-                    // カード取得・表示については2枚取得する際に変更
                     self.displayStackedCard()
                     
                     hasResult = json["result_available"].bool!
                     success(hasResult)
                 } else {
-                    println("cannot find!")
+                    var resetFlg = params["reset"] as! Bool
+                    if (resetFlg) {
+                        self.showOutOfRangeAlert()
+                    } else {
+                        if (!self.isResultDisplayedOnce) {
+                            self.acquireResults()
+                        }
+                    }
                 }
-            
-            println("url: \(request)")
-            
             } else {
-                println("fail to get card")
+                println("fail to get card: \(error?.code)")
                 failure(error!)
             }
         }
@@ -302,12 +319,13 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     結果（ここへ行け！リスト）を取得
     */
     func acquireResults() {
+        self.isResultDisplayedOnce = true
+        
         var params: Dictionary<String, AnyObject> = [
             "device_id": Const.DEVICE_ID,
             "latitude" : self.currentLatitude!,
             "longitude" : self.currentLongitude!
         ]
-        
         Alamofire.request(.GET, Const.API_RESULT_BASE, parameters: params, encoding: .URL).responseJSON {(request, response, data, error) in
             var json = JSON.nullJSON
             if error == nil && data != nil {
@@ -331,9 +349,6 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
                     
                     restaurants.append(Restaurant(shopID: shopID, shopName: shopName, priceRange: priceRange, distance: distance, imageUrls: shopImageUrls, url: url!))
                 }
-                
-                println("call present result!!")
-                println("restaurants: \(restaurants.count)")
                 self.displayResultViewWithShopList(restaurants)
             } else {
                 println("failed to get result!!")
@@ -347,19 +362,19 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
         self.navigationItem.backBarButtonItem = backButton
         resultVC.navigationItem.title = "あなたのBEST"
         
-        // カードリセットしてnew card呼び出し
-        self.resetCards()
-        self.acquireFirstCard()
+        self.reset()
         
         self.navigationController?.pushViewController(resultVC, animated: true)
     }
     
 
     func closeResult() {
-        self.resetCards()
+        self.reset()
         self.acquireCardWithLatitude(self.currentLatitude!, longitude: self.currentLongitude!, like: nil, syncId: nil, reset: true, success: {(hasResult: Bool) in
             if (hasResult) {
-                self.acquireResults()
+                if (!self.isResultDisplayedOnce) {
+                    self.acquireResults()
+                }
             }
         },
             failure: {(error: NSError) in
@@ -416,11 +431,26 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
         self.acquireCardWithLatitude(self.currentLatitude!, longitude: self.currentLongitude!, like: answer, syncId: cardView.syncID, reset: false,
             success: {(hasResult: Bool) in
                 if (hasResult) {
-                    self.acquireResults()
+                    if (!self.isResultDisplayedOnce) {
+                        self.acquireResults()
+                    }
                 }
             }, failure: {(error: NSError) in
             }
         )
+    }
+    
+    //MARK: - Alerts
+    
+    // アプリの対象範囲外アラート表示
+    func showOutOfRangeAlert() {
+        let alertController = UIAlertController(title:NSLocalizedString("OutOfRangeAlertTitle", comment: ""),
+            message: NSLocalizedString("OutOfRangeAlertMessage", comment: ""),
+            preferredStyle: .Alert)
+        let okAction = UIAlertAction(title: NSLocalizedString("OK", comment: ""),
+            style: .Default, handler: nil)
+        alertController.addAction(okAction)
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
     
     // 位置情報取得リトライのアラート表示
@@ -434,7 +464,6 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
         })
         alertController.addAction(retryAction)
         presentViewController(alertController, animated: true, completion: nil)
-
     }
     
     //MARK: - KarutaLocationProtocol

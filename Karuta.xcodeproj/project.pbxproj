@@ -20,10 +20,11 @@
 		D24B29291B78804800419B9B /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = D24B29261B78804800419B9B /* second.png */; };
 		D24B292A1B78804800419B9B /* third.png in Resources */ = {isa = PBXBuildFile; fileRef = D24B29271B78804800419B9B /* third.png */; };
 		D24B292E1B7895DA00419B9B /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24B292D1B7895DA00419B9B /* TutorialViewController.swift */; };
-		D24B29331B78986000419B9B /* tutorial_01.png in Resources */ = {isa = PBXBuildFile; fileRef = D24B292F1B78986000419B9B /* tutorial_01.png */; };
 		D24B29341B78986000419B9B /* tutorial_02.png in Resources */ = {isa = PBXBuildFile; fileRef = D24B29301B78986000419B9B /* tutorial_02.png */; };
-		D24B29351B78986000419B9B /* tutorial_03.png in Resources */ = {isa = PBXBuildFile; fileRef = D24B29311B78986000419B9B /* tutorial_03.png */; };
-		D24B29361B78986000419B9B /* tutorial_04.png in Resources */ = {isa = PBXBuildFile; fileRef = D24B29321B78986000419B9B /* tutorial_04.png */; };
+		D24B29381B79AED400419B9B /* tutorial_01.png in Resources */ = {isa = PBXBuildFile; fileRef = D24B29371B79AED400419B9B /* tutorial_01.png */; };
+		D24B293C1B79B9A300419B9B /* tutorial_03.png in Resources */ = {isa = PBXBuildFile; fileRef = D24B29391B79B9A200419B9B /* tutorial_03.png */; };
+		D24B293D1B79B9A300419B9B /* tutorial_04.png in Resources */ = {isa = PBXBuildFile; fileRef = D24B293A1B79B9A200419B9B /* tutorial_04.png */; };
+		D24B293E1B79B9A300419B9B /* tutorial_06.png in Resources */ = {isa = PBXBuildFile; fileRef = D24B293B1B79B9A200419B9B /* tutorial_06.png */; };
 		D2597E1B1B522840000938B4 /* noimage.png in Resources */ = {isa = PBXBuildFile; fileRef = D2597E1A1B522840000938B4 /* noimage.png */; };
 		D2597E1E1B523862000938B4 /* ResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2597E1D1B523862000938B4 /* ResultTableViewController.swift */; };
 		D2597E201B523883000938B4 /* ResultViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2597E1F1B523883000938B4 /* ResultViewCell.swift */; };
@@ -72,10 +73,11 @@
 		D24B29261B78804800419B9B /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
 		D24B29271B78804800419B9B /* third.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = third.png; sourceTree = "<group>"; };
 		D24B292D1B7895DA00419B9B /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
-		D24B292F1B78986000419B9B /* tutorial_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial_01.png; sourceTree = "<group>"; };
 		D24B29301B78986000419B9B /* tutorial_02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial_02.png; sourceTree = "<group>"; };
-		D24B29311B78986000419B9B /* tutorial_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial_03.png; sourceTree = "<group>"; };
-		D24B29321B78986000419B9B /* tutorial_04.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial_04.png; sourceTree = "<group>"; };
+		D24B29371B79AED400419B9B /* tutorial_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial_01.png; sourceTree = "<group>"; };
+		D24B29391B79B9A200419B9B /* tutorial_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial_03.png; sourceTree = "<group>"; };
+		D24B293A1B79B9A200419B9B /* tutorial_04.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial_04.png; sourceTree = "<group>"; };
+		D24B293B1B79B9A200419B9B /* tutorial_06.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial_06.png; sourceTree = "<group>"; };
 		D2597E1A1B522840000938B4 /* noimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noimage.png; sourceTree = "<group>"; };
 		D2597E1D1B523862000938B4 /* ResultTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultTableViewController.swift; sourceTree = "<group>"; };
 		D2597E1F1B523883000938B4 /* ResultViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewCell.swift; sourceTree = "<group>"; };
@@ -159,10 +161,11 @@
 		D2597E191B522832000938B4 /* image */ = {
 			isa = PBXGroup;
 			children = (
-				D24B292F1B78986000419B9B /* tutorial_01.png */,
+				D24B29371B79AED400419B9B /* tutorial_01.png */,
 				D24B29301B78986000419B9B /* tutorial_02.png */,
-				D24B29311B78986000419B9B /* tutorial_03.png */,
-				D24B29321B78986000419B9B /* tutorial_04.png */,
+				D24B29391B79B9A200419B9B /* tutorial_03.png */,
+				D24B293A1B79B9A200419B9B /* tutorial_04.png */,
+				D24B293B1B79B9A200419B9B /* tutorial_06.png */,
 				D24B29251B78804800419B9B /* first.png */,
 				D24B29261B78804800419B9B /* second.png */,
 				D24B29271B78804800419B9B /* third.png */,
@@ -359,14 +362,15 @@
 				D2597E2B1B53BD94000938B4 /* like_normal.png in Resources */,
 				D24B292A1B78804800419B9B /* third.png in Resources */,
 				D2597E2C1B53BD94000938B4 /* like_tapped.png in Resources */,
+				D24B293E1B79B9A300419B9B /* tutorial_06.png in Resources */,
 				D24B29291B78804800419B9B /* second.png in Resources */,
 				D2092A2C1B637460008046D9 /* Localizable.strings in Resources */,
 				D2DD65A61B7718A90046A50C /* background.png in Resources */,
 				D27BB9D91B36F4A900F8D902 /* Images.xcassets in Resources */,
-				D24B29331B78986000419B9B /* tutorial_01.png in Resources */,
-				D24B29361B78986000419B9B /* tutorial_04.png in Resources */,
 				D2597E301B54089A000938B4 /* dislike_tapped.png in Resources */,
-				D24B29351B78986000419B9B /* tutorial_03.png in Resources */,
+				D24B293C1B79B9A300419B9B /* tutorial_03.png in Resources */,
+				D24B29381B79AED400419B9B /* tutorial_01.png in Resources */,
+				D24B293D1B79B9A300419B9B /* tutorial_04.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

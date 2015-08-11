@@ -49,4 +49,8 @@ struct Const {
     
     // userdefaultsのキー
     static let UD_KEY_HAS_LAUNCHED = "HasLaunchedOnce"
+    
+    // ネットワーク周り
+    static let STATUS_CODE_CARD_NOT_FOUND = 404
+    static let STATUS_CODE_CARD_BAD_REQUEST = 400
 }
