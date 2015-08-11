@@ -36,6 +36,8 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     
     var currentProgress: Float = 0.0
     
+    var loadingIndicator = UIActivityIndicatorView()
+    
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nil, bundle: nil)
@@ -126,6 +128,13 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
             make.bottom.equalTo(dislikeButton)
         }
         
+        // インジケータ
+        self.loadingIndicator.bounds = CGRectMake(0.0, 0.0, 50, 50)
+        self.loadingIndicator.activityIndicatorViewStyle = .WhiteLarge
+        self.loadingIndicator.center = self.view.center
+        self.loadingIndicator.hidesWhenStopped = true
+        self.view.addSubview(self.loadingIndicator)
+        
         self.acquireFirstCard()
     }
     
@@ -213,7 +222,14 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
         
         var hasResult = false;
         
+        //インジケータ表示
+        self.showIndicator()
+        
         Alamofire.request(.GET, Const.API_CARD_BASE, parameters: params, encoding: .URL).responseJSON {[weak self](request, response, data, error) in
+            
+            // インジケータ消す
+            self?.hideIndicator()
+            
             var json = JSON.nullJSON
             if error == nil && data != nil {
                 json = SwiftyJSON.JSON(data!)
@@ -490,6 +506,17 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
         })
         alertController.addAction(retryAction)
         presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    //MARK: - Indicators
+    func showIndicator() {
+        if (self.numOfDisplayedCard() == 0) {
+            self.loadingIndicator.startAnimating()
+        }
+    }
+    
+    func hideIndicator() {
+        self.loadingIndicator.stopAnimating()
     }
     
     //MARK: - KarutaLocationProtocol
