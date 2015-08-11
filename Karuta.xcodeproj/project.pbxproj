@@ -26,6 +26,7 @@
 		D24B293E1B79B9A300419B9B /* tutorial_06.png in Resources */ = {isa = PBXBuildFile; fileRef = D24B293B1B79B9A200419B9B /* tutorial_06.png */; };
 		D24B29411B79CC1D00419B9B /* CardProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24B29401B79CC1D00419B9B /* CardProgressViewController.swift */; };
 		D24B29441B79DA9800419B9B /* tutorial_02.png in Resources */ = {isa = PBXBuildFile; fileRef = D24B29431B79DA9800419B9B /* tutorial_02.png */; };
+		D24B29461B79F56E00419B9B /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D24B29451B79F56E00419B9B /* Launch Screen.xib */; };
 		D2597E1B1B522840000938B4 /* noimage.png in Resources */ = {isa = PBXBuildFile; fileRef = D2597E1A1B522840000938B4 /* noimage.png */; };
 		D2597E1E1B523862000938B4 /* ResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2597E1D1B523862000938B4 /* ResultTableViewController.swift */; };
 		D2597E201B523883000938B4 /* ResultViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2597E1F1B523883000938B4 /* ResultViewCell.swift */; };
@@ -80,6 +81,7 @@
 		D24B293B1B79B9A200419B9B /* tutorial_06.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial_06.png; sourceTree = "<group>"; };
 		D24B29401B79CC1D00419B9B /* CardProgressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardProgressViewController.swift; sourceTree = "<group>"; };
 		D24B29431B79DA9800419B9B /* tutorial_02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial_02.png; sourceTree = "<group>"; };
+		D24B29451B79F56E00419B9B /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 		D2597E1A1B522840000938B4 /* noimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noimage.png; sourceTree = "<group>"; };
 		D2597E1D1B523862000938B4 /* ResultTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultTableViewController.swift; sourceTree = "<group>"; };
 		D2597E1F1B523883000938B4 /* ResultViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewCell.swift; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 				D27BB9CF1B36F4A900F8D902 /* Supporting Files */,
 				D203D3131B3E739600FC9DB8 /* Const.swift */,
 				D2C785F71B47C2A900517D55 /* Karuta-Bridging-Header.h */,
+				D24B29451B79F56E00419B9B /* Launch Screen.xib */,
 			);
 			path = Karuta;
 			sourceTree = "<group>";
@@ -376,6 +379,7 @@
 				D24B29291B78804800419B9B /* second.png in Resources */,
 				D2092A2C1B637460008046D9 /* Localizable.strings in Resources */,
 				D24B29441B79DA9800419B9B /* tutorial_02.png in Resources */,
+				D24B29461B79F56E00419B9B /* Launch Screen.xib in Resources */,
 				D2DD65A61B7718A90046A50C /* background.png in Resources */,
 				D27BB9D91B36F4A900F8D902 /* Images.xcassets in Resources */,
 				D2597E301B54089A000938B4 /* dislike_tapped.png in Resources */,

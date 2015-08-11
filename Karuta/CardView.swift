@@ -29,6 +29,9 @@ class CardView: MDCSwipeToChooseView {
     var restaurantImageViews = [UIImageView]()
     var contentsView = UIView()
     
+    // カードがフリックされた（操作が無効の状態）になっているかのフラグ
+    var isFlicked = false
+    
     init(frame: CGRect, restaurant: Restaurant, syncID:String, options: MDCSwipeToChooseViewOptions) {
         options.likedText = "行きたい！"
         options.likedColor = Const.CARD_LIKE_COLOR

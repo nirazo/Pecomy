@@ -79,7 +79,7 @@ class ResultViewController: UIViewController {
         secondResultCard.snp_makeConstraints { (make) in
             make.left.equalTo(topResultCard!)
             make.width.equalTo(topResultCard!)
-            make.top.equalTo(topResultCard!).offset(RESULT_MARGIN)
+            make.top.equalTo(topResultCard!.snp_bottom).offset(RESULT_MARGIN)
             make.bottom.equalTo(self.view).offset(-RESULT_MARGIN)
         }
     }

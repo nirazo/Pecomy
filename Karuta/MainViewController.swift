@@ -213,7 +213,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
         
         var hasResult = false;
         
-        Alamofire.request(.GET, Const.API_CARD_BASE, parameters: params, encoding: .URL).responseJSON {(request, response, data, error) in
+        Alamofire.request(.GET, Const.API_CARD_BASE, parameters: params, encoding: .URL).responseJSON {[weak self](request, response, data, error) in
             var json = JSON.nullJSON
             if error == nil && data != nil {
                 json = SwiftyJSON.JSON(data!)
@@ -239,21 +239,21 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
                     
                     let restaurant = Restaurant(shopID: shopID, shopName: shopName, priceRange: priceRange, distance: distance, imageUrls: shopImageUrls, url: url!)
                     
-                    let cardView = self.createCardWithFrame(self.baseCardRect(), restaurant: restaurant, syncID: syncID)
+                    let cardView = self!.createCardWithFrame(self!.baseCardRect(), restaurant: restaurant, syncID: syncID)
                     
-                    self.stackedCards.append(cardView)
+                    self!.stackedCards.append(cardView)
                     
-                    self.displayStackedCard()
+                    self!.displayStackedCard()
                     
                     hasResult = json["result_available"].bool!
                     success(hasResult)
                 } else {
                     var resetFlg = params["reset"] as! Bool
                     if (resetFlg) {
-                        self.showOutOfRangeAlert()
+                        self!.showOutOfRangeAlert()
                     } else {
-                        if (!self.isResultDisplayedOnce) {
-                            self.acquireResults()
+                        if (!self!.isResultDisplayedOnce) {
+                            self!.acquireResults()
                         }
                     }
                 }
@@ -388,25 +388,10 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
         
         self.reset()
         
-        self.navigationController?.pushViewController(resultVC, animated: true)
-    }
-    
-
-    func closeResult() {
-        self.reset()
-        self.acquireCardWithLatitude(self.currentLatitude!, longitude: self.currentLongitude!, like: nil, syncId: nil, reset: true, success: {(hasResult: Bool) in
-            if (hasResult) {
-                if (!self.isResultDisplayedOnce) {
-                    self.acquireResults()
-                }
-            }
-        },
-            failure: {(error: NSError) in
+        if (self.navigationController?.viewControllers!.count == 1) {
+            self.navigationController?.pushViewController(resultVC, animated: true)
         }
-        )
-        self.dismissViewControllerAnimated(true, completion: nil)
     }
-    
     
     //MARK: - Button tapped Callbacks
     func likeButtonTapped() {
@@ -418,9 +403,12 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     }
     
     func swipeTopCardToWithDirection(direction: MDCSwipeDirection) {
-        if (self.contentView.subviews.count > 0) {
+        if (self.numOfDisplayedCard() > 0) {
             var card = self.contentView.subviews[self.contentView.subviews.count-1] as! CardView
-            card.mdc_swipe(direction)
+            if (!card.isFlicked) {
+                card.isFlicked = true
+                card.mdc_swipe(direction)
+            }
         }
     }
     
@@ -447,6 +435,9 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     
     // This is called then a user swipes the view fully left or right.
     func view(view: UIView!, wasChosenWithDirection direction: MDCSwipeDirection) {
+        var cardView = view as! CardView
+        cardView.isFlicked = true
+        
         var answer = "dislike"
         if (direction == .Right) {
             answer = "like"
@@ -456,7 +447,6 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
             self.currentProgress += INCREMENT_DISLIKE
             self.progressViewController.progressWithRatio(self.currentProgress)
         }
-        var cardView = view as! CardView
         self.acquireCardWithLatitude(self.currentLatitude!, longitude: self.currentLongitude!, like: answer, syncId: cardView.syncID, reset: false,
             success: {(hasResult: Bool) in
                 if (hasResult) {
