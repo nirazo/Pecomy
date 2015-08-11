@@ -24,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if (NSUserDefaults.standardUserDefaults().boolForKey(Const.UD_KEY_HAS_LAUNCHED)) {
             let viewController = MainViewController()
             var navVC = UINavigationController(rootViewController: viewController)
+            navVC.navigationBar.barTintColor = Const.KARUTA_THEME_COLOR
             self.window!.rootViewController = navVC
         } else {
             // 初回起動
@@ -61,7 +62,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func setDefaultAppearance(){
         // UINavigationBarのスタイルを設定
-        UINavigationBar.appearance().barTintColor = Const.KARUTA_THEME_COLOR
+        //UINavigationBar.appearance().barTintColor = Const.KARUTA_THEME_COLOR
         UINavigationBar.appearance().tintColor = Const.KARUTA_THEME_TEXT_COLOR
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: Const.KARUTA_THEME_TEXT_COLOR]
     }

@@ -29,7 +29,10 @@ class TopResultCard: ResultCardBase {
     
     override func drawRect(rect: CGRect) {
         super.drawRect(rect)
-        
+        self.setupView()
+    }
+    
+    func setupView() {
         self.layer.cornerRadius = CORNER_RADIUS
         self.layer.masksToBounds = false
         
@@ -147,70 +150,70 @@ class TopResultCard: ResultCardBase {
         rankingLabel.setTranslatesAutoresizingMaskIntoConstraints(true)
         self.addSubview(rankingLabel)
         
-//        // 水平線
-//        var horizontalLineView = UIView()
-//        horizontalLineView.backgroundColor = Const.RANKING_TOP_COLOR
-//        self.contentView.addSubview(horizontalLineView)
-//        horizontalLineView.snp_makeConstraints { (make) in
-//            make.left.equalTo(self)
-//            make.top.equalTo(distanceLabel.snp_bottom).offset(TEXT_MARGIN_Y*2)
-//            make.width.equalTo(self)
-//            make.height.equalTo(SEPARATOR_LINE_WIDTH)
-//        }
-//        
-//        // 垂直線
-//        var verticalLineView = UIView()
-//        verticalLineView.backgroundColor = Const.RANKING_TOP_COLOR
-//        self.contentView.addSubview(verticalLineView)
-//        verticalLineView.snp_makeConstraints { (make) in
-//            make.left.equalTo(self).offset(self.frame.size.width*2/3)
-//            make.top.equalTo(horizontalLineView)
-//            make.width.equalTo(SEPARATOR_LINE_WIDTH)
-//            make.height.equalTo(self).offset(horizontalLineView.frame.origin.y)
-//        }
-//        
-//        
-//        // 電話番号
-//        var telNumView = UIView()
-//        self.contentView.addSubview(telNumView)
-//        telNumView.snp_makeConstraints { (make) in
-//            make.left.equalTo(self)
-//            make.right.equalTo(verticalLineView.snp_left)
-//            make.top.equalTo(horizontalLineView.snp_bottom)
-//            make.bottom.equalTo(self)
-//        }
-//        var telNumLabel = UILabel()
-//        telNumLabel.text = "050-5571-1724"
-//        telNumLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 15)
-//        telNumLabel.numberOfLines = 1
-//        telNumLabel.textColor = UIColor.blackColor()
-//        telNumLabel.textAlignment = .Center
-//        telNumLabel.sizeToFit()
-//        self.contentView.addSubview(telNumLabel)
-//        telNumLabel.snp_makeConstraints { (make) in
-//            make.center.equalTo(telNumView)
-//        }
-//        
-//        // 地図
-//        var mapTextView = UIView()
-//        self.contentView.addSubview(mapTextView)
-//        mapTextView.snp_makeConstraints { (make) in
-//            make.left.equalTo(verticalLineView.snp_right)
-//            make.right.equalTo(self)
-//            make.top.equalTo(telNumView)
-//            make.bottom.equalTo(self)
-//        }
-//        var mapLabel: UILabel = UILabel()
-//        mapLabel.text = "地図"
-//        mapLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 14)
-//        mapLabel.numberOfLines = 1
-//        mapLabel.textColor = Const.RANKING_TOP_COLOR
-//        mapLabel.textAlignment = .Center
-//        self.contentView.addSubview(mapLabel)
-//        
-//        mapLabel.snp_makeConstraints { (make) in
-//            make.center.equalTo(mapTextView)
-//        }
+        //        // 水平線
+        //        var horizontalLineView = UIView()
+        //        horizontalLineView.backgroundColor = Const.RANKING_TOP_COLOR
+        //        self.contentView.addSubview(horizontalLineView)
+        //        horizontalLineView.snp_makeConstraints { (make) in
+        //            make.left.equalTo(self)
+        //            make.top.equalTo(distanceLabel.snp_bottom).offset(TEXT_MARGIN_Y*2)
+        //            make.width.equalTo(self)
+        //            make.height.equalTo(SEPARATOR_LINE_WIDTH)
+        //        }
+        //
+        //        // 垂直線
+        //        var verticalLineView = UIView()
+        //        verticalLineView.backgroundColor = Const.RANKING_TOP_COLOR
+        //        self.contentView.addSubview(verticalLineView)
+        //        verticalLineView.snp_makeConstraints { (make) in
+        //            make.left.equalTo(self).offset(self.frame.size.width*2/3)
+        //            make.top.equalTo(horizontalLineView)
+        //            make.width.equalTo(SEPARATOR_LINE_WIDTH)
+        //            make.height.equalTo(self).offset(horizontalLineView.frame.origin.y)
+        //        }
+        //
+        //
+        //        // 電話番号
+        //        var telNumView = UIView()
+        //        self.contentView.addSubview(telNumView)
+        //        telNumView.snp_makeConstraints { (make) in
+        //            make.left.equalTo(self)
+        //            make.right.equalTo(verticalLineView.snp_left)
+        //            make.top.equalTo(horizontalLineView.snp_bottom)
+        //            make.bottom.equalTo(self)
+        //        }
+        //        var telNumLabel = UILabel()
+        //        telNumLabel.text = "050-5571-1724"
+        //        telNumLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 15)
+        //        telNumLabel.numberOfLines = 1
+        //        telNumLabel.textColor = UIColor.blackColor()
+        //        telNumLabel.textAlignment = .Center
+        //        telNumLabel.sizeToFit()
+        //        self.contentView.addSubview(telNumLabel)
+        //        telNumLabel.snp_makeConstraints { (make) in
+        //            make.center.equalTo(telNumView)
+        //        }
+        //
+        //        // 地図
+        //        var mapTextView = UIView()
+        //        self.contentView.addSubview(mapTextView)
+        //        mapTextView.snp_makeConstraints { (make) in
+        //            make.left.equalTo(verticalLineView.snp_right)
+        //            make.right.equalTo(self)
+        //            make.top.equalTo(telNumView)
+        //            make.bottom.equalTo(self)
+        //        }
+        //        var mapLabel: UILabel = UILabel()
+        //        mapLabel.text = "地図"
+        //        mapLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 14)
+        //        mapLabel.numberOfLines = 1
+        //        mapLabel.textColor = Const.RANKING_TOP_COLOR
+        //        mapLabel.textAlignment = .Center
+        //        self.contentView.addSubview(mapLabel)
+        //        
+        //        mapLabel.snp_makeConstraints { (make) in
+        //            make.center.equalTo(mapTextView)
+        //        }
         
         // 画像のダウンロード
         self.acquireImages()

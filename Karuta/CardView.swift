@@ -18,7 +18,7 @@ class CardView: MDCSwipeToChooseView {
     
     let SEPARATOR_LINE_WIDTH : CGFloat = 1.0
     let TEXT_MARGIN_X: CGFloat = 10.0
-    let TEXT_MARGIN_Y: CGFloat = 10.0
+    let TEXT_MARGIN_Y: CGFloat = 5.0
     
     var syncID = ""
     var shopID = ""

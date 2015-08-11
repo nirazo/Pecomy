@@ -169,7 +169,6 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     func acquireFirstCard() {
         self.locationManager.delegate = self
         self.locationManager.fetchWithCompletion({ (location) in
-            println("success!!")
             self.currentLatitude = Double(location!.coordinate.latitude);
             self.currentLongitude = Double(location!.coordinate.longitude);
             
@@ -274,7 +273,6 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
                     }
                 }
             } else {
-                println("fail to get card: \(error?.code)")
                 failure(error!)
             }
         }
@@ -328,7 +326,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
         var offset: CGFloat = 0
         for cv in self.contentView.subviews {
             if cv.dynamicType === CardView.self {
-                offset += 10
+                offset += 6
             }
         }
         return offset
@@ -397,14 +395,12 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
                 // 結果表示
                 self.displayResultViewWithShopList(restaurants)
             } else {
-                println("failed to get result!!")
             }
         }
     }
     
     func displayResultViewWithShopList(restaurants: [Restaurant]) {
         var resultVC = ResultViewController(restaurants: restaurants)
-        println("rest: \(restaurants)")
         let backButton = UIBarButtonItem(title: "戻る", style: .Plain, target: nil, action: nil)
         self.navigationItem.backBarButtonItem = backButton
         resultVC.navigationItem.title = "あなたのBEST"
@@ -439,7 +435,6 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     //MARK: - MDCSwipeToChooseDelegate Callbacks
     // This is called when a user didn't fully swipe left or right.
     func viewDidCancelSwipe(view: UIView!) {
-        println("Couldn't decide, huh?")
     }
     
     // Sent before a choice is made. Cancel the choice by returning `NO`. Otherwise return `YES`.

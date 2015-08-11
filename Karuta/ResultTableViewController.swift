@@ -57,7 +57,6 @@ class ResultTableViewController: UITableViewController, UITableViewDataSource, U
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        println("count: \(self.restaurants.count)")
         return self.restaurants.count
     }
     

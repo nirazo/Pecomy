@@ -32,7 +32,10 @@ class OtherResultCard: ResultCardBase {
     
     override func drawRect(rect: CGRect) {
         super.drawRect(rect)
-        
+        self.setupView()
+    }
+    
+    func setupView() {
         self.layer.cornerRadius = CORNER_RADIUS
         self.layer.masksToBounds = false
         

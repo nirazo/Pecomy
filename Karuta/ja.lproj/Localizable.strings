@@ -11,7 +11,7 @@
 "LocationAlertSettingButtonTitle" = "設定";
 "LocationAlertCancelButtonTitle" = "キャンセル";
 "LocationRetryAlertTitle" = "位置情報取得に失敗しました";
-"LocationRetryAlertTMessage" = "下のボタンを押して再度取得して下さい。";
+"LocationRetryAlertMessage" = "下のボタンを押して再度取得して下さい。";
 "LocationRetryAlertRetryButtonTitle" = "もう一度";
 "OutOfRangeAlertTitle" = "お店が見つかりません";
 "OutOfRangeAlertMessage" = "現在Karutaは東京都のみに対応しております。恐れ入りますが、東京都内でご利用ください。";

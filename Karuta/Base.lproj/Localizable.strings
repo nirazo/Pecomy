@@ -11,7 +11,7 @@
 "LocationAlertSettingButtonTitle" = "Setting";
 "LocationAlertCancelButtonTitle" = "Cancel";
 "LocationRetryAlertTitle" = "Failed to get location";
-"LocationRetryAlertTMessage" = "Please try again";
+"LocationRetryAlertMessage" = "Please try again";
 "LocationRetryAlertRetryButtonTitle" = "Retry";
 "OutOfRangeAlertTitle" = "Cannot find restaurant";
 "OutOfRangeAlertMessage" = "Now you can only use Karuta in Tokyo area. Please use this app in Tokyo.";

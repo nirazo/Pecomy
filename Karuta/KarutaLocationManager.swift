@@ -88,8 +88,8 @@ class KarutaLocationManager: NSObject, CLLocationManagerDelegate {
     func fetchWithCompletion(success: LocationClosure, failure: LocationErrorClosure) {
         
         if (!CLLocationManager.locationServicesEnabled()) {
-            println("can't use location")
             delegate.showLocationEnableAlert()
+            return
         }
         
         didCompleteWithSuccess = success
