@@ -54,6 +54,8 @@ struct Const {
     static let UD_KEY_HAS_LAUNCHED = "HasLaunchedOnce"
     
     // ネットワーク周り
+    static let ALAMOFIRE_TIMEOUT_SEC: Double = 12.0
+    
     static let STATUS_CODE_CARD_NOT_FOUND = 404
     static let STATUS_CODE_CARD_BAD_REQUEST = 400
     
