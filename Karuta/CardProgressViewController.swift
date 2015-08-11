@@ -31,7 +31,7 @@ class CardProgressViewController: UIViewController {
 
     // 進捗率を渡してプログレスバーを進める（戻す）
     func progressWithRatio(ratio: Float) {
-        UIView.animateWithDuration(0.5, animations: { [unowned self] () in
+        UIView.animateWithDuration(0.2, animations: { [unowned self] () in
             var r = ratio > 0.95 ? 0.95 : ratio
             self.progressView.frame.size = CGSizeMake(self.view.frame.size.width * CGFloat(r), self.view.frame.size.height)
         })
@@ -46,15 +46,4 @@ class CardProgressViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

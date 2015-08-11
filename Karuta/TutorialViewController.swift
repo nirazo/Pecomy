@@ -11,7 +11,7 @@ import UIKit
 class TutorialViewController: UIViewController, UIScrollViewDelegate {
 
     var pageControl: UIPageControl!
-    let imgTitleArr = ["tutorial_01", "tutorial_02", "tutorial_03", "tutorial_04","tutorial_06"]
+    let imgTitleArr = ["tutorial_01", "tutorial_02", "tutorial_03", "tutorial_04", "tutorial_05", "tutorial_06"]
     
     override func viewDidLoad() {
         let width = self.view.frame.maxX

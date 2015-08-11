@@ -19,7 +19,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     
     // like, dislikeのスワイプ増分
     let INCREMENT_LIKE: Float = 0.125
-    let INCREMENT_DISLIKE: Float = 0.02
+    let INCREMENT_DISLIKE: Float = 0.05
     
     let locationManager = KarutaLocationManager()
     let progressViewController = CardProgressViewController()
@@ -354,25 +354,31 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
             var json = JSON.nullJSON
             if error == nil && data != nil {
                 json = SwiftyJSON.JSON(data!)
-                let results = json["results"]
                 
                 // Restaurantクラスを生成
                 var restaurants = [Restaurant]()
-                for i in 0..<results.count {
-                    let shopID = results[i]["shop_id"].stringValue
-                    let shopName = results[i]["title"].string!
-                    let shopImageUrlsString = results[i]["image_url"].array!
-                    let priceRange = results[i]["price_range"].string!
-                    let distance: Double = results[i]["distance_meter"].double!
-                    let url = NSURL(string: results[i]["url"].string!)
-                    
-                    var shopImageUrls = [NSURL]()
-                    for urlString in shopImageUrlsString {
-                        shopImageUrls.append(NSURL(string: urlString.string!)!)
+                
+                if (response!.statusCode != Const.STATUS_CODE_CARD_NOT_FOUND) {
+                    let results = json["results"]
+                    for i in 0..<results.count {
+                        let shopID = results[i]["shop_id"].stringValue
+                        let shopName = results[i]["title"].string!
+                        let shopImageUrlsString = results[i]["image_url"].array!
+                        let priceRange = results[i]["price_range"].string!
+                        let distance: Double = results[i]["distance_meter"].double!
+                        let url = NSURL(string: results[i]["url"].string!)
+                        
+                        var shopImageUrls = [NSURL]()
+                        for urlString in shopImageUrlsString {
+                            shopImageUrls.append(NSURL(string: urlString.string!)!)
+                        }
+                        
+                        restaurants.append(Restaurant(shopID: shopID, shopName: shopName, priceRange: priceRange, distance: distance, imageUrls: shopImageUrls, url: url!))
                     }
-                    
-                    restaurants.append(Restaurant(shopID: shopID, shopName: shopName, priceRange: priceRange, distance: distance, imageUrls: shopImageUrls, url: url!))
+                } else {
+                    // nothing（404の場合、空配列をresultVCに渡し、0件時と同様に処理する）
                 }
+                // 結果表示
                 self.displayResultViewWithShopList(restaurants)
             } else {
                 println("failed to get result!!")
@@ -382,6 +388,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     
     func displayResultViewWithShopList(restaurants: [Restaurant]) {
         var resultVC = ResultViewController(restaurants: restaurants)
+        println("rest: \(restaurants)")
         let backButton = UIBarButtonItem(title: "戻る", style: .Plain, target: nil, action: nil)
         self.navigationItem.backBarButtonItem = backButton
         resultVC.navigationItem.title = "あなたのBEST"

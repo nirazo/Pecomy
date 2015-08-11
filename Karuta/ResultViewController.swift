@@ -28,17 +28,13 @@ class ResultViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.whiteColor()
+        self.view.backgroundColor = Const.KARUTA_RESULT_BACK_COLOR
         self.edgesForExtendedLayout = .None
         
-        
-        // 1位
-        self.topResultCard = TopResultCard(frame: CGRectZero, restaurant: self.restaurants[0])
-        let tr = UITapGestureRecognizer(target: self, action: "resultTapped:")
-        self.topResultCard?.addGestureRecognizer(tr)
-        self.view.addSubview(topResultCard!)
-        
         switch self.restaurants.count {
+        case 0:
+            self.layoutNoResult()
+            self.showNoResultAlert()
         case 1:
             layoutOneResult()
         case 2:
@@ -48,11 +44,35 @@ class ResultViewController: UIViewController {
         default:
             break
         }
-        self.view.setNeedsDisplay()
+    }
+    
+    // レイアウト共通(結果が存在する場合)
+    private func prepareLayout() {
+        // 1位
+        self.topResultCard = TopResultCard(frame: CGRectZero, restaurant: self.restaurants[0])
+        let tr = UITapGestureRecognizer(target: self, action: "resultTapped:")
+        self.topResultCard?.addGestureRecognizer(tr)
+        self.view.addSubview(topResultCard!)
+    }
+    
+    // 結果が0件の時のレイアウト
+    private func layoutNoResult() {
+        var label = UILabel()
+        label.text = NSLocalizedString("NoResultAlertTitle", comment: "")
+        label.font = UIFont(name: Const.KARUTA_FONT_NORMAL, size: 17)
+        label.numberOfLines = 0
+        label.sizeToFit()
+        label.textColor = UIColor.grayColor()
+        self.view.addSubview(label)
+
+        label.snp_makeConstraints { (make) in
+            make.center.equalTo(self.view)
+        }
     }
     
     // 結果が1個の時のレイアウト
     private func layoutOneResult() {
+        self.prepareLayout()
         topResultCard!.snp_makeConstraints { (make) in
             make.width.equalTo(self.view).offset(-RESULT_MARGIN*2)
             make.height.equalTo(self.view).offset(-RESULT_MARGIN*2)
@@ -64,6 +84,7 @@ class ResultViewController: UIViewController {
     
     // 結果が2個の時のレイアウト
     private func layoutTwoResults() {
+        self.prepareLayout()
         topResultCard!.snp_makeConstraints { (make) in
             make.width.equalTo(self.view).offset(-RESULT_MARGIN*2)
             make.height.equalTo(self.view).multipliedBy(0.55)
@@ -86,6 +107,7 @@ class ResultViewController: UIViewController {
     
     // 結果が3個の時のレイアウト
     private func layoutThreeResults() {
+        self.prepareLayout()
         topResultCard!.snp_makeConstraints { (make) in
             make.width.equalTo(self.view).offset(-RESULT_MARGIN*2)
             make.height.equalTo(self.view).multipliedBy(0.55)
@@ -118,8 +140,6 @@ class ResultViewController: UIViewController {
         }
     }
     
-    override func viewDidLayoutSubviews() {
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -130,6 +150,18 @@ class ResultViewController: UIViewController {
         let resultCard = sender.view as! ResultCardBase
         let detailView = RestaurantDetailViewController(url: resultCard.url)
         self.navigationController?.pushViewController(detailView, animated: true)
+    }
+    
+    //MARK - : Alerts
+    // 結果無し時のアラート表示
+    func showNoResultAlert() {
+        let alertController = UIAlertController(title:NSLocalizedString("NoResultAlertTitle", comment: ""),
+            message: NSLocalizedString("NoResultAlertMessage", comment: ""),
+            preferredStyle: .Alert)
+        let okAction = UIAlertAction(title: NSLocalizedString("OK", comment: ""),
+            style: .Default, handler: nil)
+        alertController.addAction(okAction)
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
 
 }

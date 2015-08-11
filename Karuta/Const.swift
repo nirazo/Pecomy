@@ -43,6 +43,8 @@ struct Const {
         UIColor(red: 124.0/255.0, green: 132.0/255.0, blue: 139.0/255.0, alpha: 1.0),
         UIColor(red: 135.0/255.0, green: 110.0/255.0, blue: 63.0/255.0, alpha: 1.0)]
     
+    static let KARUTA_RESULT_BACK_COLOR = UIColor(red: 238.0/255.0, green: 236.0/255.0, blue: 233.0/255.0, alpha: 1.0)
+    
     // フォント
     static let KARUTA_FONT_NORMAL = "HiraKakuProN-W3"
     static let KARUTA_FONT_BOLD = "HiraKakuProN-W6"
@@ -53,6 +55,9 @@ struct Const {
     // ネットワーク周り
     static let STATUS_CODE_CARD_NOT_FOUND = 404
     static let STATUS_CODE_CARD_BAD_REQUEST = 400
+    
+    static let STATUS_CODE_RESULT_NOT_FOUND = 404
+    static let STATUS_CODE_RESULT_BAD_REQUEST = 400
     
     // カード上のテキスト
     static let CARD_LIKE_COLOR = (UIColor(red: 151.0/255.0, green: 205.0/255.0, blue: 72.0/255.0, alpha: 1.0))
