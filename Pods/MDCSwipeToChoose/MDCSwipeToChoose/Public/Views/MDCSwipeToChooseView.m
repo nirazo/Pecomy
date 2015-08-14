@@ -130,6 +130,7 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 65.f;
             likedImageView.alpha = 0.f;
             nopeImageView.alpha = state.thresholdRatio;
         } else if (state.direction == MDCSwipeDirectionRight) {
+            NSLog(@"thresh: %f", state.thresholdRatio);
             likedImageView.alpha = state.thresholdRatio;
             nopeImageView.alpha = 0.f;
         }
