@@ -54,6 +54,8 @@ class CardView: MDCSwipeToChooseView {
         }
         
         super.init(frame: frame, options: options)
+        
+        self.setupSubViews()
 
     }
 
@@ -63,27 +65,13 @@ class CardView: MDCSwipeToChooseView {
     
     override func drawRect(rect: CGRect) {
         super.drawRect(rect)
-        
+    }
+    
+    func setupSubViews() {
         // 画像
         self.restaurantImageViews[0].frame = CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height*0.45 - self.SEPARATOR_LINE_WIDTH)
         self.restaurantImageViews[1].frame = CGRect(x: 0, y: CGRectGetMaxY(self.restaurantImageViews[0].frame) + self.SEPARATOR_LINE_WIDTH, width: self.frame.size.width/2 - self.SEPARATOR_LINE_WIDTH/2, height: self.frame.size.height*0.3)
         self.restaurantImageViews[2].frame = CGRect(x: self.frame.size.width/2 + self.SEPARATOR_LINE_WIDTH, y: self.restaurantImageViews[1].frame.origin.y, width: self.frame.size.width/2 - self.SEPARATOR_LINE_WIDTH/2, height: self.frame.size.height*0.3)
-        
-        // 横線
-        var horizontalLine = UIBezierPath()
-        horizontalLine.moveToPoint(CGPointMake(0, CGRectGetMaxY(self.restaurantImageViews[0].frame)))
-        horizontalLine.addLineToPoint(CGPointMake(self.frame.width,CGRectGetMaxY(self.restaurantImageViews[0].frame)))
-        UIColor.whiteColor().setStroke()
-        horizontalLine.lineWidth = 2
-        horizontalLine.stroke()
-        
-        // 縦線
-        var verticalLine = UIBezierPath()
-        verticalLine.moveToPoint(CGPointMake(self.frame.width/2, CGRectGetMaxY(self.restaurantImageViews[0].frame)))
-        verticalLine.addLineToPoint(CGPointMake(self.frame.width/2, CGRectGetMaxY(self.restaurantImageViews[1].frame)))
-        UIColor.whiteColor().setStroke()
-        verticalLine.lineWidth = 2
-        verticalLine.stroke()
         
         for i in 0..<NUM_OF_IMAGES {
             self.contentView.addSubview(self.restaurantImageViews[i])
@@ -143,6 +131,7 @@ class CardView: MDCSwipeToChooseView {
         if (self.imageUrls.count > 0) {
             for i in 0..<self.imageUrls.count {
                 self.restaurantImageViews[i].sd_setImageWithURL(self.imageUrls[i], completed: {[weak self](image: UIImage!, error: NSError!, cacheType: SDImageCacheType, imageURL: NSURL!) in
+                    self!.restaurantImageViews[i].alpha = 0
                     UIView.animateWithDuration(0.5, delay: 0.0, options: .CurveEaseInOut, animations: {() -> Void in
                         self?.restaurantImageViews[i].contentMode = .ScaleAspectFill
                         self!.restaurantImageViews[i].alpha = 1
