@@ -19,8 +19,15 @@ class TopResultCard: ResultCardBase {
     private let TEXT_MARGIN_X: CGFloat = 10.0
     private let TEXT_MARGIN_Y: CGFloat = 10.0
     
+    var restaurantNameLabel = UILabel()
+    var priceLabel = UILabel()
+    var distanceLabel = UILabel()
+    var arrawLabel = UILabel()
+    var rankingLabel = UIImageView(image: UIImage(named: "first"))
+    
     init(frame: CGRect, restaurant: Restaurant) {
-        super.init(frame: frame, restaurant: restaurant, imageNum: NUM_OF_IMAGES)
+        super.init(frame: frame, restaurant: restaurant, imageNum: NUM_OF_IMAGES, color: Const.RANKING_TOP_COLOR)
+        self.setupSubViews()
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -29,40 +36,13 @@ class TopResultCard: ResultCardBase {
     
     override func drawRect(rect: CGRect) {
         super.drawRect(rect)
-        self.setupView()
     }
     
-    func setupView() {
-        self.layer.cornerRadius = CORNER_RADIUS
-        self.layer.masksToBounds = false
-        
-        // ドロップシャドウ
-        var shadow = UIView(frame: self.bounds)
-        shadow.layer.masksToBounds = false
-        self.addSubview(shadow)
-        shadow.backgroundColor = UIColor.whiteColor()
-        shadow.layer.cornerRadius = CORNER_RADIUS
-        shadow.layer.shadowOffset = CGSizeMake(0.5, 1.0);
-        shadow.layer.shadowRadius = 0.9;
-        shadow.layer.shadowColor = UIColor.grayColor().CGColor
-        shadow.layer.shadowOpacity = 0.7;
-        
-        // パーツ群を置くビュー
-        self.contentView = UIView(frame: self.bounds)
-        self.contentView.backgroundColor = UIColor.whiteColor()
-        
-        self.contentView.layer.cornerRadius = CORNER_RADIUS
-        self.contentView.layer.masksToBounds = true
-        self.contentView.layer.borderColor = Const.RANKING_TOP_COLOR.CGColor
-        self.contentView.layer.borderWidth = BORDER_WIDTH
-        
-        self.addSubview(contentView)
-        
+    func setupSubViews() {
         for i in 0..<self.imageUrls.count {
             self.contentView.addSubview(self.restaurantImageViews[i])
         }
         
-        // 画像レイアウト
         self.restaurantImageViews[0].snp_makeConstraints { (make) in
             make.width.equalTo(self).multipliedBy(0.65)
             make.height.equalTo(self).multipliedBy(0.60)
@@ -84,7 +64,6 @@ class TopResultCard: ResultCardBase {
         }
         
         // レストラン名のラベル
-        var restaurantNameLabel = UILabel()
         restaurantNameLabel.text = self.shopName
         restaurantNameLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 14)
         restaurantNameLabel.numberOfLines = 2
@@ -92,14 +71,13 @@ class TopResultCard: ResultCardBase {
         restaurantNameLabel.sizeToFit()
         self.contentView.addSubview(restaurantNameLabel)
         
-        restaurantNameLabel.snp_makeConstraints { (make) in
+        self.restaurantNameLabel.snp_makeConstraints { (make) in
             make.left.equalTo(self).offset(TEXT_MARGIN_X)
             make.top.equalTo(self.restaurantImageViews[0].snp_bottom).offset(TEXT_MARGIN_Y)
             make.width.equalTo(self).multipliedBy(0.75)
         }
         
         // 値段ラベル
-        var priceLabel = UILabel()
         var replacedString = self.priceRange.stringByReplacingOccurrencesOfString("  +", withString: "\n", options: NSStringCompareOptions.RegularExpressionSearch, range: nil)
         priceLabel.text = replacedString
         priceLabel.numberOfLines = 2
@@ -108,14 +86,13 @@ class TopResultCard: ResultCardBase {
         priceLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 12)
         self.contentView.addSubview(priceLabel)
         
-        priceLabel.snp_makeConstraints { (make) in
+        self.priceLabel.snp_makeConstraints { (make) in
             make.left.equalTo(restaurantNameLabel)
             make.top.equalTo(restaurantNameLabel.snp_bottom).offset(TEXT_MARGIN_Y*2)
             make.width.equalTo(restaurantNameLabel)
         }
         
         // 距離ラベル
-        var distanceLabel = UILabel()
         distanceLabel.text = "ここから\(Int(self.distance))m"
         distanceLabel.font = UIFont(name: Const.KARUTA_FONT_NORMAL, size: 10)
         distanceLabel.numberOfLines = 0
@@ -123,14 +100,13 @@ class TopResultCard: ResultCardBase {
         distanceLabel.textColor = UIColor.grayColor()
         self.contentView.addSubview(distanceLabel)
         
-        distanceLabel.snp_makeConstraints { (make) in
+        self.distanceLabel.snp_makeConstraints { (make) in
             make.left.equalTo(restaurantNameLabel)
             make.bottom.equalTo(self).offset(-TEXT_MARGIN_Y)
             make.width.equalTo(restaurantNameLabel)
         }
         
         // 矢印ラベル
-        var arrawLabel = UILabel()
         arrawLabel.text = ">"
         arrawLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 20)
         arrawLabel.numberOfLines = 1
@@ -138,13 +114,12 @@ class TopResultCard: ResultCardBase {
         arrawLabel.textColor = Const.RANKING_TOP_COLOR
         self.contentView.addSubview(arrawLabel)
         
-        arrawLabel.snp_makeConstraints { (make) in
+        self.arrawLabel.snp_makeConstraints { (make) in
             make.right.equalTo(self).offset(-TEXT_MARGIN_X)
             make.centerY.equalTo(priceLabel)
         }
         
         // ランキングラベル
-        var rankingLabel = UIImageView(image: UIImage(named: "first"))
         rankingLabel.bounds = CGRectMake(0, 0, 45, 45)
         rankingLabel.center = CGPointMake(10, 10)
         rankingLabel.setTranslatesAutoresizingMaskIntoConstraints(true)
