@@ -7,12 +7,12 @@
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "rice.png"
+      "filename" : "rice@2x.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "rice-1.png"
+      "filename" : "rice@3x.png"
     }
   ],
   "info" : {
