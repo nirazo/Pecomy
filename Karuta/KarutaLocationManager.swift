@@ -16,14 +16,14 @@ enum KarutaLocationManagerErrors: Int {
     case InvalidLocation
 }
 
-protocol KarutaLocationManagerProtocol {
+protocol KarutaLocationManagerDelegate {
     func showLocationEnableAlert()
 }
 
 class KarutaLocationManager: NSObject, CLLocationManagerDelegate {
     
     private var locationManager: CLLocationManager?
-    var delegate: KarutaLocationManagerProtocol!
+    var delegate: KarutaLocationManagerDelegate!
     
     deinit {
         locationManager?.delegate = nil

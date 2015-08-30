@@ -17,20 +17,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         Fabric.with([Crashlytics()])
-        self.setDefaultAppearance()
+        self.setupAppearance()
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         
         // 起動2回目以降
         if (NSUserDefaults.standardUserDefaults().boolForKey(Const.UD_KEY_HAS_LAUNCHED)) {
             let viewController = MainViewController()
             var navVC = UINavigationController(rootViewController: viewController)
-            navVC.navigationBar.barTintColor = Const.KARUTA_THEME_COLOR
             self.window!.rootViewController = navVC
         } else {
             // 初回起動
-            NSUserDefaults.standardUserDefaults().setBool(true, forKey: Const.UD_KEY_HAS_LAUNCHED)
-            NSUserDefaults.standardUserDefaults().synchronize()
-            
             let viewController = TutorialViewController()
             self.window?.rootViewController = viewController
         }
@@ -49,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
-        NSNotificationCenter.defaultCenter().postNotificationName("applicationWillEnterForeground", object: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName(Const.WILL_ENTER_FOREGROUND_KEY, object: nil)
     }
 
     func applicationDidBecomeActive(application: UIApplication) {
@@ -60,9 +56,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
-    func setDefaultAppearance(){
+    func setupAppearance(){
         // UINavigationBarのスタイルを設定
-        //UINavigationBar.appearance().barTintColor = Const.KARUTA_THEME_COLOR
+        UINavigationBar.appearance().barTintColor = Const.KARUTA_THEME_COLOR
         UINavigationBar.appearance().tintColor = Const.KARUTA_THEME_TEXT_COLOR
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: Const.KARUTA_THEME_TEXT_COLOR]
     }

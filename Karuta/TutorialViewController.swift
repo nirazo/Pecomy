@@ -68,7 +68,28 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
         navVC.navigationBar.barTintColor = Const.KARUTA_THEME_COLOR
         navVC.modalTransitionStyle = UIModalTransitionStyle.CoverVertical
         
-        self.presentViewController(navVC, animated: true, completion: nil)
+        NSUserDefaults.standardUserDefaults().setBool(true, forKey: Const.UD_KEY_HAS_LAUNCHED)
+        NSUserDefaults.standardUserDefaults().synchronize()
+        
+        self.changeRootViewController(navVC)
+        
+        //self.presentViewController(navVC, animated: true, completion: nil)
+    }
+    
+    func changeRootViewController(viewController: UINavigationController) {
+        
+        let snapShot: UIView = UIApplication.sharedApplication().keyWindow!.snapshotViewAfterScreenUpdates(true)
+        viewController.view.addSubview(snapShot)
+        UIApplication.sharedApplication().keyWindow?.rootViewController = viewController;
+        
+        UIView.animateWithDuration(0.3,
+            animations: { () in
+                snapShot.layer.opacity = 0
+                snapShot.layer.transform = CATransform3DMakeScale(1.5, 1.5, 1.5)
+        },
+            completion: { (Bool) in
+                snapShot.removeFromSuperview()
+        })
     }
 
     //MARK: - UIScrollViewDelegate
