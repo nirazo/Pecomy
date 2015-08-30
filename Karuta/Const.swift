@@ -9,7 +9,6 @@
 import Foundation
 
 struct Const {
-    static let DEVICE_ID = UIDevice.currentDevice().identifierForVendor.UUIDString
     
     #if DEBUG
         static let API_CARD_BASE = "http://private-552a20-ffaapi.apiary-mock.com/card"

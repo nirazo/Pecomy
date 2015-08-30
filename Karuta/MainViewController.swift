@@ -197,7 +197,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     */
     func acquireCardWithLatitude(latitude: Double, longitude: Double, like: String? = nil, syncId: String? = nil, reset: Bool, success: (Bool)->() = {(Bool) in}, failure: (NSError)->() = {(NSError) in}) {
         var params: Dictionary<String, AnyObject> = [
-            "device_id" : Const.DEVICE_ID,
+            "device_id" : Utils.acquireDeviceID(),
             "latitude" : latitude,
             "longitude" : longitude,
             "reset" : reset
@@ -350,7 +350,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
         self.isResultDisplayedOnce = true
         
         var params: Dictionary<String, AnyObject> = [
-            "device_id": Const.DEVICE_ID,
+            "device_id": Utils.acquireDeviceID(),
             "latitude" : self.currentLatitude!,
             "longitude" : self.currentLongitude!
         ]
