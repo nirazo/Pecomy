@@ -1,33 +1,24 @@
 PODS:
   - Alamofire (1.2.3)
-  - Alamofire-SwiftyJSON (1.1.0)
   - MDCSwipeToChoose (0.2.2)
   - SDWebImage (3.7.2):
     - SDWebImage/Core (= 3.7.2)
   - SDWebImage/Core (3.7.2)
+  - SnapKit (0.12.0)
   - SwiftyJSON (2.2.0)
 
 DEPENDENCIES:
-  - Alamofire (~> 1.2.3)
-  - Alamofire-SwiftyJSON (from `https://github.com/SwiftyJSON/Alamofire-SwiftyJSON.git`)
-  - MDCSwipeToChoose (~> 0.2.2)
-  - SDWebImage (~> 3.7.2)
-  - SwiftyJSON (~> 2.2.0)
-
-EXTERNAL SOURCES:
-  Alamofire-SwiftyJSON:
-    :git: https://github.com/SwiftyJSON/Alamofire-SwiftyJSON.git
-
-CHECKOUT OPTIONS:
-  Alamofire-SwiftyJSON:
-    :commit: eda9c507db91ee024c8d4edfb86b77e4e06907ed
-    :git: https://github.com/SwiftyJSON/Alamofire-SwiftyJSON.git
+  - Alamofire (= 1.2.3)
+  - MDCSwipeToChoose (= 0.2.2)
+  - SDWebImage (= 3.7.2)
+  - SnapKit (= 0.12.0)
+  - SwiftyJSON (= 2.2.0)
 
 SPEC CHECKSUMS:
   Alamofire: 5550bf0b575ed1a4bf9be572f9463e1015cc169e
-  Alamofire-SwiftyJSON: 956259d7591d2b52f10e872bc14a4b89ec3743ff
   MDCSwipeToChoose: 715aefacd3cc884c448fcdc70638c04a3056408c
   SDWebImage: 71b7cdc1d1721d6a82ed62889030225f2c249e29
+  SnapKit: 00c388aa3bf1944c1b55472f31e841f75bd83882
   SwiftyJSON: 0b3e6c07af17ff745e77e8e9984097b55c956e5c
 
-COCOAPODS: 0.37.2
+COCOAPODS: 0.38.2

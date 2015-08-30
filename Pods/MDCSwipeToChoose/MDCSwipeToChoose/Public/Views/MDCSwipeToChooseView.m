@@ -59,18 +59,32 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 65.f;
 - (void)setupView {
     self.backgroundColor = [UIColor clearColor];
     self.layer.cornerRadius = 5.f;
-    self.layer.masksToBounds = YES;
-    self.layer.borderWidth = 2.f;
-    self.layer.borderColor = [UIColor colorWith8BitRed:220.f
-                                                 green:220.f
-                                                  blue:220.f
-                                                 alpha:1.f].CGColor;
+    self.layer.masksToBounds = NO;
+    
+    // ドロップシャドウ
+    UIView *shadow = [[UIView alloc] initWithFrame:self.bounds];
+    shadow.layer.masksToBounds = NO;
+    [self addSubview:shadow];
+    shadow.backgroundColor = [UIColor whiteColor];
+    shadow.layer.cornerRadius = 5.f;
+    shadow.layer.shadowOffset = CGSizeMake(0.5, 1.0);
+    shadow.layer.shadowRadius = 0.7;
+    shadow.layer.shadowColor = [UIColor grayColor].CGColor;
+    shadow.layer.shadowOpacity = 0.9;
+    
+    // パーツ群を置くビュー
+    self.contentView = [[UIView alloc] initWithFrame:self.bounds];
+    self.contentView.backgroundColor = [UIColor whiteColor];
+    
+    self.contentView.layer.cornerRadius = 5.f;
+    self.contentView.layer.masksToBounds = YES;
+    [self addSubview:self.contentView];
 }
 
 - (void)constructImageView {
     _imageView = [[UIImageView alloc] initWithFrame:self.bounds];
     _imageView.clipsToBounds = YES;
-    [self addSubview:_imageView];
+    [self.contentView addSubview:_imageView];
 }
 
 - (void)constructLikedView {
@@ -83,7 +97,7 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 65.f;
                                              color:self.options.likedColor
                                              angle:self.options.likedRotationAngle];
     self.likedView.alpha = 0.f;
-    [self.imageView addSubview:self.likedView];
+    [self addSubview:self.likedView];
 }
 
 - (void)constructNopeImageView {
@@ -97,7 +111,7 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 65.f;
                                             color:self.options.nopeColor
                                             angle:self.options.nopeRotationAngle];
     self.nopeView.alpha = 0.f;
-    [self.imageView addSubview:self.nopeView];
+    [self addSubview:self.nopeView];
 }
 
 - (void)setupSwipeToChoose {

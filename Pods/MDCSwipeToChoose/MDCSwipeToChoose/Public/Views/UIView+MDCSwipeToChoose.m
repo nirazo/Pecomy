@@ -149,6 +149,10 @@ const void * const MDCViewStateKey = &MDCViewStateKey;
     if ([delegate respondsToSelector:@selector(view:shouldBeChosenWithDirection:)]) {
         BOOL should = [delegate view:self shouldBeChosenWithDirection:direction];
         if (!should) {
+            [self mdc_returnToOriginalCenter];
+            if (self.mdc_options.onCancel != nil){
+                self.mdc_options.onCancel(self);
+            }
             return;
         }
     }
@@ -189,8 +193,8 @@ const void * const MDCViewStateKey = &MDCViewStateKey;
 - (void)mdc_rotateForTranslation:(CGPoint)translation
                rotationDirection:(MDCRotationDirection)rotationDirection {
     CGFloat rotation = MDCDegreesToRadians(translation.x/100 * self.mdc_options.rotationFactor);
-    self.transform = CGAffineTransformRotate(self.mdc_viewState.originalTransform,
-                                             rotationDirection * rotation);
+    self.transform = CGAffineTransformRotate(self.mdc_viewState.originalTransform,rotationDirection * rotation);
+//    self.layer.transform = CATransform3DMakeRotation(rotationDirection * rotation, 0.0, 0.0, 1.0);
 }
 
 #pragma mark Threshold
@@ -215,7 +219,7 @@ const void * const MDCViewStateKey = &MDCViewStateKey;
 - (MDCSwipeDirection)mdc_directionOfExceededThreshold {
     if (self.center.x > self.mdc_viewState.originalCenter.x + self.mdc_options.threshold) {
         return MDCSwipeDirectionRight;
-    } else if (self.center.x < self.mdc_viewState.originalCenter.x - self.mdc_options.threshold) {
+    } else if (self.center.x <= self.mdc_viewState.originalCenter.x - self.mdc_options.threshold) {
         return MDCSwipeDirectionLeft;
     } else {
         return MDCSwipeDirectionNone;

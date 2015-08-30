@@ -7,21 +7,30 @@
 //
 
 import UIKit
+import Fabric
+import Crashlytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var navVC: UINavigationController?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        Fabric.with([Crashlytics()])
+        self.setupAppearance()
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        var viewController : ViewController = ViewController()
-        self.navVC = UINavigationController(rootViewController: viewController)
-        self.navVC?.setNavigationBarHidden(true, animated: false)
-        self.window!.rootViewController = navVC
-        self.window!.makeKeyAndVisible()
         
+        // 起動2回目以降
+        if (NSUserDefaults.standardUserDefaults().boolForKey(Const.UD_KEY_HAS_LAUNCHED)) {
+            let viewController = MainViewController()
+            var navVC = UINavigationController(rootViewController: viewController)
+            self.window!.rootViewController = navVC
+        } else {
+            // 初回起動
+            let viewController = TutorialViewController()
+            self.window?.rootViewController = viewController
+        }
+        self.window!.makeKeyAndVisible()
         return true
     }
 
@@ -36,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
-        // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+        NSNotificationCenter.defaultCenter().postNotificationName(Const.WILL_ENTER_FOREGROUND_KEY, object: nil)
     }
 
     func applicationDidBecomeActive(application: UIApplication) {
@@ -45,6 +54,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    func setupAppearance(){
+        // UINavigationBarのスタイルを設定
+        UINavigationBar.appearance().barTintColor = Const.KARUTA_THEME_COLOR
+        UINavigationBar.appearance().tintColor = Const.KARUTA_THEME_TEXT_COLOR
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: Const.KARUTA_THEME_TEXT_COLOR]
     }
 
 

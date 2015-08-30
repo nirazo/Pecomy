@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>2B1CA450-B6FD-4960-A1F5-8F351D66F045</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Karuta</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>37AEB52D0EE7FCB707E7CD10B608970C15FD11DE</key>
+		<string>https://bitbucket.org/kemuzo/karuta_ios.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Karuta.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>37AEB52D0EE7FCB707E7CD10B608970C15FD11DE</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://bitbucket.org/kemuzo/karuta_ios.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>37AEB52D0EE7FCB707E7CD10B608970C15FD11DE</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>37AEB52D0EE7FCB707E7CD10B608970C15FD11DE</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Karuta</string>
+		</dict>
+	</array>
+</dict>
+</plist>

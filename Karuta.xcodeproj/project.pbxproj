@@ -8,10 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		82743658913CE160AF673A82 /* Pods_Karuta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA78955690AB624AB9D7F4AE /* Pods_Karuta.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		D203D3141B3E739600FC9DB8 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = D203D3131B3E739600FC9DB8 /* Const.swift */; };
+		D2092A2C1B637460008046D9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D2092A2E1B637460008046D9 /* Localizable.strings */; };
+		D2092A341B64D721008046D9 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2092A331B64D721008046D9 /* Restaurant.swift */; };
+		D23070731B4C30D100833167 /* KarutaLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23070721B4C30D100833167 /* KarutaLocationManager.swift */; };
+		D24B291F1B772EFF00419B9B /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24B291E1B772EFF00419B9B /* ResultViewController.swift */; };
+		D24B29211B78748A00419B9B /* ResultCardBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24B29201B78748A00419B9B /* ResultCardBase.swift */; };
+		D24B29241B78775300419B9B /* RestaurantDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24B29231B78775300419B9B /* RestaurantDetailViewController.swift */; };
+		D24B292E1B7895DA00419B9B /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24B292D1B7895DA00419B9B /* TutorialViewController.swift */; };
+		D24B29411B79CC1D00419B9B /* CardProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24B29401B79CC1D00419B9B /* CardProgressViewController.swift */; };
+		D24B29461B79F56E00419B9B /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D24B29451B79F56E00419B9B /* Launch Screen.xib */; };
 		D27BB9D21B36F4A900F8D902 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27BB9D11B36F4A900F8D902 /* AppDelegate.swift */; };
-		D27BB9D41B36F4A900F8D902 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27BB9D31B36F4A900F8D902 /* ViewController.swift */; };
+		D27BB9D41B36F4A900F8D902 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27BB9D31B36F4A900F8D902 /* MainViewController.swift */; };
 		D27BB9D91B36F4A900F8D902 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D27BB9D81B36F4A900F8D902 /* Images.xcassets */; };
 		D27BB9E81B36F4A900F8D902 /* KarutaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27BB9E71B36F4A900F8D902 /* KarutaTests.swift */; };
+		D28A7A0C1B47AE900025371A /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A7A0B1B47AE900025371A /* CardView.swift */; };
+		D292F7391B92DFFC005700AE /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D292F7381B92DFFC005700AE /* Utils.swift */; };
+		D2BABE641B5A5DB6005E8356 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2BABE621B5A5DB6005E8356 /* Fabric.framework */; };
+		D2BABE651B5A5DB6005E8356 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2BABE631B5A5DB6005E8356 /* Crashlytics.framework */; };
+		D2DD65A01B7714CA0046A50C /* TopResultCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DD659F1B7714CA0046A50C /* TopResultCard.swift */; };
+		D2DD65A21B7714DA0046A50C /* OtherResultCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DD65A11B7714DA0046A50C /* OtherResultCard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,14 +44,34 @@
 		375106292F5446FE65E648DD /* Pods-Karuta.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Karuta.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Karuta/Pods-Karuta.debug.xcconfig"; sourceTree = "<group>"; };
 		3B06ABC94A9E1B8E1D89BFDB /* Pods-Karuta.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Karuta.release.xcconfig"; path = "Pods/Target Support Files/Pods-Karuta/Pods-Karuta.release.xcconfig"; sourceTree = "<group>"; };
 		CA78955690AB624AB9D7F4AE /* Pods_Karuta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Karuta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D203D3131B3E739600FC9DB8 /* Const.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
+		D2092A261B6356B5008046D9 /* Pods-Karuta.debug_fixed_location.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-Karuta.debug_fixed_location.xcconfig"; path = "Pods/Target Support Files/Pods-Karuta/Pods-Karuta.debug_fixed_location.xcconfig"; sourceTree = "<group>"; };
+		D2092A281B6356FE008046D9 /* Pods-Karuta.release_fixed_location.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-Karuta.release_fixed_location.xcconfig"; path = "Pods/Target Support Files/Pods-Karuta/Pods-Karuta.release_fixed_location.xcconfig"; sourceTree = "<group>"; };
+		D2092A2D1B637460008046D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D2092A2F1B637484008046D9 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D2092A331B64D721008046D9 /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
+		D23070721B4C30D100833167 /* KarutaLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarutaLocationManager.swift; sourceTree = "<group>"; };
+		D24B291E1B772EFF00419B9B /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		D24B29201B78748A00419B9B /* ResultCardBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultCardBase.swift; sourceTree = "<group>"; };
+		D24B29231B78775300419B9B /* RestaurantDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDetailViewController.swift; sourceTree = "<group>"; };
+		D24B292D1B7895DA00419B9B /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
+		D24B29401B79CC1D00419B9B /* CardProgressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardProgressViewController.swift; sourceTree = "<group>"; };
+		D24B29451B79F56E00419B9B /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 		D27BB9CC1B36F4A900F8D902 /* Karuta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Karuta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D27BB9D01B36F4A900F8D902 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D27BB9D11B36F4A900F8D902 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D27BB9D31B36F4A900F8D902 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D27BB9D31B36F4A900F8D902 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		D27BB9D81B36F4A900F8D902 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D27BB9E11B36F4A900F8D902 /* KarutaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KarutaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D27BB9E61B36F4A900F8D902 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D27BB9E71B36F4A900F8D902 /* KarutaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarutaTests.swift; sourceTree = "<group>"; };
+		D28A7A0B1B47AE900025371A /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		D292F7381B92DFFC005700AE /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		D2BABE621B5A5DB6005E8356 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		D2BABE631B5A5DB6005E8356 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		D2C785F71B47C2A900517D55 /* Karuta-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Karuta-Bridging-Header.h"; sourceTree = "<group>"; };
+		D2DD659F1B7714CA0046A50C /* TopResultCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopResultCard.swift; sourceTree = "<group>"; };
+		D2DD65A11B7714DA0046A50C /* OtherResultCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherResultCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +80,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				82743658913CE160AF673A82 /* Pods_Karuta.framework in Frameworks */,
+				D2BABE651B5A5DB6005E8356 /* Crashlytics.framework in Frameworks */,
+				D2BABE641B5A5DB6005E8356 /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,10 +98,56 @@
 		97BD974091507500A5B02BC4 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
+				D2092A261B6356B5008046D9 /* Pods-Karuta.debug_fixed_location.xcconfig */,
 				375106292F5446FE65E648DD /* Pods-Karuta.debug.xcconfig */,
 				3B06ABC94A9E1B8E1D89BFDB /* Pods-Karuta.release.xcconfig */,
+				D2092A281B6356FE008046D9 /* Pods-Karuta.release_fixed_location.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		D2092A321B64D702008046D9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D2092A331B64D721008046D9 /* Restaurant.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		D24B29221B78773400419B9B /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				D24B29231B78775300419B9B /* RestaurantDetailViewController.swift */,
+			);
+			name = Detail;
+			sourceTree = "<group>";
+		};
+		D24B292C1B7895C900419B9B /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				D24B292D1B7895DA00419B9B /* TutorialViewController.swift */,
+			);
+			name = Tutorial;
+			sourceTree = "<group>";
+		};
+		D24B293F1B79CC0400419B9B /* Card */ = {
+			isa = PBXGroup;
+			children = (
+				D28A7A0B1B47AE900025371A /* CardView.swift */,
+				D24B29401B79CC1D00419B9B /* CardProgressViewController.swift */,
+			);
+			name = Card;
+			sourceTree = "<group>";
+		};
+		D2597E1C1B523831000938B4 /* Result */ = {
+			isa = PBXGroup;
+			children = (
+				D2DD659F1B7714CA0046A50C /* TopResultCard.swift */,
+				D2DD65A11B7714DA0046A50C /* OtherResultCard.swift */,
+				D24B291E1B772EFF00419B9B /* ResultViewController.swift */,
+				D24B29201B78748A00419B9B /* ResultCardBase.swift */,
+			);
+			name = Result;
 			sourceTree = "<group>";
 		};
 		D27BB9C31B36F4A900F8D902 = {
@@ -90,9 +174,19 @@
 			isa = PBXGroup;
 			children = (
 				D27BB9D11B36F4A900F8D902 /* AppDelegate.swift */,
-				D27BB9D31B36F4A900F8D902 /* ViewController.swift */,
+				D23070721B4C30D100833167 /* KarutaLocationManager.swift */,
+				D27BB9D31B36F4A900F8D902 /* MainViewController.swift */,
+				D24B293F1B79CC0400419B9B /* Card */,
+				D24B292C1B7895C900419B9B /* Tutorial */,
+				D24B29221B78773400419B9B /* Detail */,
+				D2092A321B64D702008046D9 /* Model */,
+				D2597E1C1B523831000938B4 /* Result */,
 				D27BB9D81B36F4A900F8D902 /* Images.xcassets */,
 				D27BB9CF1B36F4A900F8D902 /* Supporting Files */,
+				D203D3131B3E739600FC9DB8 /* Const.swift */,
+				D292F7381B92DFFC005700AE /* Utils.swift */,
+				D2C785F71B47C2A900517D55 /* Karuta-Bridging-Header.h */,
+				D24B29451B79F56E00419B9B /* Launch Screen.xib */,
 			);
 			path = Karuta;
 			sourceTree = "<group>";
@@ -101,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				D27BB9D01B36F4A900F8D902 /* Info.plist */,
+				D2092A2E1B637460008046D9 /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -125,6 +220,8 @@
 		F8EF51686E29749944A50697 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D2BABE621B5A5DB6005E8356 /* Fabric.framework */,
+				D2BABE631B5A5DB6005E8356 /* Crashlytics.framework */,
 				CA78955690AB624AB9D7F4AE /* Pods_Karuta.framework */,
 			);
 			name = Frameworks;
@@ -143,6 +240,7 @@
 				D27BB9CA1B36F4A900F8D902 /* Resources */,
 				96E3CF8C5FC94B7B5CCDD799 /* Embed Pods Frameworks */,
 				FAFBED2465E6647CCBAEE62A /* Copy Pods Resources */,
+				D2BABE611B5A5D75005E8356 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -177,7 +275,7 @@
 		D27BB9C41B36F4A900F8D902 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = Karuta;
 				TargetAttributes = {
 					D27BB9CB1B36F4A900F8D902 = {
@@ -196,6 +294,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = D27BB9C31B36F4A900F8D902;
 			productRefGroup = D27BB9CD1B36F4A900F8D902 /* Products */;
@@ -213,6 +312,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2092A2C1B637460008046D9 /* Localizable.strings in Resources */,
+				D24B29461B79F56E00419B9B /* Launch Screen.xib in Resources */,
 				D27BB9D91B36F4A900F8D902 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -257,6 +358,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Karuta/Pods-Karuta-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		D2BABE611B5A5D75005E8356 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 0f089c54e22e9e890bd0329f29839c99a9c5040c ef218175b8ad70668aabb5fdbbfae2c25d0f1a40a0f70aa08494fbb96d0e8e30";
+		};
 		FAFBED2465E6647CCBAEE62A /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -279,8 +393,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D27BB9D41B36F4A900F8D902 /* ViewController.swift in Sources */,
+				D23070731B4C30D100833167 /* KarutaLocationManager.swift in Sources */,
+				D203D3141B3E739600FC9DB8 /* Const.swift in Sources */,
+				D27BB9D41B36F4A900F8D902 /* MainViewController.swift in Sources */,
+				D292F7391B92DFFC005700AE /* Utils.swift in Sources */,
+				D2092A341B64D721008046D9 /* Restaurant.swift in Sources */,
+				D2DD65A01B7714CA0046A50C /* TopResultCard.swift in Sources */,
+				D24B29241B78775300419B9B /* RestaurantDetailViewController.swift in Sources */,
+				D28A7A0C1B47AE900025371A /* CardView.swift in Sources */,
+				D24B292E1B7895DA00419B9B /* TutorialViewController.swift in Sources */,
+				D2DD65A21B7714DA0046A50C /* OtherResultCard.swift in Sources */,
 				D27BB9D21B36F4A900F8D902 /* AppDelegate.swift in Sources */,
+				D24B291F1B772EFF00419B9B /* ResultViewController.swift in Sources */,
+				D24B29411B79CC1D00419B9B /* CardProgressViewController.swift in Sources */,
+				D24B29211B78748A00419B9B /* ResultCardBase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,7 +428,183 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		D2092A2E1B637460008046D9 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D2092A2D1B637460008046D9 /* Base */,
+				D2092A2F1B637484008046D9 /* ja */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
+		D2092A1F1B6351F7008046D9 /* Debug_fixed_location */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug_fixed_location;
+		};
+		D2092A201B6351F7008046D9 /* Debug_fixed_location */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D2092A261B6356B5008046D9 /* Pods-Karuta.debug_fixed_location.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = Karuta/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DDEBUG -DFIXED_LOCATION";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Karuta/Karuta-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug_fixed_location;
+		};
+		D2092A211B6351F7008046D9 /* Debug_fixed_location */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D2092A261B6356B5008046D9 /* Pods-Karuta.debug_fixed_location.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = KarutaTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Karuta.app/Karuta";
+			};
+			name = Debug_fixed_location;
+		};
+		D2092A221B635211008046D9 /* Release_fixed_location */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Ounchecked";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release_fixed_location;
+		};
+		D2092A231B635211008046D9 /* Release_fixed_location */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D2092A281B6356FE008046D9 /* Pods-Karuta.release_fixed_location.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_OPTIMIZATION_LEVEL = s;
+				INFOPLIST_FILE = Karuta/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DRELEASE -DFIXED_LOCATION";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Karuta/Karuta-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Ounchecked";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release_fixed_location;
+		};
+		D2092A241B635211008046D9 /* Release_fixed_location */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D2092A281B6356FE008046D9 /* Pods-Karuta.release_fixed_location.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = KarutaTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Karuta.app/Karuta";
+			};
+			name = Release_fixed_location;
+		};
 		D27BB9E91B36F4A900F8D902 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -339,7 +641,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -371,15 +673,17 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Ounchecked";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -390,10 +694,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Karuta/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DDEBUG";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Karuta/Karuta-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -403,15 +716,26 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_OPTIMIZATION_LEVEL = s;
 				INFOPLIST_FILE = Karuta/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DRELEASE";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Karuta/Karuta-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Ounchecked";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
 		D27BB9EF1B36F4A900F8D902 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 375106292F5446FE65E648DD /* Pods-Karuta.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -431,6 +755,7 @@
 		};
 		D27BB9F01B36F4A900F8D902 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3B06ABC94A9E1B8E1D89BFDB /* Pods-Karuta.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -451,7 +776,9 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D27BB9E91B36F4A900F8D902 /* Debug */,
+				D2092A1F1B6351F7008046D9 /* Debug_fixed_location */,
 				D27BB9EA1B36F4A900F8D902 /* Release */,
+				D2092A221B635211008046D9 /* Release_fixed_location */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -460,7 +787,9 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D27BB9EC1B36F4A900F8D902 /* Debug */,
+				D2092A201B6351F7008046D9 /* Debug_fixed_location */,
 				D27BB9ED1B36F4A900F8D902 /* Release */,
+				D2092A231B635211008046D9 /* Release_fixed_location */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -469,7 +798,9 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D27BB9EF1B36F4A900F8D902 /* Debug */,
+				D2092A211B6351F7008046D9 /* Debug_fixed_location */,
 				D27BB9F01B36F4A900F8D902 /* Release */,
+				D2092A241B635211008046D9 /* Release_fixed_location */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
