@@ -62,7 +62,18 @@ class OtherResultCard: ResultCardBase {
         // 値段ラベル
         var priceLabel = UILabel()
         var replacedString = self.priceRange.stringByReplacingOccurrencesOfString("  +", withString: "\n", options: NSStringCompareOptions.RegularExpressionSearch, range: nil)
-        priceLabel.text = replacedString
+        
+        let prices = replacedString.componentsSeparatedByString("\n")
+        
+        if (prices.count<2) {
+            if (prices[0].isEmpty) {
+                priceLabel.text = NSLocalizedString("CardNoPriceInfoText", comment: "")
+            } else {
+                priceLabel.text = prices[0]
+            }
+        } else {
+            priceLabel.text = prices[1] + "\n" + prices[0]
+        }
         priceLabel.numberOfLines = 2
         priceLabel.sizeToFit()
         priceLabel.textColor = self.borderColor
@@ -77,7 +88,7 @@ class OtherResultCard: ResultCardBase {
         
         // 距離ラベル
         var distanceLabel = UILabel()
-        distanceLabel.text = "ここから\(Int(self.distance))m"
+        distanceLabel.text = String(format: NSLocalizedString("CardDistanceFromText", comment: ""), Int(self.distance))
         distanceLabel.font = UIFont(name: Const.KARUTA_FONT_NORMAL, size: 9)
         distanceLabel.numberOfLines = 1
         distanceLabel.sizeToFit()

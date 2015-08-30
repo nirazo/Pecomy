@@ -23,3 +23,5 @@
 "CloseTutorial" = "はじめる";
 "CardLikeText" = "行きたい！";
 "CardDislikeText" = "イマイチ...";
+"CardDistanceFromText" = "ここから%d m";
+"CardNoPriceInfoText" = "値段情報がありません";

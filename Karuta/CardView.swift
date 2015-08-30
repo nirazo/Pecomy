@@ -101,7 +101,7 @@ class CardView: MDCSwipeToChooseView {
             y: CGRectGetMaxY(restaurantNameLabel.frame),
             width: restaurantNameLabel.frame.width,
             height: restaurantNameLabel.frame.height))
-        distanceLabel.text = "ここから\(Int(self.distance))m"
+        distanceLabel.text =  String(format: NSLocalizedString("CardDistanceFromText", comment: ""), Int(self.distance))
         distanceLabel.font = UIFont(name: distanceLabel.font.fontName, size: 12)
         distanceLabel.numberOfLines = 0
         distanceLabel.sizeToFit()
@@ -114,8 +114,21 @@ class CardView: MDCSwipeToChooseView {
             y: CGRectGetMaxY(distanceLabel.frame),
             width: restaurantNameLabel.frame.width,
             height: (self.frame.height - CGRectGetMaxY(distanceLabel.frame))))
+        
         var replacedString = self.priceRange.stringByReplacingOccurrencesOfString("  +", withString: "\n", options: NSStringCompareOptions.RegularExpressionSearch, range: nil)
-        priceLabel.text = replacedString
+        
+        let prices = replacedString.componentsSeparatedByString("\n")
+        
+        if (prices.count<2) {
+            if (prices[0].isEmpty) {
+                priceLabel.text = NSLocalizedString("CardNoPriceInfoText", comment: "")
+            } else {
+                priceLabel.text = prices[0]
+            }
+        } else {
+            priceLabel.text = prices[1] + "\n" + prices[0]
+        }
+        
         priceLabel.numberOfLines = 2
         priceLabel.sizeToFit()
         priceLabel.textColor = Const.KARUTA_THEME_COLOR
