@@ -50,7 +50,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "enterForeground:", name:"applicationWillEnterForeground", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "enterForeground:", name:Const.WILL_ENTER_FOREGROUND_KEY, object: nil)
         
         self.navigationItem.title = Const.KARUTA_TITLE
         
@@ -135,20 +135,19 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
         self.loadingIndicator.activityIndicatorViewStyle = .WhiteLarge
         self.loadingIndicator.center = self.view.center
         self.loadingIndicator.hidesWhenStopped = true
-        self.view.addSubview(self.loadingIndicator)
-        
-        self.acquireFirstCard()
+        self.view.addSubview(self.loadingIndicator)        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        if (self.currentLatitude == nil || self.currentLongitude == nil) {
+            self.acquireFirstCard()
+        }
     }
     
     // observer
     func enterForeground(notification: NSNotification){
         if self.currentLatitude == nil || self.currentLongitude == nil {
-            self.acquireFirstCard()
-        }
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        if (self.currentLatitude == nil || self.currentLongitude == nil) {
             self.acquireFirstCard()
         }
     }
