@@ -27,9 +27,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window!.rootViewController = navVC
         } else {
             // 初回起動
-            NSUserDefaults.standardUserDefaults().setBool(true, forKey: Const.UD_KEY_HAS_LAUNCHED)
-            NSUserDefaults.standardUserDefaults().synchronize()
-            
             let viewController = TutorialViewController()
             self.window?.rootViewController = viewController
         }

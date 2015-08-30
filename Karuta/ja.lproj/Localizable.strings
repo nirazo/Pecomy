@@ -6,6 +6,7 @@
   Copyright (c) 2015年 Karuta. All rights reserved.
 */
 "OK" = "OK";
+"Back" = "戻る";
 "LocationAlertTitle" = "位置情報サービスが無効です";
 "LocationAlertMessage" = "Karutaを使用するには、『プライバシー > 位置情報サービス』より位置情報サービスの利用をオンにしてください。";
 "LocationAlertSettingButtonTitle" = "設定";

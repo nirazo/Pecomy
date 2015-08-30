@@ -68,6 +68,9 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
         navVC.navigationBar.barTintColor = Const.KARUTA_THEME_COLOR
         navVC.modalTransitionStyle = UIModalTransitionStyle.CoverVertical
         
+        NSUserDefaults.standardUserDefaults().setBool(true, forKey: Const.UD_KEY_HAS_LAUNCHED)
+        NSUserDefaults.standardUserDefaults().synchronize()
+        
         self.presentViewController(navVC, animated: true, completion: nil)
     }
 

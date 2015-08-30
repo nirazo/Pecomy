@@ -12,7 +12,7 @@ import SwiftyJSON
 import MDCSwipeToChoose
 import SnapKit
 
-class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLocationManagerProtocol {
+class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLocationManagerDelegate {
     
     let PROGRESS_HEIGHT: CGFloat = 8.0
     let FOOTER_HEIGHT: CGFloat = 34.0
@@ -92,6 +92,8 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
         
         // プログレスバー
         self.addChildViewController(self.progressViewController)
+        self.progressViewController.didMoveToParentViewController(self)
+        
         self.view.addSubview(self.progressViewController.view)
         self.progressViewController.view.snp_makeConstraints { (make) in
             make.left.equalTo(self.view)
@@ -168,28 +170,18 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     // MARK: - Card related methods
     func acquireFirstCard() {
         self.locationManager.delegate = self
-        self.locationManager.fetchWithCompletion({ (location) in
-            self.currentLatitude = Double(location!.coordinate.latitude);
-            self.currentLongitude = Double(location!.coordinate.longitude);
+        self.locationManager.fetchWithCompletion({ [weak self] (location) in
+            self!.currentLatitude = Double(location!.coordinate.latitude);
+            self!.currentLongitude = Double(location!.coordinate.longitude);
             
-            self.acquireCardWithLatitude(Double(self.currentLatitude!),
-                longitude: Double(self.currentLongitude!),
-                like: nil,
-                syncId: nil,
+            self!.acquireCardWithLatitude(Double(self!.currentLatitude!),
+                longitude: Double(self!.currentLongitude!),
                 reset: true,
                 success: {(Bool) in
                     // とりあえず直で2回呼びます
-                    self.acquireCardWithLatitude(Double(self.currentLatitude!),
-                        longitude: Double(self.currentLongitude!),
-                        like: nil,
-                        syncId: nil,
-                        reset: false,
-                        success: {(Bool) in
-                            
-                        }
-                        ,
-                        failure: {(NSError) in
-                        }
+                    self!.acquireCardWithLatitude(Double(self!.currentLatitude!),
+                        longitude: Double(self!.currentLongitude!),
+                        reset: false
                     )
                 }
                 ,
@@ -204,7 +196,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     /**
     カードを取得
     */
-    func acquireCardWithLatitude(latitude: Double, longitude: Double, like: String?, syncId: String?, reset: Bool, success: (Bool)->(), failure: (NSError)->()) -> Bool {
+    func acquireCardWithLatitude(latitude: Double, longitude: Double, like: String? = nil, syncId: String? = nil, reset: Bool, success: (Bool)->() = {(Bool) in}, failure: (NSError)->() = {(NSError) in}) {
         var params: Dictionary<String, AnyObject> = [
             "device_id" : Const.DEVICE_ID,
             "latitude" : latitude,
@@ -213,10 +205,10 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
         ]
         
         if (syncId != nil) {
-            params.updateValue(syncId!, forKey: "sync_id")
+            params["sync_id"] = syncId!
         }
         if ((like) != nil) {
-            params.updateValue(like!, forKey: "answer")
+            params["answer"] = like!
         }
         
         var hasResult = false;
@@ -276,7 +268,6 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
                 failure(error!)
             }
         }
-        return hasResult
     }
     
     // カードを表示
@@ -364,7 +355,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
             "latitude" : self.currentLatitude!,
             "longitude" : self.currentLongitude!
         ]
-        Alamofire.request(.GET, Const.API_RESULT_BASE, parameters: params, encoding: .URL).responseJSON {(request, response, data, error) in
+        Alamofire.request(.GET, Const.API_RESULT_BASE, parameters: params, encoding: .URL).responseJSON {[weak self](request, response, data, error) in
             var json = JSON.nullJSON
             if error == nil && data != nil {
                 json = SwiftyJSON.JSON(data!)
@@ -393,7 +384,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
                     // nothing（404の場合、空配列をresultVCに渡し、0件時と同様に処理する）
                 }
                 // 結果表示
-                self.displayResultViewWithShopList(restaurants)
+                self!.displayResultViewWithShopList(restaurants)
             } else {
             }
         }
@@ -401,9 +392,9 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     
     func displayResultViewWithShopList(restaurants: [Restaurant]) {
         var resultVC = ResultViewController(restaurants: restaurants)
-        let backButton = UIBarButtonItem(title: "戻る", style: .Plain, target: nil, action: nil)
+        let backButton = UIBarButtonItem(title: NSLocalizedString("Back", comment: ""), style: .Plain, target: nil, action: nil)
         self.navigationItem.backBarButtonItem = backButton
-        resultVC.navigationItem.title = "あなたのBEST"
+        resultVC.navigationItem.title = NSLocalizedString("YourBest", comment: "")
         
         self.reset()
         
@@ -466,10 +457,10 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
             self.progressViewController.progressWithRatio(self.currentProgress)
         }
         self.acquireCardWithLatitude(self.currentLatitude!, longitude: self.currentLongitude!, like: answer, syncId: cardView.syncID, reset: false,
-            success: {(hasResult: Bool) in
+            success: {[weak self](hasResult: Bool) in
                 if (hasResult) {
-                    if (!self.isResultDisplayedOnce) {
-                        self.acquireResults()
+                    if (!self!.isResultDisplayedOnce) {
+                        self!.acquireResults()
                     }
                 }
             }, failure: {(error: NSError) in
@@ -496,8 +487,8 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
             message: NSLocalizedString("LocationRetryAlertMessage", comment: ""),
             preferredStyle: .Alert)
         let retryAction = UIAlertAction(title: NSLocalizedString("LocationRetryAlertRetryButtonTitle", comment: ""),
-            style: .Default, handler: { (action) in
-                self.acquireFirstCard()
+            style: .Default, handler: { [weak self](action) in
+                self!.acquireFirstCard()
         })
         alertController.addAction(retryAction)
         presentViewController(alertController, animated: true, completion: nil)
