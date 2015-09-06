@@ -1,0 +1,24 @@
+/* 
+  Localizable.strings
+  Karuta
+
+  Created by Kenzo on 2015/07/25.
+  Copyright (c) 2015年 Karuta. All rights reserved.
+*/
+"OK" = "OK";
+"LocationAlertTitle" = "Location service is not allowed";
+"LocationAlertMessage" = "Please turn on the location service to use Karuta.";
+"LocationAlertSettingButtonTitle" = "Setting";
+"LocationAlertCancelButtonTitle" = "Cancel";
+"LocationRetryAlertTitle" = "Failed to get location";
+"LocationRetryAlertMessage" = "Please try again";
+"LocationRetryAlertRetryButtonTitle" = "Retry";
+"OutOfRangeAlertTitle" = "Cannot find restaurant";
+"OutOfRangeAlertMessage" = "Now you can only use Karuta in Tokyo area. Please use this app in Tokyo.";
+"NoResultAlertTitle" = "Cannot find result";
+"NoResultAlertMessage" = "Karuta cannot find restaurant for you around here. Please try again after changing time or place.";
+"SearchingRestaurant" = "Searching your favorite restaurant...";
+"YourBest" = "Your best";
+"CloseTutorial" = "start";
+"CardLikeText" = "Like!";
+"CardDislikeText" = "Unn..";
