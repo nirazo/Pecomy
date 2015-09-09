@@ -11,6 +11,7 @@ import Alamofire
 import SwiftyJSON
 import MDCSwipeToChoose
 import SnapKit
+import CoreLocation
 
 class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLocationManagerDelegate {
     
@@ -147,8 +148,35 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     
     // observer
     func enterForeground(notification: NSNotification){
+        println("enterForegtound!!")
         if self.currentLatitude == nil || self.currentLongitude == nil {
             self.acquireFirstCard()
+        } else {
+            println("get location!!")
+            // 前回実施時の距離から特定の距離以上離れていたらポップアップを出してリトライ
+            var loadingView = LoadingView(frame: CGRectZero)
+            self.view.addSubview(loadingView)
+            loadingView.snp_makeConstraints { (make) in
+                make.width.equalTo(self.view)
+                make.height.equalTo(self.view)
+                make.centerX.equalTo(self.view)
+            }
+            
+            self.locationManager.fetchWithCompletion({ [weak self] (location) in
+                println("current: \(self?.currentLatitude) \(self?.currentLongitude)")
+                println("succeeded to get location!!: \(location!.coordinate.latitude) \(location!.coordinate.longitude)")
+                loadingView.removeFromSuperview()
+                let previousLocation = CLLocation(latitude: self!.currentLatitude!, longitude: self!.currentLongitude!)
+                if (Utils.distanceBetweenLocations(previousLocation, to: location!) > Const.RETRY_DISTANCE) {
+                    self?.reset()
+                    self!.currentLatitude = Double(location!.coordinate.latitude);
+                    self!.currentLongitude = Double(location!.coordinate.longitude);
+                    self?.acquireFirstCardsWithLocation(self!.currentLatitude!, longitude: self!.currentLongitude!)
+                }
+                
+                }, failure: { (error) in
+                    self.showRetryToGetLocationAlert()
+            })
         }
     }
     
@@ -172,24 +200,27 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
         self.locationManager.fetchWithCompletion({ [weak self] (location) in
             self!.currentLatitude = Double(location!.coordinate.latitude);
             self!.currentLongitude = Double(location!.coordinate.longitude);
-            
-            self!.acquireCardWithLatitude(Double(self!.currentLatitude!),
-                longitude: Double(self!.currentLongitude!),
-                reset: true,
-                success: {(Bool) in
-                    // とりあえず直で2回呼びます
-                    self!.acquireCardWithLatitude(Double(self!.currentLatitude!),
-                        longitude: Double(self!.currentLongitude!),
-                        reset: false
-                    )
-                }
-                ,
-                failure: {(NSError) in
-                }
-            )
-        }, failure: { (error) in
+            self?.acquireFirstCardsWithLocation(self!.currentLatitude!, longitude: self!.currentLongitude!)
+            }, failure: { (error) in
             self.showRetryToGetLocationAlert()
         })
+    }
+    
+    func acquireFirstCardsWithLocation(latitude: Double, longitude: Double) {
+        self.acquireCardWithLatitude(latitude,
+            longitude: longitude,
+            reset: true,
+            success: {(Bool) in
+                // とりあえず直で2回呼びます
+                self.acquireCardWithLatitude(latitude,
+                    longitude: longitude,
+                    reset: false
+                )
+            }
+            ,
+            failure: {(NSError) in
+            }
+        )
     }
     
     /**

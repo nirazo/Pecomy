@@ -77,7 +77,9 @@ class KarutaLocationManager: NSObject, CLLocationManagerDelegate {
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         if let location = locations[0] as? CLLocation {
-            didCompleteWithSuccess(location)
+            if (-(location.timestamp.timeIntervalSinceNow) < 15.0) {
+                didCompleteWithSuccess(location)
+            }
         } else {
             didCompleteWithError(NSError(domain: self.classForCoder.description(),
                 code: KarutaLocationManagerErrors.InvalidLocation.rawValue,

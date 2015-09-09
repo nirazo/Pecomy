@@ -16,14 +16,21 @@ struct Const {
     #elseif RELEASE
         static let API_CARD_BASE = "http://karuta.me/card"
         static let API_RESULT_BASE = "http://karuta.me/results"
+    
+    // yokomoto
+//    static let API_CARD_BASE = "http://karuta.me:10091/card"
+//    static let API_RESULT_BASE = "http://karuta.me:10091/results"
+    // sho
+//    static let API_CARD_BASE = "http://192.168.10.80:10090/card"
+//    static let API_RESULT_BASE = "http://192.168.10.80:10090/results"
     #else
         static let API_CARD_BASE = "http://karuta.me/card"
         static let API_RESULT_BASE = "http://karuta.me/results"
     #endif
     
     #if FIXED_LOCATION
-        static let FIXED_LATITUDE: Double = 35.607762
-        static let FIXED_LONGITUDE: Double = 139.734562
+        static let FIXED_LATITUDE: Double = 35.661959
+        static let FIXED_LONGITUDE: Double = 139.699789
     #else
         static let FIXED_LATITUDE: Double = 0.0
         static let FIXED_LONGITUDE: Double = 0.0
@@ -51,6 +58,9 @@ struct Const {
     
     // userdefaultsのキー
     static let UD_KEY_HAS_LAUNCHED = "HasLaunchedOnce"
+    
+    // 距離関連
+    static let RETRY_DISTANCE : Double = 500.0
     
     // ネットワーク周り
     static let ALAMOFIRE_TIMEOUT_SEC: Double = 12.0

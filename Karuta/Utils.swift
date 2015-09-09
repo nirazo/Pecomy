@@ -7,9 +7,14 @@
 //
 
 import Foundation
+import CoreLocation
 
 class Utils {
     class func acquireDeviceID() -> String {
         return UIDevice.currentDevice().identifierForVendor.UUIDString
+    }
+    
+    class func distanceBetweenLocations(from: CLLocation, to: CLLocation) -> CLLocationDistance {
+        return to.distanceFromLocation(from)
     }
 }
