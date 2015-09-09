@@ -64,8 +64,13 @@ class KarutaLocationManager: NSObject, CLLocationManagerDelegate {
         switch status {
         case .AuthorizedWhenInUse:
             self.locationManager!.startUpdatingLocation()
+            break
         case .Denied:
             self.delegate.showLocationEnableAlert()
+            break
+        case .NotDetermined:
+            self.requestPermission()
+            break
         default:
             locationManager!.requestWhenInUseAuthorization()
         }
@@ -99,7 +104,10 @@ class KarutaLocationManager: NSObject, CLLocationManagerDelegate {
         
         locationManager = CLLocationManager()
         locationManager!.delegate = self
-        
+    }
+    
+    
+    private func requestPermission() {
         if (NSBundle.mainBundle().objectForInfoDictionaryKey("NSLocationWhenInUseUsageDescription") != nil) {
             locationManager!.requestWhenInUseAuthorization()
         } else if (NSBundle.mainBundle().objectForInfoDictionaryKey("NSLocationAlwaysUsageDescription") != nil) {
@@ -107,6 +115,7 @@ class KarutaLocationManager: NSObject, CLLocationManagerDelegate {
         } else {
             fatalError("To use location in iOS8 you need to define either NSLocationWhenInUseUsageDescription or NSLocationAlwaysUsageDescription in the app bundle's Info.plist file")
         }
+
     }
     
 }
