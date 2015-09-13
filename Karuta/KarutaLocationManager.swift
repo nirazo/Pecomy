@@ -62,17 +62,17 @@ class KarutaLocationManager: NSObject, CLLocationManagerDelegate {
     
     func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         switch status {
-        case .AuthorizedWhenInUse:
-            self.locationManager!.startUpdatingLocation()
-            break
-        case .Denied:
-            self.delegate.showLocationEnableAlert()
-            break
         case .NotDetermined:
             self.requestPermission()
             break
+        case .AuthorizedWhenInUse, .AuthorizedAlways:
+            self.locationManager!.startUpdatingLocation()
+            break
+        case .Denied, .Restricted:
+            self.delegate.showLocationEnableAlert()
+            break
         default:
-            locationManager!.requestWhenInUseAuthorization()
+            break
         }
     }
     

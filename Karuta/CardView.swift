@@ -27,7 +27,7 @@ class CardView: MDCSwipeToChooseView {
     var distance: Double = 0.0
     var imageUrls = [NSURL]()
     var restaurantImageViews = [UIImageView]()
-    var contentsView = UIView()
+    let contentsView = UIView()
     
     // カードがフリックされた（操作が無効の状態）になっているかのフラグ
     var isFlicked = false
@@ -61,10 +61,6 @@ class CardView: MDCSwipeToChooseView {
 
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func drawRect(rect: CGRect) {
-        super.drawRect(rect)
     }
     
     func setupSubViews() {

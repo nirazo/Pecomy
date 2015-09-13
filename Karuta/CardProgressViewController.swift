@@ -10,7 +10,7 @@ import UIKit
 
 class CardProgressViewController: UIViewController {
 
-    var progressView: UIView
+    let progressView: UIView
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         self.progressView = UIView()

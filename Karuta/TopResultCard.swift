@@ -19,11 +19,11 @@ class TopResultCard: ResultCardBase {
     private let TEXT_MARGIN_X: CGFloat = 10.0
     private let TEXT_MARGIN_Y: CGFloat = 10.0
     
-    var restaurantNameLabel = UILabel()
-    var priceLabel = UILabel()
-    var distanceLabel = UILabel()
-    var arrawLabel = UILabel()
-    var rankingLabel = UIImageView(image: UIImage(named: "first"))
+    let restaurantNameLabel = UILabel()
+    let priceLabel = UILabel()
+    let distanceLabel = UILabel()
+    let arrawLabel = UILabel()
+    let rankingLabel = UIImageView(image: UIImage(named: "first"))
     
     init(frame: CGRect, restaurant: Restaurant) {
         super.init(frame: frame, restaurant: restaurant, imageNum: NUM_OF_IMAGES, color: Const.RANKING_TOP_COLOR)
@@ -32,10 +32,6 @@ class TopResultCard: ResultCardBase {
     
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func drawRect(rect: CGRect) {
-        super.drawRect(rect)
     }
     
     func setupSubViews() {

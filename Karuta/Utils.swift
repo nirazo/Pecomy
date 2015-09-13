@@ -14,7 +14,9 @@ class Utils {
         return UIDevice.currentDevice().identifierForVendor.UUIDString
     }
     
-    class func distanceBetweenLocations(from: CLLocation, to: CLLocation) -> CLLocationDistance {
+    class func distanceBetweenLocations(fromLat: Double, fromLon: Double, toLat: Double, toLon: Double) -> CLLocationDistance {
+        let from = CLLocation(latitude: fromLat, longitude: fromLon)
+        let to = CLLocation(latitude: toLat, longitude: toLon)
         return to.distanceFromLocation(from)
     }
 }

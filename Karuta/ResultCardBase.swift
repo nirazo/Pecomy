@@ -22,8 +22,8 @@ class ResultCardBase: UIView {
     var url = NSURL()
     var restaurantImageViews = [UIImageView]()
     var borderColor: UIColor
-    var contentView = UIView()
-    var shadow = UIView()
+    let contentView = UIView()
+    let shadow = UIView()
 
     init(frame: CGRect, restaurant: Restaurant, imageNum: Int, color: UIColor) {
         self.shopID = restaurant.shopID

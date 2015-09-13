@@ -27,10 +27,6 @@ class OtherResultCard: ResultCardBase {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func drawRect(rect: CGRect) {
-        super.drawRect(rect)
-    }
-    
     func setupView() {
         for i in 0..<self.NUM_OF_IMAGES {
             self.contentView.addSubview(self.restaurantImageViews[i])
@@ -45,7 +41,7 @@ class OtherResultCard: ResultCardBase {
         }
         
         // レストラン名のラベル
-        var restaurantNameLabel = UILabel()
+        let restaurantNameLabel = UILabel()
         restaurantNameLabel.text = self.shopName
         restaurantNameLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 10)
         restaurantNameLabel.numberOfLines = 2
@@ -60,8 +56,8 @@ class OtherResultCard: ResultCardBase {
         }
         
         // 値段ラベル
-        var priceLabel = UILabel()
-        var replacedString = self.priceRange.stringByReplacingOccurrencesOfString("  +", withString: "\n", options: NSStringCompareOptions.RegularExpressionSearch, range: nil)
+        let priceLabel = UILabel()
+        let replacedString = self.priceRange.stringByReplacingOccurrencesOfString("  +", withString: "\n", options: NSStringCompareOptions.RegularExpressionSearch, range: nil)
         
         let prices = replacedString.componentsSeparatedByString("\n")
         
@@ -87,7 +83,7 @@ class OtherResultCard: ResultCardBase {
         }
         
         // 距離ラベル
-        var distanceLabel = UILabel()
+        let distanceLabel = UILabel()
         distanceLabel.text = String(format: NSLocalizedString("CardDistanceFromText", comment: ""), Int(self.distance))
         distanceLabel.font = UIFont(name: Const.KARUTA_FONT_NORMAL, size: 9)
         distanceLabel.numberOfLines = 1
@@ -102,8 +98,8 @@ class OtherResultCard: ResultCardBase {
         }
         
         // ランキングラベル
-        var rankingLabel = UIImageView(frame: CGRectMake(0, 0, 35, 35))
-        var image: UIImage
+        let rankingLabel = UIImageView(frame: CGRectMake(0, 0, 35, 35))
+        let image: UIImage
         switch self.rank {
         case 1:
             image = UIImage(named: "first")!

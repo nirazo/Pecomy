@@ -11,7 +11,6 @@ import Alamofire
 import SwiftyJSON
 import MDCSwipeToChoose
 import SnapKit
-import CoreLocation
 
 class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLocationManagerDelegate {
     
@@ -25,7 +24,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     let locationManager = KarutaLocationManager()
     let progressViewController = CardProgressViewController()
     
-    var contentView = UIView()
+    let contentView = UIView()
     
     var isLocationAcquired = false
     var canCallNextCard = true
@@ -37,7 +36,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     
     var currentProgress: Float = 0.0
     
-    var loadingIndicator = UIActivityIndicatorView()
+    let loadingIndicator = UIActivityIndicatorView()
     
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
@@ -166,8 +165,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
                 println("current: \(self?.currentLatitude) \(self?.currentLongitude)")
                 println("succeeded to get location!!: \(location!.coordinate.latitude) \(location!.coordinate.longitude)")
                 loadingView.removeFromSuperview()
-                let previousLocation = CLLocation(latitude: self!.currentLatitude!, longitude: self!.currentLongitude!)
-                if (Utils.distanceBetweenLocations(previousLocation, to: location!) > Const.RETRY_DISTANCE) {
+                if (Utils.distanceBetweenLocations(self!.currentLatitude!, fromLon: self!.currentLongitude!, toLat: location!.coordinate.latitude, toLon: location!.coordinate.longitude) > Const.RETRY_DISTANCE) {
                     self?.reset()
                     self!.currentLatitude = Double(location!.coordinate.latitude);
                     self!.currentLongitude = Double(location!.coordinate.longitude);

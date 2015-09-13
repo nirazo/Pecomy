@@ -10,7 +10,7 @@ import UIKit
 
 class LoadingView: UIView {
 
-    var loadingIndicator = UIActivityIndicatorView()
+    let loadingIndicator = UIActivityIndicatorView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -33,9 +33,5 @@ class LoadingView: UIView {
             make.center.equalTo(self)
         }
         self.loadingIndicator.startAnimating()
-    }
-    
-    override func drawRect(rect: CGRect) {
-        super.drawRect(rect)
     }
 }
