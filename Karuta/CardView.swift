@@ -111,20 +111,7 @@ class CardView: MDCSwipeToChooseView {
             width: restaurantNameLabel.frame.width,
             height: (self.frame.height - CGRectGetMaxY(distanceLabel.frame))))
         
-        var replacedString = self.priceRange.stringByReplacingOccurrencesOfString("  +", withString: "\n", options: NSStringCompareOptions.RegularExpressionSearch, range: nil)
-        
-        let prices = replacedString.componentsSeparatedByString("\n")
-        
-        if (prices.count<2) {
-            if (prices[0].isEmpty) {
-                priceLabel.text = NSLocalizedString("CardNoPriceInfoText", comment: "")
-            } else {
-                priceLabel.text = prices[0]
-            }
-        } else {
-            priceLabel.text = prices[1] + "\n" + prices[0]
-        }
-        
+        priceLabel.text = Utils.formatPriceString(self.priceRange)
         priceLabel.numberOfLines = 2
         priceLabel.sizeToFit()
         priceLabel.textColor = Const.KARUTA_THEME_COLOR

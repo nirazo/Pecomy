@@ -57,19 +57,7 @@ class OtherResultCard: ResultCardBase {
         
         // 値段ラベル
         let priceLabel = UILabel()
-        let replacedString = self.priceRange.stringByReplacingOccurrencesOfString("  +", withString: "\n", options: NSStringCompareOptions.RegularExpressionSearch, range: nil)
-        
-        let prices = replacedString.componentsSeparatedByString("\n")
-        
-        if (prices.count<2) {
-            if (prices[0].isEmpty) {
-                priceLabel.text = NSLocalizedString("CardNoPriceInfoText", comment: "")
-            } else {
-                priceLabel.text = prices[0]
-            }
-        } else {
-            priceLabel.text = prices[1] + "\n" + prices[0]
-        }
+        priceLabel.text = Utils.formatPriceString(self.priceRange)
         priceLabel.numberOfLines = 2
         priceLabel.sizeToFit()
         priceLabel.textColor = self.borderColor
