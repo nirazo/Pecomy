@@ -34,8 +34,8 @@ class ResultCardBase: UIView {
         self.url = restaurant.url
         self.borderColor = color
         
-        for i in 0..<imageNum {
-            var imageView = UIImageView(image: UIImage(named: "noimage"))
+        for _ in 0..<imageNum {
+            let imageView = UIImageView(image: UIImage(named: "noimage"))
             imageView.contentMode = .ScaleAspectFill
             imageView.clipsToBounds = true
             self.restaurantImageViews.append(imageView)
@@ -69,7 +69,7 @@ class ResultCardBase: UIView {
         self.setupViews()
     }
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     

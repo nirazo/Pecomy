@@ -39,7 +39,7 @@ class KarutaLocationManager: NSObject, CLLocationManagerDelegate {
     private func didCompleteWithSuccess(location: CLLocation?) {
         locationManager?.stopUpdatingLocation()
         #if FIXED_LOCATION
-            var stubLocation = CLLocation(latitude: Const.FIXED_LATITUDE, longitude: Const.FIXED_LONGITUDE)
+            let stubLocation = CLLocation(latitude: Const.FIXED_LATITUDE, longitude: Const.FIXED_LONGITUDE)
             didCompleteWithSuccess?(location: stubLocation)
         #else
             didCompleteWithSuccess?(location: location)
@@ -51,7 +51,7 @@ class KarutaLocationManager: NSObject, CLLocationManagerDelegate {
     private func didCompleteWithError(error: NSError?) {
         locationManager?.stopUpdatingLocation()
         #if FIXED_LOCATION
-            var stubLocation = CLLocation(latitude: Const.FIXED_LATITUDE, longitude: Const.FIXED_LONGITUDE)
+            let stubLocation = CLLocation(latitude: Const.FIXED_LATITUDE, longitude: Const.FIXED_LONGITUDE)
             didCompleteWithSuccess?(location: stubLocation)
         #else
             didCompleteWithFailure?(error: error)
@@ -60,7 +60,7 @@ class KarutaLocationManager: NSObject, CLLocationManagerDelegate {
         locationManager = nil
     }
     
-    func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         switch status {
         case .NotDetermined:
             self.requestPermission()
@@ -71,17 +71,15 @@ class KarutaLocationManager: NSObject, CLLocationManagerDelegate {
         case .Denied, .Restricted:
             self.delegate.showLocationEnableAlert()
             break
-        default:
-            break
         }
     }
     
-    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
         didCompleteWithError(error)
     }
     
-    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        if let location = locations[0] as? CLLocation {
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.first {
             if (-(location.timestamp.timeIntervalSinceNow) < 15.0) {
                 didCompleteWithSuccess(location)
             }

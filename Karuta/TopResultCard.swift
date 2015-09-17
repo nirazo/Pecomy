@@ -30,7 +30,7 @@ class TopResultCard: ResultCardBase {
         self.setupSubViews()
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -117,7 +117,7 @@ class TopResultCard: ResultCardBase {
         // ランキングラベル
         rankingLabel.bounds = CGRectMake(0, 0, 45, 45)
         rankingLabel.center = CGPointMake(10, 10)
-        rankingLabel.setTranslatesAutoresizingMaskIntoConstraints(true)
+        rankingLabel.translatesAutoresizingMaskIntoConstraints = true
         self.addSubview(rankingLabel)
         
         

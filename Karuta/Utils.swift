@@ -12,7 +12,7 @@ import CoreLocation
 // 中身が増えてきたらUtilは分けていこうかと
 class Utils {
     class func acquireDeviceID() -> String {
-        return UIDevice.currentDevice().identifierForVendor.UUIDString
+        return UIDevice.currentDevice().identifierForVendor!.UUIDString
     }
     
     class func distanceBetweenLocations(fromLat: Double, fromLon: Double, toLat: Double, toLon: Double) -> CLLocationDistance {
@@ -28,7 +28,7 @@ class Utils {
     みたいな形なので、コレを整形してカードに表記する形にする。
     */
     class func formatPriceString(origPrice: String) -> String {
-        var replacedString = origPrice.stringByReplacingOccurrencesOfString("  +", withString: "\n", options: NSStringCompareOptions.RegularExpressionSearch, range: nil)
+        let replacedString = origPrice.stringByReplacingOccurrencesOfString("  +", withString: "\n", options: NSStringCompareOptions.RegularExpressionSearch, range: nil)
         var formattedPrice = ""
         let prices = replacedString.componentsSeparatedByString("\n")
         if (prices.count < 2) {

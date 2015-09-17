@@ -17,7 +17,7 @@ class CardProgressViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -32,7 +32,7 @@ class CardProgressViewController: UIViewController {
     // 進捗率を渡してプログレスバーを進める（戻す）
     func progressWithRatio(ratio: Float) {
         UIView.animateWithDuration(0.2, animations: { [unowned self] () in
-            var r = ratio > 0.95 ? 0.95 : ratio
+            let r = ratio > 0.95 ? 0.95 : ratio
             self.progressView.frame.size = CGSizeMake(self.view.frame.size.width * CGFloat(r), self.view.frame.size.height)
         })
     }

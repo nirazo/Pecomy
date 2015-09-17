@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // 起動2回目以降
         if (NSUserDefaults.standardUserDefaults().boolForKey(Const.UD_KEY_HAS_LAUNCHED)) {
             let viewController = MainViewController()
-            var navVC = UINavigationController(rootViewController: viewController)
+            let navVC = UINavigationController(rootViewController: viewController)
             self.window!.rootViewController = navVC
         } else {
             // 初回起動
