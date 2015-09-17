@@ -98,11 +98,11 @@ typedef void (^MDCSwipeToChooseOnCancelBlock)(UIView *swipedView);
 @property (nonatomic, copy) MDCSwipeToChooseOnChosenBlock onChosen;
 
 /*!
- + * A callback to be executed when the view is swiped and the swipe is cancelled
- + (i.e. because view:shouldBeChosen: delegate callback returned NO for swiped view).
- + The view that was swiped is passed into this block so that you can restore its
- + state in this callback. May be nil.
- + */
+ * A callback to be executed when the view is swiped and the swipe is cancelled 
+ (i.e. because view:shouldBeChosen: delegate callback returned NO for swiped view).
+ The view that was swiped is passed into this block so that you can restore its 
+ state in this callback. May be nil.
+ */
 @property (nonatomic, copy) MDCSwipeToChooseOnCancelBlock onCancel;
 
 /*!

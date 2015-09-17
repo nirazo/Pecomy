@@ -13,7 +13,7 @@ class ResultViewController: UIViewController {
     // 結果同士のマージン
     let RESULT_MARGIN: CGFloat = 15
 
-    var restaurants: [Restaurant]
+    let restaurants: [Restaurant]
     
     var topResultCard: TopResultCard?
     

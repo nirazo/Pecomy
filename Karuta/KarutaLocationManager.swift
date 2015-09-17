@@ -62,12 +62,17 @@ class KarutaLocationManager: NSObject, CLLocationManagerDelegate {
     
     func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         switch status {
-        case .AuthorizedWhenInUse:
+        case .NotDetermined:
+            self.requestPermission()
+            break
+        case .AuthorizedWhenInUse, .AuthorizedAlways:
             self.locationManager!.startUpdatingLocation()
-        case .Denied:
+            break
+        case .Denied, .Restricted:
             self.delegate.showLocationEnableAlert()
+            break
         default:
-            locationManager!.requestWhenInUseAuthorization()
+            break
         }
     }
     
@@ -77,7 +82,9 @@ class KarutaLocationManager: NSObject, CLLocationManagerDelegate {
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         if let location = locations[0] as? CLLocation {
-            didCompleteWithSuccess(location)
+            if (-(location.timestamp.timeIntervalSinceNow) < 15.0) {
+                didCompleteWithSuccess(location)
+            }
         } else {
             didCompleteWithError(NSError(domain: self.classForCoder.description(),
                 code: KarutaLocationManagerErrors.InvalidLocation.rawValue,
@@ -97,7 +104,10 @@ class KarutaLocationManager: NSObject, CLLocationManagerDelegate {
         
         locationManager = CLLocationManager()
         locationManager!.delegate = self
-        
+    }
+    
+    
+    private func requestPermission() {
         if (NSBundle.mainBundle().objectForInfoDictionaryKey("NSLocationWhenInUseUsageDescription") != nil) {
             locationManager!.requestWhenInUseAuthorization()
         } else if (NSBundle.mainBundle().objectForInfoDictionaryKey("NSLocationAlwaysUsageDescription") != nil) {
@@ -105,6 +115,7 @@ class KarutaLocationManager: NSObject, CLLocationManagerDelegate {
         } else {
             fatalError("To use location in iOS8 you need to define either NSLocationWhenInUseUsageDescription or NSLocationAlwaysUsageDescription in the app bundle's Info.plist file")
         }
+
     }
     
 }

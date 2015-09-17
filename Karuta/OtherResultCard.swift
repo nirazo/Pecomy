@@ -12,59 +12,26 @@ import SDWebImage
 class OtherResultCard: ResultCardBase {
     // 描画系定数
     private let NUM_OF_IMAGES = 1
-    private let CORNER_RADIUS: CGFloat = 5.0
-    private let BORDER_WIDTH: CGFloat = 2.5
     private let TEXT_MARGIN_X: CGFloat = 10.0
     private let TEXT_MARGIN_Y: CGFloat = 5.0
     
     var rank = 0
-    var borderColor = UIColor.clearColor()
     
     init(frame: CGRect, restaurant: Restaurant?, rank: Int) {
-        super.init(frame: frame, restaurant: restaurant!, imageNum: NUM_OF_IMAGES)
         self.rank = rank
-        self.borderColor = Const.KARUTA_RANK_COLOR[rank-1]
+        super.init(frame: frame, restaurant: restaurant!, imageNum: NUM_OF_IMAGES, color: Const.KARUTA_RANK_COLOR[rank-1])
+        self.setupView()
     }
     
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func drawRect(rect: CGRect) {
-        super.drawRect(rect)
-        self.setupView()
-    }
-    
     func setupView() {
-        self.layer.cornerRadius = CORNER_RADIUS
-        self.layer.masksToBounds = false
-        
-        // ドロップシャドウ
-        var shadow = UIView(frame: self.bounds)
-        shadow.layer.masksToBounds = false
-        self.addSubview(shadow)
-        shadow.backgroundColor = UIColor.whiteColor()
-        shadow.layer.cornerRadius = CORNER_RADIUS
-        shadow.layer.shadowOffset = CGSizeMake(0.5, 1.0);
-        shadow.layer.shadowRadius = 0.7;
-        shadow.layer.shadowColor = UIColor.grayColor().CGColor
-        shadow.layer.shadowOpacity = 0.9;
-        
-        // パーツ群を置くビュー
-        self.contentView = UIView(frame: self.bounds)
-        self.contentView.backgroundColor = UIColor.whiteColor()
-        
-        self.contentView.layer.cornerRadius = CORNER_RADIUS
-        self.contentView.layer.masksToBounds = true
-        self.contentView.layer.borderColor = self.borderColor.CGColor
-        self.contentView.layer.borderWidth = BORDER_WIDTH
-        
-        self.addSubview(contentView)
-        
         for i in 0..<self.NUM_OF_IMAGES {
             self.contentView.addSubview(self.restaurantImageViews[i])
         }
-        
+                
         // 画像レイアウト
         self.restaurantImageViews[0].snp_makeConstraints { (make) in
             make.left.equalTo(self)
@@ -74,7 +41,7 @@ class OtherResultCard: ResultCardBase {
         }
         
         // レストラン名のラベル
-        var restaurantNameLabel = UILabel()
+        let restaurantNameLabel = UILabel()
         restaurantNameLabel.text = self.shopName
         restaurantNameLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 10)
         restaurantNameLabel.numberOfLines = 2
@@ -89,9 +56,8 @@ class OtherResultCard: ResultCardBase {
         }
         
         // 値段ラベル
-        var priceLabel = UILabel()
-        var replacedString = self.priceRange.stringByReplacingOccurrencesOfString("  +", withString: "\n", options: NSStringCompareOptions.RegularExpressionSearch, range: nil)
-        priceLabel.text = replacedString
+        let priceLabel = UILabel()
+        priceLabel.text = Utils.formatPriceString(self.priceRange)
         priceLabel.numberOfLines = 2
         priceLabel.sizeToFit()
         priceLabel.textColor = self.borderColor
@@ -105,8 +71,8 @@ class OtherResultCard: ResultCardBase {
         }
         
         // 距離ラベル
-        var distanceLabel = UILabel()
-        distanceLabel.text = "ここから\(Int(self.distance))m"
+        let distanceLabel = UILabel()
+        distanceLabel.text = String(format: NSLocalizedString("CardDistanceFromText", comment: ""), Int(self.distance))
         distanceLabel.font = UIFont(name: Const.KARUTA_FONT_NORMAL, size: 9)
         distanceLabel.numberOfLines = 1
         distanceLabel.sizeToFit()
@@ -120,8 +86,8 @@ class OtherResultCard: ResultCardBase {
         }
         
         // ランキングラベル
-        var rankingLabel = UIImageView(frame: CGRectMake(0, 0, 35, 35))
-        var image: UIImage
+        let rankingLabel = UIImageView(frame: CGRectMake(0, 0, 35, 35))
+        let image: UIImage
         switch self.rank {
         case 1:
             image = UIImage(named: "first")!
