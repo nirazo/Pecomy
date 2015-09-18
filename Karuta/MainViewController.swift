@@ -255,7 +255,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
             case .Success(let data):
                 json = SwiftyJSON.JSON(data)
                 // 店が見つかった場合
-                if (response!.statusCode != Const.STATUS_CODE_CARD_NOT_FOUND) {
+                if (response?.statusCode == 200) {
                     let card: JSON = json["card"]
                     
                     let shopID: String = card["shop_id"].stringValue
@@ -284,7 +284,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
                     
                     hasResult = json["result_available"].bool!
                     success(hasResult)
-                } else {
+                } else if (response?.statusCode == 404) { // カードが見つからない
                     let resetFlg = params["reset"] as! Bool
                     if (resetFlg) {
                         self!.showOutOfRangeAlert()
@@ -293,6 +293,10 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
                             self!.acquireResults()
                         }
                     }
+                } else if (response?.statusCode == 500) { // サーバエラー
+                    self?.showServerErrorAlert()
+                } else {
+                    self!.acquireResults()
                 }
             case .Failure(_, let error):
                 failure(error)
@@ -390,12 +394,11 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
             switch result {
             case .Success(let data):
                 json = SwiftyJSON.JSON(data)
-                print("\(json)")
                 
                 // Restaurantクラスを生成
                 var restaurants = [Restaurant]()
                 
-                if (response!.statusCode != Const.STATUS_CODE_CARD_NOT_FOUND) {
+                if (response?.statusCode == 200) {
                     let results = json["results"]
                     for i in 0..<results.count {
                         let shopID = results[i]["shop_id"].stringValue
@@ -412,14 +415,17 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
                         
                         restaurants.append(Restaurant(shopID: shopID, shopName: shopName, priceRange: priceRange, distance: distance, imageUrls: shopImageUrls, url: url!))
                     }
-                } else {
+                } else if (response?.statusCode == 404) {
                     // nothing（404の場合、空配列をresultVCに渡し、0件時と同様に処理する）
+                } else if (response?.statusCode == 500) {
+                    self?.showServerErrorAlert()
+                    break
                 }
                 // 結果表示
                 self!.displayResultViewWithShopList(restaurants)
                 
             case .Failure(_):
-                print("test")
+                self?.showServerErrorAlert()
             }
         }
     }
@@ -503,7 +509,6 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     }
     
     //MARK: - Alerts
-    
     // アプリの対象範囲外アラート表示
     func showOutOfRangeAlert() {
         let alertController = UIAlertController(title:NSLocalizedString("OutOfRangeAlertTitle", comment: ""),
@@ -527,6 +532,20 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
         alertController.addAction(retryAction)
         presentViewController(alertController, animated: true, completion: nil)
     }
+    
+    // サーバエラー時のアラート表示
+    func showServerErrorAlert() {
+        let alertController = UIAlertController(title:NSLocalizedString("ServerErrorAlertTitle", comment: ""),
+            message: NSLocalizedString("ServerErrorAlertMessage", comment: ""),
+            preferredStyle: .Alert)
+        let okAction = UIAlertAction(title: NSLocalizedString("OK", comment: ""),
+            style: .Default, handler: { [weak self](action) in
+                self!.acquireFirstCard()
+            })
+        alertController.addAction(okAction)
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
     
     //MARK: - Indicators
     func showIndicator() {

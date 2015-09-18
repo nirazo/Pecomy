@@ -16,6 +16,8 @@
 "LocationRetryAlertRetryButtonTitle" = "Retry";
 "OutOfRangeAlertTitle" = "Cannot find restaurant";
 "OutOfRangeAlertMessage" = "Now you can only use Karuta in Tokyo area. Please use this app in Tokyo.";
+"ServerErrorAlertTitle" = "Server Error";
+"ServerErrorAlertMessage" = "Server error occured. Please retry with tapping OK button.";
 "NoResultAlertTitle" = "Cannot find result";
 "NoResultAlertMessage" = "Karuta cannot find restaurant for you around here. Please try again after changing time or place.";
 "SearchingRestaurant" = "Searching your favorite restaurant...";

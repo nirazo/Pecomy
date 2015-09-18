@@ -16,6 +16,8 @@
 "LocationRetryAlertRetryButtonTitle" = "もう一度";
 "OutOfRangeAlertTitle" = "お店が見つかりません";
 "OutOfRangeAlertMessage" = "現在Karutaは東京都のみに対応しております。恐れ入りますが、東京都内でご利用ください。";
+"ServerErrorAlertTitle" = "サーバエラー";
+"ServerErrorAlertMessage" = "サーバエラーが発生しました。OKボタンを押すとレストラン検索が再度始まります。";
 "NoResultAlertTitle" = "結果が見つかりませんでした";
 "NoResultAlertMessage" = "近くにおすすめのお店が見つかりませんでした。時間、場所を変更して再度お試しください。";
 "SearchingRestaurant" = "あなたの好きなお店をサーチ中です";
