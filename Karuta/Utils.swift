@@ -28,7 +28,7 @@ class Utils {
     みたいな形なので、コレを整形してカードに表記する形にする。
     */
     class func formatPriceString(origPrice: String) -> String {
-        let replacedString = origPrice.stringByReplacingOccurrencesOfString("  +", withString: "\n", options: NSStringCompareOptions.RegularExpressionSearch, range: nil)
+        let replacedString = origPrice.stringByReplacingOccurrencesOfString("  +", withString: "\n", options: .RegularExpressionSearch, range: nil)
         var formattedPrice = ""
         let prices = replacedString.componentsSeparatedByString("\n")
         if (prices.count < 2) {
@@ -42,4 +42,18 @@ class Utils {
         }
         return formattedPrice
     }
+    
+    /**
+    * 食べログのURLをスマホサイト用のものに変換する
+    */
+    class func formatURLForSPTabelog(origUrl: String) -> String {
+        let range = origUrl.rangeOfString("tabelog")
+        if range != nil {
+            let replacedString = origUrl.stringByReplacingOccurrencesOfString("tabelog", withString: "s.tabelog", options: NSStringCompareOptions.LiteralSearch, range: range)
+            return replacedString
+        } else {
+            return ""
+        }
+    }
+
 }

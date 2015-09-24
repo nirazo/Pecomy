@@ -8,12 +8,15 @@
 
 import UIKit
 
-class RestaurantDetailViewController: UIViewController {
+class RestaurantDetailViewController: UIViewController, UIWebViewDelegate {
     
     let url: NSURL
+    let loadingIndicator = UIActivityIndicatorView()
     
     init(url: NSURL) {
-        self.url = url
+        // 食べログアプリが入ってたときそっちを開いちゃうので、SPサイトで開くようにする
+        let urlString = Utils.formatURLForSPTabelog(url.absoluteString)
+        self.url = NSURL(string: urlString)!
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -24,14 +27,29 @@ class RestaurantDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let webView = UIWebView(frame: self.view.frame)
+        webView.delegate = self
         self.view.addSubview(webView)
+        // インジケータ
+        self.loadingIndicator.bounds = CGRectMake(0.0, 0.0, 50, 50)
+        self.loadingIndicator.activityIndicatorViewStyle = .Gray
+        self.loadingIndicator.center = webView.center
+        self.loadingIndicator.hidesWhenStopped = true
+        webView.addSubview(self.loadingIndicator)
         let req = NSURLRequest(URL: self.url)
         webView.loadRequest(req)
-        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
 
+    //MARK: UIWebViewDelegate methods
+    func webViewDidStartLoad(webView: UIWebView) {
+        self.loadingIndicator.startAnimating()
+    }
+    
+    func webViewDidFinishLoad(webView: UIWebView) {
+        self.loadingIndicator.stopAnimating()
+    }
+    
 }
