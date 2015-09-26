@@ -42,7 +42,7 @@
  */
 @property (nonatomic, strong) UIView *likedView;
 
-@property (nonatomic, strong) UILabel *likedLabel;
+@property (nonatomic, strong) UIView *likedLabelView;
 
 // likedLabelの枠
 @property (nonatomic, strong) UIView *likedLabelFrame;
@@ -52,7 +52,7 @@
  */
 @property (nonatomic, strong) UIView *nopeView;
 
-@property (nonatomic, strong) UILabel *nopeLabel;
+@property (nonatomic, strong) UIView *nopeLabelView;
 
 // nopeLabelの枠
 @property (nonatomic, strong) UIView *nopeLabelFrame;

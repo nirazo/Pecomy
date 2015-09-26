@@ -42,18 +42,4 @@ class Utils {
         }
         return formattedPrice
     }
-    
-    /**
-    * 食べログのURLをスマホサイト用のものに変換する
-    */
-    class func formatURLForSPTabelog(origUrl: String) -> String {
-        let range = origUrl.rangeOfString("tabelog")
-        if range != nil {
-            let replacedString = origUrl.stringByReplacingOccurrencesOfString("tabelog", withString: "s.tabelog", options: NSStringCompareOptions.LiteralSearch, range: range)
-            return replacedString
-        } else {
-            return ""
-        }
-    }
-
 }

@@ -82,7 +82,7 @@ class CardView: MDCSwipeToChooseView {
         restaurantNameLabel.numberOfLines = 1
         restaurantNameLabel.textColor = Const.KARUTA_THEME_COLOR
         restaurantNameLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 14)
-        self.addSubview(restaurantNameLabel)
+        self.contentView.addSubview(restaurantNameLabel)
         
         // アイコン
         let iconImageView = UIImageView(image: UIImage(named: "rice"))
@@ -90,7 +90,7 @@ class CardView: MDCSwipeToChooseView {
             y: CGRectGetMaxY(self.restaurantImageViews[1].frame) + (self.frame.height - CGRectGetMaxY(self.restaurantImageViews[1].frame))/4,
             width: (self.frame.height - CGRectGetMaxY(self.restaurantImageViews[1].frame))/2,
             height: (self.frame.height - CGRectGetMaxY(self.restaurantImageViews[1].frame))/2)
-        self.addSubview(iconImageView)
+        self.contentView.addSubview(iconImageView)
         
         // 距離ラベル
         let distanceLabel = UILabel(frame: CGRect(x: TEXT_MARGIN_X,
@@ -103,7 +103,7 @@ class CardView: MDCSwipeToChooseView {
         distanceLabel.sizeToFit()
         distanceLabel.textColor = UIColor.grayColor()
         distanceLabel.font = UIFont(name: Const.KARUTA_FONT_NORMAL, size: 9)
-        self.addSubview(distanceLabel)
+        self.contentView.addSubview(distanceLabel)
         
         // 値段ラベル
         let priceLabel = UILabel(frame: CGRect(x: TEXT_MARGIN_X,
@@ -116,7 +116,7 @@ class CardView: MDCSwipeToChooseView {
         priceLabel.sizeToFit()
         priceLabel.textColor = Const.KARUTA_THEME_COLOR
         priceLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 12)
-        self.addSubview(priceLabel)
+        self.contentView.addSubview(priceLabel)
         
         
         // 画像のダウンロード

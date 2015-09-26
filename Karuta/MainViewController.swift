@@ -147,11 +147,9 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     
     // observer
     func enterForeground(notification: NSNotification){
-        print("enterForegtound!!")
         if self.currentLatitude == nil || self.currentLongitude == nil {
             self.acquireFirstCard()
         } else {
-            print("get location!!")
             // 前回実施時の距離から特定の距離以上離れていたらポップアップを出してリトライ
             let loadingView = LoadingView(frame: CGRectZero)
             self.view.addSubview(loadingView)
@@ -162,8 +160,6 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
             }
             
             self.locationManager.fetchWithCompletion({ [weak self] (location) in
-                print("current: \(self?.currentLatitude) \(self?.currentLongitude)")
-                print("succeeded to get location!!: \(location!.coordinate.latitude) \(location!.coordinate.longitude)")
                 loadingView.removeFromSuperview()
                 if (Utils.distanceBetweenLocations(self!.currentLatitude!, fromLon: self!.currentLongitude!, toLat: location!.coordinate.latitude, toLon: location!.coordinate.longitude) > Const.RETRY_DISTANCE) {
                     self?.reset()
@@ -173,7 +169,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
                 }
                 
                 }, failure: { (error) in
-                    self.showRetryToGetLocationAlert()
+                self.showRetryToGetLocationAlert()
             })
         }
     }
@@ -199,8 +195,9 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
             self!.currentLatitude = Double(location!.coordinate.latitude);
             self!.currentLongitude = Double(location!.coordinate.longitude);
             self?.acquireFirstCardsWithLocation(self!.currentLatitude!, longitude: self!.currentLongitude!)
-            }, failure: { (error) in
-                self.showRetryToGetLocationAlert()
+            },
+            failure: { (error) in
+            self.showRetryToGetLocationAlert()
         })
     }
     

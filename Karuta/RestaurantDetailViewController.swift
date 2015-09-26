@@ -14,9 +14,7 @@ class RestaurantDetailViewController: UIViewController, UIWebViewDelegate {
     let loadingIndicator = UIActivityIndicatorView()
     
     init(url: NSURL) {
-        // 食べログアプリが入ってたときそっちを開いちゃうので、SPサイトで開くようにする
-        let urlString = Utils.formatURLForSPTabelog(url.absoluteString)
-        self.url = NSURL(string: urlString)!
+        self.url = url
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -50,6 +48,14 @@ class RestaurantDetailViewController: UIViewController, UIWebViewDelegate {
     
     func webViewDidFinishLoad(webView: UIWebView) {
         self.loadingIndicator.stopAnimating()
+    }
+    
+    func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+        if (request.URL!.absoluteString.hasPrefix("http")) {
+            return true
+        } else {
+            return false
+        }
     }
     
 }

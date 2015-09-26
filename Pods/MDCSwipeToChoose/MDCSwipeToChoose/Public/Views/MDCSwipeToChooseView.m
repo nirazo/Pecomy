@@ -29,12 +29,9 @@
 #import "UIColor+MDCRGB8Bit.h"
 #import <QuartzCore/QuartzCore.h>
 
-// static CGFloat const MDCSwipeToChooseViewHorizontalPadding = 10.f;
-// static CGFloat const MDCSwipeToChooseViewTopPadding = 20.f;
-// static CGFloat const MDCSwipeToChooseViewLabelWidth = 65.f;
-
-// likedLabel, nopeLabelの枠の太さ
-static CGFloat const MDCSwipeToChooseLabelFrameWidth = 4.f;
+ static CGFloat const MDCSwipeToChooseViewHorizontalPadding = 13.f;
+ static CGFloat const MDCSwipeToChooseViewTopPadding = 25.f;
+ static CGFloat const MDCSwipeToChooseViewLabelWidth = 65.f;
 
 @interface MDCSwipeToChooseView ()
 @property (nonatomic, strong) MDCSwipeToChooseViewOptions *options;
@@ -94,85 +91,87 @@ static CGFloat const MDCSwipeToChooseLabelFrameWidth = 4.f;
     /**
      * Original
      */
-//    CGRect frame = CGRectMake(MDCSwipeToChooseViewHorizontalPadding,
-//                              MDCSwipeToChooseViewTopPadding,
-//                              CGRectGetMidX(_imageView.bounds),
-//                              MDCSwipeToChooseViewLabelWidth);
-//    self.likedView = [[UIView alloc] initWithFrame:frame];
-//    [self.likedView constructBorderedLabelWithText:self.options.likedText
-//                                             color:self.options.likedColor
-//                                             angle:self.options.likedRotationAngle];
+    CGRect frame = CGRectMake(MDCSwipeToChooseViewHorizontalPadding,
+                              MDCSwipeToChooseViewTopPadding,
+                              CGRectGetMidX(_imageView.bounds),
+                              MDCSwipeToChooseViewLabelWidth);
+    self.likedLabelView = [[UIView alloc] initWithFrame:frame];
+    [self.likedLabelView constructBorderedLabelWithText:self.options.likedText
+                                             color:self.options.likedColor
+                                             angle:self.options.likedRotationAngle];
+    self.likedLabelView.alpha = 0.f;
     
-    CGRect frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
-    self.likedView = [[UIView alloc] initWithFrame:frame];
-    self.likedView.backgroundColor = [UIColor greenColor];
+    CGRect likedLabelFrame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
+    self.likedView = [[UIView alloc] initWithFrame:likedLabelFrame];
+    self.likedView.backgroundColor = [UIColor colorWithRed:230.0/255.0 green:77.0/255.0 blue:74.0/255.0 alpha:1.0];
     self.likedView.alpha = 0.f;
     
-    self.likedLabel = [[UILabel alloc] init];
-    self.likedLabel.bounds = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
-    self.likedLabel.font = [UIFont fontWithName:@"HiraKakuProN-W6"
-                    size:24.f];
-    self.likedLabel.text = self.options.likedText;
-    self.likedLabel.textColor = [UIColor whiteColor];
-    [self.likedLabel sizeToFit];
-    self.likedLabel.center = CGPointMake(self.likedView.center.x, self.likedView.frame.size.height/5);
-    self.likedLabel.alpha = 0.f;
-    
-    self.likedLabelFrame = [[UIView alloc] initWithFrame:
-                           CGRectMake(0, 0, self.likedLabel.frame.size.width+30, self.likedLabel.frame.size.height+30)];
-    self.likedLabelFrame.center = self.likedLabel.center;
-    self.likedLabelFrame.backgroundColor = [UIColor clearColor];
-    self.likedLabelFrame.layer.cornerRadius = 5.f;
-    [self.likedLabelFrame.layer setBorderColor:[[UIColor whiteColor] CGColor]];
-    [self.likedLabelFrame.layer setBorderWidth:MDCSwipeToChooseLabelFrameWidth];
-    self.likedLabelFrame.alpha = 0.f;
+//    self.likedLabel = [[UILabel alloc] init];
+//    self.likedLabel.bounds = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
+//    self.likedLabel.font = [UIFont fontWithName:@"HiraKakuProN-W6"
+//                    size:24.f];
+//    self.likedLabel.text = self.options.likedText;
+//    self.likedLabel.textColor = [UIColor whiteColor];
+//    [self.likedLabel sizeToFit];
+//    self.likedLabel.center = CGPointMake(self.likedView.center.x, self.likedView.frame.size.height/5);
+//    self.likedLabel.alpha = 0.f;
+//    
+//    self.likedLabelFrame = [[UIView alloc] initWithFrame:
+//                           CGRectMake(0, 0, self.likedLabel.frame.size.width+30, self.likedLabel.frame.size.height+30)];
+//    self.likedLabelFrame.center = self.likedLabel.center;
+//    self.likedLabelFrame.backgroundColor = [UIColor clearColor];
+//    self.likedLabelFrame.layer.cornerRadius = 5.f;
+//    [self.likedLabelFrame.layer setBorderColor:[[UIColor whiteColor] CGColor]];
+//    [self.likedLabelFrame.layer setBorderWidth:MDCSwipeToChooseLabelFrameWidth];
+//    self.likedLabelFrame.alpha = 0.f;
     
     [self addSubview:self.likedView];
-    [self addSubview:self.likedLabel];
-    [self addSubview:self.likedLabelFrame];
+    [self addSubview:self.likedLabelView];
+    //[self addSubview:self.likedLabelFrame];
 }
 
 - (void)constructNopeImageView {
     /**
      * Original
      */
-//    CGFloat width = CGRectGetMidX(self.imageView.bounds);
-//    CGFloat xOrigin = CGRectGetMaxX(_imageView.bounds) - width - MDCSwipeToChooseViewHorizontalPadding;
-//    self.nopeView = [[UIImageView alloc] initWithFrame:CGRectMake(xOrigin,
-//                                                                  MDCSwipeToChooseViewTopPadding,
-//                                                                  width,
-//                                                                  MDCSwipeToChooseViewLabelWidth)];
-//    [self.nopeView constructBorderedLabelWithText:self.options.nopeText
-//                                            color:self.options.nopeColor
-//                                            angle:self.options.nopeRotationAngle];
+    CGFloat width = CGRectGetMidX(self.imageView.bounds);
+    CGFloat xOrigin = CGRectGetMaxX(_imageView.bounds) - width - MDCSwipeToChooseViewHorizontalPadding;
+    self.nopeLabelView = [[UIImageView alloc] initWithFrame:CGRectMake(xOrigin,
+                                                                  MDCSwipeToChooseViewTopPadding,
+                                                                  width,
+                                                                  MDCSwipeToChooseViewLabelWidth)];
+    [self.nopeLabelView constructBorderedLabelWithText:self.options.nopeText
+                                            color:self.options.nopeColor
+                                            angle:self.options.nopeRotationAngle];
+    self.nopeLabelView.alpha = 0.f;
+    
     CGRect frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
     self.nopeView = [[UIView alloc] initWithFrame:frame];
-    self.nopeView.backgroundColor = [UIColor redColor];
+    self.nopeView.backgroundColor = [UIColor colorWithRed:75.0/255.0 green:140.0/255.0 blue:231.0/255.0 alpha:1.0];
     self.nopeView.alpha = 0.f;
     
-    self.nopeLabel = [[UILabel alloc] init];
-    //self.nopeLabel.bounds = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
-    self.nopeLabel.textAlignment = NSTextAlignmentCenter;
-    self.nopeLabel.font = [UIFont fontWithName:@"HiraKakuProN-W6"
-                                           size:24.f];
-    self.nopeLabel.text = self.options.nopeText;
-    self.nopeLabel.textColor = [UIColor whiteColor];
-    [self.nopeLabel sizeToFit];
-    self.nopeLabel.center = CGPointMake(self.nopeView.center.x, self.nopeView.frame.size.height/5);
-    self.nopeLabel.alpha = 0.f;
-    
-    self.nopeLabelFrame = [[UIView alloc] initWithFrame:
-                           CGRectMake(0, 0, self.nopeLabel.frame.size.width+30, self.nopeLabel.frame.size.height+30)];
-    self.nopeLabelFrame.center = self.nopeLabel.center;
-    self.nopeLabelFrame.backgroundColor = [UIColor clearColor];
-    self.nopeLabelFrame.layer.cornerRadius = 5.f;
-    [self.nopeLabelFrame.layer setBorderColor:[[UIColor whiteColor] CGColor]];
-    [self.nopeLabelFrame.layer setBorderWidth:MDCSwipeToChooseLabelFrameWidth];
-    self.nopeLabelFrame.alpha = 0.f;
+//    self.nopeLabel = [[UILabel alloc] init];
+//    self.nopeLabel.textAlignment = NSTextAlignmentCenter;
+//    self.nopeLabel.font = [UIFont fontWithName:@"HiraKakuProN-W6"
+//                                           size:24.f];
+//    self.nopeLabel.text = self.options.nopeText;
+//    self.nopeLabel.textColor = [UIColor whiteColor];
+//    [self.nopeLabel sizeToFit];
+//    self.nopeLabel.center = CGPointMake(self.nopeView.center.x, self.nopeView.frame.size.height/5);
+//    self.nopeLabel.alpha = 0.f;
+//    
+//    self.nopeLabelFrame = [[UIView alloc] initWithFrame:
+//                           CGRectMake(0, 0, self.nopeLabel.frame.size.width+30, self.nopeLabel.frame.size.height+30)];
+//    self.nopeLabelFrame.center = self.nopeLabel.center;
+//    self.nopeLabelFrame.backgroundColor = [UIColor clearColor];
+//    self.nopeLabelFrame.layer.cornerRadius = 5.f;
+//    [self.nopeLabelFrame.layer setBorderColor:[[UIColor whiteColor] CGColor]];
+//    [self.nopeLabelFrame.layer setBorderWidth:MDCSwipeToChooseLabelFrameWidth];
+//    self.nopeLabelFrame.alpha = 0.f;
     
     [self addSubview:self.nopeView];
-    [self addSubview:self.nopeLabelFrame];
-    [self addSubview:self.nopeLabel];
+    [self addSubview:self.nopeLabelView];
+    //[self addSubview:self.nopeLabel];
 }
 
 - (void)setupSwipeToChoose {
@@ -186,25 +185,20 @@ static CGFloat const MDCSwipeToChooseLabelFrameWidth = 4.f;
     options.onPan = ^(MDCPanState *state) {
         if (state.direction == MDCSwipeDirectionNone) {
             likedImageView.alpha = 0.f;
-            self.likedLabel.alpha = 0.f;
-            self.likedLabelFrame.alpha = 0.f;
+            self.likedLabelView.alpha = 0.f;
             nopeImageView.alpha = 0.f;
-            self.nopeLabel.alpha = 0.f;
-            self.nopeLabelFrame.alpha = 0.f;
+            self.nopeLabelView.alpha = 0.f;
         } else if (state.direction == MDCSwipeDirectionLeft) {
             likedImageView.alpha = 0.f;
-            self.likedLabel.alpha = 0.f;
-            self.likedLabelFrame.alpha = 0.f;
-            nopeImageView.alpha = state.thresholdRatio/3;
-            self.nopeLabel.alpha = state.thresholdRatio;
+            self.likedLabelView.alpha = 0.f;
+            nopeImageView.alpha = state.thresholdRatio/2;
+            self.nopeLabelView.alpha = state.thresholdRatio;
             self.nopeLabelFrame.alpha = state.thresholdRatio;
         } else if (state.direction == MDCSwipeDirectionRight) {
-            likedImageView.alpha = state.thresholdRatio/3;
-            self.likedLabel.alpha = state.thresholdRatio;
-            self.likedLabelFrame.alpha = state.thresholdRatio;
+            likedImageView.alpha = state.thresholdRatio/2;
+            self.likedLabelView.alpha = state.thresholdRatio;
             nopeImageView.alpha = 0.f;
-            self.nopeLabel.alpha = 0.f;
-            self.nopeLabelFrame.alpha = 0.f;
+            self.nopeLabelView.alpha = 0.f;
         }
 
         if (weakself.options.onPan) {
