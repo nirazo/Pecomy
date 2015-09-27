@@ -150,7 +150,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
         if self.currentLatitude == nil || self.currentLongitude == nil {
             self.acquireFirstCard()
         } else {
-            // 前回実施時の距離から特定の距離以上離れていたらポップアップを出してリトライ
+            // 前回実施時の距離から特定の距離以上離れていたらリトライ
             let loadingView = LoadingView(frame: CGRectZero)
             self.view.addSubview(loadingView)
             loadingView.snp_makeConstraints { (make) in
