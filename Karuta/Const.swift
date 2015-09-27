@@ -65,12 +65,8 @@ struct Const {
     // ネットワーク周り
     static let ALAMOFIRE_TIMEOUT_SEC: Double = 12.0
     static let STATUS_CODE_SERVER_ERROR = 500
-    
-    static let STATUS_CODE_CARD_NOT_FOUND = 404
-    static let STATUS_CODE_CARD_BAD_REQUEST = 400
-    
-    static let STATUS_CODE_RESULT_NOT_FOUND = 404
-    static let STATUS_CODE_RESULT_BAD_REQUEST = 400
+    static let STATUS_CODE_NOT_FOUND = 404
+    static let STATUS_CODE_BAD_REQUESt = 400
     
     // カード上のテキスト
     static let CARD_LIKE_COLOR = UIColor.whiteColor()

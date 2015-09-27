@@ -65,6 +65,13 @@
 				<key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
 				<true/>
 			</dict>
+            <key>private-552a20-ffaapi.apiary-mock.com</key>
+            <dict>
+                <key>NSIncludesSubdomains</key>
+                <true/>
+                <key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
+                <true/>
+            </dict>
 			<key>tabelog.com</key>
 			<dict>
 				<key>NSExceptionRequiresForwardSecrecy</key>
@@ -74,7 +81,7 @@
 				<key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
 				<true/>
 			</dict>
-            <key>tabelog.k-img.com</key>
+			<key>tabelog.k-img.com</key>
 			<dict>
 				<key>NSExceptionRequiresForwardSecrecy</key>
 				<false/>

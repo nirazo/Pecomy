@@ -281,7 +281,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
                     
                     hasResult = json["result_available"].bool!
                     success(hasResult)
-                } else if (response?.statusCode == 404) { // カードが見つからない
+                } else if (response?.statusCode == Const.STATUS_CODE_NOT_FOUND) { // カードが見つからない
                     let resetFlg = params["reset"] as! Bool
                     if (resetFlg) {
                         self!.showOutOfRangeAlert()
@@ -290,7 +290,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
                             self!.acquireResults()
                         }
                     }
-                } else if (response?.statusCode == 500) { // サーバエラー
+                } else if (response?.statusCode == STATUS_CODE_SERVER_ERROR) { // サーバエラー
                     self?.showServerErrorAlert()
                 } else {
                     self!.acquireResults()
@@ -412,9 +412,9 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
                         
                         restaurants.append(Restaurant(shopID: shopID, shopName: shopName, priceRange: priceRange, distance: distance, imageUrls: shopImageUrls, url: url!))
                     }
-                } else if (response?.statusCode == 404) {
+                } else if (response?.statusCode == Const.STATUS_CODE_NOT_FOUND) {
                     // nothing（404の場合、空配列をresultVCに渡し、0件時と同様に処理する）
-                } else if (response?.statusCode == 500) {
+                } else if (response?.statusCode == STATUS_CODE_SERVER_ERROR) {
                     self?.showServerErrorAlert()
                     break
                 }
