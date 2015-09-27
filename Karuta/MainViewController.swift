@@ -252,7 +252,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
             case .Success(let data):
                 json = SwiftyJSON.JSON(data)
                 // 店が見つかった場合
-                if (response?.statusCode == 200) {
+                if (response?.statusCode == Const.STATUS_CODE_SUCCESS) {
                     let card: JSON = json["card"]
                     
                     let shopID: String = card["shop_id"].stringValue
@@ -290,7 +290,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
                             self!.acquireResults()
                         }
                     }
-                } else if (response?.statusCode == STATUS_CODE_SERVER_ERROR) { // サーバエラー
+                } else if (response?.statusCode == Const.STATUS_CODE_SERVER_ERROR) { // サーバエラー
                     self?.showServerErrorAlert()
                 } else {
                     self!.acquireResults()
@@ -395,7 +395,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
                 // Restaurantクラスを生成
                 var restaurants = [Restaurant]()
                 
-                if (response?.statusCode == 200) {
+                if (response?.statusCode == Const.STATUS_CODE_SUCCESS) {
                     let results = json["results"]
                     for i in 0..<results.count {
                         let shopID = results[i]["shop_id"].stringValue
@@ -414,7 +414,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
                     }
                 } else if (response?.statusCode == Const.STATUS_CODE_NOT_FOUND) {
                     // nothing（404の場合、空配列をresultVCに渡し、0件時と同様に処理する）
-                } else if (response?.statusCode == STATUS_CODE_SERVER_ERROR) {
+                } else if (response?.statusCode == Const.STATUS_CODE_SERVER_ERROR) {
                     self?.showServerErrorAlert()
                     break
                 }
