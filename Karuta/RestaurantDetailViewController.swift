@@ -8,30 +8,54 @@
 
 import UIKit
 
-class RestaurantDetailViewController: UIViewController {
+class RestaurantDetailViewController: UIViewController, UIWebViewDelegate {
     
     let url: NSURL
+    let loadingIndicator = UIActivityIndicatorView()
     
     init(url: NSURL) {
         self.url = url
         super.init(nibName: nil, bundle: nil)
     }
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        var webView = UIWebView(frame: self.view.frame)
+        let webView = UIWebView(frame: self.view.frame)
+        webView.delegate = self
         self.view.addSubview(webView)
+        // インジケータ
+        self.loadingIndicator.bounds = CGRectMake(0.0, 0.0, 50, 50)
+        self.loadingIndicator.activityIndicatorViewStyle = .Gray
+        self.loadingIndicator.center = webView.center
+        self.loadingIndicator.hidesWhenStopped = true
+        webView.addSubview(self.loadingIndicator)
         let req = NSURLRequest(URL: self.url)
         webView.loadRequest(req)
-        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
 
+    //MARK: UIWebViewDelegate methods
+    func webViewDidStartLoad(webView: UIWebView) {
+        self.loadingIndicator.startAnimating()
+    }
+    
+    func webViewDidFinishLoad(webView: UIWebView) {
+        self.loadingIndicator.stopAnimating()
+    }
+    
+    func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+        if (request.URL!.absoluteString.hasPrefix("http")) {
+            return true
+        } else {
+            return false
+        }
+    }
+    
 }

@@ -22,7 +22,7 @@ class ResultViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -57,7 +57,7 @@ class ResultViewController: UIViewController {
     
     // 結果が0件の時のレイアウト
     private func layoutNoResult() {
-        var label = UILabel()
+        let label = UILabel()
         label.text = NSLocalizedString("NoResultAlertTitle", comment: "")
         label.font = UIFont(name: Const.KARUTA_FONT_NORMAL, size: 17)
         label.numberOfLines = 0
@@ -115,7 +115,7 @@ class ResultViewController: UIViewController {
             make.top.equalTo(self.view).offset(RESULT_MARGIN)
         }
         
-        var secondResultCard = OtherResultCard(frame: CGRectZero, restaurant: self.restaurants[1], rank: 2)
+        let secondResultCard = OtherResultCard(frame: CGRectZero, restaurant: self.restaurants[1], rank: 2)
         let tr_second = UITapGestureRecognizer(target: self, action: "resultTapped:")
         secondResultCard.addGestureRecognizer(tr_second)
         self.view.addSubview(secondResultCard)
@@ -127,7 +127,7 @@ class ResultViewController: UIViewController {
         }
         
         // 3位
-        var thirdResultCard = OtherResultCard(frame: CGRectZero, restaurant: self.restaurants[2], rank: 3)
+        let thirdResultCard = OtherResultCard(frame: CGRectZero, restaurant: self.restaurants[2], rank: 3)
         let tr_third = UITapGestureRecognizer(target: self, action: "resultTapped:")
         thirdResultCard.addGestureRecognizer(tr_third)
         self.view.addSubview(thirdResultCard)

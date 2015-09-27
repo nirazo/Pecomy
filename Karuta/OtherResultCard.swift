@@ -23,7 +23,7 @@ class OtherResultCard: ResultCardBase {
         self.setupView()
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -101,7 +101,7 @@ class OtherResultCard: ResultCardBase {
         
         rankingLabel.image = image
         rankingLabel.center = CGPointMake(10, 10)
-        rankingLabel.setTranslatesAutoresizingMaskIntoConstraints(true)
+        rankingLabel.translatesAutoresizingMaskIntoConstraints = true
         self.addSubview(rankingLabel)
         
         // 画像のダウンロード

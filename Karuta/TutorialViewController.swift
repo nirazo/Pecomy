@@ -20,7 +20,7 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
         self.view.backgroundColor = Const.KARUTA_THEME_COLOR
         
-        var scrollView = UIScrollView(frame: self.view.frame)
+        let scrollView = UIScrollView(frame: self.view.frame)
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.showsVerticalScrollIndicator = false
         scrollView.pagingEnabled = true
@@ -46,7 +46,7 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
         self.view.addSubview(pageControl)
         
         //閉じるボタン
-        var closeButton = UIButton(frame: CGRectZero);
+        let closeButton = UIButton(frame: CGRectZero);
         closeButton.backgroundColor = UIColor.clearColor();
         closeButton.addTarget(self, action: "closeTutorial:", forControlEvents:.TouchUpInside);
         closeButton.setTitle(NSLocalizedString("CloseTutorial", comment: ""), forState: .Normal);
@@ -64,7 +64,7 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
     
     func closeTutorial(sender: UIButton) {
         let viewController = MainViewController()
-        var navVC = UINavigationController(rootViewController: viewController)
+        let navVC = UINavigationController(rootViewController: viewController)
         navVC.navigationBar.barTintColor = Const.KARUTA_THEME_COLOR
         navVC.modalTransitionStyle = UIModalTransitionStyle.CoverVertical
         

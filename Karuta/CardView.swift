@@ -45,8 +45,8 @@ class CardView: MDCSwipeToChooseView {
         self.distance = restaurant.distance
         self.syncID = syncID
         
-        for i in 0..<self.NUM_OF_IMAGES {
-            var imageView = UIImageView(image: UIImage(named: "noimage"))
+        for _ in 0..<self.NUM_OF_IMAGES {
+            let imageView = UIImageView(image: UIImage(named: "noimage"))
             imageView.contentMode = .ScaleAspectFit
             imageView.clipsToBounds = true
             imageView.backgroundColor = Const.KARUTA_CARD_IMAGE_BACK_COLOR
@@ -59,7 +59,7 @@ class CardView: MDCSwipeToChooseView {
 
     }
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -74,7 +74,7 @@ class CardView: MDCSwipeToChooseView {
         }
         
         // レストラン名のラベル
-        var restaurantNameLabel = UILabel(frame: CGRect(x: TEXT_MARGIN_X,
+        let restaurantNameLabel = UILabel(frame: CGRect(x: TEXT_MARGIN_X,
             y: CGRectGetMaxY(self.restaurantImageViews[1].frame) + TEXT_MARGIN_Y,
             width: self.frame.width*3/4,
             height: (self.frame.height - CGRectGetMaxY(self.restaurantImageViews[1].frame))/4))
@@ -82,18 +82,18 @@ class CardView: MDCSwipeToChooseView {
         restaurantNameLabel.numberOfLines = 1
         restaurantNameLabel.textColor = Const.KARUTA_THEME_COLOR
         restaurantNameLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 14)
-        self.addSubview(restaurantNameLabel)
+        self.contentView.addSubview(restaurantNameLabel)
         
         // アイコン
-        var iconImageView = UIImageView(image: UIImage(named: "rice"))
+        let iconImageView = UIImageView(image: UIImage(named: "rice"))
         iconImageView.frame = CGRect(x: CGRectGetMaxX(restaurantNameLabel.frame),
             y: CGRectGetMaxY(self.restaurantImageViews[1].frame) + (self.frame.height - CGRectGetMaxY(self.restaurantImageViews[1].frame))/4,
             width: (self.frame.height - CGRectGetMaxY(self.restaurantImageViews[1].frame))/2,
             height: (self.frame.height - CGRectGetMaxY(self.restaurantImageViews[1].frame))/2)
-        self.addSubview(iconImageView)
+        self.contentView.addSubview(iconImageView)
         
         // 距離ラベル
-        var distanceLabel = UILabel(frame: CGRect(x: TEXT_MARGIN_X,
+        let distanceLabel = UILabel(frame: CGRect(x: TEXT_MARGIN_X,
             y: CGRectGetMaxY(restaurantNameLabel.frame),
             width: restaurantNameLabel.frame.width,
             height: restaurantNameLabel.frame.height))
@@ -103,10 +103,10 @@ class CardView: MDCSwipeToChooseView {
         distanceLabel.sizeToFit()
         distanceLabel.textColor = UIColor.grayColor()
         distanceLabel.font = UIFont(name: Const.KARUTA_FONT_NORMAL, size: 9)
-        self.addSubview(distanceLabel)
+        self.contentView.addSubview(distanceLabel)
         
         // 値段ラベル
-        var priceLabel = UILabel(frame: CGRect(x: TEXT_MARGIN_X,
+        let priceLabel = UILabel(frame: CGRect(x: TEXT_MARGIN_X,
             y: CGRectGetMaxY(distanceLabel.frame),
             width: restaurantNameLabel.frame.width,
             height: (self.frame.height - CGRectGetMaxY(distanceLabel.frame))))
@@ -116,7 +116,7 @@ class CardView: MDCSwipeToChooseView {
         priceLabel.sizeToFit()
         priceLabel.textColor = Const.KARUTA_THEME_COLOR
         priceLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 12)
-        self.addSubview(priceLabel)
+        self.contentView.addSubview(priceLabel)
         
         
         // 画像のダウンロード
