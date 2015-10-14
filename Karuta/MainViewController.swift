@@ -261,6 +261,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
                     let shopImageUrlsString = card["image_url"].array!
                     let priceRange = card["price_range"].string!
                     let distance: Double = card["distance_meter"].double!
+                    let category = card["top_category"].string!
                     
                     var shopImageUrls = [NSURL]()
                     for urlString in shopImageUrlsString {
@@ -271,7 +272,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
                     
                     let syncID: String! = json["sync_id"].string!
                     
-                    let restaurant = Restaurant(shopID: shopID, shopName: shopName, priceRange: priceRange, distance: distance, imageUrls: shopImageUrls, url: url!)
+                    let restaurant = Restaurant(shopID: shopID, shopName: shopName, priceRange: priceRange, distance: distance, imageUrls: shopImageUrls, url: url!, category: category)
                     
                     let cardView = self!.createCardWithFrame(self!.baseCardRect(), restaurant: restaurant, syncID: syncID)
                     
@@ -404,13 +405,14 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
                         let priceRange = results[i]["price_range"].string!
                         let distance: Double = results[i]["distance_meter"].double!
                         let url = NSURL(string: results[i]["url"].string!)
+                        let category = results[i]["top_category"].string!
                         
                         var shopImageUrls = [NSURL]()
                         for urlString in shopImageUrlsString {
                             shopImageUrls.append(NSURL(string: urlString.string!)!)
                         }
                         
-                        restaurants.append(Restaurant(shopID: shopID, shopName: shopName, priceRange: priceRange, distance: distance, imageUrls: shopImageUrls, url: url!))
+                        restaurants.append(Restaurant(shopID: shopID, shopName: shopName, priceRange: priceRange, distance: distance, imageUrls: shopImageUrls, url: url!, category: category))
                     }
                 } else if (response?.statusCode == Const.STATUS_CODE_NOT_FOUND) {
                     // nothing（404の場合、空配列をresultVCに渡し、0件時と同様に処理する）

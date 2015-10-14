@@ -11,8 +11,8 @@ import Foundation
 struct Const {
     
     #if DEBUG
-        static let API_CARD_BASE = "http://private-552a20-ffaapi.apiary-mock.com/card"
-        static let API_RESULT_BASE = "http://private-552a20-ffaapi.apiary-mock.com/results"
+        static let API_CARD_BASE = "http://private-552a20-karutaapi.apiary-mock.com/card"
+        static let API_RESULT_BASE = "http://private-552a20-karutaapi.apiary-mock.com/results"
     #elseif RELEASE
         static let API_CARD_BASE = "http://karuta.me/card"
         static let API_RESULT_BASE = "http://karuta.me/results"
