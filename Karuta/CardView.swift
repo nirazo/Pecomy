@@ -100,13 +100,17 @@ class CardView: MDCSwipeToChooseView {
         
         
         // カテゴリ
-        let categoryViewOrigin = CGPoint(x: CGRectGetMaxX(restaurantNameLabel.frame) + 10, y: CGRectGetMinY(restaurantNameLabel.frame))
-        let categoryViewSize = CGSizeMake(self.contentView.frame.size.width - CGRectGetMaxX(restaurantNameLabel.frame) - 20, CGRectGetMaxY(distanceLabel.frame) - CGRectGetMinY(restaurantNameLabel.frame))
-        
-        let categoryLabelView = CategoryLabelView(frame: CGRectMake(categoryViewOrigin.x, categoryViewOrigin.y, categoryViewSize.width, categoryViewSize.height), category: self.category)
+        let categoryLabelView = CategoryLabelView(frame: CGRectZero, category: self.category)
         
         self.contentView.addSubview(categoryLabelView)
-                
+        
+        categoryLabelView.snp_makeConstraints { (make) in
+            make.left.equalTo(restaurantNameLabel.snp_right).offset(TEXT_MARGIN_X)
+            make.right.equalTo(self).inset(TEXT_MARGIN_X)
+            make.top.equalTo(restaurantNameLabel)
+            make.height.equalTo(restaurantNameLabel).multipliedBy(1.5)
+        }
+        
         // 値段ラベル
         let priceLabel = UILabel(frame: CGRect(x: TEXT_MARGIN_X,
             y: CGRectGetMaxY(distanceLabel.frame),

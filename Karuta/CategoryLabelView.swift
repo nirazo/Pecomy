@@ -41,8 +41,6 @@ class CategoryLabelView: UIView {
         
         for (var i=0; i < categoriesArray.count; i++) {
             let categoryLabel = UILabel()
-            categoryLabel.bounds = CGRectMake(0.0, 0.0, self.frame.size.width-MARGIN_CATEGORY_HORIZONTAL, self.frame.size.height/CGFloat(categoriesArray.count))
-            categoryLabel.center = CGPoint(x: self.frame.size.width/2, y: self.frame.size.height*CGFloat(i*2+1)/CGFloat(categoriesArray.count*2))
             categoryLabel.text = categoriesArray[i]
             categoryLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: DEFAULT_FONT_SIZE_CATEGORY)
             categoryLabel.numberOfLines = 1
@@ -50,6 +48,14 @@ class CategoryLabelView: UIView {
             categoryLabel.textColor = Const.KARUTA_THEME_TEXT_COLOR
             categoryLabel.adjustsFontSizeToFitWidth = true
             self.addSubview(categoryLabel)
+            
+            categoryLabel.snp_makeConstraints { (make) in
+                make.centerX.equalTo(self)
+                make.centerY.equalTo(self.snp_bottom).multipliedBy(CGFloat(i*2+1)/CGFloat(categoriesArray.count*2))
+                make.left.equalTo(self).offset(MARGIN_CATEGORY_HORIZONTAL)
+                make.right.equalTo(self).inset(MARGIN_CATEGORY_HORIZONTAL)
+                make.height.equalTo(self).dividedBy(CGFloat(categoriesArray.count))
+            }
         }
     }
 }
