@@ -37,7 +37,6 @@ class CategoryLabelView: UIView {
         self.backgroundColor = Const.KARUTA_THEME_COLOR
         // 角丸
         self.layer.cornerRadius = CORNER_RADIUS
-        self.clipsToBounds = true
         
         for (var i=0; i < categoriesArray.count; i++) {
             let categoryLabel = UILabel()

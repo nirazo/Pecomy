@@ -106,7 +106,7 @@ class CardView: MDCSwipeToChooseView {
         
         categoryLabelView.snp_makeConstraints { (make) in
             make.left.equalTo(restaurantNameLabel.snp_right).offset(TEXT_MARGIN_X)
-            make.right.equalTo(self).inset(TEXT_MARGIN_X)
+            make.right.equalTo(self.contentView).inset(TEXT_MARGIN_X)
             make.top.equalTo(restaurantNameLabel)
             make.height.equalTo(restaurantNameLabel).multipliedBy(1.5)
         }
