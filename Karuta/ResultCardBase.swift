@@ -20,8 +20,9 @@ class ResultCardBase: UIView {
     var distance: Double = 0.0
     var imageUrls = [NSURL]()
     var url = NSURL()
+    var category = ""
     var restaurantImageViews = [UIImageView]()
-    var borderColor: UIColor
+    let borderColor: UIColor
     let contentView = UIView()
     let shadow = UIView()
 
@@ -32,6 +33,7 @@ class ResultCardBase: UIView {
         self.priceRange = restaurant.priceRange
         self.distance = restaurant.distance
         self.url = restaurant.url
+        self.category = restaurant.category
         self.borderColor = color
         
         for _ in 0..<imageNum {

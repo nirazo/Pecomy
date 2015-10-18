@@ -35,7 +35,7 @@ class TopResultCard: ResultCardBase {
     }
     
     func setupSubViews() {
-        for i in 0..<self.imageUrls.count {
+        for i in 0..<NUM_OF_IMAGES {
             self.contentView.addSubview(self.restaurantImageViews[i])
         }
         
@@ -44,6 +44,7 @@ class TopResultCard: ResultCardBase {
             make.height.equalTo(self).multipliedBy(0.60)
             make.left.equalTo(self)
         }
+
         self.restaurantImageViews[1].snp_makeConstraints { (make) in
             make.left.equalTo(self.restaurantImageViews[0].snp_right).offset(self.SEPARATOR_LINE_WIDTH)
             make.right.equalTo(self)
@@ -70,7 +71,7 @@ class TopResultCard: ResultCardBase {
         self.restaurantNameLabel.snp_makeConstraints { (make) in
             make.left.equalTo(self).offset(TEXT_MARGIN_X)
             make.top.equalTo(self.restaurantImageViews[0].snp_bottom).offset(TEXT_MARGIN_Y)
-            make.width.equalTo(self).multipliedBy(0.75)
+            make.width.equalTo(self).multipliedBy(0.70)
         }
         
         // 値段ラベル
@@ -86,6 +87,18 @@ class TopResultCard: ResultCardBase {
             make.top.equalTo(restaurantNameLabel.snp_bottom).offset(TEXT_MARGIN_Y*2)
             make.width.equalTo(restaurantNameLabel)
         }
+        
+        // カテゴリ
+        let categoryLabelView = CategoryLabelView(frame: CGRectZero, category: self.category)
+        self.contentView.addSubview(categoryLabelView)
+        
+        categoryLabelView.snp_makeConstraints { (make) in
+            make.left.equalTo(restaurantNameLabel.snp_right).offset(TEXT_MARGIN_X)
+            make.right.equalTo(self.contentView).inset(TEXT_MARGIN_X)
+            make.top.equalTo(restaurantNameLabel)
+            make.bottom.equalTo(priceLabel.snp_top)
+        }
+        
         
         // 距離ラベル
         distanceLabel.text = String(format: NSLocalizedString("CardDistanceFromText", comment: ""), Int(self.distance))
@@ -110,8 +123,8 @@ class TopResultCard: ResultCardBase {
         self.contentView.addSubview(arrawLabel)
         
         self.arrawLabel.snp_makeConstraints { (make) in
-            make.right.equalTo(self).offset(-TEXT_MARGIN_X)
-            make.centerY.equalTo(priceLabel)
+            make.right.equalTo(self).inset(TEXT_MARGIN_X)
+            make.top.equalTo(priceLabel.snp_bottom)
         }
         
         // ランキングラベル

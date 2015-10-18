@@ -75,7 +75,7 @@ class ResultViewController: UIViewController {
         self.prepareLayout()
         topResultCard!.snp_makeConstraints { (make) in
             make.width.equalTo(self.view).offset(-RESULT_MARGIN*2)
-            make.height.equalTo(self.view).offset(-RESULT_MARGIN*2)
+            make.height.equalTo(self.view).multipliedBy(0.8).offset(-RESULT_MARGIN*2)
             make.centerX.equalTo(self.view)
             make.top.equalTo(self.view).offset(RESULT_MARGIN)
             make.bottom.equalTo(self.view).offset(-RESULT_MARGIN)
