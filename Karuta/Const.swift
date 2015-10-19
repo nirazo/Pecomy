@@ -13,16 +13,13 @@ struct Const {
     #if DEBUG
         static let API_CARD_BASE = "http://private-552a20-karutaapi.apiary-mock.com/card"
         static let API_RESULT_BASE = "http://private-552a20-karutaapi.apiary-mock.com/results"
+    #elseif STG
+        static let API_CARD_BASE = "http://karuta.me:10091/card"
+        static let API_RESULT_BASE = "http://karuta.me:10091/results"
     #elseif RELEASE
         static let API_CARD_BASE = "http://karuta.me/card"
         static let API_RESULT_BASE = "http://karuta.me/results"
     
-    // yokomoto
-//    static let API_CARD_BASE = "http://karuta.me:10091/card"
-//    static let API_RESULT_BASE = "http://karuta.me:10091/results"
-    // sho
-//    static let API_CARD_BASE = "http://192.168.10.80:10090/card"
-//    static let API_RESULT_BASE = "http://192.168.10.80:10090/results"
     #else
         static let API_CARD_BASE = "http://karuta.me/card"
         static let API_RESULT_BASE = "http://karuta.me/results"
