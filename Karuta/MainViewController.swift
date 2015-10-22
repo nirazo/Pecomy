@@ -34,8 +34,6 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     
     var currentCategory = CategoryIdentifier.All
     
-    var isResultDisplayedOnce = false
-    
     var currentProgress: Float = 0.0
     
     let loadingIndicator = UIActivityIndicatorView()
@@ -200,7 +198,6 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     
     func reset() {
         self.isLocationAcquired = false
-        self.isResultDisplayedOnce = false
         self.resetCards()
         self.currentLatitude = nil
         self.currentLongitude = nil
@@ -316,9 +313,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
                     if (resetFlg) {
                         self!.showOutOfRangeAlert()
                     } else {
-                        if (!self!.isResultDisplayedOnce) {
-                            self!.acquireResults()
-                        }
+                        self!.acquireResults()
                     }
                 } else if (response?.statusCode == Const.STATUS_CODE_SERVER_ERROR) { // サーバエラー
                     self?.showServerErrorAlert()
@@ -409,8 +404,6 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     結果（ここへ行け！リスト）を取得
     */
     func acquireResults() {
-        self.isResultDisplayedOnce = true
-        
         let params: Dictionary<String, AnyObject> = [
             "device_id": Utils.acquireDeviceID(),
             "latitude" : self.currentLatitude!,
@@ -561,16 +554,20 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
             self.currentProgress += INCREMENT_DISLIKE
             self.progressViewController.progressWithRatio(self.currentProgress)
         }
-        self.acquireCardWithLatitude(self.currentLatitude!, longitude: self.currentLongitude!, like: answer, category:self.currentCategory, syncId: cardView.syncID, reset: false,
-            success: {[weak self](hasResult: Bool) in
-                if (hasResult) {
-                    if (!self!.isResultDisplayedOnce) {
-                        self!.acquireResults()
-                    }
-                }
-            }, failure: {(error: ErrorType) in
+        if (!self.canCallNextCard) {
+            if (self.contentView.subviews.count == 0) {
+                self.acquireResults()
             }
-        )
+        } else {
+            self.acquireCardWithLatitude(self.currentLatitude!, longitude: self.currentLongitude!, like: answer, category:self.currentCategory, syncId: cardView.syncID, reset: false,
+                success: {[weak self](hasResult: Bool) in
+                    if (hasResult) {
+                        self?.canCallNextCard = false
+                    }
+                }, failure: {(error: ErrorType) in
+                }
+            )
+        }
     }
     
     //MARK: - Alerts
