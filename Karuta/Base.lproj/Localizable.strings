@@ -27,3 +27,7 @@
 "CardDislikeText" = "Unn..";
 "CardDistanceFromText" = "%d m from here";
 "CardNoPriceInfoText" = "No price information";
+"CategoryAll" = "All";
+"CategoryRestaurant" = "Restaurant";
+"CategoryCafe" = "Cafe";
+"CategoryDrinking" = "Drinking";

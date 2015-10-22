@@ -27,3 +27,7 @@
 "CardDislikeText" = "イマイチ...";
 "CardDistanceFromText" = "ここから%d m";
 "CardNoPriceInfoText" = "値段情報がありません";
+"CategoryAll" = "全カテゴリ";
+"CategoryRestaurant" = "レストラン";
+"CategoryCafe" = "カフェ";
+"CategoryDrinking" = "飲み";

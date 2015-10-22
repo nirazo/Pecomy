@@ -12,14 +12,14 @@ import SwiftyJSON
 import MDCSwipeToChoose
 import SnapKit
 
-class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLocationManagerDelegate {
+class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLocationManagerDelegate, CategorySelectionViewControllerDelegate {
     
     let PROGRESS_HEIGHT: CGFloat = 8.0
     let FOOTER_HEIGHT: CGFloat = 34.0
     
     // like, dislikeのスワイプ増分
-    let INCREMENT_LIKE: Float = 0.125
-    let INCREMENT_DISLIKE: Float = 0.05
+    let INCREMENT_LIKE: Float = 0.16
+    let INCREMENT_DISLIKE: Float = 0.10
     
     let locationManager = KarutaLocationManager()
     let progressViewController = CardProgressViewController()
@@ -32,11 +32,21 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     var currentLatitude: Double?
     var currentLongitude: Double?
     
+    var currentCategory = CategoryIdentifier.All
+    
     var isResultDisplayedOnce = false
     
     var currentProgress: Float = 0.0
     
     let loadingIndicator = UIActivityIndicatorView()
+    
+    // ビュー関連
+    var categoryLabelView = CategoryLabelView()
+    
+    // 現在選択されているカテゴリ
+    var selectedCategory = CategoryIdentifier.All.valueForDisplay()
+    
+    var categorySelectionVC: CategorySelectionViewController?
     
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
@@ -130,6 +140,20 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
             make.bottom.equalTo(dislikeButton)
         }
         
+        // カテゴリ
+        self.categoryLabelView = CategoryLabelView(frame: CGRectZero, category: self.selectedCategory)
+        self.view.addSubview(categoryLabelView)
+        let tr = UITapGestureRecognizer(target: self, action: "categoryTapped:")
+        self.categoryLabelView.addGestureRecognizer(tr)
+        
+        self.categoryLabelView.snp_makeConstraints { (make) in
+            make.left.equalTo(dislikeButton.snp_right)
+            make.right.equalTo(likeButton.snp_left)
+            make.top.equalTo(likeButton.snp_bottom).inset(30)
+            make.bottom.equalTo(footerBar.snp_top).inset(-5)
+        }
+        
+        
         // インジケータ
         self.loadingIndicator.bounds = CGRectMake(0.0, 0.0, 50, 50)
         self.loadingIndicator.activityIndicatorViewStyle = .WhiteLarge
@@ -204,11 +228,13 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     func acquireFirstCardsWithLocation(latitude: Double, longitude: Double) {
         self.acquireCardWithLatitude(latitude,
             longitude: longitude,
+            category: self.currentCategory,
             reset: true,
             success: {(Bool) in
                 // とりあえず直で2回呼びます
                 self.acquireCardWithLatitude(latitude,
                     longitude: longitude,
+                    category: self.currentCategory,
                     reset: false
                 )
             }
@@ -221,7 +247,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     /**
     カードを取得
     */
-    func acquireCardWithLatitude(latitude: Double, longitude: Double, like: String? = nil, syncId: String? = nil, reset: Bool, success: (Bool)->() = {(Bool) in}, failure: (ErrorType)->() = {(ErrorType) in}) {
+    func acquireCardWithLatitude(latitude: Double, longitude: Double, like: String? = nil, category: CategoryIdentifier, syncId: String? = nil, reset: Bool, success: (Bool)->() = {(Bool) in}, failure: (ErrorType)->() = {(ErrorType) in}) {
         var params: Dictionary<String, AnyObject> = [
             "device_id" : Utils.acquireDeviceID(),
             "latitude" : latitude,
@@ -235,6 +261,9 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
         if ((like) != nil) {
             params["answer"] = like!
         }
+        if (category != .All) {
+            params["select_category_group"] = category.valueForReq()
+        }
         
         var hasResult = false;
         
@@ -242,7 +271,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
         self.showIndicator()
         
         Alamofire.request(.GET, Const.API_CARD_BASE, parameters: params, encoding: .URL).responseJSON {[weak self](request, response, result) in
-            
+            print("request: \(request?.URL)")
             // インジケータ消す
             self?.hideIndicator()
             
@@ -451,6 +480,12 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
         self.swipeTopCardToWithDirection(.Left)
     }
     
+    func categoryTapped(sender:UITapGestureRecognizer) {
+        self.categorySelectionVC = CategorySelectionViewController()
+        self.categorySelectionVC!.delegate = self
+        self.view.addSubview(self.categorySelectionVC!.view)
+    }
+    
     func swipeTopCardToWithDirection(direction: MDCSwipeDirection) {
         if (self.numOfDisplayedCard() > 0) {
             let card = self.contentView.subviews[self.contentView.subviews.count-1] as! CardView
@@ -458,6 +493,37 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
                 card.isFlicked = true
                 card.mdc_swipe(direction)
             }
+        }
+    }
+    
+    //MARK: - CategorySelectionViewControllerDelegate methods
+    func closeButtonTapped() {
+        if let _ = self.categorySelectionVC {
+            self.categorySelectionVC?.view.removeFromSuperview()
+            self.categorySelectionVC = nil
+        }
+    }
+    
+    func categorySelected(category: CategoryIdentifier) {
+        // set category
+        self.currentCategory = category
+        self.categoryLabelView.setCategory(category.valueForDisplay())
+        
+        if let _ = self.categorySelectionVC {
+            self.categorySelectionVC?.view.removeFromSuperview()
+            self.categorySelectionVC = nil
+        }
+        
+        // reset cards and request
+        self.resetCards()
+        self.currentProgress = 0.0
+        self.progressViewController.reset()
+        
+        print("currentCategory: \(self.currentCategory)")
+        if let _ = self.currentLatitude {
+            self.acquireFirstCardsWithLocation(self.currentLatitude!, longitude: self.currentLongitude!)
+        } else {
+            self.acquireFirstCard()
         }
     }
     
@@ -495,7 +561,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
             self.currentProgress += INCREMENT_DISLIKE
             self.progressViewController.progressWithRatio(self.currentProgress)
         }
-        self.acquireCardWithLatitude(self.currentLatitude!, longitude: self.currentLongitude!, like: answer, syncId: cardView.syncID, reset: false,
+        self.acquireCardWithLatitude(self.currentLatitude!, longitude: self.currentLongitude!, like: answer, category:self.currentCategory, syncId: cardView.syncID, reset: false,
             success: {[weak self](hasResult: Bool) in
                 if (hasResult) {
                     if (!self!.isResultDisplayedOnce) {

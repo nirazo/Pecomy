@@ -15,9 +15,13 @@ class CategoryLabelView: UIView {
     let MARGIN_CATEGORY_HORIZONTAL: CGFloat = 2.0   // カテゴリラベル内の左右マージン
     let DEFAULT_FONT_SIZE_CATEGORY: CGFloat = 13    // カテゴリラベルのフォントサイズ
     let MAX_CATEGORY_NUM = 2                        // 表示するカテゴリの最大数
-    
-    var categoriesArray: [String]
+    var categoryLabels = [UILabel]()
+    var categoriesArray = [String]()
 
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
     init(frame: CGRect, category: String) {
         // カテゴリのsplit
         let replacedCategory = category.stringByReplacingOccurrencesOfString("（.*）", withString: "", options: .RegularExpressionSearch, range: nil)
@@ -33,7 +37,23 @@ class CategoryLabelView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func setCategory(category: String) {
+        // カテゴリのsplit
+        let replacedCategory = category.stringByReplacingOccurrencesOfString("（.*）", withString: "", options: .RegularExpressionSearch, range: nil)
+        categoriesArray = replacedCategory.componentsSeparatedByString("・")
+        if (categoriesArray.count > MAX_CATEGORY_NUM) {
+            categoriesArray = [String](categoriesArray[0..<MAX_CATEGORY_NUM])
+        }
+        
+        self.setupSubViews()
+    }
+    
     func setupSubViews() {
+        // subViewsを全て削除
+        for subview in self.subviews {
+            subview.removeFromSuperview()
+        }
+        
         self.backgroundColor = Const.KARUTA_THEME_COLOR
         // 角丸
         self.layer.cornerRadius = CORNER_RADIUS
@@ -47,6 +67,8 @@ class CategoryLabelView: UIView {
             categoryLabel.textColor = Const.KARUTA_THEME_TEXT_COLOR
             categoryLabel.adjustsFontSizeToFitWidth = true
             self.addSubview(categoryLabel)
+            
+            self.categoryLabels.append(categoryLabel)
             
             categoryLabel.snp_makeConstraints { (make) in
                 make.centerX.equalTo(self)
