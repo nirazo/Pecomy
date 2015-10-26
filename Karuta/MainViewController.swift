@@ -196,6 +196,9 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
         }
     }
     
+    //MARK: - reset
+    
+    // 位置情報も含め、全てリセット
     func reset() {
         self.isLocationAcquired = false
         self.resetCards()
@@ -203,11 +206,21 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
         self.currentLongitude = nil
         self.currentProgress = 0.0
         self.progressViewController.reset()
+        self.canCallNextCard = true
+    }
+    
+    // 位置情報はそのままに、ビュー関連をリセット
+    func resetViews() {
+        self.resetCards()
+        self.currentProgress = 0.0
+        self.progressViewController.reset()
+        self.canCallNextCard = true
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
     
     // MARK: - Card related methods
     func acquireFirstCard() {
@@ -268,11 +281,10 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
         self.showIndicator()
         
         Alamofire.request(.GET, Const.API_CARD_BASE, parameters: params, encoding: .URL).responseJSON {[weak self](request, response, result) in
-            print("request: \(request?.URL)")
             // インジケータ消す
             self?.hideIndicator()
             
-            var json = JSON.nullJSON
+            var json = JSON.null
             
             switch result {
             case .Success(let data):
@@ -410,7 +422,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
             "longitude" : self.currentLongitude!
         ]
         Alamofire.request(.GET, Const.API_RESULT_BASE, parameters: params, encoding: .URL).responseJSON {[weak self](request, response, result) in
-            var json = JSON.nullJSON
+            var json = JSON.null
             switch result {
             case .Success(let data):
                 json = SwiftyJSON.JSON(data)
@@ -508,11 +520,8 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
         }
         
         // reset cards and request
-        self.resetCards()
-        self.currentProgress = 0.0
-        self.progressViewController.reset()
+        self.resetViews()
         
-        print("currentCategory: \(self.currentCategory)")
         if let _ = self.currentLatitude {
             self.acquireFirstCardsWithLocation(self.currentLatitude!, longitude: self.currentLongitude!)
         } else {
