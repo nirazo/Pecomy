@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		82743658913CE160AF673A82 /* Pods_Karuta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA78955690AB624AB9D7F4AE /* Pods_Karuta.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		82743658913CE160AF673A82 /* Pods_Karuta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA78955690AB624AB9D7F4AE /* Pods_Karuta.framework */; };
 		D203D3141B3E739600FC9DB8 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = D203D3131B3E739600FC9DB8 /* Const.swift */; };
 		D2092A2C1B637460008046D9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D2092A2E1B637460008046D9 /* Localizable.strings */; };
 		D2092A341B64D721008046D9 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2092A331B64D721008046D9 /* Restaurant.swift */; };
-		D22EC5591BCE34DD00A4B446 /* CategoryLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22EC5581BCE34DD00A4B446 /* CategoryLabelView.swift */; settings = {ASSET_TAGS = (); }; };
+		D22EC5591BCE34DD00A4B446 /* CategoryLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22EC5581BCE34DD00A4B446 /* CategoryLabelView.swift */; };
 		D23070731B4C30D100833167 /* KarutaLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23070721B4C30D100833167 /* KarutaLocationManager.swift */; };
 		D24B291F1B772EFF00419B9B /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24B291E1B772EFF00419B9B /* ResultViewController.swift */; };
 		D24B29211B78748A00419B9B /* ResultCardBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24B29201B78748A00419B9B /* ResultCardBase.swift */; };
@@ -30,6 +30,7 @@
 		D2BABE651B5A5DB6005E8356 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2BABE631B5A5DB6005E8356 /* Crashlytics.framework */; };
 		D2DD65A01B7714CA0046A50C /* TopResultCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DD659F1B7714CA0046A50C /* TopResultCard.swift */; };
 		D2DD65A21B7714DA0046A50C /* OtherResultCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DD65A11B7714DA0046A50C /* OtherResultCard.swift */; };
+		D2DEE6AF1C030FA200861BDF /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DEE6AE1C030FA200861BDF /* Double.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,7 @@
 		D2C785F71B47C2A900517D55 /* Karuta-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Karuta-Bridging-Header.h"; sourceTree = "<group>"; };
 		D2DD659F1B7714CA0046A50C /* TopResultCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopResultCard.swift; sourceTree = "<group>"; };
 		D2DD65A11B7714DA0046A50C /* OtherResultCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherResultCard.swift; sourceTree = "<group>"; };
+		D2DEE6AE1C030FA200861BDF /* Double.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +180,7 @@
 		D27BB9CE1B36F4A900F8D902 /* Karuta */ = {
 			isa = PBXGroup;
 			children = (
+				D2DEE6AD1C030F7F00861BDF /* Extension */,
 				D27BB9D11B36F4A900F8D902 /* AppDelegate.swift */,
 				D23070721B4C30D100833167 /* KarutaLocationManager.swift */,
 				D27BB9D31B36F4A900F8D902 /* MainViewController.swift */,
@@ -221,6 +224,14 @@
 				D27BB9E61B36F4A900F8D902 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D2DEE6AD1C030F7F00861BDF /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				D2DEE6AE1C030FA200861BDF /* Double.swift */,
+			);
+			name = Extension;
 			sourceTree = "<group>";
 		};
 		F8EF51686E29749944A50697 /* Frameworks */ = {
@@ -402,6 +413,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2DEE6AF1C030FA200861BDF /* Double.swift in Sources */,
 				D23070731B4C30D100833167 /* KarutaLocationManager.swift in Sources */,
 				D203D3141B3E739600FC9DB8 /* Const.swift in Sources */,
 				D27BB9D41B36F4A900F8D902 /* MainViewController.swift in Sources */,

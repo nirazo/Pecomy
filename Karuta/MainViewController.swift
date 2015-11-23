@@ -246,7 +246,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
             // インジケータ消す
             self?.hideIndicator()
             
-            var json = JSON.nullJSON
+            var json = JSON.null
             
             switch result {
             case .Success(let data):
@@ -388,7 +388,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
             "longitude" : self.currentLongitude!
         ]
         Alamofire.request(.GET, Const.API_RESULT_BASE, parameters: params, encoding: .URL).responseJSON {[weak self](request, response, result) in
-            var json = JSON.nullJSON
+            var json = JSON.null
             switch result {
             case .Success(let data):
                 json = SwiftyJSON.JSON(data)
