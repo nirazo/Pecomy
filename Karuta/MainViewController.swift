@@ -32,8 +32,6 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     var currentLatitude: Double?
     var currentLongitude: Double?
     
-    var isResultDisplayedOnce = false
-    
     var currentProgress: Float = 0.0
     
     let loadingIndicator = UIActivityIndicatorView()
@@ -176,7 +174,6 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     
     func reset() {
         self.isLocationAcquired = false
-        self.isResultDisplayedOnce = false
         self.resetCards()
         self.currentLatitude = nil
         self.currentLongitude = nil
@@ -287,9 +284,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
                     if (resetFlg) {
                         self!.showOutOfRangeAlert()
                     } else {
-                        if (!self!.isResultDisplayedOnce) {
-                            self!.acquireResults()
-                        }
+                        self!.acquireResults()
                     }
                 } else if (response?.statusCode == Const.STATUS_CODE_SERVER_ERROR) { // サーバエラー
                     self?.showServerErrorAlert()
@@ -380,8 +375,6 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     結果（ここへ行け！リスト）を取得
     */
     func acquireResults() {
-        self.isResultDisplayedOnce = true
-        
         let params: Dictionary<String, AnyObject> = [
             "device_id": Utils.acquireDeviceID(),
             "latitude" : self.currentLatitude!,
@@ -431,14 +424,13 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     
     func displayResultViewWithShopList(restaurants: [Restaurant]) {
         let resultVC = ResultViewController(restaurants: restaurants)
-        let backButton = UIBarButtonItem(title: NSLocalizedString("Back", comment: ""), style: .Plain, target: nil, action: nil)
-        self.navigationItem.backBarButtonItem = backButton
         resultVC.navigationItem.title = NSLocalizedString("YourBest", comment: "")
         
         self.reset()
         
         if (self.navigationController?.viewControllers.count == 1) {
-            self.navigationController?.pushViewController(resultVC, animated: true)
+            let navVC = UINavigationController(rootViewController: resultVC)
+            self.presentViewController(navVC, animated: true, completion: nil)
         }
     }
     
@@ -495,16 +487,20 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
             self.currentProgress += INCREMENT_DISLIKE
             self.progressViewController.progressWithRatio(self.currentProgress)
         }
-        self.acquireCardWithLatitude(self.currentLatitude!, longitude: self.currentLongitude!, like: answer, syncId: cardView.syncID, reset: false,
-            success: {[weak self](hasResult: Bool) in
-                if (hasResult) {
-                    if (!self!.isResultDisplayedOnce) {
-                        self!.acquireResults()
-                    }
-                }
-            }, failure: {(error: ErrorType) in
+        if (!self.canCallNextCard) {
+            if (self.contentView.subviews.count == 0) {
+                self.acquireResults()
             }
-        )
+        } else {
+            self.acquireCardWithLatitude(self.currentLatitude!, longitude: self.currentLongitude!, like: answer, syncId: cardView.syncID, reset: false,
+                success: {[weak self](hasResult: Bool) in
+                    if (hasResult) {
+                        self?.canCallNextCard = false
+                    }
+                }, failure: {(error: ErrorType) in
+                }
+            )
+        }
     }
     
     //MARK: - Alerts

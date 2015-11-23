@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol ResultViewControllerDelegate {
+    func backButtonTapped()
+}
+
 class ResultViewController: UIViewController {
     
     // 結果同士のマージン
@@ -30,6 +34,11 @@ class ResultViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = Const.KARUTA_RESULT_BACK_COLOR
         self.edgesForExtendedLayout = .None
+        
+        let resetButoon = UIBarButtonItem(title: NSLocalizedString("Reset", comment: ""), style: .Plain, target: self, action: "resetTapped")
+        self.navigationItem.rightBarButtonItem = resetButoon
+        let continueButton = UIBarButtonItem(title: NSLocalizedString("Continue", comment: ""), style: .Plain, target: self, action: "continueTapped")
+        self.navigationItem.leftBarButtonItem = continueButton
         
         switch self.restaurants.count {
         case 0:
@@ -146,10 +155,20 @@ class ResultViewController: UIViewController {
     }
     
     // 結果をタップした時の挙動
-    func resultTapped(sender:UITapGestureRecognizer) {
+    private func resultTapped(sender:UITapGestureRecognizer) {
         let resultCard = sender.view as! ResultCardBase
         let detailView = RestaurantDetailViewController(url: resultCard.url)
         self.navigationController?.pushViewController(detailView, animated: true)
+    }
+    
+    // やり直すをタップした時の挙動
+    func resetTapped() {
+        
+    }
+    
+    // 続けるをタップした時の挙動
+    func continueTapped() {
+        
     }
     
     //MARK - : Alerts

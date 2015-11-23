@@ -7,6 +7,8 @@
 */
 "OK" = "OK";
 "Back" = "Back";
+"Continue" = "Continue";
+"Reset" = "Reset";
 "LocationAlertTitle" = "Location service is not allowed";
 "LocationAlertMessage" = "Please turn on the location service to use Karuta.";
 "LocationAlertSettingButtonTitle" = "Setting";
