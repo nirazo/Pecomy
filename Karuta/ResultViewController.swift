@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ResultViewControllerDelegate {
-    func backButtonTapped()
+    func backButtonTapped(reset: Bool)
 }
 
 class ResultViewController: UIViewController {
@@ -20,6 +20,8 @@ class ResultViewController: UIViewController {
     let restaurants: [Restaurant]
     
     var topResultCard: TopResultCard?
+    
+    var delegate: ResultViewControllerDelegate?
     
     init(restaurants: [Restaurant]) {
         self.restaurants = restaurants
@@ -163,12 +165,12 @@ class ResultViewController: UIViewController {
     
     // やり直すをタップした時の挙動
     func resetTapped() {
-        
+        self.delegate?.backButtonTapped(true)
     }
     
     // 続けるをタップした時の挙動
     func continueTapped() {
-        
+        self.delegate?.backButtonTapped(false)
     }
     
     //MARK - : Alerts

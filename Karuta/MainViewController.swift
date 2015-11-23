@@ -12,7 +12,7 @@ import SwiftyJSON
 import MDCSwipeToChoose
 import SnapKit
 
-class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLocationManagerDelegate {
+class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLocationManagerDelegate, ResultViewControllerDelegate {
     
     let PROGRESS_HEIGHT: CGFloat = 8.0
     let FOOTER_HEIGHT: CGFloat = 34.0
@@ -27,7 +27,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     let contentView = UIView()
     
     var isLocationAcquired = false
-    var canCallNextCard = true
+    var canDisplayNextCard = true
     var stackedCards = [CardView]()
     var currentLatitude: Double?
     var currentLongitude: Double?
@@ -36,6 +36,8 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     
     let loadingIndicator = UIActivityIndicatorView()
     
+    var resultVC: ResultViewController?
+    var navVC: UINavigationController?
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nil, bundle: nil)
@@ -134,10 +136,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
         self.loadingIndicator.center = self.view.center
         self.loadingIndicator.hidesWhenStopped = true
         self.view.addSubview(self.loadingIndicator)
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
+        
         if (self.currentLatitude == nil || self.currentLongitude == nil) {
             self.acquireFirstCard()
         }
@@ -178,6 +177,8 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
         self.currentLatitude = nil
         self.currentLongitude = nil
         self.currentProgress = 0.0
+        self.canDisplayNextCard = true
+        self.stackedCards.removeAll()
         self.progressViewController.reset()
     }
     
@@ -189,22 +190,31 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     func acquireFirstCard() {
         self.locationManager.delegate = self
         self.locationManager.fetchWithCompletion({ [weak self] (location) in
-            self!.currentLatitude = Double(location!.coordinate.latitude);
-            self!.currentLongitude = Double(location!.coordinate.longitude);
-            self?.acquireFirstCardsWithLocation(self!.currentLatitude!, longitude: self!.currentLongitude!)
+            guard let weakSelf = self else {
+                return
+            }
+            weakSelf.currentLatitude = Double(location!.coordinate.latitude);
+            weakSelf.currentLongitude = Double(location!.coordinate.longitude);
+            weakSelf.acquireFirstCardsWithLocation(weakSelf.currentLatitude!, longitude: weakSelf.currentLongitude!)
             },
-            failure: { (error) in
-            self.showRetryToGetLocationAlert()
-        })
+            failure: { [weak self] (error) in
+                guard let weakSelf = self else {
+                    return
+                }
+                weakSelf.showRetryToGetLocationAlert()
+            })
     }
     
     func acquireFirstCardsWithLocation(latitude: Double, longitude: Double) {
         self.acquireCardWithLatitude(latitude,
             longitude: longitude,
             reset: true,
-            success: {(Bool) in
+            success: { [weak self] (Bool) in
+                guard let weakSelf = self else {
+                    return
+                }
                 // とりあえず直で2回呼びます
-                self.acquireCardWithLatitude(latitude,
+                weakSelf.acquireCardWithLatitude(latitude,
                     longitude: longitude,
                     reset: false
                 )
@@ -239,9 +249,11 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
         self.showIndicator()
         
         Alamofire.request(.GET, Const.API_CARD_BASE, parameters: params, encoding: .URL).responseJSON {[weak self](request, response, result) in
-            
+            guard let weakSelf = self else {
+                return
+            }
             // インジケータ消す
-            self?.hideIndicator()
+            weakSelf.hideIndicator()
             
             var json = JSON.null
             
@@ -271,25 +283,26 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
                     
                     let restaurant = Restaurant(shopID: shopID, shopName: shopName, priceRange: priceRange, distance: distance, imageUrls: shopImageUrls, url: url!, category: category)
                     
-                    let cardView = self!.createCardWithFrame(self!.baseCardRect(), restaurant: restaurant, syncID: syncID)
+                    let cardView = weakSelf.createCardWithFrame(weakSelf.baseCardRect(), restaurant: restaurant, syncID: syncID)
                     
-                    self!.stackedCards.append(cardView)
-                    
-                    self!.displayStackedCard()
+                    weakSelf.stackedCards.append(cardView)
+                    if (weakSelf.canDisplayNextCard) {
+                        weakSelf.displayStackedCard()
+                    }
                     
                     hasResult = json["result_available"].bool!
                     success(hasResult)
                 } else if (response?.statusCode == Const.STATUS_CODE_NOT_FOUND) { // カードが見つからない
                     let resetFlg = params["reset"] as! Bool
                     if (resetFlg) {
-                        self!.showOutOfRangeAlert()
+                        weakSelf.showOutOfRangeAlert()
                     } else {
-                        self!.acquireResults()
+                        weakSelf.acquireResults()
                     }
                 } else if (response?.statusCode == Const.STATUS_CODE_SERVER_ERROR) { // サーバエラー
-                    self?.showServerErrorAlert()
+                    weakSelf.showServerErrorAlert()
                 } else {
-                    self!.acquireResults()
+                    weakSelf.acquireResults()
                 }
             case .Failure(_, let error):
                 failure(error)
@@ -338,6 +351,15 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
             }
         }
     }
+    
+    // 位置情報はそのままに、ビュー関連をリセット
+    func resetViews() {
+        self.resetCards()
+        self.currentProgress = 0.0
+        self.progressViewController.reset()
+        self.canDisplayNextCard = true
+    }
+
     
     // カードの枚数に応じてカードのオフセットを返す
     func cardOffsetY() -> CGFloat {
@@ -423,14 +445,13 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     }
     
     func displayResultViewWithShopList(restaurants: [Restaurant]) {
-        let resultVC = ResultViewController(restaurants: restaurants)
-        resultVC.navigationItem.title = NSLocalizedString("YourBest", comment: "")
-        
-        self.reset()
+        self.resultVC = ResultViewController(restaurants: restaurants)
+        self.resultVC?.delegate = self
         
         if (self.navigationController?.viewControllers.count == 1) {
-            let navVC = UINavigationController(rootViewController: resultVC)
-            self.presentViewController(navVC, animated: true, completion: nil)
+            self.navVC = UINavigationController(rootViewController: resultVC!)
+            self.resultVC?.navigationItem.title = NSLocalizedString("YourBest", comment: "")
+            self.presentViewController(self.navVC!, animated: true, completion: nil)
         }
     }
     
@@ -487,19 +508,16 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
             self.currentProgress += INCREMENT_DISLIKE
             self.progressViewController.progressWithRatio(self.currentProgress)
         }
-        if (!self.canCallNextCard) {
-            if (self.contentView.subviews.count == 0) {
-                self.acquireResults()
-            }
-        } else {
-            self.acquireCardWithLatitude(self.currentLatitude!, longitude: self.currentLongitude!, like: answer, syncId: cardView.syncID, reset: false,
-                success: {[weak self](hasResult: Bool) in
-                    if (hasResult) {
-                        self?.canCallNextCard = false
-                    }
-                }, failure: {(error: ErrorType) in
+        self.acquireCardWithLatitude(self.currentLatitude!, longitude: self.currentLongitude!, like: answer, syncId: cardView.syncID, reset: false,
+            success: {[weak self](hasResult: Bool) in
+                if (hasResult) {
+                    self?.canDisplayNextCard = false
                 }
-            )
+            }, failure: {(error: ErrorType) in
+            }
+        )
+        if (!self.canDisplayNextCard && self.contentView.subviews.count == 0) {
+            self.acquireResults()
         }
     }
     
@@ -571,5 +589,20 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
         presentViewController(alertController, animated: true, completion: nil)
     }
     
+    //MARK: - ResultViewControllerDelegate
+    func backButtonTapped(reset: Bool) {
+        self.navVC?.dismissViewControllerAnimated(true, completion: {[weak self]() in
+            guard let weakSelf = self else {
+                return
+            }
+            if reset {
+                weakSelf.reset()
+                weakSelf.acquireFirstCard()
+            } else {
+                weakSelf.canDisplayNextCard = true
+                weakSelf.displayStackedCard()
+            }
+        })
+    }
+    
 }
-
