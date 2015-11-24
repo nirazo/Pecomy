@@ -25,5 +25,5 @@
 "CloseTutorial" = "start";
 "CardLikeText" = "Like!";
 "CardDislikeText" = "Unn..";
-"CardDistanceFromText" = "%d m from here";
+"CardDistanceFromText" = "%d minutes to walk from here";
 "CardNoPriceInfoText" = "No price information";

@@ -72,7 +72,7 @@ class OtherResultCard: ResultCardBase {
         
         // 距離ラベル
         let distanceLabel = UILabel()
-        distanceLabel.text = String(format: NSLocalizedString("CardDistanceFromText", comment: ""), Int(self.distance))
+        distanceLabel.text = String(format: NSLocalizedString("CardDistanceFromText", comment: ""), self.distance.meterToMinutes())
         distanceLabel.font = UIFont(name: Const.KARUTA_FONT_NORMAL, size: 9)
         distanceLabel.numberOfLines = 1
         distanceLabel.sizeToFit()

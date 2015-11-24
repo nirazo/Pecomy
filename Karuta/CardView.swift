@@ -90,7 +90,7 @@ class CardView: MDCSwipeToChooseView {
             y: CGRectGetMaxY(restaurantNameLabel.frame),
             width: restaurantNameLabel.frame.width,
             height: restaurantNameLabel.frame.height))
-        distanceLabel.text =  String(format: NSLocalizedString("CardDistanceFromText", comment: ""), Int(self.distance))
+        distanceLabel.text =  String(format: NSLocalizedString("CardDistanceFromText", comment: ""), self.distance.meterToMinutes())
         distanceLabel.font = UIFont(name: distanceLabel.font.fontName, size: 12)
         distanceLabel.numberOfLines = 0
         distanceLabel.sizeToFit()
