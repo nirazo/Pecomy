@@ -21,13 +21,22 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     let INCREMENT_LIKE: Float = 0.125
     let INCREMENT_DISLIKE: Float = 0.05
     
+    // 結果表示後、何枚めくったら再度結果を出すか(2枚先出しするので実際の数-2っす)
+    let SWIPE_COUNT_TO_RESULT = 3
+    
+    // 現在のスワイプ数（結果画面行ったらリセット）
+    var currentSwipeCount = 0
+    
     let locationManager = KarutaLocationManager()
     let progressViewController = CardProgressViewController()
     
     let contentView = UIView()
     
+    // TODO: これ以上フラグは増やしたくない
     var isLocationAcquired = false
     var canDisplayNextCard = true
+    var isDisplayedResult = false
+    
     var stackedCards = [CardView]()
     var currentLatitude: Double?
     var currentLongitude: Double?
@@ -171,16 +180,33 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
         }
     }
     
+    //MARK: - Reset
     func reset() {
+        self.resetViews()
         self.isLocationAcquired = false
-        self.resetCards()
         self.currentLatitude = nil
         self.currentLongitude = nil
-        self.currentProgress = 0.0
-        self.canDisplayNextCard = true
         self.stackedCards.removeAll()
-        self.progressViewController.reset()
     }
+    
+    // カード全部消す
+    func resetCards() {
+        for cv in self.contentView.subviews {
+            if cv.dynamicType === CardView.self {
+                cv.removeFromSuperview()
+            }
+        }
+    }
+    
+    // 位置情報はそのままに、ビュー関連をリセット
+    func resetViews() {
+        self.resetCards()
+        self.currentSwipeCount = 0
+        self.currentProgress = 0.0
+        self.progressViewController.reset()
+        self.canDisplayNextCard = true
+    }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -343,23 +369,6 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
         return cardView
     }
     
-    // カード全部消す
-    func resetCards() {
-        for cv in self.contentView.subviews {
-            if cv.dynamicType === CardView.self {
-                cv.removeFromSuperview()
-            }
-        }
-    }
-    
-    // 位置情報はそのままに、ビュー関連をリセット
-    func resetViews() {
-        self.resetCards()
-        self.currentProgress = 0.0
-        self.progressViewController.reset()
-        self.canDisplayNextCard = true
-    }
-
     
     // カードの枚数に応じてカードのオフセットを返す
     func cardOffsetY() -> CGFloat {
@@ -451,6 +460,8 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
         if (self.navigationController?.viewControllers.count == 1) {
             self.navVC = UINavigationController(rootViewController: resultVC!)
             self.resultVC?.navigationItem.title = NSLocalizedString("YourBest", comment: "")
+            self.currentSwipeCount = 0
+            self.isDisplayedResult = true
             self.presentViewController(self.navVC!, animated: true, completion: nil)
         }
     }
@@ -497,6 +508,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     // This is called then a user swipes the view fully left or right.
     func view(view: UIView!, wasChosenWithDirection direction: MDCSwipeDirection) {
         let cardView = view as! CardView
+        self.currentSwipeCount++
         cardView.isFlicked = true
         
         var answer = "dislike"
@@ -510,8 +522,17 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
         }
         self.acquireCardWithLatitude(self.currentLatitude!, longitude: self.currentLongitude!, like: answer, syncId: cardView.syncID, reset: false,
             success: {[weak self](hasResult: Bool) in
+                guard let weakSelf = self else {
+                    return
+                }
                 if (hasResult) {
-                    self?.canDisplayNextCard = false
+                    if (!weakSelf.isDisplayedResult) {
+                        weakSelf.canDisplayNextCard = false
+                    } else {
+                        if (weakSelf.currentSwipeCount >= weakSelf.SWIPE_COUNT_TO_RESULT) {
+                            weakSelf.canDisplayNextCard = false
+                        }
+                    }
                 }
             }, failure: {(error: ErrorType) in
             }
