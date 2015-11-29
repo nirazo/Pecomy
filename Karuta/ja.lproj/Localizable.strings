@@ -7,10 +7,10 @@
 */
 "OK" = "OK";
 "Back" = "戻る";
+"Cancel" = "キャンセル";
 "LocationAlertTitle" = "位置情報サービスが無効です";
 "LocationAlertMessage" = "Karutaを使用するには、『プライバシー > 位置情報サービス』より位置情報サービスの利用をオンにしてください。";
 "LocationAlertSettingButtonTitle" = "設定";
-"LocationAlertCancelButtonTitle" = "キャンセル";
 "LocationRetryAlertTitle" = "位置情報取得に失敗しました";
 "LocationRetryAlertMessage" = "下のボタンを押して再度取得して下さい。";
 "LocationRetryAlertRetryButtonTitle" = "もう一度";
@@ -27,3 +27,4 @@
 "CardDislikeText" = "イマイチ...";
 "CardDistanceFromText" = "ここから徒歩%d分";
 "CardNoPriceInfoText" = "値段情報がありません";
+"BlackListButtonSendMessage" = "このお店を候補から除外します";

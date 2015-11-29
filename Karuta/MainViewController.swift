@@ -12,7 +12,7 @@ import SwiftyJSON
 import MDCSwipeToChoose
 import SnapKit
 
-class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLocationManagerDelegate {
+class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLocationManagerDelegate, CardViewDelegate {
     
     let PROGRESS_HEIGHT: CGFloat = 8.0
     let FOOTER_HEIGHT: CGFloat = 34.0
@@ -332,6 +332,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
             
         }
         let cardView = CardView(frame: frame, restaurant: restaurant, syncID:syncID, options: options)
+        cardView.delegate = self
         return cardView
     }
     
@@ -567,12 +568,28 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
                 let url = NSURL(string: UIApplicationOpenSettingsURLString)
                 UIApplication.sharedApplication().openURL(url!)
         })
-        let cancelAction = UIAlertAction(title: NSLocalizedString("LocationAlertCancelButtonTitle", comment: ""),
+        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""),
             style: .Default, handler: nil)
         
         alertController.addAction(settingAction)
         alertController.addAction(cancelAction)
         presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    //MARK: - CardViewDelegate
+    func blackListButtonTapped(shopID: String) {
+        let ac = UIAlertController(title: "", message: NSLocalizedString("BlackListButtonSendMessage", comment: ""), preferredStyle: .Alert)
+        let okAction = UIAlertAction(title: NSLocalizedString("OK", comment: ""),
+            style: .Default, handler: { (action) in
+                let params = ["shopID": shopID]
+                Alamofire.request(.GET, Const.API_BLACKLIST_BASE, parameters: params, encoding: .URL).responseJSON {(request, response, result) in
+                }
+            })
+        let cancelAction = UIAlertAction(title: NSLocalizedString("Back", comment: ""),
+            style: .Default, handler: nil)
+        ac.addAction(cancelAction)
+        ac.addAction(okAction)
+        self.presentViewController(ac, animated: true, completion: nil)
     }
     
 }

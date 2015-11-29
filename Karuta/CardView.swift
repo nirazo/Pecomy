@@ -10,6 +10,11 @@ import UIKit
 import SDWebImage
 import MDCSwipeToChoose
 import SnapKit
+import Alamofire
+
+protocol CardViewDelegate {
+    func blackListButtonTapped(shopID: String)
+}
 
 class CardView: MDCSwipeToChooseView {
     
@@ -18,6 +23,8 @@ class CardView: MDCSwipeToChooseView {
     let SEPARATOR_LINE_WIDTH : CGFloat = 1.0
     let TEXT_MARGIN_X: CGFloat = 10.0
     let TEXT_MARGIN_Y: CGFloat = 5.0
+    
+    var delegate: CardViewDelegate?
     
     var syncID = ""
     var shopID = ""
@@ -124,6 +131,19 @@ class CardView: MDCSwipeToChooseView {
         priceLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 12)
         self.contentView.addSubview(priceLabel)
         
+        // ブラックリストボタン
+        let blackListButton = UIButton()
+        blackListButton.setImage(UIImage(named: "nogood_normal"), forState: .Normal)
+        blackListButton.setImage(UIImage(named: "nogood_tapped"), forState: .Highlighted)
+        blackListButton.addTarget(self, action: "blackListButtonTapped", forControlEvents: .TouchUpInside)
+        self.contentView.addSubview(blackListButton)
+        
+        blackListButton.snp_makeConstraints { (make) in
+            make.width.equalTo(40)
+            make.height.equalTo(40)
+            make.right.equalTo(categoryLabelView.snp_right)
+            make.bottom.equalTo(self.contentView).offset(-10)
+        }
         
         // 画像のダウンロード
         self.acquireImages()
@@ -141,5 +161,9 @@ class CardView: MDCSwipeToChooseView {
                     })
             }
         }
+    }
+    
+    func blackListButtonTapped() {
+        self.delegate?.blackListButtonTapped(self.shopID)
     }
 }

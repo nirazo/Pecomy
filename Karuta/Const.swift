@@ -11,29 +11,28 @@ import Foundation
 struct Const {
     
     #if DEBUG
-        static let API_CARD_BASE = "http://private-552a20-karutaapi.apiary-mock.com/card"
-        static let API_RESULT_BASE = "http://private-552a20-karutaapi.apiary-mock.com/results"
+    static let API_CARD_BASE = "http://private-552a20-karutaapi.apiary-mock.com/card"
+    static let API_RESULT_BASE = "http://private-552a20-karutaapi.apiary-mock.com/results"
+    static let API_FEEDBACK_BASE = "http://private-552a20-karutaapi.apiary-mock.com/dummy_feedback"
+    static let API_BLACKLIST_BASE = "http://private-552a20-karutaapi.apiary-mock.com/dummy_blacklist"
     #elseif RELEASE
-        static let API_CARD_BASE = "http://karuta.me/card"
-        static let API_RESULT_BASE = "http://karuta.me/results"
-    
-    // yokomoto
-//    static let API_CARD_BASE = "http://karuta.me:10091/card"
-//    static let API_RESULT_BASE = "http://karuta.me:10091/results"
-    // sho
-//    static let API_CARD_BASE = "http://192.168.10.80:10090/card"
-//    static let API_RESULT_BASE = "http://192.168.10.80:10090/results"
+    static let API_CARD_BASE = "http://karuta.me/card"
+    static let API_RESULT_BASE = "http://karuta.me/results"
+    static let API_FEEDBACK_BASE = "http://karuta.me/dummy_feedback"
+    static let API_BLACKLIST_BASE = "http://karuta.me/dummy_blacklist"
     #else
-        static let API_CARD_BASE = "http://karuta.me/card"
-        static let API_RESULT_BASE = "http://karuta.me/results"
+    static let API_CARD_BASE = "http://karuta.me/card"
+    static let API_RESULT_BASE = "http://karuta.me/results"
+    static let API_FEEDBACK_BASE = "http://karuta.me/dummy_feedback"
+    static let API_BLACKLIST_BASE = "http://karuta.me/dummy_blacklist"
     #endif
     
     #if FIXED_LOCATION
-        static let FIXED_LATITUDE: Double = 35.661959
-        static let FIXED_LONGITUDE: Double = 139.699789
+    static let FIXED_LATITUDE: Double = 35.661959
+    static let FIXED_LONGITUDE: Double = 139.699789
     #else
-        static let FIXED_LATITUDE: Double = 0.0
-        static let FIXED_LONGITUDE: Double = 0.0
+    static let FIXED_LATITUDE: Double = 0.0
+    static let FIXED_LONGITUDE: Double = 0.0
     #endif
     
     static let KARUTA_THEME_COLOR = UIColor(red: 207.0/255.0, green: 83.0/255.0, blue: 41.0/255.0, alpha: 1.0)
