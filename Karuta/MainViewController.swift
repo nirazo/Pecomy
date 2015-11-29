@@ -577,12 +577,23 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     }
     
     //MARK: - CardViewDelegate
-    func blackListButtonTapped(shopID: String) {
+    func blackListButtonTapped(card: CardView, shopID: String) {
         let ac = UIAlertController(title: "", message: NSLocalizedString("BlackListButtonSendMessage", comment: ""), preferredStyle: .Alert)
         let okAction = UIAlertAction(title: NSLocalizedString("OK", comment: ""),
             style: .Default, handler: { (action) in
-                let params = ["shopID": shopID]
+                let params = ["shop_id": shopID, "device_id": Utils.acquireDeviceID()]
                 Alamofire.request(.GET, Const.API_BLACKLIST_BASE, parameters: params, encoding: .URL).responseJSON {(request, response, result) in
+                    switch result {
+                    case .Success(_):
+                        break
+                    case .Failure(_, _):
+                        // 現時点ではAPIが無いので、404を正とする
+                        if (response?.statusCode == Const.STATUS_CODE_NOT_FOUND) {
+                            card.blackListButton.enabled = false
+                        }
+                        break
+                    }
+
                 }
             })
         let cancelAction = UIAlertAction(title: NSLocalizedString("Back", comment: ""),

@@ -13,7 +13,7 @@ import SnapKit
 import Alamofire
 
 protocol CardViewDelegate {
-    func blackListButtonTapped(shopID: String)
+    func blackListButtonTapped(card: CardView, shopID: String)
 }
 
 class CardView: MDCSwipeToChooseView {
@@ -35,6 +35,7 @@ class CardView: MDCSwipeToChooseView {
     var imageUrls = [NSURL]()
     var restaurantImageViews = [UIImageView]()
     let contentsView = UIView()
+    let blackListButton = UIButton()
     
     // カードがフリックされた（操作が無効の状態）になっているかのフラグ
     var isFlicked = false
@@ -132,13 +133,13 @@ class CardView: MDCSwipeToChooseView {
         self.contentView.addSubview(priceLabel)
         
         // ブラックリストボタン
-        let blackListButton = UIButton()
-        blackListButton.setImage(UIImage(named: "nogood_normal"), forState: .Normal)
-        blackListButton.setImage(UIImage(named: "nogood_tapped"), forState: .Highlighted)
-        blackListButton.addTarget(self, action: "blackListButtonTapped", forControlEvents: .TouchUpInside)
-        self.contentView.addSubview(blackListButton)
+        self.blackListButton.setImage(UIImage(named: "nogood_normal"), forState: .Normal)
+        self.blackListButton.setImage(UIImage(named: "nogood_tapped"), forState: .Highlighted)
+        self.blackListButton.setImage(UIImage(named: "nogood_highlighted"), forState: .Disabled)
+        self.blackListButton.addTarget(self, action: "blackListButtonTapped", forControlEvents: .TouchUpInside)
+        self.contentView.addSubview(self.blackListButton)
         
-        blackListButton.snp_makeConstraints { (make) in
+        self.blackListButton.snp_makeConstraints { (make) in
             make.width.equalTo(40)
             make.height.equalTo(40)
             make.right.equalTo(categoryLabelView.snp_right)
@@ -164,6 +165,6 @@ class CardView: MDCSwipeToChooseView {
     }
     
     func blackListButtonTapped() {
-        self.delegate?.blackListButtonTapped(self.shopID)
+        self.delegate?.blackListButtonTapped(self, shopID: self.shopID)
     }
 }
