@@ -28,3 +28,4 @@
 "CardDistanceFromText" = "ここから徒歩%d分";
 "CardNoPriceInfoText" = "値段情報がありません";
 "BlackListButtonSendMessage" = "このお店を候補から除外します";
+"GoodButtonSendMessage" = "このお店に「いいね！」しますか？";

@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol ResultCardBaseDelegate {
+    func goodButtonTapped(card: ResultCardBase, shopID: String)
+}
+
 class ResultCardBase: UIView {
     
     private let CORNER_RADIUS: CGFloat = 5.0
@@ -25,8 +29,10 @@ class ResultCardBase: UIView {
     let borderColor: UIColor
     let contentView = UIView()
     let shadow = UIView()
+    let goodButton = UIButton()
+    var delegate: ResultCardBaseDelegate
 
-    init(frame: CGRect, restaurant: Restaurant, imageNum: Int, color: UIColor) {
+    init(frame: CGRect, restaurant: Restaurant, imageNum: Int, color: UIColor, delegate: ResultCardBaseDelegate) {
         self.shopID = restaurant.shopID
         self.shopName = restaurant.shopName
         self.imageUrls = restaurant.imageUrls
@@ -35,6 +41,7 @@ class ResultCardBase: UIView {
         self.url = restaurant.url
         self.category = restaurant.category
         self.borderColor = color
+        self.delegate = delegate
         
         for _ in 0..<imageNum {
             let imageView = UIImageView(image: UIImage(named: "noimage"))
@@ -69,6 +76,12 @@ class ResultCardBase: UIView {
         self.layer.masksToBounds = false
         
         self.setupViews()
+        
+        // いいねボタンの初期化
+        goodButton.setImage(UIImage(named: "good_normal"), forState: .Normal)
+        goodButton.setImage(UIImage(named: "good_tapped"), forState: .Highlighted)
+        goodButton.setImage(UIImage(named: "good_highlighted"), forState: .Disabled)
+        goodButton.addTarget(self, action: "goodButtonTapped", forControlEvents: .TouchUpInside)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -87,6 +100,10 @@ class ResultCardBase: UIView {
             make.size.equalTo(self)
         }
         self.contentView.layer.frame = self.contentView.bounds
+    }
+    
+    func goodButtonTapped() {
+        self.delegate.goodButtonTapped(self, shopID: self.shopID)
     }
 
 }

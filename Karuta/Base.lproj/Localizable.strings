@@ -28,3 +28,4 @@
 "CardDistanceFromText" = "%d minutes to walk from here";
 "CardNoPriceInfoText" = "No price information";
 "BlackListButtonSendMessage" = "Send request to exclude this card from the list";
+"GoodButtonSendMessage" = "Say \"Good\" to this restaurant?";
