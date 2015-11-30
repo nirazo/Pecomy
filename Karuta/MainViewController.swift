@@ -45,8 +45,6 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     
     let loadingIndicator = UIActivityIndicatorView()
     
-    var navVC: UINavigationController?
-    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nil, bundle: nil)
     }
@@ -458,10 +456,10 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
         resultVC.delegate = self
         
         if (self.navigationController?.viewControllers.count == 1) {
-            self.navVC = UINavigationController(rootViewController: resultVC)
+            let navVC = UINavigationController(rootViewController: resultVC)
             resultVC.navigationItem.title = NSLocalizedString("YourBest", comment: "")
             self.isDisplayedResult = true
-            self.presentViewController(self.navVC!, animated: true, completion: nil)
+            self.presentViewController(navVC, animated: true, completion: nil)
         }
     }
     
@@ -611,19 +609,14 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     
     //MARK: - ResultViewControllerDelegate
     func resultViewController(controller: ResultViewController, backButtonTappedWithReset reset: Bool) {
-        self.navVC?.dismissViewControllerAnimated(true, completion: {[weak self]() in
-            guard let weakSelf = self else {
-                return
-            }
-            if reset {
-                weakSelf.reset()
-                weakSelf.acquireFirstCard()
-            } else {
-                weakSelf.resetViews()
-                weakSelf.canDisplayNextCard = true
-                weakSelf.displayStackedCard()
-            }
-        })
+        if reset {
+            self.reset()
+            self.acquireFirstCard()
+        } else {
+            self.resetViews()
+            self.canDisplayNextCard = true
+            self.displayStackedCard()
+        }
     }
     
     //MARK: - CardViewDelegate
