@@ -10,7 +10,6 @@ import UIKit
 import SDWebImage
 import MDCSwipeToChoose
 import SnapKit
-import Alamofire
 
 protocol CardViewDelegate {
     func blackListButtonTapped(card: CardView, shopID: String)
