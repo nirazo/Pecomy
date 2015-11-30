@@ -17,9 +17,9 @@ class OtherResultCard: ResultCardBase {
     
     var rank = 0
     
-    init(frame: CGRect, restaurant: Restaurant?, rank: Int) {
+    init(frame: CGRect, restaurant: Restaurant?, rank: Int, delegate: ResultCardBaseDelegate) {
         self.rank = rank
-        super.init(frame: frame, restaurant: restaurant!, imageNum: NUM_OF_IMAGES, color: Const.KARUTA_RANK_COLOR[rank-1])
+        super.init(frame: frame, restaurant: restaurant!, imageNum: NUM_OF_IMAGES, color: Const.KARUTA_RANK_COLOR[rank-1], delegate: delegate)
         self.setupView()
     }
     
@@ -83,6 +83,16 @@ class OtherResultCard: ResultCardBase {
             make.left.equalTo(restaurantNameLabel)
             make.bottom.equalTo(self).offset(-TEXT_MARGIN_Y)
             make.width.equalTo(restaurantNameLabel)
+        }
+        
+        // いいねボタン
+        self.contentView.addSubview(self.goodButton)
+        
+        goodButton.snp_makeConstraints { (make) in
+            make.width.equalTo(35)
+            make.height.equalTo(35)
+            make.right.equalTo(self.contentView).inset(10)
+            make.bottom.equalTo(self.contentView).inset(10)
         }
         
         // ランキングラベル

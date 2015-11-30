@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import Alamofire
 
 protocol ResultViewControllerDelegate {
     func resultViewController(controller: ResultViewController, backButtonTappedWithReset reset: Bool)
 }
 
-class ResultViewController: UIViewController {
+class ResultViewController: UIViewController, ResultCardBaseDelegate {
     
     // 結果同士のマージン
     let RESULT_MARGIN: CGFloat = 15
@@ -60,7 +61,7 @@ class ResultViewController: UIViewController {
     // レイアウト共通(結果が存在する場合)
     private func prepareLayout() {
         // 1位
-        self.topResultCard = TopResultCard(frame: CGRectZero, restaurant: self.restaurants[0])
+        self.topResultCard = TopResultCard(frame: CGRectZero, restaurant: self.restaurants[0], delegate: self)
         let tr = UITapGestureRecognizer(target: self, action: "resultTapped:")
         self.topResultCard?.addGestureRecognizer(tr)
         self.view.addSubview(topResultCard!)
@@ -104,7 +105,7 @@ class ResultViewController: UIViewController {
         }
         
         var secondResultCard: OtherResultCard
-        secondResultCard = OtherResultCard(frame: CGRectZero, restaurant: self.restaurants[1], rank: 2)
+        secondResultCard = OtherResultCard(frame: CGRectZero, restaurant: self.restaurants[1], rank: 2, delegate: self)
         let tr = UITapGestureRecognizer(target: self, action: "resultTapped:")
         secondResultCard.addGestureRecognizer(tr)
         self.view.addSubview(secondResultCard)
@@ -126,7 +127,7 @@ class ResultViewController: UIViewController {
             make.top.equalTo(self.view).offset(RESULT_MARGIN)
         }
         
-        let secondResultCard = OtherResultCard(frame: CGRectZero, restaurant: self.restaurants[1], rank: 2)
+        let secondResultCard = OtherResultCard(frame: CGRectZero, restaurant: self.restaurants[1], rank: 2, delegate: self)
         let tr_second = UITapGestureRecognizer(target: self, action: "resultTapped:")
         secondResultCard.addGestureRecognizer(tr_second)
         self.view.addSubview(secondResultCard)
@@ -138,7 +139,7 @@ class ResultViewController: UIViewController {
         }
         
         // 3位
-        let thirdResultCard = OtherResultCard(frame: CGRectZero, restaurant: self.restaurants[2], rank: 3)
+        let thirdResultCard = OtherResultCard(frame: CGRectZero, restaurant: self.restaurants[2], rank: 3, delegate: self)
         let tr_third = UITapGestureRecognizer(target: self, action: "resultTapped:")
         thirdResultCard.addGestureRecognizer(tr_third)
         self.view.addSubview(thirdResultCard)
@@ -172,8 +173,8 @@ class ResultViewController: UIViewController {
     func continueTapped() {
         self.delegate?.resultViewController(self, backButtonTappedWithReset: false)
     }
-    
-    //MARK - : Alerts
+
+    //MARK: - Alerts
     // 結果無し時のアラート表示
     func showNoResultAlert() {
         let alertController = UIAlertController(title:NSLocalizedString("NoResultAlertTitle", comment: ""),
@@ -183,6 +184,33 @@ class ResultViewController: UIViewController {
             style: .Default, handler: nil)
         alertController.addAction(okAction)
         self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    //MARK: - ResultCardBaseDelegate
+    func goodButtonTapped(card: ResultCardBase, shopID: String) {
+        let ac = UIAlertController(title: "", message: NSLocalizedString("GoodButtonSendMessage", comment: ""), preferredStyle: .Alert)
+        let okAction = UIAlertAction(title: NSLocalizedString("OK", comment: ""),
+            style: .Default, handler: { (action) in
+                let params = ["shop_id": shopID, "device_id": Utils.acquireDeviceID()]
+                Alamofire.request(.GET, Const.API_GOOD_BASE, parameters: params, encoding: .URL).responseJSON {(request, response, result) in
+                    switch result {
+                    case .Success(_):
+                        break
+                    case .Failure(_, _):
+                        // 現時点ではAPIが無いので、404を正とする
+                        if (response?.statusCode == Const.STATUS_CODE_NOT_FOUND) {
+                            card.goodButton.enabled = false
+                        }
+                        break
+                    }
+                }
+            }
+        )
+        let cancelAction = UIAlertAction(title: NSLocalizedString("Back", comment: ""),
+            style: .Default, handler: nil)
+        ac.addAction(cancelAction)
+        ac.addAction(okAction)
+        self.presentViewController(ac, animated: true, completion: nil)
     }
 
 }
