@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ResultViewControllerDelegate {
-    func backButtonTapped(reset: Bool)
+    func resultViewController(controller: ResultViewController, backButtonTappedWithReset reset: Bool)
 }
 
 class ResultViewController: UIViewController {
@@ -165,12 +165,12 @@ class ResultViewController: UIViewController {
     
     // やり直すをタップした時の挙動
     func resetTapped() {
-        self.delegate?.backButtonTapped(true)
+        self.delegate?.resultViewController(self, backButtonTappedWithReset: true)
     }
     
     // 続けるをタップした時の挙動
     func continueTapped() {
-        self.delegate?.backButtonTapped(false)
+        self.delegate?.resultViewController(self, backButtonTappedWithReset: false)
     }
     
     //MARK - : Alerts

@@ -45,7 +45,6 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     
     let loadingIndicator = UIActivityIndicatorView()
     
-    var resultVC: ResultViewController?
     var navVC: UINavigationController?
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
@@ -454,13 +453,12 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     }
     
     func displayResultViewWithShopList(restaurants: [Restaurant]) {
-        self.resultVC = ResultViewController(restaurants: restaurants)
-        self.resultVC?.delegate = self
+        let resultVC = ResultViewController(restaurants: restaurants)
+        resultVC.delegate = self
         
         if (self.navigationController?.viewControllers.count == 1) {
-            self.navVC = UINavigationController(rootViewController: resultVC!)
-            self.resultVC?.navigationItem.title = NSLocalizedString("YourBest", comment: "")
-            self.currentSwipeCount = 0
+            self.navVC = UINavigationController(rootViewController: resultVC)
+            resultVC.navigationItem.title = NSLocalizedString("YourBest", comment: "")
             self.isDisplayedResult = true
             self.presentViewController(self.navVC!, animated: true, completion: nil)
         }
@@ -611,7 +609,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     }
     
     //MARK: - ResultViewControllerDelegate
-    func backButtonTapped(reset: Bool) {
+    func resultViewController(controller: ResultViewController, backButtonTappedWithReset reset: Bool) {
         self.navVC?.dismissViewControllerAnimated(true, completion: {[weak self]() in
             guard let weakSelf = self else {
                 return
@@ -620,6 +618,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
                 weakSelf.reset()
                 weakSelf.acquireFirstCard()
             } else {
+                weakSelf.resetViews()
                 weakSelf.canDisplayNextCard = true
                 weakSelf.displayStackedCard()
             }
