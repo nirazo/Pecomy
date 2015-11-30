@@ -11,6 +11,10 @@ import SDWebImage
 import MDCSwipeToChoose
 import SnapKit
 
+protocol CardViewDelegate {
+    func blackListButtonTapped(card: CardView, shopID: String)
+}
+
 class CardView: MDCSwipeToChooseView {
     
     let NUM_OF_IMAGES = 3
@@ -18,6 +22,8 @@ class CardView: MDCSwipeToChooseView {
     let SEPARATOR_LINE_WIDTH : CGFloat = 1.0
     let TEXT_MARGIN_X: CGFloat = 10.0
     let TEXT_MARGIN_Y: CGFloat = 5.0
+    
+    var delegate: CardViewDelegate?
     
     var syncID = ""
     var shopID = ""
@@ -28,6 +34,7 @@ class CardView: MDCSwipeToChooseView {
     var imageUrls = [NSURL]()
     var restaurantImageViews = [UIImageView]()
     let contentsView = UIView()
+    let blackListButton = UIButton()
     
     // カードがフリックされた（操作が無効の状態）になっているかのフラグ
     var isFlicked = false
@@ -124,6 +131,19 @@ class CardView: MDCSwipeToChooseView {
         priceLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 12)
         self.contentView.addSubview(priceLabel)
         
+        // ブラックリストボタン
+        self.blackListButton.setImage(UIImage(named: "nogood_normal"), forState: .Normal)
+        self.blackListButton.setImage(UIImage(named: "nogood_tapped"), forState: .Highlighted)
+        self.blackListButton.setImage(UIImage(named: "nogood_highlighted"), forState: .Disabled)
+        self.blackListButton.addTarget(self, action: "blackListButtonTapped", forControlEvents: .TouchUpInside)
+        self.contentView.addSubview(self.blackListButton)
+        
+        self.blackListButton.snp_makeConstraints { (make) in
+            make.width.equalTo(40)
+            make.height.equalTo(40)
+            make.right.equalTo(categoryLabelView.snp_right)
+            make.bottom.equalTo(self.contentView).offset(-10)
+        }
         
         // 画像のダウンロード
         self.acquireImages()
@@ -141,5 +161,9 @@ class CardView: MDCSwipeToChooseView {
                     })
             }
         }
+    }
+    
+    func blackListButtonTapped() {
+        self.delegate?.blackListButtonTapped(self, shopID: self.shopID)
     }
 }
