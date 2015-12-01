@@ -166,22 +166,12 @@ class ResultViewController: UIViewController, ResultCardBaseDelegate {
     
     // やり直すをタップした時の挙動
     func resetTapped() {
-        self.dismissViewControllerAnimated(true, completion: { [weak self] () in
-            guard let weakSelf = self else {
-                return
-            }
-            weakSelf.delegate?.resultViewController(weakSelf, backButtonTappedWithReset: true)
-            })
+        self.delegate?.resultViewController(self, backButtonTappedWithReset: true)
     }
     
     // 続けるをタップした時の挙動
     func continueTapped() {
-        self.dismissViewControllerAnimated(true, completion: { [weak self] () in
-            guard let weakSelf = self else {
-                return
-            }
-            weakSelf.delegate?.resultViewController(weakSelf, backButtonTappedWithReset: false)
-        })
+        self.delegate?.resultViewController(self, backButtonTappedWithReset: false)
     }
 
     //MARK: - Alerts

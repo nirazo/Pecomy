@@ -609,14 +609,19 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     
     //MARK: - ResultViewControllerDelegate
     func resultViewController(controller: ResultViewController, backButtonTappedWithReset reset: Bool) {
-        if reset {
-            self.reset()
-            self.acquireFirstCard()
-        } else {
-            self.resetViews()
-            self.canDisplayNextCard = true
-            self.displayStackedCard()
-        }
+        self.dismissViewControllerAnimated(true, completion: {[weak self]() in
+            guard let weakSelf = self else {
+                return
+            }
+            if reset {
+                weakSelf.reset()
+                weakSelf.acquireFirstCard()
+            } else {
+                weakSelf.resetViews()
+                weakSelf.canDisplayNextCard = true
+                weakSelf.displayStackedCard()
+            }
+        })
     }
     
     //MARK: - CardViewDelegate
