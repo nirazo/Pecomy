@@ -15,15 +15,15 @@ class CategoryLabelView: UIView {
     let MARGIN_CATEGORY_HORIZONTAL: CGFloat = 2.0   // カテゴリラベル内の左右マージン
     let DEFAULT_FONT_SIZE_CATEGORY: CGFloat = 13    // カテゴリラベルのフォントサイズ
     let MAX_CATEGORY_NUM = 2                        // 表示するカテゴリの最大数
+    var categoryLabels = [UILabel]()
+    var categoriesArray = [String]()
     
-    var categoriesArray: [String]
-
     init(frame: CGRect, category: String) {
         // カテゴリのsplit
         let replacedCategory = category.stringByReplacingOccurrencesOfString("（.*）", withString: "", options: .RegularExpressionSearch, range: nil)
-        categoriesArray = replacedCategory.componentsSeparatedByString("・")
-        if (categoriesArray.count > MAX_CATEGORY_NUM) {
-            categoriesArray = [String](categoriesArray[0..<MAX_CATEGORY_NUM])
+        self.categoriesArray = replacedCategory.componentsSeparatedByString("・")
+        if (self.categoriesArray.count > MAX_CATEGORY_NUM) {
+            self.categoriesArray = [String](self.categoriesArray[0..<MAX_CATEGORY_NUM])
         }
         super.init(frame: frame)
         self.setupSubViews()
@@ -33,14 +33,30 @@ class CategoryLabelView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func setCategory(category: String) {
+        // カテゴリのsplit
+        let replacedCategory = category.stringByReplacingOccurrencesOfString("（.*）", withString: "", options: .RegularExpressionSearch, range: nil)
+        self.categoriesArray = replacedCategory.componentsSeparatedByString("・")
+        if (self.categoriesArray.count > MAX_CATEGORY_NUM) {
+            self.categoriesArray = [String](self.categoriesArray[0..<MAX_CATEGORY_NUM])
+        }
+        
+        self.setupSubViews()
+    }
+    
     func setupSubViews() {
+        // subViewsを全て削除
+        for subview in self.subviews {
+            subview.removeFromSuperview()
+        }
+        
         self.backgroundColor = Const.KARUTA_THEME_COLOR
         // 角丸
         self.layer.cornerRadius = CORNER_RADIUS
         
-        for (var i=0; i < categoriesArray.count; i++) {
+        for (var i=0; i < self.categoriesArray.count; i++) {
             let categoryLabel = UILabel()
-            categoryLabel.text = categoriesArray[i]
+            categoryLabel.text = self.categoriesArray[i]
             categoryLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: DEFAULT_FONT_SIZE_CATEGORY)
             categoryLabel.numberOfLines = 1
             categoryLabel.textAlignment = .Center
@@ -48,12 +64,14 @@ class CategoryLabelView: UIView {
             categoryLabel.adjustsFontSizeToFitWidth = true
             self.addSubview(categoryLabel)
             
+            self.categoryLabels.append(categoryLabel)
+            
             categoryLabel.snp_makeConstraints { (make) in
                 make.centerX.equalTo(self)
-                make.centerY.equalTo(self.snp_bottom).multipliedBy(CGFloat(i*2+1)/CGFloat(categoriesArray.count*2))
+                make.centerY.equalTo(self.snp_bottom).multipliedBy(CGFloat(i*2+1)/CGFloat(self.categoriesArray.count*2))
                 make.left.equalTo(self).offset(MARGIN_CATEGORY_HORIZONTAL)
                 make.right.equalTo(self).inset(MARGIN_CATEGORY_HORIZONTAL)
-                make.height.equalTo(self).dividedBy(CGFloat(categoriesArray.count))
+                make.height.equalTo(self).dividedBy(CGFloat(self.categoriesArray.count))
             }
         }
     }

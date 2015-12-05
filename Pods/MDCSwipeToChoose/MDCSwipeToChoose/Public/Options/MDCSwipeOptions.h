@@ -31,6 +31,7 @@
 typedef void (^MDCSwipeToChooseOnPanBlock)(MDCPanState *state);
 typedef void (^MDCSwipeToChooseOnChosenBlock)(MDCSwipeResult *state);
 typedef void (^MDCSwipeToChooseOnCancelBlock)(UIView *swipedView);
+
 /*!
  * A set of options used to customize the behavior of the
  * `UIView (MDCSwipeToChoose)` category.

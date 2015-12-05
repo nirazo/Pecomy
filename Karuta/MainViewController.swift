@@ -12,14 +12,14 @@ import SwiftyJSON
 import MDCSwipeToChoose
 import SnapKit
 
-class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLocationManagerDelegate, CardViewDelegate, ResultViewControllerDelegate {
+class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLocationManagerDelegate, CardViewDelegate, ResultViewControllerDelegate, CategorySelectionViewControllerDelegate {
     
     let PROGRESS_HEIGHT: CGFloat = 8.0
     let FOOTER_HEIGHT: CGFloat = 34.0
     
     // like, dislikeのスワイプ増分
-    let INCREMENT_LIKE: Float = 0.125
-    let INCREMENT_DISLIKE: Float = 0.05
+    let INCREMENT_LIKE: Float = 0.16
+    let INCREMENT_DISLIKE: Float = 0.10
     
     // 結果表示後、何枚めくったら再度結果を出すか(2枚先出しするので実際の数-2っす)
     let SWIPE_COUNT_TO_RESULT = 3
@@ -41,10 +41,20 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     var currentLatitude: Double?
     var currentLongitude: Double?
     
+    var currentCategory = CategoryIdentifier.All
+    
     var currentProgress: Float = 0.0
     
     let loadingIndicator = UIActivityIndicatorView()
     
+    // ビュー関連
+    var categoryLabelView: CategoryLabelView?
+    
+    // 現在選択されているカテゴリ
+    var selectedCategory = CategoryIdentifier.All.valueForDisplay()
+    
+    var categorySelectionVC: CategorySelectionViewController?
+
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nil, bundle: nil)
     }
@@ -136,6 +146,20 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
             make.bottom.equalTo(dislikeButton)
         }
         
+        // カテゴリ
+        self.categoryLabelView = CategoryLabelView(frame: CGRectZero, category: self.selectedCategory)
+        self.view.addSubview(self.categoryLabelView!)
+        let tr = UITapGestureRecognizer(target: self, action: "categoryTapped:")
+        self.categoryLabelView!.addGestureRecognizer(tr)
+        
+        self.categoryLabelView!.snp_makeConstraints { (make) in
+            make.left.equalTo(dislikeButton.snp_right)
+            make.right.equalTo(likeButton.snp_left)
+            make.top.equalTo(likeButton.snp_bottom).inset(30)
+            make.bottom.equalTo(footerBar.snp_top).inset(-5)
+        }
+        
+        
         // インジケータ
         self.loadingIndicator.bounds = CGRectMake(0.0, 0.0, 50, 50)
         self.loadingIndicator.activityIndicatorViewStyle = .WhiteLarge
@@ -151,6 +175,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     // observer
     func enterForeground(notification: NSNotification){
         if self.currentLatitude == nil || self.currentLongitude == nil {
+            self.reset()
             self.acquireFirstCard()
         } else {
             // 前回実施時の距離から特定の距離以上離れていたらリトライ
@@ -164,20 +189,27 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
             
             self.locationManager.fetchWithCompletion({ [weak self] (location) in
                 loadingView.removeFromSuperview()
-                if (Utils.distanceBetweenLocations(self!.currentLatitude!, fromLon: self!.currentLongitude!, toLat: location!.coordinate.latitude, toLon: location!.coordinate.longitude) > Const.RETRY_DISTANCE) {
-                    self?.reset()
-                    self!.currentLatitude = Double(location!.coordinate.latitude);
-                    self!.currentLongitude = Double(location!.coordinate.longitude);
-                    self?.acquireFirstCardsWithLocation(self!.currentLatitude!, longitude: self!.currentLongitude!)
+                guard let weakSelf = self else {
+                    return
+                }
+                if (Utils.distanceBetweenLocations(weakSelf.currentLatitude!, fromLon: weakSelf.currentLongitude!, toLat: location!.coordinate.latitude, toLon: location!.coordinate.longitude) > Const.RETRY_DISTANCE) {
+                    weakSelf.reset()
+                    weakSelf.currentLatitude = Double(location!.coordinate.latitude);
+                    weakSelf.currentLongitude = Double(location!.coordinate.longitude);
+                    weakSelf.acquireFirstCardsWithLocation(weakSelf.currentLatitude!, longitude: weakSelf.currentLongitude!)
                 }
                 
-                }, failure: { (error) in
-                self.showRetryToGetLocationAlert()
-            })
+                }, failure: { [weak self] (error) in
+                    guard let weakSelf = self else {
+                        return
+                    }
+                    weakSelf.showRetryToGetLocationAlert()
+                })
         }
     }
     
     //MARK: - Reset
+    // 位置情報も含め、全てリセット
     func reset() {
         self.resetViews()
         self.isLocationAcquired = false
@@ -209,6 +241,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
         super.didReceiveMemoryWarning()
     }
     
+    
     // MARK: - Card related methods
     func acquireFirstCard() {
         self.locationManager.delegate = self
@@ -231,6 +264,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     func acquireFirstCardsWithLocation(latitude: Double, longitude: Double) {
         self.acquireCardWithLatitude(latitude,
             longitude: longitude,
+            category: self.currentCategory,
             reset: true,
             success: { [weak self] (Bool) in
                 guard let weakSelf = self else {
@@ -239,6 +273,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
                 // とりあえず直で2回呼びます
                 weakSelf.acquireCardWithLatitude(latitude,
                     longitude: longitude,
+                    category: weakSelf.currentCategory,
                     reset: false
                 )
             }
@@ -251,7 +286,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     /**
     カードを取得
     */
-    func acquireCardWithLatitude(latitude: Double, longitude: Double, like: String? = nil, syncId: String? = nil, reset: Bool, success: (Bool)->() = {(Bool) in}, failure: (ErrorType)->() = {(ErrorType) in}) {
+    func acquireCardWithLatitude(latitude: Double, longitude: Double, like: String? = nil, category: CategoryIdentifier, syncId: String? = nil, reset: Bool, success: (Bool)->() = {(Bool) in}, failure: (ErrorType)->() = {(ErrorType) in}) {
         var params: Dictionary<String, AnyObject> = [
             "device_id" : Utils.acquireDeviceID(),
             "latitude" : latitude,
@@ -264,6 +299,9 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
         }
         if ((like) != nil) {
             params["answer"] = like!
+        }
+        if (category != .All) {
+            params["select_category_group"] = category.valueForReq()
         }
         
         var hasResult = false;
@@ -472,6 +510,12 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
         self.swipeTopCardToWithDirection(.Left)
     }
     
+    func categoryTapped(sender:UITapGestureRecognizer) {
+        self.categorySelectionVC = CategorySelectionViewController()
+        self.categorySelectionVC!.delegate = self
+        self.view.addSubview(self.categorySelectionVC!.view)
+    }
+    
     func swipeTopCardToWithDirection(direction: MDCSwipeDirection) {
         if (self.numOfDisplayedCard() > 0) {
             let card = self.contentView.subviews[self.contentView.subviews.count-1] as! CardView
@@ -479,6 +523,37 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
                 card.isFlicked = true
                 card.mdc_swipe(direction)
             }
+        }
+    }
+    
+    //MARK: - CategorySelectionViewControllerDelegate methods
+    func closeButtonTapped() {
+        if let vc = self.categorySelectionVC {
+            vc.view.removeFromSuperview()
+        }
+        self.categorySelectionVC = nil
+    }
+    
+    func categorySelected(category: CategoryIdentifier) {
+        guard let categoryLabelView = self.categoryLabelView else {
+            return
+        }
+        // set category
+        self.currentCategory = category
+        categoryLabelView.setCategory(category.valueForDisplay())
+        
+        if let vc = self.categorySelectionVC {
+            vc.view.removeFromSuperview()
+        }
+        self.categorySelectionVC = nil
+        
+        // reset cards and request
+        self.resetViews()
+        
+        if let lat = self.currentLatitude, lon = self.currentLongitude {
+            self.acquireFirstCardsWithLocation(lat, longitude: lon)
+        } else {
+            self.acquireFirstCard()
         }
     }
     
@@ -517,7 +592,8 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
             self.currentProgress += INCREMENT_DISLIKE
             self.progressViewController.progressWithRatio(self.currentProgress)
         }
-        self.acquireCardWithLatitude(self.currentLatitude!, longitude: self.currentLongitude!, like: answer, syncId: cardView.syncID, reset: false,
+
+        self.acquireCardWithLatitude(self.currentLatitude!, longitude: self.currentLongitude!, like: answer, category:self.currentCategory, syncId: cardView.syncID, reset: false,
             success: {[weak self](hasResult: Bool) in
                 guard let weakSelf = self else {
                     return

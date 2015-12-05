@@ -27,6 +27,10 @@
 "CloseTutorial" = "start";
 "CardLikeText" = "Like!";
 "CardDislikeText" = "Unn..";
+"CategoryAll" = "All";
+"CategoryRestaurant" = "Restaurant";
+"CategoryCafe" = "Cafe";
+"CategoryDrinking" = "Drinking";
 "CardDistanceFromText" = "%d minutes to walk from here";
 "CardNoPriceInfoText" = "No price information";
 "BlackListButtonSendMessage" = "Send request to exclude this card from the list";

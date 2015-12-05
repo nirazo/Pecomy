@@ -27,6 +27,10 @@
 "CloseTutorial" = "はじめる";
 "CardLikeText" = "行きたい！";
 "CardDislikeText" = "イマイチ...";
+"CategoryAll" = "全カテゴリ";
+"CategoryRestaurant" = "レストラン";
+"CategoryCafe" = "カフェ";
+"CategoryDrinking" = "飲み";
 "CardDistanceFromText" = "ここから徒歩%d分";
 "CardNoPriceInfoText" = "値段情報がありません";
 "BlackListButtonSendMessage" = "このお店を候補から除外するよう報告します";
