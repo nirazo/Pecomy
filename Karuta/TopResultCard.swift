@@ -25,8 +25,8 @@ class TopResultCard: ResultCardBase {
     let arrawLabel = UILabel()
     let rankingLabel = UIImageView(image: UIImage(named: "first"))
     
-    init(frame: CGRect, restaurant: Restaurant) {
-        super.init(frame: frame, restaurant: restaurant, imageNum: NUM_OF_IMAGES, color: Const.RANKING_TOP_COLOR)
+    init(frame: CGRect, restaurant: Restaurant, delegate: ResultCardBaseDelegate) {
+        super.init(frame: frame, restaurant: restaurant, imageNum: NUM_OF_IMAGES, color: Const.RANKING_TOP_COLOR, delegate: delegate)
         self.setupSubViews()
     }
     
@@ -101,7 +101,7 @@ class TopResultCard: ResultCardBase {
         
         
         // 距離ラベル
-        distanceLabel.text = String(format: NSLocalizedString("CardDistanceFromText", comment: ""), Int(self.distance))
+        distanceLabel.text = String(format: NSLocalizedString("CardDistanceFromText", comment: ""), self.distance.meterToMinutes())
         distanceLabel.font = UIFont(name: Const.KARUTA_FONT_NORMAL, size: 10)
         distanceLabel.numberOfLines = 0
         distanceLabel.sizeToFit()
@@ -125,6 +125,16 @@ class TopResultCard: ResultCardBase {
         self.arrawLabel.snp_makeConstraints { (make) in
             make.right.equalTo(self).inset(TEXT_MARGIN_X)
             make.top.equalTo(priceLabel.snp_bottom)
+        }
+        
+        // いいねボタン
+        self.contentView.addSubview(self.goodButton)
+        
+        goodButton.snp_makeConstraints { (make) in
+            make.width.equalTo(40)
+            make.height.equalTo(40)
+            make.left.equalTo(categoryLabelView)
+            make.bottom.equalTo(distanceLabel)
         }
         
         // ランキングラベル

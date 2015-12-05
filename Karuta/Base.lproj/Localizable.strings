@@ -7,10 +7,12 @@
 */
 "OK" = "OK";
 "Back" = "Back";
+"Continue" = "Continue";
+"Reset" = "Reset";
+"Cancel" = "Cancel";
 "LocationAlertTitle" = "Location service is not allowed";
 "LocationAlertMessage" = "Please turn on the location service to use Karuta.";
 "LocationAlertSettingButtonTitle" = "Setting";
-"LocationAlertCancelButtonTitle" = "Cancel";
 "LocationRetryAlertTitle" = "Failed to get location";
 "LocationRetryAlertMessage" = "Please try again";
 "LocationRetryAlertRetryButtonTitle" = "Retry";
@@ -25,9 +27,11 @@
 "CloseTutorial" = "start";
 "CardLikeText" = "Like!";
 "CardDislikeText" = "Unn..";
-"CardDistanceFromText" = "%d m from here";
-"CardNoPriceInfoText" = "No price information";
 "CategoryAll" = "All";
 "CategoryRestaurant" = "Restaurant";
 "CategoryCafe" = "Cafe";
 "CategoryDrinking" = "Drinking";
+"CardDistanceFromText" = "%d minutes to walk from here";
+"CardNoPriceInfoText" = "No price information";
+"BlackListButtonSendMessage" = "Send request to exclude this card from the list";
+"GoodButtonSendMessage" = "Say \"Good\" to this restaurant?";
