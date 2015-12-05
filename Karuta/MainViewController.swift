@@ -48,7 +48,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     let loadingIndicator = UIActivityIndicatorView()
     
     // ビュー関連
-    var categoryLabelView = CategoryLabelView()
+    var categoryLabelView: CategoryLabelView?
     
     // 現在選択されているカテゴリ
     var selectedCategory = CategoryIdentifier.All.valueForDisplay()
@@ -148,11 +148,11 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
         
         // カテゴリ
         self.categoryLabelView = CategoryLabelView(frame: CGRectZero, category: self.selectedCategory)
-        self.view.addSubview(categoryLabelView)
+        self.view.addSubview(self.categoryLabelView!)
         let tr = UITapGestureRecognizer(target: self, action: "categoryTapped:")
-        self.categoryLabelView.addGestureRecognizer(tr)
+        self.categoryLabelView!.addGestureRecognizer(tr)
         
-        self.categoryLabelView.snp_makeConstraints { (make) in
+        self.categoryLabelView!.snp_makeConstraints { (make) in
             make.left.equalTo(dislikeButton.snp_right)
             make.right.equalTo(likeButton.snp_left)
             make.top.equalTo(likeButton.snp_bottom).inset(30)
@@ -521,27 +521,30 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     
     //MARK: - CategorySelectionViewControllerDelegate methods
     func closeButtonTapped() {
-        if let _ = self.categorySelectionVC {
-            self.categorySelectionVC?.view.removeFromSuperview()
-            self.categorySelectionVC = nil
+        if let vc = self.categorySelectionVC {
+            vc.view.removeFromSuperview()
         }
+        self.categorySelectionVC = nil
     }
     
     func categorySelected(category: CategoryIdentifier) {
+        guard let categoryLabelView = self.categoryLabelView else {
+            return
+        }
         // set category
         self.currentCategory = category
-        self.categoryLabelView.setCategory(category.valueForDisplay())
+        categoryLabelView.setCategory(category.valueForDisplay())
         
-        if let _ = self.categorySelectionVC {
-            self.categorySelectionVC?.view.removeFromSuperview()
-            self.categorySelectionVC = nil
+        if let vc = self.categorySelectionVC {
+            vc.view.removeFromSuperview()
         }
+        self.categorySelectionVC = nil
         
         // reset cards and request
         self.resetViews()
         
-        if let _ = self.currentLatitude {
-            self.acquireFirstCardsWithLocation(self.currentLatitude!, longitude: self.currentLongitude!)
+        if let lat = self.currentLatitude, lon = self.currentLongitude {
+            self.acquireFirstCardsWithLocation(lat, longitude: lon)
         } else {
             self.acquireFirstCard()
         }

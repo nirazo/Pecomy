@@ -10,23 +10,24 @@ import UIKit
 
 class CategorySelectionCell: UICollectionViewCell {
     
-    let cell: CategoryLabelView
-    var category: CategoryIdentifier?
+    let label: CategoryLabelView
+    var category: CategoryIdentifier? {
+        didSet {
+            if let category = self.category {
+                self.label.setCategory(category.valueForDisplay())
+            }
+        }
+    }
     
     override init(frame: CGRect) {
-        self.cell = CategoryLabelView(frame: frame)
+        self.label = CategoryLabelView(frame: frame, category: "")
         super.init(frame: frame)
-        self.cell.bounds = self.contentView.bounds
-        self.cell.center = self.contentView.center
-        self.contentView.addSubview(self.cell)
+        self.label.bounds = self.contentView.bounds
+        self.label.center = self.contentView.center
+        self.contentView.addSubview(self.label)
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    func setCategory(category: CategoryIdentifier) {
-        self.category = category
-        self.cell.setCategory(category.valueForDisplay())
     }
 }

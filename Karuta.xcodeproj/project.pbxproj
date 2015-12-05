@@ -27,7 +27,6 @@
 		D28A7A0C1B47AE900025371A /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A7A0B1B47AE900025371A /* CardView.swift */; };
 		D292F7391B92DFFC005700AE /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D292F7381B92DFFC005700AE /* Utils.swift */; };
 		D2A99A161C12D3E700C16F04 /* CategorySelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A99A151C12D3E700C16F04 /* CategorySelectionCell.swift */; };
-		D2A99A181C12D3F100C16F04 /* CategorySelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A99A171C12D3F100C16F04 /* CategorySelectionView.swift */; };
 		D2A99A1A1C12D3FA00C16F04 /* CategorySelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A99A191C12D3FA00C16F04 /* CategorySelectionViewController.swift */; };
 		D2BABE641B5A5DB6005E8356 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2BABE621B5A5DB6005E8356 /* Fabric.framework */; };
 		D2BABE651B5A5DB6005E8356 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2BABE631B5A5DB6005E8356 /* Crashlytics.framework */; };
@@ -79,7 +78,6 @@
 		D28A7A0B1B47AE900025371A /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		D292F7381B92DFFC005700AE /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		D2A99A151C12D3E700C16F04 /* CategorySelectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategorySelectionCell.swift; path = Karuta/CategorySelectionCell.swift; sourceTree = SOURCE_ROOT; };
-		D2A99A171C12D3F100C16F04 /* CategorySelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategorySelectionView.swift; path = Karuta/CategorySelectionView.swift; sourceTree = SOURCE_ROOT; };
 		D2A99A191C12D3FA00C16F04 /* CategorySelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategorySelectionViewController.swift; path = Karuta/CategorySelectionViewController.swift; sourceTree = SOURCE_ROOT; };
 		D2BABE621B5A5DB6005E8356 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		D2BABE631B5A5DB6005E8356 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
@@ -260,7 +258,6 @@
 			isa = PBXGroup;
 			children = (
 				D2A99A191C12D3FA00C16F04 /* CategorySelectionViewController.swift */,
-				D2A99A171C12D3F100C16F04 /* CategorySelectionView.swift */,
 				D2A99A151C12D3E700C16F04 /* CategorySelectionCell.swift */,
 			);
 			name = CategorySelection;
@@ -452,7 +449,6 @@
 				D27BB9D41B36F4A900F8D902 /* MainViewController.swift in Sources */,
 				D292F7391B92DFFC005700AE /* Utils.swift in Sources */,
 				D2DEEF1E1BD72F7400FDBB8F /* Category.swift in Sources */,
-				D2A99A181C12D3F100C16F04 /* CategorySelectionView.swift in Sources */,
 				D272F45C1B9C25E4009564A0 /* LoadingView.swift in Sources */,
 				D2092A341B64D721008046D9 /* Restaurant.swift in Sources */,
 				D22EC5591BCE34DD00A4B446 /* CategoryLabelView.swift in Sources */,

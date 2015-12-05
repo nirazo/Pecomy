@@ -33,7 +33,6 @@ class CategorySelectionViewController: UIViewController, UICollectionViewDelegat
         tr.delegate = self
         self.view.addGestureRecognizer(tr)
         
-        self.collectionView.alpha = 1.0
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         self.collectionView.backgroundColor = UIColor.whiteColor()
@@ -53,8 +52,8 @@ class CategorySelectionViewController: UIViewController, UICollectionViewDelegat
         let cell : CategorySelectionCell = collectionView.dequeueReusableCellWithReuseIdentifier(kCellReuse, forIndexPath: indexPath) as! CategorySelectionCell
         let category = CategoryIdentifier(rawValue:indexPath.row)
         
-        if let _ = category {
-            cell.setCategory(category!)
+        if let category = category {
+            cell.category = category
         }
         
         cell.backgroundColor = UIColor.yellowColor()
@@ -71,8 +70,8 @@ class CategorySelectionViewController: UIViewController, UICollectionViewDelegat
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         collectionView.deselectItemAtIndexPath(indexPath, animated: false)
-        if let _ = delegate {
-            self.delegate!.categorySelected(CategoryIdentifier(rawValue: indexPath.row)!)
+        if let delegate = delegate {
+            delegate.categorySelected(CategoryIdentifier(rawValue: indexPath.row)!)
         }
     }
     
@@ -80,20 +79,6 @@ class CategorySelectionViewController: UIViewController, UICollectionViewDelegat
     func backgroundTapped(sender:UITapGestureRecognizer) {
         self.delegate?.closeButtonTapped()
     }
-    
-    
-//    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-//        var reusableView : UICollectionReusableView? = nil
-//        
-//        // Create header
-//        if (kind == UICollectionElementKindSectionHeader) {
-//            // Create Header
-//            var headerView : PackCollectionSectionView = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: kCellheaderReuse, forIndexPath: indexPath) as PackCollectionSectionView
-//            
-//            reusableView = headerView
-//        }
-//        return reusableView!
-//    }
     
     // MARK: - UICollectionViewDelegateFlowLayout
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
