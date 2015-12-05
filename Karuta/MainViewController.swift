@@ -175,6 +175,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     // observer
     func enterForeground(notification: NSNotification){
         if self.currentLatitude == nil || self.currentLongitude == nil {
+            self.reset()
             self.acquireFirstCard()
         } else {
             // 前回実施時の距離から特定の距離以上離れていたらリトライ
@@ -188,16 +189,22 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
             
             self.locationManager.fetchWithCompletion({ [weak self] (location) in
                 loadingView.removeFromSuperview()
-                if (Utils.distanceBetweenLocations(self!.currentLatitude!, fromLon: self!.currentLongitude!, toLat: location!.coordinate.latitude, toLon: location!.coordinate.longitude) > Const.RETRY_DISTANCE) {
-                    self?.reset()
-                    self!.currentLatitude = Double(location!.coordinate.latitude);
-                    self!.currentLongitude = Double(location!.coordinate.longitude);
-                    self?.acquireFirstCardsWithLocation(self!.currentLatitude!, longitude: self!.currentLongitude!)
+                guard let weakSelf = self else {
+                    return
+                }
+                if (Utils.distanceBetweenLocations(weakSelf.currentLatitude!, fromLon: weakSelf.currentLongitude!, toLat: location!.coordinate.latitude, toLon: location!.coordinate.longitude) > Const.RETRY_DISTANCE) {
+                    weakSelf.reset()
+                    weakSelf.currentLatitude = Double(location!.coordinate.latitude);
+                    weakSelf.currentLongitude = Double(location!.coordinate.longitude);
+                    weakSelf.acquireFirstCardsWithLocation(weakSelf.currentLatitude!, longitude: weakSelf.currentLongitude!)
                 }
                 
-                }, failure: { (error) in
-                self.showRetryToGetLocationAlert()
-            })
+                }, failure: { [weak self] (error) in
+                    guard let weakSelf = self else {
+                        return
+                    }
+                    weakSelf.showRetryToGetLocationAlert()
+                })
         }
     }
     
