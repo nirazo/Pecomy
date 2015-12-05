@@ -190,13 +190,15 @@
 		D27BB9CE1B36F4A900F8D902 /* Karuta */ = {
 			isa = PBXGroup;
 			children = (
-				D2DEEF221BD7557300FDBB8F /* CategorySelection */,
-				D22EC5581BCE34DD00A4B446 /* CategoryLabelView.swift */,
-				D2DEEF1C1BD72F4900FDBB8F /* MainView */,
-				D2DEE6AD1C030F7F00861BDF /* Extension */,
 				D27BB9D11B36F4A900F8D902 /* AppDelegate.swift */,
 				D23070721B4C30D100833167 /* KarutaLocationManager.swift */,
 				D272F45B1B9C25E4009564A0 /* LoadingView.swift */,
+				D22EC5581BCE34DD00A4B446 /* CategoryLabelView.swift */,
+				D203D3131B3E739600FC9DB8 /* Const.swift */,
+				D292F7381B92DFFC005700AE /* Utils.swift */,
+				D2DEEF221BD7557300FDBB8F /* CategorySelection */,
+				D2DEEF1C1BD72F4900FDBB8F /* MainView */,
+				D2DEE6AD1C030F7F00861BDF /* Extension */,
 				D24B293F1B79CC0400419B9B /* Card */,
 				D24B292C1B7895C900419B9B /* Tutorial */,
 				D24B29221B78773400419B9B /* Detail */,
@@ -204,8 +206,6 @@
 				D2597E1C1B523831000938B4 /* Result */,
 				D27BB9D81B36F4A900F8D902 /* Images.xcassets */,
 				D27BB9CF1B36F4A900F8D902 /* Supporting Files */,
-				D203D3131B3E739600FC9DB8 /* Const.swift */,
-				D292F7381B92DFFC005700AE /* Utils.swift */,
 				D2C785F71B47C2A900517D55 /* Karuta-Bridging-Header.h */,
 				D24B29451B79F56E00419B9B /* Launch Screen.xib */,
 			);

@@ -131,7 +131,8 @@ class CardView: MDCSwipeToChooseView {
         priceLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 12)
         self.contentView.addSubview(priceLabel)
         
-        // ブラックリストボタン
+        #if !RELEASE
+        // ブラックリストボタン(Releaseバージョンには乗せない)
         self.blackListButton.setImage(UIImage(named: "nogood_normal"), forState: .Normal)
         self.blackListButton.setImage(UIImage(named: "nogood_tapped"), forState: .Highlighted)
         self.blackListButton.setImage(UIImage(named: "nogood_highlighted"), forState: .Disabled)
@@ -144,6 +145,7 @@ class CardView: MDCSwipeToChooseView {
             make.right.equalTo(categoryLabelView.snp_right)
             make.bottom.equalTo(self.contentView).offset(-10)
         }
+        #endif
         
         // 画像のダウンロード
         self.acquireImages()
