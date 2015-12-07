@@ -158,7 +158,7 @@ class ResultViewController: UIViewController, ResultCardBaseDelegate {
     }
     
     // 結果をタップした時の挙動
-    private func resultTapped(sender:UITapGestureRecognizer) {
+    func resultTapped(sender:UITapGestureRecognizer) {
         let resultCard = sender.view as! ResultCardBase
         let detailView = RestaurantDetailViewController(url: resultCard.url)
         self.navigationController?.pushViewController(detailView, animated: true)
