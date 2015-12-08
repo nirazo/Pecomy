@@ -15,6 +15,8 @@ protocol ResultViewControllerDelegate {
 
 class ResultViewController: UIViewController, ResultCardBaseDelegate {
     
+    let ANALYTICS_TRACKING_CODE = "ResultViewController"
+    
     // 結果同士のマージン
     let RESULT_MARGIN: CGFloat = 15
 
@@ -56,6 +58,17 @@ class ResultViewController: UIViewController, ResultCardBaseDelegate {
         default:
             break
         }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Google Analytics
+        let tracker = GAI.sharedInstance().defaultTracker
+        tracker.set(kGAIScreenName, value: self.ANALYTICS_TRACKING_CODE)
+        
+        let builder = GAIDictionaryBuilder.createScreenView()
+        tracker.send(builder.build() as [NSObject : AnyObject])
     }
     
     // レイアウト共通(結果が存在する場合)

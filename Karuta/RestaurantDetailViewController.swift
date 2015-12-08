@@ -10,6 +10,8 @@ import UIKit
 
 class RestaurantDetailViewController: UIViewController, UIWebViewDelegate {
     
+    let ANALYTICS_TRACKING_CODE = "DetailViewController"
+    
     let url: NSURL
     let loadingIndicator = UIActivityIndicatorView()
     
@@ -35,6 +37,17 @@ class RestaurantDetailViewController: UIViewController, UIWebViewDelegate {
         webView.addSubview(self.loadingIndicator)
         let req = NSURLRequest(URL: self.url)
         webView.loadRequest(req)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Google Analytics
+        let tracker = GAI.sharedInstance().defaultTracker
+        tracker.set(kGAIScreenName, value: self.ANALYTICS_TRACKING_CODE)
+        
+        let builder = GAIDictionaryBuilder.createScreenView()
+        tracker.send(builder.build() as [NSObject : AnyObject])
     }
 
     override func didReceiveMemoryWarning() {

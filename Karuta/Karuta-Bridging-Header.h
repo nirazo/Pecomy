@@ -3,3 +3,4 @@
 //
 
 #import <MDCSwipeToChoose/MDCSwipeToChoose.h>
+#import <Google/Analytics.h>
