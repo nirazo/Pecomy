@@ -14,6 +14,8 @@ import SnapKit
 
 class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLocationManagerDelegate, CardViewDelegate, ResultViewControllerDelegate, CategorySelectionViewControllerDelegate {
     
+    let ANALYTICS_TRACKING_CODE = AnaylyticsTrackingCode.MainViewController.rawValue
+    
     let PROGRESS_HEIGHT: CGFloat = 8.0
     let FOOTER_HEIGHT: CGFloat = 34.0
     
@@ -170,6 +172,17 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
         if (self.currentLatitude == nil || self.currentLongitude == nil) {
             self.acquireFirstCard()
         }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Google Analytics
+        let tracker = GAI.sharedInstance().defaultTracker
+        tracker.set(kGAIScreenName, value: self.ANALYTICS_TRACKING_CODE)
+        
+        let builder = GAIDictionaryBuilder.createScreenView()
+        tracker.send(builder.build() as [NSObject : AnyObject])
     }
     
     // observer

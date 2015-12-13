@@ -20,6 +20,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.setupAppearance()
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         
+        // Configure tracker from GoogleService-Info.plist.
+        var configureError:NSError?
+        GGLContext.sharedInstance().configureWithError(&configureError)
+        assert(configureError == nil, "Error configuring Google services: \(configureError)")
+        
+        // Optional: configure GAI options.
+        let gai = GAI.sharedInstance()
+        gai.trackUncaughtExceptions = true  // report uncaught exceptions
+        
+        #if !RELEASE
+        gai.logger.logLevel = GAILogLevel.Verbose  // remove before app release
+        #endif
+        
         // 起動2回目以降
         if (NSUserDefaults.standardUserDefaults().boolForKey(Const.UD_KEY_HAS_LAUNCHED)) {
             let viewController = MainViewController()

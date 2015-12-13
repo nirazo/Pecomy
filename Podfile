@@ -8,6 +8,7 @@ target 'Karuta' do
     pod 'Alamofire', '2.0.0'
     pod 'SwiftyJSON', '2.3.1'
     pod 'SnapKit', '0.14.0'
+    pod 'Google/Analytics', '~> 1.0.0'
 end
 
 target 'KarutaTests' do
