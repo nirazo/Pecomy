@@ -10,7 +10,7 @@ import UIKit
 
 class RestaurantDetailViewController: UIViewController, UIWebViewDelegate {
     
-    let ANALYTICS_TRACKING_CODE = "DetailViewController"
+    let ANALYTICS_TRACKING_CODE = AnaylyticsTrackingCode.RestaurantDetailViewController.rawValue
     
     let url: NSURL
     let loadingIndicator = UIActivityIndicatorView()

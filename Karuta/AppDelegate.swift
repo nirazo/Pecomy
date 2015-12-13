@@ -28,7 +28,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Optional: configure GAI options.
         let gai = GAI.sharedInstance()
         gai.trackUncaughtExceptions = true  // report uncaught exceptions
+        
+        #if !RELEASE
         gai.logger.logLevel = GAILogLevel.Verbose  // remove before app release
+        #endif
         
         // 起動2回目以降
         if (NSUserDefaults.standardUserDefaults().boolForKey(Const.UD_KEY_HAS_LAUNCHED)) {

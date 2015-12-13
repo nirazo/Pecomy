@@ -15,7 +15,7 @@ protocol ResultViewControllerDelegate {
 
 class ResultViewController: UIViewController, ResultCardBaseDelegate {
     
-    let ANALYTICS_TRACKING_CODE = "ResultViewController"
+    let ANALYTICS_TRACKING_CODE = AnaylyticsTrackingCode.ResultViewController.rawValue
     
     // 結果同士のマージン
     let RESULT_MARGIN: CGFloat = 15

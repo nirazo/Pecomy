@@ -14,7 +14,7 @@ import SnapKit
 
 class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLocationManagerDelegate, CardViewDelegate, ResultViewControllerDelegate, CategorySelectionViewControllerDelegate {
     
-    let ANALYTICS_TRACKING_CODE = "MainViewController"
+    let ANALYTICS_TRACKING_CODE = AnaylyticsTrackingCode.MainViewController.rawValue
     
     let PROGRESS_HEIGHT: CGFloat = 8.0
     let FOOTER_HEIGHT: CGFloat = 34.0

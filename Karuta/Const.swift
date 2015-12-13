@@ -8,8 +8,13 @@
 
 import Foundation
 
+enum AnaylyticsTrackingCode: String {
+    case MainViewController = "MainViewController"
+    case RestaurantDetailViewController = "RestaurantDetailViewController"
+    case ResultViewController = "ResultViewController"
+}
+
 struct Const {
-    
     #if DEBUG
     static let API_CARD_BASE = "http://private-552a20-karutaapi.apiary-mock.com/card"
     static let API_RESULT_BASE = "http://private-552a20-karutaapi.apiary-mock.com/results"
