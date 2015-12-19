@@ -42,10 +42,20 @@
  */
 @property (nonatomic, strong) UIView *likedView;
 
+@property (nonatomic, strong) UIView *likedLabelView;
+
+// likedLabelの枠
+@property (nonatomic, strong) UIView *likedLabelFrame;
+
 /*!
  * The "nope" view, which fades in as the `MDCSwipeToChooseView` is panned to the left.
  */
 @property (nonatomic, strong) UIView *nopeView;
+
+@property (nonatomic, strong) UIView *nopeLabelView;
+
+// nopeLabelの枠
+@property (nonatomic, strong) UIView *nopeLabelFrame;
 
 /*!
  * Custmize.

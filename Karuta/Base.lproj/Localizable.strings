@@ -6,15 +6,20 @@
   Copyright (c) 2015年 Karuta. All rights reserved.
 */
 "OK" = "OK";
+"Back" = "Back";
+"Continue" = "Continue";
+"Reset" = "Reset";
+"Cancel" = "Cancel";
 "LocationAlertTitle" = "Location service is not allowed";
 "LocationAlertMessage" = "Please turn on the location service to use Karuta.";
 "LocationAlertSettingButtonTitle" = "Setting";
-"LocationAlertCancelButtonTitle" = "Cancel";
 "LocationRetryAlertTitle" = "Failed to get location";
 "LocationRetryAlertMessage" = "Please try again";
 "LocationRetryAlertRetryButtonTitle" = "Retry";
 "OutOfRangeAlertTitle" = "Cannot find restaurant";
 "OutOfRangeAlertMessage" = "Now you can only use Karuta in Tokyo area. Please use this app in Tokyo.";
+"ServerErrorAlertTitle" = "Server Error";
+"ServerErrorAlertMessage" = "Server error occured. Please retry with tapping OK button.";
 "NoResultAlertTitle" = "Cannot find result";
 "NoResultAlertMessage" = "Karuta cannot find restaurant for you around here. Please try again after changing time or place.";
 "SearchingRestaurant" = "Searching your favorite restaurant...";
@@ -22,3 +27,11 @@
 "CloseTutorial" = "start";
 "CardLikeText" = "Like!";
 "CardDislikeText" = "Unn..";
+"CategoryAll" = "All";
+"CategoryRestaurant" = "Restaurant";
+"CategoryCafe" = "Cafe";
+"CategoryDrinking" = "Drinking";
+"CardDistanceFromText" = "%d minutes to walk from here";
+"CardNoPriceInfoText" = "No price information";
+"BlackListButtonSendMessage" = "Send request to exclude this card from the list";
+"GoodButtonSendMessage" = "Say \"Good\" to this restaurant?";

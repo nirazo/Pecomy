@@ -13,13 +13,15 @@ class Restaurant {
     let distance: Double
     let imageUrls: [NSURL]
     let url: NSURL
+    let category: String
     
-    init(shopID: String, shopName: String, priceRange: String, distance: Double, imageUrls: [NSURL], url: NSURL) {
+    init(shopID: String, shopName: String, priceRange: String, distance: Double, imageUrls: [NSURL], url: NSURL, category: String) {
         self.shopID = shopID
         self.shopName = shopName
         self.priceRange = priceRange
         self.distance = distance
         self.imageUrls = imageUrls
         self.url = url
+        self.category = category
     }
 }

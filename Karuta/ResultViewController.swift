@@ -7,22 +7,31 @@
 //
 
 import UIKit
+import Alamofire
 
-class ResultViewController: UIViewController {
+protocol ResultViewControllerDelegate {
+    func resultViewController(controller: ResultViewController, backButtonTappedWithReset reset: Bool)
+}
+
+class ResultViewController: UIViewController, ResultCardBaseDelegate {
+    
+    let ANALYTICS_TRACKING_CODE = AnaylyticsTrackingCode.ResultViewController.rawValue
     
     // 結果同士のマージン
     let RESULT_MARGIN: CGFloat = 15
 
-    var restaurants: [Restaurant]
+    let restaurants: [Restaurant]
     
     var topResultCard: TopResultCard?
+    
+    var delegate: ResultViewControllerDelegate?
     
     init(restaurants: [Restaurant]) {
         self.restaurants = restaurants
         super.init(nibName: nil, bundle: nil)
     }
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -30,6 +39,11 @@ class ResultViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = Const.KARUTA_RESULT_BACK_COLOR
         self.edgesForExtendedLayout = .None
+        
+        let resetButoon = UIBarButtonItem(title: NSLocalizedString("Reset", comment: ""), style: .Plain, target: self, action: "resetTapped")
+        self.navigationItem.rightBarButtonItem = resetButoon
+        let continueButton = UIBarButtonItem(title: NSLocalizedString("Continue", comment: ""), style: .Plain, target: self, action: "continueTapped")
+        self.navigationItem.leftBarButtonItem = continueButton
         
         switch self.restaurants.count {
         case 0:
@@ -46,10 +60,21 @@ class ResultViewController: UIViewController {
         }
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Google Analytics
+        let tracker = GAI.sharedInstance().defaultTracker
+        tracker.set(kGAIScreenName, value: self.ANALYTICS_TRACKING_CODE)
+        
+        let builder = GAIDictionaryBuilder.createScreenView()
+        tracker.send(builder.build() as [NSObject : AnyObject])
+    }
+    
     // レイアウト共通(結果が存在する場合)
     private func prepareLayout() {
         // 1位
-        self.topResultCard = TopResultCard(frame: CGRectZero, restaurant: self.restaurants[0])
+        self.topResultCard = TopResultCard(frame: CGRectZero, restaurant: self.restaurants[0], delegate: self)
         let tr = UITapGestureRecognizer(target: self, action: "resultTapped:")
         self.topResultCard?.addGestureRecognizer(tr)
         self.view.addSubview(topResultCard!)
@@ -57,7 +82,7 @@ class ResultViewController: UIViewController {
     
     // 結果が0件の時のレイアウト
     private func layoutNoResult() {
-        var label = UILabel()
+        let label = UILabel()
         label.text = NSLocalizedString("NoResultAlertTitle", comment: "")
         label.font = UIFont(name: Const.KARUTA_FONT_NORMAL, size: 17)
         label.numberOfLines = 0
@@ -75,7 +100,7 @@ class ResultViewController: UIViewController {
         self.prepareLayout()
         topResultCard!.snp_makeConstraints { (make) in
             make.width.equalTo(self.view).offset(-RESULT_MARGIN*2)
-            make.height.equalTo(self.view).offset(-RESULT_MARGIN*2)
+            make.height.equalTo(self.view).multipliedBy(0.8).offset(-RESULT_MARGIN*2)
             make.centerX.equalTo(self.view)
             make.top.equalTo(self.view).offset(RESULT_MARGIN)
             make.bottom.equalTo(self.view).offset(-RESULT_MARGIN)
@@ -93,7 +118,7 @@ class ResultViewController: UIViewController {
         }
         
         var secondResultCard: OtherResultCard
-        secondResultCard = OtherResultCard(frame: CGRectZero, restaurant: self.restaurants[1], rank: 2)
+        secondResultCard = OtherResultCard(frame: CGRectZero, restaurant: self.restaurants[1], rank: 2, delegate: self)
         let tr = UITapGestureRecognizer(target: self, action: "resultTapped:")
         secondResultCard.addGestureRecognizer(tr)
         self.view.addSubview(secondResultCard)
@@ -115,7 +140,7 @@ class ResultViewController: UIViewController {
             make.top.equalTo(self.view).offset(RESULT_MARGIN)
         }
         
-        var secondResultCard = OtherResultCard(frame: CGRectZero, restaurant: self.restaurants[1], rank: 2)
+        let secondResultCard = OtherResultCard(frame: CGRectZero, restaurant: self.restaurants[1], rank: 2, delegate: self)
         let tr_second = UITapGestureRecognizer(target: self, action: "resultTapped:")
         secondResultCard.addGestureRecognizer(tr_second)
         self.view.addSubview(secondResultCard)
@@ -127,7 +152,7 @@ class ResultViewController: UIViewController {
         }
         
         // 3位
-        var thirdResultCard = OtherResultCard(frame: CGRectZero, restaurant: self.restaurants[2], rank: 3)
+        let thirdResultCard = OtherResultCard(frame: CGRectZero, restaurant: self.restaurants[2], rank: 3, delegate: self)
         let tr_third = UITapGestureRecognizer(target: self, action: "resultTapped:")
         thirdResultCard.addGestureRecognizer(tr_third)
         self.view.addSubview(thirdResultCard)
@@ -152,7 +177,17 @@ class ResultViewController: UIViewController {
         self.navigationController?.pushViewController(detailView, animated: true)
     }
     
-    //MARK - : Alerts
+    // やり直すをタップした時の挙動
+    func resetTapped() {
+        self.delegate?.resultViewController(self, backButtonTappedWithReset: true)
+    }
+    
+    // 続けるをタップした時の挙動
+    func continueTapped() {
+        self.delegate?.resultViewController(self, backButtonTappedWithReset: false)
+    }
+
+    //MARK: - Alerts
     // 結果無し時のアラート表示
     func showNoResultAlert() {
         let alertController = UIAlertController(title:NSLocalizedString("NoResultAlertTitle", comment: ""),
@@ -162,6 +197,33 @@ class ResultViewController: UIViewController {
             style: .Default, handler: nil)
         alertController.addAction(okAction)
         self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    //MARK: - ResultCardBaseDelegate
+    func goodButtonTapped(card: ResultCardBase, shopID: String) {
+        let ac = UIAlertController(title: "", message: NSLocalizedString("GoodButtonSendMessage", comment: ""), preferredStyle: .Alert)
+        let okAction = UIAlertAction(title: NSLocalizedString("OK", comment: ""),
+            style: .Default, handler: { (action) in
+                let params = ["shop_id": shopID, "device_id": Utils.acquireDeviceID()]
+                Alamofire.request(.GET, Const.API_GOOD_BASE, parameters: params, encoding: .URL).responseJSON {(request, response, result) in
+                    switch result {
+                    case .Success(_):
+                        break
+                    case .Failure(_, _):
+                        // 現時点ではAPIが無いので、404を正とする
+                        if (response?.statusCode == Const.STATUS_CODE_NOT_FOUND) {
+                            card.goodButton.enabled = false
+                        }
+                        break
+                    }
+                }
+            }
+        )
+        let cancelAction = UIAlertAction(title: NSLocalizedString("Back", comment: ""),
+            style: .Default, handler: nil)
+        ac.addAction(cancelAction)
+        ac.addAction(okAction)
+        self.presentViewController(ac, animated: true, completion: nil)
     }
 
 }

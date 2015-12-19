@@ -16,14 +16,14 @@ enum KarutaLocationManagerErrors: Int {
     case InvalidLocation
 }
 
-protocol KarutaLocationManagerProtocol {
+protocol KarutaLocationManagerDelegate {
     func showLocationEnableAlert()
 }
 
 class KarutaLocationManager: NSObject, CLLocationManagerDelegate {
     
     private var locationManager: CLLocationManager?
-    var delegate: KarutaLocationManagerProtocol!
+    var delegate: KarutaLocationManagerDelegate!
     
     deinit {
         locationManager?.delegate = nil
@@ -39,7 +39,7 @@ class KarutaLocationManager: NSObject, CLLocationManagerDelegate {
     private func didCompleteWithSuccess(location: CLLocation?) {
         locationManager?.stopUpdatingLocation()
         #if FIXED_LOCATION
-            var stubLocation = CLLocation(latitude: Const.FIXED_LATITUDE, longitude: Const.FIXED_LONGITUDE)
+            let stubLocation = CLLocation(latitude: Const.FIXED_LATITUDE, longitude: Const.FIXED_LONGITUDE)
             didCompleteWithSuccess?(location: stubLocation)
         #else
             didCompleteWithSuccess?(location: location)
@@ -51,7 +51,7 @@ class KarutaLocationManager: NSObject, CLLocationManagerDelegate {
     private func didCompleteWithError(error: NSError?) {
         locationManager?.stopUpdatingLocation()
         #if FIXED_LOCATION
-            var stubLocation = CLLocation(latitude: Const.FIXED_LATITUDE, longitude: Const.FIXED_LONGITUDE)
+            let stubLocation = CLLocation(latitude: Const.FIXED_LATITUDE, longitude: Const.FIXED_LONGITUDE)
             didCompleteWithSuccess?(location: stubLocation)
         #else
             didCompleteWithFailure?(error: error)
@@ -60,24 +60,29 @@ class KarutaLocationManager: NSObject, CLLocationManagerDelegate {
         locationManager = nil
     }
     
-    func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         switch status {
-        case .AuthorizedWhenInUse:
+        case .NotDetermined:
+            self.requestPermission()
+            break
+        case .AuthorizedWhenInUse, .AuthorizedAlways:
             self.locationManager!.startUpdatingLocation()
-        case .Denied:
+            break
+        case .Denied, .Restricted:
             self.delegate.showLocationEnableAlert()
-        default:
-            locationManager!.requestWhenInUseAuthorization()
+            break
         }
     }
     
-    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
         didCompleteWithError(error)
     }
     
-    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        if let location = locations[0] as? CLLocation {
-            didCompleteWithSuccess(location)
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.first {
+            if (-(location.timestamp.timeIntervalSinceNow) < 15.0) {
+                didCompleteWithSuccess(location)
+            }
         } else {
             didCompleteWithError(NSError(domain: self.classForCoder.description(),
                 code: KarutaLocationManagerErrors.InvalidLocation.rawValue,
@@ -97,7 +102,10 @@ class KarutaLocationManager: NSObject, CLLocationManagerDelegate {
         
         locationManager = CLLocationManager()
         locationManager!.delegate = self
-        
+    }
+    
+    
+    private func requestPermission() {
         if (NSBundle.mainBundle().objectForInfoDictionaryKey("NSLocationWhenInUseUsageDescription") != nil) {
             locationManager!.requestWhenInUseAuthorization()
         } else if (NSBundle.mainBundle().objectForInfoDictionaryKey("NSLocationAlwaysUsageDescription") != nil) {
@@ -105,6 +113,7 @@ class KarutaLocationManager: NSObject, CLLocationManagerDelegate {
         } else {
             fatalError("To use location in iOS8 you need to define either NSLocationWhenInUseUsageDescription or NSLocationAlwaysUsageDescription in the app bundle's Info.plist file")
         }
+
     }
     
 }

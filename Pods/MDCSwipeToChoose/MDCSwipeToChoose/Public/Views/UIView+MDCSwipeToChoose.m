@@ -133,7 +133,7 @@ const void * const MDCViewStateKey = &MDCViewStateKey;
                           delay:0.0
                         options:self.mdc_options.swipeCancelledAnimationOptions
                      animations:^{
-                         self.transform = self.mdc_viewState.originalTransform;
+                         self.layer.transform = self.mdc_viewState.originalTransform;
                          self.center = self.mdc_viewState.originalCenter;
                      } completion:^(BOOL finished) {
                          id<MDCSwipeToChooseDelegate> delegate = self.mdc_options.delegate;
@@ -193,8 +193,7 @@ const void * const MDCViewStateKey = &MDCViewStateKey;
 - (void)mdc_rotateForTranslation:(CGPoint)translation
                rotationDirection:(MDCRotationDirection)rotationDirection {
     CGFloat rotation = MDCDegreesToRadians(translation.x/100 * self.mdc_options.rotationFactor);
-    self.transform = CGAffineTransformRotate(self.mdc_viewState.originalTransform,rotationDirection * rotation);
-//    self.layer.transform = CATransform3DMakeRotation(rotationDirection * rotation, 0.0, 0.0, 1.0);
+    self.layer.transform = CATransform3DMakeRotation(rotationDirection * rotation, 0.0, 0.0, 1.0);
 }
 
 #pragma mark Threshold
@@ -219,7 +218,7 @@ const void * const MDCViewStateKey = &MDCViewStateKey;
 - (MDCSwipeDirection)mdc_directionOfExceededThreshold {
     if (self.center.x > self.mdc_viewState.originalCenter.x + self.mdc_options.threshold) {
         return MDCSwipeDirectionRight;
-    } else if (self.center.x <= self.mdc_viewState.originalCenter.x - self.mdc_options.threshold) {
+    } else if (self.center.x < self.mdc_viewState.originalCenter.x - self.mdc_options.threshold) {
         return MDCSwipeDirectionLeft;
     } else {
         return MDCSwipeDirectionNone;
@@ -233,7 +232,7 @@ const void * const MDCViewStateKey = &MDCViewStateKey;
 
     if (panGestureRecognizer.state == UIGestureRecognizerStateBegan) {
         self.mdc_viewState.originalCenter = view.center;
-        self.mdc_viewState.originalTransform = view.transform;
+        self.mdc_viewState.originalTransform = view.layer.transform;
 
         // If the pan gesture originated at the top half of the view, rotate the view
         // away from the center. Otherwise, rotate towards the center.
