@@ -13,6 +13,7 @@
 		D2092A341B64D721008046D9 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2092A331B64D721008046D9 /* Restaurant.swift */; };
 		D22EC5591BCE34DD00A4B446 /* CategoryLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22EC5581BCE34DD00A4B446 /* CategoryLabelView.swift */; };
 		D23070731B4C30D100833167 /* KarutaLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23070721B4C30D100833167 /* KarutaLocationManager.swift */; };
+		D24A2CC31C255D2A009ACA08 /* ResultHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24A2CC21C255D2A009ACA08 /* ResultHeaderView.swift */; };
 		D24B291F1B772EFF00419B9B /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24B291E1B772EFF00419B9B /* ResultViewController.swift */; };
 		D24B29211B78748A00419B9B /* ResultCardBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24B29201B78748A00419B9B /* ResultCardBase.swift */; };
 		D24B29241B78775300419B9B /* RestaurantDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24B29231B78775300419B9B /* RestaurantDetailViewController.swift */; };
@@ -35,6 +36,7 @@
 		D2DD65A21B7714DA0046A50C /* OtherResultCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DD65A11B7714DA0046A50C /* OtherResultCard.swift */; };
 		D2DEE6AF1C030FA200861BDF /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DEE6AE1C030FA200861BDF /* Double.swift */; };
 		D2DEEF1E1BD72F7400FDBB8F /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DEEF1D1BD72F7400FDBB8F /* Category.swift */; };
+		D2E36EC71C2D615D00DEE726 /* OtherResultCardContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E36EC61C2D615D00DEE726 /* OtherResultCardContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,7 @@
 		D2092A331B64D721008046D9 /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		D22EC5581BCE34DD00A4B446 /* CategoryLabelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryLabelView.swift; sourceTree = "<group>"; };
 		D23070721B4C30D100833167 /* KarutaLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarutaLocationManager.swift; sourceTree = "<group>"; };
+		D24A2CC21C255D2A009ACA08 /* ResultHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultHeaderView.swift; sourceTree = "<group>"; };
 		D24B291E1B772EFF00419B9B /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		D24B29201B78748A00419B9B /* ResultCardBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultCardBase.swift; sourceTree = "<group>"; };
 		D24B29231B78775300419B9B /* RestaurantDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDetailViewController.swift; sourceTree = "<group>"; };
@@ -88,6 +91,7 @@
 		D2DD65A11B7714DA0046A50C /* OtherResultCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherResultCard.swift; sourceTree = "<group>"; };
 		D2DEE6AE1C030FA200861BDF /* Double.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		D2DEEF1D1BD72F7400FDBB8F /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		D2E36EC61C2D615D00DEE726 /* OtherResultCardContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherResultCardContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +169,8 @@
 				D2DD65A11B7714DA0046A50C /* OtherResultCard.swift */,
 				D24B291E1B772EFF00419B9B /* ResultViewController.swift */,
 				D24B29201B78748A00419B9B /* ResultCardBase.swift */,
+				D24A2CC21C255D2A009ACA08 /* ResultHeaderView.swift */,
+				D2E36EC61C2D615D00DEE726 /* OtherResultCardContentView.swift */,
 			);
 			name = Result;
 			sourceTree = "<group>";
@@ -455,6 +461,7 @@
 				D2DEEF1E1BD72F7400FDBB8F /* Category.swift in Sources */,
 				D272F45C1B9C25E4009564A0 /* LoadingView.swift in Sources */,
 				D2092A341B64D721008046D9 /* Restaurant.swift in Sources */,
+				D24A2CC31C255D2A009ACA08 /* ResultHeaderView.swift in Sources */,
 				D22EC5591BCE34DD00A4B446 /* CategoryLabelView.swift in Sources */,
 				D2DD65A01B7714CA0046A50C /* TopResultCard.swift in Sources */,
 				D24B29241B78775300419B9B /* RestaurantDetailViewController.swift in Sources */,
@@ -463,6 +470,7 @@
 				D2DD65A21B7714DA0046A50C /* OtherResultCard.swift in Sources */,
 				D2A99A1A1C12D3FA00C16F04 /* CategorySelectionViewController.swift in Sources */,
 				D27BB9D21B36F4A900F8D902 /* AppDelegate.swift in Sources */,
+				D2E36EC71C2D615D00DEE726 /* OtherResultCardContentView.swift in Sources */,
 				D24B291F1B772EFF00419B9B /* ResultViewController.swift in Sources */,
 				D24B29411B79CC1D00419B9B /* CardProgressViewController.swift in Sources */,
 				D24B29211B78748A00419B9B /* ResultCardBase.swift in Sources */,

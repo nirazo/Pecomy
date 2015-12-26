@@ -9,13 +9,12 @@
 import UIKit
 
 protocol ResultCardBaseDelegate {
-    func goodButtonTapped(card: ResultCardBase, shopID: String)
+    func detailButtonTapped(card: ResultCardBase)
 }
 
 class ResultCardBase: UIView {
     
     private let CORNER_RADIUS: CGFloat = 5.0
-    private let BORDER_WIDTH: CGFloat = 2.5
 
     var syncID = ""
     var shopID = ""
@@ -66,8 +65,6 @@ class ResultCardBase: UIView {
         
         self.contentView.layer.cornerRadius = CORNER_RADIUS
         self.contentView.layer.masksToBounds = true
-        self.contentView.layer.borderColor = self.borderColor.CGColor
-        self.contentView.layer.borderWidth = BORDER_WIDTH
         
         self.addSubview(contentView)
 
@@ -76,12 +73,6 @@ class ResultCardBase: UIView {
         self.layer.masksToBounds = false
         
         self.setupViews()
-        
-        // いいねボタンの初期化
-        goodButton.setImage(UIImage(named: "good_normal"), forState: .Normal)
-        goodButton.setImage(UIImage(named: "good_tapped"), forState: .Highlighted)
-        goodButton.setImage(UIImage(named: "good_highlighted"), forState: .Disabled)
-        goodButton.addTarget(self, action: "goodButtonTapped", forControlEvents: .TouchUpInside)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -101,9 +92,4 @@ class ResultCardBase: UIView {
         }
         self.contentView.layer.frame = self.contentView.bounds
     }
-    
-    func goodButtonTapped() {
-        self.delegate.goodButtonTapped(self, shopID: self.shopID)
-    }
-
 }

@@ -11,14 +11,14 @@ import UIKit
 class CategoryLabelView: UIView {
     
     let CORNER_RADIUS: CGFloat = 5.0
-    let MARGIN_CATEGORY_VERTICAL: CGFloat = 3.0     // カテゴリラベル内の上下マージン
-    let MARGIN_CATEGORY_HORIZONTAL: CGFloat = 2.0   // カテゴリラベル内の左右マージン
-    let DEFAULT_FONT_SIZE_CATEGORY: CGFloat = 13    // カテゴリラベルのフォントサイズ
+    let MARGIN_CATEGORY_VERTICAL: CGFloat = 5.0     // カテゴリラベル内の上下マージン
+    let MARGIN_CATEGORY_HORIZONTAL: CGFloat = 5.0   // カテゴリラベル内の左右マージン
+    let DEFAULT_FONT_SIZE_CATEGORY: CGFloat = 11    // カテゴリラベルのフォントサイズ
     let MAX_CATEGORY_NUM = 2                        // 表示するカテゴリの最大数
     var categoryLabels = [UILabel]()
     var categoriesArray = [String]()
     
-    init(frame: CGRect, category: String) {
+    init(frame: CGRect, category: String, color: UIColor = Const.KARUTA_THEME_COLOR) {
         // カテゴリのsplit
         let replacedCategory = category.stringByReplacingOccurrencesOfString("（.*）", withString: "", options: .RegularExpressionSearch, range: nil)
         self.categoriesArray = replacedCategory.componentsSeparatedByString("・")
@@ -26,6 +26,7 @@ class CategoryLabelView: UIView {
             self.categoriesArray = [String](self.categoriesArray[0..<MAX_CATEGORY_NUM])
         }
         super.init(frame: frame)
+        self.backgroundColor = color
         self.setupSubViews()
     }
 
@@ -50,7 +51,6 @@ class CategoryLabelView: UIView {
             subview.removeFromSuperview()
         }
         
-        self.backgroundColor = Const.KARUTA_THEME_COLOR
         // 角丸
         self.layer.cornerRadius = CORNER_RADIUS
         
@@ -70,8 +70,8 @@ class CategoryLabelView: UIView {
                 make.centerX.equalTo(self)
                 make.centerY.equalTo(self.snp_bottom).multipliedBy(CGFloat(i*2+1)/CGFloat(self.categoriesArray.count*2))
                 make.left.equalTo(self).offset(MARGIN_CATEGORY_HORIZONTAL)
-                make.right.equalTo(self).inset(MARGIN_CATEGORY_HORIZONTAL)
-                make.height.equalTo(self).dividedBy(CGFloat(self.categoriesArray.count))
+                make.right.equalTo(self).offset(-MARGIN_CATEGORY_HORIZONTAL)
+                make.height.equalTo(self).dividedBy(CGFloat(self.categoriesArray.count)).offset(-MARGIN_CATEGORY_VERTICAL)
             }
         }
     }

@@ -17,12 +17,22 @@ class ResultViewController: UIViewController, ResultCardBaseDelegate {
     
     let ANALYTICS_TRACKING_CODE = AnaylyticsTrackingCode.ResultViewController.rawValue
     
+    let scrollView = UIScrollView()
+    
+    let contentView = UIView()
+    
     // 結果同士のマージン
-    let RESULT_MARGIN: CGFloat = 15
+    let RESULT_MARGIN: CGFloat = 16
 
     let restaurants: [Restaurant]
     
     var topResultCard: TopResultCard?
+    
+    var otherResultCard: OtherResultCardContentView?
+    
+    let firstRankHeader = ResultHeaderView(frame: CGRectZero, section: 0)
+    
+    let secondRankHeader = ResultHeaderView(frame: CGRectZero, section: 1)
     
     var delegate: ResultViewControllerDelegate?
     
@@ -50,12 +60,10 @@ class ResultViewController: UIViewController, ResultCardBaseDelegate {
             self.layoutNoResult()
             self.showNoResultAlert()
         case 1:
-            layoutOneResult()
-        case 2:
-            layoutTwoResults()
-        case 3:
-            layoutThreeResults()
+            self.prepareLayout()
         default:
+            self.prepareLayout()
+            self.layoutOthers()
             break
         }
     }
@@ -71,13 +79,61 @@ class ResultViewController: UIViewController, ResultCardBaseDelegate {
         tracker.send(builder.build() as [NSObject : AnyObject])
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+//        guard let otherCard = self.otherResultCard else {
+//            return
+//        }
+//        self.scrollView.snp_makeConstraints{ (make) in
+//            make.height.greaterThanOrEqualTo(600)
+//            make.bottom.equalTo(otherCard)
+//        }
+//        self.view.layoutIfNeeded()
+        
+        self.scrollView.contentSize = self.contentView.frame.size
+        print("scrollView: \(scrollView.frame.size)")
+        print("scrollView.contentSize: \(scrollView.contentSize)")
+        print("contentView: \(self.contentView.frame.size)")
+    }
+    
     // レイアウト共通(結果が存在する場合)
     private func prepareLayout() {
+        self.scrollView.contentInset = UIEdgeInsetsMake(0, 0, 32, 0)
+        self.scrollView.backgroundColor = UIColor.yellowColor()
+        self.view.addSubview(self.scrollView)
+        self.scrollView.snp_makeConstraints { (make) in
+            make.width.equalTo(self.view)
+            make.centerX.equalTo(self.view)
+            make.top.equalTo(self.view)
+            make.height.equalTo(self.view)
+            make.bottom.equalTo(self.view)
+        }
+        
+        self.scrollView.addSubview(self.contentView)
+        self.contentView.snp_makeConstraints { (make) in
+            make.width.equalTo(self.scrollView)
+            make.centerX.equalTo(self.scrollView)
+            make.top.equalTo(self.scrollView)
+            make.height.greaterThanOrEqualTo(500)
+        }
+        
         // 1位
+        self.contentView.addSubview(self.firstRankHeader)
+        self.firstRankHeader.snp_makeConstraints { (make) in
+            make.left.equalTo(self.contentView).offset(16)
+            make.height.equalTo(32)
+            make.width.equalTo(self.contentView).offset(-32)
+            make.right.equalTo(self.contentView).offset(16)
+            make.top.equalTo(self.contentView).offset(16)
+        }
+        
         self.topResultCard = TopResultCard(frame: CGRectZero, restaurant: self.restaurants[0], delegate: self)
-        let tr = UITapGestureRecognizer(target: self, action: "resultTapped:")
-        self.topResultCard?.addGestureRecognizer(tr)
-        self.view.addSubview(topResultCard!)
+        self.contentView.addSubview(topResultCard!)
+        self.topResultCard!.snp_makeConstraints { (make) in
+            make.width.equalTo(self.contentView).offset(-RESULT_MARGIN*2)
+            make.centerX.equalTo(self.contentView)
+            make.top.equalTo(self.firstRankHeader.snp_bottom).offset(8)
+        }
     }
     
     // 結果が0件の時のレイアウト
@@ -88,84 +144,37 @@ class ResultViewController: UIViewController, ResultCardBaseDelegate {
         label.numberOfLines = 0
         label.sizeToFit()
         label.textColor = UIColor.grayColor()
-        self.view.addSubview(label)
+        self.contentView.addSubview(label)
 
         label.snp_makeConstraints { (make) in
             make.center.equalTo(self.view)
         }
     }
     
-    // 結果が1個の時のレイアウト
-    private func layoutOneResult() {
-        self.prepareLayout()
-        topResultCard!.snp_makeConstraints { (make) in
-            make.width.equalTo(self.view).offset(-RESULT_MARGIN*2)
-            make.height.equalTo(self.view).multipliedBy(0.8).offset(-RESULT_MARGIN*2)
-            make.centerX.equalTo(self.view)
-            make.top.equalTo(self.view).offset(RESULT_MARGIN)
-            make.bottom.equalTo(self.view).offset(-RESULT_MARGIN)
+    // 結果が2件以上ある時のレイアウト
+    private func layoutOthers() {
+        guard let topCard = self.topResultCard else {
+            return
+        }
+        
+        self.contentView.addSubview(self.secondRankHeader)
+        self.secondRankHeader.snp_makeConstraints { (make) in
+            make.left.equalTo(self.contentView).offset(16)
+            make.height.equalTo(32)
+            make.width.equalTo(self.contentView).offset(-32)
+            make.right.equalTo(self.contentView).offset(16)
+            make.top.equalTo(topCard.snp_bottom).offset(18)
+        }
+        
+        self.otherResultCard = OtherResultCardContentView(frame: CGRectZero, restaurant: self.restaurants[1], delegate: self)
+        self.contentView.addSubview(self.otherResultCard!)
+        self.otherResultCard!.snp_makeConstraints { (make) in
+            make.width.equalTo(self.contentView).offset(-RESULT_MARGIN*2)
+            make.centerX.equalTo(self.contentView)
+            make.top.equalTo(self.secondRankHeader.snp_bottom).offset(8)
         }
     }
     
-    // 結果が2個の時のレイアウト
-    private func layoutTwoResults() {
-        self.prepareLayout()
-        topResultCard!.snp_makeConstraints { (make) in
-            make.width.equalTo(self.view).offset(-RESULT_MARGIN*2)
-            make.height.equalTo(self.view).multipliedBy(0.55)
-            make.centerX.equalTo(self.view)
-            make.top.equalTo(self.view).offset(RESULT_MARGIN)
-        }
-        
-        var secondResultCard: OtherResultCard
-        secondResultCard = OtherResultCard(frame: CGRectZero, restaurant: self.restaurants[1], rank: 2, delegate: self)
-        let tr = UITapGestureRecognizer(target: self, action: "resultTapped:")
-        secondResultCard.addGestureRecognizer(tr)
-        self.view.addSubview(secondResultCard)
-        secondResultCard.snp_makeConstraints { (make) in
-            make.left.equalTo(topResultCard!)
-            make.width.equalTo(topResultCard!)
-            make.top.equalTo(topResultCard!.snp_bottom).offset(RESULT_MARGIN)
-            make.bottom.equalTo(self.view).offset(-RESULT_MARGIN)
-        }
-    }
-    
-    // 結果が3個の時のレイアウト
-    private func layoutThreeResults() {
-        self.prepareLayout()
-        topResultCard!.snp_makeConstraints { (make) in
-            make.width.equalTo(self.view).offset(-RESULT_MARGIN*2)
-            make.height.equalTo(self.view).multipliedBy(0.55)
-            make.centerX.equalTo(self.view)
-            make.top.equalTo(self.view).offset(RESULT_MARGIN)
-        }
-        
-        let secondResultCard = OtherResultCard(frame: CGRectZero, restaurant: self.restaurants[1], rank: 2, delegate: self)
-        let tr_second = UITapGestureRecognizer(target: self, action: "resultTapped:")
-        secondResultCard.addGestureRecognizer(tr_second)
-        self.view.addSubview(secondResultCard)
-        secondResultCard.snp_makeConstraints { (make) in
-            make.left.equalTo(topResultCard!)
-            make.width.equalTo(topResultCard!).multipliedBy(0.50).offset(-RESULT_MARGIN/2)
-            make.top.equalTo(topResultCard!.snp_bottom).offset(RESULT_MARGIN)
-            make.bottom.equalTo(self.view).offset(-RESULT_MARGIN)
-        }
-        
-        // 3位
-        let thirdResultCard = OtherResultCard(frame: CGRectZero, restaurant: self.restaurants[2], rank: 3, delegate: self)
-        let tr_third = UITapGestureRecognizer(target: self, action: "resultTapped:")
-        thirdResultCard.addGestureRecognizer(tr_third)
-        self.view.addSubview(thirdResultCard)
-        thirdResultCard.snp_makeConstraints { (make) in
-            make.left.equalTo(secondResultCard.snp_right).offset(RESULT_MARGIN)
-            make.width.equalTo(secondResultCard)
-            make.height.equalTo(secondResultCard)
-            make.top.equalTo(secondResultCard)
-            make.bottom.equalTo(secondResultCard)
-        }
-    }
-    
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -200,30 +209,35 @@ class ResultViewController: UIViewController, ResultCardBaseDelegate {
     }
     
     //MARK: - ResultCardBaseDelegate
-    func goodButtonTapped(card: ResultCardBase, shopID: String) {
-        let ac = UIAlertController(title: "", message: NSLocalizedString("GoodButtonSendMessage", comment: ""), preferredStyle: .Alert)
-        let okAction = UIAlertAction(title: NSLocalizedString("OK", comment: ""),
-            style: .Default, handler: { (action) in
-                let params = ["shop_id": shopID, "device_id": Utils.acquireDeviceID()]
-                Alamofire.request(.GET, Const.API_GOOD_BASE, parameters: params, encoding: .URL).responseJSON {(request, response, result) in
-                    switch result {
-                    case .Success(_):
-                        break
-                    case .Failure(_, _):
-                        // 現時点ではAPIが無いので、404を正とする
-                        if (response?.statusCode == Const.STATUS_CODE_NOT_FOUND) {
-                            card.goodButton.enabled = false
-                        }
-                        break
-                    }
-                }
-            }
-        )
-        let cancelAction = UIAlertAction(title: NSLocalizedString("Back", comment: ""),
-            style: .Default, handler: nil)
-        ac.addAction(cancelAction)
-        ac.addAction(okAction)
-        self.presentViewController(ac, animated: true, completion: nil)
+//    func goodButtonTapped(card: ResultCardBase, shopID: String) {
+//        let ac = UIAlertController(title: "", message: NSLocalizedString("GoodButtonSendMessage", comment: ""), preferredStyle: .Alert)
+//        let okAction = UIAlertAction(title: NSLocalizedString("OK", comment: ""),
+//            style: .Default, handler: { (action) in
+//                let params = ["shop_id": shopID, "device_id": Utils.acquireDeviceID()]
+//                Alamofire.request(.GET, Const.API_GOOD_BASE, parameters: params, encoding: .URL).responseJSON {(request, response, result) in
+//                    switch result {
+//                    case .Success(_):
+//                        break
+//                    case .Failure(_, _):
+//                        // 現時点ではAPIが無いので、404を正とする
+//                        if (response?.statusCode == Const.STATUS_CODE_NOT_FOUND) {
+//                            card.goodButton.enabled = false
+//                        }
+//                        break
+//                    }
+//                }
+//            }
+//        )
+//        let cancelAction = UIAlertAction(title: NSLocalizedString("Back", comment: ""),
+//            style: .Default, handler: nil)
+//        ac.addAction(cancelAction)
+//        ac.addAction(okAction)
+//        self.presentViewController(ac, animated: true, completion: nil)
+//    }
+    
+    func detailButtonTapped(card: ResultCardBase) {
+        let detailView = RestaurantDetailViewController(url: card.url)
+        self.navigationController?.pushViewController(detailView, animated: true)
     }
 
 }
