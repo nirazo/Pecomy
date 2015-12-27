@@ -346,7 +346,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
                     let distance: Double = card["distance_meter"].double!
                     let category = card["top_category"].string!
                     
-                    var shopImageUrls = [NSURL]()
+                    var shopImageUrls = [NSURL?]()
                     for urlString in shopImageUrlsString {
                         shopImageUrls.append(NSURL(string: urlString.string!)!)
                     }
@@ -480,7 +480,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
                         let url = NSURL(string: results[i]["url"].string!)
                         let category = results[i]["top_category"].string!
                         
-                        var shopImageUrls = [NSURL]()
+                        var shopImageUrls = [NSURL?]()
                         for urlString in shopImageUrlsString {
                             shopImageUrls.append(NSURL(string: urlString.string!)!)
                         }

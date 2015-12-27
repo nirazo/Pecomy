@@ -21,14 +21,13 @@ class ResultCardBase: UIView {
     var shopName = ""
     var priceRange = ""
     var distance: Double = 0.0
-    var imageUrls = [NSURL]()
+    var imageUrls = [NSURL?]()
     var url = NSURL()
     var category = ""
     var restaurantImageViews = [UIImageView]()
     let borderColor: UIColor
     let contentView = UIView()
     let shadow = UIView()
-    let goodButton = UIButton()
     var delegate: ResultCardBaseDelegate
 
     init(frame: CGRect, restaurant: Restaurant, imageNum: Int, color: UIColor, delegate: ResultCardBaseDelegate) {

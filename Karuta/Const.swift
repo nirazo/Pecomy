@@ -45,6 +45,7 @@ struct Const {
     
     static let RANKING_TOP_COLOR = UIColor(red: 255.0/255.0, green: 170.0/255.0, blue: 0/255.0, alpha: 1.0)
     static let RANKING_SECOND_COLOR = UIColor(red: 124.0/255.0, green: 132.0/255.0, blue: 139.0/255.0, alpha: 1.0)
+    static let RANKING_SECOND_RIGHT_COLOR = UIColor(red: 102.0/255.0, green: 102/255.0, blue: 102.0/255.0, alpha: 1.0)
     
     static let KARUTA_TITLE = "Karuta"
     

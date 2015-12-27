@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import SnapKit
 
 protocol ResultViewControllerDelegate {
     func resultViewController(controller: ResultViewController, backButtonTappedWithReset reset: Bool)
@@ -28,7 +29,9 @@ class ResultViewController: UIViewController, ResultCardBaseDelegate {
     
     var topResultCard: TopResultCard?
     
-    var otherResultCard: OtherResultCardContentView?
+    var otherResultsCard: OtherResultsCard?
+    
+    var otherResultsBaseView = UIView()
     
     let firstRankHeader = ResultHeaderView(frame: CGRectZero, section: 0)
     
@@ -59,11 +62,8 @@ class ResultViewController: UIViewController, ResultCardBaseDelegate {
         case 0:
             self.layoutNoResult()
             self.showNoResultAlert()
-        case 1:
-            self.prepareLayout()
         default:
-            self.prepareLayout()
-            self.layoutOthers()
+            self.setupLayout()
             break
         }
     }
@@ -81,25 +81,14 @@ class ResultViewController: UIViewController, ResultCardBaseDelegate {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-//        guard let otherCard = self.otherResultCard else {
-//            return
-//        }
-//        self.scrollView.snp_makeConstraints{ (make) in
-//            make.height.greaterThanOrEqualTo(600)
-//            make.bottom.equalTo(otherCard)
-//        }
-//        self.view.layoutIfNeeded()
-        
         self.scrollView.contentSize = self.contentView.frame.size
-        print("scrollView: \(scrollView.frame.size)")
-        print("scrollView.contentSize: \(scrollView.contentSize)")
-        print("contentView: \(self.contentView.frame.size)")
     }
     
-    // レイアウト共通(結果が存在する場合)
-    private func prepareLayout() {
+    // 結果が存在する場合のレイアウト
+    private func setupLayout() {
         self.scrollView.contentInset = UIEdgeInsetsMake(0, 0, 32, 0)
-        self.scrollView.backgroundColor = UIColor.yellowColor()
+        //self.scrollView.backgroundColor = UIColor.yellowColor()
+        self.scrollView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.scrollView)
         self.scrollView.snp_makeConstraints { (make) in
             make.width.equalTo(self.view)
@@ -114,7 +103,6 @@ class ResultViewController: UIViewController, ResultCardBaseDelegate {
             make.width.equalTo(self.scrollView)
             make.centerX.equalTo(self.scrollView)
             make.top.equalTo(self.scrollView)
-            make.height.greaterThanOrEqualTo(500)
         }
         
         // 1位
@@ -123,7 +111,7 @@ class ResultViewController: UIViewController, ResultCardBaseDelegate {
             make.left.equalTo(self.contentView).offset(16)
             make.height.equalTo(32)
             make.width.equalTo(self.contentView).offset(-32)
-            make.right.equalTo(self.contentView).offset(16)
+            make.right.equalTo(self.contentView).offset(-16)
             make.top.equalTo(self.contentView).offset(16)
         }
         
@@ -134,6 +122,39 @@ class ResultViewController: UIViewController, ResultCardBaseDelegate {
             make.centerX.equalTo(self.contentView)
             make.top.equalTo(self.firstRankHeader.snp_bottom).offset(8)
         }
+        
+        // その他のベースとなるビュー
+        self.otherResultsBaseView.backgroundColor = UIColor.clearColor()
+        self.contentView.addSubview(self.otherResultsBaseView)
+        self.otherResultsBaseView.snp_makeConstraints { (make) in
+            make.top.equalTo(self.topResultCard!.snp_bottom)
+            make.left.equalTo(self.topResultCard!)
+            make.width.equalTo(self.topResultCard!)
+            make.bottom.equalTo(self.contentView)
+            make.right.equalTo(self.topResultCard!)
+        }
+        if self.restaurants.count < 2 {
+            self.otherResultsBaseView.hidden = true
+        } else {
+            self.otherResultsBaseView.addSubview(self.secondRankHeader)
+            self.secondRankHeader.snp_makeConstraints { (make) in
+                make.left.equalTo(self.otherResultsBaseView)
+                make.height.equalTo(32)
+                make.width.equalTo(self.otherResultsBaseView)
+                make.right.equalTo(self.otherResultsBaseView)
+                make.top.equalTo(self.otherResultsBaseView).offset(18)
+            }
+            
+            self.otherResultsCard = OtherResultsCard(frame: CGRectZero, restaurants: self.restaurants, delegate: self)
+            self.otherResultsBaseView.addSubview(self.otherResultsCard!)
+            self.otherResultsCard!.snp_makeConstraints { (make) in
+                make.width.equalTo(self.otherResultsBaseView)
+                make.centerX.equalTo(self.otherResultsBaseView)
+                make.top.equalTo(self.secondRankHeader.snp_bottom).offset(8)
+                make.bottom.equalTo(self.otherResultsBaseView)
+            }
+        }
+        self.view.layoutIfNeeded()
     }
     
     // 結果が0件の時のレイアウト
@@ -148,30 +169,6 @@ class ResultViewController: UIViewController, ResultCardBaseDelegate {
 
         label.snp_makeConstraints { (make) in
             make.center.equalTo(self.view)
-        }
-    }
-    
-    // 結果が2件以上ある時のレイアウト
-    private func layoutOthers() {
-        guard let topCard = self.topResultCard else {
-            return
-        }
-        
-        self.contentView.addSubview(self.secondRankHeader)
-        self.secondRankHeader.snp_makeConstraints { (make) in
-            make.left.equalTo(self.contentView).offset(16)
-            make.height.equalTo(32)
-            make.width.equalTo(self.contentView).offset(-32)
-            make.right.equalTo(self.contentView).offset(16)
-            make.top.equalTo(topCard.snp_bottom).offset(18)
-        }
-        
-        self.otherResultCard = OtherResultCardContentView(frame: CGRectZero, restaurant: self.restaurants[1], delegate: self)
-        self.contentView.addSubview(self.otherResultCard!)
-        self.otherResultCard!.snp_makeConstraints { (make) in
-            make.width.equalTo(self.contentView).offset(-RESULT_MARGIN*2)
-            make.centerX.equalTo(self.contentView)
-            make.top.equalTo(self.secondRankHeader.snp_bottom).offset(8)
         }
     }
     
@@ -207,33 +204,6 @@ class ResultViewController: UIViewController, ResultCardBaseDelegate {
         alertController.addAction(okAction)
         self.presentViewController(alertController, animated: true, completion: nil)
     }
-    
-    //MARK: - ResultCardBaseDelegate
-//    func goodButtonTapped(card: ResultCardBase, shopID: String) {
-//        let ac = UIAlertController(title: "", message: NSLocalizedString("GoodButtonSendMessage", comment: ""), preferredStyle: .Alert)
-//        let okAction = UIAlertAction(title: NSLocalizedString("OK", comment: ""),
-//            style: .Default, handler: { (action) in
-//                let params = ["shop_id": shopID, "device_id": Utils.acquireDeviceID()]
-//                Alamofire.request(.GET, Const.API_GOOD_BASE, parameters: params, encoding: .URL).responseJSON {(request, response, result) in
-//                    switch result {
-//                    case .Success(_):
-//                        break
-//                    case .Failure(_, _):
-//                        // 現時点ではAPIが無いので、404を正とする
-//                        if (response?.statusCode == Const.STATUS_CODE_NOT_FOUND) {
-//                            card.goodButton.enabled = false
-//                        }
-//                        break
-//                    }
-//                }
-//            }
-//        )
-//        let cancelAction = UIAlertAction(title: NSLocalizedString("Back", comment: ""),
-//            style: .Default, handler: nil)
-//        ac.addAction(cancelAction)
-//        ac.addAction(okAction)
-//        self.presentViewController(ac, animated: true, completion: nil)
-//    }
     
     func detailButtonTapped(card: ResultCardBase) {
         let detailView = RestaurantDetailViewController(url: card.url)

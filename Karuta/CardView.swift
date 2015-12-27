@@ -31,7 +31,7 @@ class CardView: MDCSwipeToChooseView {
     var priceRange = ""
     var category = ""
     var distance: Double = 0.0
-    var imageUrls = [NSURL]()
+    var imageUrls = [NSURL?]()
     var restaurantImageViews = [UIImageView]()
     let contentsView = UIView()
     let blackListButton = UIButton()
