@@ -89,11 +89,20 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oEy-on-oVb" customClass="CategoryLabelView" customModule="Karuta" customModuleProvider="target">
-                                    <rect key="frame" x="16" y="48" width="46" height="20"/>
+                                    <rect key="frame" x="16" y="48" width="56" height="20"/>
                                     <constraints>
                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="3ZH-gq-jWr"/>
-                                        <constraint firstAttribute="width" constant="46" id="JJ0-Ls-7S5"/>
+                                        <constraint firstAttribute="width" priority="999" constant="46" id="JJ0-Ls-7S5"/>
+                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="46" id="Rxe-oU-rgv"/>
+                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="100" id="YCp-gI-Onu"/>
+                                        <constraint firstAttribute="width" constant="56" id="oS5-Hx-aL4"/>
                                     </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="JJ0-Ls-7S5"/>
+                                            <exclude reference="Rxe-oU-rgv"/>
+                                        </mask>
+                                    </variation>
                                 </view>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rMZ-rh-Zo2">
                                     <rect key="frame" x="16" y="78" width="16" height="16"/>
@@ -153,20 +162,15 @@
                                 <constraint firstItem="rMZ-rh-Zo2" firstAttribute="top" secondItem="oEy-on-oVb" secondAttribute="bottom" constant="10" id="Vnm-Zm-yab"/>
                                 <constraint firstItem="oEy-on-oVb" firstAttribute="leading" secondItem="5qf-ZZ-4jv" secondAttribute="leading" id="XJj-Zf-ZU0"/>
                                 <constraint firstItem="5qf-ZZ-4jv" firstAttribute="top" secondItem="x6s-up-N3a" secondAttribute="top" constant="14" id="YBI-qS-a4e"/>
-                                <constraint firstItem="rMZ-rh-Zo2" firstAttribute="trailing" secondItem="5qf-ZZ-4jv" secondAttribute="trailing" id="YaL-Eq-KSE"/>
                                 <constraint firstItem="rMZ-rh-Zo2" firstAttribute="leading" secondItem="5qf-ZZ-4jv" secondAttribute="leading" id="Yh2-Pd-q0L"/>
+                                <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="oEy-on-oVb" secondAttribute="trailing" constant="101" id="ZS1-Yo-HWA"/>
                                 <constraint firstItem="6r4-mN-J8r" firstAttribute="centerY" secondItem="rMZ-rh-Zo2" secondAttribute="centerY" id="Ztj-4I-keI"/>
                                 <constraint firstItem="Xi9-Vu-K5x" firstAttribute="centerY" secondItem="yps-Cb-Kgl" secondAttribute="centerY" id="bo1-p0-7yv"/>
                                 <constraint firstAttribute="width" constant="163" id="iXl-BQ-X4J"/>
-                                <constraint firstAttribute="height" constant="156" id="rKT-Qx-zRI"/>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="156" id="rKT-Qx-zRI"/>
                                 <constraint firstItem="Xi9-Vu-K5x" firstAttribute="leading" secondItem="6r4-mN-J8r" secondAttribute="leading" id="s6H-2l-G94"/>
                                 <constraint firstItem="xgH-tI-zsU" firstAttribute="leading" secondItem="5qf-ZZ-4jv" secondAttribute="leading" id="sZ9-Pl-02C"/>
                             </constraints>
-                            <variation key="default">
-                                <mask key="constraints">
-                                    <exclude reference="YaL-Eq-KSE"/>
-                                </mask>
-                            </variation>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t0y-4s-GQC" userLabel="Map View" customClass="GMSMapView">
                             <rect key="frame" x="163" y="171" width="180" height="156"/>
@@ -215,6 +219,12 @@
                                         <constraint firstItem="iB2-hY-Lvk" firstAttribute="centerY" secondItem="vm6-OR-hRX" secondAttribute="centerY" id="Tuo-Dk-gxk"/>
                                         <constraint firstItem="iB2-hY-Lvk" firstAttribute="leading" secondItem="vm6-OR-hRX" secondAttribute="leading" constant="12" id="VO6-76-hAC"/>
                                     </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="5"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
                                 </view>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

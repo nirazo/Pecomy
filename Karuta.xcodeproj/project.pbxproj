@@ -21,6 +21,7 @@
 		D24B29411B79CC1D00419B9B /* CardProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24B29401B79CC1D00419B9B /* CardProgressViewController.swift */; };
 		D24B29461B79F56E00419B9B /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D24B29451B79F56E00419B9B /* Launch Screen.xib */; };
 		D253A9E01C310D7B00D65D20 /* TopResultCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = D253A9DF1C310D7B00D65D20 /* TopResultCard.xib */; };
+		D253A9E21C321BCB00D65D20 /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = D253A9E11C321BCB00D65D20 /* Int.swift */; };
 		D272F45C1B9C25E4009564A0 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D272F45B1B9C25E4009564A0 /* LoadingView.swift */; };
 		D27BB9D21B36F4A900F8D902 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27BB9D11B36F4A900F8D902 /* AppDelegate.swift */; };
 		D27BB9D41B36F4A900F8D902 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27BB9D31B36F4A900F8D902 /* MainViewController.swift */; };
@@ -72,6 +73,7 @@
 		D24B29401B79CC1D00419B9B /* CardProgressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardProgressViewController.swift; sourceTree = "<group>"; };
 		D24B29451B79F56E00419B9B /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 		D253A9DF1C310D7B00D65D20 /* TopResultCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopResultCard.xib; sourceTree = "<group>"; };
+		D253A9E11C321BCB00D65D20 /* Int.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
 		D272F45B1B9C25E4009564A0 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		D27BB9CC1B36F4A900F8D902 /* Karuta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Karuta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D27BB9D01B36F4A900F8D902 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 			isa = PBXGroup;
 			children = (
 				D2DEE6AE1C030FA200861BDF /* Double.swift */,
+				D253A9E11C321BCB00D65D20 /* Int.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -474,6 +477,7 @@
 				D2DD65A21B7714DA0046A50C /* OtherResultsCard.swift in Sources */,
 				D2A99A1A1C12D3FA00C16F04 /* CategorySelectionViewController.swift in Sources */,
 				D27BB9D21B36F4A900F8D902 /* AppDelegate.swift in Sources */,
+				D253A9E21C321BCB00D65D20 /* Int.swift in Sources */,
 				D2E36EC71C2D615D00DEE726 /* OtherResultCardContentView.swift in Sources */,
 				D24B291F1B772EFF00419B9B /* ResultViewController.swift in Sources */,
 				D24B29411B79CC1D00419B9B /* CardProgressViewController.swift in Sources */,

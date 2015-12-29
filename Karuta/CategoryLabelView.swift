@@ -18,6 +18,8 @@ class CategoryLabelView: UIView {
     var categoryLabels = [UILabel]()
     var categoriesArray = [String]()
     
+    var contentView = UIView()
+    
     init(frame: CGRect, category: String, color: UIColor = Const.KARUTA_THEME_COLOR) {
         // カテゴリのsplit
         let replacedCategory = category.stringByReplacingOccurrencesOfString("（.*）", withString: "", options: .RegularExpressionSearch, range: nil)
@@ -26,12 +28,33 @@ class CategoryLabelView: UIView {
             self.categoriesArray = [String](self.categoriesArray[0..<MAX_CATEGORY_NUM])
         }
         super.init(frame: frame)
+        self.commonInit()
+        
         self.backgroundColor = color
+        
         self.setupSubViews()
     }
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        self.commonInit()
+    }
+    
+    func commonInit() {
+        self.addSubview(self.contentView)
+        self.contentView.backgroundColor = UIColor.clearColor()
+        
+        self.contentView.snp_makeConstraints { (make) in
+            make.centerX.equalTo(self)
+            make.centerY.equalTo(self)
+            make.left.equalTo(self).offset(MARGIN_CATEGORY_HORIZONTAL)
+            make.right.equalTo(self).offset(-MARGIN_CATEGORY_HORIZONTAL)
+            make.top.equalTo(self).offset(MARGIN_CATEGORY_VERTICAL)
+            make.bottom.equalTo(self).offset(-MARGIN_CATEGORY_VERTICAL)
+        }
+        // 角丸
+        self.layer.cornerRadius = CORNER_RADIUS
+        self.setupSubViews()
     }
     
     func setCategory(category: String) {
@@ -45,15 +68,14 @@ class CategoryLabelView: UIView {
     }
     
     func setupSubViews() {
+        
         // subViewsを全て削除
-        for subview in self.subviews {
+        for subview in self.contentView.subviews {
             subview.removeFromSuperview()
         }
+        self.categoryLabels.removeAll()
         
-        // 角丸
-        self.layer.cornerRadius = CORNER_RADIUS
-        
-        for (var i=0; i < self.categoriesArray.count; i++) {
+        for i in 0..<self.categoriesArray.count {
             let categoryLabel = UILabel()
             categoryLabel.text = self.categoriesArray[i]
             categoryLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: DEFAULT_FONT_SIZE_CATEGORY)
@@ -64,13 +86,20 @@ class CategoryLabelView: UIView {
             self.addSubview(categoryLabel)
             
             self.categoryLabels.append(categoryLabel)
+            self.contentView.addSubview(self.categoryLabels[i])
             
-            categoryLabel.snp_makeConstraints { (make) in
-                make.centerX.equalTo(self)
-                make.centerY.equalTo(self.snp_bottom).multipliedBy(CGFloat(i*2+1)/CGFloat(self.categoriesArray.count*2))
-                make.left.equalTo(self).offset(MARGIN_CATEGORY_HORIZONTAL)
-                make.right.equalTo(self).offset(-MARGIN_CATEGORY_HORIZONTAL)
-                make.height.equalTo(self).dividedBy(CGFloat(self.categoriesArray.count)).offset(-MARGIN_CATEGORY_VERTICAL)
+            self.categoryLabels[i].snp_makeConstraints { (make) in
+                make.centerX.equalTo(self.contentView)
+                if i == 0 {
+                    make.top.equalTo(self.contentView)
+                } else {
+                    make.top.equalTo(self.categoryLabels[i-1].snp_bottom).offset(MARGIN_CATEGORY_VERTICAL)
+                }
+                make.left.equalTo(self.contentView)
+                make.right.equalTo(self.contentView)
+                if i == self.categoriesArray.count - 1 {
+                    make.bottom.equalTo(self.contentView)
+                }
             }
         }
     }

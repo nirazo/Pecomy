@@ -113,7 +113,6 @@ class OtherResultCardContentView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        print("content:\(self.contentView.frame.size)")
     }
     
     private func acquireImage(url: NSURL?) {
