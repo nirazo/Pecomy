@@ -8,6 +8,7 @@ PODS:
     - GoogleSymbolUtilities (~> 1.0)
     - GoogleUtilities (~> 1.0)
   - GoogleAnalytics (3.14.0)
+  - GoogleMaps (1.11.1)
   - GoogleNetworkingUtilities (1.0.0):
     - GoogleSymbolUtilities (~> 1.0)
   - GoogleSymbolUtilities (1.0.3)
@@ -23,6 +24,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire (= 2.0.0)
   - Google/Analytics (~> 1.0.0)
+  - GoogleMaps (= 1.11.1)
   - MDCSwipeToChoose (= 0.2.3)
   - SDWebImage (= 3.7.2)
   - SnapKit (= 0.14.0)
@@ -32,6 +34,7 @@ SPEC CHECKSUMS:
   Alamofire: 2f13548b29d25a58ecd91c9225fb51493e2b782b
   Google: 875f5a8ade86dd02e36586e4a54814843938c7f6
   GoogleAnalytics: 9be1afdb8deeac4bb5f13ca7f7d3b9db2a1f43dc
+  GoogleMaps: c947160008f414c66707a5ea60f35e92055c7670
   GoogleNetworkingUtilities: 292992ab31b7b4ba32809a0e8b40e324cdfb2c0c
   GoogleSymbolUtilities: 82ad9f93d3615244b3f4ce440f5ab2515e8b4f56
   GoogleUtilities: 8ed9134debe11719097881711464752900668f10

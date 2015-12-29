@@ -31,7 +31,7 @@ class CategoryLabelView: UIView {
     }
 
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
     }
     
     func setCategory(category: String) {
@@ -41,7 +41,6 @@ class CategoryLabelView: UIView {
         if (self.categoriesArray.count > MAX_CATEGORY_NUM) {
             self.categoriesArray = [String](self.categoriesArray[0..<MAX_CATEGORY_NUM])
         }
-        
         self.setupSubViews()
     }
     

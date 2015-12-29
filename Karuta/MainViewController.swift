@@ -471,6 +471,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
                 
                 if (response?.statusCode == Const.STATUS_CODE_SUCCESS) {
                     let results = json["results"]
+                    print("results: \(results)")
                     for i in 0..<results.count {
                         let shopID = results[i]["shop_id"].stringValue
                         let shopName = results[i]["title"].string!

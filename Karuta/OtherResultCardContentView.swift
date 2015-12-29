@@ -51,7 +51,7 @@ class OtherResultCardContentView: UIView {
             make.left.equalTo(self)
         }
         
-        self.imageView.contentMode = .Redraw
+        self.imageView.contentMode = UIViewContentMode.Redraw
         self.contentView.addSubview(self.imageView)
         self.imageView.snp_makeConstraints { (make) in
             make.width.equalTo(80)

@@ -34,10 +34,9 @@ class OtherResultsCard: UIView {
         self.addSubview(shadow)
         self.shadow.backgroundColor = UIColor.whiteColor()
         self.shadow.layer.cornerRadius = CORNER_RADIUS
-        self.shadow.layer.shadowOffset = CGSizeMake(0.5, 1.0);
-        self.shadow.layer.shadowRadius = 0.7;
+        self.shadow.layer.shadowOpacity = 0.7
         self.shadow.layer.shadowColor = UIColor.grayColor().CGColor
-        self.shadow.layer.shadowOpacity = 0.9;
+        self.shadow.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
         
         // パーツ群を置くビュー
         self.contentView.backgroundColor = UIColor.whiteColor()

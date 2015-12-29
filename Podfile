@@ -9,6 +9,7 @@ target 'Karuta' do
     pod 'SwiftyJSON', '2.3.1'
     pod 'SnapKit', '0.14.0'
     pod 'Google/Analytics', '~> 1.0.0'
+    pod 'GoogleMaps', '1.11.1'
 end
 
 target 'KarutaTests' do

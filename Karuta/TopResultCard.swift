@@ -8,210 +8,191 @@
 
 import UIKit
 import SDWebImage
+import GoogleMaps
 
 class TopResultCard: ResultCardBase {
-
+    
     // 描画系定数
+    private let BASE_WIDTH: CGFloat = 343.0
     private let NUM_OF_IMAGES = 3
     private let CORNER_RADIUS: CGFloat = 5.0
-    private let SEPARATOR_LINE_WIDTH : CGFloat = 3.0
+    private let SEPARATOR_LINE_WIDTH : CGFloat = 1.0
     private let TEXT_MARGIN_X: CGFloat = 16.0
     private let TEXT_MARGIN_Y: CGFloat = 10.0
     
-    let restaurantNameLabel = UILabel()
-    let priceLabel = UILabel()
-    let distanceLabel = UILabel()
+    let gradientLayer = CAGradientLayer()
+    @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var mainImageView: UIImageView!
+    @IBOutlet weak var secondImageView: UIImageView!
+    @IBOutlet weak var thirdImageView: UIImageView!
+    @IBOutlet weak var restaurantNameLabel: UILabel!
+    @IBOutlet weak var categoryView: CategoryLabelView!
+    @IBOutlet weak var dayPriceIcon: UIImageView!
+    @IBOutlet weak var dayPriceLabel: UILabel!
+
+    @IBOutlet weak var nightPriceIcon: UIImageView!
+    @IBOutlet weak var nightPriceLabel: UILabel!
+    @IBOutlet weak var distanceLabel: UILabel!
+    @IBOutlet weak var mapView: GMSMapView!
+    @IBOutlet weak var separator: UIView!
+    @IBOutlet weak var reviewIcon: UIImageView!
+    @IBOutlet weak var reviewCommentLabel: UILabel!
+    @IBOutlet weak var detailButton: UIButton!
     
+    var syncID = ""
+    var shopID = ""
+    var shopName = ""
+    var priceRange = ""
+    var distance: Double = 0.0
+    var imageUrls = [NSURL?]()
+    var url = NSURL()
+    var category = ""
+    var delegate: ResultCardBaseDelegate?
+    
+    class func instance() -> TopResultCard {
+        return UINib(nibName: "TopResultCard", bundle: nil).instantiateWithOwner(self, options: nil)[0] as! TopResultCard
+    }
+        
     init(frame: CGRect, restaurant: Restaurant, delegate: ResultCardBaseDelegate) {
         super.init(frame: frame, restaurant: restaurant, imageNum: NUM_OF_IMAGES, color: Const.RANKING_TOP_COLOR, delegate: delegate)
         self.setupSubViews()
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    func setup(restaurant: Restaurant) {
+        self.shopID = restaurant.shopID
+        self.shopName = restaurant.shopName
+        self.imageUrls = restaurant.imageUrls
+        self.priceRange = restaurant.priceRange
+        self.distance = restaurant.distance
+        self.url = restaurant.url
+        self.category = restaurant.category
     }
     
-    private func setupSubViews() {
-        for i in 0..<NUM_OF_IMAGES {
-            self.contentView.addSubview(self.restaurantImageViews[i])
-        }
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    func setupSubViews() {
         
-        self.restaurantImageViews[0].snp_makeConstraints { (make) in
-            make.width.equalTo(220)
-            make.height.equalTo(173)
-            make.left.equalTo(self)
-            make.top.equalTo(self)
-        }
-
-        self.restaurantImageViews[1].snp_makeConstraints { (make) in
-            make.left.equalTo(self.restaurantImageViews[0].snp_right).offset(self.SEPARATOR_LINE_WIDTH)
-            make.right.equalTo(self)
-            make.top.equalTo(self)
-            make.bottom.equalTo(self.restaurantImageViews[0].snp_bottom).multipliedBy(0.5).offset(-self.SEPARATOR_LINE_WIDTH/2)
-            make.height.equalTo(85)
-        }
-        self.restaurantImageViews[2].snp_makeConstraints { (make) in
-            make.left.equalTo(self.restaurantImageViews[1])
-            make.right.equalTo(self)
-            make.top.equalTo(self.restaurantImageViews[1].snp_bottom).offset(self.SEPARATOR_LINE_WIDTH)
-            make.bottom.equalTo(self.restaurantImageViews[0].snp_bottom)
-            make.height.equalTo(85)
-        }
+        // ドロップシャドウ
+//        self.layer.masksToBounds = false
+//        self.addSubview(shadow)
+//        self.backgroundColor = UIColor.whiteColor()
+//        self.layer.cornerRadius = CORNER_RADIUS
+//        self.layer.shadowOpacity = 0.7
+//        self.layer.shadowColor = UIColor.grayColor().CGColor
+//        self.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        
+        // パーツ群を置くビュー
+        self.contentView.backgroundColor = UIColor.whiteColor()
+        
+        self.contentView.layer.cornerRadius = CORNER_RADIUS
+        self.contentView.layer.masksToBounds = true
+        self.contentView.backgroundColor = UIColor.whiteColor()
+        
+        self.backgroundColor = UIColor.clearColor()
+        self.layer.cornerRadius = CORNER_RADIUS
+        self.layer.masksToBounds = false
+        
+        // 画像
+        self.mainImageView.image = UIImage(named: "noimage")
+        self.mainImageView.contentMode = .Redraw
+        self.secondImageView.image = UIImage(named: "noimage")
+        self.secondImageView.contentMode = .Redraw
+        self.thirdImageView.image = UIImage(named: "noimage")
+        self.thirdImageView.contentMode = .Redraw
         
         // レストラン名のラベル
-        restaurantNameLabel.text = self.shopName
-        restaurantNameLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 16)
-        restaurantNameLabel.numberOfLines = 2
-        restaurantNameLabel.textColor = Const.RANKING_TOP_COLOR
-        restaurantNameLabel.sizeToFit()
-        self.contentView.addSubview(restaurantNameLabel)
-        
-        self.restaurantNameLabel.snp_makeConstraints { (make) in
-            make.left.equalTo(self).offset(TEXT_MARGIN_X)
-            make.top.equalTo(self.restaurantImageViews[0].snp_bottom).offset(14)
-            make.height.greaterThanOrEqualTo(16)
-            make.width.equalTo(166)
-        }
+        self.restaurantNameLabel.text = self.shopName
+        self.restaurantNameLabel.backgroundColor = UIColor.whiteColor()
+        self.restaurantNameLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 16)
+        self.restaurantNameLabel.numberOfLines = 2
+        self.restaurantNameLabel.textColor = Const.RANKING_TOP_COLOR
+        self.restaurantNameLabel.sizeToFit()
         
         // カテゴリ
-        let categoryLabelView = CategoryLabelView(frame: CGRectZero, category: self.category, color: Const.RANKING_TOP_COLOR)
-        self.contentView.addSubview(categoryLabelView)
+        self.categoryView.setCategory(self.category)
+        self.categoryView.backgroundColor = Const.RANKING_TOP_COLOR
         
-        categoryLabelView.snp_makeConstraints { (make) in
-            make.width.greaterThanOrEqualTo(50)
-            make.height.greaterThanOrEqualTo(20)
-            make.left.equalTo(self.restaurantNameLabel)
-            make.top.equalTo(self.restaurantNameLabel.snp_bottom).offset(16)
-        }
-        
+        self.dayPriceIcon.image = UIImage(named: "noimage")
         // 値段ラベル
-        priceLabel.text = Utils.formatPriceString(self.priceRange)
-        priceLabel.numberOfLines = 2
-        priceLabel.sizeToFit()
-        priceLabel.textColor = UIColor(red: 128.0/255.0, green: 128.0/255.0, blue: 128.0/255.0, alpha: 1.0)
-        priceLabel.font = UIFont(name: Const.KARUTA_FONT_NORMAL, size: 12)
-        self.contentView.addSubview(priceLabel)
+        self.dayPriceLabel.text = Utils.formatPriceString(self.priceRange)
+        self.dayPriceLabel.numberOfLines = 2
+        self.dayPriceLabel.sizeToFit()
+        self.dayPriceLabel.textColor = UIColor(red: 128.0/255.0, green: 128.0/255.0, blue: 128.0/255.0, alpha: 1.0)
+        self.dayPriceLabel.font = UIFont(name: Const.KARUTA_FONT_NORMAL, size: 12)
         
-        self.priceLabel.snp_makeConstraints { (make) in
-            make.left.equalTo(self.restaurantNameLabel)
-            make.top.equalTo(categoryLabelView.snp_bottom).offset(TEXT_MARGIN_Y)
-            make.width.equalTo(restaurantNameLabel)
-        }
+        self.nightPriceIcon.image = UIImage(named: "noimage")
+        self.nightPriceLabel.text = Utils.formatPriceString(self.priceRange)
+        self.nightPriceLabel.numberOfLines = 2
+        self.nightPriceLabel.sizeToFit()
+        self.nightPriceLabel.textColor = UIColor(red: 128.0/255.0, green: 128.0/255.0, blue: 128.0/255.0, alpha: 1.0)
+        self.nightPriceLabel.font = UIFont(name: Const.KARUTA_FONT_NORMAL, size: 12)
         
         // 距離ラベル
-        distanceLabel.text = String(format: NSLocalizedString("CardDistanceFromText", comment: ""), self.distance.meterToMinutes())
-        distanceLabel.font = UIFont(name: Const.KARUTA_FONT_NORMAL, size: 12)
-        distanceLabel.numberOfLines = 0
-        distanceLabel.sizeToFit()
-        distanceLabel.textColor = UIColor(red: 108/255.0, green: 108/255.0, blue: 108/255.0, alpha: 1.0)
-        self.contentView.addSubview(distanceLabel)
+        self.distanceLabel.text = String(format: NSLocalizedString("CardDistanceFromText", comment: ""), self.distance.meterToMinutes())
+        self.distanceLabel.font = UIFont(name: Const.KARUTA_FONT_NORMAL, size: 12)
+        self.distanceLabel.numberOfLines = 0
+        self.distanceLabel.sizeToFit()
+        self.distanceLabel.textColor = UIColor(red: 108/255.0, green: 108/255.0, blue: 108/255.0, alpha: 1.0)
         
-        self.distanceLabel.snp_makeConstraints { (make) in
-            make.top.equalTo(priceLabel.snp_bottom).offset(16)
-            make.left.equalTo(restaurantNameLabel)
-            make.width.equalTo(restaurantNameLabel)
-        }
+        // 地図
+        let camera = GMSCameraPosition.cameraWithLatitude(35.681382,longitude: 139.766084, zoom: 15)
+        self.mapView.camera = camera
+        self.mapView.myLocationEnabled = true
+
+        mapView.userInteractionEnabled = false
         
-        // separator
-        let separator = UIView(frame: CGRectZero)
-        separator.backgroundColor = UIColor(red: 220/255.0, green: 220/255.0, blue: 220/255.0, alpha: 1.0)
-        self.contentView.addSubview(separator)
-        separator.snp_makeConstraints { (make) in
-            make.top.equalTo(distanceLabel.snp_bottom).offset(14)
-            make.left.equalTo(self.contentView)
-            make.width.equalTo(self.contentView)
-            make.height.equalTo(1.0)
-        }
+        let marker = GMSMarker()
+        marker.position = CLLocationCoordinate2DMake(35.681382, 139.766084)
+        marker.map = mapView
+        
+        // 地図のグラデーション
+        gradientLayer.colors = [UIColor.clearColor().CGColor, UIColor.whiteColor().CGColor]
+        gradientLayer.startPoint = CGPointMake(0.0, 0.5)   //開始ポイント
+        gradientLayer.endPoint = CGPointMake(0.4, 0.5)    //終了ポイント
+        self.mapView.layer.mask = self.gradientLayer
+        
+        // セパレータ
+        self.separator.backgroundColor = UIColor(red: 230/255.0, green: 230/255.0, blue: 230/255.0, alpha: 1.0)
         
         // レビューアイコン
-        let reviewIcon = UIImageView(image: UIImage(named: "second"))
-        self.contentView.addSubview(reviewIcon)
-        reviewIcon.snp_makeConstraints { (make) in
-            make.top.equalTo(separator.snp_bottom).offset(12)
-            make.left.equalTo(self.restaurantNameLabel)
-            make.width.equalTo(40)
-            make.height.equalTo(40)
-        }
-        
-        // レビューコメント
-        let reviewCommentView = UIView(frame: CGRectZero)
-        reviewCommentView.backgroundColor = Const.KARUTA_THEME_COLOR
-        reviewCommentView.layer.cornerRadius = CORNER_RADIUS
-        reviewCommentView.layer.masksToBounds = true
-        self.contentView.addSubview(reviewCommentView)
-        reviewCommentView.snp_makeConstraints { (make) in
-            make.top.equalTo(reviewIcon)
-            make.left.equalTo(reviewIcon.snp_right).offset(12)
-            make.right.equalTo(self.contentView).offset(-16)
-            make.height.equalTo(reviewIcon)
-        }
-        let reviewCommentLabel = UILabel(frame: CGRectZero)
-        reviewCommentLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 14)
-        reviewCommentLabel.textColor = Const.KARUTA_THEME_TEXT_COLOR
-        reviewCommentLabel.text = "testてすとテストやで"
-        reviewCommentView.addSubview(reviewCommentLabel)
-        reviewCommentLabel.snp_makeConstraints { (make) in
-            make.top.equalTo(reviewCommentView)
-            make.left.equalTo(reviewCommentView).offset(12)
-            make.size.equalTo(reviewCommentView)
-        }
+        self.reviewIcon.image = UIImage(named: "second")
+
+        self.reviewCommentLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 14)
+        self.reviewCommentLabel.textColor = Const.KARUTA_THEME_TEXT_COLOR
+        self.reviewCommentLabel.text = "testてすとテストやで"
         
         // もっと見るボタン
-        let detailButton = UIButton(frame: CGRectZero)
-        detailButton.backgroundColor = Const.RANKING_TOP_COLOR
-        detailButton.addTarget(self, action: "resultTapped:", forControlEvents: .TouchUpInside)
-        self.contentView.addSubview(detailButton)
-        detailButton.snp_makeConstraints { (make) in
-            make.top.equalTo(reviewCommentView.snp_bottom).offset(12)
-            make.left.equalTo(self.contentView)
-            make.width.equalTo(self.contentView)
-            make.height.equalTo(44)
-            make.bottom.equalTo(self.contentView)
-        }
-        
-        let detailButtonLabel = UILabel(frame: CGRectZero)
-        detailButtonLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 16)
-        detailButtonLabel.textColor = Const.KARUTA_THEME_TEXT_COLOR
-        detailButtonLabel.textAlignment = .Center
-        detailButtonLabel.text = NSLocalizedString("ResultShowDetail", comment: "")
-        detailButton.addSubview(detailButtonLabel)
-        detailButtonLabel.snp_makeConstraints { (make) in
-            make.top.equalTo(detailButton)
-            make.left.equalTo(detailButton)
-            make.size.equalTo(detailButton)
-        }
-        
-        let arrowLabel = UILabel(frame: CGRectZero)
-        arrowLabel.text = ">"
-        arrowLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 16)
-        arrowLabel.numberOfLines = 1
-        arrowLabel.sizeToFit()
-        arrowLabel.textColor = Const.KARUTA_THEME_TEXT_COLOR
-        detailButton.addSubview(arrowLabel)
-        
-        arrowLabel.snp_makeConstraints { (make) in
-            make.right.equalTo(detailButton).inset(8)
-            make.centerY.equalTo(detailButton)
-        }
+        self.detailButton.backgroundColor = Const.RANKING_TOP_COLOR
+        self.detailButton.addTarget(self, action: "resultTapped:", forControlEvents: .TouchUpInside)
+        self.detailButton.setTitle(NSLocalizedString("ResultShowDetail", comment: ""), forState: .Normal)
         
         // 画像のダウンロード
         self.acquireImages()
+        
+        self.layoutIfNeeded()
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.gradientLayer.frame = self.mapView.layer.bounds
     }
     
     private func acquireImages() {
-        if (self.imageUrls.count > 0) {
-            for i in 0..<self.imageUrls.count {
-                self.restaurantImageViews[i].sd_setImageWithURL(self.imageUrls[i], completed: {[weak self](image: UIImage!, error: NSError!, cacheType: SDImageCacheType, imageURL: NSURL!) in
-                    self!.restaurantImageViews[i].alpha = 0
-                    UIView.animateWithDuration(0.5, delay: 0.0, options: .CurveEaseInOut, animations: {() -> Void in
-                        self!.restaurantImageViews[i].alpha = 1
-                        }, completion: nil)
-                    })
-            }
-        }
+//        if (self.imageUrls.count > 0) {
+//            for i in 0..<self.imageUrls.count {
+//                self.restaurantImageViews[i].sd_setImageWithURL(self.imageUrls[i], completed: {[weak self](image: UIImage!, error: NSError!, cacheType: SDImageCacheType, imageURL: NSURL!) in
+//                    self!.restaurantImageViews[i].alpha = 0
+//                    UIView.animateWithDuration(0.5, delay: 0.0, options: .CurveEaseInOut, animations: {() -> Void in
+//                        self!.restaurantImageViews[i].alpha = 1
+//                        }, completion: nil)
+//                    })
+//            }
+//        }
     }
     
     func resultTapped(sender: AnyObject) {
-        self.delegate.detailButtonTapped(self)
+        self.delegate!.detailButtonTapped(self, id: self.shopID)
     }
 }

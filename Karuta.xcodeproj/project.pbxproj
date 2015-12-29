@@ -20,6 +20,7 @@
 		D24B292E1B7895DA00419B9B /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24B292D1B7895DA00419B9B /* TutorialViewController.swift */; };
 		D24B29411B79CC1D00419B9B /* CardProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24B29401B79CC1D00419B9B /* CardProgressViewController.swift */; };
 		D24B29461B79F56E00419B9B /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D24B29451B79F56E00419B9B /* Launch Screen.xib */; };
+		D253A9E01C310D7B00D65D20 /* TopResultCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = D253A9DF1C310D7B00D65D20 /* TopResultCard.xib */; };
 		D272F45C1B9C25E4009564A0 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D272F45B1B9C25E4009564A0 /* LoadingView.swift */; };
 		D27BB9D21B36F4A900F8D902 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27BB9D11B36F4A900F8D902 /* AppDelegate.swift */; };
 		D27BB9D41B36F4A900F8D902 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27BB9D31B36F4A900F8D902 /* MainViewController.swift */; };
@@ -70,6 +71,7 @@
 		D24B292D1B7895DA00419B9B /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		D24B29401B79CC1D00419B9B /* CardProgressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardProgressViewController.swift; sourceTree = "<group>"; };
 		D24B29451B79F56E00419B9B /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
+		D253A9DF1C310D7B00D65D20 /* TopResultCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopResultCard.xib; sourceTree = "<group>"; };
 		D272F45B1B9C25E4009564A0 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		D27BB9CC1B36F4A900F8D902 /* Karuta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Karuta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D27BB9D01B36F4A900F8D902 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				D2DD659F1B7714CA0046A50C /* TopResultCard.swift */,
+				D253A9DF1C310D7B00D65D20 /* TopResultCard.xib */,
 				D2DD65A11B7714DA0046A50C /* OtherResultsCard.swift */,
 				D2E36EC61C2D615D00DEE726 /* OtherResultCardContentView.swift */,
 				D24B291E1B772EFF00419B9B /* ResultViewController.swift */,
@@ -374,6 +377,7 @@
 				D2A99A571C17367E00C16F04 /* GoogleService-Info.plist in Resources */,
 				D24B29461B79F56E00419B9B /* Launch Screen.xib in Resources */,
 				D27BB9D91B36F4A900F8D902 /* Images.xcassets in Resources */,
+				D253A9E01C310D7B00D65D20 /* TopResultCard.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

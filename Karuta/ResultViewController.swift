@@ -115,13 +115,16 @@ class ResultViewController: UIViewController, ResultCardBaseDelegate {
             make.top.equalTo(self.contentView).offset(16)
         }
         
-        self.topResultCard = TopResultCard(frame: CGRectZero, restaurant: self.restaurants[0], delegate: self)
+        self.topResultCard = TopResultCard.instance()
+        self.topResultCard?.setup(self.restaurants[0])
         self.contentView.addSubview(topResultCard!)
-        self.topResultCard!.snp_makeConstraints { (make) in
+        self.topResultCard?.snp_makeConstraints { (make) in
             make.width.equalTo(self.contentView).offset(-RESULT_MARGIN*2)
             make.centerX.equalTo(self.contentView)
             make.top.equalTo(self.firstRankHeader.snp_bottom).offset(8)
+            make.height.greaterThanOrEqualTo(100)
         }
+        self.topResultCard?.setupSubViews()
         
         // その他のベースとなるビュー
         self.otherResultsBaseView.backgroundColor = UIColor.clearColor()
@@ -154,7 +157,6 @@ class ResultViewController: UIViewController, ResultCardBaseDelegate {
                 make.bottom.equalTo(self.otherResultsBaseView)
             }
         }
-        self.view.layoutIfNeeded()
     }
     
     // 結果が0件の時のレイアウト
@@ -178,9 +180,9 @@ class ResultViewController: UIViewController, ResultCardBaseDelegate {
     
     // 結果をタップした時の挙動
     func resultTapped(sender:UITapGestureRecognizer) {
-        let resultCard = sender.view as! ResultCardBase
-        let detailView = RestaurantDetailViewController(url: resultCard.url)
-        self.navigationController?.pushViewController(detailView, animated: true)
+//        let resultCard = sender.view as! ResultCardBase
+//        let detailView = RestaurantDetailViewController(url: resultCard.url)
+//        self.navigationController?.pushViewController(detailView, animated: true)
     }
     
     // やり直すをタップした時の挙動
@@ -205,9 +207,9 @@ class ResultViewController: UIViewController, ResultCardBaseDelegate {
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     
-    func detailButtonTapped(card: ResultCardBase) {
-        let detailView = RestaurantDetailViewController(url: card.url)
-        self.navigationController?.pushViewController(detailView, animated: true)
+    func detailButtonTapped(card: ResultCardBase, id: String) {
+//        let detailView = RestaurantDetailViewController(url: card.url)
+//        self.navigationController?.pushViewController(detailView, animated: true)
     }
 
 }
