@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		16B6744E1C3BE59C009D039C /* KarutaApiClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B6744D1C3BE59C009D039C /* KarutaApiClientError.swift */; };
 		82743658913CE160AF673A82 /* Pods_Karuta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA78955690AB624AB9D7F4AE /* Pods_Karuta.framework */; };
 		D203D3141B3E739600FC9DB8 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = D203D3131B3E739600FC9DB8 /* Const.swift */; };
 		D2092A2C1B637460008046D9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D2092A2E1B637460008046D9 /* Localizable.strings */; };
@@ -57,6 +58,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		16B6744D1C3BE59C009D039C /* KarutaApiClientError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarutaApiClientError.swift; sourceTree = "<group>"; };
 		375106292F5446FE65E648DD /* Pods-Karuta.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Karuta.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Karuta/Pods-Karuta.debug.xcconfig"; sourceTree = "<group>"; };
 		3B06ABC94A9E1B8E1D89BFDB /* Pods-Karuta.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Karuta.release.xcconfig"; path = "Pods/Target Support Files/Pods-Karuta/Pods-Karuta.release.xcconfig"; sourceTree = "<group>"; };
 		43B1BFF2A757DF7E24669461 /* Pods-Karuta.stg.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Karuta.stg.xcconfig"; path = "Pods/Target Support Files/Pods-Karuta/Pods-Karuta.stg.xcconfig"; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 				D253A9E91C32308E00D65D20 /* KarutaApiRequest.swift */,
 				D253A9EB1C32309900D65D20 /* KarutaApiResponse.swift */,
 				D253A9ED1C3233AF00D65D20 /* KarutaResult.swift */,
+				16B6744D1C3BE59C009D039C /* KarutaApiClientError.swift */,
 			);
 			name = APIClient;
 			sourceTree = "<group>";
@@ -496,6 +499,7 @@
 				D203D3141B3E739600FC9DB8 /* Const.swift in Sources */,
 				D2A99A161C12D3E700C16F04 /* CategorySelectionCell.swift in Sources */,
 				D27BB9D41B36F4A900F8D902 /* MainViewController.swift in Sources */,
+				16B6744E1C3BE59C009D039C /* KarutaApiClientError.swift in Sources */,
 				D292F7391B92DFFC005700AE /* Utils.swift in Sources */,
 				D2DEEF1E1BD72F7400FDBB8F /* Category.swift in Sources */,
 				D253A9E81C322B7D00D65D20 /* KarutaApiClient.swift in Sources */,

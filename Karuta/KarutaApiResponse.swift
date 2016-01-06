@@ -11,8 +11,8 @@ import ObjectMapper
 
 public class KarutaApiResponse: Mappable {
     
-    var code = ""
-    var causes = [String]()
+    var code = 0
+    var message = ""
     
     public init() {}
     
@@ -22,6 +22,6 @@ public class KarutaApiResponse: Mappable {
     
     public func mapping(map: Map) {
         code <- map["body.code"]
-        causes <- map["body.causes"]
+        message <- map["message"]
     }
 }
