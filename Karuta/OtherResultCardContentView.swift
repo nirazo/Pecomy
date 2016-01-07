@@ -107,8 +107,8 @@ class OtherResultCardContentView: UIView {
             make.centerY.equalTo(self.contentView)
         }
 
-        
-        self.acquireImage(restaurant.imageUrls.first!)
+        let imageurls = restaurant.imageUrls.flatMap{NSURL(string: $0)}
+        self.acquireImage(imageurls.first!)
     }
     
     override func layoutSubviews() {

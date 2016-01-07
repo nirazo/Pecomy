@@ -45,7 +45,7 @@ class TopResultCard: ResultCardBase {
     var priceRange = ""
     var distance: Double = 0.0
     var imageUrls = [NSURL?]()
-    var url = NSURL()
+    var url: NSURL?
     var category = ""
     var delegate: ResultCardBaseDelegate?
     
@@ -61,10 +61,10 @@ class TopResultCard: ResultCardBase {
     func setup(restaurant: Restaurant) {
         self.shopID = restaurant.shopID
         self.shopName = restaurant.shopName
-        self.imageUrls = restaurant.imageUrls
-        self.priceRange = restaurant.priceRange
+        self.imageUrls = restaurant.imageUrls.flatMap{NSURL(string: $0)}
+        self.priceRange = "値段のレンジですー"
         self.distance = restaurant.distance
-        self.url = restaurant.url
+        self.url = NSURL(string:restaurant.url)
         self.category = restaurant.category
     }
     

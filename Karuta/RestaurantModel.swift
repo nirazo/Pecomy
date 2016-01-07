@@ -7,21 +7,35 @@
 //
 
 class RestaurantModel {
-    let shopID: String
-    let shopName: String
-    let priceRange: String
-    let distance: Double
-    let imageUrls: [NSURL?]
-    let url: NSURL
-    let category: String
+    public var restaurant = Restaurant()
+    public var syncID = ""
+    public var resultAvailable = false
     
-    init(shopID: String, shopName: String, priceRange: String, distance: Double, imageUrls: [NSURL?], url: NSURL, category: String) {
-        self.shopID = shopID
-        self.shopName = shopName
-        self.priceRange = priceRange
-        self.distance = distance
-        self.imageUrls = imageUrls
-        self.url = url
-        self.category = category
+    private var session: KarutaApiClient.Session?
+    
+    init() {
+    }
+    
+    public func fetch(latitude: Double, longitude: Double, like: String? = nil, category: CategoryIdentifier, syncId: String? = nil, reset: Bool, handler: ((KarutaResult<Restaurant, KarutaApiClientError>) -> Void)) -> Bool {
+        let request = CardRequest(latitude: latitude, longitude: longitude, like: like, category: category, syncId: syncId, reset: reset)
+        self.session = KarutaApiClient.send(request) {[weak self] (response: KarutaResult<CardRequest.Response, KarutaApiClientError>) -> Void in
+            guard let weakSelf = self else {
+                return
+            }
+            
+            switch response {
+            case .Success(let value):
+                weakSelf.restaurant = value.restaurant
+                weakSelf.syncID = value.syncID
+                weakSelf.resultAvailable = value.resultAvailable
+                handler(KarutaResult(value: value.restaurant))
+            case .Failure(let error):
+                //Log.d(error)
+                handler(KarutaResult(error: error))
+            }
+            
+            weakSelf.session = nil
+        }
+        return true
     }
 }
