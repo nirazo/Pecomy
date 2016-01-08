@@ -74,15 +74,6 @@ class TopResultCard: ResultCardBase {
     
     func setupSubViews() {
         
-        // ドロップシャドウ
-//        self.layer.masksToBounds = false
-//        self.addSubview(shadow)
-//        self.backgroundColor = UIColor.whiteColor()
-//        self.layer.cornerRadius = CORNER_RADIUS
-//        self.layer.shadowOpacity = 0.7
-//        self.layer.shadowColor = UIColor.grayColor().CGColor
-//        self.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
-        
         // パーツ群を置くビュー
         self.contentView.backgroundColor = UIColor.whiteColor()
         
@@ -179,17 +170,50 @@ class TopResultCard: ResultCardBase {
         self.gradientLayer.frame = self.mapView.layer.bounds
     }
     
+    // TODO: - Refactoring
     private func acquireImages() {
-//        if (self.imageUrls.count > 0) {
-//            for i in 0..<self.imageUrls.count {
-//                self.restaurantImageViews[i].sd_setImageWithURL(self.imageUrls[i], completed: {[weak self](image: UIImage!, error: NSError!, cacheType: SDImageCacheType, imageURL: NSURL!) in
-//                    self!.restaurantImageViews[i].alpha = 0
-//                    UIView.animateWithDuration(0.5, delay: 0.0, options: .CurveEaseInOut, animations: {() -> Void in
-//                        self!.restaurantImageViews[i].alpha = 1
-//                        }, completion: nil)
-//                    })
-//            }
-//        }
+        if self.imageUrls.count <= 0 {
+            
+        } else if self.imageUrls.count == 1 {
+            self.mainImageView.sd_setImageWithURL(self.imageUrls[0], completed: {[weak self](image: UIImage!, error: NSError!, cacheType: SDImageCacheType, imageURL: NSURL!) in
+                self!.mainImageView.alpha = 0
+                UIView.animateWithDuration(0.5, delay: 0.0, options: .CurveEaseInOut, animations: {() -> Void in
+                    self!.mainImageView.alpha = 1
+                    }, completion: nil)
+                })
+        } else if self.imageUrls.count == 2 {
+            self.mainImageView.sd_setImageWithURL(self.imageUrls[0], completed: {[weak self](image: UIImage!, error: NSError!, cacheType: SDImageCacheType, imageURL: NSURL!) in
+                self!.mainImageView.alpha = 0
+                UIView.animateWithDuration(0.5, delay: 0.0, options: .CurveEaseInOut, animations: {() -> Void in
+                    self!.mainImageView.alpha = 1
+                    }, completion: nil)
+                })
+            self.secondImageView.sd_setImageWithURL(self.imageUrls[1], completed: {[weak self](image: UIImage!, error: NSError!, cacheType: SDImageCacheType, imageURL: NSURL!) in
+                self!.secondImageView.alpha = 0
+                UIView.animateWithDuration(0.5, delay: 0.0, options: .CurveEaseInOut, animations: {() -> Void in
+                    self!.secondImageView.alpha = 1
+                    }, completion: nil)
+                })
+        } else {
+            self.mainImageView.sd_setImageWithURL(self.imageUrls[0], completed: {[weak self](image: UIImage!, error: NSError!, cacheType: SDImageCacheType, imageURL: NSURL!) in
+                self!.mainImageView.alpha = 0
+                UIView.animateWithDuration(0.5, delay: 0.0, options: .CurveEaseInOut, animations: {() -> Void in
+                    self!.mainImageView.alpha = 1
+                    }, completion: nil)
+                })
+            self.secondImageView.sd_setImageWithURL(self.imageUrls[1], completed: {[weak self](image: UIImage!, error: NSError!, cacheType: SDImageCacheType, imageURL: NSURL!) in
+                self!.secondImageView.alpha = 0
+                UIView.animateWithDuration(0.5, delay: 0.0, options: .CurveEaseInOut, animations: {() -> Void in
+                    self!.secondImageView.alpha = 1
+                    }, completion: nil)
+                })
+            self.thirdImageView.sd_setImageWithURL(self.imageUrls[2], completed: {[weak self](image: UIImage!, error: NSError!, cacheType: SDImageCacheType, imageURL: NSURL!) in
+                self!.thirdImageView.alpha = 0
+                UIView.animateWithDuration(0.5, delay: 0.0, options: .CurveEaseInOut, animations: {() -> Void in
+                    self!.thirdImageView.alpha = 1
+                    }, completion: nil)
+                })
+        }
     }
     
     func resultTapped(sender: AnyObject) {

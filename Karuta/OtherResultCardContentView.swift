@@ -11,7 +11,7 @@ import SDWebImage
 
 class OtherResultCardContentView: UIView {
     
-    var imageView = UIImageView(frame: CGRectZero)
+    var imageView = UIImageView()
     var restaurant: Restaurant?
     let contentView = UIView()
     
@@ -51,7 +51,7 @@ class OtherResultCardContentView: UIView {
             make.left.equalTo(self)
         }
         
-        self.imageView.contentMode = UIViewContentMode.Redraw
+        self.imageView.contentMode = .Redraw
         self.contentView.addSubview(self.imageView)
         self.imageView.snp_makeConstraints { (make) in
             make.width.equalTo(80)
