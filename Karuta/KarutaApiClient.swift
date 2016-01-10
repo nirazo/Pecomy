@@ -107,7 +107,7 @@ class KarutaApiClient {
             if error == nil {
                 return .Success(parsedObject)
             } else {
-                // AlamofireのエラーかつStatusCodeValidationFailedの場合はエラーCodeに基づいたHrvApiClientErrorTypeを設定する
+                // AlamofireのエラーかつStatusCodeValidationFailedの場合はエラーCodeに基づいたKarutaApiClientErrorTypeを設定する
                 let errorType = KarutaApiClientError(code: response?.statusCode, response: parsedObject)
                 return .Failure(errorType)
             }
