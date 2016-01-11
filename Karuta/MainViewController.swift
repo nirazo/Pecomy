@@ -632,21 +632,14 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
         let ac = UIAlertController(title: "", message: NSLocalizedString("BlackListButtonSendMessage", comment: ""), preferredStyle: .Alert)
         let okAction = UIAlertAction(title: NSLocalizedString("OK", comment: ""),
             style: .Default, handler: { (action) in
-//                let params = ["shop_id": shopID, "device_id": Utils.acquireDeviceID()]
-//                Alamofire.request(.GET, Const.API_BLACKLIST_BASE, parameters: params, encoding: .URL).responseJSON {(result) in
-//                    switch result {
-//                    case .Success(_):
-//                        break
-//                    case .Failure(_, _):
-//                        // 現時点ではAPIが無いので、404を正とする
-//                        if (response?.statusCode == Const.STATUS_CODE_NOT_FOUND) {
-//                            card.blackListButton.enabled = false
-//                        }
-//                        break
-//                    }
-//
-//                }
-            })
+                let params = ["shop_id": shopID, "device_id": Utils.acquireDeviceID()]
+                Alamofire.request(.GET, Const.API_BLACKLIST_BASE, parameters: params, encoding: .URL).response {(httpRequest, httpResponse, data, error) in
+                    // 現時点ではAPIが無いので、404を正とする
+                    if (httpResponse!.statusCode == Const.STATUS_CODE_NOT_FOUND) {
+                        card.blackListButton.enabled = false
+                    }
+                }
+        })
         let cancelAction = UIAlertAction(title: NSLocalizedString("Back", comment: ""),
             style: .Default, handler: nil)
         ac.addAction(cancelAction)

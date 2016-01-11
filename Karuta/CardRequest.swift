@@ -18,7 +18,7 @@ class CardRequest: KarutaApiRequest {
     public var encoding: ParameterEncoding = ParameterEncoding.URL
     
     
-    public init(latitude: Double, longitude: Double, like: String? = nil, category: CategoryIdentifier, syncId: String? = nil, reset: Bool) {
+    public init(latitude: Double, longitude: Double, like: String? = nil, category: CategoryIdentifier = .All, syncId: String? = nil, reset: Bool = false) {
         endpoint = "card"
         params = [
             "device_id" : Utils.acquireDeviceID(),

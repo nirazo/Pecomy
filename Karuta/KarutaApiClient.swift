@@ -30,10 +30,6 @@ class KarutaApiClient {
         return configuration
     }
     
-    private static var alamofireManager: Alamofire.Manager {
-        return Alamofire.Manager(configuration: configuration)
-    }
-    
     private init(){}
     
     private class func APIURL<T: KarutaApiRequest>(request: T) -> String {

@@ -47,7 +47,7 @@ class CardView: MDCSwipeToChooseView {
         
         self.shopID = restaurant.shopID
         self.shopName = restaurant.shopName
-        self.imageUrls = restaurant.imageUrls.flatMap{NSURL(string: $0)}
+        self.imageUrls = restaurant.imageUrls.flatMap { NSURL(string: $0) }
         self.priceRange = "値段のレンジだよー"
         self.distance = restaurant.distance
         self.category = restaurant.category
@@ -152,12 +152,7 @@ class CardView: MDCSwipeToChooseView {
     }
     
     func acquireImages() {
-        var loopCount = 0
-        if (self.imageUrls.count <= NUM_OF_IMAGES) {
-            loopCount = self.imageUrls.count
-        } else {
-            loopCount = NUM_OF_IMAGES
-        }
+        let loopCount = self.imageUrls.count < NUM_OF_IMAGES ? self.imageUrls.count: NUM_OF_IMAGES
         
         if (self.imageUrls.count > 0) {
             for i in 0..<loopCount {
