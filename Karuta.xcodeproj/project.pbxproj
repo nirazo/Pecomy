@@ -38,6 +38,11 @@
 		D27BB9D41B36F4A900F8D902 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27BB9D31B36F4A900F8D902 /* MainViewController.swift */; };
 		D27BB9D91B36F4A900F8D902 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D27BB9D81B36F4A900F8D902 /* Images.xcassets */; };
 		D27BB9E81B36F4A900F8D902 /* KarutaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27BB9E71B36F4A900F8D902 /* KarutaTests.swift */; };
+		D289012E1C437D8E005BDF84 /* RestaurantDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D289012D1C437D8E005BDF84 /* RestaurantDetailView.swift */; };
+		D28901301C437D9D005BDF84 /* RestaurantDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D289012F1C437D9D005BDF84 /* RestaurantDetailView.xib */; };
+		D28901321C438FEC005BDF84 /* CommentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28901311C438FEC005BDF84 /* CommentsView.swift */; };
+		D28901341C438FFF005BDF84 /* CommentContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28901331C438FFF005BDF84 /* CommentContentView.swift */; };
+		D28901361C439FC9005BDF84 /* TelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28901351C439FC9005BDF84 /* TelButton.swift */; };
 		D28A7A0C1B47AE900025371A /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A7A0B1B47AE900025371A /* CardView.swift */; };
 		D292F7391B92DFFC005700AE /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D292F7381B92DFFC005700AE /* Utils.swift */; };
 		D2A99A161C12D3E700C16F04 /* CategorySelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A99A151C12D3E700C16F04 /* CategorySelectionCell.swift */; };
@@ -105,6 +110,11 @@
 		D27BB9E11B36F4A900F8D902 /* KarutaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KarutaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D27BB9E61B36F4A900F8D902 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D27BB9E71B36F4A900F8D902 /* KarutaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarutaTests.swift; sourceTree = "<group>"; };
+		D289012D1C437D8E005BDF84 /* RestaurantDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDetailView.swift; sourceTree = "<group>"; };
+		D289012F1C437D9D005BDF84 /* RestaurantDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RestaurantDetailView.xib; sourceTree = "<group>"; };
+		D28901311C438FEC005BDF84 /* CommentsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsView.swift; sourceTree = "<group>"; };
+		D28901331C438FFF005BDF84 /* CommentContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentContentView.swift; sourceTree = "<group>"; };
+		D28901351C439FC9005BDF84 /* TelButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TelButton.swift; sourceTree = "<group>"; };
 		D28A7A0B1B47AE900025371A /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		D292F7381B92DFFC005700AE /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		D2A99A151C12D3E700C16F04 /* CategorySelectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategorySelectionCell.swift; path = Karuta/CategorySelectionCell.swift; sourceTree = SOURCE_ROOT; };
@@ -186,6 +196,11 @@
 			isa = PBXGroup;
 			children = (
 				D24B29231B78775300419B9B /* RestaurantDetailViewController.swift */,
+				D289012D1C437D8E005BDF84 /* RestaurantDetailView.swift */,
+				D289012F1C437D9D005BDF84 /* RestaurantDetailView.xib */,
+				D28901311C438FEC005BDF84 /* CommentsView.swift */,
+				D28901331C438FFF005BDF84 /* CommentContentView.swift */,
+				D28901351C439FC9005BDF84 /* TelButton.swift */,
 			);
 			name = Detail;
 			sourceTree = "<group>";
@@ -441,6 +456,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D28901301C437D9D005BDF84 /* RestaurantDetailView.xib in Resources */,
 				D2092A2C1B637460008046D9 /* Localizable.strings in Resources */,
 				D2A99A571C17367E00C16F04 /* GoogleService-Info.plist in Resources */,
 				D24B29461B79F56E00419B9B /* Launch Screen.xib in Resources */,
@@ -525,6 +541,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D253A9EA1C32308E00D65D20 /* KarutaApiRequest.swift in Sources */,
+				D289012E1C437D8E005BDF84 /* RestaurantDetailView.swift in Sources */,
+				D28901321C438FEC005BDF84 /* CommentsView.swift in Sources */,
 				D2DEE6AF1C030FA200861BDF /* Double.swift in Sources */,
 				D23070731B4C30D100833167 /* KarutaLocationManager.swift in Sources */,
 				D203D3141B3E739600FC9DB8 /* Const.swift in Sources */,
@@ -537,6 +555,7 @@
 				D272F45C1B9C25E4009564A0 /* LoadingView.swift in Sources */,
 				164718B71C3D22D700F50D33 /* CardResponse.swift in Sources */,
 				D2092A341B64D721008046D9 /* RestaurantModel.swift in Sources */,
+				D28901361C439FC9005BDF84 /* TelButton.swift in Sources */,
 				D24A2CC31C255D2A009ACA08 /* ResultHeaderView.swift in Sources */,
 				164718B51C3D22AD00F50D33 /* CardRequest.swift in Sources */,
 				D22EC5591BCE34DD00A4B446 /* CategoryLabelView.swift in Sources */,
@@ -555,6 +574,7 @@
 				D253A9E51C32236900D65D20 /* Restaurant.swift in Sources */,
 				D24B291F1B772EFF00419B9B /* ResultViewController.swift in Sources */,
 				164718B91C3D273C00F50D33 /* ResultResponse.swift in Sources */,
+				D28901341C438FFF005BDF84 /* CommentContentView.swift in Sources */,
 				D24B29411B79CC1D00419B9B /* CardProgressViewController.swift in Sources */,
 				16AAD0391C3E835600ADCF87 /* ResultModel.swift in Sources */,
 				D24B29211B78748A00419B9B /* ResultCardBase.swift in Sources */,
