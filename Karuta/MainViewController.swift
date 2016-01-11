@@ -39,6 +39,10 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     var canDisplayNextCard = true
     var isDisplayedResult = false
     
+    // Model
+    var restaurantModel = RestaurantModel()
+    var resultModel = ResultModel()
+    
     var stackedCards = [CardView]()
     var currentLatitude: Double?
     var currentLongitude: Double?
@@ -275,114 +279,64 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     }
     
     func acquireFirstCardsWithLocation(latitude: Double, longitude: Double) {
-        self.acquireCardWithLatitude(latitude,
-            longitude: longitude,
-            category: self.currentCategory,
-            reset: true,
-            success: { [weak self] (Bool) in
+        self.acquireCardWithLatitude(latitude, longitude: longitude, category: self.currentCategory, reset: true,
+            completion: { [weak self] (Bool) in
                 guard let weakSelf = self else {
                     return
                 }
-                // とりあえず直で2回呼びます
-                weakSelf.acquireCardWithLatitude(latitude,
-                    longitude: longitude,
-                    category: weakSelf.currentCategory,
-                    reset: false
-                )
-            }
-            ,
-            failure: {(NSError) in
-            }
-        )
+                weakSelf.acquireCardWithLatitude(latitude, longitude: longitude, category: weakSelf.currentCategory, reset: false, completion: nil)
+        })
     }
     
     /**
     カードを取得
     */
-    func acquireCardWithLatitude(latitude: Double, longitude: Double, like: String? = nil, category: CategoryIdentifier, syncId: String? = nil, reset: Bool, success: (Bool)->() = {(Bool) in}, failure: (ErrorType)->() = {(ErrorType) in}) {
-        var params: Dictionary<String, AnyObject> = [
-            "device_id" : Utils.acquireDeviceID(),
-            "latitude" : latitude,
-            "longitude" : longitude,
-            "reset" : reset
-        ]
-        
-        if (syncId != nil) {
-            params["sync_id"] = syncId!
-        }
-        if ((like) != nil) {
-            params["answer"] = like!
-        }
-        if (category != .All) {
-            params["select_category_group"] = category.valueForReq()
-        }
-        
-        var hasResult = false;
-        
-        //インジケータ表示
+    func acquireCardWithLatitude(latitude: Double, longitude: Double, like: String? = nil, category: CategoryIdentifier, syncId: String? = nil, reset: Bool, completion: ((Bool)->())? = nil) {
         self.showIndicator()
-        
-        Alamofire.request(.GET, Const.API_CARD_BASE, parameters: params, encoding: .URL).responseJSON {[weak self](request, response, result) in
+        self.restaurantModel.fetch(latitude, longitude: longitude, like: like, category: category, syncId: syncId, reset: reset, handler: {[weak self] (result: KarutaResult<Restaurant, KarutaApiClientError>) in
             guard let weakSelf = self else {
                 return
             }
-            // インジケータ消す
             weakSelf.hideIndicator()
             
-            var json = JSON.null
-            
             switch result {
-            case .Success(let data):
-                json = SwiftyJSON.JSON(data)
-                // 店が見つかった場合
-                if (response?.statusCode == Const.STATUS_CODE_SUCCESS) {
-                    let card: JSON = json["card"]
-                    
-                    let shopID: String = card["shop_id"].stringValue
-                    let shopName = card["title"].string!
-                    
-                    let shopImageUrlsString = card["image_url"].array!
-                    let priceRange = card["price_range"].string!
-                    let distance: Double = card["distance_meter"].double!
-                    let category = card["top_category"].string!
-                    
-                    var shopImageUrls = [NSURL?]()
-                    for urlString in shopImageUrlsString {
-                        shopImageUrls.append(NSURL(string: urlString.string!)!)
+            case .Success(let res):
+                let cardView = weakSelf.createCardWithFrame(weakSelf.baseCardRect(), restaurant: res, syncID: weakSelf.restaurantModel.syncID)
+                weakSelf.stackedCards.append(cardView)
+                if (weakSelf.canDisplayNextCard) {
+                    weakSelf.displayStackedCard()
+                }
+                
+                let hasResult = weakSelf.restaurantModel.resultAvailable
+                
+                // result_availableがtrueで帰ってきた場合
+                if (hasResult) {
+                    if (!weakSelf.isDisplayedResult) {
+                        weakSelf.canDisplayNextCard = false
+                    } else {
+                        if (weakSelf.currentSwipeCount >= weakSelf.SWIPE_COUNT_TO_RESULT) {
+                            weakSelf.canDisplayNextCard = false
+                        }
                     }
-                    
-                    let url = NSURL(string: card["url"].string!)
-                    
-                    let syncID: String! = json["sync_id"].string!
-                    
-                    let restaurant = Restaurant(shopID: shopID, shopName: shopName, priceRange: priceRange, distance: distance, imageUrls: shopImageUrls, url: url!, category: category)
-                    
-                    let cardView = weakSelf.createCardWithFrame(weakSelf.baseCardRect(), restaurant: restaurant, syncID: syncID)
-                    
-                    weakSelf.stackedCards.append(cardView)
-                    if (weakSelf.canDisplayNextCard) {
-                        weakSelf.displayStackedCard()
-                    }
-                    
-                    hasResult = json["result_available"].bool!
-                    success(hasResult)
-                } else if (response?.statusCode == Const.STATUS_CODE_NOT_FOUND) { // カードが見つからない
-                    let resetFlg = params["reset"] as! Bool
-                    if (resetFlg) {
+                }
+                completion?(true)
+            case .Failure(let error):
+                switch error.type{
+                case .NoResult:
+                    if (reset) {
                         weakSelf.showOutOfRangeAlert()
                     } else {
                         weakSelf.acquireResults()
                     }
-                } else if (response?.statusCode == Const.STATUS_CODE_SERVER_ERROR) { // サーバエラー
+                case .ServerError:
                     weakSelf.showServerErrorAlert()
-                } else {
+                default:
                     weakSelf.acquireResults()
                 }
-            case .Failure(_, let error):
-                failure(error)
             }
-        }
+        })
     }
+    
     
     // カードを表示
     func displayStackedCard() {
@@ -454,53 +408,28 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     /**
     結果（ここへ行け！リスト）を取得
     */
+    
     func acquireResults() {
-        let params: Dictionary<String, AnyObject> = [
-            "device_id": Utils.acquireDeviceID(),
-            "latitude" : self.currentLatitude!,
-            "longitude" : self.currentLongitude!
-        ]
-        Alamofire.request(.GET, Const.API_RESULT_BASE, parameters: params, encoding: .URL).responseJSON {[weak self](request, response, result) in
-            var json = JSON.null
-            switch result {
-            case .Success(let data):
-                json = SwiftyJSON.JSON(data)
-                
-                // Restaurantクラスを生成
-                var restaurants = [Restaurant]()
-                
-                if (response?.statusCode == Const.STATUS_CODE_SUCCESS) {
-                    let results = json["results"]
-                    print("results: \(results)")
-                    for i in 0..<results.count {
-                        let shopID = results[i]["shop_id"].stringValue
-                        let shopName = results[i]["title"].string!
-                        let shopImageUrlsString = results[i]["image_url"].array!
-                        let priceRange = results[i]["price_range"].string!
-                        let distance: Double = results[i]["distance_meter"].double!
-                        let url = NSURL(string: results[i]["url"].string!)
-                        let category = results[i]["top_category"].string!
-                        
-                        var shopImageUrls = [NSURL?]()
-                        for urlString in shopImageUrlsString {
-                            shopImageUrls.append(NSURL(string: urlString.string!)!)
-                        }
-                        
-                        restaurants.append(Restaurant(shopID: shopID, shopName: shopName, priceRange: priceRange, distance: distance, imageUrls: shopImageUrls, url: url!, category: category))
-                    }
-                } else if (response?.statusCode == Const.STATUS_CODE_NOT_FOUND) {
-                    // nothing（404の場合、空配列をresultVCに渡し、0件時と同様に処理する）
-                } else if (response?.statusCode == Const.STATUS_CODE_SERVER_ERROR) {
-                    self?.showServerErrorAlert()
-                    break
+        self.resultModel.fetch(self.currentLatitude!, longitude: self.currentLongitude!,
+            handler: {[weak self] (result: KarutaResult<[Restaurant], KarutaApiClientError>) in
+                guard let weakSelf = self else {
+                    return
                 }
-                // 結果表示
-                self!.displayResultViewWithShopList(restaurants)
-                
-            case .Failure(_):
-                self?.showServerErrorAlert()
+                switch result {
+                case .Success(let res):
+                    weakSelf.displayResultViewWithShopList(res)
+                case .Failure(let error):
+                    switch error.type{
+                    case .NoResult:
+                        weakSelf.displayResultViewWithShopList([Restaurant]())
+                    case .ServerError:
+                        weakSelf.showServerErrorAlert()
+                    default:
+                        weakSelf.showServerErrorAlert()
+                    }
+                }
             }
-        }
+        )
     }
     
     func displayResultViewWithShopList(restaurants: [Restaurant]) {
@@ -607,23 +536,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
             self.progressViewController.progressWithRatio(self.currentProgress)
         }
 
-        self.acquireCardWithLatitude(self.currentLatitude!, longitude: self.currentLongitude!, like: answer, category:self.currentCategory, syncId: cardView.syncID, reset: false,
-            success: {[weak self](hasResult: Bool) in
-                guard let weakSelf = self else {
-                    return
-                }
-                if (hasResult) {
-                    if (!weakSelf.isDisplayedResult) {
-                        weakSelf.canDisplayNextCard = false
-                    } else {
-                        if (weakSelf.currentSwipeCount >= weakSelf.SWIPE_COUNT_TO_RESULT) {
-                            weakSelf.canDisplayNextCard = false
-                        }
-                    }
-                }
-            }, failure: {(error: ErrorType) in
-            }
-        )
+        self.acquireCardWithLatitude(self.currentLatitude!, longitude: self.currentLongitude!, like: answer, category:self.currentCategory, syncId: cardView.syncID, reset: false)
         if (!self.canDisplayNextCard && self.contentView.subviews.count == 0) {
             self.acquireResults()
         }
@@ -720,20 +633,13 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
         let okAction = UIAlertAction(title: NSLocalizedString("OK", comment: ""),
             style: .Default, handler: { (action) in
                 let params = ["shop_id": shopID, "device_id": Utils.acquireDeviceID()]
-                Alamofire.request(.GET, Const.API_BLACKLIST_BASE, parameters: params, encoding: .URL).responseJSON {(request, response, result) in
-                    switch result {
-                    case .Success(_):
-                        break
-                    case .Failure(_, _):
-                        // 現時点ではAPIが無いので、404を正とする
-                        if (response?.statusCode == Const.STATUS_CODE_NOT_FOUND) {
-                            card.blackListButton.enabled = false
-                        }
-                        break
+                Alamofire.request(.GET, Const.API_BLACKLIST_BASE, parameters: params, encoding: .URL).response {(httpRequest, httpResponse, data, error) in
+                    // 現時点ではAPIが無いので、404を正とする
+                    if (httpResponse!.statusCode == Const.STATUS_CODE_NOT_FOUND) {
+                        card.blackListButton.enabled = false
                     }
-
                 }
-            })
+        })
         let cancelAction = UIAlertAction(title: NSLocalizedString("Back", comment: ""),
             style: .Default, handler: nil)
         ac.addAction(cancelAction)

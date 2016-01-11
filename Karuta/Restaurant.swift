@@ -2,26 +2,47 @@
 //  Restaurant.swift
 //  Karuta
 //
-//  Created by Kenzo on 2015/07/26.
-//  Copyright (c) 2015年 Karuta. All rights reserved.
+//  Created by Kenzo on 2015/12/29.
+//  Copyright © 2015年 Karuta. All rights reserved.
 //
 
-class Restaurant {
-    let shopID: String
-    let shopName: String
-    let priceRange: String
-    let distance: Double
-    let imageUrls: [NSURL?]
-    let url: NSURL
-    let category: String
+import Foundation
+import ObjectMapper
+
+struct Restaurant {
+    var shopID = ""
+    var shopName = ""
+    var dayPriceMin = 0
+    var dayPriceMax = 0
+    var nightPriceMin = 0
+    var nightPriceMax = 0
+    var distance: Double = 0.0
+    var imageUrls = [String]()
+    var url = ""
+    var category = ""
+    var richTags = [String]()
+    var reviewSubjects = [String]()
+    var holidays = ""
+}
+
+extension Restaurant: Mappable {
+    public init?(_ map: Map) {
+        mapping(map)
+    }
     
-    init(shopID: String, shopName: String, priceRange: String, distance: Double, imageUrls: [NSURL?], url: NSURL, category: String) {
-        self.shopID = shopID
-        self.shopName = shopName
-        self.priceRange = priceRange
-        self.distance = distance
-        self.imageUrls = imageUrls
-        self.url = url
-        self.category = category
+    public mutating func mapping(map: Map) {
+        shopID <- map["shop_id"]
+        shopName <- map["title"]
+        dayPriceMin <- map["price_min_day"]
+        dayPriceMax <- map["price_max_day"]
+        nightPriceMin <- map["price_min_night"]
+        nightPriceMax <- map["price_max_night"]
+        distance <- map["distance_meter"]
+        imageUrls <- map["image_url"]
+        url <- map["url"]
+        category <- map["top_category"]
+        richTags <- map["rich_tags"]
+        reviewSubjects <- map["review_subjects"]
+        holidays <- map["holidays"]
     }
 }

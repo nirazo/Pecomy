@@ -157,6 +157,7 @@ class ResultViewController: UIViewController, ResultCardBaseDelegate {
                 make.bottom.equalTo(self.otherResultsBaseView)
             }
         }
+        self.view.layoutIfNeeded()
     }
     
     // 結果が0件の時のレイアウト

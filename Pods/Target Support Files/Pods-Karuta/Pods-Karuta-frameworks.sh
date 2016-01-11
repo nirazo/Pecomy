@@ -86,6 +86,7 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-Karuta/Alamofire.framework"
   install_framework "Pods-Karuta/MDCSwipeToChoose.framework"
+  install_framework "Pods-Karuta/ObjectMapper.framework"
   install_framework "Pods-Karuta/SDWebImage.framework"
   install_framework "Pods-Karuta/SnapKit.framework"
   install_framework "Pods-Karuta/SwiftyJSON.framework"
@@ -93,6 +94,7 @@ fi
 if [[ "$CONFIGURATION" == "Debug_fixed_location" ]]; then
   install_framework "Pods-Karuta/Alamofire.framework"
   install_framework "Pods-Karuta/MDCSwipeToChoose.framework"
+  install_framework "Pods-Karuta/ObjectMapper.framework"
   install_framework "Pods-Karuta/SDWebImage.framework"
   install_framework "Pods-Karuta/SnapKit.framework"
   install_framework "Pods-Karuta/SwiftyJSON.framework"
@@ -100,6 +102,7 @@ fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-Karuta/Alamofire.framework"
   install_framework "Pods-Karuta/MDCSwipeToChoose.framework"
+  install_framework "Pods-Karuta/ObjectMapper.framework"
   install_framework "Pods-Karuta/SDWebImage.framework"
   install_framework "Pods-Karuta/SnapKit.framework"
   install_framework "Pods-Karuta/SwiftyJSON.framework"
@@ -107,6 +110,7 @@ fi
 if [[ "$CONFIGURATION" == "STG" ]]; then
   install_framework "Pods-Karuta/Alamofire.framework"
   install_framework "Pods-Karuta/MDCSwipeToChoose.framework"
+  install_framework "Pods-Karuta/ObjectMapper.framework"
   install_framework "Pods-Karuta/SDWebImage.framework"
   install_framework "Pods-Karuta/SnapKit.framework"
   install_framework "Pods-Karuta/SwiftyJSON.framework"
@@ -114,6 +118,7 @@ fi
 if [[ "$CONFIGURATION" == "Release_fixed_location" ]]; then
   install_framework "Pods-Karuta/Alamofire.framework"
   install_framework "Pods-Karuta/MDCSwipeToChoose.framework"
+  install_framework "Pods-Karuta/ObjectMapper.framework"
   install_framework "Pods-Karuta/SDWebImage.framework"
   install_framework "Pods-Karuta/SnapKit.framework"
   install_framework "Pods-Karuta/SwiftyJSON.framework"
@@ -121,6 +126,7 @@ fi
 if [[ "$CONFIGURATION" == "STG_fixed_location" ]]; then
   install_framework "Pods-Karuta/Alamofire.framework"
   install_framework "Pods-Karuta/MDCSwipeToChoose.framework"
+  install_framework "Pods-Karuta/ObjectMapper.framework"
   install_framework "Pods-Karuta/SDWebImage.framework"
   install_framework "Pods-Karuta/SnapKit.framework"
   install_framework "Pods-Karuta/SwiftyJSON.framework"
