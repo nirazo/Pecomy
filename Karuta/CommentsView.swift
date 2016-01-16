@@ -17,6 +17,7 @@ class CommentsView: UIView {
     private let TEXT_MARGIN_X: CGFloat = 10.0
     private let TEXT_MARGIN_Y: CGFloat = 5.0
     private let SEPARATOR_WIDTH: CGFloat = 1.0
+    private let MAX_COMMENTS_NUM = 3
     
     var comments = [String]()
     var commentsContentViews = [CommentContentView]()
@@ -36,7 +37,18 @@ class CommentsView: UIView {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
+    }
+    
+    func setup(comments: [String]) {
+        self.comments = comments
+        // パーツ群を置くビュー
+        self.contentView.backgroundColor = UIColor.yellowColor()
+        
+        self.addSubview(contentView)
+        
+        self.backgroundColor = UIColor.yellowColor()
+        self.setupSubViews()
     }
     
     func setupSubViews() {
@@ -46,9 +58,11 @@ class CommentsView: UIView {
             make.left.equalTo(self)
         }
         self.contentView.layer.frame = self.contentView.bounds
-        self.contentView.backgroundColor = UIColor.whiteColor()
+        self.contentView.backgroundColor = UIColor.yellowColor()
         
-        for (var i = 0; i < self.comments.count; i++)  {
+        let loopCount = self.comments.count < MAX_COMMENTS_NUM ? self.comments.count : MAX_COMMENTS_NUM
+        
+        for i in 0..<loopCount  {
             let content = CommentContentView(frame: CGRectZero, comment: self.comments[i])
             self.commentsContentViews.append(content)
             self.contentView.addSubview(self.commentsContentViews[i])
@@ -60,22 +74,10 @@ class CommentsView: UIView {
                 } else {
                     make.top.equalTo(self.commentsContentViews[i-1].snp_bottom).offset(16)
                 }
-                if i == self.comments.count-1 {
+                if i == loopCount-1 {
                     make.bottom.equalTo(self.contentView).offset(-16)
                 }
             }
-//            if (i != self.comments.count-1) {
-//                // separator
-//                let separator = UIView(frame: CGRectZero)
-//                separator.backgroundColor = UIColor(red: 220/255.0, green: 220/255.0, blue: 220/255.0, alpha: 1.0)
-//                self.contentView.addSubview(separator)
-//                separator.snp_makeConstraints { (make) in
-//                    make.top.equalTo(self.restaurantsCards[i].snp_bottom).offset(0)
-//                    make.left.equalTo(self.contentView)
-//                    make.width.equalTo(self.contentView)
-//                    make.height.equalTo(self.SEPARATOR_WIDTH)
-//                }
-//            }
         }
     }
 

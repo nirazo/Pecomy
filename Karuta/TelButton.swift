@@ -43,9 +43,10 @@ class TelButton: UIButton {
         let label = UILabel(frame: CGRectZero)
         label.text = self.telString
         label.font = self.FONT_TEL
+        label.textColor = UIColor.whiteColor()
         self.addSubview(label)
         label.snp_makeConstraints { (make) in
-            make.left.equalTo(self.telImage).offset(8)
+            make.left.equalTo(self.telImage.snp_right).offset(8)
             make.top.equalTo(self)
             make.bottom.equalTo(self)
             make.right.equalTo(self).offset(-8)

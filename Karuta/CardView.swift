@@ -48,6 +48,7 @@ class CardView: MDCSwipeToChooseView {
         self.shopID = restaurant.shopID
         self.shopName = restaurant.shopName
         self.imageUrls = restaurant.imageUrls.flatMap { NSURL(string: $0) }
+        print("imageUrls: \(self.imageUrls)")
         self.priceRange = "値段のレンジだよー"
         self.distance = restaurant.distance
         self.category = restaurant.category
@@ -153,17 +154,14 @@ class CardView: MDCSwipeToChooseView {
     
     func acquireImages() {
         let loopCount = self.imageUrls.count < NUM_OF_IMAGES ? self.imageUrls.count: NUM_OF_IMAGES
-        
-        if (self.imageUrls.count > 0) {
-            for i in 0..<loopCount {
-                self.restaurantImageViews[i].sd_setImageWithURL(self.imageUrls[i], completed: {[weak self](image: UIImage!, error: NSError!, cacheType: SDImageCacheType, imageURL: NSURL!) in
-                    self!.restaurantImageViews[i].alpha = 0
-                    UIView.animateWithDuration(0.5, delay: 0.0, options: .CurveEaseInOut, animations: {() -> Void in
-                        self?.restaurantImageViews[i].contentMode = .ScaleAspectFill
-                        self!.restaurantImageViews[i].alpha = 1
-                        }, completion: nil)
-                    })
-            }
+        for i in 0..<loopCount {
+            self.restaurantImageViews[i].sd_setImageWithURL(self.imageUrls[i], completed: {[weak self](image: UIImage!, error: NSError!, cacheType: SDImageCacheType, imageURL: NSURL!) in
+                self!.restaurantImageViews[i].alpha = 0
+                UIView.animateWithDuration(0.5, delay: 0.0, options: .CurveEaseInOut, animations: {() -> Void in
+                    self?.restaurantImageViews[i].contentMode = .ScaleAspectFill
+                    self!.restaurantImageViews[i].alpha = 1
+                    }, completion: nil)
+                })
         }
     }
     

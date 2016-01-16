@@ -39,6 +39,7 @@ class TopResultCard: ResultCardBase {
     @IBOutlet weak var reviewCommentLabel: UILabel!
     @IBOutlet weak var detailButton: UIButton!
     
+    var restaurant = Restaurant()
     var syncID = ""
     var shopID = ""
     var shopName = ""
@@ -59,13 +60,7 @@ class TopResultCard: ResultCardBase {
     }
     
     func setup(restaurant: Restaurant) {
-        self.shopID = restaurant.shopID
-        self.shopName = restaurant.shopName
-        self.imageUrls = restaurant.imageUrls.flatMap{NSURL(string: $0)}
-        self.priceRange = "値段のレンジですー"
-        self.distance = restaurant.distance
-        self.url = NSURL(string:restaurant.url)
-        self.category = restaurant.category
+        self.restaurant = restaurant
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -217,6 +212,6 @@ class TopResultCard: ResultCardBase {
     }
     
     func resultTapped(sender: AnyObject) {
-        self.delegate!.detailButtonTapped(self, id: self.shopID)
+        self.delegate!.detailButtonTapped(self.restaurant)
     }
 }

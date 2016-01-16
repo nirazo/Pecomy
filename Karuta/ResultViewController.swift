@@ -125,6 +125,7 @@ class ResultViewController: UIViewController, ResultCardBaseDelegate {
             make.height.greaterThanOrEqualTo(100)
         }
         self.topResultCard?.setupSubViews()
+        self.topResultCard?.delegate = self
         
         // その他のベースとなるビュー
         self.otherResultsBaseView.backgroundColor = UIColor.clearColor()
@@ -208,9 +209,9 @@ class ResultViewController: UIViewController, ResultCardBaseDelegate {
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     
-    func detailButtonTapped(card: ResultCardBase, id: String) {
-//        let detailView = RestaurantDetailViewController(url: card.url)
-//        self.navigationController?.pushViewController(detailView, animated: true)
+    func detailButtonTapped(restaurant: Restaurant) {
+        let detailVC = DetailViewController(restaurant: restaurant)
+        self.navigationController?.pushViewController(detailVC, animated: true)
     }
 
 }

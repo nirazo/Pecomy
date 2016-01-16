@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ResultCardBaseDelegate {
-    func detailButtonTapped(card: ResultCardBase, id: String)
+    func detailButtonTapped(restaurant: Restaurant)
 }
 
 class ResultCardBase: UIView {

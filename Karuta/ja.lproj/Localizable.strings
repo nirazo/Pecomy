@@ -38,4 +38,7 @@
 "ResultRankFirstHeader" = "あなたにオススメ No.1";
 "ResultShowDetail" = "もっと見る";
 "ResultRankSecondHeader" = "その他のおすすめ";
-"TelephoneCall" = "電話をかける";
+// DetailView
+"TelephoneCall" = "電話する";
+"PicturesViewTitle" = "その他の写真";
+"RichTagsTitle" = "タグ";
