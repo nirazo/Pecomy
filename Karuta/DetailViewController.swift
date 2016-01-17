@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailViewController: UIViewController, UICollectionViewDelegate {
+class DetailViewController: UIViewController {
     
     let ANALYTICS_TRACKING_CODE = AnaylyticsTrackingCode.RestaurantDetailViewController.rawValue
     
@@ -41,13 +41,12 @@ class DetailViewController: UIViewController, UICollectionViewDelegate {
     func setupLayout() {
         self.detailView = RestaurantDetailView.instance()
         self.detailView?.setup(self.restaurant)
-        self.detailView?.picturesView.delegate = self
+        self.detailView?.picturesView.delegate = self.picConfig
         self.detailView?.picturesView.dataSource = self.picConfig
         
         self.detailView?.picturesView.scrollEnabled = true
         self.detailView?.picturesView.userInteractionEnabled = true
-        self.detailView?.picturesView.contentSize = CGSize(width: 1000, height: 100)
-        self.detailView?.richTagsView.delegate = self
+        self.detailView?.richTagsView.delegate = self.richTagConfig
         self.detailView?.richTagsView.dataSource = self.richTagConfig
         self.view.addSubview(detailView!)
         self.detailView?.snp_makeConstraints { (make) in
@@ -61,6 +60,9 @@ class DetailViewController: UIViewController, UICollectionViewDelegate {
         self.detailView?.picturesView.setNeedsLayout()
         
         self.detailView?.telButton.addTarget(self, action: "telTapped", forControlEvents: .TouchUpInside)
+        
+        self.detailView?.richTagsView.reloadData()
+        self.detailView?.richTagsView.setNeedsLayout()
     }
     
     func telTapped() {
@@ -86,19 +88,6 @@ class DetailViewController: UIViewController, UICollectionViewDelegate {
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         print("tapped!: \(indexPath.row)")
-    }
-    
-    // MARK: - UICollectionViewDelegateFlowLayout
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSize(width: 100, height: 100) // The size of one cell
-    }
-    
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSizeMake(0, 0)  // Header size
-    }
-    
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-        return UIEdgeInsetsMake(0, 10, 0, 10) // margin between cells
     }
 
 }

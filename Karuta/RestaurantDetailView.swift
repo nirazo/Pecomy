@@ -44,6 +44,7 @@ class RestaurantDetailView: UIView {
     @IBOutlet weak var picturesBaseView: UIView!
     
     @IBOutlet weak var bottomSeparator: UIView!
+    @IBOutlet weak var richTagsViewTitleLabel: UILabel!
     @IBOutlet weak var richTagsView: UICollectionView!
 
     class func instance() -> RestaurantDetailView {
@@ -142,6 +143,11 @@ class RestaurantDetailView: UIView {
         self.picturesView.backgroundColor = UIColor.clearColor()
         print("picrutesSize: \(self.picturesView.frame.size)")
         
+        // リッチタグラベル
+        self.richTagsViewTitleLabel.text = NSLocalizedString("RichTagsTitle", comment: "")
+        self.richTagsViewTitleLabel.textColor = Const.RANKING_SECOND_RIGHT_COLOR
+        self.richTagsViewTitleLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 14)
+        
         // 画像のダウンロード
         self.acquireImages()
         
@@ -152,7 +158,7 @@ class RestaurantDetailView: UIView {
         super.layoutSubviews()
         self.gradientLayer.frame = self.mapView.layer.bounds
         //self.scrollView.contentSize = self.contentView.frame.size
-        self.scrollView.contentSize = CGSize(width: 375.0, height: 1000.0)
+        //self.scrollView.contentSize = CGSize(width: 375.0, height: 1000.0)
         
         self.contentView.userInteractionEnabled = true
         self.scrollView.userInteractionEnabled = true
@@ -160,7 +166,7 @@ class RestaurantDetailView: UIView {
         self.scrollView.delaysContentTouches = true
         self.scrollView.exclusiveTouch = true
         
-        self.picturesView.contentSize = CGSize(width: 1000, height: self.picturesView.frame.height)
+        //self.picturesView.contentSize = CGSize(width: 1000, height: self.picturesView.frame.height)
         self.picturesView.collectionViewLayout = PictureCollectionViewFlowLayout()
         self.picturesView.registerClass(PictureCollectionViewCell.self, forCellWithReuseIdentifier: "PicCell")
         self.richTagsView.registerClass(RichTagCollectionViewCell.self, forCellWithReuseIdentifier: "TagCell")
@@ -168,10 +174,6 @@ class RestaurantDetailView: UIView {
         print("scrollContent: \(self.contentView.frame.size)")
         print("pictureContent: \(self.picturesView.contentSize)")
         
-        print("picBase: \(self.picturesBaseView)")
-        for view in self.picturesBaseView.subviews {
-            print("\(view): \(view.userInteractionEnabled)")
-        }
         self.bringSubviewToFront(self.picturesView)
     }
     

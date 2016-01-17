@@ -13,8 +13,4 @@ class PictureCollectionViewFlowLayout: UICollectionViewFlowLayout {
         super.prepareLayout()
         self.scrollDirection = .Horizontal
     }
-    
-    override func collectionViewContentSize() -> CGSize {
-        return CGSize(width: 1000, height: 100)
-    }
 }

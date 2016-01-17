@@ -12,15 +12,16 @@ class RestaurantDetailViewRichTagCollectionViewConfig: NSObject, UICollectionVie
     
     private let kCellReuse : String = "TagCell"
     
-    var richTags = [String]()
+    var richTags = [RichTag]()
     
     init(richTags: [String]) {
-        self.richTags = richTags
+        self.richTags = richTags.flatMap { RichTag(rawValue: $0) }
     }
     
     //MARK: - UICollectionViewDelegate, UICollectionViewDataSource
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell : RichTagCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(kCellReuse, forIndexPath: indexPath) as! RichTagCollectionViewCell
+        cell.richTag = self.richTags[indexPath.row]
         return cell
     }
     
@@ -34,5 +35,20 @@ class RestaurantDetailViewRichTagCollectionViewConfig: NSObject, UICollectionVie
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         // nothing
+    }
+    
+    // MARK: - UICollectionViewDelegateFlowLayout
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        let screenSize = UIScreen.mainScreen().bounds
+        return CGSize(width: screenSize.width/2, height: 32) // The size of one cell
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSizeMake(0, 0)  // Header size
+    }
+    
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+        return UIEdgeInsetsMake(12, 10, 10, 0) // margin between cells
     }
 }
