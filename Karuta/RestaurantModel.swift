@@ -7,16 +7,16 @@
 //
 
 class RestaurantModel {
-    public var restaurant = Restaurant()
-    public var syncID = ""
-    public var resultAvailable = false
+    var restaurant = Restaurant()
+    var syncID = ""
+    var resultAvailable = false
     
     private var session: KarutaApiClient.Session?
     
     init() {
     }
     
-    public func fetch(latitude: Double, longitude: Double, like: String? = nil, category: CategoryIdentifier, syncId: String? = nil, reset: Bool, handler: ((KarutaResult<Restaurant, KarutaApiClientError>) -> Void)) -> Bool {
+    func fetch(latitude: Double, longitude: Double, like: String? = nil, category: CategoryIdentifier, syncId: String? = nil, reset: Bool, handler: ((KarutaResult<Restaurant, KarutaApiClientError>) -> Void)) -> Bool {
         let request = CardRequest(latitude: latitude, longitude: longitude, like: like, category: category, syncId: syncId, reset: reset)
         self.session = KarutaApiClient.send(request) {[weak self] (response: KarutaResult<CardRequest.Response, KarutaApiClientError>) -> Void in
             guard let weakSelf = self else {

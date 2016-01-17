@@ -10,14 +10,14 @@ import Foundation
 import Alamofire
 
 class ResultRequest: KarutaApiRequest {
-    public typealias Response = ResultResponse
+    typealias Response = ResultResponse
     
-    public var endpoint: String
-    public var method: Alamofire.Method = Method.GET
-    public var params: [String: AnyObject] = [:]
-    public var encoding: ParameterEncoding = ParameterEncoding.URL
+    var endpoint: String
+    var method: Alamofire.Method = Method.GET
+    var params: [String: AnyObject] = [:]
+    var encoding: ParameterEncoding = ParameterEncoding.URL
     
-    public init(latitude: Double, longitude: Double) {
+    init(latitude: Double, longitude: Double) {
         endpoint = "results"
         params = [
             "device_id": Utils.acquireDeviceID(),

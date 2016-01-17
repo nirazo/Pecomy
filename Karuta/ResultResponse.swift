@@ -10,13 +10,13 @@ import Foundation
 import ObjectMapper
 
 class ResultResponse: KarutaApiResponse {
-    public var results = [Restaurant]()
+    internal var results = [Restaurant]()
     
-    required public init?(_ map: Map) {
+    required init?(_ map: Map) {
         super.init(map)
     }
     
-    override public func mapping(map: Map) {
+    override func mapping(map: Map) {
         super.mapping(map)
         self.results <- map["results"]
     }

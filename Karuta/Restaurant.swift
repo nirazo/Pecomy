@@ -26,11 +26,11 @@ struct Restaurant {
 }
 
 extension Restaurant: Mappable {
-    public init?(_ map: Map) {
+    init?(_ map: Map) {
         mapping(map)
     }
     
-    public mutating func mapping(map: Map) {
+    mutating func mapping(map: Map) {
         shopID <- map["shop_id"]
         shopName <- map["title"]
         dayPriceMin <- map["price_min_day"]

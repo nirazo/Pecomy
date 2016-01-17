@@ -19,8 +19,8 @@ class KarutaApiClient {
         }
     }
     
-    public static var manager = Alamofire.Manager(configuration: KarutaApiClient.configuration)
-    public static let kTimeoutSecond = 10.0
+    static var manager = Alamofire.Manager(configuration: KarutaApiClient.configuration)
+    static let kTimeoutSecond = 10.0
     
     private static var configuration : NSURLSessionConfiguration {
         let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
@@ -72,7 +72,7 @@ class KarutaApiClient {
         return Session(alamofireRequest)
     }
     
-    public class func cancel(session: Session) {
+    class func cancel(session: Session) {
         session.alamofireRequest?.cancel()
     }
     

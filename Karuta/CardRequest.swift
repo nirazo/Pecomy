@@ -10,15 +10,15 @@ import Foundation
 import Alamofire
 
 class CardRequest: KarutaApiRequest {
-    public typealias Response = CardResponse
+    typealias Response = CardResponse
         
-    public var endpoint: String
-    public var method: Alamofire.Method = Method.GET
-    public var params: [String: AnyObject] = [:]
-    public var encoding: ParameterEncoding = ParameterEncoding.URL
+    var endpoint: String
+    var method: Alamofire.Method = Method.GET
+    var params: [String: AnyObject] = [:]
+    var encoding: ParameterEncoding = ParameterEncoding.URL
     
     
-    public init(latitude: Double, longitude: Double, like: String? = nil, category: CategoryIdentifier = .All, syncId: String? = nil, reset: Bool = false) {
+    init(latitude: Double, longitude: Double, like: String? = nil, category: CategoryIdentifier = .All, syncId: String? = nil, reset: Bool = false) {
         endpoint = "card"
         params = [
             "device_id" : Utils.acquireDeviceID(),

@@ -7,14 +7,14 @@
 //
 
 class ResultModel {
-    public var results = [Restaurant]()
+    var results = [Restaurant]()
     
     private var session: KarutaApiClient.Session?
     
     init() {
     }
     
-    public func fetch(latitude: Double, longitude: Double, handler: ((KarutaResult<[Restaurant], KarutaApiClientError>) -> Void)) -> Bool {
+    func fetch(latitude: Double, longitude: Double, handler: ((KarutaResult<[Restaurant], KarutaApiClientError>) -> Void)) -> Bool {
         let request = ResultRequest(latitude: latitude, longitude: longitude)
         self.session = KarutaApiClient.send(request) {[weak self] (response: KarutaResult<ResultRequest.Response, KarutaApiClientError>) -> Void in
             guard let weakSelf = self else {
