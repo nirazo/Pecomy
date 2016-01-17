@@ -32,6 +32,7 @@ class PictureCollectionViewCell: UICollectionViewCell {
         self.contentView.layer.cornerRadius = 5.0
         self.contentView.layer.masksToBounds = true
         self.contentView.addSubview(self.imageView)
+        self.contentView.backgroundColor = UIColor.blueColor()
         
         self.imageView.snp_makeConstraints { (make) in
             make.centerX.equalTo(self.contentView)

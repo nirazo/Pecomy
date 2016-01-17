@@ -46,6 +46,7 @@ class RestaurantDetailView: UIView {
     @IBOutlet weak var bottomSeparator: UIView!
     @IBOutlet weak var richTagsViewTitleLabel: UILabel!
     @IBOutlet weak var richTagsView: UICollectionView!
+    @IBOutlet weak var richTagViewHeightConstraint: NSLayoutConstraint!
 
     class func instance() -> RestaurantDetailView {
         return UINib(nibName: "RestaurantDetailView", bundle: nil).instantiateWithOwner(self, options: nil)[0] as! RestaurantDetailView
@@ -141,12 +142,13 @@ class RestaurantDetailView: UIView {
         
         // その他の写真
         self.picturesView.backgroundColor = UIColor.clearColor()
-        print("picrutesSize: \(self.picturesView.frame.size)")
         
         // リッチタグラベル
         self.richTagsViewTitleLabel.text = NSLocalizedString("RichTagsTitle", comment: "")
         self.richTagsViewTitleLabel.textColor = Const.RANKING_SECOND_RIGHT_COLOR
         self.richTagsViewTitleLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 14)
+        
+        self.richTagsView.backgroundColor = UIColor.clearColor()
         
         // 画像のダウンロード
         self.acquireImages()
@@ -157,24 +159,11 @@ class RestaurantDetailView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         self.gradientLayer.frame = self.mapView.layer.bounds
-        //self.scrollView.contentSize = self.contentView.frame.size
-        //self.scrollView.contentSize = CGSize(width: 375.0, height: 1000.0)
-        
-        self.contentView.userInteractionEnabled = true
-        self.scrollView.userInteractionEnabled = true
-        self.scrollView.canCancelContentTouches = true
-        self.scrollView.delaysContentTouches = true
-        self.scrollView.exclusiveTouch = true
-        
-        //self.picturesView.contentSize = CGSize(width: 1000, height: self.picturesView.frame.height)
         self.picturesView.collectionViewLayout = PictureCollectionViewFlowLayout()
         self.picturesView.registerClass(PictureCollectionViewCell.self, forCellWithReuseIdentifier: "PicCell")
         self.richTagsView.registerClass(RichTagCollectionViewCell.self, forCellWithReuseIdentifier: "TagCell")
-        print("scroll: \(self.scrollView.frame.size)")
-        print("scrollContent: \(self.contentView.frame.size)")
-        print("pictureContent: \(self.picturesView.contentSize)")
         
-        self.bringSubviewToFront(self.picturesView)
+        self.richTagViewHeightConstraint.constant = self.richTagsView.contentSize.height
     }
     
     func telButtonTapped(sender: AnyObject) {

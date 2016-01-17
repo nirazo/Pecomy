@@ -48,7 +48,6 @@ class CardView: MDCSwipeToChooseView {
         self.shopID = restaurant.shopID
         self.shopName = restaurant.shopName
         self.imageUrls = restaurant.imageUrls.flatMap { NSURL(string: $0) }
-        print("imageUrls: \(self.imageUrls)")
         self.priceRange = "値段のレンジだよー"
         self.distance = restaurant.distance
         self.category = restaurant.category

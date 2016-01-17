@@ -45,4 +45,8 @@ class RestaurantDetailViewPictureCollectionViewConfig: NSObject, UICollectionVie
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
         return UIEdgeInsetsMake(0, 10, 0, 10) // margin between cells
     }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        print("pictureTapped!: \(indexPath.row)")
+    }
 }

@@ -15,6 +15,7 @@ class RestaurantDetailViewRichTagCollectionViewConfig: NSObject, UICollectionVie
     var richTags = [RichTag]()
     
     init(richTags: [String]) {
+        print("tagsString: \(richTags.flatMap{$0})")
         self.richTags = richTags.flatMap { RichTag(rawValue: $0) }
     }
     
@@ -34,13 +35,13 @@ class RestaurantDetailViewRichTagCollectionViewConfig: NSObject, UICollectionVie
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        // nothing
+        print("RichTagTapped!: \(indexPath.row)")
     }
     
     // MARK: - UICollectionViewDelegateFlowLayout
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         let screenSize = UIScreen.mainScreen().bounds
-        return CGSize(width: screenSize.width/2, height: 32) // The size of one cell
+        return CGSize(width: screenSize.width/2-26, height: 32) // The size of one cell
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
@@ -49,6 +50,14 @@ class RestaurantDetailViewRichTagCollectionViewConfig: NSObject, UICollectionVie
     
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-        return UIEdgeInsetsMake(12, 10, 10, 0) // margin between cells
+        return UIEdgeInsetsMake(12, 0, 0, 0)
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return 0.0
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return 12.0
     }
 }

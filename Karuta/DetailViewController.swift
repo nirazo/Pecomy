@@ -64,10 +64,6 @@ class DetailViewController: UIViewController {
         self.detailView?.richTagsView.reloadData()
         self.detailView?.richTagsView.setNeedsLayout()
     }
-    
-    func telTapped() {
-        print("tel tapped!!")
-    }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -82,12 +78,6 @@ class DetailViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-    }
-    
-    
-    
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        print("tapped!: \(indexPath.row)")
     }
 
 }
