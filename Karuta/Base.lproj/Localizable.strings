@@ -23,7 +23,7 @@
 "NoResultAlertTitle" = "Cannot find result";
 "NoResultAlertMessage" = "Karuta cannot find restaurant for you around here. Please try again after changing time or place.";
 "SearchingRestaurant" = "Searching your favorite restaurant...";
-"YourBest" = "Your best";
+"ResultTitle" = "Result";
 "CloseTutorial" = "start";
 "CardLikeText" = "Like!";
 "CardDislikeText" = "Unn..";

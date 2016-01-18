@@ -23,7 +23,7 @@
 "NoResultAlertTitle" = "結果が見つかりませんでした";
 "NoResultAlertMessage" = "近くにおすすめのお店が見つかりませんでした。時間、場所を変更して再度お試しください。";
 "SearchingRestaurant" = "あなたの好きなお店をサーチ中です";
-"YourBest" = "あなたのBEST";
+"ResultTitle" = "検索結果";
 "CloseTutorial" = "はじめる";
 "CardLikeText" = "行きたい！";
 "CardDislikeText" = "イマイチ...";

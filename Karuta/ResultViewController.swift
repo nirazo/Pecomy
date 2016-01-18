@@ -204,7 +204,14 @@ class ResultViewController: UIViewController, ResultCardBaseDelegate {
     }
     
     func detailButtonTapped(restaurant: Restaurant) {
+        self.openDetailViewController(restaurant)
+    }
+    
+    private func openDetailViewController(restaurant: Restaurant) {
         let detailVC = DetailViewController(restaurant: restaurant)
+        detailVC.navigationItem.title = restaurant.shopName
+        let backButtonItem = UIBarButtonItem(title: NSLocalizedString("Back", comment: ""), style: .Plain, target: nil, action: nil)
+        self.navigationItem.backBarButtonItem = backButtonItem
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
 
@@ -213,7 +220,6 @@ class ResultViewController: UIViewController, ResultCardBaseDelegate {
 // OtherResultCardDelegate method
 extension ResultViewController: OtherResultCardDelegate {
     func contentTapped(restaurant: Restaurant) {
-        let detailVC = DetailViewController(restaurant: restaurant)
-        self.navigationController?.pushViewController(detailVC, animated: true)
+        self.openDetailViewController(restaurant)
     }
 }

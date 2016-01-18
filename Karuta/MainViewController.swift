@@ -438,7 +438,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
         
         if (self.navigationController?.viewControllers.count == 1) {
             let navVC = UINavigationController(rootViewController: resultVC)
-            resultVC.navigationItem.title = NSLocalizedString("YourBest", comment: "")
+            resultVC.navigationItem.title = NSLocalizedString("ResultTitle", comment: "")
             self.isDisplayedResult = true
             self.presentViewController(navVC, animated: true, completion: nil)
         }

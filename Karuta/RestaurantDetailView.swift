@@ -87,7 +87,7 @@ class RestaurantDetailView: UIView {
         self.dayPriceIcon.image = UIImage(named: "noimage")
         // 値段ラベル
         if (self.restaurant.dayPriceMin.isEmpty && self.restaurant.dayPriceMax.isEmpty) {
-            self.dayPriceLabel.text = ""
+            self.dayPriceLabel.text = "-"
         } else {
             self.dayPriceLabel.text = "\(Utils.formatPriceString(self.restaurant.dayPriceMin))〜\(Utils.formatPriceString(self.restaurant.dayPriceMax))"
         }
@@ -98,7 +98,7 @@ class RestaurantDetailView: UIView {
         
         self.nightPriceIcon.image = UIImage(named: "noimage")
         if (self.restaurant.nightPriceMin.isEmpty && self.restaurant.nightPriceMax.isEmpty) {
-            self.nightPriceLabel.text = ""
+            self.nightPriceLabel.text = "-"
         } else {
             self.nightPriceLabel.text = "\(Utils.formatPriceString(self.restaurant.nightPriceMin))〜\(Utils.formatPriceString(self.restaurant.nightPriceMax))"
         }

@@ -112,9 +112,9 @@ class CardView: MDCSwipeToChooseView {
         // 値段ラベル
         let dayPriceLabel = UILabel(frame: CGRectZero)
         if (self.restaurant!.dayPriceMin.isEmpty && self.restaurant!.dayPriceMax.isEmpty) {
-            dayPriceLabel.text = ""
+            dayPriceLabel.text = "[\(NSLocalizedString("Day", comment: ""))] -"
         } else {
-        dayPriceLabel.text = "[\(NSLocalizedString("Day", comment: ""))]\(Utils.formatPriceString(self.restaurant!.dayPriceMin))〜\(Utils.formatPriceString(self.restaurant!.dayPriceMax))"
+        dayPriceLabel.text = "[\(NSLocalizedString("Day", comment: ""))] \(Utils.formatPriceString(self.restaurant!.dayPriceMin))〜\(Utils.formatPriceString(self.restaurant!.dayPriceMax))"
         }
         dayPriceLabel.numberOfLines = 1
         dayPriceLabel.sizeToFit()
@@ -131,9 +131,9 @@ class CardView: MDCSwipeToChooseView {
         let nightPriceLabel = UILabel(frame: CGRectZero)
         
         if (self.restaurant!.nightPriceMin.isEmpty && self.restaurant!.nightPriceMax.isEmpty) {
-            nightPriceLabel.text = ""
+            nightPriceLabel.text = "[\(NSLocalizedString("Night", comment: ""))] -"
         } else {
-            nightPriceLabel.text = "[\(NSLocalizedString("Night", comment: ""))]\(Utils.formatPriceString(self.restaurant!.nightPriceMin))〜\(Utils.formatPriceString(self.restaurant!.nightPriceMax))"
+            nightPriceLabel.text = "[\(NSLocalizedString("Night", comment: ""))] \(Utils.formatPriceString(self.restaurant!.nightPriceMin))〜\(Utils.formatPriceString(self.restaurant!.nightPriceMax))"
         }
         nightPriceLabel.numberOfLines = 1
         nightPriceLabel.sizeToFit()
