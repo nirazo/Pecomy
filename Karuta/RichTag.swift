@@ -11,13 +11,13 @@ enum RichTag: String {
     case CardEnable = "カード使用可"
     case CardDisable = "カード仕様不可"
     // タバコ
-    case SmokingEnable = "分煙"
+    case SmokingEnable = "喫煙可"
+    case SeparatedSmoking = "分煙"
     case SmokingDisabled = "完全禁煙"
     // 座席系
     case OnlyCounter = "カウンターのみ"
     case HasCounter = "カウンター席あり"
     case HasTable = "テーブル席あり"
-    case ManySeats = "席数多め"
     // 座席のスタイル
     case StandingMeal = "立ち食い"
     case StandingDrink = "立ち飲み"
@@ -31,7 +31,6 @@ enum RichTag: String {
     case WideSeat = "席が広い"
     // 個室
     case PrivateRoom = "個室あり"
-    case SemiPrivateRoom = "半個室あり"
     // エンターテインメント
     case Karaoke = "カラオケあり"
     case Sports = "スポーツ観戦可"
@@ -43,6 +42,8 @@ enum RichTag: String {
     case Hiding = "隠れ家レストラン"
     case SolitaryHouse = "一軒家レストラン"
     case BeautifulView = "景色がきれい"
+    case Hotel = "ホテルのレストラン"
+    case OceanView = "海が見える"
     // こだわり系
     case Fish = "魚料理にこだわる"
     case Vegetable = "野菜料理にこだわる"
@@ -50,6 +51,12 @@ enum RichTag: String {
     case Vegetarian = "ベジタリアンメニューあり"
     // その他
     case BarrierFree = "バリアフリー"
+    // Dring
+    case Sake = "日本酒あり"
+    case Wine = "ワインあり"
+    case Cocktail = "カクテルあり"
+    case Shochu = "焼酎あり"
+    case FreeDrink = "飲み放題あり"
     
     // nothing
     case Nothing = "なし"
@@ -57,6 +64,8 @@ enum RichTag: String {
     func imageForTag() -> UIImage? {
         switch self {
         case .CardEnable:
+            return UIImage(named: "third")
+        case .SeparatedSmoking:
             return UIImage(named: "third")
         case .CardDisable:
             return UIImage(named: "third")
@@ -69,8 +78,6 @@ enum RichTag: String {
         case .HasCounter:
             return UIImage(named: "third")
         case .HasTable:
-            return UIImage(named: "third")
-        case .ManySeats:
             return UIImage(named: "third")
         case .StandingMeal:
             return UIImage(named: "third")
@@ -92,8 +99,6 @@ enum RichTag: String {
             return UIImage(named: "third")
         case .PrivateRoom:
             return UIImage(named: "third")
-        case .SemiPrivateRoom:
-            return UIImage(named: "third")
         case .Karaoke:
             return UIImage(named: "third")
         case .Sports:
@@ -112,6 +117,10 @@ enum RichTag: String {
             return UIImage(named: "third")
         case .BeautifulView:
             return UIImage(named: "third")
+        case .Hotel:
+            return UIImage(named: "third")
+        case .OceanView:
+            return UIImage(named: "third")
         case .Fish:
             return UIImage(named: "third")
         case .Vegetable:
@@ -121,6 +130,16 @@ enum RichTag: String {
         case .Vegetarian:
             return UIImage(named: "third")
         case .BarrierFree:
+            return UIImage(named: "third")
+        case .Sake:
+            return UIImage(named: "third")
+        case .Wine:
+            return UIImage(named: "third")
+        case .Cocktail:
+            return UIImage(named: "third")
+        case .Shochu:
+            return UIImage(named: "third")
+        case .FreeDrink:
             return UIImage(named: "third")
         default:
             return UIImage(named: "second")

@@ -15,7 +15,6 @@ class RestaurantDetailViewRichTagCollectionViewConfig: NSObject, UICollectionVie
     var richTags = [RichTag]()
     
     init(richTags: [String]) {
-        print("tagsString: \(richTags.flatMap{$0})")
         self.richTags = richTags.flatMap { RichTag(rawValue: $0) }
     }
     

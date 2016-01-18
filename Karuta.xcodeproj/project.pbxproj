@@ -297,6 +297,8 @@
 			isa = PBXGroup;
 			children = (
 				D253A9E61C322B5F00D65D20 /* APIClient */,
+				D2597E1C1B523831000938B4 /* Result */,
+				D24B29221B78773400419B9B /* Detail */,
 				D253A9E31C32217900D65D20 /* Entity */,
 				D27BB9D11B36F4A900F8D902 /* AppDelegate.swift */,
 				D23070721B4C30D100833167 /* KarutaLocationManager.swift */,
@@ -309,9 +311,7 @@
 				D2DEE6AD1C030F7F00861BDF /* Extension */,
 				D24B293F1B79CC0400419B9B /* Card */,
 				D24B292C1B7895C900419B9B /* Tutorial */,
-				D24B29221B78773400419B9B /* Detail */,
 				D2092A321B64D702008046D9 /* Model */,
-				D2597E1C1B523831000938B4 /* Result */,
 				D27BB9D81B36F4A900F8D902 /* Images.xcassets */,
 				D27BB9CF1B36F4A900F8D902 /* Supporting Files */,
 				D2C785F71B47C2A900517D55 /* Karuta-Bridging-Header.h */,

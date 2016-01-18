@@ -25,13 +25,9 @@ class CardView: MDCSwipeToChooseView {
     
     var delegate: CardViewDelegate?
     
+    var restaurant: Restaurant?
+    
     var syncID = ""
-    var shopID = ""
-    var shopName = ""
-    var priceRange = ""
-    var category = ""
-    var distance: Double = 0.0
-    var imageUrls = [NSURL?]()
     var restaurantImageViews = [UIImageView]()
     let contentsView = UIView()
     let blackListButton = UIButton()
@@ -45,12 +41,7 @@ class CardView: MDCSwipeToChooseView {
         options.nopeText = NSLocalizedString("CardDislikeText", comment: "")
         options.nopeColor = Const.CARD_DISLIKE_COLOR
         
-        self.shopID = restaurant.shopID
-        self.shopName = restaurant.shopName
-        self.imageUrls = restaurant.imageUrls.flatMap { NSURL(string: $0) }
-        self.priceRange = "値段のレンジだよー"
-        self.distance = restaurant.distance
-        self.category = restaurant.category
+        self.restaurant = restaurant
         self.syncID = syncID
         
         for _ in 0..<self.NUM_OF_IMAGES {
@@ -86,7 +77,7 @@ class CardView: MDCSwipeToChooseView {
             y: CGRectGetMaxY(self.restaurantImageViews[1].frame) + TEXT_MARGIN_Y,
             width: self.frame.width*2/3,
             height: (self.frame.height - CGRectGetMaxY(self.restaurantImageViews[1].frame))/4))
-        restaurantNameLabel.text = self.shopName
+        restaurantNameLabel.text = self.restaurant!.shopName
         restaurantNameLabel.numberOfLines = 1
         restaurantNameLabel.textColor = Const.KARUTA_THEME_COLOR
         restaurantNameLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 14)
@@ -97,7 +88,7 @@ class CardView: MDCSwipeToChooseView {
             y: CGRectGetMaxY(restaurantNameLabel.frame),
             width: restaurantNameLabel.frame.width,
             height: restaurantNameLabel.frame.height))
-        distanceLabel.text =  String(format: NSLocalizedString("CardDistanceFromText", comment: ""), self.distance.meterToMinutes())
+        distanceLabel.text =  String(format: NSLocalizedString("CardDistanceFromText", comment: ""), self.restaurant!.distance.meterToMinutes())
         distanceLabel.font = UIFont(name: distanceLabel.font.fontName, size: 12)
         distanceLabel.numberOfLines = 0
         distanceLabel.sizeToFit()
@@ -107,7 +98,7 @@ class CardView: MDCSwipeToChooseView {
         
         
         // カテゴリ
-        let categoryLabelView = CategoryLabelView(frame: CGRectZero, category: self.category)
+        let categoryLabelView = CategoryLabelView(frame: CGRectZero, category: self.restaurant!.category)
         
         self.contentView.addSubview(categoryLabelView)
         
@@ -119,17 +110,42 @@ class CardView: MDCSwipeToChooseView {
         }
         
         // 値段ラベル
-        let priceLabel = UILabel(frame: CGRect(x: TEXT_MARGIN_X,
-            y: CGRectGetMaxY(distanceLabel.frame),
-            width: restaurantNameLabel.frame.width,
-            height: (self.frame.height - CGRectGetMaxY(distanceLabel.frame))))
+        let dayPriceLabel = UILabel(frame: CGRectZero)
+        if (self.restaurant!.dayPriceMin.isEmpty && self.restaurant!.dayPriceMax.isEmpty) {
+            dayPriceLabel.text = ""
+        } else {
+        dayPriceLabel.text = "[\(NSLocalizedString("Day", comment: ""))]\(Utils.formatPriceString(self.restaurant!.dayPriceMin))〜\(Utils.formatPriceString(self.restaurant!.dayPriceMax))"
+        }
+        dayPriceLabel.numberOfLines = 1
+        dayPriceLabel.sizeToFit()
+        dayPriceLabel.textColor = Const.KARUTA_THEME_COLOR
+        dayPriceLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 12)
+        self.contentView.addSubview(dayPriceLabel)
+        dayPriceLabel.snp_makeConstraints { (make) in
+            make.left.equalTo(restaurantNameLabel)
+            make.right.equalTo(categoryLabelView)
+            make.top.equalTo(distanceLabel.snp_bottom).offset(4)
+            make.height.equalTo(14)
+        }
         
-        priceLabel.text = Utils.formatPriceString(self.priceRange)
-        priceLabel.numberOfLines = 2
-        priceLabel.sizeToFit()
-        priceLabel.textColor = Const.KARUTA_THEME_COLOR
-        priceLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 12)
-        self.contentView.addSubview(priceLabel)
+        let nightPriceLabel = UILabel(frame: CGRectZero)
+        
+        if (self.restaurant!.nightPriceMin.isEmpty && self.restaurant!.nightPriceMax.isEmpty) {
+            nightPriceLabel.text = ""
+        } else {
+            nightPriceLabel.text = "[\(NSLocalizedString("Night", comment: ""))]\(Utils.formatPriceString(self.restaurant!.nightPriceMin))〜\(Utils.formatPriceString(self.restaurant!.nightPriceMax))"
+        }
+        nightPriceLabel.numberOfLines = 1
+        nightPriceLabel.sizeToFit()
+        nightPriceLabel.textColor = Const.KARUTA_THEME_COLOR
+        nightPriceLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 12)
+        self.contentView.addSubview(nightPriceLabel)
+        nightPriceLabel.snp_makeConstraints { (make) in
+            make.left.equalTo(restaurantNameLabel)
+            make.right.equalTo(categoryLabelView)
+            make.top.equalTo(dayPriceLabel.snp_bottom).offset(2)
+            make.height.equalTo(14)
+        }
         
         #if !RELEASE
         // ブラックリストボタン(Releaseバージョンには乗せない)
@@ -152,9 +168,9 @@ class CardView: MDCSwipeToChooseView {
     }
     
     func acquireImages() {
-        let loopCount = self.imageUrls.count < NUM_OF_IMAGES ? self.imageUrls.count: NUM_OF_IMAGES
+        let loopCount = self.restaurant!.imageUrls.count < NUM_OF_IMAGES ? self.restaurant!.imageUrls.count: NUM_OF_IMAGES
         for i in 0..<loopCount {
-            self.restaurantImageViews[i].sd_setImageWithURL(self.imageUrls[i], completed: {[weak self](image: UIImage!, error: NSError!, cacheType: SDImageCacheType, imageURL: NSURL!) in
+            self.restaurantImageViews[i].sd_setImageWithURL(NSURL(string: self.restaurant!.imageUrls[i]), completed: {[weak self](image: UIImage!, error: NSError!, cacheType: SDImageCacheType, imageURL: NSURL!) in
                 self!.restaurantImageViews[i].alpha = 0
                 UIView.animateWithDuration(0.5, delay: 0.0, options: .CurveEaseInOut, animations: {() -> Void in
                     self?.restaurantImageViews[i].contentMode = .ScaleAspectFill
@@ -165,6 +181,6 @@ class CardView: MDCSwipeToChooseView {
     }
     
     func blackListButtonTapped() {
-        self.delegate?.blackListButtonTapped(self, shopID: self.shopID)
+        self.delegate?.blackListButtonTapped(self, shopID: self.restaurant!.shopID)
     }
 }

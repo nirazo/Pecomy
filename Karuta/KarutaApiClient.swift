@@ -98,7 +98,6 @@ class KarutaApiClient {
         guard let _ = JSON else {
             return .Failure(KarutaApiClientError(type: .JsonParse))
         }
-        
         if let parsedObject = Mapper<T>().map(JSON){
             if error == nil {
                 return .Success(parsedObject)

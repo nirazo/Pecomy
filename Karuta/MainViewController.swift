@@ -300,8 +300,8 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
             weakSelf.hideIndicator()
             
             switch result {
-            case .Success(let res):
-                let cardView = weakSelf.createCardWithFrame(weakSelf.baseCardRect(), restaurant: res, syncID: weakSelf.restaurantModel.syncID)
+            case .Success(_):
+                let cardView = weakSelf.createCardWithFrame(weakSelf.baseCardRect(), restaurant: weakSelf.restaurantModel.restaurant, syncID: weakSelf.restaurantModel.syncID)
                 weakSelf.stackedCards.append(cardView)
                 if (weakSelf.canDisplayNextCard) {
                     weakSelf.displayStackedCard()

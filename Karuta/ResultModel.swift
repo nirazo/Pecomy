@@ -20,7 +20,6 @@ class ResultModel {
             guard let weakSelf = self else {
                 return
             }
-            
             switch response {
             case .Success(let value):
                 weakSelf.results = value.results

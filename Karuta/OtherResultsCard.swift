@@ -9,6 +9,10 @@
 import UIKit
 import SDWebImage
 
+protocol OtherResultCardDelegate {
+    func contentTapped(restaurant: Restaurant)
+}
+
 class OtherResultsCard: UIView {
     
     private let shadow = UIView()
@@ -23,6 +27,8 @@ class OtherResultsCard: UIView {
     
     var restaurants = [Restaurant]()
     var restaurantsCards = [OtherResultCardContentView]()
+    
+    var delegate: OtherResultCardDelegate?
     
     init(frame: CGRect, restaurants: [Restaurant],  delegate: ResultCardBaseDelegate) {
         super.init(frame: frame)
@@ -73,6 +79,7 @@ class OtherResultsCard: UIView {
         
         for (var i = 0; i < self.restaurants.count; i++)  {
             let content = OtherResultCardContentView(frame: CGRectZero, restaurant: self.restaurants[i])
+            content.delegate = self
             self.restaurantsCards.append(content)
             self.contentView.addSubview(self.restaurantsCards[i])
             self.restaurantsCards[i].snp_makeConstraints { (make) in
@@ -100,5 +107,11 @@ class OtherResultsCard: UIView {
                 }
             }
         }
+    }
+}
+
+extension OtherResultsCard: OtherResultCardContentDelegate {
+    func contentTapped(restaurant: Restaurant) {
+        self.delegate?.contentTapped(restaurant)
     }
 }

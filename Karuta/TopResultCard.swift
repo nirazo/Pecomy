@@ -40,14 +40,6 @@ class TopResultCard: ResultCardBase {
     @IBOutlet weak var detailButton: UIButton!
     
     var restaurant = Restaurant()
-    var syncID = ""
-    var shopID = ""
-    var shopName = ""
-    var priceRange = ""
-    var distance: Double = 0.0
-    var imageUrls = [NSURL?]()
-    var url: NSURL?
-    var category = ""
     var delegate: ResultCardBaseDelegate?
     
     class func instance() -> TopResultCard {
@@ -89,7 +81,7 @@ class TopResultCard: ResultCardBase {
         self.thirdImageView.contentMode = .Redraw
         
         // レストラン名のラベル
-        self.restaurantNameLabel.text = self.shopName
+        self.restaurantNameLabel.text = self.restaurant.shopName
         self.restaurantNameLabel.backgroundColor = UIColor.whiteColor()
         self.restaurantNameLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 16)
         self.restaurantNameLabel.numberOfLines = 2
@@ -97,40 +89,51 @@ class TopResultCard: ResultCardBase {
         self.restaurantNameLabel.sizeToFit()
         
         // カテゴリ
-        self.categoryView.setCategory(self.category)
+        self.categoryView.setCategory(self.restaurant.category)
         self.categoryView.backgroundColor = Const.RANKING_TOP_COLOR
         
         self.dayPriceIcon.image = UIImage(named: "noimage")
         // 値段ラベル
-        self.dayPriceLabel.text = Utils.formatPriceString(self.priceRange)
+        if (self.restaurant.dayPriceMin.isEmpty && self.restaurant.dayPriceMax.isEmpty) {
+            self.dayPriceLabel.text = ""
+        } else {
+        self.dayPriceLabel.text = "\(Utils.formatPriceString(self.restaurant.dayPriceMin))〜\(Utils.formatPriceString(self.restaurant.dayPriceMax))"
+        }
         self.dayPriceLabel.numberOfLines = 2
         self.dayPriceLabel.sizeToFit()
         self.dayPriceLabel.textColor = UIColor(red: 128.0/255.0, green: 128.0/255.0, blue: 128.0/255.0, alpha: 1.0)
         self.dayPriceLabel.font = UIFont(name: Const.KARUTA_FONT_NORMAL, size: 12)
         
         self.nightPriceIcon.image = UIImage(named: "noimage")
-        self.nightPriceLabel.text = Utils.formatPriceString(self.priceRange)
+        if (self.restaurant.nightPriceMin.isEmpty && self.restaurant.nightPriceMax.isEmpty) {
+            self.dayPriceLabel.text = ""
+        } else {
+            self.nightPriceLabel.text = "\(Utils.formatPriceString(self.restaurant.nightPriceMin))〜\(Utils.formatPriceString(self.restaurant.nightPriceMax))"
+        }
         self.nightPriceLabel.numberOfLines = 2
         self.nightPriceLabel.sizeToFit()
         self.nightPriceLabel.textColor = UIColor(red: 128.0/255.0, green: 128.0/255.0, blue: 128.0/255.0, alpha: 1.0)
         self.nightPriceLabel.font = UIFont(name: Const.KARUTA_FONT_NORMAL, size: 12)
         
         // 距離ラベル
-        self.distanceLabel.text = String(format: NSLocalizedString("CardDistanceFromText", comment: ""), self.distance.meterToMinutes())
+        self.distanceLabel.text = String(format: NSLocalizedString("CardDistanceFromText", comment: ""), self.restaurant.distance.meterToMinutes())
         self.distanceLabel.font = UIFont(name: Const.KARUTA_FONT_NORMAL, size: 12)
         self.distanceLabel.numberOfLines = 0
         self.distanceLabel.sizeToFit()
         self.distanceLabel.textColor = UIColor(red: 108/255.0, green: 108/255.0, blue: 108/255.0, alpha: 1.0)
         
         // 地図
-        let camera = GMSCameraPosition.cameraWithLatitude(35.681382,longitude: 139.766084, zoom: 15)
+        let lat = Double(self.restaurant.latitude) ?? 0.0
+        let lon = Double(self.restaurant.longitude) ?? 0.0
+
+        let camera = GMSCameraPosition.cameraWithLatitude(lat,longitude: lon, zoom: 15)
         self.mapView.camera = camera
         self.mapView.myLocationEnabled = true
 
         mapView.userInteractionEnabled = false
         
         let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2DMake(35.681382, 139.766084)
+        marker.position = CLLocationCoordinate2DMake(lat, lon)
         marker.map = mapView
         
         // 地図のグラデーション
@@ -147,7 +150,7 @@ class TopResultCard: ResultCardBase {
 
         self.reviewCommentLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 14)
         self.reviewCommentLabel.textColor = Const.KARUTA_THEME_TEXT_COLOR
-        self.reviewCommentLabel.text = "testてすとテストやで"
+        self.reviewCommentLabel.text = self.restaurant.reviewSubjects[0]
         
         // もっと見るボタン
         self.detailButton.backgroundColor = Const.RANKING_TOP_COLOR
@@ -167,42 +170,24 @@ class TopResultCard: ResultCardBase {
     
     // TODO: - Refactoring
     private func acquireImages() {
-        if self.imageUrls.count <= 0 {
-            
-        } else if self.imageUrls.count == 1 {
-            self.mainImageView.sd_setImageWithURL(self.imageUrls[0], completed: {[weak self](image: UIImage!, error: NSError!, cacheType: SDImageCacheType, imageURL: NSURL!) in
+        if self.restaurant.imageUrls.count >= 1 {
+            self.mainImageView.sd_setImageWithURL(NSURL(string: self.restaurant.imageUrls[0]), completed: {[weak self](image: UIImage!, error: NSError!, cacheType: SDImageCacheType, imageURL: NSURL!) in
                 self!.mainImageView.alpha = 0
                 UIView.animateWithDuration(0.5, delay: 0.0, options: .CurveEaseInOut, animations: {() -> Void in
                     self!.mainImageView.alpha = 1
                     }, completion: nil)
                 })
-        } else if self.imageUrls.count == 2 {
-            self.mainImageView.sd_setImageWithURL(self.imageUrls[0], completed: {[weak self](image: UIImage!, error: NSError!, cacheType: SDImageCacheType, imageURL: NSURL!) in
-                self!.mainImageView.alpha = 0
-                UIView.animateWithDuration(0.5, delay: 0.0, options: .CurveEaseInOut, animations: {() -> Void in
-                    self!.mainImageView.alpha = 1
-                    }, completion: nil)
-                })
-            self.secondImageView.sd_setImageWithURL(self.imageUrls[1], completed: {[weak self](image: UIImage!, error: NSError!, cacheType: SDImageCacheType, imageURL: NSURL!) in
+        }
+        if self.restaurant.imageUrls.count >= 2 {
+            self.secondImageView.sd_setImageWithURL(NSURL(string: self.restaurant.imageUrls[1]), completed: {[weak self](image: UIImage!, error: NSError!, cacheType: SDImageCacheType, imageURL: NSURL!) in
                 self!.secondImageView.alpha = 0
                 UIView.animateWithDuration(0.5, delay: 0.0, options: .CurveEaseInOut, animations: {() -> Void in
                     self!.secondImageView.alpha = 1
                     }, completion: nil)
                 })
-        } else {
-            self.mainImageView.sd_setImageWithURL(self.imageUrls[0], completed: {[weak self](image: UIImage!, error: NSError!, cacheType: SDImageCacheType, imageURL: NSURL!) in
-                self!.mainImageView.alpha = 0
-                UIView.animateWithDuration(0.5, delay: 0.0, options: .CurveEaseInOut, animations: {() -> Void in
-                    self!.mainImageView.alpha = 1
-                    }, completion: nil)
-                })
-            self.secondImageView.sd_setImageWithURL(self.imageUrls[1], completed: {[weak self](image: UIImage!, error: NSError!, cacheType: SDImageCacheType, imageURL: NSURL!) in
-                self!.secondImageView.alpha = 0
-                UIView.animateWithDuration(0.5, delay: 0.0, options: .CurveEaseInOut, animations: {() -> Void in
-                    self!.secondImageView.alpha = 1
-                    }, completion: nil)
-                })
-            self.thirdImageView.sd_setImageWithURL(self.imageUrls[2], completed: {[weak self](image: UIImage!, error: NSError!, cacheType: SDImageCacheType, imageURL: NSURL!) in
+        }
+        if self.restaurant.imageUrls.count >= 3 {
+            self.thirdImageView.sd_setImageWithURL(NSURL(string: self.restaurant.imageUrls[2]), completed: {[weak self](image: UIImage!, error: NSError!, cacheType: SDImageCacheType, imageURL: NSURL!) in
                 self!.thirdImageView.alpha = 0
                 UIView.animateWithDuration(0.5, delay: 0.0, options: .CurveEaseInOut, animations: {() -> Void in
                     self!.thirdImageView.alpha = 1

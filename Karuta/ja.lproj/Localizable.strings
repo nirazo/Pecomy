@@ -27,10 +27,14 @@
 "CloseTutorial" = "はじめる";
 "CardLikeText" = "行きたい！";
 "CardDislikeText" = "イマイチ...";
+// Category
 "CategoryAll" = "全カテゴリ";
 "CategoryRestaurant" = "レストラン";
 "CategoryCafe" = "カフェ";
 "CategoryDrinking" = "飲み";
+// Card
+"Day" = "昼";
+"Night" = "夜";
 "CardDistanceFromText" = "ここから徒歩%d分";
 "CardNoPriceInfoText" = "値段情報がありません";
 "BlackListButtonSendMessage" = "このお店を候補から除外するよう報告します";
@@ -42,3 +46,4 @@
 "TelephoneCall" = "電話する";
 "PicturesViewTitle" = "その他の写真";
 "RichTagsTitle" = "タグ";
+"BusinessHourTitle" = "営業時間";

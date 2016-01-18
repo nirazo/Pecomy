@@ -87,7 +87,6 @@ class ResultViewController: UIViewController, ResultCardBaseDelegate {
     // 結果が存在する場合のレイアウト
     private func setupLayout() {
         self.scrollView.contentInset = UIEdgeInsetsMake(0, 0, 32, 0)
-        //self.scrollView.backgroundColor = UIColor.yellowColor()
         self.scrollView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.scrollView)
         self.scrollView.snp_makeConstraints { (make) in
@@ -149,7 +148,9 @@ class ResultViewController: UIViewController, ResultCardBaseDelegate {
                 make.top.equalTo(self.otherResultsBaseView).offset(18)
             }
             
-            self.otherResultsCard = OtherResultsCard(frame: CGRectZero, restaurants: self.restaurants, delegate: self)
+            let otherRestaurants = [Restaurant](self.restaurants[1...self.restaurants.count-1])
+            self.otherResultsCard = OtherResultsCard(frame: CGRectZero, restaurants: otherRestaurants, delegate: self)
+            self.otherResultsCard!.delegate = self
             self.otherResultsBaseView.addSubview(self.otherResultsCard!)
             self.otherResultsCard!.snp_makeConstraints { (make) in
                 make.width.equalTo(self.otherResultsBaseView)
@@ -180,13 +181,6 @@ class ResultViewController: UIViewController, ResultCardBaseDelegate {
         super.didReceiveMemoryWarning()
     }
     
-    // 結果をタップした時の挙動
-    func resultTapped(sender:UITapGestureRecognizer) {
-//        let resultCard = sender.view as! ResultCardBase
-//        let detailView = RestaurantDetailViewController(url: resultCard.url)
-//        self.navigationController?.pushViewController(detailView, animated: true)
-    }
-    
     // やり直すをタップした時の挙動
     func resetTapped() {
         self.delegate?.resultViewController(self, backButtonTappedWithReset: true)
@@ -214,4 +208,12 @@ class ResultViewController: UIViewController, ResultCardBaseDelegate {
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
 
+}
+
+// OtherResultCardDelegate method
+extension ResultViewController: OtherResultCardDelegate {
+    func contentTapped(restaurant: Restaurant) {
+        let detailVC = DetailViewController(restaurant: restaurant)
+        self.navigationController?.pushViewController(detailVC, animated: true)
+    }
 }

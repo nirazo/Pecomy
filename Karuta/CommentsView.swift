@@ -11,6 +11,13 @@ import UIKit
 class CommentsView: UIView {
     
     let contentView = UIView()
+    let imageView = UIImageView()
+    let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .Light))
+    var image = UIImage(named: "noimage") {
+        didSet {
+            self.imageView.image = image
+        }
+    }
     
     // 描画系定数
     private let NUM_OF_IMAGES = 1
@@ -28,11 +35,10 @@ class CommentsView: UIView {
         self.comments = comments
         
         // パーツ群を置くビュー
-        self.contentView.backgroundColor = UIColor.yellowColor()
-        
+        self.contentView.backgroundColor = UIColor.lightGrayColor()
         self.addSubview(contentView)
         
-        self.backgroundColor = UIColor.yellowColor()
+        self.backgroundColor = UIColor.lightGrayColor()
         self.setupSubViews()
     }
     
@@ -43,11 +49,15 @@ class CommentsView: UIView {
     func setup(comments: [String]) {
         self.comments = comments
         // パーツ群を置くビュー
-        self.contentView.backgroundColor = UIColor.yellowColor()
+        self.contentView.backgroundColor = UIColor.lightGrayColor()
         
         self.addSubview(contentView)
         
-        self.backgroundColor = UIColor.yellowColor()
+        self.imageView.image = self.image
+        imageView.addSubview(self.blurView)
+        self.contentView.addSubview(self.imageView)
+        
+        self.backgroundColor = UIColor.lightGrayColor()
         self.setupSubViews()
     }
     
@@ -58,7 +68,19 @@ class CommentsView: UIView {
             make.left.equalTo(self)
         }
         self.contentView.layer.frame = self.contentView.bounds
-        self.contentView.backgroundColor = UIColor.yellowColor()
+        self.contentView.backgroundColor = UIColor.lightGrayColor()
+        
+        self.imageView.snp_makeConstraints { (make) in
+            make.size.equalTo(self.contentView)
+            make.top.equalTo(self.contentView)
+            make.left.equalTo(self.contentView)
+        }
+        
+        self.blurView.snp_makeConstraints { (make) in
+            make.size.equalTo(self.imageView)
+            make.top.equalTo(self.imageView)
+            make.left.equalTo(self.imageView)
+        }
         
         let loopCount = self.comments.count < MAX_COMMENTS_NUM ? self.comments.count : MAX_COMMENTS_NUM
         

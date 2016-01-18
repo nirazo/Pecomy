@@ -27,10 +27,14 @@
 "CloseTutorial" = "start";
 "CardLikeText" = "Like!";
 "CardDislikeText" = "Unn..";
+// Category
 "CategoryAll" = "All";
 "CategoryRestaurant" = "Restaurant";
 "CategoryCafe" = "Cafe";
 "CategoryDrinking" = "Drinking";
+// Card
+"Day" = "Day";
+"Night" = "Night";
 "CardDistanceFromText" = "%d minutes to walk from here";
 "CardNoPriceInfoText" = "No price information";
 "BlackListButtonSendMessage" = "Send request to exclude this card from the list";
@@ -42,3 +46,4 @@
 "TelephoneCall" = "Phone Call";
 "PicturesViewTitle" = "Other pictures";
 "RichTagsTitle" = "Tags";
+"BusinessHourTitle" = "Business Hour";

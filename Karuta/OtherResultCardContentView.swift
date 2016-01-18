@@ -9,12 +9,16 @@
 import UIKit
 import SDWebImage
 
+protocol OtherResultCardContentDelegate {
+    func contentTapped(restaurant: Restaurant)
+}
+
 class OtherResultCardContentView: UIView {
     
     var imageView = UIImageView()
     var restaurant: Restaurant?
     let contentView = UIView()
-    
+    var delegate: OtherResultCardContentDelegate?
     
     init(frame: CGRect, restaurant: Restaurant) {
         super.init(frame: frame)
@@ -29,6 +33,9 @@ class OtherResultCardContentView: UIView {
         
         self.backgroundColor = UIColor.clearColor()
         self.layer.masksToBounds = false
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: "tapped")
+        self.addGestureRecognizer(tapGesture)
                 
         self.setupSubViews()
     }
@@ -129,5 +136,9 @@ class OtherResultCardContentView: UIView {
                 weakSelf.imageView.alpha = 1
                 }, completion: nil)
             })
+    }
+    
+    func tapped() {
+        self.delegate?.contentTapped(self.restaurant!)
     }
 }

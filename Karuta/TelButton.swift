@@ -31,7 +31,7 @@ class TelButton: UIButton {
         // 角丸
         self.layer.cornerRadius = CORNER_RADIUS
         
-        self.backgroundColor = UIColor.greenColor()
+        self.backgroundColor = UIColor(red: 61/255, green: 204/255, blue: 60/255, alpha: 1.0)
         self.addSubview(self.telImage)
         
         self.telImage.snp_makeConstraints { (make) in

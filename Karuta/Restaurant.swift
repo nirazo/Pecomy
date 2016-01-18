@@ -12,10 +12,10 @@ import ObjectMapper
 struct Restaurant {
     var shopID = ""
     var shopName = ""
-    var dayPriceMin = 0
-    var dayPriceMax = 0
-    var nightPriceMin = 0
-    var nightPriceMax = 0
+    var dayPriceMin = ""
+    var dayPriceMax = ""
+    var nightPriceMin = ""
+    var nightPriceMax = ""
     var distance: Double = 0.0
     var imageUrls = [String]()
     var url = ""
@@ -23,6 +23,9 @@ struct Restaurant {
     var richTags = [String]()
     var reviewSubjects = [String]()
     var holidays = ""
+    var latitude = ""
+    var longitude = ""
+    var businessHours = ""
 }
 
 extension Restaurant: Mappable {
@@ -44,5 +47,8 @@ extension Restaurant: Mappable {
         richTags <- map["rich_tags"]
         reviewSubjects <- map["review_subjects"]
         holidays <- map["holidays"]
+        latitude <- map["latitude"]
+        longitude <- map["longitude"]
+        businessHours <- map["business_hours"]
     }
 }

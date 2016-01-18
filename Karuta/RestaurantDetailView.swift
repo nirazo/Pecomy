@@ -70,6 +70,7 @@ class RestaurantDetailView: UIView {
         
         // 画像
         self.restaurantImageView.image = UIImage(named: "noimage")
+        self.restaurantImageView.contentMode = .Redraw
         
         // レストラン名のラベル
         self.restaurantNameLabel.text = self.restaurant.shopName
@@ -85,14 +86,22 @@ class RestaurantDetailView: UIView {
         
         self.dayPriceIcon.image = UIImage(named: "noimage")
         // 値段ラベル
-        self.dayPriceLabel.text = "\(self.restaurant.dayPriceMin)"
+        if (self.restaurant.dayPriceMin.isEmpty && self.restaurant.dayPriceMax.isEmpty) {
+            self.dayPriceLabel.text = ""
+        } else {
+            self.dayPriceLabel.text = "\(Utils.formatPriceString(self.restaurant.dayPriceMin))〜\(Utils.formatPriceString(self.restaurant.dayPriceMax))"
+        }
         self.dayPriceLabel.numberOfLines = 1
         self.dayPriceLabel.sizeToFit()
         self.dayPriceLabel.textColor = UIColor(red: 128.0/255.0, green: 128.0/255.0, blue: 128.0/255.0, alpha: 1.0)
         self.dayPriceLabel.font = UIFont(name: Const.KARUTA_FONT_NORMAL, size: 12)
         
         self.nightPriceIcon.image = UIImage(named: "noimage")
-        self.nightPriceLabel.text = "\(self.restaurant.nightPriceMin)"
+        if (self.restaurant.nightPriceMin.isEmpty && self.restaurant.nightPriceMax.isEmpty) {
+            self.nightPriceLabel.text = ""
+        } else {
+            self.nightPriceLabel.text = "\(Utils.formatPriceString(self.restaurant.nightPriceMin))〜\(Utils.formatPriceString(self.restaurant.nightPriceMax))"
+        }
         self.nightPriceLabel.numberOfLines = 1
         self.nightPriceLabel.sizeToFit()
         self.nightPriceLabel.textColor = UIColor(red: 128.0/255.0, green: 128.0/255.0, blue: 128.0/255.0, alpha: 1.0)
@@ -106,14 +115,16 @@ class RestaurantDetailView: UIView {
         self.distanceLabel.textColor = UIColor(red: 108/255.0, green: 108/255.0, blue: 108/255.0, alpha: 1.0)
         
         // 地図
-        let camera = GMSCameraPosition.cameraWithLatitude(35.681382,longitude: 139.766084, zoom: 15)
+        let lat = Double(self.restaurant.latitude) ?? 0.0
+        let lon = Double(self.restaurant.longitude) ?? 0.0
+        let camera = GMSCameraPosition.cameraWithLatitude(lat,longitude: lon, zoom: 15)
         self.mapView.camera = camera
         self.mapView.myLocationEnabled = true
         
-        mapView.userInteractionEnabled = false
+        mapView.userInteractionEnabled = true
         
         let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2DMake(35.681382, 139.766084)
+        marker.position = CLLocationCoordinate2DMake(lat, lon)
         marker.map = mapView
         
         // 地図のグラデーション
@@ -127,6 +138,19 @@ class RestaurantDetailView: UIView {
         
         // 電話ボタン
         self.telButton.addTarget(self, action: "telButtonTapped:", forControlEvents: .TouchUpInside)
+        
+        // 営業時間
+        self.businessHourTitleLabel.text = NSLocalizedString("BusinessHourTitle", comment: "")
+        self.businessHourTitleLabel.textColor = Const.RANKING_SECOND_RIGHT_COLOR
+        self.businessHourTitleLabel.font = UIFont(name: Const.KARUTA_FONT_NORMAL, size: 12)
+        
+        self.dayBusinessHourLabel.text = self.restaurant.businessHours
+        self.dayBusinessHourLabel.textColor = Const.RANKING_SECOND_RIGHT_COLOR
+        self.dayBusinessHourLabel.font = UIFont(name: Const.KARUTA_FONT_NORMAL, size: 12)
+        
+        self.nightBusinessHourLabel.text = self.restaurant.businessHours
+        self.nightBusinessHourLabel.textColor = Const.RANKING_SECOND_RIGHT_COLOR
+        self.nightBusinessHourLabel.font = UIFont(name: Const.KARUTA_FONT_NORMAL, size: 12)
         
         // レビューリスト
         self.commentsView.setup(restaurant.reviewSubjects)
@@ -180,6 +204,7 @@ class RestaurantDetailView: UIView {
                 return
             }
             weakSelf.restaurantImageView.alpha = 0
+            weakSelf.commentsView.image = image
             UIView.animateWithDuration(0.5, delay: 0.0, options: .CurveEaseInOut, animations: {() -> Void in
                 weakSelf.restaurantImageView.alpha = 1
                 }, completion: nil)
