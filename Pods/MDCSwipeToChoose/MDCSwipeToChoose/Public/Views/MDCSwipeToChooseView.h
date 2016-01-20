@@ -42,27 +42,10 @@
  */
 @property (nonatomic, strong) UIView *likedView;
 
-@property (nonatomic, strong) UIView *likedLabelView;
-
-// likedLabelの枠
-@property (nonatomic, strong) UIView *likedLabelFrame;
-
 /*!
  * The "nope" view, which fades in as the `MDCSwipeToChooseView` is panned to the left.
  */
 @property (nonatomic, strong) UIView *nopeView;
-
-@property (nonatomic, strong) UIView *nopeLabelView;
-
-// nopeLabelの枠
-@property (nonatomic, strong) UIView *nopeLabelFrame;
-
-/*!
- * Custmize.
- * 影をつけるため、コンテンツは全てcontentViewに配備することとする。
- * この下に影用のビューを用意する。
- */
-@property (nonatomic, strong) UIView *contentView;
 
 /*!
  * The designated initializer takes a `frame` and a set of options to customize

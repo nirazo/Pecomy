@@ -38,8 +38,8 @@
     UILabel *label = [[UILabel alloc] initWithFrame:self.bounds];
     label.text = [text uppercaseString];
     label.textAlignment = NSTextAlignmentCenter;
-    label.font = [UIFont fontWithName:@"HiraKakuProN-W6"
-                                 size:24.f];
+    label.font = [UIFont fontWithName:@"HelveticaNeue-CondensedBlack"
+                                 size:48.f];
     label.textColor = color;
     [self addSubview:label];
 
