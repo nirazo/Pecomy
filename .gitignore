@@ -1,3 +1,6 @@
 #Xcode
 xcuserdata
 .DS_Store
+
+#CocoaPod
+Pods/*
