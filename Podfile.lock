@@ -23,14 +23,14 @@ PODS:
   - SwiftyJSON (2.3.1)
 
 DEPENDENCIES:
-  - Alamofire (= 3.1.4)
-  - Google/Analytics (~> 1.0.0)
-  - GoogleMaps (= 1.11.1)
-  - MDCSwipeToChoose (= 0.2.3)
-  - ObjectMapper (= 1.0.1)
-  - SDWebImage (= 3.7.2)
-  - SnapKit (= 0.14.0)
-  - SwiftyJSON (= 2.3.1)
+  - Alamofire
+  - Google/Analytics
+  - GoogleMaps
+  - MDCSwipeToChoose
+  - ObjectMapper
+  - SDWebImage
+  - SnapKit
+  - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: fbc829692f351fa1d8a31dd75fd7f7f56fea31fb
