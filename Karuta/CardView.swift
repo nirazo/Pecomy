@@ -288,26 +288,29 @@ class CardView: MDCSwipeToChooseView {
         options.delegate = self.options.delegate
         options.threshold = self.options.threshold
         
-        options.onPan = { (state) in
+        options.onPan = { [weak self] (state) in
+            guard let weakSelf = self else {
+                return
+            }
             if (state.direction == .None) {
-                self.likedView.alpha = 0.0
-                self.likedLabelView.alpha = 0.0
-                self.nopeView.alpha = 0.0
-                self.nopeLabelView.alpha = 0.0
+                weakSelf.likedView.alpha = 0.0
+                weakSelf.likedLabelView.alpha = 0.0
+                weakSelf.nopeView.alpha = 0.0
+                weakSelf.nopeLabelView.alpha = 0.0
             } else if (state.direction == .Left) {
-                self.likedView.alpha = 0.0
-                self.likedLabelView.alpha = 0.0
-                self.nopeView.alpha = state.thresholdRatio/2
-                self.nopeLabelView.alpha = state.thresholdRatio
+                weakSelf.likedView.alpha = 0.0
+                weakSelf.likedLabelView.alpha = 0.0
+                weakSelf.nopeView.alpha = state.thresholdRatio/2
+                weakSelf.nopeLabelView.alpha = state.thresholdRatio
             } else if (state.direction == .Right) {
-                self.likedView.alpha = state.thresholdRatio/2
-                self.likedLabelView.alpha = state.thresholdRatio
-                self.nopeView.alpha = 0.0
-                self.nopeLabelView.alpha = 0.0
+                weakSelf.likedView.alpha = state.thresholdRatio/2
+                weakSelf.likedLabelView.alpha = state.thresholdRatio
+                weakSelf.nopeView.alpha = 0.0
+                weakSelf.nopeLabelView.alpha = 0.0
             }
             
-            if ((self.options.onPan) != nil) {
-                self.options.onPan(state);
+            if ((weakSelf.options.onPan) != nil) {
+                weakSelf.options.onPan(state);
             }
         }
         self.mdc_swipeToChooseSetup(options)
