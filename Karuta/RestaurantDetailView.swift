@@ -70,7 +70,8 @@ class RestaurantDetailView: UIView {
         
         // 画像
         self.restaurantImageView.image = UIImage(named: "noimage")
-        self.restaurantImageView.contentMode = .Redraw
+        self.restaurantImageView.contentMode = .ScaleAspectFill
+        self.restaurantImageView.clipsToBounds = true
         
         // レストラン名のラベル
         self.restaurantNameLabel.text = self.restaurant.shopName

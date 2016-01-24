@@ -46,7 +46,8 @@ class CommentContentView: UIView {
             make.left.equalTo(self)
         }
         
-        self.imageView.contentMode = .Redraw
+        self.imageView.contentMode = .ScaleAspectFill
+        self.imageView.clipsToBounds = true
         self.contentView.addSubview(self.imageView)
         self.imageView.snp_makeConstraints { (make) in
             make.width.equalTo(40)
