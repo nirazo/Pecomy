@@ -137,9 +137,6 @@ class RestaurantDetailView: UIView {
         // セパレータ
         self.middleSeparator.backgroundColor = UIColor(red: 230/255.0, green: 230/255.0, blue: 230/255.0, alpha: 1.0)
         
-        // 電話ボタン
-        self.telButton.addTarget(self, action: "telButtonTapped:", forControlEvents: .TouchUpInside)
-        
         // 営業時間
         self.businessHourTitleLabel.text = NSLocalizedString("BusinessHourTitle", comment: "")
         self.businessHourTitleLabel.textColor = Const.RANKING_SECOND_RIGHT_COLOR
@@ -189,10 +186,6 @@ class RestaurantDetailView: UIView {
         self.richTagsView.registerClass(RichTagCollectionViewCell.self, forCellWithReuseIdentifier: "TagCell")
         
         self.richTagViewHeightConstraint.constant = self.richTagsView.contentSize.height
-    }
-    
-    func telButtonTapped(sender: AnyObject) {
-        print("tel!!!")
     }
     
     private func acquireImages() {

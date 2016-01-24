@@ -47,3 +47,5 @@
 "PicturesViewTitle" = "その他の写真";
 "RichTagsTitle" = "タグ";
 "BusinessHourTitle" = "営業時間";
+"TelAlertMessage" = "この店舗に電話をかけますか？";
+"TelAlertTelButton" = "電話をかける";

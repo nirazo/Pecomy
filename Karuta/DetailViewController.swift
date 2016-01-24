@@ -59,7 +59,7 @@ class DetailViewController: UIViewController {
         self.detailView?.picturesView.reloadData()
         self.detailView?.picturesView.setNeedsLayout()
         
-        self.detailView?.telButton.addTarget(self, action: "telTapped", forControlEvents: .TouchUpInside)
+        self.detailView?.telButton.addTarget(self, action: "telButtonTapped:", forControlEvents: .TouchUpInside)
         
         self.detailView?.richTagsView.reloadData()
         self.detailView?.richTagsView.setNeedsLayout()
@@ -79,5 +79,20 @@ class DetailViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    
+    func telButtonTapped(sender: AnyObject) {
+        let telURL = NSURL(string: "tel://\(self.restaurant.tel)")
+        if let telURL = telURL {
+            let ac = UIAlertController(title: "", message: NSLocalizedString("TelAlertMessage", comment: ""), preferredStyle: .Alert)
+            let okAction = UIAlertAction(title: NSLocalizedString("TelAlertTelButton", comment: ""),
+                style: .Default, handler: { (action) in
+                    UIApplication.sharedApplication().openURL(telURL)
+            })
+            let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""),
+                style: .Default, handler: nil)
+            ac.addAction(cancelAction)
+            ac.addAction(okAction)
+            self.presentViewController(ac, animated: true, completion: nil)
+        }
+    }
 }
