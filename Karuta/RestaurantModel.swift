@@ -19,22 +19,22 @@ class RestaurantModel {
     func fetch(latitude: Double, longitude: Double, like: String? = nil, category: CategoryIdentifier, syncId: String? = nil, reset: Bool, handler: ((KarutaResult<Restaurant, KarutaApiClientError>) -> Void)) -> Bool {
         let request = CardRequest(latitude: latitude, longitude: longitude, like: like, category: category, syncId: syncId, reset: reset)
         self.session = KarutaApiClient.send(request) {[weak self] (response: KarutaResult<CardRequest.Response, KarutaApiClientError>) -> Void in
-            guard let weakSelf = self else {
+            guard let strongSelf = self else {
                 return
             }
             
             switch response {
             case .Success(let value):
-                weakSelf.restaurant = value.restaurant
-                weakSelf.syncID = value.syncID
-                weakSelf.resultAvailable = value.resultAvailable
+                strongSelf.restaurant = value.restaurant
+                strongSelf.syncID = value.syncID
+                strongSelf.resultAvailable = value.resultAvailable
                 handler(KarutaResult(value: value.restaurant))
             case .Failure(let error):
                 //Log.d(error)
                 handler(KarutaResult(error: error))
             }
             
-            weakSelf.session = nil
+            strongSelf.session = nil
         }
         return true
     }

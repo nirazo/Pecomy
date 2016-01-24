@@ -17,18 +17,17 @@ class ResultModel {
     func fetch(latitude: Double, longitude: Double, handler: ((KarutaResult<[Restaurant], KarutaApiClientError>) -> Void)) -> Bool {
         let request = ResultRequest(latitude: latitude, longitude: longitude)
         self.session = KarutaApiClient.send(request) {[weak self] (response: KarutaResult<ResultRequest.Response, KarutaApiClientError>) -> Void in
-            guard let weakSelf = self else {
+            guard let strongSelf = self else {
                 return
             }
             switch response {
             case .Success(let value):
-                weakSelf.results = value.results
+                strongSelf.results = value.results
                 handler(KarutaResult(value: value.results))
             case .Failure(let error):
-                //Log.d(error)
                 handler(KarutaResult(error: error))
             }
-            weakSelf.session = nil
+            strongSelf.session = nil
         }
         return true
     }

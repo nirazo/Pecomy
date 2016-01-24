@@ -289,28 +289,28 @@ class CardView: MDCSwipeToChooseView {
         options.threshold = self.options.threshold
         
         options.onPan = { [weak self] (state) in
-            guard let weakSelf = self else {
+            guard let strongSelf = self else {
                 return
             }
             if (state.direction == .None) {
-                weakSelf.likedView.alpha = 0.0
-                weakSelf.likedLabelView.alpha = 0.0
-                weakSelf.nopeView.alpha = 0.0
-                weakSelf.nopeLabelView.alpha = 0.0
+                strongSelf.likedView.alpha = 0.0
+                strongSelf.likedLabelView.alpha = 0.0
+                strongSelf.nopeView.alpha = 0.0
+                strongSelf.nopeLabelView.alpha = 0.0
             } else if (state.direction == .Left) {
-                weakSelf.likedView.alpha = 0.0
-                weakSelf.likedLabelView.alpha = 0.0
-                weakSelf.nopeView.alpha = state.thresholdRatio/2
-                weakSelf.nopeLabelView.alpha = state.thresholdRatio
+                strongSelf.likedView.alpha = 0.0
+                strongSelf.likedLabelView.alpha = 0.0
+                strongSelf.nopeView.alpha = state.thresholdRatio/2
+                strongSelf.nopeLabelView.alpha = state.thresholdRatio
             } else if (state.direction == .Right) {
-                weakSelf.likedView.alpha = state.thresholdRatio/2
-                weakSelf.likedLabelView.alpha = state.thresholdRatio
-                weakSelf.nopeView.alpha = 0.0
-                weakSelf.nopeLabelView.alpha = 0.0
+                strongSelf.likedView.alpha = state.thresholdRatio/2
+                strongSelf.likedLabelView.alpha = state.thresholdRatio
+                strongSelf.nopeView.alpha = 0.0
+                strongSelf.nopeLabelView.alpha = 0.0
             }
             
-            if ((weakSelf.options.onPan) != nil) {
-                weakSelf.options.onPan(state);
+            if ((strongSelf.options.onPan) != nil) {
+                strongSelf.options.onPan(state);
             }
         }
         self.mdc_swipeToChooseSetup(options)

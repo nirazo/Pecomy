@@ -15,12 +15,12 @@ class PictureCollectionViewCell: UICollectionViewCell {
         didSet {
             let url = NSURL(string: urlString)
             self.imageView.sd_setImageWithURL(url, completed: {[weak self](image: UIImage!, error: NSError!, cacheType: SDImageCacheType, imageURL: NSURL!) in
-                guard let weakSelf = self else {
+                guard let strongSelf = self else {
                     return
                 }
-                weakSelf.imageView.alpha = 0
+                strongSelf.imageView.alpha = 0
                 UIView.animateWithDuration(0.5, delay: 0.0, options: .CurveEaseInOut, animations: {() -> Void in
-                    weakSelf.imageView.alpha = 1
+                    strongSelf.imageView.alpha = 1
                     }, completion: nil)
                 })
         }

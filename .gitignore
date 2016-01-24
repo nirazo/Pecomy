@@ -3,7 +3,7 @@ xcuserdata
 .DS_Store
 
 #bundler
-/bundle
+/bundle/
 
 #CocoaPod
-Pods/*
+/Pods/
