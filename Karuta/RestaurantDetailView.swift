@@ -200,13 +200,13 @@ class RestaurantDetailView: UIView {
         }
         let url = NSURL(string: self.restaurant.imageUrls[0])
         self.restaurantImageView.sd_setImageWithURL(url, completed: {[weak self](image: UIImage!, error: NSError!, cacheType: SDImageCacheType, imageURL: NSURL!) in
-            guard let weakSelf = self else {
+            guard let strongSelf = self else {
                 return
             }
-            weakSelf.restaurantImageView.alpha = 0
-            weakSelf.commentsView.image = image
+            strongSelf.restaurantImageView.alpha = 0
+            strongSelf.commentsView.image = image
             UIView.animateWithDuration(0.5, delay: 0.0, options: .CurveEaseInOut, animations: {() -> Void in
-                weakSelf.restaurantImageView.alpha = 1
+                strongSelf.restaurantImageView.alpha = 1
                 }, completion: nil)
             })
     }

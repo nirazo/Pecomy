@@ -61,6 +61,7 @@
 		D2DEE6AF1C030FA200861BDF /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DEE6AE1C030FA200861BDF /* Double.swift */; };
 		D2DEEF1E1BD72F7400FDBB8F /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DEEF1D1BD72F7400FDBB8F /* Category.swift */; };
 		D2E36EC71C2D615D00DEE726 /* OtherResultCardContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E36EC61C2D615D00DEE726 /* OtherResultCardContentView.swift */; };
+		D2EFEB591C51282A0092DFC9 /* CardOverlayTextLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EFEB581C51282A0092DFC9 /* CardOverlayTextLabelView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -140,6 +141,7 @@
 		D2DEE6AE1C030FA200861BDF /* Double.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		D2DEEF1D1BD72F7400FDBB8F /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		D2E36EC61C2D615D00DEE726 /* OtherResultCardContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherResultCardContentView.swift; sourceTree = "<group>"; };
+		D2EFEB581C51282A0092DFC9 /* CardOverlayTextLabelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardOverlayTextLabelView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,6 +235,7 @@
 			children = (
 				D28A7A0B1B47AE900025371A /* CardView.swift */,
 				D24B29401B79CC1D00419B9B /* CardProgressViewController.swift */,
+				D2EFEB581C51282A0092DFC9 /* CardOverlayTextLabelView.swift */,
 			);
 			name = Card;
 			sourceTree = "<group>";
@@ -586,6 +589,7 @@
 				D292F7391B92DFFC005700AE /* Utils.swift in Sources */,
 				D2DEEF1E1BD72F7400FDBB8F /* Category.swift in Sources */,
 				D253A9E81C322B7D00D65D20 /* KarutaApiClient.swift in Sources */,
+				D2EFEB591C51282A0092DFC9 /* CardOverlayTextLabelView.swift in Sources */,
 				D272F45C1B9C25E4009564A0 /* LoadingView.swift in Sources */,
 				164718B71C3D22D700F50D33 /* CardResponse.swift in Sources */,
 				D2092A341B64D721008046D9 /* RestaurantModel.swift in Sources */,

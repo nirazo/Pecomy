@@ -23,14 +23,25 @@ class CardView: MDCSwipeToChooseView {
     let TEXT_MARGIN_X: CGFloat = 10.0
     let TEXT_MARGIN_Y: CGFloat = 5.0
     
+    let MDCSwipeToChooseViewHorizontalPadding: CGFloat = 13.0
+    let MDCSwipeToChooseViewTopPadding: CGFloat = 25.0
+    let MDCSwipeToChooseViewLabelHeight: CGFloat = 65.0
+    
     var delegate: CardViewDelegate?
     
     var restaurant: Restaurant?
     
+    var contentView = UIView()
+    var shadow = UIView()
+    
     var syncID = ""
     var restaurantImageViews = [UIImageView]()
-    let contentsView = UIView()
     let blackListButton = UIButton()
+    
+    var options = MDCSwipeToChooseViewOptions()
+    
+    var likedLabelView = UIView()
+    var nopeLabelView = UIView()
     
     // カードがフリックされた（操作が無効の状態）になっているかのフラグ
     var isFlicked = false
@@ -53,6 +64,7 @@ class CardView: MDCSwipeToChooseView {
         }
         
         super.init(frame: frame, options: options)
+        self.options = options
         
         self.setupSubViews()
 
@@ -63,6 +75,39 @@ class CardView: MDCSwipeToChooseView {
     }
     
     func setupSubViews() {
+        
+        self.layer.masksToBounds = false
+        self.layer.borderWidth = 0.0
+        
+        // likeのビュー
+        self.constructLikedVieww()
+
+        // dislikeのビュー
+        self.constructNopeView()
+
+        // SwipeToChooseの再セットアップ
+        self.setupSwipeToChoose()
+        
+        // ドロップシャドウ
+        self.shadow.frame = self.bounds
+        shadow.layer.masksToBounds = false
+        self.insertSubview(self.shadow, atIndex: 0)
+        shadow.backgroundColor = UIColor.whiteColor()
+        shadow.layer.cornerRadius = 5.0
+        shadow.layer.shadowOffset = CGSizeMake(0.5, 1.0)
+        shadow.layer.shadowRadius = 0.7
+        shadow.layer.shadowColor = UIColor.grayColor().CGColor
+        shadow.layer.shadowOpacity = 0.9
+        
+        // パーツ群を置くビュー
+        self.contentView = UIView(frame: self.bounds)
+        self.contentView.backgroundColor = UIColor.whiteColor()
+        
+        self.contentView.layer.cornerRadius = 5.0
+        self.contentView.layer.masksToBounds = true
+        
+        self.insertSubview(self.contentView, atIndex: 1)
+        
         // 画像
         self.restaurantImageViews[0].frame = CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height*0.45 - self.SEPARATOR_LINE_WIDTH)
         self.restaurantImageViews[1].frame = CGRect(x: 0, y: CGRectGetMaxY(self.restaurantImageViews[0].frame) + self.SEPARATOR_LINE_WIDTH, width: self.frame.size.width/2 - self.SEPARATOR_LINE_WIDTH/2, height: self.frame.size.height*0.3)
@@ -182,5 +227,92 @@ class CardView: MDCSwipeToChooseView {
     
     func blackListButtonTapped() {
         self.delegate?.blackListButtonTapped(self, shopID: self.restaurant!.shopID)
+    }
+    
+    
+    // 「行きたい」の時にかぶせるビュー
+    func constructLikedVieww() {
+
+        self.likedView.removeFromSuperview()
+        let frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)
+        self.likedView = UIView(frame: frame)
+        self.likedView.backgroundColor = UIColor(red: 230.0/255.0, green: 77.0/255.0, blue: 74.0/255.0, alpha:1.0)
+        self.likedView.alpha = 0.0
+        self.likedView.layer.cornerRadius = 5.0
+        self.addSubview(self.likedView)
+        
+        self.likedLabelView = CardOverlayTextLabelView(
+            frame: CGRect(x: MDCSwipeToChooseViewHorizontalPadding,
+                y: MDCSwipeToChooseViewTopPadding,
+                width: CGRectGetMidX(self.bounds),
+                height: MDCSwipeToChooseViewLabelHeight),
+            text: self.options.likedText)
+        
+        self.likedLabelView.alpha = 0.0
+        self.addSubview(self.likedLabelView)
+
+        self.likedLabelView.transform = CGAffineTransformRotate(CGAffineTransformIdentity, CGFloat(Double(self.options.likedRotationAngle)*(M_PI/180.0)))
+    }
+    
+    // 「イマイチ」の時にかぶせるビュー
+    func constructNopeView() {
+        self.nopeView.removeFromSuperview()
+        let frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)
+        self.nopeView = UIView(frame: frame)
+        self.nopeView.backgroundColor = UIColor(red: 75.0/255.0, green: 140.0/255.0, blue: 231.0/255.0, alpha: 1.0)
+        self.nopeView.alpha = 0.0
+        self.nopeView.layer.cornerRadius = 5.0
+        self.addSubview(self.nopeView)
+        
+        
+        let width = CGRectGetMidX(self.bounds);
+        let xOrigin = CGRectGetMaxX(self.bounds) - width - MDCSwipeToChooseViewHorizontalPadding
+        
+        self.nopeLabelView = CardOverlayTextLabelView(frame: CGRect(
+            x: xOrigin,
+            y: MDCSwipeToChooseViewTopPadding,
+            width: CGRectGetMidX(self.bounds),
+            height: MDCSwipeToChooseViewLabelHeight),
+            text: self.options.nopeText)
+        
+        self.nopeLabelView.alpha = 0.0
+        self.addSubview(self.nopeLabelView)
+        
+        self.nopeLabelView.transform = CGAffineTransformRotate(CGAffineTransformIdentity, CGFloat(Double(self.options.nopeRotationAngle)*(M_PI/180.0)))
+    }
+    
+    
+    //setup
+    private func setupSwipeToChoose() {
+        let options = MDCSwipeOptions()
+        options.delegate = self.options.delegate
+        options.threshold = self.options.threshold
+        
+        options.onPan = { [weak self] (state) in
+            guard let strongSelf = self else {
+                return
+            }
+            if (state.direction == .None) {
+                strongSelf.likedView.alpha = 0.0
+                strongSelf.likedLabelView.alpha = 0.0
+                strongSelf.nopeView.alpha = 0.0
+                strongSelf.nopeLabelView.alpha = 0.0
+            } else if (state.direction == .Left) {
+                strongSelf.likedView.alpha = 0.0
+                strongSelf.likedLabelView.alpha = 0.0
+                strongSelf.nopeView.alpha = state.thresholdRatio/2
+                strongSelf.nopeLabelView.alpha = state.thresholdRatio
+            } else if (state.direction == .Right) {
+                strongSelf.likedView.alpha = state.thresholdRatio/2
+                strongSelf.likedLabelView.alpha = state.thresholdRatio
+                strongSelf.nopeView.alpha = 0.0
+                strongSelf.nopeLabelView.alpha = 0.0
+            }
+            
+            if ((strongSelf.options.onPan) != nil) {
+                strongSelf.options.onPan(state);
+            }
+        }
+        self.mdc_swipeToChooseSetup(options)
     }
 }

@@ -82,29 +82,10 @@ class CommentContentView: UIView {
             make.height.equalTo(self.commentBackGroundView)
             make.right.equalTo(self.commentBackGroundView).offset(-12)
         }
-        
-        //let imageurls = restaurant.imageUrls.flatMap{NSURL(string: $0)}
-        //self.acquireImage(imageurls.first!)
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
     }
-    
-//    private func acquireImage(url: NSURL?) {
-//        guard let url = url else {
-//            self.imageView.image = UIImage(named: "noimage")
-//            return
-//        }
-//        self.imageView.sd_setImageWithURL(url, completed: {[weak self](image: UIImage!, error: NSError!, cacheType: SDImageCacheType, imageURL: NSURL!) in
-//            guard let weakSelf = self else {
-//                return
-//            }
-//            weakSelf.imageView.alpha = 0
-//            UIView.animateWithDuration(0.5, delay: 0.0, options: .CurveEaseInOut, animations: {() -> Void in
-//                weakSelf.imageView.alpha = 1
-//                }, completion: nil)
-//            })
-//    }
 
 }

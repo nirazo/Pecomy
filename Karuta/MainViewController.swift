@@ -206,21 +206,21 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
             
             self.locationManager.fetchWithCompletion({ [weak self] (location) in
                 loadingView.removeFromSuperview()
-                guard let weakSelf = self else {
+                guard let strongSelf = self else {
                     return
                 }
-                if (Utils.distanceBetweenLocations(weakSelf.currentLatitude!, fromLon: weakSelf.currentLongitude!, toLat: location!.coordinate.latitude, toLon: location!.coordinate.longitude) > Const.RETRY_DISTANCE) {
-                    weakSelf.reset()
-                    weakSelf.currentLatitude = Double(location!.coordinate.latitude);
-                    weakSelf.currentLongitude = Double(location!.coordinate.longitude);
-                    weakSelf.acquireFirstCardsWithLocation(weakSelf.currentLatitude!, longitude: weakSelf.currentLongitude!)
+                if (Utils.distanceBetweenLocations(strongSelf.currentLatitude!, fromLon: strongSelf.currentLongitude!, toLat: location!.coordinate.latitude, toLon: location!.coordinate.longitude) > Const.RETRY_DISTANCE) {
+                    strongSelf.reset()
+                    strongSelf.currentLatitude = Double(location!.coordinate.latitude);
+                    strongSelf.currentLongitude = Double(location!.coordinate.longitude);
+                    strongSelf.acquireFirstCardsWithLocation(strongSelf.currentLatitude!, longitude: strongSelf.currentLongitude!)
                 }
                 
                 }, failure: { [weak self] (error) in
-                    guard let weakSelf = self else {
+                    guard let strongSelf = self else {
                         return
                     }
-                    weakSelf.showRetryToGetLocationAlert()
+                    strongSelf.showRetryToGetLocationAlert()
                 })
         }
     }
@@ -263,28 +263,28 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     func acquireFirstCard() {
         self.locationManager.delegate = self
         self.locationManager.fetchWithCompletion({ [weak self] (location) in
-            guard let weakSelf = self else {
+            guard let strongSelf = self else {
                 return
             }
-            weakSelf.currentLatitude = Double(location!.coordinate.latitude);
-            weakSelf.currentLongitude = Double(location!.coordinate.longitude);
-            weakSelf.acquireFirstCardsWithLocation(weakSelf.currentLatitude!, longitude: weakSelf.currentLongitude!)
+            strongSelf.currentLatitude = Double(location!.coordinate.latitude);
+            strongSelf.currentLongitude = Double(location!.coordinate.longitude);
+            strongSelf.acquireFirstCardsWithLocation(strongSelf.currentLatitude!, longitude: strongSelf.currentLongitude!)
             },
             failure: { [weak self] (error) in
-                guard let weakSelf = self else {
+                guard let strongSelf = self else {
                     return
                 }
-                weakSelf.showRetryToGetLocationAlert()
+                strongSelf.showRetryToGetLocationAlert()
             })
     }
     
     func acquireFirstCardsWithLocation(latitude: Double, longitude: Double) {
         self.acquireCardWithLatitude(latitude, longitude: longitude, category: self.currentCategory, reset: true,
             completion: { [weak self] (Bool) in
-                guard let weakSelf = self else {
+                guard let strongSelf = self else {
                     return
                 }
-                weakSelf.acquireCardWithLatitude(latitude, longitude: longitude, category: weakSelf.currentCategory, reset: false, completion: nil)
+                strongSelf.acquireCardWithLatitude(latitude, longitude: longitude, category: strongSelf.currentCategory, reset: false, completion: nil)
         })
     }
     
@@ -294,28 +294,28 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     func acquireCardWithLatitude(latitude: Double, longitude: Double, like: String? = nil, category: CategoryIdentifier, syncId: String? = nil, reset: Bool, completion: ((Bool)->())? = nil) {
         self.showIndicator()
         self.restaurantModel.fetch(latitude, longitude: longitude, like: like, category: category, syncId: syncId, reset: reset, handler: {[weak self] (result: KarutaResult<Restaurant, KarutaApiClientError>) in
-            guard let weakSelf = self else {
+            guard let strongSelf = self else {
                 return
             }
-            weakSelf.hideIndicator()
+            strongSelf.hideIndicator()
             
             switch result {
             case .Success(_):
-                let cardView = weakSelf.createCardWithFrame(weakSelf.baseCardRect(), restaurant: weakSelf.restaurantModel.restaurant, syncID: weakSelf.restaurantModel.syncID)
-                weakSelf.stackedCards.append(cardView)
-                if (weakSelf.canDisplayNextCard) {
-                    weakSelf.displayStackedCard()
+                let cardView = strongSelf.createCardWithFrame(strongSelf.baseCardRect(), restaurant: strongSelf.restaurantModel.restaurant, syncID: strongSelf.restaurantModel.syncID)
+                strongSelf.stackedCards.append(cardView)
+                if (strongSelf.canDisplayNextCard) {
+                    strongSelf.displayStackedCard()
                 }
                 
-                let hasResult = weakSelf.restaurantModel.resultAvailable
+                let hasResult = strongSelf.restaurantModel.resultAvailable
                 
                 // result_availableがtrueで帰ってきた場合
                 if (hasResult) {
-                    if (!weakSelf.isDisplayedResult) {
-                        weakSelf.canDisplayNextCard = false
+                    if (!strongSelf.isDisplayedResult) {
+                        strongSelf.canDisplayNextCard = false
                     } else {
-                        if (weakSelf.currentSwipeCount >= weakSelf.SWIPE_COUNT_TO_RESULT) {
-                            weakSelf.canDisplayNextCard = false
+                        if (strongSelf.currentSwipeCount >= strongSelf.SWIPE_COUNT_TO_RESULT) {
+                            strongSelf.canDisplayNextCard = false
                         }
                     }
                 }
@@ -324,14 +324,14 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
                 switch error.type{
                 case .NoResult:
                     if (reset) {
-                        weakSelf.showOutOfRangeAlert()
+                        strongSelf.showOutOfRangeAlert()
                     } else {
-                        weakSelf.acquireResults()
+                        strongSelf.acquireResults()
                     }
                 case .ServerError:
-                    weakSelf.showServerErrorAlert()
+                    strongSelf.showServerErrorAlert()
                 default:
-                    weakSelf.acquireResults()
+                    strongSelf.acquireResults()
                 }
             }
         })
@@ -412,20 +412,20 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     func acquireResults() {
         self.resultModel.fetch(self.currentLatitude!, longitude: self.currentLongitude!,
             handler: {[weak self] (result: KarutaResult<[Restaurant], KarutaApiClientError>) in
-                guard let weakSelf = self else {
+                guard let strongSelf = self else {
                     return
                 }
                 switch result {
                 case .Success(let res):
-                    weakSelf.displayResultViewWithShopList(res)
+                    strongSelf.displayResultViewWithShopList(res)
                 case .Failure(let error):
                     switch error.type{
                     case .NoResult:
-                        weakSelf.displayResultViewWithShopList([Restaurant]())
+                        strongSelf.displayResultViewWithShopList([Restaurant]())
                     case .ServerError:
-                        weakSelf.showServerErrorAlert()
+                        strongSelf.showServerErrorAlert()
                     default:
-                        weakSelf.showServerErrorAlert()
+                        strongSelf.showServerErrorAlert()
                     }
                 }
             }
@@ -613,16 +613,16 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     //MARK: - ResultViewControllerDelegate
     func resultViewController(controller: ResultViewController, backButtonTappedWithReset reset: Bool) {
         self.dismissViewControllerAnimated(true, completion: {[weak self]() in
-            guard let weakSelf = self else {
+            guard let strongSelf = self else {
                 return
             }
             if reset {
-                weakSelf.reset()
-                weakSelf.acquireFirstCard()
+                strongSelf.reset()
+                strongSelf.acquireFirstCard()
             } else {
-                weakSelf.resetViews()
-                weakSelf.canDisplayNextCard = true
-                weakSelf.displayStackedCard()
+                strongSelf.resetViews()
+                strongSelf.canDisplayNextCard = true
+                strongSelf.displayStackedCard()
             }
         })
     }
