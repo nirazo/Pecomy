@@ -10,6 +10,10 @@ import UIKit
 import SDWebImage
 import GoogleMaps
 
+protocol RestaurantDetailViewDelegate {
+    func mapViewTapped()
+}
+
 enum RestaurantDetailCollectionViewTag: Int {
     case PicturesView
     case RichTagView
@@ -47,6 +51,9 @@ class RestaurantDetailView: UIView {
     @IBOutlet weak var richTagsViewTitleLabel: UILabel!
     @IBOutlet weak var richTagsView: UICollectionView!
     @IBOutlet weak var richTagViewHeightConstraint: NSLayoutConstraint!
+    
+    var mapTapView = UIView(frame: CGRectZero)
+    var mapTappedAction : ((Restaurant) -> ())?
 
     class func instance() -> RestaurantDetailView {
         return UINib(nibName: "RestaurantDetailView", bundle: nil).instantiateWithOwner(self, options: nil)[0] as! RestaurantDetailView
@@ -122,7 +129,7 @@ class RestaurantDetailView: UIView {
         self.mapView.camera = camera
         self.mapView.myLocationEnabled = true
         
-        mapView.userInteractionEnabled = true
+        self.mapView.userInteractionEnabled = false
         
         let marker = GMSMarker()
         marker.position = CLLocationCoordinate2DMake(lat, lon)
@@ -133,6 +140,17 @@ class RestaurantDetailView: UIView {
         gradientLayer.startPoint = CGPointMake(0.0, 0.5)   //開始ポイント
         gradientLayer.endPoint = CGPointMake(0.4, 0.5)    //終了ポイント
         self.mapView.layer.mask = self.gradientLayer
+        
+        self.mapTapView.backgroundColor = UIColor.clearColor()
+        self.addSubview(self.mapTapView)
+        self.mapTapView.snp_makeConstraints { (make) in
+            make.top.equalTo(self.mapView)
+            make.left.equalTo(self.mapView)
+            make.size.equalTo(self.mapView)
+        }
+        let tr = UITapGestureRecognizer(target: self, action: "mapViewTapped:")
+        self.mapTapView.addGestureRecognizer(tr)
+        
         
         // セパレータ
         self.middleSeparator.backgroundColor = UIColor(red: 230/255.0, green: 230/255.0, blue: 230/255.0, alpha: 1.0)
@@ -203,6 +221,12 @@ class RestaurantDetailView: UIView {
                 strongSelf.restaurantImageView.alpha = 1
                 }, completion: nil)
             })
+    }
+    
+    func mapViewTapped(sender: AnyObject) {
+        print("mapView Tapped!!!")
+        self.mapTappedAction?(self.restaurant)
+        print("tapped: \(self.mapTappedAction)")
     }
     
 }

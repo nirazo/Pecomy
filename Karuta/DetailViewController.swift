@@ -40,6 +40,19 @@ class DetailViewController: UIViewController {
     
     func setupLayout() {
         self.detailView = RestaurantDetailView.instance()
+        
+        // マップ表示
+        self.detailView?.mapTappedAction = { [weak self] (restaurant) in
+            guard let strongSelf = self else {
+                return
+            }
+            let mapVC = MapViewController(restaurant: restaurant)
+            mapVC.navigationItem.title = restaurant.shopName
+            let backButtonItem = UIBarButtonItem(title: NSLocalizedString("Back", comment: ""), style: .Plain, target: nil, action: nil)
+            strongSelf.navigationItem.backBarButtonItem = backButtonItem
+            strongSelf.navigationController?.pushViewController(mapVC, animated: true)
+        }
+        
         self.detailView?.setup(self.restaurant)
         self.detailView?.picturesView.delegate = self.picConfig
         self.detailView?.picturesView.dataSource = self.picConfig

@@ -62,6 +62,7 @@
 		D2DEEF1E1BD72F7400FDBB8F /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DEEF1D1BD72F7400FDBB8F /* Category.swift */; };
 		D2E36EC71C2D615D00DEE726 /* OtherResultCardContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E36EC61C2D615D00DEE726 /* OtherResultCardContentView.swift */; };
 		D2EFEB591C51282A0092DFC9 /* CardOverlayTextLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EFEB581C51282A0092DFC9 /* CardOverlayTextLabelView.swift */; };
+		D2EFEB5C1C567F2F0092DFC9 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EFEB5B1C567F2F0092DFC9 /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -142,6 +143,7 @@
 		D2DEEF1D1BD72F7400FDBB8F /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		D2E36EC61C2D615D00DEE726 /* OtherResultCardContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherResultCardContentView.swift; sourceTree = "<group>"; };
 		D2EFEB581C51282A0092DFC9 /* CardOverlayTextLabelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardOverlayTextLabelView.swift; sourceTree = "<group>"; };
+		D2EFEB5B1C567F2F0092DFC9 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,6 +212,7 @@
 		D24B29221B78773400419B9B /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				D2EFEB5A1C567F180092DFC9 /* Map */,
 				D2EB3FAE1C4A1377005B630E /* RichTagsCollectionView */,
 				D2EB3FAD1C4A1362005B630E /* PicturesCollectionView */,
 				D24B29231B78775300419B9B /* DetailViewController.swift */,
@@ -393,6 +396,14 @@
 				D289013F1C4A01FD005BDF84 /* RichTagCollectionViewCell.swift */,
 			);
 			name = RichTagsCollectionView;
+			sourceTree = "<group>";
+		};
+		D2EFEB5A1C567F180092DFC9 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				D2EFEB5B1C567F2F0092DFC9 /* MapViewController.swift */,
+			);
+			name = Map;
 			sourceTree = "<group>";
 		};
 		F8EF51686E29749944A50697 /* Frameworks */ = {
@@ -586,6 +597,7 @@
 				D2A99A161C12D3E700C16F04 /* CategorySelectionCell.swift in Sources */,
 				D27BB9D41B36F4A900F8D902 /* MainViewController.swift in Sources */,
 				16B6744E1C3BE59C009D039C /* KarutaApiClientError.swift in Sources */,
+				D2EFEB5C1C567F2F0092DFC9 /* MapViewController.swift in Sources */,
 				D292F7391B92DFFC005700AE /* Utils.swift in Sources */,
 				D2DEEF1E1BD72F7400FDBB8F /* Category.swift in Sources */,
 				D253A9E81C322B7D00D65D20 /* KarutaApiClient.swift in Sources */,
