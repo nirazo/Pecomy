@@ -47,7 +47,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     var currentLatitude: Double?
     var currentLongitude: Double?
     
-    var currentCategory = CategoryIdentifier.All
+    var currentCategory = Genre.All
     
     var currentProgress: Float = 0.0
     
@@ -57,9 +57,9 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     var categoryLabelView: CategoryLabelView?
     
     // 現在選択されているカテゴリ
-    var selectedCategory = CategoryIdentifier.All.valueForDisplay()
+    var selectedCategory = Genre.All.valueForDisplay()
     
-    var categorySelectionVC: CategorySelectionViewController?
+    var onetimeFilterVC: OnetimeFilterViewController?
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nil, bundle: nil)
@@ -291,9 +291,9 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     /**
     カードを取得
     */
-    func acquireCardWithLatitude(latitude: Double, longitude: Double, like: String? = nil, category: CategoryIdentifier, syncId: String? = nil, reset: Bool, completion: ((Bool)->())? = nil) {
+    func acquireCardWithLatitude(latitude: Double, longitude: Double, like: String? = nil, category: Genre, syncId: String? = nil, reset: Bool, completion: ((Bool)->())? = nil) {
         self.showIndicator()
-        self.restaurantModel.fetch(latitude, longitude: longitude, like: like, category: category, syncId: syncId, reset: reset, handler: {[weak self] (result: KarutaResult<Restaurant, KarutaApiClientError>) in
+        self.restaurantModel.fetch(latitude, longitude: longitude, like: like, genre: category, syncId: syncId, reset: reset, handler: {[weak self] (result: KarutaResult<Restaurant, KarutaApiClientError>) in
             guard let strongSelf = self else {
                 return
             }
@@ -454,9 +454,10 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     }
     
     func categoryTapped(sender:UITapGestureRecognizer) {
-        self.categorySelectionVC = CategorySelectionViewController()
-        self.categorySelectionVC!.delegate = self
-        self.view.addSubview(self.categorySelectionVC!.view)
+        self.onetimeFilterVC = OnetimeFilterViewController()
+        self.onetimeFilterVC!.delegate = self
+        //self.view.addSubview(self.onetimeFilterVC!.view)
+        UIApplication.sharedApplication().keyWindow?.addSubview(self.onetimeFilterVC!.view)
     }
     
     func swipeTopCardToWithDirection(direction: MDCSwipeDirection) {
@@ -471,24 +472,24 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     
     //MARK: - CategorySelectionViewControllerDelegate methods
     func closeButtonTapped() {
-        if let vc = self.categorySelectionVC {
+        if let vc = self.onetimeFilterVC {
             vc.view.removeFromSuperview()
         }
-        self.categorySelectionVC = nil
+        self.onetimeFilterVC = nil
     }
     
-    func categorySelected(category: CategoryIdentifier) {
+    func genreSelected(genre: Genre) {
         guard let categoryLabelView = self.categoryLabelView else {
             return
         }
         // set category
-        self.currentCategory = category
-        categoryLabelView.setCategory(category.valueForDisplay())
+        self.currentCategory = genre
+        categoryLabelView.setCategory(genre.valueForDisplay())
         
-        if let vc = self.categorySelectionVC {
+        if let vc = self.onetimeFilterVC {
             vc.view.removeFromSuperview()
         }
-        self.categorySelectionVC = nil
+        self.onetimeFilterVC = nil
         
         // reset cards and request
         self.resetViews()

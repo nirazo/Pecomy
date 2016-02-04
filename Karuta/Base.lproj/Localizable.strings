@@ -32,6 +32,19 @@
 "CategoryRestaurant" = "Restaurant";
 "CategoryCafe" = "Cafe";
 "CategoryDrinking" = "Drinking";
+// Budget
+"LessThanThousand" = "〜￥1,000";
+"LessThanTwoThousand" = "〜￥2,000";
+"NoBudget" = "No budget";
+// Num of People
+"OnePerson" = "1 person";
+"TwoPeople" = "2 persons";
+"OverThreePeople" = "More than 3";
+// Onetime Filter
+"OnetimeFilterTitle" = "What do you feel like eating?";
+"BudgetTitle" = "Budget";
+"NumOfPeopleTitle" = "Num of people";
+"GenreTitle" = "Genre";
 // Card
 "Day" = "Day";
 "Night" = "Night";

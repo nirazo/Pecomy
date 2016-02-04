@@ -43,6 +43,8 @@ struct Const {
     static let RANKING_TOP_COLOR = UIColor(red: 255.0/255.0, green: 170.0/255.0, blue: 0/255.0, alpha: 1.0)
     static let RANKING_SECOND_COLOR = UIColor(red: 124.0/255.0, green: 132.0/255.0, blue: 139.0/255.0, alpha: 1.0)
     static let RANKING_SECOND_RIGHT_COLOR = UIColor(red: 102.0/255.0, green: 102/255.0, blue: 102.0/255.0, alpha: 1.0)
+    static let BASIC_GRAY_COLOR = UIColor(red: 153.0/255.0, green: 153.0/255.0, blue: 153.0/255.0, alpha: 1.0)
+    static let RIGHT_GRAY_COLOR = UIColor(red: 204.0/255.0, green: 204.0/255.0, blue: 204.0/255.0, alpha: 1.0)
     
     static let KARUTA_TITLE = "Karuta"
     
@@ -73,6 +75,9 @@ struct Const {
     // カード上のテキスト
     static let CARD_LIKE_COLOR = UIColor.whiteColor()
     static let CARD_DISLIKE_COLOR = UIColor.whiteColor()
+    
+    // 角丸の半径
+    static let CORNER_RADIUS: CGFloat = 5.0
     
     // NotificationCenterのキー
     static let WILL_ENTER_FOREGROUND_KEY = "applicationWillEnterForeground"

@@ -32,6 +32,19 @@
 "CategoryRestaurant" = "レストラン";
 "CategoryCafe" = "カフェ";
 "CategoryDrinking" = "飲み";
+// Budget
+"LessThanThousand" = "〜1,000円";
+"LessThanTwoThousand" = "〜2,000円";
+"NoBudget" = "予算なし";
+// Num of People
+"OnePerson" = "1人";
+"TwoPeople" = "2人";
+"OverThreePeople" = "3人以上";
+// Onetime Filter
+"OnetimeFilterTitle" = "今日は何が食べたい？";
+"BudgetTitle" = "予算";
+"NumOfPeopleTitle" = "人数";
+"GenreTitle" = "ジャンル";
 // Card
 "Day" = "昼";
 "Night" = "夜";
