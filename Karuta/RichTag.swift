@@ -12,7 +12,7 @@ enum RichTag: String {
     case CardDisable = "カード仕様不可"
     // タバコ
     case SmokingEnable = "喫煙可"
-    case SeparatedSmoking = "分煙"
+    case SmokingSeparated = "分煙"
     case SmokingDisabled = "完全禁煙"
     // 座席系
     case OnlyCounter = "カウンターのみ"
@@ -64,85 +64,85 @@ enum RichTag: String {
     func imageForTag() -> UIImage? {
         switch self {
         case .CardEnable:
-            return UIImage(named: "third")
-        case .SeparatedSmoking:
-            return UIImage(named: "third")
+            return UIImage(named: "card_able")
         case .CardDisable:
-            return UIImage(named: "third")
+            return UIImage(named: "card_disable")
         case .SmokingEnable:
-            return UIImage(named: "third")
+            return UIImage(named: "smoking_able")
+        case .SmokingSeparated:
+            return UIImage(named: "smoking_separated")
         case .SmokingDisabled:
-            return UIImage(named: "third")
+            return UIImage(named: "smoking_disable")
         case .OnlyCounter:
-            return UIImage(named: "third")
+            return UIImage(named: "seat_counter")
         case .HasCounter:
-            return UIImage(named: "third")
+            return UIImage(named: "seat_counter")
         case .HasTable:
-            return UIImage(named: "third")
+            return UIImage(named: "seat_table")
         case .StandingMeal:
-            return UIImage(named: "third")
+            return UIImage(named: "style_standing_eat")
         case .StandingDrink:
-            return UIImage(named: "third")
+            return UIImage(named: "style_standing_drink")
         case .Horigotatsu:
-            return UIImage(named: "third")
+            return UIImage(named: "seat_horigotatsu")
         case .RaisedTatami:
-            return UIImage(named: "third")
+            return UIImage(named: "seat_raised_tatami")
         case .TatamiRoom:
-            return UIImage(named: "third")
+            return UIImage(named: "seat_tatami_room")
         case .Terrace:
-            return UIImage(named: "third")
+            return UIImage(named: "seat_terrace")
         case .Sofa:
-            return UIImage(named: "third")
+            return UIImage(named: "seat_sofa")
         case .CoupleSeat:
-            return UIImage(named: "third")
+            return UIImage(named: "seat_couple_seat")
         case .WideSeat:
-            return UIImage(named: "third")
+            return UIImage(named: "seat_wide_seat")
         case .PrivateRoom:
-            return UIImage(named: "third")
+            return UIImage(named: "seat_private_room")
         case .Karaoke:
-            return UIImage(named: "third")
+            return UIImage(named: "entertainment_karaoke")
         case .Sports:
-            return UIImage(named: "third")
+            return UIImage(named: "entertainment_sports")
         case .Live:
-            return UIImage(named: "third")
+            return UIImage(named: "entertainment_live")
         case .Darts:
-            return UIImage(named: "third")
+            return UIImage(named: "entertainment_darts")
         case .Calm:
-            return UIImage(named: "third")
+            return UIImage(named: "space_calm")
         case .Stylish:
-            return UIImage(named: "third")
+            return UIImage(named: "space_stylish")
         case .Hiding:
-            return UIImage(named: "third")
+            return UIImage(named: "space_hiding")
         case .SolitaryHouse:
-            return UIImage(named: "third")
+            return UIImage(named: "space_solitary_house")
         case .BeautifulView:
-            return UIImage(named: "third")
+            return UIImage(named: "space_beautiful_view")
         case .Hotel:
-            return UIImage(named: "third")
+            return UIImage(named: "space_hotel")
         case .OceanView:
-            return UIImage(named: "third")
+            return UIImage(named: "space_ocean_view")
         case .Fish:
-            return UIImage(named: "third")
+            return UIImage(named: "particularity_fish")
         case .Vegetable:
-            return UIImage(named: "third")
+            return UIImage(named: "particularity_vegetable")
         case .Healthy:
-            return UIImage(named: "third")
+            return UIImage(named: "particularity_healty")
         case .Vegetarian:
-            return UIImage(named: "third")
+            return UIImage(named: "particularity_vegetable")
         case .BarrierFree:
-            return UIImage(named: "third")
+            return UIImage(named: "other_barrier_free")
         case .Sake:
-            return UIImage(named: "third")
+            return UIImage(named: "drink_sake")
         case .Wine:
-            return UIImage(named: "third")
+            return UIImage(named: "drink_wine")
         case .Cocktail:
-            return UIImage(named: "third")
+            return UIImage(named: "drink_cocktail")
         case .Shochu:
-            return UIImage(named: "third")
+            return UIImage(named: "drink_shochu")
         case .FreeDrink:
-            return UIImage(named: "third")
+            return UIImage(named: "drink_free_drink")
         default:
-            return UIImage(named: "second")
+            return UIImage(named: "seat_private_room")
         }
     }
 }

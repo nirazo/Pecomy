@@ -11,7 +11,7 @@ import UIKit
 class CommentContentView: UIView {
 
     
-    var imageView = UIImageView(image: UIImage(named: "second"))
+    var imageView = UIImageView(image: UIImage(named: "comment_human"))
     var commentBackGroundView = UIView()
     var comment = ""
     let contentView = UIView()
