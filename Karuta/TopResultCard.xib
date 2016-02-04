@@ -22,31 +22,14 @@
                                     <constraints>
                                         <constraint firstAttribute="width" constant="220" id="DPY-ZC-lqs"/>
                                         <constraint firstAttribute="height" constant="171" id="dFU-xt-tve"/>
-                                        <constraint firstAttribute="width" constant="220" id="nFM-vf-b2o"/>
                                     </constraints>
-                                    <variation key="default">
-                                        <mask key="constraints">
-                                            <exclude reference="nFM-vf-b2o"/>
-                                        </mask>
-                                    </variation>
                                 </imageView>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4jR-vn-18o">
                                     <rect key="frame" x="221" y="0.0" width="122" height="85"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="154" id="F5r-Jq-UcF"/>
-                                        <constraint firstAttribute="width" constant="123" id="LXw-oG-Pp2"/>
                                         <constraint firstAttribute="width" constant="122" id="hFu-Tt-cx5"/>
-                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="122" id="hdm-7S-CWN"/>
                                         <constraint firstAttribute="height" constant="85" id="iW4-Ii-Ss9"/>
-                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="85" id="sIS-NI-lBS"/>
                                     </constraints>
-                                    <variation key="default">
-                                        <mask key="constraints">
-                                            <exclude reference="F5r-Jq-UcF"/>
-                                            <exclude reference="LXw-oG-Pp2"/>
-                                            <exclude reference="hdm-7S-CWN"/>
-                                        </mask>
-                                    </variation>
                                 </imageView>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nkL-nj-2u7">
                                     <rect key="frame" x="221" y="86" width="122" height="85"/>
@@ -67,6 +50,7 @@
                                 <constraint firstItem="4jR-vn-18o" firstAttribute="top" secondItem="feh-dm-Duw" secondAttribute="top" id="i9c-uN-hym"/>
                                 <constraint firstItem="4jR-vn-18o" firstAttribute="leading" secondItem="Efg-tA-x0T" secondAttribute="trailing" constant="1" id="pzb-Ao-XFx"/>
                                 <constraint firstAttribute="trailing" secondItem="nkL-nj-2u7" secondAttribute="trailing" id="r68-Bj-QqU"/>
+                                <constraint firstAttribute="bottom" secondItem="Efg-tA-x0T" secondAttribute="bottom" id="yah-wo-yzg"/>
                                 <constraint firstItem="nkL-nj-2u7" firstAttribute="leading" secondItem="Efg-tA-x0T" secondAttribute="trailing" constant="1" id="zUN-nZ-qkX"/>
                             </constraints>
                         </view>
@@ -81,7 +65,7 @@
                                     <attributedString key="attributedText">
                                         <fragment content="森重（もりじゅう）">
                                             <attributes>
-                                                <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <font key="NSFont" size="16" name="HiraKakuProN-W6"/>
                                             </attributes>
                                         </fragment>
@@ -117,7 +101,7 @@
                                         <constraint firstAttribute="height" constant="12" id="zKx-qf-JLj"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="￥3,000〜￥4,999" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xi9-Vu-K5x">
@@ -126,7 +110,7 @@
                                         <constraint firstAttribute="height" constant="12" id="w00-69-7xU"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yps-Cb-Kgl">
@@ -142,7 +126,7 @@
                                         <constraint firstAttribute="height" constant="12" id="Kwf-o5-t1P"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>

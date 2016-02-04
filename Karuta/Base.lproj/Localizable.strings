@@ -60,3 +60,5 @@
 "PicturesViewTitle" = "Other pictures";
 "RichTagsTitle" = "Tags";
 "BusinessHourTitle" = "Business Hour";
+"TelAlertMessage" = "Do you make a phone call to this restaurant?";
+"TelAlertTelButton" = "Call";

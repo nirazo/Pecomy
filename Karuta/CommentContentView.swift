@@ -46,7 +46,8 @@ class CommentContentView: UIView {
             make.left.equalTo(self)
         }
         
-        self.imageView.contentMode = .Redraw
+        self.imageView.contentMode = .ScaleAspectFill
+        self.imageView.clipsToBounds = true
         self.contentView.addSubview(self.imageView)
         self.imageView.snp_makeConstraints { (make) in
             make.width.equalTo(40)
@@ -65,7 +66,7 @@ class CommentContentView: UIView {
             make.height.equalTo(40)
             make.left.equalTo(self.imageView.snp_right).offset(12)
             make.top.equalTo(self)
-            make.right.equalTo(self).offset(-12)
+            make.right.lessThanOrEqualTo(self).offset(-12)
             make.bottom.equalTo(self)
         }
         
@@ -73,6 +74,8 @@ class CommentContentView: UIView {
         self.commentLabel.text = self.comment
         self.commentLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 14)
         self.commentLabel.textColor = Const.KARUTA_RANK_COLOR[0]
+        self.commentLabel.numberOfLines = 2
+        self.commentLabel.sizeToFit()
         self.addSubview(self.commentLabel)
         
         self.commentLabel.snp_makeConstraints { (make) in

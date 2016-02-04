@@ -74,11 +74,14 @@ class TopResultCard: ResultCardBase {
         
         // 画像
         self.mainImageView.image = UIImage(named: "noimage")
-        self.mainImageView.contentMode = .Redraw
+        self.mainImageView.contentMode = .ScaleAspectFill
+        self.mainImageView.clipsToBounds = true
         self.secondImageView.image = UIImage(named: "noimage")
-        self.secondImageView.contentMode = .Redraw
+        self.secondImageView.contentMode = .ScaleAspectFill
+        self.secondImageView.clipsToBounds = true
         self.thirdImageView.image = UIImage(named: "noimage")
-        self.thirdImageView.contentMode = .Redraw
+        self.thirdImageView.contentMode = .ScaleAspectFill
+        self.thirdImageView.clipsToBounds = true
         
         // レストラン名のラベル
         self.restaurantNameLabel.text = self.restaurant.shopName

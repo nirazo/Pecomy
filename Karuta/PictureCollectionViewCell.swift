@@ -28,6 +28,8 @@ class PictureCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         self.imageView = UIImageView(image: UIImage(named: "noimage"))
+        self.imageView.contentMode = .ScaleAspectFill
+        self.imageView.clipsToBounds = true
         super.init(frame: frame)
         self.contentView.layer.cornerRadius = 5.0
         self.contentView.layer.masksToBounds = true
