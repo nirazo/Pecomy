@@ -45,6 +45,7 @@
 "BudgetTitle" = "予算";
 "NumOfPeopleTitle" = "人数";
 "GenreTitle" = "ジャンル";
+"StartTitle" = "この条件でスタート";
 // Card
 "Day" = "昼";
 "Night" = "夜";

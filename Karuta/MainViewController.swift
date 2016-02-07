@@ -12,7 +12,7 @@ import SwiftyJSON
 import MDCSwipeToChoose
 import SnapKit
 
-class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLocationManagerDelegate, CardViewDelegate, ResultViewControllerDelegate, CategorySelectionViewControllerDelegate {
+class MainViewController: UIViewController {
     
     let ANALYTICS_TRACKING_CODE = AnaylyticsTrackingCode.MainViewController.rawValue
     
@@ -57,7 +57,9 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     var categoryLabelView: CategoryLabelView?
     
     // 現在選択されているカテゴリ
-    var selectedCategory = Genre.All.valueForDisplay()
+    var currentBudget = Budget.LessThanThousand
+    var currentGenre = Genre.All
+    var currentNumOfPeople = NumOfPeople.One
     
     var onetimeFilterVC: OnetimeFilterViewController?
 
@@ -153,7 +155,7 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
         }
         
         // カテゴリ
-        self.categoryLabelView = CategoryLabelView(frame: CGRectZero, category: self.selectedCategory)
+        self.categoryLabelView = CategoryLabelView(frame: CGRectZero, category: self.currentGenre.valueForDisplay())
         self.view.addSubview(self.categoryLabelView!)
         let tr = UITapGestureRecognizer(target: self, action: "categoryTapped:")
         self.categoryLabelView!.addGestureRecognizer(tr)
@@ -454,9 +456,8 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     }
     
     func categoryTapped(sender:UITapGestureRecognizer) {
-        self.onetimeFilterVC = OnetimeFilterViewController()
+        self.onetimeFilterVC = OnetimeFilterViewController(budget: self.currentBudget, numOfPeople: self.currentNumOfPeople, genre: self.currentGenre)
         self.onetimeFilterVC!.delegate = self
-        //self.view.addSubview(self.onetimeFilterVC!.view)
         UIApplication.sharedApplication().keyWindow?.addSubview(self.onetimeFilterVC!.view)
     }
     
@@ -467,79 +468,6 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
                 card.isFlicked = true
                 card.mdc_swipe(direction)
             }
-        }
-    }
-    
-    //MARK: - CategorySelectionViewControllerDelegate methods
-    func closeButtonTapped() {
-        if let vc = self.onetimeFilterVC {
-            vc.view.removeFromSuperview()
-        }
-        self.onetimeFilterVC = nil
-    }
-    
-    func genreSelected(genre: Genre) {
-        guard let categoryLabelView = self.categoryLabelView else {
-            return
-        }
-        // set category
-        self.currentCategory = genre
-        categoryLabelView.setCategory(genre.valueForDisplay())
-        
-        if let vc = self.onetimeFilterVC {
-            vc.view.removeFromSuperview()
-        }
-        self.onetimeFilterVC = nil
-        
-        // reset cards and request
-        self.resetViews()
-        
-        if let lat = self.currentLatitude, lon = self.currentLongitude {
-            self.acquireFirstCardsWithLocation(lat, longitude: lon)
-        } else {
-            self.acquireFirstCard()
-        }
-    }
-    
-    
-    //MARK: - MDCSwipeToChooseDelegate Callbacks
-    // This is called when a user didn't fully swipe left or right.
-    func viewDidCancelSwipe(view: UIView!) {
-    }
-    
-    // Sent before a choice is made. Cancel the choice by returning `NO`. Otherwise return `YES`.
-    func view(view: UIView!, shouldBeChosenWithDirection direction: MDCSwipeDirection) -> Bool {
-        if (direction == .Left || direction == .Right) {
-            return true
-        } else {
-            UIView.animateWithDuration(0.16, animations: {() in
-                view.transform = CGAffineTransformIdentity
-                view.center = view.superview!.center
-            })
-            return false
-        }
-    }
-    
-    
-    // This is called then a user swipes the view fully left or right.
-    func view(view: UIView!, wasChosenWithDirection direction: MDCSwipeDirection) {
-        let cardView = view as! CardView
-        self.currentSwipeCount++
-        cardView.isFlicked = true
-        
-        var answer = "dislike"
-        if (direction == .Right) {
-            answer = "like"
-            self.currentProgress += INCREMENT_LIKE
-            self.progressViewController.progressWithRatio(self.currentProgress)
-        } else {
-            self.currentProgress += INCREMENT_DISLIKE
-            self.progressViewController.progressWithRatio(self.currentProgress)
-        }
-
-        self.acquireCardWithLatitude(self.currentLatitude!, longitude: self.currentLongitude!, like: answer, category:self.currentCategory, syncId: cardView.syncID, reset: false)
-        if (!self.canDisplayNextCard && self.contentView.subviews.count == 0) {
-            self.acquireResults()
         }
     }
     
@@ -592,8 +520,88 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
     func hideIndicator() {
         self.loadingIndicator.stopAnimating()
     }
+}
+
+extension MainViewController: CategorySelectionViewControllerDelegate {
+    //MARK: - CategorySelectionViewControllerDelegate methods
+    func closeButtonTapped() {
+        if let vc = self.onetimeFilterVC {
+            vc.view.removeFromSuperview()
+        }
+        self.onetimeFilterVC = nil
+    }
     
-    //MARK: - KarutaLocationProtocol
+    func filterSelected(genre: Genre) {
+        guard let categoryLabelView = self.categoryLabelView else {
+            return
+        }
+        // set category
+        self.currentCategory = genre
+        categoryLabelView.setCategory(genre.valueForDisplay())
+        
+        if let vc = self.onetimeFilterVC {
+            vc.view.removeFromSuperview()
+        }
+        self.onetimeFilterVC = nil
+        
+        // reset cards and request
+        self.resetViews()
+        
+        if let lat = self.currentLatitude, lon = self.currentLongitude {
+            self.acquireFirstCardsWithLocation(lat, longitude: lon)
+        } else {
+            self.acquireFirstCard()
+        }
+    }
+}
+
+
+//MARK: - MDCSwipeToChooseDelegate Callbacks
+extension MainViewController: MDCSwipeToChooseDelegate {
+    // This is called when a user didn't fully swipe left or right.
+    func viewDidCancelSwipe(view: UIView!) {
+    }
+    
+    // Sent before a choice is made. Cancel the choice by returning `NO`. Otherwise return `YES`.
+    func view(view: UIView!, shouldBeChosenWithDirection direction: MDCSwipeDirection) -> Bool {
+        if (direction == .Left || direction == .Right) {
+            return true
+        } else {
+            UIView.animateWithDuration(0.16, animations: {() in
+                view.transform = CGAffineTransformIdentity
+                view.center = view.superview!.center
+            })
+            return false
+        }
+    }
+    
+    
+    // This is called then a user swipes the view fully left or right.
+    func view(view: UIView!, wasChosenWithDirection direction: MDCSwipeDirection) {
+        let cardView = view as! CardView
+        self.currentSwipeCount++
+        cardView.isFlicked = true
+        
+        var answer = "dislike"
+        if (direction == .Right) {
+            answer = "like"
+            self.currentProgress += INCREMENT_LIKE
+            self.progressViewController.progressWithRatio(self.currentProgress)
+        } else {
+            self.currentProgress += INCREMENT_DISLIKE
+            self.progressViewController.progressWithRatio(self.currentProgress)
+        }
+
+        self.acquireCardWithLatitude(self.currentLatitude!, longitude: self.currentLongitude!, like: answer, category:self.currentCategory, syncId: cardView.syncID, reset: false)
+        if (!self.canDisplayNextCard && self.contentView.subviews.count == 0) {
+            self.acquireResults()
+        }
+    }
+}
+
+
+//MARK: - KarutaLocationManagerDelegate
+extension MainViewController: KarutaLocationManagerDelegate {
     func showLocationEnableAlert() {
         let alertController = UIAlertController(title:NSLocalizedString("LocationAlertTitle", comment: ""),
             message: NSLocalizedString("LocationAlertMessage", comment: ""),
@@ -610,8 +618,11 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
         alertController.addAction(cancelAction)
         presentViewController(alertController, animated: true, completion: nil)
     }
-    
-    //MARK: - ResultViewControllerDelegate
+}
+
+
+//MARK: - ResultViewControllerDelegate
+extension MainViewController: ResultViewControllerDelegate {
     func resultViewController(controller: ResultViewController, backButtonTappedWithReset reset: Bool) {
         self.dismissViewControllerAnimated(true, completion: {[weak self]() in
             guard let strongSelf = self else {
@@ -627,8 +638,11 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
             }
         })
     }
-    
-    //MARK: - CardViewDelegate
+}
+
+
+//MARK: - CardViewDelegate
+extension MainViewController: CardViewDelegate {
     func blackListButtonTapped(card: CardView, shopID: String) {
         let ac = UIAlertController(title: "", message: NSLocalizedString("BlackListButtonSendMessage", comment: ""), preferredStyle: .Alert)
         let okAction = UIAlertAction(title: NSLocalizedString("OK", comment: ""),
@@ -647,5 +661,4 @@ class MainViewController: UIViewController, MDCSwipeToChooseDelegate, KarutaLoca
         ac.addAction(okAction)
         self.presentViewController(ac, animated: true, completion: nil)
     }
-    
 }

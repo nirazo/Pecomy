@@ -27,10 +27,12 @@ class OnetimeFilterCell: UICollectionViewCell {
                 super.selected = true
                 self.backgroundColor = Const.KARUTA_THEME_COLOR
                 self.label.textColor = UIColor.whiteColor()
+                self.layer.borderColor = Const.KARUTA_THEME_COLOR.CGColor
             } else if newValue == false {
                 super.selected = false
                 self.backgroundColor = UIColor.whiteColor()
                 self.label.textColor = Const.BASIC_GRAY_COLOR
+                self.layer.borderColor = Const.RIGHT_GRAY_COLOR.CGColor
             }
         }
     }
@@ -67,14 +69,4 @@ class OnetimeFilterCell: UICollectionViewCell {
         self.layer.borderWidth = 1.0
         self.layer.borderColor = Const.RIGHT_GRAY_COLOR.CGColor
     }
-    
-//    func highLight() {
-//        self.contentView.backgroundColor = Const.KARUTA_THEME_COLOR
-//        self.label.textColor = Const.KARUTA_THEME_COLOR
-//    }
-//    
-//    func unHighLight() {
-//        self.contentView.backgroundColor = UIColor.whiteColor()
-//        self.label.textColor = Const.BASIC_GRAY_COLOR
-//    }
 }

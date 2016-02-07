@@ -45,6 +45,7 @@
 "BudgetTitle" = "Budget";
 "NumOfPeopleTitle" = "Num of people";
 "GenreTitle" = "Genre";
+"StartTitle" = "Start";
 // Card
 "Day" = "Day";
 "Night" = "Night";
