@@ -223,11 +223,8 @@ class RestaurantDetailView: UIView {
     }
     
     func replaceBusinessHour(hour: String) -> String {
-        let pattern1 = "(?<=.)[\\[]"
-        let pattern2 = " "
-        var str = hour.stringByReplacingOccurrencesOfString(pattern1, withString: "\n[", options: .RegularExpressionSearch)
-        str = str.stringByReplacingOccurrencesOfString(pattern2, withString: "\n", options: .RegularExpressionSearch)
-        return str
+        let pattern = "(?<=.)[\\[]"
+        return hour.stringByReplacingOccurrencesOfString(pattern, withString: "\n[", options: .RegularExpressionSearch)
     }
     
 }
