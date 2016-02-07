@@ -149,7 +149,7 @@ class TopResultCard: ResultCardBase {
         self.separator.backgroundColor = UIColor(red: 230/255.0, green: 230/255.0, blue: 230/255.0, alpha: 1.0)
         
         // レビューアイコン
-        self.reviewIcon.image = UIImage(named: "second")
+        self.reviewIcon.image = UIImage(named: "comment_human")
 
         self.reviewCommentLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 14)
         self.reviewCommentLabel.textColor = Const.KARUTA_THEME_TEXT_COLOR

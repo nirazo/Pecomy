@@ -15,7 +15,7 @@ class TelButton: UIButton {
     let MARGIN_CATEGORY_HORIZONTAL: CGFloat = 5.0   // カテゴリラベル内の左右マージン
     let FONT_TEL = UIFont(name: Const.KARUTA_FONT_BOLD, size: 16)
     let telString = NSLocalizedString("TelephoneCall", comment: "")
-    let telImage = UIImageView(image: UIImage(named: "rank_first"))
+    let telImage = UIImageView(image: UIImage(named: "telephone"))
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -36,8 +36,9 @@ class TelButton: UIButton {
         
         self.telImage.snp_makeConstraints { (make) in
             make.left.equalTo(self).offset(8)
-            make.top.equalTo(self).offset(8)
-            make.bottom.equalTo(self).offset(-8)
+            make.centerY.equalTo(self)
+            make.size.width.equalTo(28)
+            make.size.height.equalTo(28)
         }
         
         let label = UILabel(frame: CGRectZero)

@@ -39,7 +39,6 @@ class RestaurantDetailView: UIView {
     @IBOutlet weak var telButton: TelButton!
     @IBOutlet weak var businessHourTitleLabel: UILabel!
     @IBOutlet weak var dayBusinessHourLabel: UILabel!
-    @IBOutlet weak var nightBusinessHourLabel: UILabel!
     
     @IBOutlet weak var middleSeparator: UIView!
     @IBOutlet weak var commentsView: CommentsView!
@@ -160,13 +159,9 @@ class RestaurantDetailView: UIView {
         self.businessHourTitleLabel.textColor = Const.RANKING_SECOND_RIGHT_COLOR
         self.businessHourTitleLabel.font = UIFont(name: Const.KARUTA_FONT_NORMAL, size: 12)
         
-        self.dayBusinessHourLabel.text = self.restaurant.businessHours
+        self.dayBusinessHourLabel.text = self.replaceBusinessHour(self.restaurant.businessHours)
         self.dayBusinessHourLabel.textColor = Const.RANKING_SECOND_RIGHT_COLOR
         self.dayBusinessHourLabel.font = UIFont(name: Const.KARUTA_FONT_NORMAL, size: 12)
-        
-        self.nightBusinessHourLabel.text = self.restaurant.businessHours
-        self.nightBusinessHourLabel.textColor = Const.RANKING_SECOND_RIGHT_COLOR
-        self.nightBusinessHourLabel.font = UIFont(name: Const.KARUTA_FONT_NORMAL, size: 12)
         
         // レビューリスト
         self.commentsView.setup(restaurant.reviewSubjects)
@@ -224,9 +219,12 @@ class RestaurantDetailView: UIView {
     }
     
     func mapViewTapped(sender: AnyObject) {
-        print("mapView Tapped!!!")
         self.mapTappedAction?(self.restaurant)
-        print("tapped: \(self.mapTappedAction)")
+    }
+    
+    func replaceBusinessHour(hour: String) -> String {
+        let pattern = "(?<=.)[\\[]"
+        return hour.stringByReplacingOccurrencesOfString(pattern, withString: "\n[", options: .RegularExpressionSearch)
     }
     
 }
