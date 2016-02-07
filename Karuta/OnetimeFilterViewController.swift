@@ -8,9 +8,9 @@
 
 import UIKit
 
-protocol CategorySelectionViewControllerDelegate {
+protocol OnetimeFilterViewControllerDelegate {
     func closeButtonTapped()
-    func filterSelected(genre: Genre)
+    func startSearch(budget: Budget, numOfPeople: NumOfPeople, genre: Genre)
 }
 
 class OnetimeFilterViewController: UIViewController {
@@ -23,7 +23,7 @@ class OnetimeFilterViewController: UIViewController {
     private let cancelButton = UIButton(frame: CGRectZero)
     private let startButton = UIButton(frame: CGRectZero)
     
-    var delegate: CategorySelectionViewControllerDelegate?
+    var delegate: OnetimeFilterViewControllerDelegate?
     
     var currentBudget = Budget.LessThanThousand
     var currentNumOfPeople = NumOfPeople.One
@@ -35,9 +35,6 @@ class OnetimeFilterViewController: UIViewController {
         self.collectionViewConfig = OnetimeFilterCollectionViewConfig(budget: budget, numOfPeople: numOfPeople, genre: genre)
         self.enableCancel = enableCancel
         super.init(nibName: nil, bundle: nil)
-        self.currentBudget = budget
-        self.currentNumOfPeople = numOfPeople
-        self.currentGenre = genre
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -155,11 +152,12 @@ class OnetimeFilterViewController: UIViewController {
     }
     
     func startButtonTapped(sender: AnyObject) {
-        print("start!!")
+        self.delegate?.startSearch(self.currentBudget, numOfPeople: self.currentNumOfPeople, genre: self.currentGenre)
     }
 }
 
 extension OnetimeFilterViewController: UICollectionViewDelegate {
+    
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let selectedItems = collectionView.indexPathsForSelectedItems()
         guard let selecteds = selectedItems else { return }
@@ -168,7 +166,22 @@ extension OnetimeFilterViewController: UICollectionViewDelegate {
                 collectionView.deselectItemAtIndexPath(index, animated: false)
             }
         }
+        switch indexPath.section {
+            case OnetimeSections.Budget.hashValue:
+            self.currentBudget = Budget(rawValue: indexPath.row)!
+            case OnetimeSections.People.hashValue:
+            self.currentNumOfPeople = NumOfPeople(rawValue: indexPath.row)!
+            case OnetimeSections.Genre.hashValue:
+            self.currentGenre = Genre(rawValue: indexPath.row)!
+        default:
+            break
+        }
     }
+    
+    func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
+        collectionView.selectItemAtIndexPath(indexPath, animated: false, scrollPosition: .None)
+    }
+
     
     // MARK: - UICollectionViewDelegateFlowLayout
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {

@@ -18,13 +18,13 @@ class CardRequest: KarutaApiRequest {
     var encoding: ParameterEncoding = ParameterEncoding.URL
     
     
-    init(latitude: Double, longitude: Double, like: String? = nil, genre: Genre = .All, syncId: String? = nil, reset: Bool = false) {
+    init(latitude: Double, longitude: Double, like: String? = nil, maxBudget: Budget = .LessThanThousand, numOfPeople: NumOfPeople = .One, genre: Genre = .All, syncId: String? = nil, reset: Bool = false) {
         endpoint = "card"
         params = [
             "device_id" : Utils.acquireDeviceID(),
             "latitude" : latitude,
             "longitude" : longitude,
-            "reset" : reset
+            "reset" : reset,
         ]
         if let syncId = syncId {
             params["sync_id"] = syncId
@@ -34,6 +34,9 @@ class CardRequest: KarutaApiRequest {
         }
         if (genre != .All) {
             params["select_category_group"] = genre.valueForReq()
+        }
+        if (maxBudget != .Nothing) {
+            params["onetime_price_max"] = maxBudget.valueForReq()
         }
 
     }

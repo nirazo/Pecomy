@@ -18,7 +18,7 @@ enum Budget: Int {
         case .LessThanTwoThousand:
             return NSLocalizedString("LessThanTwoThousand", comment: "")
         case .Nothing:
-            return NSLocalizedString("CategoryDrinking", comment: "")
+            return NSLocalizedString("NoBudget", comment: "")
         default:
             return ""
         }

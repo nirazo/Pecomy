@@ -16,8 +16,8 @@ class RestaurantModel {
     init() {
     }
     
-    func fetch(latitude: Double, longitude: Double, like: String? = nil, genre: Genre, syncId: String? = nil, reset: Bool, handler: ((KarutaResult<Restaurant, KarutaApiClientError>) -> Void)) -> Bool {
-        let request = CardRequest(latitude: latitude, longitude: longitude, like: like, genre: genre, syncId: syncId, reset: reset)
+    func fetch(latitude: Double, longitude: Double, like: String? = nil, maxBudget: Budget, numOfPeople: NumOfPeople, genre: Genre, syncId: String? = nil, reset: Bool, handler: ((KarutaResult<Restaurant, KarutaApiClientError>) -> Void)) -> Bool {
+        let request = CardRequest(latitude: latitude, longitude: longitude, like: like, maxBudget: maxBudget, genre: genre, syncId: syncId, reset: reset)
         self.session = KarutaApiClient.send(request) {[weak self] (response: KarutaResult<CardRequest.Response, KarutaApiClientError>) -> Void in
             guard let strongSelf = self else {
                 return

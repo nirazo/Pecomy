@@ -47,7 +47,10 @@ class MainViewController: UIViewController {
     var currentLatitude: Double?
     var currentLongitude: Double?
     
-    var currentCategory = Genre.All
+    // Onetime filter
+    var currentBudget = Budget.LessThanThousand
+    var currentNumOfPeople = NumOfPeople.One
+    var currentGenre = Genre.All
     
     var currentProgress: Float = 0.0
     
@@ -55,11 +58,6 @@ class MainViewController: UIViewController {
     
     // ビュー関連
     var categoryLabelView: CategoryLabelView?
-    
-    // 現在選択されているカテゴリ
-    var currentBudget = Budget.LessThanThousand
-    var currentGenre = Genre.All
-    var currentNumOfPeople = NumOfPeople.One
     
     var onetimeFilterVC: OnetimeFilterViewController?
 
@@ -176,7 +174,7 @@ class MainViewController: UIViewController {
         self.view.addSubview(self.loadingIndicator)
         
         if (self.currentLatitude == nil || self.currentLongitude == nil) {
-            self.acquireFirstCard()
+            self.displayOnetimeFilterView()
         }
     }
     
@@ -234,6 +232,9 @@ class MainViewController: UIViewController {
         self.isLocationAcquired = false
         self.currentLatitude = nil
         self.currentLongitude = nil
+        self.currentBudget = Budget.LessThanThousand
+        self.currentNumOfPeople = NumOfPeople.One
+        self.currentGenre = Genre.All
         self.stackedCards.removeAll()
     }
     
@@ -260,6 +261,12 @@ class MainViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    // MARK: - Onetime filter related method
+    func displayOnetimeFilterView() {
+        self.onetimeFilterVC = OnetimeFilterViewController(budget: self.currentBudget, numOfPeople: self.currentNumOfPeople, genre: self.currentGenre, enableCancel: false)
+        self.onetimeFilterVC!.delegate = self
+        UIApplication.sharedApplication().keyWindow?.addSubview(self.onetimeFilterVC!.view)
+    }
     
     // MARK: - Card related methods
     func acquireFirstCard() {
@@ -281,21 +288,21 @@ class MainViewController: UIViewController {
     }
     
     func acquireFirstCardsWithLocation(latitude: Double, longitude: Double) {
-        self.acquireCardWithLatitude(latitude, longitude: longitude, category: self.currentCategory, reset: true,
+        self.acquireCardWithLatitude(latitude, longitude: longitude, maxBudget: self.currentBudget, numOfPeople: self.currentNumOfPeople, genre: self.currentGenre, reset: true,
             completion: { [weak self] (Bool) in
                 guard let strongSelf = self else {
                     return
                 }
-                strongSelf.acquireCardWithLatitude(latitude, longitude: longitude, category: strongSelf.currentCategory, reset: false, completion: nil)
+                strongSelf.acquireCardWithLatitude(latitude, longitude: longitude, maxBudget: strongSelf.currentBudget, numOfPeople: strongSelf.currentNumOfPeople, genre: strongSelf.currentGenre, reset: false, completion: nil)
         })
     }
     
     /**
     カードを取得
     */
-    func acquireCardWithLatitude(latitude: Double, longitude: Double, like: String? = nil, category: Genre, syncId: String? = nil, reset: Bool, completion: ((Bool)->())? = nil) {
+    func acquireCardWithLatitude(latitude: Double, longitude: Double, like: String? = nil, maxBudget: Budget, numOfPeople: NumOfPeople, genre: Genre, syncId: String? = nil, reset: Bool, completion: ((Bool)->())? = nil) {
         self.showIndicator()
-        self.restaurantModel.fetch(latitude, longitude: longitude, like: like, genre: category, syncId: syncId, reset: reset, handler: {[weak self] (result: KarutaResult<Restaurant, KarutaApiClientError>) in
+        self.restaurantModel.fetch(latitude, longitude: longitude, like: like, maxBudget: maxBudget, numOfPeople: numOfPeople, genre: genre, syncId: syncId, reset: reset, handler: {[weak self] (result: KarutaResult<Restaurant, KarutaApiClientError>) in
             guard let strongSelf = self else {
                 return
             }
@@ -522,8 +529,8 @@ class MainViewController: UIViewController {
     }
 }
 
-extension MainViewController: CategorySelectionViewControllerDelegate {
-    //MARK: - CategorySelectionViewControllerDelegate methods
+//MARK: - OnetimeFilterViewControllerDelegate methods
+extension MainViewController: OnetimeFilterViewControllerDelegate {
     func closeButtonTapped() {
         if let vc = self.onetimeFilterVC {
             vc.view.removeFromSuperview()
@@ -531,12 +538,15 @@ extension MainViewController: CategorySelectionViewControllerDelegate {
         self.onetimeFilterVC = nil
     }
     
-    func filterSelected(genre: Genre) {
+    func startSearch(budget: Budget, numOfPeople: NumOfPeople, genre: Genre) {
         guard let categoryLabelView = self.categoryLabelView else {
             return
         }
-        // set category
-        self.currentCategory = genre
+        // set filter
+        self.currentBudget = budget
+        self.currentNumOfPeople = numOfPeople
+        self.currentGenre = genre
+        
         categoryLabelView.setCategory(genre.valueForDisplay())
         
         if let vc = self.onetimeFilterVC {
@@ -592,7 +602,7 @@ extension MainViewController: MDCSwipeToChooseDelegate {
             self.progressViewController.progressWithRatio(self.currentProgress)
         }
 
-        self.acquireCardWithLatitude(self.currentLatitude!, longitude: self.currentLongitude!, like: answer, category:self.currentCategory, syncId: cardView.syncID, reset: false)
+        self.acquireCardWithLatitude(self.currentLatitude!, longitude: self.currentLongitude!, like: answer, maxBudget: self.currentBudget, numOfPeople: self.currentNumOfPeople, genre:self.currentGenre, syncId: cardView.syncID, reset: false)
         if (!self.canDisplayNextCard && self.contentView.subviews.count == 0) {
             self.acquireResults()
         }
@@ -630,7 +640,7 @@ extension MainViewController: ResultViewControllerDelegate {
             }
             if reset {
                 strongSelf.reset()
-                strongSelf.acquireFirstCard()
+                strongSelf.displayOnetimeFilterView()
             } else {
                 strongSelf.resetViews()
                 strongSelf.canDisplayNextCard = true
