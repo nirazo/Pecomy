@@ -160,19 +160,10 @@
                                             </attributedString>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11:00~14:00 (L.O.13:30)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kvR-sk-403">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11:00~14:00 (L.O.13:30)" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kvR-sk-403">
                                             <rect key="frame" x="162" y="32" width="197" height="12"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="12" id="itU-vd-u06"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="12"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="17:00~20:30(L.O. 20:00)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DYp-uj-U0X">
-                                            <rect key="frame" x="162" y="48" width="197" height="12"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="12" id="1Bc-8n-RE6"/>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="12" id="itU-vd-u06"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="12"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -188,20 +179,28 @@
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="DYp-uj-U0X" secondAttribute="trailing" constant="16" id="67R-RT-uQg"/>
                                         <constraint firstItem="dI9-SJ-cYp" firstAttribute="top" secondItem="A4E-A5-Qwe" secondAttribute="top" constant="16" id="CAV-VQ-kGI"/>
                                         <constraint firstItem="dI9-SJ-cYp" firstAttribute="leading" secondItem="A4E-A5-Qwe" secondAttribute="leading" constant="16" id="EgV-nz-hwB"/>
                                         <constraint firstItem="kvR-sk-403" firstAttribute="centerY" secondItem="dI9-SJ-cYp" secondAttribute="centerY" id="GaU-RQ-RYS"/>
                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="76" id="NVI-dx-DNM"/>
                                         <constraint firstAttribute="trailing" secondItem="kvR-sk-403" secondAttribute="trailing" constant="16" id="SHj-w6-fga"/>
-                                        <constraint firstItem="DYp-uj-U0X" firstAttribute="bottom" secondItem="dI9-SJ-cYp" secondAttribute="bottom" id="STy-LI-Ki8"/>
-                                        <constraint firstItem="DYp-uj-U0X" firstAttribute="leading" secondItem="QcX-bs-AN1" secondAttribute="leading" id="ZqK-Xp-pOI"/>
+                                        <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="kvR-sk-403" secondAttribute="bottom" constant="32" id="c1W-ag-oRk"/>
                                         <constraint firstAttribute="height" constant="76" id="dtL-Jm-GSQ"/>
+                                        <constraint firstItem="kvR-sk-403" firstAttribute="top" secondItem="QcX-bs-AN1" secondAttribute="bottom" constant="4" id="iZd-Ud-m2k"/>
+                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="kvR-sk-403" secondAttribute="bottom" constant="16" id="oHl-9U-s3q"/>
                                         <constraint firstItem="kvR-sk-403" firstAttribute="leading" secondItem="QcX-bs-AN1" secondAttribute="leading" id="oQC-wS-7ZV"/>
                                         <constraint firstAttribute="bottom" secondItem="dI9-SJ-cYp" secondAttribute="bottom" constant="16" id="plI-5C-3GI"/>
                                         <constraint firstItem="QcX-bs-AN1" firstAttribute="leading" secondItem="dI9-SJ-cYp" secondAttribute="trailing" constant="16" id="uC5-3z-ggH"/>
                                         <constraint firstItem="QcX-bs-AN1" firstAttribute="top" secondItem="dI9-SJ-cYp" secondAttribute="top" id="yEI-Ke-J4j"/>
                                     </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="dtL-Jm-GSQ"/>
+                                            <exclude reference="plI-5C-3GI"/>
+                                            <exclude reference="GaU-RQ-RYS"/>
+                                            <exclude reference="c1W-ag-oRk"/>
+                                        </mask>
+                                    </variation>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PTS-aa-FTO" customClass="CommentsView" customModule="Karuta" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="423" width="375" height="64"/>
@@ -386,7 +385,6 @@
                 <outlet property="distanceLabel" destination="wxf-yk-W4g" id="NBb-bc-GHa"/>
                 <outlet property="mapView" destination="TTA-lD-t8W" id="tvy-9O-bWE"/>
                 <outlet property="middleSeparator" destination="Xwu-f1-Pui" id="7M5-hf-ltE"/>
-                <outlet property="nightBusinessHourLabel" destination="DYp-uj-U0X" id="70q-yX-MAG"/>
                 <outlet property="nightPriceIcon" destination="itZ-2x-GSW" id="yHw-Sd-FMq"/>
                 <outlet property="nightPriceLabel" destination="Xft-fh-yRn" id="d7F-88-wij"/>
                 <outlet property="picturesBaseView" destination="SXM-IE-ntA" id="3Og-97-VWK"/>
