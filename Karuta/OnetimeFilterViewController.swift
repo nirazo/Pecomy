@@ -8,6 +8,20 @@
 
 import UIKit
 
+enum DeviceType {
+    case IPhone4, IPhone5, IPhone6, IPhone6Plus, Other
+    
+    init(size: CGSize) {
+        switch size {
+        case CGSize(width: 320.0, height: 480.0): self = .IPhone4
+        case CGSize(width: 320.0, height: 568.0): self = .IPhone5
+        case CGSize(width: 375.0, height: 667.0): self = .IPhone6
+        case CGSize(width: 414.0, height: 736.0): self = .IPhone6Plus
+        default: self = .Other
+        }
+    }
+}
+
 protocol OnetimeFilterViewControllerDelegate {
     func closeButtonTapped()
     func startSearch(budget: Budget, numOfPeople: NumOfPeople, genre: Genre)
@@ -22,6 +36,8 @@ class OnetimeFilterViewController: UIViewController {
     private let bottomButtonsBgView = UIView(frame: CGRectZero)
     private let cancelButton = UIButton(frame: CGRectZero)
     private let startButton = UIButton(frame: CGRectZero)
+    
+    private let deviceType = DeviceType(size: UIScreen.mainScreen().bounds.size)
     
     var delegate: OnetimeFilterViewControllerDelegate?
     
@@ -89,11 +105,22 @@ class OnetimeFilterViewController: UIViewController {
         
         self.view.addSubview(self.collectionView)
         
+        var titleBottomMargin: CGFloat = 0
+        switch self.deviceType {
+        case .IPhone4:
+            titleBottomMargin = 10
+        case .IPhone5:
+            titleBottomMargin = 15
+        case .IPhone6, .IPhone6Plus:
+            titleBottomMargin = 50.0
+        default:
+            titleBottomMargin = 50.0
+        }
         self.collectionView.snp_makeConstraints { (make) in
             make.left.equalTo(self.contentView).offset(16)
             make.right.equalTo(self.contentView).offset(-16)
-            make.top.equalTo(titleLabel.snp_bottom).offset(50)
-            make.height.equalTo(405.5)
+            make.top.equalTo(titleLabel.snp_bottom).offset(titleBottomMargin)
+            make.bottom.equalTo(self.contentView.snp_bottom).offset(-64)
         }
         
         self.bottomButtonsBgView.backgroundColor = UIColor(red: 235.0/255.0, green: 231.0/255.0, blue: 225.0/255.0, alpha: 1.0)
@@ -125,13 +152,13 @@ class OnetimeFilterViewController: UIViewController {
             self.cancelButton.snp_makeConstraints { (make) in
                 make.top.equalTo(self.bottomButtonsBgView).offset(10)
                 make.left.equalTo(self.bottomButtonsBgView).offset(10)
-                make.width.equalTo(136)
+                make.width.equalTo(self.bottomButtonsBgView.snp_width).dividedBy(2.61)
                 make.height.equalTo(44)
             }
             self.startButton.snp_makeConstraints { (make) in
                 make.top.equalTo(self.bottomButtonsBgView).offset(10)
                 make.left.equalTo(self.cancelButton.snp_right).offset(10)
-                make.width.equalTo(189)
+                make.right.equalTo(self.bottomButtonsBgView).offset(-10)
                 make.height.equalTo(44)
             }
         } else {
@@ -198,11 +225,23 @@ extension OnetimeFilterViewController: UICollectionViewDelegate {
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-        return UIEdgeInsetsMake(5, 0, 35.5, 0)
+        
+        var bottomMargin: CGFloat = 0.0
+        switch self.deviceType {
+        case .IPhone4:
+            bottomMargin = 10
+        case .IPhone5:
+            bottomMargin = 20
+        case .IPhone6, .IPhone6Plus:
+            bottomMargin = 35.5
+        default:
+            bottomMargin = 35.5
+        }
+        return UIEdgeInsetsMake(5, 0, bottomMargin, 0)
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
-        return 10.0
+        return 9.9
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
