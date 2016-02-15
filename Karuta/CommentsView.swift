@@ -89,8 +89,8 @@ class CommentsView: UIView {
             self.commentsContentViews.append(content)
             self.contentView.addSubview(self.commentsContentViews[i])
             self.commentsContentViews[i].snp_makeConstraints { (make) in
-                make.left.equalTo(self.contentView)
-                make.width.equalTo(self.contentView)
+                make.left.equalTo(self.contentView).offset(16)
+                make.right.equalTo(self.contentView).offset(-16)
                 if i == 0 {
                     make.top.equalTo(self.contentView).offset(16)
                 } else {
@@ -102,5 +102,4 @@ class CommentsView: UIView {
             }
         }
     }
-
 }

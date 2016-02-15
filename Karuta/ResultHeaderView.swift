@@ -15,15 +15,17 @@ class ResultHeaderView: UIView {
     
     init(frame: CGRect, section: Int) {
         super.init(frame: frame)
-        self.headerLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 16)
+        self.headerLabel.textAlignment = .Center
         switch section {
         case 0:
             self.rankIcon.image = UIImage(named: "rank_first")
             self.headerLabel.text = NSLocalizedString("ResultRankFirstHeader", comment: "")
+            self.headerLabel.font = UIFont(name: "STKaiti-SC-Black", size: 26)
             self.headerLabel.textColor = Const.RANKING_TOP_COLOR
         case 1:
             self.rankIcon.image = UIImage(named: "rank_other")
             self.headerLabel.text = NSLocalizedString("ResultRankSecondHeader", comment: "")
+            self.headerLabel.font = UIFont(name: "HiraginoSans-W6", size: 18)
             self.headerLabel.textColor = Const.RANKING_SECOND_COLOR
         default:
             break
@@ -43,17 +45,16 @@ class ResultHeaderView: UIView {
         self.addSubview(self.rankIcon)
         self.rankIcon.snp_makeConstraints { (make) in
             make.top.equalTo(self)
-            make.left.equalTo(self)
-            make.height.equalTo(32)
-            make.width.equalTo(32)
-            make.bottom.equalTo(self)
+            make.centerX.equalTo(self)
+            make.height.equalTo(21)
+            make.width.equalTo(24)
         }
         self.addSubview(self.headerLabel)
         self.headerLabel.snp_makeConstraints { (make) in
-            make.left.equalTo(self.rankIcon.snp_right).offset(10)
-            make.width.equalTo(self).offset(-42)
-            make.height.equalTo(self.rankIcon.snp_height)
-            make.centerY.equalTo(self.rankIcon)
+            make.top.equalTo(self.rankIcon.snp_bottom).offset(4)
+            make.centerX.equalTo(self)
+            make.width.equalTo(self)
+            make.height.equalTo(30)
         }
     }
 }
