@@ -53,7 +53,7 @@
 "CardNoPriceInfoText" = "値段情報がありません";
 "BlackListButtonSendMessage" = "このお店を候補から除外するよう報告します";
 "GoodButtonSendMessage" = "このお店に「いいね！」しますか？";
-"ResultRankFirstHeader" = "あなたにオススメ No.1";
+"ResultRankFirstHeader" = "No.1";
 "ResultShowDetail" = "もっと見る";
 "ResultRankSecondHeader" = "その他のおすすめ";
 // DetailView

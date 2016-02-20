@@ -56,8 +56,8 @@ struct Const {
     static let KARUTA_CARD_IMAGE_BACK_COLOR = UIColor(red: 231.0/255.0, green: 232.0/255.0, blue: 233.0/255.0, alpha: 1.0)
     
     // フォント
-    static let KARUTA_FONT_NORMAL = "HiraKakuProN-W3"
-    static let KARUTA_FONT_BOLD = "HiraKakuProN-W6"
+    static let KARUTA_FONT_NORMAL = ".HiraKakuInterface-W3"
+    static let KARUTA_FONT_BOLD = ".HiraKakuInterface-W6"
     
     // userdefaultsのキー
     static let UD_KEY_HAS_LAUNCHED = "HasLaunchedOnce"

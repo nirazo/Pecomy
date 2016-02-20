@@ -20,11 +20,8 @@ class TopResultCard: ResultCardBase {
     private let TEXT_MARGIN_X: CGFloat = 16.0
     private let TEXT_MARGIN_Y: CGFloat = 10.0
     
-    let gradientLayer = CAGradientLayer()
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var mainImageView: UIImageView!
-    @IBOutlet weak var secondImageView: UIImageView!
-    @IBOutlet weak var thirdImageView: UIImageView!
     @IBOutlet weak var restaurantNameLabel: UILabel!
     @IBOutlet weak var categoryView: CategoryLabelView!
     @IBOutlet weak var dayPriceIcon: UIImageView!
@@ -34,10 +31,6 @@ class TopResultCard: ResultCardBase {
     @IBOutlet weak var nightPriceLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var mapView: GMSMapView!
-    @IBOutlet weak var separator: UIView!
-    @IBOutlet weak var reviewIcon: UIImageView!
-    @IBOutlet weak var reviewCommentLabel: UILabel!
-    @IBOutlet weak var detailButton: UIButton!
     
     var restaurant = Restaurant()
     var delegate: ResultCardBaseDelegate?
@@ -76,19 +69,14 @@ class TopResultCard: ResultCardBase {
         self.mainImageView.image = UIImage(named: "noimage")
         self.mainImageView.contentMode = .ScaleAspectFill
         self.mainImageView.clipsToBounds = true
-        self.secondImageView.image = UIImage(named: "noimage")
-        self.secondImageView.contentMode = .ScaleAspectFill
-        self.secondImageView.clipsToBounds = true
-        self.thirdImageView.image = UIImage(named: "noimage")
-        self.thirdImageView.contentMode = .ScaleAspectFill
-        self.thirdImageView.clipsToBounds = true
         
         // レストラン名のラベル
         self.restaurantNameLabel.text = self.restaurant.shopName
         self.restaurantNameLabel.backgroundColor = UIColor.whiteColor()
-        self.restaurantNameLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 16)
+        self.restaurantNameLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 24)
         self.restaurantNameLabel.numberOfLines = 2
         self.restaurantNameLabel.textColor = Const.RANKING_TOP_COLOR
+        self.restaurantNameLabel.textAlignment = .Center
         self.restaurantNameLabel.sizeToFit()
         
         // カテゴリ
@@ -104,8 +92,8 @@ class TopResultCard: ResultCardBase {
         }
         self.dayPriceLabel.numberOfLines = 2
         self.dayPriceLabel.sizeToFit()
-        self.dayPriceLabel.textColor = UIColor(red: 128.0/255.0, green: 128.0/255.0, blue: 128.0/255.0, alpha: 1.0)
-        self.dayPriceLabel.font = UIFont(name: Const.KARUTA_FONT_NORMAL, size: 12)
+        self.dayPriceLabel.textColor = Const.RANKING_SECOND_RIGHT_COLOR
+        self.dayPriceLabel.font = UIFont(name: Const.KARUTA_FONT_NORMAL, size: 13)
         
         self.nightPriceIcon.image = UIImage(named: "noimage")
         if (self.restaurant.nightPriceMin.isEmpty && self.restaurant.nightPriceMax.isEmpty) {
@@ -115,15 +103,15 @@ class TopResultCard: ResultCardBase {
         }
         self.nightPriceLabel.numberOfLines = 2
         self.nightPriceLabel.sizeToFit()
-        self.nightPriceLabel.textColor = UIColor(red: 128.0/255.0, green: 128.0/255.0, blue: 128.0/255.0, alpha: 1.0)
-        self.nightPriceLabel.font = UIFont(name: Const.KARUTA_FONT_NORMAL, size: 12)
+        self.nightPriceLabel.textColor = Const.RANKING_SECOND_RIGHT_COLOR
+        self.nightPriceLabel.font = UIFont(name: Const.KARUTA_FONT_NORMAL, size: 13)
         
         // 距離ラベル
         self.distanceLabel.text = String(format: NSLocalizedString("CardDistanceFromText", comment: ""), self.restaurant.distance.meterToMinutes())
-        self.distanceLabel.font = UIFont(name: Const.KARUTA_FONT_NORMAL, size: 12)
+        self.distanceLabel.font = UIFont(name: Const.KARUTA_FONT_NORMAL, size: 13)
         self.distanceLabel.numberOfLines = 0
         self.distanceLabel.sizeToFit()
-        self.distanceLabel.textColor = UIColor(red: 108/255.0, green: 108/255.0, blue: 108/255.0, alpha: 1.0)
+        self.distanceLabel.textColor = Const.RANKING_SECOND_RIGHT_COLOR
         
         // 地図
         let lat = Double(self.restaurant.latitude) ?? 0.0
@@ -139,36 +127,10 @@ class TopResultCard: ResultCardBase {
         marker.position = CLLocationCoordinate2DMake(lat, lon)
         marker.map = mapView
         
-        // 地図のグラデーション
-        gradientLayer.colors = [UIColor.clearColor().CGColor, UIColor.whiteColor().CGColor]
-        gradientLayer.startPoint = CGPointMake(0.0, 0.5)   //開始ポイント
-        gradientLayer.endPoint = CGPointMake(0.4, 0.5)    //終了ポイント
-        self.mapView.layer.mask = self.gradientLayer
-        
-        // セパレータ
-        self.separator.backgroundColor = UIColor(red: 230/255.0, green: 230/255.0, blue: 230/255.0, alpha: 1.0)
-        
-        // レビューアイコン
-        self.reviewIcon.image = UIImage(named: "comment_human")
-
-        self.reviewCommentLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 14)
-        self.reviewCommentLabel.textColor = Const.KARUTA_THEME_TEXT_COLOR
-        self.reviewCommentLabel.text = self.restaurant.reviewSubjects[0]
-        
-        // もっと見るボタン
-        self.detailButton.backgroundColor = Const.RANKING_TOP_COLOR
-        self.detailButton.addTarget(self, action: "resultTapped:", forControlEvents: .TouchUpInside)
-        self.detailButton.setTitle(NSLocalizedString("ResultShowDetail", comment: ""), forState: .Normal)
-        
         // 画像のダウンロード
         self.acquireImages()
         
         self.layoutIfNeeded()
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        self.gradientLayer.frame = self.mapView.layer.bounds
     }
     
     // TODO: - Refactoring
@@ -181,25 +143,9 @@ class TopResultCard: ResultCardBase {
                     }, completion: nil)
                 })
         }
-        if self.restaurant.imageUrls.count >= 2 {
-            self.secondImageView.sd_setImageWithURL(NSURL(string: self.restaurant.imageUrls[1]), completed: {[weak self](image: UIImage!, error: NSError!, cacheType: SDImageCacheType, imageURL: NSURL!) in
-                self!.secondImageView.alpha = 0
-                UIView.animateWithDuration(0.5, delay: 0.0, options: .CurveEaseInOut, animations: {() -> Void in
-                    self!.secondImageView.alpha = 1
-                    }, completion: nil)
-                })
-        }
-        if self.restaurant.imageUrls.count >= 3 {
-            self.thirdImageView.sd_setImageWithURL(NSURL(string: self.restaurant.imageUrls[2]), completed: {[weak self](image: UIImage!, error: NSError!, cacheType: SDImageCacheType, imageURL: NSURL!) in
-                self!.thirdImageView.alpha = 0
-                UIView.animateWithDuration(0.5, delay: 0.0, options: .CurveEaseInOut, animations: {() -> Void in
-                    self!.thirdImageView.alpha = 1
-                    }, completion: nil)
-                })
-        }
     }
     
     func resultTapped(sender: AnyObject) {
-        self.delegate!.detailButtonTapped(self.restaurant)
+        self.delegate?.detailButtonTapped(self.restaurant)
     }
 }

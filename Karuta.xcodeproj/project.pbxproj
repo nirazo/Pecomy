@@ -34,6 +34,7 @@
 		D253A9EC1C32309900D65D20 /* KarutaApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D253A9EB1C32309900D65D20 /* KarutaApiResponse.swift */; };
 		D253A9EE1C3233AF00D65D20 /* KarutaResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D253A9ED1C3233AF00D65D20 /* KarutaResult.swift */; };
 		D272F45C1B9C25E4009564A0 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D272F45B1B9C25E4009564A0 /* LoadingView.swift */; };
+		D27A92511C70D77800A7324E /* Kaiti.ttc in Resources */ = {isa = PBXBuildFile; fileRef = D27A92501C70D75700A7324E /* Kaiti.ttc */; };
 		D27BB9D21B36F4A900F8D902 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27BB9D11B36F4A900F8D902 /* AppDelegate.swift */; };
 		D27BB9D41B36F4A900F8D902 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27BB9D31B36F4A900F8D902 /* MainViewController.swift */; };
 		D27BB9D91B36F4A900F8D902 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D27BB9D81B36F4A900F8D902 /* Images.xcassets */; };
@@ -113,6 +114,7 @@
 		D253A9EB1C32309900D65D20 /* KarutaApiResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarutaApiResponse.swift; sourceTree = "<group>"; };
 		D253A9ED1C3233AF00D65D20 /* KarutaResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarutaResult.swift; sourceTree = "<group>"; };
 		D272F45B1B9C25E4009564A0 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		D27A92501C70D75700A7324E /* Kaiti.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = Kaiti.ttc; sourceTree = "<group>"; };
 		D27BB9CC1B36F4A900F8D902 /* Karuta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Karuta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D27BB9D01B36F4A900F8D902 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D27BB9D11B36F4A900F8D902 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -338,6 +340,7 @@
 		D27BB9CF1B36F4A900F8D902 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D27A92501C70D75700A7324E /* Kaiti.ttc */,
 				D27BB9D01B36F4A900F8D902 /* Info.plist */,
 				D2092A2E1B637460008046D9 /* Localizable.strings */,
 			);
@@ -513,6 +516,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D27A92511C70D77800A7324E /* Kaiti.ttc in Resources */,
 				D28901301C437D9D005BDF84 /* RestaurantDetailView.xib in Resources */,
 				D2092A2C1B637460008046D9 /* Localizable.strings in Resources */,
 				D2A99A571C17367E00C16F04 /* GoogleService-Info.plist in Resources */,

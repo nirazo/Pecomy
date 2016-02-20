@@ -16,11 +16,15 @@ class CommentContentView: UIView {
     var comment = ""
     let contentView = UIView()
     var commentLabel = UILabel()
+    var commentBgColor = UIColor.whiteColor()
+    var commentTextColor = Const.KARUTA_RANK_COLOR[0]
     
-    init(frame: CGRect, comment: String) {
+    init(frame: CGRect, comment: String, backgroundColor: UIColor = UIColor.whiteColor(), textColor: UIColor = Const.KARUTA_RANK_COLOR[0]) {
         super.init(frame: frame)
         
         self.comment = comment
+        self.commentBgColor = backgroundColor
+        self.commentTextColor = textColor
         
         // パーツ群を置くビュー
         self.contentView.backgroundColor = UIColor.clearColor()
@@ -52,7 +56,7 @@ class CommentContentView: UIView {
         self.imageView.snp_makeConstraints { (make) in
             make.width.equalTo(40)
             make.height.equalTo(40)
-            make.left.equalTo(self).offset(16)
+            make.left.equalTo(self)
             make.top.equalTo(self)
             make.bottom.equalTo(self)
         }
@@ -60,7 +64,7 @@ class CommentContentView: UIView {
         // コメントビュー
         self.commentBackGroundView.layer.cornerRadius = 5.0
         self.commentBackGroundView.layer.masksToBounds = true
-        self.commentBackGroundView.backgroundColor = UIColor.whiteColor()
+        self.commentBackGroundView.backgroundColor = self.commentBgColor
         self.addSubview(self.commentBackGroundView)
         self.commentBackGroundView.snp_makeConstraints { (make) in
             make.height.equalTo(40)
@@ -72,8 +76,8 @@ class CommentContentView: UIView {
         
         // コメント
         self.commentLabel.text = self.comment
-        self.commentLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 14)
-        self.commentLabel.textColor = Const.KARUTA_RANK_COLOR[0]
+        self.commentLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 15)
+        self.commentLabel.textColor = self.commentTextColor
         self.commentLabel.numberOfLines = 2
         self.commentLabel.sizeToFit()
         self.addSubview(self.commentLabel)

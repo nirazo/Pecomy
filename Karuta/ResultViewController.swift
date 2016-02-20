@@ -37,6 +37,8 @@ class ResultViewController: UIViewController, ResultCardBaseDelegate {
     
     let secondRankHeader = ResultHeaderView(frame: CGRectZero, section: 1)
     
+    var commentView: CommentContentView?
+    
     var delegate: ResultViewControllerDelegate?
     
     init(restaurants: [Restaurant]) {
@@ -108,7 +110,7 @@ class ResultViewController: UIViewController, ResultCardBaseDelegate {
         self.contentView.addSubview(self.firstRankHeader)
         self.firstRankHeader.snp_makeConstraints { (make) in
             make.left.equalTo(self.contentView).offset(16)
-            make.height.equalTo(32)
+            make.height.equalTo(55)
             make.width.equalTo(self.contentView).offset(-32)
             make.right.equalTo(self.contentView).offset(-16)
             make.top.equalTo(self.contentView).offset(16)
@@ -126,11 +128,24 @@ class ResultViewController: UIViewController, ResultCardBaseDelegate {
         self.topResultCard?.setupSubViews()
         self.topResultCard?.delegate = self
         
+        let tr = UITapGestureRecognizer(target: self, action: "cardTapped:")
+        tr.delegate = self
+        self.topResultCard!.addGestureRecognizer(tr)
+        
+        self.commentView = CommentContentView(frame: CGRectZero, comment: self.restaurants[0].reviewSubjects[0], backgroundColor: Const.KARUTA_RANK_COLOR[0], textColor: UIColor.whiteColor())
+        self.contentView.addSubview(self.commentView!)
+        self.commentView?.snp_makeConstraints{ (make) in
+            make.top.equalTo(self.topResultCard!.snp_bottom).offset(10)
+            make.left.equalTo(self.topResultCard!)
+            make.width.equalTo(self.topResultCard!)
+            make.height.equalTo(40)
+        }
+        
         // その他のベースとなるビュー
         self.otherResultsBaseView.backgroundColor = UIColor.clearColor()
         self.contentView.addSubview(self.otherResultsBaseView)
         self.otherResultsBaseView.snp_makeConstraints { (make) in
-            make.top.equalTo(self.topResultCard!.snp_bottom)
+            make.top.equalTo(self.commentView!.snp_bottom)
             make.left.equalTo(self.topResultCard!)
             make.width.equalTo(self.topResultCard!)
             make.bottom.equalTo(self.contentView)
@@ -142,7 +157,7 @@ class ResultViewController: UIViewController, ResultCardBaseDelegate {
             self.otherResultsBaseView.addSubview(self.secondRankHeader)
             self.secondRankHeader.snp_makeConstraints { (make) in
                 make.left.equalTo(self.otherResultsBaseView)
-                make.height.equalTo(32)
+                make.height.equalTo(55)
                 make.width.equalTo(self.otherResultsBaseView)
                 make.right.equalTo(self.otherResultsBaseView)
                 make.top.equalTo(self.otherResultsBaseView).offset(18)
@@ -217,9 +232,20 @@ class ResultViewController: UIViewController, ResultCardBaseDelegate {
 
 }
 
-// OtherResultCardDelegate method
+// MARK:- OtherResultCardDelegate method
 extension ResultViewController: OtherResultCardDelegate {
     func contentTapped(restaurant: Restaurant) {
         self.openDetailViewController(restaurant)
+    }
+}
+
+extension ResultViewController: UIGestureRecognizerDelegate {
+    func cardTapped(sender: AnyObject) {
+        guard let card = sender.view as? TopResultCard else { return }
+        let detailVC = DetailViewController(restaurant: card.restaurant)
+        detailVC.navigationItem.title = card.restaurant.shopName
+        let backButtonItem = UIBarButtonItem(title: NSLocalizedString("Back", comment: ""), style: .Plain, target: nil, action: nil)
+        self.navigationItem.backBarButtonItem = backButtonItem
+        self.navigationController?.pushViewController(detailVC, animated: true)
     }
 }

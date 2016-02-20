@@ -53,7 +53,7 @@
 "CardNoPriceInfoText" = "No price information";
 "BlackListButtonSendMessage" = "Send request to exclude this card from the list";
 "GoodButtonSendMessage" = "Say \"Good\" to this restaurant?";
-"ResultRankFirstHeader" = "The most recommended restaurant to you";
+"ResultRankFirstHeader" = "No.1";
 "ResultShowDetail" = "View detail";
 "ResultRankSecondHeader" = "Other recommended restaurans";
 // Detail View
