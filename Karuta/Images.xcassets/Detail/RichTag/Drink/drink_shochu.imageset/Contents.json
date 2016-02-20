@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "icon_tag_0037_焼酎あり.png",
+      "filename" : "icon_tag_0037_ drink_shochu.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "icon_tag_0037_焼酎あり@2x.png",
+      "filename" : "icon_tag_0037_ drink_shochu@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "icon_tag_0037_焼酎あり@3x.png",
+      "filename" : "icon_tag_0037_ drink_shochu@3x.png",
       "scale" : "3x"
     }
   ],

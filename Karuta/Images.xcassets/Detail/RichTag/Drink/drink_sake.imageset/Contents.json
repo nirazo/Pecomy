@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "icon_tag_0034_日本酒あり.png",
+      "filename" : "icon_tag_0034_ drink_sake.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "icon_tag_0034_日本酒あり@2x.png",
+      "filename" : "icon_tag_0034_ drink_sake@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "icon_tag_0034_日本酒あり@3x.png",
+      "filename" : "icon_tag_0034_ drink_sake@3x.png",
       "scale" : "3x"
     }
   ],

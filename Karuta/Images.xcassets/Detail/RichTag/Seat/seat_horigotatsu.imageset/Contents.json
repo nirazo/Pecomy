@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "icon_tag_0010_掘りごたつあり.png",
+      "filename" : "icon_tag_0010_seat_horigotatsu.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "icon_tag_0010_掘りごたつあり@2x.png",
+      "filename" : "icon_tag_0010_seat_horigotatsu@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "icon_tag_0010_掘りごたつあり@3x.png",
+      "filename" : "icon_tag_0010_seat_horigotatsu@3x.png",
       "scale" : "3x"
     }
   ],

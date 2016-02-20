@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "icon_tag_0008_立ち食い.png",
+      "filename" : "icon_tag_0008_ style_standing_eat.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "icon_tag_0008_立ち食い@2x.png",
+      "filename" : "icon_tag_0008_ style_standing_eat@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "icon_tag_0008_立ち食い@3x.png",
+      "filename" : "icon_tag_0008_ style_standing_eat@3x.png",
       "scale" : "3x"
     }
   ],
