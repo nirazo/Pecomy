@@ -2,10 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>UIAppFonts</key>
-	<array>
-		<string>Kaiti.ttc</string>
-	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>ja</string>
 	<key>CFBundleExecutable</key>
@@ -19,11 +15,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.3.0</string>
+	<string>1.4.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1.3.0.1</string>
+	<string>1.4.0</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -98,6 +94,10 @@
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>現在地に基づいた店舗の推薦を行うために位置情報を使用します</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Kaiti.ttc</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>Launch Screen</string>
 	<key>UIRequiredDeviceCapabilities</key>
