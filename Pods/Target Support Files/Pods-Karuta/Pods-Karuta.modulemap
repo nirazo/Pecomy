@@ -1,6 +1,0 @@
-framework module Pods_Karuta {
-  umbrella header "Pods-Karuta-umbrella.h"
-
-  export *
-  module * { export * }
-}

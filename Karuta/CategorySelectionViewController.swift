@@ -55,8 +55,6 @@ class CategorySelectionViewController: UIViewController, UICollectionViewDelegat
         if let category = category {
             cell.category = category
         }
-        
-        cell.backgroundColor = UIColor.yellowColor()
         return cell
     }
     

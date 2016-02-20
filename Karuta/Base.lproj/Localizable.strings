@@ -23,15 +23,29 @@
 "NoResultAlertTitle" = "Cannot find result";
 "NoResultAlertMessage" = "Karuta cannot find restaurant for you around here. Please try again after changing time or place.";
 "SearchingRestaurant" = "Searching your favorite restaurant...";
-"YourBest" = "Your best";
+"ResultTitle" = "Result";
 "CloseTutorial" = "start";
 "CardLikeText" = "Like!";
 "CardDislikeText" = "Unn..";
+// Category
 "CategoryAll" = "All";
 "CategoryRestaurant" = "Restaurant";
 "CategoryCafe" = "Cafe";
 "CategoryDrinking" = "Drinking";
+// Card
+"Day" = "Day";
+"Night" = "Night";
 "CardDistanceFromText" = "%d minutes to walk from here";
 "CardNoPriceInfoText" = "No price information";
 "BlackListButtonSendMessage" = "Send request to exclude this card from the list";
 "GoodButtonSendMessage" = "Say \"Good\" to this restaurant?";
+"ResultRankFirstHeader" = "No.1";
+"ResultShowDetail" = "View detail";
+"ResultRankSecondHeader" = "Other recommended restaurans";
+// Detail View
+"TelephoneCall" = "Phone Call";
+"PicturesViewTitle" = "Other pictures";
+"RichTagsTitle" = "Tags";
+"BusinessHourTitle" = "Business Hour";
+"TelAlertMessage" = "Do you make a phone call to this restaurant?";
+"TelAlertTelButton" = "Call";

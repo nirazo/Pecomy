@@ -10,21 +10,25 @@ import UIKit
 
 class CategorySelectionCell: UICollectionViewCell {
     
-    let label: CategoryLabelView
+    let categoryView: CategoryLabelView
     var category: CategoryIdentifier? {
         didSet {
             if let category = self.category {
-                self.label.setCategory(category.valueForDisplay())
+                self.categoryView.setCategory(category.valueForDisplay())
             }
         }
     }
     
     override init(frame: CGRect) {
-        self.label = CategoryLabelView(frame: frame, category: "")
+        self.categoryView = CategoryLabelView(frame: frame, category: "")
         super.init(frame: frame)
-        self.label.bounds = self.contentView.bounds
-        self.label.center = self.contentView.center
-        self.contentView.addSubview(self.label)
+        self.contentView.addSubview(self.categoryView)
+        
+        self.self.categoryView.snp_makeConstraints { (make) in
+            make.centerX.equalTo(self.contentView)
+            make.centerY.equalTo(self.contentView)
+            make.size.equalTo(self.contentView)
+        }
     }
 
     required init?(coder aDecoder: NSCoder) {

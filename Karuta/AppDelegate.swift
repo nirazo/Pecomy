@@ -9,14 +9,18 @@
 import UIKit
 import Fabric
 import Crashlytics
+import GoogleMaps
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    let cGoogleMapsAPIKey = Const.GOOGLEMAP_API_KEY
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         Fabric.with([Crashlytics()])
+        GMSServices.provideAPIKey(cGoogleMapsAPIKey)
+        
         self.setupAppearance()
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         

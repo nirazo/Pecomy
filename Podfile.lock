@@ -1,43 +1,53 @@
 PODS:
-  - Alamofire (2.0.0)
-  - Google/Analytics (1.0.7):
+  - Alamofire (3.1.5)
+  - Google/Analytics (1.3.2):
     - Google/Core
     - GoogleAnalytics (~> 3.12)
-  - Google/Core (1.0.7):
+  - Google/Core (1.3.2):
+    - GoogleInterchangeUtilities (~> 1.0)
     - GoogleNetworkingUtilities (~> 1.0)
     - GoogleSymbolUtilities (~> 1.0)
-    - GoogleUtilities (~> 1.0)
+    - GoogleUtilities (~> 1.1)
   - GoogleAnalytics (3.14.0)
+  - GoogleInterchangeUtilities (1.1.0):
+    - GoogleSymbolUtilities (~> 1.0)
+  - GoogleMaps (1.11.1)
   - GoogleNetworkingUtilities (1.0.0):
     - GoogleSymbolUtilities (~> 1.0)
   - GoogleSymbolUtilities (1.0.3)
   - GoogleUtilities (1.1.0):
     - GoogleSymbolUtilities (~> 1.0.0)
   - MDCSwipeToChoose (0.2.3)
-  - SDWebImage (3.7.2):
-    - SDWebImage/Core (= 3.7.2)
-  - SDWebImage/Core (3.7.2)
-  - SnapKit (0.14.0)
-  - SwiftyJSON (2.3.1)
+  - ObjectMapper (1.1.1)
+  - SDWebImage (3.7.5):
+    - SDWebImage/Core (= 3.7.5)
+  - SDWebImage/Core (3.7.5)
+  - SnapKit (0.19.0)
+  - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
-  - Alamofire (= 2.0.0)
-  - Google/Analytics (~> 1.0.0)
-  - MDCSwipeToChoose (= 0.2.3)
-  - SDWebImage (= 3.7.2)
-  - SnapKit (= 0.14.0)
-  - SwiftyJSON (= 2.3.1)
+  - Alamofire
+  - Google/Analytics
+  - GoogleMaps
+  - MDCSwipeToChoose
+  - ObjectMapper
+  - SDWebImage
+  - SnapKit
+  - SwiftyJSON
 
 SPEC CHECKSUMS:
-  Alamofire: 2f13548b29d25a58ecd91c9225fb51493e2b782b
-  Google: 875f5a8ade86dd02e36586e4a54814843938c7f6
+  Alamofire: 5f730ba29fd113b7ddd71c1e65d0c630acf5d7b0
+  Google: 97618e118111b998cce1d8dd1bd98b82301d72db
   GoogleAnalytics: 9be1afdb8deeac4bb5f13ca7f7d3b9db2a1f43dc
+  GoogleInterchangeUtilities: d7f7174176fbcf9710f696f1acebad4dbd98ac03
+  GoogleMaps: c947160008f414c66707a5ea60f35e92055c7670
   GoogleNetworkingUtilities: 292992ab31b7b4ba32809a0e8b40e324cdfb2c0c
   GoogleSymbolUtilities: 82ad9f93d3615244b3f4ce440f5ab2515e8b4f56
   GoogleUtilities: 8ed9134debe11719097881711464752900668f10
   MDCSwipeToChoose: 56239d98b4558c66e7c3c9069482befd26092270
-  SDWebImage: 71b7cdc1d1721d6a82ed62889030225f2c249e29
-  SnapKit: f42352ef34953866da0de1e1009c2ff82588a95e
-  SwiftyJSON: 592b53bee5ef3dd9b3bebc6b9cb7ee35426ae8c3
+  ObjectMapper: 4143abed1dbd49b73d75092fe8fa1c88ed6434b7
+  SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
+  SnapKit: 57c00a21bac67a863f2192e816330f6665585938
+  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
 COCOAPODS: 0.39.0

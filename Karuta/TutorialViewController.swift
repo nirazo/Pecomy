@@ -32,7 +32,7 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
         for (var i=0; i<self.imgTitleArr.count; i++) {
             let img = UIImage(named:self.imgTitleArr[i])
             let iv = UIImageView(image:img)
-            iv.contentMode = .ScaleAspectFit
+            iv.contentMode = .ScaleAspectFill
             iv.frame = CGRectMake(CGFloat(i) * width, 0, width, height)
             scrollView.addSubview(iv)
         }

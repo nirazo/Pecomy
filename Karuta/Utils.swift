@@ -23,23 +23,19 @@ class Utils {
     
     /**
     カードに表示する価格を整形する
-    食べログの価格は
-    [夜]1000~2000          [昼]1000~2000
-    みたいな形なので、コレを整形してカードに表記する形にする。
+    頭に￥をつけ、三桁区切りカンマをつける
     */
     class func formatPriceString(origPrice: String) -> String {
-        let replacedString = origPrice.stringByReplacingOccurrencesOfString("  +", withString: "\n", options: .RegularExpressionSearch, range: nil)
-        var formattedPrice = ""
-        let prices = replacedString.componentsSeparatedByString("\n")
-        if (prices.count < 2) {
-            if (prices[0].isEmpty) {
-                formattedPrice = NSLocalizedString("CardNoPriceInfoText", comment: "")
-            } else {
-                formattedPrice = prices[0]
-            }
-        } else {
-            formattedPrice = prices[1] + "\n" + prices[0]
+        let price = Int(origPrice)
+        guard let intPrice = price else {
+            return ""
         }
-        return formattedPrice
+        let num = NSNumber(integer: intPrice)
+        let formatter = NSNumberFormatter()
+        formatter.numberStyle = NSNumberFormatterStyle.DecimalStyle
+        formatter.groupingSeparator = ","
+        formatter.groupingSize = 3
+        
+        return "￥\(formatter.stringFromNumber(num)!)"
     }
 }
