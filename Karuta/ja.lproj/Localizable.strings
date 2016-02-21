@@ -48,6 +48,8 @@
 "NumOfPeopleTitle" = "人数";
 "GenreTitle" = "ジャンル";
 "StartTitle" = "この条件で探す";
+// Main
+"MainComment" = "今何が食べたい？";
 // Card
 "Day" = "昼";
 "Night" = "夜";

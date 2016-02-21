@@ -48,6 +48,8 @@
 "NumOfPeopleTitle" = "Num of people";
 "GenreTitle" = "Genre";
 "StartTitle" = "Start";
+// Main
+"MainComment" = "What do you feel like eating?";
 // Card
 "Day" = "Day";
 "Night" = "Night";

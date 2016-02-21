@@ -57,6 +57,8 @@ class MainViewController: UIViewController {
     
     var currentProgress: Float = 0.0
     
+    var messageLabel = UILabel()
+    
     let loadingIndicator = UIActivityIndicatorView()
     
     // ビュー関連
@@ -77,20 +79,24 @@ class MainViewController: UIViewController {
                 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "enterForeground:", name:Const.WILL_ENTER_FOREGROUND_KEY, object: nil)
         
-        self.navigationItem.title = Const.KARUTA_TITLE
-        
-        // 背景画像設定（とりあえず固定で...）
-        let image = UIImage(named: "background")
-        UIGraphicsBeginImageContext(self.view.frame.size);
-        image!.drawInRect(self.view.bounds)
-        let backgroundImage = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        self.view.backgroundColor = UIColor(patternImage: backgroundImage!)
-        
         // カードを配置するための透明ビュー
         contentView.frame = self.view.frame
         contentView.backgroundColor = UIColor.clearColor()
         self.view.addSubview(self.contentView)
+        
+        // メッセージラベル
+        self.messageLabel = UILabel(frame: CGRectZero)
+        self.messageLabel.text = NSLocalizedString("MainComment", comment: "")
+        self.messageLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 22)
+        self.messageLabel.textColor = UIColor.whiteColor()
+        self.messageLabel.textAlignment = .Center
+        self.contentView.addSubview(self.messageLabel)
+        self.messageLabel.snp_makeConstraints { make in
+            make.top.equalTo(self.contentView).offset(83)
+            make.left.equalTo(self.contentView)
+            make.width.equalTo(self.contentView)
+            make.height.equalTo(22)
+        }
         
         // フッター
         let footerBar = UIView(frame: CGRectZero)
@@ -372,9 +378,10 @@ class MainViewController: UIViewController {
         let options = MDCSwipeToChooseViewOptions()
         options.delegate = self
         options.onPan = { [weak self] state in
-            if(self!.numOfDisplayedCard() > 1){
-                let frame:CGRect = self!.baseCardRect()
-                let secondCard = self!.contentView.subviews[0] as! CardView
+            guard let strongSelf = self else { return }
+            if(strongSelf.numOfDisplayedCard() > 1){
+                let frame:CGRect = strongSelf.baseCardRect()
+                let secondCard = strongSelf.contentView.subviews[0] as! CardView
                 secondCard.frame = CGRect(x: frame.origin.x, y: frame.origin.y-(state.thresholdRatio * 10.0), width: CGRectGetWidth(frame), height: CGRectGetHeight(frame))
             }
             
