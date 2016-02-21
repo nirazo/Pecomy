@@ -330,7 +330,7 @@ class MainViewController: UIViewController {
                 }
                 completion?(true)
             case .Failure(let error):
-                switch error.type{
+                switch error.type {
                 case .NoResult:
                     if (reset) {
                         strongSelf.showOutOfRangeAlert()
@@ -490,6 +490,21 @@ class MainViewController: UIViewController {
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     
+    // 現在地付近にこれ以上店舗が見つからない場合のアラート表示
+    func showNotFoundRestaurantAroundHereAlert() {
+        let alertController = UIAlertController(title:NSLocalizedString("RestaurantNotFoundAroundHereAlertTitle", comment: ""),
+            message: NSLocalizedString("RestaurantNotFoundAroundHereAlertMessage", comment: ""),
+            preferredStyle: .Alert)
+        let okAction = UIAlertAction(title: NSLocalizedString("OK", comment: ""),
+            style: .Default) { [weak self] action in
+                guard let strongSelf = self else { return }
+                strongSelf.reset()
+                strongSelf.displayOnetimeFilterView()
+        }
+        alertController.addAction(okAction)
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
     // 位置情報取得リトライのアラート表示
     func showRetryToGetLocationAlert() {
         let alertController = UIAlertController(title:NSLocalizedString("LocationRetryAlertTitle", comment: ""),
@@ -644,7 +659,11 @@ extension MainViewController: ResultViewControllerDelegate {
             } else {
                 strongSelf.resetViews()
                 strongSelf.canDisplayNextCard = true
-                strongSelf.displayStackedCard()
+                if !strongSelf.stackedCards.isEmpty {
+                    strongSelf.displayStackedCard()
+                } else {
+                    strongSelf.showNotFoundRestaurantAroundHereAlert()
+                }
             }
         })
     }

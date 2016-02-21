@@ -30,7 +30,7 @@ class RestaurantModel {
                 strongSelf.resultAvailable = value.resultAvailable
                 handler(KarutaResult(value: value.restaurant))
             case .Failure(let error):
-                //Log.d(error)
+                // TODO: エラーコードによってエラーメッセージ詰めたりする
                 handler(KarutaResult(error: error))
             }
             

@@ -25,6 +25,7 @@ class ResultModel {
                 strongSelf.results = value.results
                 handler(KarutaResult(value: value.results))
             case .Failure(let error):
+                // TODO: エラーコードによってエラーメッセージ詰めたりする
                 handler(KarutaResult(error: error))
             }
             strongSelf.session = nil
