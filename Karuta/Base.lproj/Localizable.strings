@@ -33,9 +33,9 @@
 "CategoryCafe" = "Cafe";
 "CategoryDrinking" = "Drinking";
 // Budget
+"Unspecified" = "Unspecified";
 "LessThanThousand" = "〜￥1,000";
 "LessThanTwoThousand" = "〜￥2,000";
-"NoBudget" = "No budget";
 // Num of People
 "OnePerson" = "1 person";
 "TwoPeople" = "2 persons";

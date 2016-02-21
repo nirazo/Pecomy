@@ -14,15 +14,15 @@ enum OnetimeSections {
 
 class OnetimeFilterCollectionViewConfig: NSObject {
     let kCellReuse : String = "Cell"
-    var currentBudget = Budget.LessThanThousand
-    var currentNumOfPeople = NumOfPeople.One
-    var currentGenre = Genre.All
+    var currentBudget: Budget
+    var currentNumOfPeople: NumOfPeople
+    var currentGenre: Genre
     
-    init(budget: Budget = .LessThanThousand, numOfPeople: NumOfPeople = .One, genre: Genre = .All) {
-        super.init()
+    init(budget: Budget = .Unspecified, numOfPeople: NumOfPeople = .One, genre: Genre = .All) {
         self.currentBudget = budget
         self.currentNumOfPeople = numOfPeople
         self.currentGenre = genre
+        super.init()
     }
 
 }

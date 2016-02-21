@@ -25,19 +25,4 @@ enum Genre: Int {
             return ""
         }
     }
-    
-    func valueForReq() -> String {
-        switch self {
-        case .All:
-            return "all"
-        case .Cafe:
-            return "cafe"
-        case .Drinking:
-            return "drinking"
-        case .Restaurant:
-            return "restaurant"
-        default:
-            return ""
-        }
-    }
 }

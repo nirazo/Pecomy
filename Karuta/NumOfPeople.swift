@@ -23,18 +23,4 @@ enum NumOfPeople: Int {
             return ""
         }
     }
-    
-    func valueForReq() -> String {
-        switch self {
-        case .One:
-            return "1"
-        case .Two:
-            return "2"
-        case .MoreThanThree:
-            return ""
-        default:
-            return ""
-        }
-    }
-
 }

@@ -41,15 +41,18 @@ class OnetimeFilterViewController: UIViewController {
     
     var delegate: OnetimeFilterViewControllerDelegate?
     
-    var currentBudget = Budget.LessThanThousand
-    var currentNumOfPeople = NumOfPeople.One
-    var currentGenre = Genre.All
+    var currentBudget: Budget
+    var currentNumOfPeople: NumOfPeople
+    var currentGenre: Genre
     
     var enableCancel: Bool
     
-    init(budget: Budget = .LessThanThousand, numOfPeople: NumOfPeople = .One, genre: Genre = .All, enableCancel: Bool = true) {
+    init(budget: Budget = .Unspecified, numOfPeople: NumOfPeople = .One, genre: Genre = .All, enableCancel: Bool = true) {
         self.collectionViewConfig = OnetimeFilterCollectionViewConfig(budget: budget, numOfPeople: numOfPeople, genre: genre)
         self.enableCancel = enableCancel
+        self.currentBudget = budget
+        self.currentNumOfPeople = numOfPeople
+        self.currentGenre = genre
         super.init(nibName: nil, bundle: nil)
     }
 

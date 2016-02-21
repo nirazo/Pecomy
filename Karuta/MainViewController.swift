@@ -48,7 +48,7 @@ class MainViewController: UIViewController {
     var currentLongitude: Double?
     
     // Onetime filter
-    var currentBudget = Budget.LessThanThousand
+    var currentBudget = Budget.Unspecified
     var currentNumOfPeople = NumOfPeople.One
     var currentGenre = Genre.All
     
@@ -232,7 +232,7 @@ class MainViewController: UIViewController {
         self.isLocationAcquired = false
         self.currentLatitude = nil
         self.currentLongitude = nil
-        self.currentBudget = Budget.LessThanThousand
+        self.currentBudget = Budget.Unspecified
         self.currentNumOfPeople = NumOfPeople.One
         self.currentGenre = Genre.All
         self.stackedCards.removeAll()

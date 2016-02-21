@@ -33,9 +33,9 @@
 "CategoryCafe" = "カフェ";
 "CategoryDrinking" = "飲み";
 // Budget
+"Unspecified" = "指定なし";
 "LessThanThousand" = "〜1,000円";
 "LessThanTwoThousand" = "〜2,000円";
-"NoBudget" = "指定なし";
 // Num of People
 "OnePerson" = "1人";
 "TwoPeople" = "2人";

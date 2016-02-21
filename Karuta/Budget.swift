@@ -9,29 +9,16 @@
 import UIKit
 
 enum Budget: Int {
-    case LessThanThousand, LessThanTwoThousand, Nothing, _counter
+    case Unspecified, LessThanThousand, LessThanTwoThousand, _counter
     
     func valueForDisplay() -> String {
         switch self {
+        case .Unspecified:
+            return NSLocalizedString("Unspecified", comment: "")
         case .LessThanThousand:
             return NSLocalizedString("LessThanThousand", comment: "")
         case .LessThanTwoThousand:
             return NSLocalizedString("LessThanTwoThousand", comment: "")
-        case .Nothing:
-            return NSLocalizedString("NoBudget", comment: "")
-        default:
-            return ""
-        }
-    }
-    
-    func valueForReq() -> String {
-        switch self {
-        case .LessThanThousand:
-            return "1000"
-        case .LessThanTwoThousand:
-            return "2000"
-        case .Nothing:
-            return ""
         default:
             return ""
         }
