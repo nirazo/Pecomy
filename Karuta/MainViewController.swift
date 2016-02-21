@@ -47,6 +47,9 @@ class MainViewController: UIViewController {
     var currentLatitude: Double?
     var currentLongitude: Double?
     
+    // var results
+    var currentResults = [Restaurant]()
+    
     // Onetime filter
     var currentBudget = Budget.Unspecified
     var currentNumOfPeople = NumOfPeople.One
@@ -426,7 +429,8 @@ class MainViewController: UIViewController {
                 }
                 switch result {
                 case .Success(let res):
-                    strongSelf.displayResultViewWithShopList(res)
+                    strongSelf.currentResults = res
+                    strongSelf.displayResultViewWithShopList(strongSelf.currentResults)
                 case .Failure(let error):
                     switch error.type{
                     case .NoResult:
@@ -491,15 +495,14 @@ class MainViewController: UIViewController {
     }
     
     // 現在地付近にこれ以上店舗が見つからない場合のアラート表示
-    func showNotFoundRestaurantAroundHereAlert() {
+    func showNotFoundRestaurantAroundHereAlert(completion: () -> Void) {
         let alertController = UIAlertController(title:NSLocalizedString("RestaurantNotFoundAroundHereAlertTitle", comment: ""),
             message: NSLocalizedString("RestaurantNotFoundAroundHereAlertMessage", comment: ""),
             preferredStyle: .Alert)
         let okAction = UIAlertAction(title: NSLocalizedString("OK", comment: ""),
             style: .Default) { [weak self] action in
-                guard let strongSelf = self else { return }
-                strongSelf.reset()
-                strongSelf.displayOnetimeFilterView()
+                guard let _ = self else { return }
+                completion()
         }
         alertController.addAction(okAction)
         self.presentViewController(alertController, animated: true, completion: nil)
@@ -662,7 +665,9 @@ extension MainViewController: ResultViewControllerDelegate {
                 if !strongSelf.stackedCards.isEmpty {
                     strongSelf.displayStackedCard()
                 } else {
-                    strongSelf.showNotFoundRestaurantAroundHereAlert()
+                    strongSelf.showNotFoundRestaurantAroundHereAlert { () in
+                        strongSelf.displayResultViewWithShopList(strongSelf.currentResults)
+                    }
                 }
             }
         })
