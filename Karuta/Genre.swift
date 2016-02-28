@@ -8,13 +8,8 @@
 
 import Foundation
 
-enum CategoryIdentifier: Int {
-    case All
-    case Cafe
-    case Drinking
-    case Restaurant
-    
-    case _counter // カウンタ
+enum Genre: Int {
+    case All, Cafe, Drinking, Restaurant, _counter
     
     func valueForDisplay() -> String {
         switch self {
@@ -26,21 +21,6 @@ enum CategoryIdentifier: Int {
             return NSLocalizedString("CategoryDrinking", comment: "")
         case .Restaurant:
             return NSLocalizedString("CategoryRestaurant", comment: "")
-        default:
-            return ""
-        }
-    }
-    
-    func valueForReq() -> String {
-        switch self {
-        case .All:
-            return "all"
-        case .Cafe:
-            return "cafe"
-        case .Drinking:
-            return "drinking"
-        case .Restaurant:
-            return "restaurant"
         default:
             return ""
         }

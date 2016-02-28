@@ -17,7 +17,9 @@
 "LocationRetryAlertMessage" = "下のボタンを押して再度取得して下さい。";
 "LocationRetryAlertRetryButtonTitle" = "もう一度";
 "OutOfRangeAlertTitle" = "お店が見つかりません";
-"OutOfRangeAlertMessage" = "現在Karutaは東京都のみに対応しております。恐れ入りますが、東京都内でご利用ください。";
+"OutOfRangeAlertMessage" = "現在Karutaは東京都と神奈川県のみに対応しております。恐れ入りますが、東京都内か神奈川県内でご利用ください。";
+"RestaurantNotFoundAroundHereAlertTitle" = "お店が見つかりません";
+"RestaurantNotFoundAroundHereAlertMessage" = "現在地近辺にこれ以上お店が見つかりません。条件を変えて再度検索してください。";
 "ServerErrorAlertTitle" = "サーバエラー";
 "ServerErrorAlertMessage" = "サーバエラーが発生しました。OKボタンを押すとレストラン検索が再度始まります。";
 "NoResultAlertTitle" = "結果が見つかりませんでした";
@@ -32,6 +34,20 @@
 "CategoryRestaurant" = "レストラン";
 "CategoryCafe" = "カフェ";
 "CategoryDrinking" = "飲み";
+// Budget
+"Unspecified" = "指定なし";
+"LessThanThousand" = "〜1,000円";
+"LessThanTwoThousand" = "〜2,000円";
+// Num of People
+"OnePerson" = "1人";
+"TwoPeople" = "2人";
+"OverThreePeople" = "3人以上";
+// Onetime Filter
+"OnetimeFilterTitle" = "今日は何が食べたい？";
+"BudgetTitle" = "予算";
+"NumOfPeopleTitle" = "人数";
+"GenreTitle" = "ジャンル";
+"StartTitle" = "この条件で探す";
 // Card
 "Day" = "昼";
 "Night" = "夜";
