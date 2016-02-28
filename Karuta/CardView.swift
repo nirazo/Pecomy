@@ -17,11 +17,7 @@ protocol CardViewDelegate {
 
 class CardView: MDCSwipeToChooseView {
     
-    let NUM_OF_IMAGES = 3
-    
-    let SEPARATOR_LINE_WIDTH : CGFloat = 1.0
-    let TEXT_MARGIN_X: CGFloat = 10.0
-    let TEXT_MARGIN_Y: CGFloat = 5.0
+    let NUM_OF_IMAGES = 1
     
     let MDCSwipeToChooseViewHorizontalPadding: CGFloat = 13.0
     let MDCSwipeToChooseViewTopPadding: CGFloat = 25.0
@@ -109,87 +105,13 @@ class CardView: MDCSwipeToChooseView {
         self.insertSubview(self.contentView, atIndex: 1)
         
         // 画像
-        self.restaurantImageViews[0].frame = CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height*0.45 - self.SEPARATOR_LINE_WIDTH)
-        self.restaurantImageViews[1].frame = CGRect(x: 0, y: CGRectGetMaxY(self.restaurantImageViews[0].frame) + self.SEPARATOR_LINE_WIDTH, width: self.frame.size.width/2 - self.SEPARATOR_LINE_WIDTH/2, height: self.frame.size.height*0.3)
-        self.restaurantImageViews[2].frame = CGRect(x: self.frame.size.width/2 + self.SEPARATOR_LINE_WIDTH, y: self.restaurantImageViews[1].frame.origin.y, width: self.frame.size.width/2 - self.SEPARATOR_LINE_WIDTH/2, height: self.frame.size.height*0.3)
-        
         for i in 0..<NUM_OF_IMAGES {
             self.contentView.addSubview(self.restaurantImageViews[i])
         }
-        
-        // レストラン名のラベル
-        let restaurantNameLabel = UILabel(frame: CGRect(x: TEXT_MARGIN_X,
-            y: CGRectGetMaxY(self.restaurantImageViews[1].frame) + TEXT_MARGIN_Y,
-            width: self.frame.width*2/3,
-            height: (self.frame.height - CGRectGetMaxY(self.restaurantImageViews[1].frame))/4))
-        restaurantNameLabel.text = self.restaurant!.shopName
-        restaurantNameLabel.numberOfLines = 1
-        restaurantNameLabel.textColor = Const.KARUTA_THEME_COLOR
-        restaurantNameLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 14)
-        self.contentView.addSubview(restaurantNameLabel)
-        
-        // 距離ラベル
-        let distanceLabel = UILabel(frame: CGRect(x: TEXT_MARGIN_X,
-            y: CGRectGetMaxY(restaurantNameLabel.frame),
-            width: restaurantNameLabel.frame.width,
-            height: restaurantNameLabel.frame.height))
-        distanceLabel.text =  String(format: NSLocalizedString("CardDistanceFromText", comment: ""), self.restaurant!.distance.meterToMinutes())
-        distanceLabel.font = UIFont(name: distanceLabel.font.fontName, size: 12)
-        distanceLabel.numberOfLines = 0
-        distanceLabel.sizeToFit()
-        distanceLabel.textColor = UIColor.grayColor()
-        distanceLabel.font = UIFont(name: Const.KARUTA_FONT_NORMAL, size: 9)
-        self.contentView.addSubview(distanceLabel)
-        
-        
-        // カテゴリ
-        let categoryLabelView = CategoryLabelView(frame: CGRectZero, category: self.restaurant!.category)
-        
-        self.contentView.addSubview(categoryLabelView)
-        
-        categoryLabelView.snp_makeConstraints { (make) in
-            make.left.equalTo(restaurantNameLabel.snp_right).offset(TEXT_MARGIN_X)
-            make.right.equalTo(self.contentView).inset(TEXT_MARGIN_X)
-            make.top.equalTo(restaurantNameLabel)
-            make.height.equalTo(restaurantNameLabel).multipliedBy(1.5)
-        }
-        
-        // 値段ラベル
-        let dayPriceLabel = UILabel(frame: CGRectZero)
-        if (self.restaurant!.dayPriceMin.isEmpty && self.restaurant!.dayPriceMax.isEmpty) {
-            dayPriceLabel.text = "[\(NSLocalizedString("Day", comment: ""))] -"
-        } else {
-        dayPriceLabel.text = "[\(NSLocalizedString("Day", comment: ""))] \(Utils.formatPriceString(self.restaurant!.dayPriceMin))〜\(Utils.formatPriceString(self.restaurant!.dayPriceMax))"
-        }
-        dayPriceLabel.numberOfLines = 1
-        dayPriceLabel.sizeToFit()
-        dayPriceLabel.textColor = Const.KARUTA_THEME_COLOR
-        dayPriceLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 12)
-        self.contentView.addSubview(dayPriceLabel)
-        dayPriceLabel.snp_makeConstraints { (make) in
-            make.left.equalTo(restaurantNameLabel)
-            make.right.equalTo(categoryLabelView)
-            make.top.equalTo(distanceLabel.snp_bottom).offset(4)
-            make.height.equalTo(14)
-        }
-        
-        let nightPriceLabel = UILabel(frame: CGRectZero)
-        
-        if (self.restaurant!.nightPriceMin.isEmpty && self.restaurant!.nightPriceMax.isEmpty) {
-            nightPriceLabel.text = "[\(NSLocalizedString("Night", comment: ""))] -"
-        } else {
-            nightPriceLabel.text = "[\(NSLocalizedString("Night", comment: ""))] \(Utils.formatPriceString(self.restaurant!.nightPriceMin))〜\(Utils.formatPriceString(self.restaurant!.nightPriceMax))"
-        }
-        nightPriceLabel.numberOfLines = 1
-        nightPriceLabel.sizeToFit()
-        nightPriceLabel.textColor = Const.KARUTA_THEME_COLOR
-        nightPriceLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 12)
-        self.contentView.addSubview(nightPriceLabel)
-        nightPriceLabel.snp_makeConstraints { (make) in
-            make.left.equalTo(restaurantNameLabel)
-            make.right.equalTo(categoryLabelView)
-            make.top.equalTo(dayPriceLabel.snp_bottom).offset(2)
-            make.height.equalTo(14)
+        self.restaurantImageViews[0].snp_makeConstraints { make in
+            make.top.equalTo(self.contentView)
+            make.left.equalTo(self.contentView)
+            make.size.equalTo(self.contentView)
         }
         
         #if !RELEASE
@@ -203,7 +125,7 @@ class CardView: MDCSwipeToChooseView {
         self.blackListButton.snp_makeConstraints { (make) in
             make.width.equalTo(40)
             make.height.equalTo(40)
-            make.right.equalTo(categoryLabelView.snp_right)
+            make.right.equalTo(self.contentView).offset(-10)
             make.bottom.equalTo(self.contentView).offset(-10)
         }
         #endif

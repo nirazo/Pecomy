@@ -53,7 +53,11 @@ class ResultViewController: UIViewController, ResultCardBaseDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = Const.KARUTA_RESULT_BACK_COLOR
-        self.edgesForExtendedLayout = .None
+        
+        self.navigationController?.navigationBar.tintColor = Const.KARUTA_THEME_COLOR
+        self.navigationController?.navigationBar.barTintColor = Const.KARUTA_RIGHT_BACKGROUND_COLOR
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: Const.KARUTA_THEME_COLOR]
+        self.navigationController?.navigationBar.shadowImage = UIImage()
         
         let resetButoon = UIBarButtonItem(title: NSLocalizedString("Reset", comment: ""), style: .Plain, target: self, action: "resetTapped")
         self.navigationItem.rightBarButtonItem = resetButoon

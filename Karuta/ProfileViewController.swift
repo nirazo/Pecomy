@@ -9,12 +9,16 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
-
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.yellowColor()
+        self.view.backgroundColor = Const.KARUTA_BASIC_BACKGROUND_COLOR
+        
+        // navbar透明化
+        self.navigationController?.navigationBar.tintColor = UIColor.clearColor()
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationItem.title = "prof"
         // Do any additional setup after loading the view.
     }
 

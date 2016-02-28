@@ -76,7 +76,14 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+        
+        // navbar透明化
+        self.navigationController?.navigationBar.tintColor = UIColor.clearColor()
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: Const.KARUTA_THEME_TEXT_COLOR]
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationItem.title = Const.KARUTA_TITLE
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "enterForeground:", name:Const.WILL_ENTER_FOREGROUND_KEY, object: nil)
         
         // カードを配置するための透明ビュー
@@ -90,11 +97,11 @@ class MainViewController: UIViewController {
         self.messageLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 22)
         self.messageLabel.textColor = UIColor.whiteColor()
         self.messageLabel.textAlignment = .Center
-        self.contentView.addSubview(self.messageLabel)
+        self.view.addSubview(self.messageLabel)
         self.messageLabel.snp_makeConstraints { make in
-            make.top.equalTo(self.contentView).offset(83)
-            make.left.equalTo(self.contentView)
-            make.width.equalTo(self.contentView)
+            make.top.equalTo(self.view).offset(83)
+            make.left.equalTo(self.view)
+            make.width.equalTo(self.view)
             make.height.equalTo(22)
         }
         
@@ -380,11 +387,10 @@ class MainViewController: UIViewController {
         options.onPan = { [weak self] state in
             guard let strongSelf = self else { return }
             if(strongSelf.numOfDisplayedCard() > 1){
-                let frame:CGRect = strongSelf.baseCardRect()
+                let frame = strongSelf.baseCardRect()
                 let secondCard = strongSelf.contentView.subviews[0] as! CardView
                 secondCard.frame = CGRect(x: frame.origin.x, y: frame.origin.y-(state.thresholdRatio * 10.0), width: CGRectGetWidth(frame), height: CGRectGetHeight(frame))
             }
-            
         }
         let cardView = CardView(frame: frame, restaurant: restaurant, syncID:syncID, options: options)
         cardView.delegate = self
@@ -416,7 +422,7 @@ class MainViewController: UIViewController {
     
     // カードのベースとなるCGRectを返す
     func baseCardRect() -> CGRect{
-        var rect = CGRect(x: 0, y: 0, width: self.view.frame.width*0.8, height: self.view.frame.height*0.6)
+        var rect = CGRect(x: 0, y: 0, width: self.view.frame.width*0.8, height: self.view.frame.width*0.8)
         rect.offsetInPlace(dx: (self.view.frame.width - rect.size.width)/2, dy: (self.view.frame.height - rect.size.height)/2 - 40)
         return rect
     }

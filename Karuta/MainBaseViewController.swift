@@ -24,13 +24,12 @@ class MainBaseViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.navigationItem.title = Const.KARUTA_TITLE
                 
         // navbar透明化
-        self.navigationController?.navigationBar.tintColor = UIColor.clearColor()
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
+//        self.navigationController?.navigationBar.tintColor = UIColor.clearColor()
+//        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+//        self.navigationController?.navigationBar.shadowImage = UIImage()
         
         //self.navigationItem.title = Const.KARUTA_TITLE
         
@@ -61,11 +60,14 @@ class MainBaseViewController: UIViewController {
         self.pagingBaseView.backgroundColor = UIColor.clearColor()
         
         let profViewController = ProfileViewController()
-        self.addChildViewController(profViewController)
+        let profNavVC = UINavigationController(rootViewController: profViewController)
+        self.addChildViewController(profNavVC)
         let mainViewController = MainViewController()
-        self.addChildViewController(mainViewController)
+        let mainNavVC = UINavigationController(rootViewController: mainViewController)
+        self.addChildViewController(mainNavVC)
         let logViewController = RestaurantLogViewController()
-        self.addChildViewController(logViewController)
+        let logNavVC = UINavigationController(rootViewController: logViewController)
+        self.addChildViewController(logNavVC)
         
         self.pagingBaseView.contentSize = CGSize(width: self.pagingBaseView.frame.width * CGFloat(self.childViewControllers.count), height: self.pagingBaseView.frame.height)
         for (id, vc) in self.childViewControllers.enumerate() {

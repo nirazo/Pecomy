@@ -12,7 +12,13 @@ class RestaurantLogViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.blueColor()
+        self.view.backgroundColor = Const.KARUTA_BASIC_BACKGROUND_COLOR
+        
+        // navbar透明化
+        self.navigationController?.navigationBar.tintColor = UIColor.clearColor()
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationItem.title = "log"
         // Do any additional setup after loading the view.
     }
 

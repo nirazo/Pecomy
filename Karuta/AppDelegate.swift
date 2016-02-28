@@ -40,8 +40,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // 起動2回目以降
         if (NSUserDefaults.standardUserDefaults().boolForKey(Const.UD_KEY_HAS_LAUNCHED)) {
             let viewController = MainBaseViewController()
-            let navVC = UINavigationController(rootViewController: viewController)
-            self.window!.rootViewController = navVC
+            //let navVC = UINavigationController(rootViewController: viewController)
+            self.window?.rootViewController = viewController
         } else {
             // 初回起動
             let viewController = TutorialViewController()
@@ -76,8 +76,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func setupAppearance(){
         // UINavigationBarのスタイルを設定
         //UINavigationBar.appearance().barTintColor = Const.KARUTA_THEME_COLOR
-        UINavigationBar.appearance().tintColor = Const.KARUTA_THEME_TEXT_COLOR
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: Const.KARUTA_THEME_TEXT_COLOR]
+        //UINavigationBar.appearance().tintColor = Const.KARUTA_THEME_TEXT_COLOR
+        //UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: Const.KARUTA_THEME_TEXT_COLOR]
     }
 
 
