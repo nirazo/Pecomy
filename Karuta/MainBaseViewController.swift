@@ -16,6 +16,8 @@ class MainBaseViewController: UIViewController {
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nil, bundle: nil)
         self.pagingBaseView.pagingEnabled = true
+        self.pagingBaseView.bounces = false
+        self.pagingBaseView.showsHorizontalScrollIndicator = false
         self.automaticallyAdjustsScrollViewInsets = false
     }
 
@@ -52,10 +54,10 @@ class MainBaseViewController: UIViewController {
         self.pagingBaseView.frame = self.view.bounds
         self.view.addSubview(self.pagingBaseView)
         self.pagingBaseView.backgroundColor = UIColor.clearColor()
-        
-        let profViewController = ProfileViewController()
-        let profNavVC = UINavigationController(rootViewController: profViewController)
-        self.addChildViewController(profNavVC)
+//        
+//        let profViewController = ProfileViewController()
+//        let profNavVC = UINavigationController(rootViewController: profViewController)
+//        self.addChildViewController(profNavVC)
         let mainViewController = MainViewController()
         let mainNavVC = UINavigationController(rootViewController: mainViewController)
         self.addChildViewController(mainNavVC)
@@ -69,7 +71,7 @@ class MainBaseViewController: UIViewController {
             vc.didMoveToParentViewController(self)
             self.pagingBaseView.addSubview(vc.view)
         }
-        self.pagingBaseView.contentOffset = CGPoint(x: Const.WindowSize.width, y: 0.0)
+        //self.pagingBaseView.contentOffset = CGPoint(x: Const.WindowSize.width, y: 0.0)
     }
     
     override func viewWillLayoutSubviews() {
