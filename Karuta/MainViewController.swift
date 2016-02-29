@@ -76,7 +76,6 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // navbar透明化
         self.navigationController?.navigationBar.tintColor = UIColor.clearColor()
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
@@ -205,7 +204,7 @@ class MainViewController: UIViewController {
         tracker.send(builder.build() as [NSObject : AnyObject])
     }
     
-    // observer
+    //MARK:- Observer
     func enterForeground(notification: NSNotification){
         if self.currentLatitude == nil || self.currentLongitude == nil {
             self.reset()

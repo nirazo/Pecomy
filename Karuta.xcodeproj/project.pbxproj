@@ -37,6 +37,7 @@
 		D2731FDD1C79A81200E8E5E9 /* MainBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2731FDC1C79A81200E8E5E9 /* MainBaseViewController.swift */; };
 		D2731FE01C79A85300E8E5E9 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2731FDF1C79A85300E8E5E9 /* ProfileViewController.swift */; };
 		D2731FE31C79A88000E8E5E9 /* RestaurantLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2731FE21C79A88000E8E5E9 /* RestaurantLogViewController.swift */; };
+		D2731FE71C849DE800E8E5E9 /* BackgroundImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2731FE61C849DE800E8E5E9 /* BackgroundImagePicker.swift */; };
 		D27A92511C70D77800A7324E /* Kaiti.ttc in Resources */ = {isa = PBXBuildFile; fileRef = D27A92501C70D75700A7324E /* Kaiti.ttc */; };
 		D27BB9D21B36F4A900F8D902 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27BB9D11B36F4A900F8D902 /* AppDelegate.swift */; };
 		D27BB9D41B36F4A900F8D902 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27BB9D31B36F4A900F8D902 /* MainViewController.swift */; };
@@ -119,6 +120,7 @@
 		D2731FDC1C79A81200E8E5E9 /* MainBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainBaseViewController.swift; sourceTree = "<group>"; };
 		D2731FDF1C79A85300E8E5E9 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D2731FE21C79A88000E8E5E9 /* RestaurantLogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantLogViewController.swift; sourceTree = "<group>"; };
+		D2731FE61C849DE800E8E5E9 /* BackgroundImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundImagePicker.swift; sourceTree = "<group>"; };
 		D27A92501C70D75700A7324E /* Kaiti.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = Kaiti.ttc; sourceTree = "<group>"; };
 		D27BB9CC1B36F4A900F8D902 /* Karuta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Karuta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D27BB9D01B36F4A900F8D902 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -309,6 +311,18 @@
 			name = RestaurantLog;
 			sourceTree = "<group>";
 		};
+		D2731FE51C849D0500E8E5E9 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				D23070721B4C30D100833167 /* KarutaLocationManager.swift */,
+				D272F45B1B9C25E4009564A0 /* LoadingView.swift */,
+				D22EC5581BCE34DD00A4B446 /* CategoryLabelView.swift */,
+				D203D3131B3E739600FC9DB8 /* Const.swift */,
+				D292F7381B92DFFC005700AE /* Utils.swift */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
 		D27BB9C31B36F4A900F8D902 = {
 			isa = PBXGroup;
 			children = (
@@ -332,16 +346,12 @@
 		D27BB9CE1B36F4A900F8D902 /* Karuta */ = {
 			isa = PBXGroup;
 			children = (
+				D27BB9D11B36F4A900F8D902 /* AppDelegate.swift */,
+				D2731FE51C849D0500E8E5E9 /* Common */,
 				D253A9E61C322B5F00D65D20 /* APIClient */,
 				D2597E1C1B523831000938B4 /* Result */,
 				D24B29221B78773400419B9B /* Detail */,
 				D253A9E31C32217900D65D20 /* Entity */,
-				D27BB9D11B36F4A900F8D902 /* AppDelegate.swift */,
-				D23070721B4C30D100833167 /* KarutaLocationManager.swift */,
-				D272F45B1B9C25E4009564A0 /* LoadingView.swift */,
-				D22EC5581BCE34DD00A4B446 /* CategoryLabelView.swift */,
-				D203D3131B3E739600FC9DB8 /* Const.swift */,
-				D292F7381B92DFFC005700AE /* Utils.swift */,
 				D2DEEF221BD7557300FDBB8F /* OnetimeFilter */,
 				D2731FDE1C79A82800E8E5E9 /* Profile */,
 				D2DEEF1C1BD72F4900FDBB8F /* MainView */,
@@ -399,6 +409,7 @@
 			children = (
 				D27BB9D31B36F4A900F8D902 /* MainViewController.swift */,
 				D2731FDC1C79A81200E8E5E9 /* MainBaseViewController.swift */,
+				D2731FE61C849DE800E8E5E9 /* BackgroundImagePicker.swift */,
 			);
 			name = MainView;
 			sourceTree = "<group>";
@@ -650,6 +661,7 @@
 				D28901401C4A01FD005BDF84 /* RichTagCollectionViewCell.swift in Sources */,
 				D22EC5591BCE34DD00A4B446 /* CategoryLabelView.swift in Sources */,
 				D2DD65A01B7714CA0046A50C /* TopResultCard.swift in Sources */,
+				D2731FE71C849DE800E8E5E9 /* BackgroundImagePicker.swift in Sources */,
 				D24B29241B78775300419B9B /* DetailViewController.swift in Sources */,
 				D28A7A0C1B47AE900025371A /* CardView.swift in Sources */,
 				D253A9EE1C3233AF00D65D20 /* KarutaResult.swift in Sources */,

@@ -11,6 +11,7 @@ import UIKit
 class MainBaseViewController: UIViewController {
     
     var pagingBaseView = UIScrollView()
+    var bgImageView = UIImageView(image: BackgroundImagePicker.pickImage())
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nil, bundle: nil)
@@ -25,13 +26,8 @@ class MainBaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = Const.KARUTA_TITLE
-                
-        // navbar透明化
-//        self.navigationController?.navigationBar.tintColor = UIColor.clearColor()
-//        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
-//        self.navigationController?.navigationBar.shadowImage = UIImage()
         
-        //self.navigationItem.title = Const.KARUTA_TITLE
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "enterForeground:", name:Const.WILL_ENTER_FOREGROUND_KEY, object: nil)
         
         //単色背景
         let bgView = UIView()
@@ -44,10 +40,8 @@ class MainBaseViewController: UIViewController {
             make.height.equalTo(self.view)
         }
         
-        // 背景画像設定（とりあえず固定で...）
-        let image = UIImage(named: "background_night1")
-        let bgImageView = UIImageView(image: image)
-        self.view.addSubview(bgImageView)
+        // 背景画像
+        self.view.addSubview(self.bgImageView)
         bgImageView.snp_makeConstraints { make in
             make.top.equalTo(self.view)
             make.left.equalTo(self.view)
@@ -85,18 +79,12 @@ class MainBaseViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // MARK: - Observer
+    func enterForeground(notification: NSNotification){
+        self.bgImageView.image = BackgroundImagePicker.pickImage()
     }
-    */
 
 }
