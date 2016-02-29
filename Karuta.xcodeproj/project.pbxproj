@@ -65,7 +65,6 @@
 		D2BE5F3C1C4B78AB00B47387 /* RichTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BE5F3B1C4B78AB00B47387 /* RichTag.swift */; };
 		D2DD65A01B7714CA0046A50C /* TopResultCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DD659F1B7714CA0046A50C /* TopResultCard.swift */; };
 		D2DD65A21B7714DA0046A50C /* OtherResultsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DD65A11B7714DA0046A50C /* OtherResultsCard.swift */; };
-		D2DEE6AF1C030FA200861BDF /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DEE6AE1C030FA200861BDF /* Double.swift */; };
 		D2DEEF1E1BD72F7400FDBB8F /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DEEF1D1BD72F7400FDBB8F /* Genre.swift */; };
 		D2E36EC71C2D615D00DEE726 /* OtherResultCardContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E36EC61C2D615D00DEE726 /* OtherResultCardContentView.swift */; };
 		D2EFEB591C51282A0092DFC9 /* CardOverlayTextLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EFEB581C51282A0092DFC9 /* CardOverlayTextLabelView.swift */; };
@@ -153,7 +152,6 @@
 		D2C785F71B47C2A900517D55 /* Karuta-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Karuta-Bridging-Header.h"; sourceTree = "<group>"; };
 		D2DD659F1B7714CA0046A50C /* TopResultCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopResultCard.swift; sourceTree = "<group>"; };
 		D2DD65A11B7714DA0046A50C /* OtherResultsCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherResultsCard.swift; sourceTree = "<group>"; };
-		D2DEE6AE1C030FA200861BDF /* Double.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		D2DEEF1D1BD72F7400FDBB8F /* Genre.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
 		D2E36EC61C2D615D00DEE726 /* OtherResultCardContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherResultCardContentView.swift; sourceTree = "<group>"; };
 		D2EFEB581C51282A0092DFC9 /* CardOverlayTextLabelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardOverlayTextLabelView.swift; sourceTree = "<group>"; };
@@ -391,7 +389,6 @@
 		D2DEE6AD1C030F7F00861BDF /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				D2DEE6AE1C030FA200861BDF /* Double.swift */,
 				D253A9E11C321BCB00D65D20 /* Int.swift */,
 			);
 			name = Extension;
@@ -629,7 +626,6 @@
 				D253A9EA1C32308E00D65D20 /* KarutaApiRequest.swift in Sources */,
 				D289012E1C437D8E005BDF84 /* RestaurantDetailView.swift in Sources */,
 				D28901321C438FEC005BDF84 /* CommentsView.swift in Sources */,
-				D2DEE6AF1C030FA200861BDF /* Double.swift in Sources */,
 				D23070731B4C30D100833167 /* KarutaLocationManager.swift in Sources */,
 				D292AA191C5FB30800D66A87 /* Budget.swift in Sources */,
 				D292AA1B1C5FB5CB00D66A87 /* NumOfPeople.swift in Sources */,
