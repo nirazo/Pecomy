@@ -34,6 +34,7 @@
 "CategoryRestaurant" = "レストラン";
 "CategoryCafe" = "カフェ";
 "CategoryDrinking" = "飲み";
+"CategoryRamen" = "ラーメン";
 // Budget
 "Unspecified" = "指定なし";
 "LessThanThousand" = "〜1,000円";

@@ -216,10 +216,22 @@ extension OnetimeFilterViewController: UICollectionViewDelegate {
     // MARK: - UICollectionViewDelegateFlowLayout
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         let viewSize = collectionView.frame.size
+        var cellHeight: CGFloat = 0.0
+        switch self.deviceType {
+        case .IPhone4:
+            cellHeight = 30
+        case .IPhone5:
+            cellHeight = 40
+        case .IPhone6, .IPhone6Plus:
+            cellHeight = 48
+        default:
+            cellHeight = 48
+        }
+        
         if(indexPath.section == OnetimeSections.Genre.hashValue && indexPath.row == Genre.All.hashValue) {
-            return CGSize(width: viewSize.width, height: 50)
+            return CGSize(width: viewSize.width, height: cellHeight)
         } else {
-            return CGSize(width: (viewSize.width-20)/3, height: 50) // The size of one cell
+            return CGSize(width: (viewSize.width-20)/3, height: cellHeight) // The size of one cell
         }
     }
     
@@ -236,9 +248,9 @@ extension OnetimeFilterViewController: UICollectionViewDelegate {
         case .IPhone5:
             bottomMargin = 20
         case .IPhone6, .IPhone6Plus:
-            bottomMargin = 35.5
+            bottomMargin = 30
         default:
-            bottomMargin = 35.5
+            bottomMargin = 30
         }
         return UIEdgeInsetsMake(5, 0, bottomMargin, 0)
     }

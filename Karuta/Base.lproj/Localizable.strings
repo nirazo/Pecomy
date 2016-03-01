@@ -34,6 +34,7 @@
 "CategoryRestaurant" = "Restaurant";
 "CategoryCafe" = "Cafe";
 "CategoryDrinking" = "Drinking";
+"CategoryRamen" = "Ramen";
 // Budget
 "Unspecified" = "Unspecified";
 "LessThanThousand" = "〜￥1,000";

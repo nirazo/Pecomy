@@ -61,7 +61,6 @@ class KarutaApiClient {
                     }
                 }
                 let response: KarutaResult<U, KarutaApiClientError> = KarutaApiClient.mappingResponse(httpRequest, response: httpResponse, data: data, error: error)
-                
                 switch response {
                 case .Success(let result):
                     handler(KarutaResult<U, KarutaApiClientError>.Success(result))
