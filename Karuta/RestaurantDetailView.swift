@@ -115,7 +115,7 @@ class RestaurantDetailView: UIView {
         self.nightPriceLabel.font = UIFont(name: Const.KARUTA_FONT_NORMAL, size: 12)
         
         // 距離ラベル
-        self.distanceLabel.text = String(format: NSLocalizedString("CardDistanceFromText", comment: ""), restaurant.distance.meterToMinutes())
+        self.distanceLabel.text = String(format: NSLocalizedString("CardDistanceFromText", comment: ""), Utils.meterToMinutes(restaurant.distance))
         self.distanceLabel.font = UIFont(name: Const.KARUTA_FONT_NORMAL, size: 12)
         self.distanceLabel.numberOfLines = 0
         self.distanceLabel.sizeToFit()

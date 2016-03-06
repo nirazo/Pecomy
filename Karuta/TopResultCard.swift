@@ -107,7 +107,7 @@ class TopResultCard: ResultCardBase {
         self.nightPriceLabel.font = UIFont(name: Const.KARUTA_FONT_NORMAL, size: 13)
         
         // 距離ラベル
-        self.distanceLabel.text = String(format: NSLocalizedString("CardDistanceFromText", comment: ""), self.restaurant.distance.meterToMinutes())
+        self.distanceLabel.text = String(format: NSLocalizedString("CardDistanceFromText", comment: ""), Utils.meterToMinutes(self.restaurant.distance))
         self.distanceLabel.font = UIFont(name: Const.KARUTA_FONT_NORMAL, size: 13)
         self.distanceLabel.numberOfLines = 0
         self.distanceLabel.sizeToFit()

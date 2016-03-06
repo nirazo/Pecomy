@@ -87,7 +87,7 @@ class OtherResultCardContentView: UIView {
         
         // 距離ラベル
         let distanceLabel = UILabel(frame: CGRectZero)
-        distanceLabel.text =  String(format: NSLocalizedString("CardDistanceFromText", comment: ""), restaurant.distance.meterToMinutes())
+        distanceLabel.text =  String(format: NSLocalizedString("CardDistanceFromText", comment: ""), Utils.meterToMinutes(restaurant.distance))
         distanceLabel.font = UIFont(name: Const.KARUTA_FONT_NORMAL, size: 12)
         distanceLabel.numberOfLines = 0
         distanceLabel.sizeToFit()

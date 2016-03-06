@@ -22,8 +22,9 @@ class Utils {
     }
     
     /**
-    カードに表示する価格を整形する
     頭に￥をつけ、三桁区切りカンマをつける
+     - parameter origPrice: 元の値段文字列
+     - returns: 頭に￥が付いた、3桁区切りカンマがついた値段文字列
     */
     class func formatPriceString(origPrice: String) -> String {
         let price = Int(origPrice)
@@ -37,5 +38,14 @@ class Utils {
         formatter.groupingSize = 3
         
         return "￥\(formatter.stringFromNumber(num)!)"
+    }
+    
+    /**
+     距離（メートル）を分に変換
+     - parameter meter: 距離（メートル）
+     - returns: 分
+     */
+    class func meterToMinutes(meter: Double) -> Int{
+        return Int(ceil(meter/60))
     }
 }

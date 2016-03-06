@@ -25,7 +25,7 @@
 "NoResultAlertTitle" = "Cannot find result";
 "NoResultAlertMessage" = "Karuta cannot find restaurant for you around here. Please try again after changing time or place.";
 "SearchingRestaurant" = "Searching your favorite restaurant...";
-"ResultTitle" = "Result";
+"ResultTitle" = "Recommended restaurants";
 "CloseTutorial" = "start";
 "CardLikeText" = "Like!";
 "CardDislikeText" = "Unn..";
@@ -34,6 +34,7 @@
 "CategoryRestaurant" = "Restaurant";
 "CategoryCafe" = "Cafe";
 "CategoryDrinking" = "Drinking";
+"CategoryRamen" = "Ramen";
 // Budget
 "Unspecified" = "Unspecified";
 "LessThanThousand" = "〜￥1,000";
@@ -48,6 +49,8 @@
 "NumOfPeopleTitle" = "Num of people";
 "GenreTitle" = "Genre";
 "StartTitle" = "Start";
+// Main
+"MainComment" = "What do you feel like eating?";
 // Card
 "Day" = "Day";
 "Night" = "Night";
