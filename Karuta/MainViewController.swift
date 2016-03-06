@@ -86,7 +86,7 @@ class MainViewController: UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "enterForeground:", name:Const.WILL_ENTER_FOREGROUND_KEY, object: nil)
         
         // カードを配置するための透明ビュー
-        contentView.frame = self.view.frame
+        contentView.frame = self.view.bounds
         contentView.backgroundColor = UIColor.clearColor()
         self.view.addSubview(self.contentView)
         
@@ -104,28 +104,6 @@ class MainViewController: UIViewController {
             make.height.equalTo(22)
         }
         
-        // フッター
-        let footerBar = UIView(frame: CGRectZero)
-        footerBar.backgroundColor = Const.KARUTA_THEME_TEXT_COLOR
-        let footerText = UILabel(frame: CGRectZero)
-        footerText.text = NSLocalizedString("SearchingRestaurant", comment: "")
-        footerText.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 12)
-        footerText.textColor = Const.KARUTA_THEME_COLOR
-        footerText.textAlignment = .Center
-        
-        self.view.addSubview(footerBar)
-        footerBar.snp_makeConstraints { (make) in
-            make.width.equalTo(self.view)
-            make.height.equalTo(FOOTER_HEIGHT)
-            make.bottom.equalTo(self.view).offset(-PROGRESS_HEIGHT)
-        }
-        
-        footerBar.addSubview(footerText)
-        footerText.snp_makeConstraints { (make) in
-            make.width.equalTo(footerBar)
-            make.height.equalTo(footerBar)
-            make.center.equalTo(footerBar)
-        }
         
         // プログレスバー
         self.addChildViewController(self.progressViewController)
@@ -133,10 +111,10 @@ class MainViewController: UIViewController {
         
         self.view.addSubview(self.progressViewController.view)
         self.progressViewController.view.snp_makeConstraints { (make) in
-            make.left.equalTo(self.view)
-            make.width.equalTo(self.view)
-            make.top.equalTo(footerBar.snp_bottom)
-            make.bottom.equalTo(self.view)
+            make.left.equalTo(self.contentView).offset(10)
+            make.right.equalTo(self.contentView).offset(-10)
+            make.height.equalTo(60)
+            make.bottom.equalTo(self.contentView).offset(5)
         }
         
         // ボタン配置
@@ -157,7 +135,7 @@ class MainViewController: UIViewController {
             make.width.equalTo(self.view).multipliedBy(0.25)
             make.height.equalTo(self.view.snp_width).multipliedBy(0.25)
             make.centerX.equalTo(self.view).offset(-self.view.frame.width/4)
-            make.bottom.equalTo(footerBar.snp_top).offset(-20)
+            make.bottom.equalTo(self.progressViewController.view.snp_top).offset(-20)
         }
         
         likeButton.snp_makeConstraints { (make) in
@@ -177,7 +155,7 @@ class MainViewController: UIViewController {
             make.left.equalTo(dislikeButton.snp_right)
             make.right.equalTo(likeButton.snp_left)
             make.top.equalTo(likeButton.snp_bottom).inset(30)
-            make.bottom.equalTo(footerBar.snp_top).inset(-5)
+            make.bottom.equalTo(self.progressViewController.view.snp_top).inset(-5)
         }
         
         

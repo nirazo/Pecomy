@@ -24,7 +24,7 @@
 "ServerErrorAlertMessage" = "サーバエラーが発生しました。OKボタンを押すとレストラン検索が再度始まります。";
 "NoResultAlertTitle" = "結果が見つかりませんでした";
 "NoResultAlertMessage" = "近くにおすすめのお店が見つかりませんでした。時間、場所を変更して再度お試しください。";
-"SearchingRestaurant" = "あなたの好きなお店をサーチ中です";
+"SearchingRestaurant" = "お店を探しています";
 "ResultTitle" = "あなたへのオススメ";
 "CloseTutorial" = "はじめる";
 "CardLikeText" = "行きたい！";

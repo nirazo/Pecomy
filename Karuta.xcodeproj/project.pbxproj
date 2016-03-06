@@ -253,7 +253,6 @@
 			isa = PBXGroup;
 			children = (
 				D28A7A0B1B47AE900025371A /* CardView.swift */,
-				D24B29401B79CC1D00419B9B /* CardProgressViewController.swift */,
 				D2EFEB581C51282A0092DFC9 /* CardOverlayTextLabelView.swift */,
 			);
 			name = Card;
@@ -409,6 +408,7 @@
 			children = (
 				D27BB9D31B36F4A900F8D902 /* MainViewController.swift */,
 				D2731FDC1C79A81200E8E5E9 /* MainBaseViewController.swift */,
+				D24B29401B79CC1D00419B9B /* CardProgressViewController.swift */,
 				D2731FE61C849DE800E8E5E9 /* BackgroundImagePicker.swift */,
 			);
 			name = MainView;
