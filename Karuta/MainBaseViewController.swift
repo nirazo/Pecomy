@@ -59,10 +59,10 @@ class MainBaseViewController: UIViewController {
         mainNavVC.setViewControllers([mainViewController], animated: false)
         
         self.addChildViewController(mainNavVC)
-        let logViewController = RestaurantLogViewController()
-        let logNavVC = self.createTransrateNavVC()
-        logNavVC.setViewControllers([logViewController], animated: false)
-        self.addChildViewController(logNavVC)
+//        let logViewController = RestaurantLogViewController()
+//        let logNavVC = self.createTransrateNavVC()
+//        logNavVC.setViewControllers([logViewController], animated: false)
+//        self.addChildViewController(logNavVC)
         
         self.pagingBaseView.contentSize = CGSize(width: self.pagingBaseView.frame.width * CGFloat(self.childViewControllers.count), height: self.pagingBaseView.frame.height)
         for (id, vc) in self.childViewControllers.enumerate() {
