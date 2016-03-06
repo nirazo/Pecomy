@@ -125,7 +125,7 @@ class OtherResultCardContentView: UIView {
     
     private func acquireImage(url: NSURL?) {
         guard let url = url else {
-            self.imageView.image = UIImage(named: "noimage")
+            self.imageView.image = R.image.noimage()
             return
         }
         self.imageView.sd_setImageWithURL(url, completed: {[weak self](image: UIImage!, error: NSError!, cacheType: SDImageCacheType, imageURL: NSURL!) in

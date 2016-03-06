@@ -55,7 +55,7 @@ class RestaurantDetailView: UIView {
     var mapTappedAction : ((Restaurant) -> ())?
 
     class func instance() -> RestaurantDetailView {
-        return UINib(nibName: "RestaurantDetailView", bundle: nil).instantiateWithOwner(self, options: nil)[0] as! RestaurantDetailView
+        return R.nib.restaurantDetailView.instantiateWithOwner(self, options: nil)[0] as! RestaurantDetailView
     }
     
     init(frame: CGRect, restaurant: Restaurant) {
@@ -75,7 +75,7 @@ class RestaurantDetailView: UIView {
     func setupView() {
         
         // 画像
-        self.restaurantImageView.image = UIImage(named: "noimage")
+        self.restaurantImageView.image = R.image.noimage()
         self.restaurantImageView.contentMode = .ScaleAspectFill
         self.restaurantImageView.clipsToBounds = true
         
@@ -91,7 +91,7 @@ class RestaurantDetailView: UIView {
         self.categoryLabelView.setCategory(self.restaurant.category)
         self.categoryLabelView.backgroundColor = Const.RANKING_TOP_COLOR
         
-        self.dayPriceIcon.image = UIImage(named: "noimage")
+        self.dayPriceIcon.image = R.image.noimage()
         // 値段ラベル
         if (self.restaurant.dayPriceMin.isEmpty && self.restaurant.dayPriceMax.isEmpty) {
             self.dayPriceLabel.text = "-"
@@ -103,7 +103,7 @@ class RestaurantDetailView: UIView {
         self.dayPriceLabel.textColor = UIColor(red: 128.0/255.0, green: 128.0/255.0, blue: 128.0/255.0, alpha: 1.0)
         self.dayPriceLabel.font = UIFont(name: Const.KARUTA_FONT_NORMAL, size: 12)
         
-        self.nightPriceIcon.image = UIImage(named: "noimage")
+        self.nightPriceIcon.image = R.image.noimage()
         if (self.restaurant.nightPriceMin.isEmpty && self.restaurant.nightPriceMax.isEmpty) {
             self.nightPriceLabel.text = "-"
         } else {

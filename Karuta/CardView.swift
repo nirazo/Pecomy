@@ -52,7 +52,7 @@ class CardView: MDCSwipeToChooseView {
         self.syncID = syncID
         
         for _ in 0..<self.NUM_OF_IMAGES {
-            let imageView = UIImageView(image: UIImage(named: "noimage"))
+            let imageView = UIImageView(image: R.image.noimage())
             imageView.contentMode = .ScaleAspectFill
             imageView.clipsToBounds = true
             imageView.backgroundColor = Const.KARUTA_CARD_IMAGE_BACK_COLOR
@@ -116,9 +116,9 @@ class CardView: MDCSwipeToChooseView {
         
         #if !RELEASE
         // ブラックリストボタン(Releaseバージョンには乗せない)
-        self.blackListButton.setImage(UIImage(named: "nogood_normal"), forState: .Normal)
-        self.blackListButton.setImage(UIImage(named: "nogood_tapped"), forState: .Highlighted)
-        self.blackListButton.setImage(UIImage(named: "nogood_highlighted"), forState: .Disabled)
+        self.blackListButton.setImage(R.image.nogood_normal(), forState: .Normal)
+        self.blackListButton.setImage(R.image.nogood_tapped(), forState: .Highlighted)
+        self.blackListButton.setImage(R.image.nogood_highlighted(), forState: .Disabled)
         self.blackListButton.addTarget(self, action: "blackListButtonTapped", forControlEvents: .TouchUpInside)
         self.contentView.addSubview(self.blackListButton)
         

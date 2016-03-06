@@ -18,12 +18,12 @@ class ResultHeaderView: UIView {
         self.headerLabel.textAlignment = .Center
         switch section {
         case 0:
-            self.rankIcon.image = UIImage(named: "rank_first")
+            self.rankIcon.image = R.image.rank_first()
             self.headerLabel.text = NSLocalizedString("ResultRankFirstHeader", comment: "")
             self.headerLabel.font = UIFont(name: "STKaiti-SC-Black", size: 26)
             self.headerLabel.textColor = Const.RANKING_TOP_COLOR
         case 1:
-            self.rankIcon.image = UIImage(named: "rank_other")
+            self.rankIcon.image = R.image.rank_other()
             self.headerLabel.text = NSLocalizedString("ResultRankSecondHeader", comment: "")
             self.headerLabel.font = UIFont(name: "HiraginoSans-W6", size: 18)
             self.headerLabel.textColor = Const.RANKING_SECOND_COLOR

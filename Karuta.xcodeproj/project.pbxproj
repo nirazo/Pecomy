@@ -58,6 +58,7 @@
 		D292AA191C5FB30800D66A87 /* Budget.swift in Sources */ = {isa = PBXBuildFile; fileRef = D292AA181C5FB30800D66A87 /* Budget.swift */; };
 		D292AA1B1C5FB5CB00D66A87 /* NumOfPeople.swift in Sources */ = {isa = PBXBuildFile; fileRef = D292AA1A1C5FB5CB00D66A87 /* NumOfPeople.swift */; };
 		D292F7391B92DFFC005700AE /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D292F7381B92DFFC005700AE /* Utils.swift */; };
+		D2A594E81C8C77A400DE1012 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A594E71C8C77A400DE1012 /* R.generated.swift */; };
 		D2A99A161C12D3E700C16F04 /* OnetimeFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A99A151C12D3E700C16F04 /* OnetimeFilterCell.swift */; };
 		D2A99A1A1C12D3FA00C16F04 /* OnetimeFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A99A191C12D3FA00C16F04 /* OnetimeFilterViewController.swift */; };
 		D2A99A571C17367E00C16F04 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2A99A561C17367E00C16F04 /* GoogleService-Info.plist */; };
@@ -143,6 +144,7 @@
 		D292AA181C5FB30800D66A87 /* Budget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Budget.swift; sourceTree = "<group>"; };
 		D292AA1A1C5FB5CB00D66A87 /* NumOfPeople.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumOfPeople.swift; sourceTree = "<group>"; };
 		D292F7381B92DFFC005700AE /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		D2A594E71C8C77A400DE1012 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		D2A99A151C12D3E700C16F04 /* OnetimeFilterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnetimeFilterCell.swift; path = Karuta/OnetimeFilterCell.swift; sourceTree = SOURCE_ROOT; };
 		D2A99A191C12D3FA00C16F04 /* OnetimeFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnetimeFilterViewController.swift; path = Karuta/OnetimeFilterViewController.swift; sourceTree = SOURCE_ROOT; };
 		D2A99A561C17367E00C16F04 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -365,6 +367,7 @@
 		D27BB9CF1B36F4A900F8D902 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D2A594E71C8C77A400DE1012 /* R.generated.swift */,
 				D27A92501C70D75700A7324E /* Kaiti.ttc */,
 				D27BB9D01B36F4A900F8D902 /* Info.plist */,
 				D2092A2E1B637460008046D9 /* Localizable.strings */,
@@ -602,7 +605,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\" 0f089c54e22e9e890bd0329f29839c99a9c5040c ef218175b8ad70668aabb5fdbbfae2c25d0f1a40a0f70aa08494fbb96d0e8e30";
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 0f089c54e22e9e890bd0329f29839c99a9c5040c ef218175b8ad70668aabb5fdbbfae2c25d0f1a40a0f70aa08494fbb96d0e8e30\n\"$PODS_ROOT/R.swift/rswift\" \"$SRCROOT\"";
 		};
 		FAFBED2465E6647CCBAEE62A /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -658,6 +661,7 @@
 				D28A7A0C1B47AE900025371A /* CardView.swift in Sources */,
 				D253A9EE1C3233AF00D65D20 /* KarutaResult.swift in Sources */,
 				D24B292E1B7895DA00419B9B /* TutorialViewController.swift in Sources */,
+				D2A594E81C8C77A400DE1012 /* R.generated.swift in Sources */,
 				D2DD65A21B7714DA0046A50C /* OtherResultsCard.swift in Sources */,
 				D2A99A1A1C12D3FA00C16F04 /* OnetimeFilterViewController.swift in Sources */,
 				D27BB9D21B36F4A900F8D902 /* AppDelegate.swift in Sources */,

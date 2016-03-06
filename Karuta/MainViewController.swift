@@ -117,13 +117,13 @@ class MainViewController: UIViewController {
         
         // ボタン配置
         let likeButton = UIButton()
-        likeButton.setImage(UIImage(named: "like_normal"), forState: .Normal)
-        likeButton.setImage(UIImage(named: "like_tapped"), forState: .Highlighted)
+        likeButton.setImage(R.image.like_normal(), forState: .Normal)
+        likeButton.setImage(R.image.like_tapped(), forState: .Highlighted)
         likeButton.addTarget(self, action: "likeButtonTapped", forControlEvents: .TouchUpInside)
         
         let dislikeButton = UIButton()
-        dislikeButton.setImage(UIImage(named: "dislike_normal"), forState: .Normal)
-        dislikeButton.setImage(UIImage(named: "dislike_tapped"), forState: .Highlighted)
+        dislikeButton.setImage(R.image.dislike_normal(), forState: .Normal)
+        dislikeButton.setImage(R.image.dislike_tapped(), forState: .Highlighted)
         dislikeButton.addTarget(self, action: "dislikeButtonTapped", forControlEvents: .TouchUpInside)
         
         self.view.addSubview(likeButton)

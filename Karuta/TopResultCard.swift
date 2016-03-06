@@ -36,7 +36,7 @@ class TopResultCard: ResultCardBase {
     var delegate: ResultCardBaseDelegate?
     
     class func instance() -> TopResultCard {
-        return UINib(nibName: "TopResultCard", bundle: nil).instantiateWithOwner(self, options: nil)[0] as! TopResultCard
+        return R.nib.topResultCard().instantiateWithOwner(self, options: nil)[0] as! TopResultCard
     }
         
     init(frame: CGRect, restaurant: Restaurant, delegate: ResultCardBaseDelegate) {
@@ -66,7 +66,7 @@ class TopResultCard: ResultCardBase {
         self.layer.masksToBounds = false
         
         // 画像
-        self.mainImageView.image = UIImage(named: "noimage")
+        self.mainImageView.image = R.image.noimage()
         self.mainImageView.contentMode = .ScaleAspectFill
         self.mainImageView.clipsToBounds = true
         
@@ -83,7 +83,7 @@ class TopResultCard: ResultCardBase {
         self.categoryView.setCategory(self.restaurant.category)
         self.categoryView.backgroundColor = Const.RANKING_TOP_COLOR
         
-        self.dayPriceIcon.image = UIImage(named: "noimage")
+        self.dayPriceIcon.image = R.image.noimage()
         // 値段ラベル
         if (self.restaurant.dayPriceMin.isEmpty && self.restaurant.dayPriceMax.isEmpty) {
             self.dayPriceLabel.text = "-"
@@ -95,7 +95,7 @@ class TopResultCard: ResultCardBase {
         self.dayPriceLabel.textColor = Const.RANKING_SECOND_RIGHT_COLOR
         self.dayPriceLabel.font = UIFont(name: Const.KARUTA_FONT_NORMAL, size: 13)
         
-        self.nightPriceIcon.image = UIImage(named: "noimage")
+        self.nightPriceIcon.image = R.image.noimage()
         if (self.restaurant.nightPriceMin.isEmpty && self.restaurant.nightPriceMax.isEmpty) {
             self.dayPriceLabel.text = "-"
         } else {

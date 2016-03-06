@@ -23,6 +23,7 @@ class BackgroundImagePicker {
         let n = arc4random() % 3 + 1
         if (6 < hour && hour < 18) {
             return UIImage(named: "background_afternoon\(n)")!
+            
         } else {
             return UIImage(named: "background_night\(n)")!
         }

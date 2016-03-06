@@ -13,7 +13,7 @@ class CommentsView: UIView {
     let contentView = UIView()
     let imageView = UIImageView()
     let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .Light))
-    var image = UIImage(named: "noimage") {
+    var image = R.image.noimage() {
         didSet {
             self.imageView.image = image
         }
