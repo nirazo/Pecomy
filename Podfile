@@ -3,6 +3,8 @@ platform :ios, '8.0'
 use_frameworks!
 
 target 'Karuta' do
+    pod 'Fabric'
+    pod 'Crashlytics'
     pod 'MDCSwipeToChoose'
     pod 'SDWebImage'
     pod 'Alamofire'

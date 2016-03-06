@@ -61,8 +61,6 @@
 		D2A99A161C12D3E700C16F04 /* OnetimeFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A99A151C12D3E700C16F04 /* OnetimeFilterCell.swift */; };
 		D2A99A1A1C12D3FA00C16F04 /* OnetimeFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A99A191C12D3FA00C16F04 /* OnetimeFilterViewController.swift */; };
 		D2A99A571C17367E00C16F04 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2A99A561C17367E00C16F04 /* GoogleService-Info.plist */; };
-		D2BABE641B5A5DB6005E8356 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2BABE621B5A5DB6005E8356 /* Fabric.framework */; };
-		D2BABE651B5A5DB6005E8356 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2BABE631B5A5DB6005E8356 /* Crashlytics.framework */; };
 		D2BE5F3C1C4B78AB00B47387 /* RichTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BE5F3B1C4B78AB00B47387 /* RichTag.swift */; };
 		D2DD65A01B7714CA0046A50C /* TopResultCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DD659F1B7714CA0046A50C /* TopResultCard.swift */; };
 		D2DD65A21B7714DA0046A50C /* OtherResultsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DD65A11B7714DA0046A50C /* OtherResultsCard.swift */; };
@@ -148,8 +146,6 @@
 		D2A99A151C12D3E700C16F04 /* OnetimeFilterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnetimeFilterCell.swift; path = Karuta/OnetimeFilterCell.swift; sourceTree = SOURCE_ROOT; };
 		D2A99A191C12D3FA00C16F04 /* OnetimeFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnetimeFilterViewController.swift; path = Karuta/OnetimeFilterViewController.swift; sourceTree = SOURCE_ROOT; };
 		D2A99A561C17367E00C16F04 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		D2BABE621B5A5DB6005E8356 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
-		D2BABE631B5A5DB6005E8356 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		D2BE5F3B1C4B78AB00B47387 /* RichTag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RichTag.swift; sourceTree = "<group>"; };
 		D2C785F71B47C2A900517D55 /* Karuta-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Karuta-Bridging-Header.h"; sourceTree = "<group>"; };
 		D2DD659F1B7714CA0046A50C /* TopResultCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopResultCard.swift; sourceTree = "<group>"; };
@@ -166,8 +162,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				82743658913CE160AF673A82 /* Pods_Karuta.framework in Frameworks */,
-				D2BABE651B5A5DB6005E8356 /* Crashlytics.framework in Frameworks */,
-				D2BABE641B5A5DB6005E8356 /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,8 +448,6 @@
 		F8EF51686E29749944A50697 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D2BABE621B5A5DB6005E8356 /* Fabric.framework */,
-				D2BABE631B5A5DB6005E8356 /* Crashlytics.framework */,
 				CA78955690AB624AB9D7F4AE /* Pods_Karuta.framework */,
 			);
 			name = Frameworks;
@@ -610,7 +602,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Fabric.framework/run 0f089c54e22e9e890bd0329f29839c99a9c5040c ef218175b8ad70668aabb5fdbbfae2c25d0f1a40a0f70aa08494fbb96d0e8e30";
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 0f089c54e22e9e890bd0329f29839c99a9c5040c ef218175b8ad70668aabb5fdbbfae2c25d0f1a40a0f70aa08494fbb96d0e8e30";
 		};
 		FAFBED2465E6647CCBAEE62A /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
