@@ -27,7 +27,6 @@ class MainBaseViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = Const.KARUTA_TITLE
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "enterForeground:", name:Const.WILL_ENTER_FOREGROUND_KEY, object: nil)
         
@@ -54,15 +53,15 @@ class MainBaseViewController: UIViewController {
         self.pagingBaseView.frame = self.view.bounds
         self.view.addSubview(self.pagingBaseView)
         self.pagingBaseView.backgroundColor = UIColor.clearColor()
-//        
-//        let profViewController = ProfileViewController()
-//        let profNavVC = UINavigationController(rootViewController: profViewController)
-//        self.addChildViewController(profNavVC)
+        
         let mainViewController = MainViewController()
-        let mainNavVC = UINavigationController(rootViewController: mainViewController)
+        let mainNavVC = self.createTransrateNavVC()
+        mainNavVC.setViewControllers([mainViewController], animated: false)
+        
         self.addChildViewController(mainNavVC)
         let logViewController = RestaurantLogViewController()
-        let logNavVC = UINavigationController(rootViewController: logViewController)
+        let logNavVC = self.createTransrateNavVC()
+        logNavVC.setViewControllers([logViewController], animated: false)
         self.addChildViewController(logNavVC)
         
         self.pagingBaseView.contentSize = CGSize(width: self.pagingBaseView.frame.width * CGFloat(self.childViewControllers.count), height: self.pagingBaseView.frame.height)
@@ -71,7 +70,6 @@ class MainBaseViewController: UIViewController {
             vc.didMoveToParentViewController(self)
             self.pagingBaseView.addSubview(vc.view)
         }
-        //self.pagingBaseView.contentOffset = CGPoint(x: Const.WindowSize.width, y: 0.0)
     }
     
     override func viewWillLayoutSubviews() {
@@ -82,7 +80,16 @@ class MainBaseViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
+
+    // navVCを透明化
+    func createTransrateNavVC() -> UINavigationController {
+        let navVC = UINavigationController()
+        navVC.navigationBar.tintColor = UIColor.clearColor()
+        navVC.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        navVC.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: Const.KARUTA_THEME_TEXT_COLOR]
+        navVC.navigationBar.shadowImage = UIImage()
+        return navVC
+    }
 
     // MARK: - Observer
     func enterForeground(notification: NSNotification){

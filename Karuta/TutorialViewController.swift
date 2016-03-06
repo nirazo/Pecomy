@@ -8,8 +8,13 @@
 
 import UIKit
 
+protocol TutorialDelegate {
+    func startTapped()
+}
+
 class TutorialViewController: UIViewController, UIScrollViewDelegate {
 
+    var delegate: TutorialDelegate?
     var pageControl: UIPageControl!
     let imgTitleArr = ["tutorial_01", "tutorial_02", "tutorial_03", "tutorial_04", "tutorial_05", "tutorial_06"]
     
@@ -48,7 +53,7 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
         //閉じるボタン
         let closeButton = UIButton(frame: CGRectZero);
         closeButton.backgroundColor = UIColor.clearColor();
-        closeButton.addTarget(self, action: "closeTutorial:", forControlEvents:.TouchUpInside);
+        closeButton.addTarget(self, action: "startTapped:", forControlEvents:.TouchUpInside);
         closeButton.setTitle(NSLocalizedString("CloseTutorial", comment: ""), forState: .Normal);
         closeButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         closeButton.layer.masksToBounds = true;
@@ -62,18 +67,10 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
         }
     }
     
-    func closeTutorial(sender: UIButton) {
-        let viewController = MainViewController()
-        let navVC = UINavigationController(rootViewController: viewController)
-        navVC.navigationBar.barTintColor = Const.KARUTA_THEME_COLOR
-        navVC.modalTransitionStyle = UIModalTransitionStyle.CoverVertical
-        
+    func startTapped(sender: UIButton) {
         NSUserDefaults.standardUserDefaults().setBool(true, forKey: Const.UD_KEY_HAS_LAUNCHED)
         NSUserDefaults.standardUserDefaults().synchronize()
-        
-        self.changeRootViewController(navVC)
-        
-        //self.presentViewController(navVC, animated: true, completion: nil)
+        self.delegate?.startTapped()
     }
     
     func changeRootViewController(viewController: UINavigationController) {
@@ -94,8 +91,7 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
 
     //MARK: - UIScrollViewDelegate
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-        
-        // スクロール数が1ページ分になったら時
+        // スクロール数が1ページ分になった時
         if fmod(scrollView.contentOffset.x, scrollView.frame.maxX) == 0 {
             pageControl.currentPage = Int(scrollView.contentOffset.x / scrollView.frame.maxX)
         }
@@ -103,7 +99,5 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-
 }

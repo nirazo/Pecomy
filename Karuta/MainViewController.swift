@@ -50,6 +50,9 @@ class MainViewController: UIViewController {
     // var results
     var currentResults = [Restaurant]()
     
+    // Tutorial
+    var tutorialVC: TutorialViewController?
+
     // Onetime filter
     var currentBudget = Budget.Unspecified
     var currentNumOfPeople = NumOfPeople.One
@@ -76,11 +79,6 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // navbar透明化
-        self.navigationController?.navigationBar.tintColor = UIColor.clearColor()
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: Const.KARUTA_THEME_TEXT_COLOR]
-        self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationItem.title = Const.KARUTA_TITLE
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "enterForeground:", name:Const.WILL_ENTER_FOREGROUND_KEY, object: nil)
@@ -166,8 +164,15 @@ class MainViewController: UIViewController {
         self.loadingIndicator.hidesWhenStopped = true
         self.view.addSubview(self.loadingIndicator)
         
-        if (self.currentLatitude == nil || self.currentLongitude == nil) {
-            self.displayOnetimeFilterView()
+        // 初回起動のときはtutorial出す
+        if (!NSUserDefaults.standardUserDefaults().boolForKey(Const.UD_KEY_HAS_LAUNCHED)) {
+            self.tutorialVC = TutorialViewController()
+            self.tutorialVC?.delegate = self
+            self.presentViewController(tutorialVC!, animated: true, completion: nil)
+        } else {
+            if (self.currentLatitude == nil || self.currentLongitude == nil) {
+                self.displayOnetimeFilterView()
+            }
         }
     }
     
@@ -684,5 +689,15 @@ extension MainViewController: CardViewDelegate {
         ac.addAction(cancelAction)
         ac.addAction(okAction)
         self.presentViewController(ac, animated: true, completion: nil)
+    }
+}
+
+//MARK: - TutorialDelegate
+extension MainViewController: TutorialDelegate {
+    func startTapped() {
+        self.dismissViewControllerAnimated(true) { _ in
+            self.displayOnetimeFilterView()
+            self.tutorialVC = nil
+        }
     }
 }
