@@ -50,12 +50,17 @@ class MainViewController: UIViewController {
     // var results
     var currentResults = [Restaurant]()
     
+    // Tutorial
+    var tutorialVC: TutorialViewController?
+
     // Onetime filter
     var currentBudget = Budget.Unspecified
     var currentNumOfPeople = NumOfPeople.One
     var currentGenre = Genre.All
     
     var currentProgress: Float = 0.0
+    
+    var messageLabel = UILabel()
     
     let loadingIndicator = UIActivityIndicatorView()
     
@@ -74,46 +79,29 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "enterForeground:", name:Const.WILL_ENTER_FOREGROUND_KEY, object: nil)
-        
         self.navigationItem.title = Const.KARUTA_TITLE
         
-        // 背景画像設定（とりあえず固定で...）
-        let image = UIImage(named: "background")
-        UIGraphicsBeginImageContext(self.view.frame.size);
-        image!.drawInRect(self.view.bounds)
-        let backgroundImage = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        self.view.backgroundColor = UIColor(patternImage: backgroundImage!)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "enterForeground:", name:Const.WILL_ENTER_FOREGROUND_KEY, object: nil)
         
         // カードを配置するための透明ビュー
-        contentView.frame = self.view.frame
+        contentView.frame = self.view.bounds
         contentView.backgroundColor = UIColor.clearColor()
         self.view.addSubview(self.contentView)
         
-        // フッター
-        let footerBar = UIView(frame: CGRectZero)
-        footerBar.backgroundColor = Const.KARUTA_THEME_TEXT_COLOR
-        let footerText = UILabel(frame: CGRectZero)
-        footerText.text = NSLocalizedString("SearchingRestaurant", comment: "")
-        footerText.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 12)
-        footerText.textColor = Const.KARUTA_THEME_COLOR
-        footerText.textAlignment = .Center
-        
-        self.view.addSubview(footerBar)
-        footerBar.snp_makeConstraints { (make) in
+        // メッセージラベル
+        self.messageLabel = UILabel(frame: CGRectZero)
+        self.messageLabel.text = NSLocalizedString("MainComment", comment: "")
+        self.messageLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 22)
+        self.messageLabel.textColor = UIColor.whiteColor()
+        self.messageLabel.textAlignment = .Center
+        self.view.addSubview(self.messageLabel)
+        self.messageLabel.snp_makeConstraints { make in
+            make.top.equalTo(self.view).offset(83)
+            make.left.equalTo(self.view)
             make.width.equalTo(self.view)
-            make.height.equalTo(FOOTER_HEIGHT)
-            make.bottom.equalTo(self.view).offset(-PROGRESS_HEIGHT)
+            make.height.equalTo(22)
         }
         
-        footerBar.addSubview(footerText)
-        footerText.snp_makeConstraints { (make) in
-            make.width.equalTo(footerBar)
-            make.height.equalTo(footerBar)
-            make.center.equalTo(footerBar)
-        }
         
         // プログレスバー
         self.addChildViewController(self.progressViewController)
@@ -121,21 +109,21 @@ class MainViewController: UIViewController {
         
         self.view.addSubview(self.progressViewController.view)
         self.progressViewController.view.snp_makeConstraints { (make) in
-            make.left.equalTo(self.view)
-            make.width.equalTo(self.view)
-            make.top.equalTo(footerBar.snp_bottom)
-            make.bottom.equalTo(self.view)
+            make.left.equalTo(self.contentView).offset(10)
+            make.right.equalTo(self.contentView).offset(-10)
+            make.height.equalTo(60)
+            make.bottom.equalTo(self.contentView).offset(5)
         }
         
         // ボタン配置
         let likeButton = UIButton()
-        likeButton.setImage(UIImage(named: "like_normal"), forState: .Normal)
-        likeButton.setImage(UIImage(named: "like_tapped"), forState: .Highlighted)
+        likeButton.setImage(R.image.like_normal(), forState: .Normal)
+        likeButton.setImage(R.image.like_tapped(), forState: .Highlighted)
         likeButton.addTarget(self, action: "likeButtonTapped", forControlEvents: .TouchUpInside)
         
         let dislikeButton = UIButton()
-        dislikeButton.setImage(UIImage(named: "dislike_normal"), forState: .Normal)
-        dislikeButton.setImage(UIImage(named: "dislike_tapped"), forState: .Highlighted)
+        dislikeButton.setImage(R.image.dislike_normal(), forState: .Normal)
+        dislikeButton.setImage(R.image.dislike_tapped(), forState: .Highlighted)
         dislikeButton.addTarget(self, action: "dislikeButtonTapped", forControlEvents: .TouchUpInside)
         
         self.view.addSubview(likeButton)
@@ -145,7 +133,7 @@ class MainViewController: UIViewController {
             make.width.equalTo(self.view).multipliedBy(0.25)
             make.height.equalTo(self.view.snp_width).multipliedBy(0.25)
             make.centerX.equalTo(self.view).offset(-self.view.frame.width/4)
-            make.bottom.equalTo(footerBar.snp_top).offset(-20)
+            make.bottom.equalTo(self.progressViewController.view.snp_top).offset(-20)
         }
         
         likeButton.snp_makeConstraints { (make) in
@@ -165,7 +153,7 @@ class MainViewController: UIViewController {
             make.left.equalTo(dislikeButton.snp_right)
             make.right.equalTo(likeButton.snp_left)
             make.top.equalTo(likeButton.snp_bottom).inset(30)
-            make.bottom.equalTo(footerBar.snp_top).inset(-5)
+            make.bottom.equalTo(self.progressViewController.view.snp_top).inset(-5)
         }
         
         
@@ -176,8 +164,15 @@ class MainViewController: UIViewController {
         self.loadingIndicator.hidesWhenStopped = true
         self.view.addSubview(self.loadingIndicator)
         
-        if (self.currentLatitude == nil || self.currentLongitude == nil) {
-            self.displayOnetimeFilterView()
+        // 初回起動のときはtutorial出す
+        if (!NSUserDefaults.standardUserDefaults().boolForKey(Const.UD_KEY_HAS_LAUNCHED)) {
+            self.tutorialVC = TutorialViewController()
+            self.tutorialVC?.delegate = self
+            self.presentViewController(tutorialVC!, animated: true, completion: nil)
+        } else {
+            if (self.currentLatitude == nil || self.currentLongitude == nil) {
+                self.displayOnetimeFilterView()
+            }
         }
     }
     
@@ -192,7 +187,7 @@ class MainViewController: UIViewController {
         tracker.send(builder.build() as [NSObject : AnyObject])
     }
     
-    // observer
+    //MARK:- Observer
     func enterForeground(notification: NSNotification){
         if self.currentLatitude == nil || self.currentLongitude == nil {
             self.reset()
@@ -372,12 +367,12 @@ class MainViewController: UIViewController {
         let options = MDCSwipeToChooseViewOptions()
         options.delegate = self
         options.onPan = { [weak self] state in
-            if(self!.numOfDisplayedCard() > 1){
-                let frame:CGRect = self!.baseCardRect()
-                let secondCard = self!.contentView.subviews[0] as! CardView
+            guard let strongSelf = self else { return }
+            if(strongSelf.numOfDisplayedCard() > 1){
+                let frame = strongSelf.baseCardRect()
+                let secondCard = strongSelf.contentView.subviews[0] as! CardView
                 secondCard.frame = CGRect(x: frame.origin.x, y: frame.origin.y-(state.thresholdRatio * 10.0), width: CGRectGetWidth(frame), height: CGRectGetHeight(frame))
             }
-            
         }
         let cardView = CardView(frame: frame, restaurant: restaurant, syncID:syncID, options: options)
         cardView.delegate = self
@@ -409,7 +404,7 @@ class MainViewController: UIViewController {
     
     // カードのベースとなるCGRectを返す
     func baseCardRect() -> CGRect{
-        var rect = CGRect(x: 0, y: 0, width: self.view.frame.width*0.8, height: self.view.frame.height*0.6)
+        var rect = CGRect(x: 0, y: 0, width: self.view.frame.width*0.8, height: self.view.frame.width*0.8)
         rect.offsetInPlace(dx: (self.view.frame.width - rect.size.width)/2, dy: (self.view.frame.height - rect.size.height)/2 - 40)
         return rect
     }
@@ -694,5 +689,15 @@ extension MainViewController: CardViewDelegate {
         ac.addAction(cancelAction)
         ac.addAction(okAction)
         self.presentViewController(ac, animated: true, completion: nil)
+    }
+}
+
+//MARK: - TutorialDelegate
+extension MainViewController: TutorialDelegate {
+    func startTapped() {
+        self.dismissViewControllerAnimated(true) { _ in
+            self.displayOnetimeFilterView()
+            self.tutorialVC = nil
+        }
     }
 }

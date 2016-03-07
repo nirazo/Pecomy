@@ -34,7 +34,6 @@ class RestaurantDetailViewRichTagCollectionViewConfig: NSObject, UICollectionVie
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        print("RichTagTapped!: \(indexPath.row)")
     }
     
     // MARK: - UICollectionViewDelegateFlowLayout

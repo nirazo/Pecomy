@@ -47,6 +47,5 @@ class RestaurantDetailViewPictureCollectionViewConfig: NSObject, UICollectionVie
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        print("pictureTapped!: \(indexPath.row)")
     }
 }

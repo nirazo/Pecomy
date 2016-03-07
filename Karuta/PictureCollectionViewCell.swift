@@ -27,7 +27,7 @@ class PictureCollectionViewCell: UICollectionViewCell {
     }
     
     override init(frame: CGRect) {
-        self.imageView = UIImageView(image: UIImage(named: "noimage"))
+        self.imageView = UIImageView(image: R.image.noimage())
         self.imageView.contentMode = .ScaleAspectFill
         self.imageView.clipsToBounds = true
         super.init(frame: frame)

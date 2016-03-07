@@ -87,7 +87,7 @@ class OtherResultCardContentView: UIView {
         
         // 距離ラベル
         let distanceLabel = UILabel(frame: CGRectZero)
-        distanceLabel.text =  String(format: NSLocalizedString("CardDistanceFromText", comment: ""), restaurant.distance.meterToMinutes())
+        distanceLabel.text =  String(format: NSLocalizedString("CardDistanceFromText", comment: ""), Utils.meterToMinutes(restaurant.distance))
         distanceLabel.font = UIFont(name: Const.KARUTA_FONT_NORMAL, size: 12)
         distanceLabel.numberOfLines = 0
         distanceLabel.sizeToFit()
@@ -125,7 +125,7 @@ class OtherResultCardContentView: UIView {
     
     private func acquireImage(url: NSURL?) {
         guard let url = url else {
-            self.imageView.image = UIImage(named: "noimage")
+            self.imageView.image = R.image.noimage()
             return
         }
         self.imageView.sd_setImageWithURL(url, completed: {[weak self](image: UIImage!, error: NSError!, cacheType: SDImageCacheType, imageURL: NSURL!) in

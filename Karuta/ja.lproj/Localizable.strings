@@ -24,8 +24,8 @@
 "ServerErrorAlertMessage" = "サーバエラーが発生しました。OKボタンを押すとレストラン検索が再度始まります。";
 "NoResultAlertTitle" = "結果が見つかりませんでした";
 "NoResultAlertMessage" = "近くにおすすめのお店が見つかりませんでした。時間、場所を変更して再度お試しください。";
-"SearchingRestaurant" = "あなたの好きなお店をサーチ中です";
-"ResultTitle" = "検索結果";
+"SearchingRestaurant" = "お店を探しています";
+"ResultTitle" = "あなたへのオススメ";
 "CloseTutorial" = "はじめる";
 "CardLikeText" = "行きたい！";
 "CardDislikeText" = "イマイチ...";
@@ -34,6 +34,7 @@
 "CategoryRestaurant" = "レストラン";
 "CategoryCafe" = "カフェ";
 "CategoryDrinking" = "飲み";
+"CategoryRamen" = "ラーメン";
 // Budget
 "Unspecified" = "指定なし";
 "LessThanThousand" = "〜1,000円";
@@ -48,6 +49,8 @@
 "NumOfPeopleTitle" = "人数";
 "GenreTitle" = "ジャンル";
 "StartTitle" = "この条件で探す";
+// Main
+"MainComment" = "今何が食べたい？";
 // Card
 "Day" = "昼";
 "Night" = "夜";
