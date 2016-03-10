@@ -27,7 +27,7 @@
 "SearchingRestaurant" = "お店を探しています";
 "ResultTitle" = "あなたへのオススメ";
 "CloseTutorial" = "はじめる";
-"CardLikeText" = "行きたい！";
+"CardLikeText" = "いいね！";
 "CardDislikeText" = "イマイチ...";
 // Category
 "CategoryAll" = "全カテゴリ";
@@ -50,7 +50,7 @@
 "GenreTitle" = "ジャンル";
 "StartTitle" = "この条件で探す";
 // Main
-"MainComment" = "今何が食べたい？";
+"MainComment" = "今の気分にあってる？";
 // Card
 "Day" = "昼";
 "Night" = "夜";
