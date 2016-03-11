@@ -64,8 +64,8 @@ class CardRequest: KarutaApiRequest {
             return "drinking"
         case .Restaurant:
             return "restaurant"
-        case .Ramen:
-            return "ramen"
+//        case .Ramen:
+//            return "ramen"
         default:
             return ""
         }
