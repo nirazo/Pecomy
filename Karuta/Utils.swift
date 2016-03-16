@@ -22,24 +22,30 @@ class Utils {
     }
     
     /**
-    カードに表示する価格を整形する
-    食べログの価格は
-    [夜]1000~2000          [昼]1000~2000
-    みたいな形なので、コレを整形してカードに表記する形にする。
+    頭に￥をつけ、三桁区切りカンマをつける
+     - parameter origPrice: 元の値段文字列
+     - returns: 頭に￥が付いた、3桁区切りカンマがついた値段文字列
     */
     class func formatPriceString(origPrice: String) -> String {
-        let replacedString = origPrice.stringByReplacingOccurrencesOfString("  +", withString: "\n", options: .RegularExpressionSearch, range: nil)
-        var formattedPrice = ""
-        let prices = replacedString.componentsSeparatedByString("\n")
-        if (prices.count < 2) {
-            if (prices[0].isEmpty) {
-                formattedPrice = NSLocalizedString("CardNoPriceInfoText", comment: "")
-            } else {
-                formattedPrice = prices[0]
-            }
-        } else {
-            formattedPrice = prices[1] + "\n" + prices[0]
+        let price = Int(origPrice)
+        guard let intPrice = price else {
+            return ""
         }
-        return formattedPrice
+        let num = NSNumber(integer: intPrice)
+        let formatter = NSNumberFormatter()
+        formatter.numberStyle = NSNumberFormatterStyle.DecimalStyle
+        formatter.groupingSeparator = ","
+        formatter.groupingSize = 3
+        
+        return "￥\(formatter.stringFromNumber(num)!)"
+    }
+    
+    /**
+     距離（メートル）を分に変換
+     - parameter meter: 距離（メートル）
+     - returns: 分
+     */
+    class func meterToMinutes(meter: Double) -> Int{
+        return Int(ceil(meter/60))
     }
 }
