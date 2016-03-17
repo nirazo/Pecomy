@@ -8,6 +8,7 @@ import UIKit
 struct R {
   struct file {
     static let googleServiceInfoPlist = FileResource(bundle: _R.hostingBundle, name: "GoogleService-Info", pathExtension: "plist")
+    static let settingsBundle = FileResource(bundle: _R.hostingBundle, name: "Settings", pathExtension: "bundle")
     
     static func googleServiceInfoPlist(_: Void) -> NSURL? {
       let fileResource = R.file.googleServiceInfoPlist
@@ -16,6 +17,16 @@ struct R {
     
     static func googleServiceInfoPlist(_: Void) -> String? {
       let fileResource = R.file.googleServiceInfoPlist
+      return fileResource.bundle?.pathForResource(fileResource)
+    }
+    
+    static func settingsBundle(_: Void) -> NSURL? {
+      let fileResource = R.file.settingsBundle
+      return fileResource.bundle?.URLForResource(fileResource)
+    }
+    
+    static func settingsBundle(_: Void) -> String? {
+      let fileResource = R.file.settingsBundle
       return fileResource.bundle?.pathForResource(fileResource)
     }
   }

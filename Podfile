@@ -20,3 +20,8 @@ target 'KarutaTests' do
 
 end
 
+post_install do | installer |
+  require 'fileutils'
+  FileUtils.cp_r('Pods/Target Support Files/Pods-Karuta/Pods-Karuta-Acknowledgements.plist', 'Karuta/Settings.bundle/Acknowledgements.plist', :remove_destination => true)
+
+end
