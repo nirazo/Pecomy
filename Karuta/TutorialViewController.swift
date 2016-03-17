@@ -16,7 +16,7 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
 
     var delegate: TutorialDelegate?
     var pageControl: UIPageControl!
-    let imgTitleArr = ["tutorial_01", "tutorial_02", "tutorial_03", "tutorial_04", "tutorial_05", "tutorial_06"]
+    let imgTitleArr = ["tutorial_01", "tutorial_02", "tutorial_03", "tutorial_04", "tutorial_05"]
     
     override func viewDidLoad() {
         let width = self.view.frame.maxX
@@ -34,7 +34,7 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
         self.view.addSubview(scrollView)
         
         //各ページの作成
-        for (var i=0; i<self.imgTitleArr.count; i++) {
+        for i in 0 ..< self.imgTitleArr.count {
             let img = UIImage(named:self.imgTitleArr[i])
             let iv = UIImageView(image:img)
             iv.contentMode = .ScaleAspectFill
@@ -51,19 +51,22 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
         self.view.addSubview(pageControl)
         
         //閉じるボタン
-        let closeButton = UIButton(frame: CGRectZero);
-        closeButton.backgroundColor = UIColor.clearColor();
-        closeButton.addTarget(self, action: "startTapped:", forControlEvents:.TouchUpInside);
-        closeButton.setTitle(NSLocalizedString("CloseTutorial", comment: ""), forState: .Normal);
-        closeButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        closeButton.layer.masksToBounds = true;
+        let closeButton = UIButton(frame: .zero)
+        closeButton.backgroundColor = .clearColor()
+        closeButton.addTarget(self, action: "startTapped:", forControlEvents:.TouchUpInside)
+        closeButton.setTitle(NSLocalizedString("CloseTutorial", comment: ""), forState: .Normal)
+        closeButton.setTitleColor(.blackColor(), forState: .Normal)
+        closeButton.layer.masksToBounds = true
+        closeButton.layer.cornerRadius = Const.CORNER_RADIUS
+        closeButton.backgroundColor = .whiteColor()
         closeButton.titleLabel?.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 14)
-        closeButton.sizeToFit()
-        self.view.addSubview(closeButton);
+        self.view.addSubview(closeButton)
         
         closeButton.snp_makeConstraints { (make) in
             make.right.equalTo(self.view).offset(-10)
             make.bottom.equalTo(self.view).offset(-10)
+            make.width.equalTo(70)
+            make.height.equalTo(35)
         }
     }
     
@@ -77,7 +80,7 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
         
         let snapShot: UIView = UIApplication.sharedApplication().keyWindow!.snapshotViewAfterScreenUpdates(true)
         viewController.view.addSubview(snapShot)
-        UIApplication.sharedApplication().keyWindow?.rootViewController = viewController;
+        UIApplication.sharedApplication().keyWindow?.rootViewController = viewController
         
         UIView.animateWithDuration(0.3,
             animations: { () in
