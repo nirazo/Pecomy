@@ -20,7 +20,7 @@ class ResultHeaderView: UIView {
         case 0:
             self.rankIcon.image = R.image.rank_first()
             self.headerLabel.text = NSLocalizedString("ResultRankFirstHeader", comment: "")
-            self.headerLabel.font = UIFont(name: "STKaiti-SC-Black", size: 26)
+            self.headerLabel.font = UIFont(name: "TimesNewRomanPS-BoldMT", size: 25)
             self.headerLabel.textColor = Const.RANKING_TOP_COLOR
         case 1:
             self.rankIcon.image = R.image.rank_other()

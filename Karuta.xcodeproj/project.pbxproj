@@ -17,6 +17,7 @@
 		D203D3141B3E739600FC9DB8 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = D203D3131B3E739600FC9DB8 /* Const.swift */; };
 		D2092A2C1B637460008046D9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D2092A2E1B637460008046D9 /* Localizable.strings */; };
 		D2092A341B64D721008046D9 /* RestaurantModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2092A331B64D721008046D9 /* RestaurantModel.swift */; };
+		D20D9C1C1C9B1983003BA643 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D20D9C1B1C9B1983003BA643 /* Settings.bundle */; };
 		D22EC5591BCE34DD00A4B446 /* CategoryLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22EC5581BCE34DD00A4B446 /* CategoryLabelView.swift */; };
 		D23070731B4C30D100833167 /* KarutaLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23070721B4C30D100833167 /* KarutaLocationManager.swift */; };
 		D24A2CC31C255D2A009ACA08 /* ResultHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24A2CC21C255D2A009ACA08 /* ResultHeaderView.swift */; };
@@ -38,7 +39,6 @@
 		D2731FE01C79A85300E8E5E9 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2731FDF1C79A85300E8E5E9 /* ProfileViewController.swift */; };
 		D2731FE31C79A88000E8E5E9 /* RestaurantLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2731FE21C79A88000E8E5E9 /* RestaurantLogViewController.swift */; };
 		D2731FE71C849DE800E8E5E9 /* BackgroundImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2731FE61C849DE800E8E5E9 /* BackgroundImagePicker.swift */; };
-		D27A92511C70D77800A7324E /* Kaiti.ttc in Resources */ = {isa = PBXBuildFile; fileRef = D27A92501C70D75700A7324E /* Kaiti.ttc */; };
 		D27BB9D21B36F4A900F8D902 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27BB9D11B36F4A900F8D902 /* AppDelegate.swift */; };
 		D27BB9D41B36F4A900F8D902 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27BB9D31B36F4A900F8D902 /* MainViewController.swift */; };
 		D27BB9D91B36F4A900F8D902 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D27BB9D81B36F4A900F8D902 /* Images.xcassets */; };
@@ -99,6 +99,7 @@
 		D2092A2D1B637460008046D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D2092A2F1B637484008046D9 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D2092A331B64D721008046D9 /* RestaurantModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantModel.swift; sourceTree = "<group>"; };
+		D20D9C1B1C9B1983003BA643 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		D22EC5581BCE34DD00A4B446 /* CategoryLabelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryLabelView.swift; sourceTree = "<group>"; };
 		D23070721B4C30D100833167 /* KarutaLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarutaLocationManager.swift; sourceTree = "<group>"; };
 		D24A2CC21C255D2A009ACA08 /* ResultHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultHeaderView.swift; sourceTree = "<group>"; };
@@ -120,7 +121,6 @@
 		D2731FDF1C79A85300E8E5E9 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D2731FE21C79A88000E8E5E9 /* RestaurantLogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantLogViewController.swift; sourceTree = "<group>"; };
 		D2731FE61C849DE800E8E5E9 /* BackgroundImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundImagePicker.swift; sourceTree = "<group>"; };
-		D27A92501C70D75700A7324E /* Kaiti.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = Kaiti.ttc; sourceTree = "<group>"; };
 		D27BB9CC1B36F4A900F8D902 /* Karuta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Karuta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D27BB9D01B36F4A900F8D902 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D27BB9D11B36F4A900F8D902 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -368,9 +368,9 @@
 			isa = PBXGroup;
 			children = (
 				D2A594E71C8C77A400DE1012 /* R.generated.swift */,
-				D27A92501C70D75700A7324E /* Kaiti.ttc */,
 				D27BB9D01B36F4A900F8D902 /* Info.plist */,
 				D2092A2E1B637460008046D9 /* Localizable.strings */,
+				D20D9C1B1C9B1983003BA643 /* Settings.bundle */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -544,13 +544,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D27A92511C70D77800A7324E /* Kaiti.ttc in Resources */,
 				D28901301C437D9D005BDF84 /* RestaurantDetailView.xib in Resources */,
 				D2092A2C1B637460008046D9 /* Localizable.strings in Resources */,
 				D2A99A571C17367E00C16F04 /* GoogleService-Info.plist in Resources */,
 				D24B29461B79F56E00419B9B /* Launch Screen.xib in Resources */,
 				D27BB9D91B36F4A900F8D902 /* Images.xcassets in Resources */,
 				D253A9E01C310D7B00D65D20 /* TopResultCard.xib in Resources */,
+				D20D9C1C1C9B1983003BA643 /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,7 +8,7 @@ import UIKit
 struct R {
   struct file {
     static let googleServiceInfoPlist = FileResource(bundle: _R.hostingBundle, name: "GoogleService-Info", pathExtension: "plist")
-    static let kaitiTtc = FileResource(bundle: _R.hostingBundle, name: "Kaiti", pathExtension: "ttc")
+    static let settingsBundle = FileResource(bundle: _R.hostingBundle, name: "Settings", pathExtension: "bundle")
     
     static func googleServiceInfoPlist(_: Void) -> NSURL? {
       let fileResource = R.file.googleServiceInfoPlist
@@ -20,13 +20,13 @@ struct R {
       return fileResource.bundle?.pathForResource(fileResource)
     }
     
-    static func kaitiTtc(_: Void) -> NSURL? {
-      let fileResource = R.file.kaitiTtc
+    static func settingsBundle(_: Void) -> NSURL? {
+      let fileResource = R.file.settingsBundle
       return fileResource.bundle?.URLForResource(fileResource)
     }
     
-    static func kaitiTtc(_: Void) -> String? {
-      let fileResource = R.file.kaitiTtc
+    static func settingsBundle(_: Void) -> String? {
+      let fileResource = R.file.settingsBundle
       return fileResource.bundle?.pathForResource(fileResource)
     }
   }
@@ -98,7 +98,6 @@ struct R {
     static let tutorial_03 = ImageResource(bundle: _R.hostingBundle, name: "tutorial_03")
     static let tutorial_04 = ImageResource(bundle: _R.hostingBundle, name: "tutorial_04")
     static let tutorial_05 = ImageResource(bundle: _R.hostingBundle, name: "tutorial_05")
-    static let tutorial_06 = ImageResource(bundle: _R.hostingBundle, name: "tutorial_06")
     
     static func background_afternoon1(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.background_afternoon1, compatibleWithTraitCollection: traitCollection)
@@ -346,10 +345,6 @@ struct R {
     
     static func tutorial_05(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.tutorial_05, compatibleWithTraitCollection: traitCollection)
-    }
-    
-    static func tutorial_06(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.tutorial_06, compatibleWithTraitCollection: traitCollection)
     }
   }
   
