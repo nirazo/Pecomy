@@ -59,9 +59,9 @@ class ResultViewController: UIViewController, ResultCardBaseDelegate {
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: Const.KARUTA_THEME_COLOR]
         self.navigationController?.navigationBar.shadowImage = UIImage()
         
-        let resetButoon = UIBarButtonItem(title: NSLocalizedString("Reset", comment: ""), style: .Plain, target: self, action: "resetTapped")
+        let resetButoon = UIBarButtonItem(title: NSLocalizedString("Reset", comment: ""), style: .Plain, target: self, action: #selector(ResultViewController.resetTapped))
         self.navigationItem.rightBarButtonItem = resetButoon
-        let continueButton = UIBarButtonItem(title: NSLocalizedString("Continue", comment: ""), style: .Plain, target: self, action: "continueTapped")
+        let continueButton = UIBarButtonItem(title: NSLocalizedString("Continue", comment: ""), style: .Plain, target: self, action: #selector(ResultViewController.continueTapped))
         self.navigationItem.leftBarButtonItem = continueButton
         
         switch self.restaurants.count {
@@ -132,7 +132,7 @@ class ResultViewController: UIViewController, ResultCardBaseDelegate {
         self.topResultCard?.setupSubViews()
         self.topResultCard?.delegate = self
         
-        let tr = UITapGestureRecognizer(target: self, action: "cardTapped:")
+        let tr = UITapGestureRecognizer(target: self, action: #selector(ResultViewController.cardTapped(_:)))
         tr.delegate = self
         self.topResultCard!.addGestureRecognizer(tr)
         
@@ -245,7 +245,7 @@ extension ResultViewController: OtherResultCardDelegate {
 
 extension ResultViewController: UIGestureRecognizerDelegate {
     func cardTapped(sender: AnyObject) {
-        guard let card = sender.view as? TopResultCard else { return }
+        guard let vc = sender as? ResultViewController, let card = vc.view as? TopResultCard else { return }
         let detailVC = DetailViewController(restaurant: card.restaurant)
         detailVC.navigationItem.title = card.restaurant.shopName
         let backButtonItem = UIBarButtonItem(title: NSLocalizedString("Back", comment: ""), style: .Plain, target: nil, action: nil)

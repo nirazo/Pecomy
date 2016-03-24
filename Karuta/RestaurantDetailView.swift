@@ -147,7 +147,7 @@ class RestaurantDetailView: UIView {
             make.left.equalTo(self.mapView)
             make.size.equalTo(self.mapView)
         }
-        let tr = UITapGestureRecognizer(target: self, action: "mapViewTapped:")
+        let tr = UITapGestureRecognizer(target: self, action: #selector(RestaurantDetailView.mapViewTapped(_:)))
         self.mapTapView.addGestureRecognizer(tr)
         
         

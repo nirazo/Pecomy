@@ -77,7 +77,7 @@ class OtherResultsCard: UIView {
         }
         self.shadow.layer.frame = self.shadow.bounds
         
-        for (var i = 0; i < self.restaurants.count; i++)  {
+        for i in 0 ..< self.restaurants.count {
             let content = OtherResultCardContentView(frame: CGRectZero, restaurant: self.restaurants[i])
             content.delegate = self
             self.restaurantsCards.append(content)

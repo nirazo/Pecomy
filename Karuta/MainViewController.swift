@@ -81,7 +81,7 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         self.navigationItem.title = Const.KARUTA_TITLE
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "enterForeground:", name:Const.WILL_ENTER_FOREGROUND_KEY, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainViewController.enterForeground(_:)), name:Const.WILL_ENTER_FOREGROUND_KEY, object: nil)
         
         // カードを配置するための透明ビュー
         contentView.frame = self.view.bounds
@@ -119,12 +119,12 @@ class MainViewController: UIViewController {
         let likeButton = UIButton()
         likeButton.setImage(R.image.like_normal(), forState: .Normal)
         likeButton.setImage(R.image.like_tapped(), forState: .Highlighted)
-        likeButton.addTarget(self, action: "likeButtonTapped", forControlEvents: .TouchUpInside)
+        likeButton.addTarget(self, action: #selector(MainViewController.likeButtonTapped), forControlEvents: .TouchUpInside)
         
         let dislikeButton = UIButton()
         dislikeButton.setImage(R.image.dislike_normal(), forState: .Normal)
         dislikeButton.setImage(R.image.dislike_tapped(), forState: .Highlighted)
-        dislikeButton.addTarget(self, action: "dislikeButtonTapped", forControlEvents: .TouchUpInside)
+        dislikeButton.addTarget(self, action: #selector(MainViewController.dislikeButtonTapped), forControlEvents: .TouchUpInside)
         
         self.view.addSubview(likeButton)
         self.view.addSubview(dislikeButton)
@@ -146,7 +146,7 @@ class MainViewController: UIViewController {
         // カテゴリ
         self.categoryLabelView = CategoryLabelView(frame: CGRectZero, category: self.currentGenre.valueForDisplay())
         self.view.addSubview(self.categoryLabelView!)
-        let tr = UITapGestureRecognizer(target: self, action: "categoryTapped:")
+        let tr = UITapGestureRecognizer(target: self, action: #selector(MainViewController.categoryTapped(_:)))
         self.categoryLabelView!.addGestureRecognizer(tr)
         
         self.categoryLabelView!.snp_makeConstraints { (make) in
@@ -396,7 +396,7 @@ class MainViewController: UIViewController {
         var num = 0
         for cv in self.contentView.subviews {
             if cv.dynamicType === CardView.self {
-                num++
+                num += 1
             }
         }
         return num
@@ -602,7 +602,7 @@ extension MainViewController: MDCSwipeToChooseDelegate {
     // This is called then a user swipes the view fully left or right.
     func view(view: UIView!, wasChosenWithDirection direction: MDCSwipeDirection) {
         let cardView = view as! CardView
-        self.currentSwipeCount++
+        self.currentSwipeCount += 1
         cardView.isFlicked = true
         
         var answer = "dislike"

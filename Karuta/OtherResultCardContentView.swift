@@ -34,7 +34,7 @@ class OtherResultCardContentView: UIView {
         self.backgroundColor = UIColor.clearColor()
         self.layer.masksToBounds = false
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: "tapped")
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(OtherResultCardContentView.tapped))
         self.addGestureRecognizer(tapGesture)
                 
         self.setupSubViews()

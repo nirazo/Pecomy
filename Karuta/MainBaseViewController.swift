@@ -28,7 +28,7 @@ class MainBaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "enterForeground:", name:Const.WILL_ENTER_FOREGROUND_KEY, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainBaseViewController.enterForeground(_:)), name:Const.WILL_ENTER_FOREGROUND_KEY, object: nil)
         
         //単色背景
         let bgView = UIView()

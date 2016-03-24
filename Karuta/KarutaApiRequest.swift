@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 
 public protocol KarutaApiRequest {
-    typealias Response
+    associatedtype Response
     
     var endpoint: String{ get }
     var method: Alamofire.Method{ get }
