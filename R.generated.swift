@@ -5,382 +5,526 @@ import Foundation
 import Rswift
 import UIKit
 
+/// This `R` struct is code generateted, and contains references to static resources.
 struct R {
+  struct color {
+    private init() {}
+  }
+  
+  /// This `R.file` struct is generated, and contains static references to 2 files.
   struct file {
+    /// Resource file `GoogleService-Info.plist`.
     static let googleServiceInfoPlist = FileResource(bundle: _R.hostingBundle, name: "GoogleService-Info", pathExtension: "plist")
+    /// Resource file `Settings.bundle`.
     static let settingsBundle = FileResource(bundle: _R.hostingBundle, name: "Settings", pathExtension: "bundle")
     
+    /// `bundle.URLForResource("GoogleService-Info", withExtension: "plist")`
     static func googleServiceInfoPlist(_: Void) -> NSURL? {
       let fileResource = R.file.googleServiceInfoPlist
-      return fileResource.bundle?.URLForResource(fileResource)
+      return fileResource.bundle.URLForResource(fileResource)
     }
     
-    static func googleServiceInfoPlist(_: Void) -> String? {
-      let fileResource = R.file.googleServiceInfoPlist
-      return fileResource.bundle?.pathForResource(fileResource)
-    }
-    
+    /// `bundle.URLForResource("Settings", withExtension: "bundle")`
     static func settingsBundle(_: Void) -> NSURL? {
       let fileResource = R.file.settingsBundle
-      return fileResource.bundle?.URLForResource(fileResource)
+      return fileResource.bundle.URLForResource(fileResource)
     }
     
-    static func settingsBundle(_: Void) -> String? {
-      let fileResource = R.file.settingsBundle
-      return fileResource.bundle?.pathForResource(fileResource)
-    }
+    private init() {}
   }
   
+  /// This `R.font` struct is generated, and contains static references to 0 fonts.
   struct font {
-    
+    private init() {}
   }
   
+  /// This `R.image` struct is generated, and contains static references to 62 images.
   struct image {
+    /// Image `background_afternoon1`.
     static let background_afternoon1 = ImageResource(bundle: _R.hostingBundle, name: "background_afternoon1")
+    /// Image `background_afternoon2`.
     static let background_afternoon2 = ImageResource(bundle: _R.hostingBundle, name: "background_afternoon2")
+    /// Image `background_afternoon3`.
     static let background_afternoon3 = ImageResource(bundle: _R.hostingBundle, name: "background_afternoon3")
+    /// Image `background_night1`.
     static let background_night1 = ImageResource(bundle: _R.hostingBundle, name: "background_night1")
+    /// Image `background_night2`.
     static let background_night2 = ImageResource(bundle: _R.hostingBundle, name: "background_night2")
+    /// Image `background_night3`.
     static let background_night3 = ImageResource(bundle: _R.hostingBundle, name: "background_night3")
+    /// Image `card_able`.
     static let card_able = ImageResource(bundle: _R.hostingBundle, name: "card_able")
+    /// Image `card_disable`.
     static let card_disable = ImageResource(bundle: _R.hostingBundle, name: "card_disable")
+    /// Image `comment_human`.
     static let comment_human = ImageResource(bundle: _R.hostingBundle, name: "comment_human")
+    /// Image `dislike_normal`.
     static let dislike_normal = ImageResource(bundle: _R.hostingBundle, name: "dislike_normal")
+    /// Image `dislike_tapped`.
     static let dislike_tapped = ImageResource(bundle: _R.hostingBundle, name: "dislike_tapped")
+    /// Image `drink_cocktail`.
     static let drink_cocktail = ImageResource(bundle: _R.hostingBundle, name: "drink_cocktail")
+    /// Image `drink_free_drink`.
     static let drink_free_drink = ImageResource(bundle: _R.hostingBundle, name: "drink_free_drink")
+    /// Image `drink_sake`.
     static let drink_sake = ImageResource(bundle: _R.hostingBundle, name: "drink_sake")
+    /// Image `drink_shochu`.
     static let drink_shochu = ImageResource(bundle: _R.hostingBundle, name: "drink_shochu")
+    /// Image `drink_wine`.
     static let drink_wine = ImageResource(bundle: _R.hostingBundle, name: "drink_wine")
+    /// Image `entertainment_darts`.
     static let entertainment_darts = ImageResource(bundle: _R.hostingBundle, name: "entertainment_darts")
+    /// Image `entertainment_karaoke`.
     static let entertainment_karaoke = ImageResource(bundle: _R.hostingBundle, name: "entertainment_karaoke")
+    /// Image `entertainment_live`.
     static let entertainment_live = ImageResource(bundle: _R.hostingBundle, name: "entertainment_live")
+    /// Image `entertainment_sports`.
     static let entertainment_sports = ImageResource(bundle: _R.hostingBundle, name: "entertainment_sports")
+    /// Image `icon`.
     static let icon = ImageResource(bundle: _R.hostingBundle, name: "icon")
+    /// Image `LaunchImage`.
     static let launchImage = ImageResource(bundle: _R.hostingBundle, name: "LaunchImage")
+    /// Image `like_normal`.
     static let like_normal = ImageResource(bundle: _R.hostingBundle, name: "like_normal")
+    /// Image `like_tapped`.
     static let like_tapped = ImageResource(bundle: _R.hostingBundle, name: "like_tapped")
+    /// Image `nogood_highlighted`.
     static let nogood_highlighted = ImageResource(bundle: _R.hostingBundle, name: "nogood_highlighted")
+    /// Image `nogood_normal`.
     static let nogood_normal = ImageResource(bundle: _R.hostingBundle, name: "nogood_normal")
+    /// Image `nogood_tapped`.
     static let nogood_tapped = ImageResource(bundle: _R.hostingBundle, name: "nogood_tapped")
+    /// Image `noimage`.
     static let noimage = ImageResource(bundle: _R.hostingBundle, name: "noimage")
+    /// Image `other_barrier_free`.
     static let other_barrier_free = ImageResource(bundle: _R.hostingBundle, name: "other_barrier_free")
+    /// Image `particularity_fish`.
     static let particularity_fish = ImageResource(bundle: _R.hostingBundle, name: "particularity_fish")
+    /// Image `particularity_healty`.
     static let particularity_healty = ImageResource(bundle: _R.hostingBundle, name: "particularity_healty")
+    /// Image `particularity_vegetable`.
     static let particularity_vegetable = ImageResource(bundle: _R.hostingBundle, name: "particularity_vegetable")
+    /// Image `rank_first`.
     static let rank_first = ImageResource(bundle: _R.hostingBundle, name: "rank_first")
+    /// Image `rank_other`.
     static let rank_other = ImageResource(bundle: _R.hostingBundle, name: "rank_other")
+    /// Image `seat_counter`.
     static let seat_counter = ImageResource(bundle: _R.hostingBundle, name: "seat_counter")
+    /// Image `seat_couple_seat`.
     static let seat_couple_seat = ImageResource(bundle: _R.hostingBundle, name: "seat_couple_seat")
+    /// Image `seat_horigotatsu`.
     static let seat_horigotatsu = ImageResource(bundle: _R.hostingBundle, name: "seat_horigotatsu")
+    /// Image `seat_private_room`.
     static let seat_private_room = ImageResource(bundle: _R.hostingBundle, name: "seat_private_room")
+    /// Image `seat_raised_tatami`.
     static let seat_raised_tatami = ImageResource(bundle: _R.hostingBundle, name: "seat_raised_tatami")
+    /// Image `seat_sofa`.
     static let seat_sofa = ImageResource(bundle: _R.hostingBundle, name: "seat_sofa")
+    /// Image `seat_table`.
     static let seat_table = ImageResource(bundle: _R.hostingBundle, name: "seat_table")
+    /// Image `seat_tatami_room`.
     static let seat_tatami_room = ImageResource(bundle: _R.hostingBundle, name: "seat_tatami_room")
+    /// Image `seat_terrace`.
     static let seat_terrace = ImageResource(bundle: _R.hostingBundle, name: "seat_terrace")
+    /// Image `seat_wide_seat`.
     static let seat_wide_seat = ImageResource(bundle: _R.hostingBundle, name: "seat_wide_seat")
+    /// Image `smoking_able`.
     static let smoking_able = ImageResource(bundle: _R.hostingBundle, name: "smoking_able")
+    /// Image `smoking_disable`.
     static let smoking_disable = ImageResource(bundle: _R.hostingBundle, name: "smoking_disable")
+    /// Image `smoking_separated`.
     static let smoking_separated = ImageResource(bundle: _R.hostingBundle, name: "smoking_separated")
+    /// Image `space_beautiful_view`.
     static let space_beautiful_view = ImageResource(bundle: _R.hostingBundle, name: "space_beautiful_view")
+    /// Image `space_calm`.
     static let space_calm = ImageResource(bundle: _R.hostingBundle, name: "space_calm")
+    /// Image `space_hiding`.
     static let space_hiding = ImageResource(bundle: _R.hostingBundle, name: "space_hiding")
+    /// Image `space_hotel`.
     static let space_hotel = ImageResource(bundle: _R.hostingBundle, name: "space_hotel")
+    /// Image `space_ocean_view`.
     static let space_ocean_view = ImageResource(bundle: _R.hostingBundle, name: "space_ocean_view")
+    /// Image `space_solitary_house`.
     static let space_solitary_house = ImageResource(bundle: _R.hostingBundle, name: "space_solitary_house")
+    /// Image `space_stylish`.
     static let space_stylish = ImageResource(bundle: _R.hostingBundle, name: "space_stylish")
+    /// Image `style_standing_drink`.
     static let style_standing_drink = ImageResource(bundle: _R.hostingBundle, name: "style_standing_drink")
+    /// Image `style_standing_eat`.
     static let style_standing_eat = ImageResource(bundle: _R.hostingBundle, name: "style_standing_eat")
+    /// Image `telephone`.
     static let telephone = ImageResource(bundle: _R.hostingBundle, name: "telephone")
+    /// Image `tutorial_01`.
     static let tutorial_01 = ImageResource(bundle: _R.hostingBundle, name: "tutorial_01")
+    /// Image `tutorial_02`.
     static let tutorial_02 = ImageResource(bundle: _R.hostingBundle, name: "tutorial_02")
+    /// Image `tutorial_03`.
     static let tutorial_03 = ImageResource(bundle: _R.hostingBundle, name: "tutorial_03")
+    /// Image `tutorial_04`.
     static let tutorial_04 = ImageResource(bundle: _R.hostingBundle, name: "tutorial_04")
+    /// Image `tutorial_05`.
     static let tutorial_05 = ImageResource(bundle: _R.hostingBundle, name: "tutorial_05")
     
+    /// `UIImage(named: "background_afternoon1", bundle: ..., traitCollection: ...)`
     static func background_afternoon1(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.background_afternoon1, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "background_afternoon2", bundle: ..., traitCollection: ...)`
     static func background_afternoon2(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.background_afternoon2, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "background_afternoon3", bundle: ..., traitCollection: ...)`
     static func background_afternoon3(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.background_afternoon3, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "background_night1", bundle: ..., traitCollection: ...)`
     static func background_night1(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.background_night1, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "background_night2", bundle: ..., traitCollection: ...)`
     static func background_night2(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.background_night2, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "background_night3", bundle: ..., traitCollection: ...)`
     static func background_night3(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.background_night3, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "card_able", bundle: ..., traitCollection: ...)`
     static func card_able(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.card_able, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "card_disable", bundle: ..., traitCollection: ...)`
     static func card_disable(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.card_disable, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "comment_human", bundle: ..., traitCollection: ...)`
     static func comment_human(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.comment_human, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "dislike_normal", bundle: ..., traitCollection: ...)`
     static func dislike_normal(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.dislike_normal, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "dislike_tapped", bundle: ..., traitCollection: ...)`
     static func dislike_tapped(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.dislike_tapped, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "drink_cocktail", bundle: ..., traitCollection: ...)`
     static func drink_cocktail(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.drink_cocktail, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "drink_free_drink", bundle: ..., traitCollection: ...)`
     static func drink_free_drink(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.drink_free_drink, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "drink_sake", bundle: ..., traitCollection: ...)`
     static func drink_sake(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.drink_sake, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "drink_shochu", bundle: ..., traitCollection: ...)`
     static func drink_shochu(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.drink_shochu, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "drink_wine", bundle: ..., traitCollection: ...)`
     static func drink_wine(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.drink_wine, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "entertainment_darts", bundle: ..., traitCollection: ...)`
     static func entertainment_darts(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.entertainment_darts, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "entertainment_karaoke", bundle: ..., traitCollection: ...)`
     static func entertainment_karaoke(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.entertainment_karaoke, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "entertainment_live", bundle: ..., traitCollection: ...)`
     static func entertainment_live(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.entertainment_live, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "entertainment_sports", bundle: ..., traitCollection: ...)`
     static func entertainment_sports(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.entertainment_sports, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "icon", bundle: ..., traitCollection: ...)`
     static func icon(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.icon, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "LaunchImage", bundle: ..., traitCollection: ...)`
     static func launchImage(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.launchImage, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "like_normal", bundle: ..., traitCollection: ...)`
     static func like_normal(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.like_normal, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "like_tapped", bundle: ..., traitCollection: ...)`
     static func like_tapped(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.like_tapped, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "nogood_highlighted", bundle: ..., traitCollection: ...)`
     static func nogood_highlighted(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.nogood_highlighted, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "nogood_normal", bundle: ..., traitCollection: ...)`
     static func nogood_normal(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.nogood_normal, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "nogood_tapped", bundle: ..., traitCollection: ...)`
     static func nogood_tapped(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.nogood_tapped, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "noimage", bundle: ..., traitCollection: ...)`
     static func noimage(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.noimage, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "other_barrier_free", bundle: ..., traitCollection: ...)`
     static func other_barrier_free(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.other_barrier_free, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "particularity_fish", bundle: ..., traitCollection: ...)`
     static func particularity_fish(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.particularity_fish, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "particularity_healty", bundle: ..., traitCollection: ...)`
     static func particularity_healty(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.particularity_healty, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "particularity_vegetable", bundle: ..., traitCollection: ...)`
     static func particularity_vegetable(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.particularity_vegetable, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "rank_first", bundle: ..., traitCollection: ...)`
     static func rank_first(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.rank_first, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "rank_other", bundle: ..., traitCollection: ...)`
     static func rank_other(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.rank_other, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "seat_counter", bundle: ..., traitCollection: ...)`
     static func seat_counter(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.seat_counter, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "seat_couple_seat", bundle: ..., traitCollection: ...)`
     static func seat_couple_seat(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.seat_couple_seat, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "seat_horigotatsu", bundle: ..., traitCollection: ...)`
     static func seat_horigotatsu(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.seat_horigotatsu, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "seat_private_room", bundle: ..., traitCollection: ...)`
     static func seat_private_room(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.seat_private_room, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "seat_raised_tatami", bundle: ..., traitCollection: ...)`
     static func seat_raised_tatami(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.seat_raised_tatami, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "seat_sofa", bundle: ..., traitCollection: ...)`
     static func seat_sofa(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.seat_sofa, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "seat_table", bundle: ..., traitCollection: ...)`
     static func seat_table(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.seat_table, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "seat_tatami_room", bundle: ..., traitCollection: ...)`
     static func seat_tatami_room(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.seat_tatami_room, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "seat_terrace", bundle: ..., traitCollection: ...)`
     static func seat_terrace(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.seat_terrace, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "seat_wide_seat", bundle: ..., traitCollection: ...)`
     static func seat_wide_seat(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.seat_wide_seat, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "smoking_able", bundle: ..., traitCollection: ...)`
     static func smoking_able(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.smoking_able, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "smoking_disable", bundle: ..., traitCollection: ...)`
     static func smoking_disable(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.smoking_disable, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "smoking_separated", bundle: ..., traitCollection: ...)`
     static func smoking_separated(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.smoking_separated, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "space_beautiful_view", bundle: ..., traitCollection: ...)`
     static func space_beautiful_view(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.space_beautiful_view, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "space_calm", bundle: ..., traitCollection: ...)`
     static func space_calm(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.space_calm, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "space_hiding", bundle: ..., traitCollection: ...)`
     static func space_hiding(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.space_hiding, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "space_hotel", bundle: ..., traitCollection: ...)`
     static func space_hotel(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.space_hotel, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "space_ocean_view", bundle: ..., traitCollection: ...)`
     static func space_ocean_view(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.space_ocean_view, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "space_solitary_house", bundle: ..., traitCollection: ...)`
     static func space_solitary_house(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.space_solitary_house, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "space_stylish", bundle: ..., traitCollection: ...)`
     static func space_stylish(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.space_stylish, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "style_standing_drink", bundle: ..., traitCollection: ...)`
     static func style_standing_drink(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.style_standing_drink, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "style_standing_eat", bundle: ..., traitCollection: ...)`
     static func style_standing_eat(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.style_standing_eat, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "telephone", bundle: ..., traitCollection: ...)`
     static func telephone(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.telephone, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "tutorial_01", bundle: ..., traitCollection: ...)`
     static func tutorial_01(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.tutorial_01, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "tutorial_02", bundle: ..., traitCollection: ...)`
     static func tutorial_02(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.tutorial_02, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "tutorial_03", bundle: ..., traitCollection: ...)`
     static func tutorial_03(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.tutorial_03, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "tutorial_04", bundle: ..., traitCollection: ...)`
     static func tutorial_04(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.tutorial_04, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "tutorial_05", bundle: ..., traitCollection: ...)`
     static func tutorial_05(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.tutorial_05, compatibleWithTraitCollection: traitCollection)
     }
+    
+    private init() {}
   }
   
+  /// This `R.nib` struct is generated, and contains static references to 3 nibs.
   struct nib {
+    /// Nib `Launch Screen`.
     static let launchScreen = _R.nib._LaunchScreen()
+    /// Nib `RestaurantDetailView`.
     static let restaurantDetailView = _R.nib._RestaurantDetailView()
+    /// Nib `TopResultCard`.
     static let topResultCard = _R.nib._TopResultCard()
     
+    /// `UINib(name: "Launch Screen", bundle: ...)`
     static func launchScreen(_: Void) -> UINib {
       return UINib(resource: R.nib.launchScreen)
     }
     
+    /// `UINib(name: "RestaurantDetailView", bundle: ...)`
     static func restaurantDetailView(_: Void) -> UINib {
       return UINib(resource: R.nib.restaurantDetailView)
     }
     
+    /// `UINib(name: "TopResultCard", bundle: ...)`
     static func topResultCard(_: Void) -> UINib {
       return UINib(resource: R.nib.topResultCard)
     }
+    
+    private init() {}
   }
   
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 0 reuse identifiers.
   struct reuseIdentifier {
-    
+    private init() {}
   }
   
+  /// This `R.segue` struct is generated, and contains static references to 0 view controllers.
   struct segue {
-    
+    private init() {}
   }
   
+  /// This `R.storyboard` struct is generated, and contains static references to 0 storyboards.
   struct storyboard {
-    
+    private init() {}
   }
+  
+  private init() {}
 }
 
 struct _R {
-  static let hostingBundle = NSBundle(identifier: "me.karuta.Karuta")
+  static let hostingBundle = NSBundle(identifier: "me.karuta.Karuta") ?? NSBundle.mainBundle()
   
   struct nib {
     struct _LaunchScreen: NibResourceType {
@@ -390,6 +534,8 @@ struct _R {
       func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]? = nil) -> UIView? {
         return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? UIView
       }
+      
+      private init() {}
     }
     
     struct _RestaurantDetailView: NibResourceType {
@@ -399,6 +545,8 @@ struct _R {
       func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]? = nil) -> RestaurantDetailView? {
         return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? RestaurantDetailView
       }
+      
+      private init() {}
     }
     
     struct _TopResultCard: NibResourceType {
@@ -408,10 +556,16 @@ struct _R {
       func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]? = nil) -> TopResultCard? {
         return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? TopResultCard
       }
+      
+      private init() {}
     }
+    
+    private init() {}
   }
   
   struct storyboard {
-    
+    private init() {}
   }
+  
+  private init() {}
 }

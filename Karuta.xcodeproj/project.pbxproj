@@ -464,6 +464,7 @@
 			buildConfigurationList = D27BB9EB1B36F4A900F8D902 /* Build configuration list for PBXNativeTarget "Karuta" */;
 			buildPhases = (
 				0C308FCB760E8639769831EE /* Check Pods Manifest.lock */,
+				D22055CE1CA44D4F00447CC6 /* ShellScript */,
 				D27BB9C81B36F4A900F8D902 /* Sources */,
 				D27BB9C91B36F4A900F8D902 /* Frameworks */,
 				D27BB9CA1B36F4A900F8D902 /* Resources */,
@@ -594,6 +595,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Karuta/Pods-Karuta-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		D22055CE1CA44D4F00447CC6 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" \"$SRCROOT\"";
+		};
 		D2BABE611B5A5D75005E8356 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -605,7 +619,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\" 0f089c54e22e9e890bd0329f29839c99a9c5040c ef218175b8ad70668aabb5fdbbfae2c25d0f1a40a0f70aa08494fbb96d0e8e30\n\"$PODS_ROOT/R.swift/rswift\" \"$SRCROOT\"";
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 0f089c54e22e9e890bd0329f29839c99a9c5040c ef218175b8ad70668aabb5fdbbfae2c25d0f1a40a0f70aa08494fbb96d0e8e30\n";
 		};
 		FAFBED2465E6647CCBAEE62A /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
