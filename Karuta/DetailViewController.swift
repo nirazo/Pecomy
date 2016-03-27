@@ -72,7 +72,7 @@ class DetailViewController: UIViewController {
         self.detailView?.picturesView.reloadData()
         self.detailView?.picturesView.setNeedsLayout()
         
-        self.detailView?.telButton.addTarget(self, action: "telButtonTapped:", forControlEvents: .TouchUpInside)
+        self.detailView?.telButton.addTarget(self, action: #selector(DetailViewController.telButtonTapped(_:)), forControlEvents: .TouchUpInside)
         
         self.detailView?.richTagsView.reloadData()
         self.detailView?.richTagsView.setNeedsLayout()

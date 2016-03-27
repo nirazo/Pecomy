@@ -141,7 +141,7 @@ class OnetimeFilterViewController: UIViewController {
         self.startButton.titleLabel?.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 18)
         self.startButton.setTitle(NSLocalizedString("StartTitle", comment: ""), forState: .Normal)
         self.bottomButtonsBgView.addSubview(self.startButton)
-        self.startButton.addTarget(self, action: "startButtonTapped:", forControlEvents: .TouchUpInside)
+        self.startButton.addTarget(self, action: #selector(OnetimeFilterViewController.startButtonTapped(_:)), forControlEvents: .TouchUpInside)
         
         if (self.enableCancel) {
             // キャンセルボタン
@@ -149,7 +149,7 @@ class OnetimeFilterViewController: UIViewController {
             self.cancelButton.backgroundColor = UIColor(red: 129.0/255.0, green: 152.0/255.0, blue: 178.0/255.0, alpha: 1.0)
             self.cancelButton.titleLabel?.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 18)
             self.cancelButton.setTitle(NSLocalizedString("Cancel", comment: ""), forState: .Normal)
-            self.cancelButton.addTarget(self, action: "cancelButtonTapped:", forControlEvents: .TouchUpInside)
+            self.cancelButton.addTarget(self, action: #selector(OnetimeFilterViewController.cancelButtonTapped(_:)), forControlEvents: .TouchUpInside)
             
             self.bottomButtonsBgView.addSubview(self.cancelButton)
             self.cancelButton.snp_makeConstraints { (make) in

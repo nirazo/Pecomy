@@ -53,7 +53,7 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
         //閉じるボタン
         let closeButton = UIButton(frame: .zero)
         closeButton.backgroundColor = .clearColor()
-        closeButton.addTarget(self, action: "startTapped:", forControlEvents:.TouchUpInside)
+        closeButton.addTarget(self, action: #selector(TutorialViewController.startTapped(_:)), forControlEvents:.TouchUpInside)
         closeButton.setTitle(NSLocalizedString("CloseTutorial", comment: ""), forState: .Normal)
         closeButton.setTitleColor(.blackColor(), forState: .Normal)
         closeButton.layer.masksToBounds = true

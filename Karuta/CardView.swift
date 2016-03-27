@@ -119,7 +119,7 @@ class CardView: MDCSwipeToChooseView {
         self.blackListButton.setImage(R.image.nogood_normal(), forState: .Normal)
         self.blackListButton.setImage(R.image.nogood_tapped(), forState: .Highlighted)
         self.blackListButton.setImage(R.image.nogood_highlighted(), forState: .Disabled)
-        self.blackListButton.addTarget(self, action: "blackListButtonTapped", forControlEvents: .TouchUpInside)
+        self.blackListButton.addTarget(self, action: #selector(CardView.blackListButtonTapped), forControlEvents: .TouchUpInside)
         self.contentView.addSubview(self.blackListButton)
         
         self.blackListButton.snp_makeConstraints { (make) in
