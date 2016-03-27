@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D27BB9CB1B36F4A900F8D902"
-               BuildableName = "Pecomy.app"
+               BuildableName = "Karuta.app"
                BlueprintName = "Pecomy"
                ReferencedContainer = "container:Pecomy.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D27BB9CB1B36F4A900F8D902"
-            BuildableName = "Pecomy.app"
+            BuildableName = "Karuta.app"
             BlueprintName = "Pecomy"
             ReferencedContainer = "container:Pecomy.xcodeproj">
          </BuildableReference>
@@ -42,7 +42,7 @@
       </AdditionalOptions>
    </TestAction>
    <LaunchAction
-      buildConfiguration = "STG"
+      buildConfiguration = "STG_fixed_location"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
@@ -56,7 +56,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D27BB9CB1B36F4A900F8D902"
-            BuildableName = "Pecomy.app"
+            BuildableName = "Karuta.app"
             BlueprintName = "Pecomy"
             ReferencedContainer = "container:Pecomy.xcodeproj">
          </BuildableReference>
@@ -75,7 +75,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D27BB9CB1B36F4A900F8D902"
-            BuildableName = "Pecomy.app"
+            BuildableName = "Karuta.app"
             BlueprintName = "Pecomy"
             ReferencedContainer = "container:Pecomy.xcodeproj">
          </BuildableReference>
@@ -85,7 +85,7 @@
       buildConfiguration = "Debug">
    </AnalyzeAction>
    <ArchiveAction
-      buildConfiguration = "STG"
+      buildConfiguration = "Release"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>

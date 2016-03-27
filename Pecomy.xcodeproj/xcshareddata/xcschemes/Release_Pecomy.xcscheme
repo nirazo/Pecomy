@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D27BB9CB1B36F4A900F8D902"
-               BuildableName = "Pecomy.app"
+               BuildableName = "Karuta.app"
                BlueprintName = "Pecomy"
                ReferencedContainer = "container:Pecomy.xcodeproj">
             </BuildableReference>
@@ -57,7 +57,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D27BB9CB1B36F4A900F8D902"
-            BuildableName = "Pecomy.app"
+            BuildableName = "Karuta.app"
             BlueprintName = "Pecomy"
             ReferencedContainer = "container:Pecomy.xcodeproj">
          </BuildableReference>
@@ -80,7 +80,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D27BB9CB1B36F4A900F8D902"
-            BuildableName = "Pecomy.app"
+            BuildableName = "Karuta.app"
             BlueprintName = "Pecomy"
             ReferencedContainer = "container:Pecomy.xcodeproj">
          </BuildableReference>
@@ -99,14 +99,14 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D27BB9CB1B36F4A900F8D902"
-            BuildableName = "Pecomy.app"
+            BuildableName = "Karuta.app"
             BlueprintName = "Pecomy"
             ReferencedContainer = "container:Pecomy.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
-      buildConfiguration = "Release">
+      buildConfiguration = "Debug">
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release"

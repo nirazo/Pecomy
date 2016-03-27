@@ -15,49 +15,25 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D27BB9CB1B36F4A900F8D902"
-               BuildableName = "Pecomy.app"
+               BuildableName = "Karuta.app"
                BlueprintName = "Pecomy"
-               ReferencedContainer = "container:Pecomy.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D27BB9E01B36F4A900F8D902"
-               BuildableName = "Pecomy.xctest"
-               BlueprintName = "PecomyTests"
                ReferencedContainer = "container:Pecomy.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
-      buildConfiguration = "Release"
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D27BB9E01B36F4A900F8D902"
-               BuildableName = "Pecomy.xctest"
-               BlueprintName = "PecomyTests"
-               ReferencedContainer = "container:Pecomy.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D27BB9CB1B36F4A900F8D902"
-            BuildableName = "Pecomy.app"
+            BuildableName = "Karuta.app"
             BlueprintName = "Pecomy"
             ReferencedContainer = "container:Pecomy.xcodeproj">
          </BuildableReference>
@@ -66,7 +42,7 @@
       </AdditionalOptions>
    </TestAction>
    <LaunchAction
-      buildConfiguration = "Release"
+      buildConfiguration = "STG"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
@@ -80,7 +56,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D27BB9CB1B36F4A900F8D902"
-            BuildableName = "Pecomy.app"
+            BuildableName = "Karuta.app"
             BlueprintName = "Pecomy"
             ReferencedContainer = "container:Pecomy.xcodeproj">
          </BuildableReference>
@@ -99,7 +75,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D27BB9CB1B36F4A900F8D902"
-            BuildableName = "Pecomy.app"
+            BuildableName = "Karuta.app"
             BlueprintName = "Pecomy"
             ReferencedContainer = "container:Pecomy.xcodeproj">
          </BuildableReference>
@@ -109,7 +85,7 @@
       buildConfiguration = "Debug">
    </AnalyzeAction>
    <ArchiveAction
-      buildConfiguration = "Release"
+      buildConfiguration = "STG"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>
