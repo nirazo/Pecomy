@@ -13,7 +13,7 @@
 		164718BB1C3D274D00F50D33 /* ResultRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164718BA1C3D274D00F50D33 /* ResultRequest.swift */; };
 		16AAD0391C3E835600ADCF87 /* ResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AAD0381C3E835600ADCF87 /* ResultModel.swift */; };
 		16B6744E1C3BE59C009D039C /* PecomyApiClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B6744D1C3BE59C009D039C /* PecomyApiClientError.swift */; };
-		82743658913CE160AF673A82 /* Pods_Karuta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA78955690AB624AB9D7F4AE /* Pods_Karuta.framework */; };
+		2CB568F7041EB25086535E91 /* Pods_Pecomy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49542B923B14A000A93FD141 /* Pods_Pecomy.framework */; };
 		D203D3141B3E739600FC9DB8 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = D203D3131B3E739600FC9DB8 /* Const.swift */; };
 		D2092A2C1B637460008046D9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D2092A2E1B637460008046D9 /* Localizable.strings */; };
 		D2092A341B64D721008046D9 /* RestaurantModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2092A331B64D721008046D9 /* RestaurantModel.swift */; };
@@ -42,7 +42,7 @@
 		D27BB9D21B36F4A900F8D902 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27BB9D11B36F4A900F8D902 /* AppDelegate.swift */; };
 		D27BB9D41B36F4A900F8D902 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27BB9D31B36F4A900F8D902 /* MainViewController.swift */; };
 		D27BB9D91B36F4A900F8D902 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D27BB9D81B36F4A900F8D902 /* Images.xcassets */; };
-		D27BB9E81B36F4A900F8D902 /* KarutaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27BB9E71B36F4A900F8D902 /* KarutaTests.swift */; };
+		D27BB9E81B36F4A900F8D902 /* PecomyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27BB9E71B36F4A900F8D902 /* PecomyTests.swift */; };
 		D289012E1C437D8E005BDF84 /* RestaurantDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D289012D1C437D8E005BDF84 /* RestaurantDetailView.swift */; };
 		D28901301C437D9D005BDF84 /* RestaurantDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D289012F1C437D9D005BDF84 /* RestaurantDetailView.xib */; };
 		D28901321C438FEC005BDF84 /* CommentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28901311C438FEC005BDF84 /* CommentsView.swift */; };
@@ -88,14 +88,14 @@
 		164718BA1C3D274D00F50D33 /* ResultRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultRequest.swift; sourceTree = "<group>"; };
 		16AAD0381C3E835600ADCF87 /* ResultModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultModel.swift; sourceTree = "<group>"; };
 		16B6744D1C3BE59C009D039C /* PecomyApiClientError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PecomyApiClientError.swift; sourceTree = "<group>"; };
-		375106292F5446FE65E648DD /* Pods-Karuta.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Karuta.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Karuta/Pods-Karuta.debug.xcconfig"; sourceTree = "<group>"; };
-		3B06ABC94A9E1B8E1D89BFDB /* Pods-Karuta.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Karuta.release.xcconfig"; path = "Pods/Target Support Files/Pods-Karuta/Pods-Karuta.release.xcconfig"; sourceTree = "<group>"; };
-		43B1BFF2A757DF7E24669461 /* Pods-Karuta.stg.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Karuta.stg.xcconfig"; path = "Pods/Target Support Files/Pods-Karuta/Pods-Karuta.stg.xcconfig"; sourceTree = "<group>"; };
-		86F70B85C5A086B7590989E7 /* Pods-Karuta.stg_fixed_location.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Karuta.stg_fixed_location.xcconfig"; path = "Pods/Target Support Files/Pods-Karuta/Pods-Karuta.stg_fixed_location.xcconfig"; sourceTree = "<group>"; };
-		CA78955690AB624AB9D7F4AE /* Pods_Karuta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Karuta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		375106292F5446FE65E648DD /* Pods-Pecomy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pecomy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pecomy/Pods-Pecomy.debug.xcconfig"; sourceTree = "<group>"; };
+		3B06ABC94A9E1B8E1D89BFDB /* Pods-Pecomy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pecomy.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pecomy/Pods-Pecomy.release.xcconfig"; sourceTree = "<group>"; };
+		43B1BFF2A757DF7E24669461 /* Pods-Pecomy.stg.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pecomy.stg.xcconfig"; path = "Pods/Target Support Files/Pods-Pecomy/Pods-Pecomy.stg.xcconfig"; sourceTree = "<group>"; };
+		49542B923B14A000A93FD141 /* Pods_Pecomy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pecomy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		86F70B85C5A086B7590989E7 /* Pods-Pecomy.stg_fixed_location.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pecomy.stg_fixed_location.xcconfig"; path = "Pods/Target Support Files/Pods-Pecomy/Pods-Pecomy.stg_fixed_location.xcconfig"; sourceTree = "<group>"; };
 		D203D3131B3E739600FC9DB8 /* Const.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
-		D2092A261B6356B5008046D9 /* Pods-Karuta.debug_fixed_location.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-Karuta.debug_fixed_location.xcconfig"; path = "Pods/Target Support Files/Pods-Karuta/Pods-Karuta.debug_fixed_location.xcconfig"; sourceTree = "<group>"; };
-		D2092A281B6356FE008046D9 /* Pods-Karuta.release_fixed_location.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-Karuta.release_fixed_location.xcconfig"; path = "Pods/Target Support Files/Pods-Karuta/Pods-Karuta.release_fixed_location.xcconfig"; sourceTree = "<group>"; };
+		D2092A261B6356B5008046D9 /* Pods-Pecomy.debug_fixed_location.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-Pecomy.debug_fixed_location.xcconfig"; path = "Pods/Target Support Files/Pods-Pecomy/Pods-Pecomy.debug_fixed_location.xcconfig"; sourceTree = "<group>"; };
+		D2092A281B6356FE008046D9 /* Pods-Pecomy.release_fixed_location.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-Pecomy.release_fixed_location.xcconfig"; path = "Pods/Target Support Files/Pods-Pecomy/Pods-Pecomy.release_fixed_location.xcconfig"; sourceTree = "<group>"; };
 		D2092A2D1B637460008046D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D2092A2F1B637484008046D9 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D2092A331B64D721008046D9 /* RestaurantModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantModel.swift; sourceTree = "<group>"; };
@@ -126,9 +126,9 @@
 		D27BB9D11B36F4A900F8D902 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D27BB9D31B36F4A900F8D902 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		D27BB9D81B36F4A900F8D902 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		D27BB9E11B36F4A900F8D902 /* Pecomy.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Pecomy.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D27BB9E11B36F4A900F8D902 /* Karuta.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Karuta.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D27BB9E61B36F4A900F8D902 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D27BB9E71B36F4A900F8D902 /* KarutaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarutaTests.swift; sourceTree = "<group>"; };
+		D27BB9E71B36F4A900F8D902 /* PecomyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PecomyTests.swift; sourceTree = "<group>"; };
 		D289012D1C437D8E005BDF84 /* RestaurantDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDetailView.swift; sourceTree = "<group>"; };
 		D289012F1C437D9D005BDF84 /* RestaurantDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RestaurantDetailView.xib; sourceTree = "<group>"; };
 		D28901311C438FEC005BDF84 /* CommentsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsView.swift; sourceTree = "<group>"; };
@@ -145,11 +145,11 @@
 		D292AA1A1C5FB5CB00D66A87 /* NumOfPeople.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumOfPeople.swift; sourceTree = "<group>"; };
 		D292F7381B92DFFC005700AE /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		D2A594E71C8C77A400DE1012 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
-		D2A99A151C12D3E700C16F04 /* OnetimeFilterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnetimeFilterCell.swift; path = Karuta/OnetimeFilterCell.swift; sourceTree = SOURCE_ROOT; };
-		D2A99A191C12D3FA00C16F04 /* OnetimeFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnetimeFilterViewController.swift; path = Karuta/OnetimeFilterViewController.swift; sourceTree = SOURCE_ROOT; };
+		D2A99A151C12D3E700C16F04 /* OnetimeFilterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnetimeFilterCell.swift; path = Pecomy/OnetimeFilterCell.swift; sourceTree = SOURCE_ROOT; };
+		D2A99A191C12D3FA00C16F04 /* OnetimeFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnetimeFilterViewController.swift; path = Pecomy/OnetimeFilterViewController.swift; sourceTree = SOURCE_ROOT; };
 		D2A99A561C17367E00C16F04 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D2BE5F3B1C4B78AB00B47387 /* RichTag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RichTag.swift; sourceTree = "<group>"; };
-		D2C785F71B47C2A900517D55 /* Karuta-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Karuta-Bridging-Header.h"; sourceTree = "<group>"; };
+		D2C785F71B47C2A900517D55 /* Pecomy-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pecomy-Bridging-Header.h"; sourceTree = "<group>"; };
 		D2DD659F1B7714CA0046A50C /* TopResultCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopResultCard.swift; sourceTree = "<group>"; };
 		D2DD65A11B7714DA0046A50C /* OtherResultsCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherResultsCard.swift; sourceTree = "<group>"; };
 		D2DEEF1D1BD72F7400FDBB8F /* Genre.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
@@ -163,7 +163,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				82743658913CE160AF673A82 /* Pods_Karuta.framework in Frameworks */,
+				2CB568F7041EB25086535E91 /* Pods_Pecomy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,12 +198,12 @@
 		97BD974091507500A5B02BC4 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				D2092A261B6356B5008046D9 /* Pods-Karuta.debug_fixed_location.xcconfig */,
-				375106292F5446FE65E648DD /* Pods-Karuta.debug.xcconfig */,
-				3B06ABC94A9E1B8E1D89BFDB /* Pods-Karuta.release.xcconfig */,
-				D2092A281B6356FE008046D9 /* Pods-Karuta.release_fixed_location.xcconfig */,
-				43B1BFF2A757DF7E24669461 /* Pods-Karuta.stg.xcconfig */,
-				86F70B85C5A086B7590989E7 /* Pods-Karuta.stg_fixed_location.xcconfig */,
+				D2092A261B6356B5008046D9 /* Pods-Pecomy.debug_fixed_location.xcconfig */,
+				375106292F5446FE65E648DD /* Pods-Pecomy.debug.xcconfig */,
+				3B06ABC94A9E1B8E1D89BFDB /* Pods-Pecomy.release.xcconfig */,
+				D2092A281B6356FE008046D9 /* Pods-Pecomy.release_fixed_location.xcconfig */,
+				43B1BFF2A757DF7E24669461 /* Pods-Pecomy.stg.xcconfig */,
+				86F70B85C5A086B7590989E7 /* Pods-Pecomy.stg_fixed_location.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -322,7 +322,7 @@
 			isa = PBXGroup;
 			children = (
 				D27BB9CE1B36F4A900F8D902 /* Pecomy */,
-				D27BB9E41B36F4A900F8D902 /* KarutaTests */,
+				D27BB9E41B36F4A900F8D902 /* PecomyTests */,
 				D27BB9CD1B36F4A900F8D902 /* Products */,
 				97BD974091507500A5B02BC4 /* Pods */,
 				F8EF51686E29749944A50697 /* Frameworks */,
@@ -333,7 +333,7 @@
 			isa = PBXGroup;
 			children = (
 				D27BB9CC1B36F4A900F8D902 /* Karuta.app */,
-				D27BB9E11B36F4A900F8D902 /* Pecomy.xctest */,
+				D27BB9E11B36F4A900F8D902 /* Karuta.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -357,12 +357,11 @@
 				D2092A321B64D702008046D9 /* Model */,
 				D27BB9D81B36F4A900F8D902 /* Images.xcassets */,
 				D27BB9CF1B36F4A900F8D902 /* Supporting Files */,
-				D2C785F71B47C2A900517D55 /* Karuta-Bridging-Header.h */,
+				D2C785F71B47C2A900517D55 /* Pecomy-Bridging-Header.h */,
 				D24B29451B79F56E00419B9B /* Launch Screen.xib */,
 				D2A99A561C17367E00C16F04 /* GoogleService-Info.plist */,
 			);
-			name = Pecomy;
-			path = Karuta;
+			path = Pecomy;
 			sourceTree = "<group>";
 		};
 		D27BB9CF1B36F4A900F8D902 /* Supporting Files */ = {
@@ -376,13 +375,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		D27BB9E41B36F4A900F8D902 /* KarutaTests */ = {
+		D27BB9E41B36F4A900F8D902 /* PecomyTests */ = {
 			isa = PBXGroup;
 			children = (
-				D27BB9E71B36F4A900F8D902 /* KarutaTests.swift */,
+				D27BB9E71B36F4A900F8D902 /* PecomyTests.swift */,
 				D27BB9E51B36F4A900F8D902 /* Supporting Files */,
 			);
-			path = KarutaTests;
+			path = PecomyTests;
 			sourceTree = "<group>";
 		};
 		D27BB9E51B36F4A900F8D902 /* Supporting Files */ = {
@@ -452,7 +451,7 @@
 		F8EF51686E29749944A50697 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CA78955690AB624AB9D7F4AE /* Pods_Karuta.framework */,
+				49542B923B14A000A93FD141 /* Pods_Pecomy.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -497,7 +496,7 @@
 			);
 			name = PecomyTests;
 			productName = KarutaTests;
-			productReference = D27BB9E11B36F4A900F8D902 /* Pecomy.xctest */;
+			productReference = D27BB9E11B36F4A900F8D902 /* Karuta.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -509,7 +508,7 @@
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
-				ORGANIZATIONNAME = Pecomy;
+				ORGANIZATIONNAME = Karuta;
 				TargetAttributes = {
 					D27BB9CB1B36F4A900F8D902 = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -593,7 +592,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Karuta/Pods-Karuta-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Pecomy/Pods-Pecomy-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D22055CE1CA44D4F00447CC6 /* ShellScript */ = {
@@ -634,7 +633,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Karuta/Pods-Karuta-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Pecomy/Pods-Pecomy-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -704,7 +703,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D27BB9E81B36F4A900F8D902 /* KarutaTests.swift in Sources */,
+				D27BB9E81B36F4A900F8D902 /* PecomyTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -779,7 +778,7 @@
 		};
 		D2092A201B6351F7008046D9 /* Debug_fixed_location */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D2092A261B6356B5008046D9 /* Pods-Karuta.debug_fixed_location.xcconfig */;
+			baseConfigurationReference = D2092A261B6356B5008046D9 /* Pods-Pecomy.debug_fixed_location.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -791,14 +790,14 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				INFOPLIST_FILE = Karuta/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Pecomy/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DDEBUG -DFIXED_LOCATION";
 				PRODUCT_BUNDLE_IDENTIFIER = "me.karuta.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Karuta;
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "Karuta/Karuta-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Pecomy/Pecomy-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -806,22 +805,18 @@
 		};
 		D2092A211B6351F7008046D9 /* Debug_fixed_location */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D2092A261B6356B5008046D9 /* Pods-Karuta.debug_fixed_location.xcconfig */;
+			baseConfigurationReference = D2092A261B6356B5008046D9 /* Pods-Pecomy.debug_fixed_location.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = KarutaTests/Info.plist;
+				INFOPLIST_FILE = PecomyTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "me.karuta.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = Pecomy;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pecomy.app/Pecomy";
+				PRODUCT_NAME = Karuta;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Karuta.app/Karuta";
 			};
 			name = Debug_fixed_location;
 		};
@@ -868,7 +863,7 @@
 		};
 		D2092A231B635211008046D9 /* Release_fixed_location */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D2092A281B6356FE008046D9 /* Pods-Karuta.release_fixed_location.xcconfig */;
+			baseConfigurationReference = D2092A281B6356FE008046D9 /* Pods-Pecomy.release_fixed_location.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -881,7 +876,7 @@
 					"$(PROJECT_DIR)",
 				);
 				GCC_OPTIMIZATION_LEVEL = s;
-				INFOPLIST_FILE = Karuta/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Pecomy/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DRELEASE -DFIXED_LOCATION";
@@ -889,7 +884,7 @@
 				PRODUCT_NAME = Karuta;
 				PROVISIONING_PROFILE = "";
 				SWIFT_DISABLE_SAFETY_CHECKS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "Karuta/Karuta-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Pecomy/Pecomy-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -897,18 +892,14 @@
 		};
 		D2092A241B635211008046D9 /* Release_fixed_location */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D2092A281B6356FE008046D9 /* Pods-Karuta.release_fixed_location.xcconfig */;
+			baseConfigurationReference = D2092A281B6356FE008046D9 /* Pods-Pecomy.release_fixed_location.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = KarutaTests/Info.plist;
+				INFOPLIST_FILE = PecomyTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "me.karuta.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = Pecomy;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pecomy.app/Pecomy";
+				PRODUCT_NAME = Karuta;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Karuta.app/Karuta";
 			};
 			name = Release_fixed_location;
 		};
@@ -1001,7 +992,7 @@
 		};
 		D27BB9EC1B36F4A900F8D902 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 375106292F5446FE65E648DD /* Pods-Karuta.debug.xcconfig */;
+			baseConfigurationReference = 375106292F5446FE65E648DD /* Pods-Pecomy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1013,14 +1004,14 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				INFOPLIST_FILE = Karuta/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Pecomy/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DDEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = "me.karuta.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Karuta;
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "Karuta/Karuta-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Pecomy/Pecomy-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1028,7 +1019,7 @@
 		};
 		D27BB9ED1B36F4A900F8D902 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B06ABC94A9E1B8E1D89BFDB /* Pods-Karuta.release.xcconfig */;
+			baseConfigurationReference = 3B06ABC94A9E1B8E1D89BFDB /* Pods-Pecomy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1041,7 +1032,7 @@
 					"$(PROJECT_DIR)",
 				);
 				GCC_OPTIMIZATION_LEVEL = s;
-				INFOPLIST_FILE = Karuta/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Pecomy/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DRELEASE";
@@ -1049,7 +1040,7 @@
 				PRODUCT_NAME = Karuta;
 				PROVISIONING_PROFILE = "";
 				SWIFT_DISABLE_SAFETY_CHECKS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "Karuta/Karuta-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Pecomy/Pecomy-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1057,39 +1048,31 @@
 		};
 		D27BB9EF1B36F4A900F8D902 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 375106292F5446FE65E648DD /* Pods-Karuta.debug.xcconfig */;
+			baseConfigurationReference = 375106292F5446FE65E648DD /* Pods-Pecomy.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = KarutaTests/Info.plist;
+				INFOPLIST_FILE = PecomyTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "me.karuta.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = Pecomy;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pecomy.app/Pecomy";
+				PRODUCT_NAME = Karuta;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Karuta.app/Karuta";
 			};
 			name = Debug;
 		};
 		D27BB9F01B36F4A900F8D902 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B06ABC94A9E1B8E1D89BFDB /* Pods-Karuta.release.xcconfig */;
+			baseConfigurationReference = 3B06ABC94A9E1B8E1D89BFDB /* Pods-Pecomy.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = KarutaTests/Info.plist;
+				INFOPLIST_FILE = PecomyTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "me.karuta.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = Pecomy;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pecomy.app/Pecomy";
+				PRODUCT_NAME = Karuta;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Karuta.app/Karuta";
 			};
 			name = Release;
 		};
@@ -1136,7 +1119,7 @@
 		};
 		D2E922FD1BD4A05C00BD15F5 /* STG */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 43B1BFF2A757DF7E24669461 /* Pods-Karuta.stg.xcconfig */;
+			baseConfigurationReference = 43B1BFF2A757DF7E24669461 /* Pods-Pecomy.stg.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1149,7 +1132,7 @@
 					"$(PROJECT_DIR)",
 				);
 				GCC_OPTIMIZATION_LEVEL = s;
-				INFOPLIST_FILE = Karuta/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Pecomy/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DSTG";
@@ -1157,7 +1140,7 @@
 				PRODUCT_NAME = Karuta;
 				PROVISIONING_PROFILE = "";
 				SWIFT_DISABLE_SAFETY_CHECKS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "Karuta/Karuta-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Pecomy/Pecomy-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1167,15 +1150,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = KarutaTests/Info.plist;
+				INFOPLIST_FILE = PecomyTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "me.karuta.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = Pecomy;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pecomy.app/Pecomy";
+				PRODUCT_NAME = Karuta;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Karuta.app/Karuta";
 			};
 			name = STG;
 		};
@@ -1222,7 +1201,7 @@
 		};
 		D2E923031BD4A12F00BD15F5 /* STG_fixed_location */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 86F70B85C5A086B7590989E7 /* Pods-Karuta.stg_fixed_location.xcconfig */;
+			baseConfigurationReference = 86F70B85C5A086B7590989E7 /* Pods-Pecomy.stg_fixed_location.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1235,7 +1214,7 @@
 					"$(PROJECT_DIR)",
 				);
 				GCC_OPTIMIZATION_LEVEL = s;
-				INFOPLIST_FILE = Karuta/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Pecomy/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DSTG -DFIXED_LOCATION";
@@ -1243,7 +1222,7 @@
 				PRODUCT_NAME = Karuta;
 				PROVISIONING_PROFILE = "";
 				SWIFT_DISABLE_SAFETY_CHECKS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "Karuta/Karuta-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Pecomy/Pecomy-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1253,15 +1232,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = KarutaTests/Info.plist;
+				INFOPLIST_FILE = PecomyTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "me.karuta.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = Pecomy;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pecomy.app/Pecomy";
+				PRODUCT_NAME = Karuta;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Karuta.app/Karuta";
 			};
 			name = STG_fixed_location;
 		};
