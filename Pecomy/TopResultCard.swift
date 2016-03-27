@@ -73,7 +73,7 @@ class TopResultCard: ResultCardBase {
         // レストラン名のラベル
         self.restaurantNameLabel.text = self.restaurant.shopName
         self.restaurantNameLabel.backgroundColor = UIColor.whiteColor()
-        self.restaurantNameLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 24)
+        self.restaurantNameLabel.font = UIFont(name: Const.PECOMY_FONT_BOLD, size: 24)
         self.restaurantNameLabel.numberOfLines = 2
         self.restaurantNameLabel.textColor = Const.RANKING_TOP_COLOR
         self.restaurantNameLabel.textAlignment = .Center
@@ -93,7 +93,7 @@ class TopResultCard: ResultCardBase {
         self.dayPriceLabel.numberOfLines = 2
         self.dayPriceLabel.sizeToFit()
         self.dayPriceLabel.textColor = Const.RANKING_SECOND_RIGHT_COLOR
-        self.dayPriceLabel.font = UIFont(name: Const.KARUTA_FONT_NORMAL, size: 13)
+        self.dayPriceLabel.font = UIFont(name: Const.PECOMY_FONT_NORMAL, size: 13)
         
         self.nightPriceIcon.image = R.image.noimage()
         if (self.restaurant.nightPriceMin.isEmpty && self.restaurant.nightPriceMax.isEmpty) {
@@ -104,11 +104,11 @@ class TopResultCard: ResultCardBase {
         self.nightPriceLabel.numberOfLines = 2
         self.nightPriceLabel.sizeToFit()
         self.nightPriceLabel.textColor = Const.RANKING_SECOND_RIGHT_COLOR
-        self.nightPriceLabel.font = UIFont(name: Const.KARUTA_FONT_NORMAL, size: 13)
+        self.nightPriceLabel.font = UIFont(name: Const.PECOMY_FONT_NORMAL, size: 13)
         
         // 距離ラベル
         self.distanceLabel.text = String(format: NSLocalizedString("CardDistanceFromText", comment: ""), Utils.meterToMinutes(self.restaurant.distance))
-        self.distanceLabel.font = UIFont(name: Const.KARUTA_FONT_NORMAL, size: 13)
+        self.distanceLabel.font = UIFont(name: Const.PECOMY_FONT_NORMAL, size: 13)
         self.distanceLabel.numberOfLines = 0
         self.distanceLabel.sizeToFit()
         self.distanceLabel.textColor = Const.RANKING_SECOND_RIGHT_COLOR

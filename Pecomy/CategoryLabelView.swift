@@ -20,7 +20,7 @@ class CategoryLabelView: UIView {
     
     var contentView = UIView()
     
-    init(frame: CGRect, category: String, color: UIColor = Const.KARUTA_THEME_COLOR) {
+    init(frame: CGRect, category: String, color: UIColor = Const.PECOMY_THEME_COLOR) {
         // カテゴリのsplit
         let replacedCategory = category.stringByReplacingOccurrencesOfString("（.*）", withString: "", options: .RegularExpressionSearch, range: nil)
         self.categoriesArray = replacedCategory.componentsSeparatedByString("・")
@@ -78,10 +78,10 @@ class CategoryLabelView: UIView {
         for i in 0..<self.categoriesArray.count {
             let categoryLabel = UILabel()
             categoryLabel.text = self.categoriesArray[i]
-            categoryLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: DEFAULT_FONT_SIZE_CATEGORY)
+            categoryLabel.font = UIFont(name: Const.PECOMY_FONT_BOLD, size: DEFAULT_FONT_SIZE_CATEGORY)
             categoryLabel.numberOfLines = 1
             categoryLabel.textAlignment = .Center
-            categoryLabel.textColor = Const.KARUTA_THEME_TEXT_COLOR
+            categoryLabel.textColor = Const.PECOMY_THEME_TEXT_COLOR
             categoryLabel.adjustsFontSizeToFitWidth = true
             self.addSubview(categoryLabel)
             

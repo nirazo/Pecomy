@@ -13,7 +13,7 @@ class TelButton: UIButton {
     let CORNER_RADIUS: CGFloat = 5.0
     let MARGIN_CATEGORY_VERTICAL: CGFloat = 5.0     // カテゴリラベル内の上下マージン
     let MARGIN_CATEGORY_HORIZONTAL: CGFloat = 5.0   // カテゴリラベル内の左右マージン
-    let FONT_TEL = UIFont(name: Const.KARUTA_FONT_BOLD, size: 16)
+    let FONT_TEL = UIFont(name: Const.PECOMY_FONT_BOLD, size: 16)
     let telString = NSLocalizedString("TelephoneCall", comment: "")
     let telImage = UIImageView(image: R.image.telephone())
     

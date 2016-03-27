@@ -80,8 +80,8 @@ class OnetimeFilterViewController: UIViewController {
         // タイトル
         let titleLabel = UILabel(frame: CGRectZero)
         titleLabel.text = NSLocalizedString("OnetimeFilterTitle", comment: "")
-        titleLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 22)
-        titleLabel.textColor = Const.KARUTA_THEME_COLOR
+        titleLabel.font = UIFont(name: Const.PECOMY_FONT_BOLD, size: 22)
+        titleLabel.textColor = Const.PECOMY_THEME_COLOR
         titleLabel.textAlignment = .Center
         self.view.addSubview(titleLabel)
         titleLabel.snp_makeConstraints { (make) in
@@ -137,8 +137,8 @@ class OnetimeFilterViewController: UIViewController {
         
         // スタートボタン
         self.startButton.layer.cornerRadius = Const.CORNER_RADIUS
-        self.startButton.backgroundColor = Const.KARUTA_THEME_COLOR
-        self.startButton.titleLabel?.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 18)
+        self.startButton.backgroundColor = Const.PECOMY_THEME_COLOR
+        self.startButton.titleLabel?.font = UIFont(name: Const.PECOMY_FONT_BOLD, size: 18)
         self.startButton.setTitle(NSLocalizedString("StartTitle", comment: ""), forState: .Normal)
         self.bottomButtonsBgView.addSubview(self.startButton)
         self.startButton.addTarget(self, action: #selector(OnetimeFilterViewController.startButtonTapped(_:)), forControlEvents: .TouchUpInside)
@@ -147,7 +147,7 @@ class OnetimeFilterViewController: UIViewController {
             // キャンセルボタン
             self.cancelButton.layer.cornerRadius = Const.CORNER_RADIUS
             self.cancelButton.backgroundColor = UIColor(red: 129.0/255.0, green: 152.0/255.0, blue: 178.0/255.0, alpha: 1.0)
-            self.cancelButton.titleLabel?.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 18)
+            self.cancelButton.titleLabel?.font = UIFont(name: Const.PECOMY_FONT_BOLD, size: 18)
             self.cancelButton.setTitle(NSLocalizedString("Cancel", comment: ""), forState: .Normal)
             self.cancelButton.addTarget(self, action: #selector(OnetimeFilterViewController.cancelButtonTapped(_:)), forControlEvents: .TouchUpInside)
             

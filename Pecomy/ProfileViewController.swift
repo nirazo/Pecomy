@@ -12,7 +12,7 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = Const.KARUTA_BASIC_BACKGROUND_COLOR
+        self.view.backgroundColor = Const.PECOMY_BASIC_BACKGROUND_COLOR
         
         // navbar透明化
         self.navigationController?.navigationBar.tintColor = UIColor.clearColor()

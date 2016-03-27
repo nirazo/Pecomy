@@ -85,7 +85,7 @@ extension OnetimeFilterCollectionViewConfig: UICollectionViewDataSource {
             
             headerView!.backgroundColor = UIColor.whiteColor()
             let label = UILabel(frame: CGRect(x: 0, y: 0, width: 150, height: 18))
-            label.font = UIFont(name: Const.KARUTA_FONT_NORMAL, size: 13)
+            label.font = UIFont(name: Const.PECOMY_FONT_NORMAL, size: 13)
             label.textColor = Const.RANKING_SECOND_RIGHT_COLOR
             
             switch indexPath.section {

@@ -82,7 +82,7 @@ class RestaurantDetailView: UIView {
         // レストラン名のラベル
         self.restaurantNameLabel.text = self.restaurant.shopName
         self.restaurantNameLabel.backgroundColor = UIColor.whiteColor()
-        self.restaurantNameLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 16)
+        self.restaurantNameLabel.font = UIFont(name: Const.PECOMY_FONT_BOLD, size: 16)
         self.restaurantNameLabel.numberOfLines = 2
         self.restaurantNameLabel.textColor = Const.RANKING_TOP_COLOR
         self.restaurantNameLabel.sizeToFit()
@@ -101,7 +101,7 @@ class RestaurantDetailView: UIView {
         self.dayPriceLabel.numberOfLines = 1
         self.dayPriceLabel.sizeToFit()
         self.dayPriceLabel.textColor = UIColor(red: 128.0/255.0, green: 128.0/255.0, blue: 128.0/255.0, alpha: 1.0)
-        self.dayPriceLabel.font = UIFont(name: Const.KARUTA_FONT_NORMAL, size: 12)
+        self.dayPriceLabel.font = UIFont(name: Const.PECOMY_FONT_NORMAL, size: 12)
         
         self.nightPriceIcon.image = R.image.noimage()
         if (self.restaurant.nightPriceMin.isEmpty && self.restaurant.nightPriceMax.isEmpty) {
@@ -112,11 +112,11 @@ class RestaurantDetailView: UIView {
         self.nightPriceLabel.numberOfLines = 1
         self.nightPriceLabel.sizeToFit()
         self.nightPriceLabel.textColor = UIColor(red: 128.0/255.0, green: 128.0/255.0, blue: 128.0/255.0, alpha: 1.0)
-        self.nightPriceLabel.font = UIFont(name: Const.KARUTA_FONT_NORMAL, size: 12)
+        self.nightPriceLabel.font = UIFont(name: Const.PECOMY_FONT_NORMAL, size: 12)
         
         // 距離ラベル
         self.distanceLabel.text = String(format: NSLocalizedString("CardDistanceFromText", comment: ""), Utils.meterToMinutes(restaurant.distance))
-        self.distanceLabel.font = UIFont(name: Const.KARUTA_FONT_NORMAL, size: 12)
+        self.distanceLabel.font = UIFont(name: Const.PECOMY_FONT_NORMAL, size: 12)
         self.distanceLabel.numberOfLines = 0
         self.distanceLabel.sizeToFit()
         self.distanceLabel.textColor = UIColor(red: 108/255.0, green: 108/255.0, blue: 108/255.0, alpha: 1.0)
@@ -157,11 +157,11 @@ class RestaurantDetailView: UIView {
         // 営業時間
         self.businessHourTitleLabel.text = NSLocalizedString("BusinessHourTitle", comment: "")
         self.businessHourTitleLabel.textColor = Const.RANKING_SECOND_RIGHT_COLOR
-        self.businessHourTitleLabel.font = UIFont(name: Const.KARUTA_FONT_NORMAL, size: 12)
+        self.businessHourTitleLabel.font = UIFont(name: Const.PECOMY_FONT_NORMAL, size: 12)
         
         self.dayBusinessHourLabel.text = self.replaceBusinessHour(self.restaurant.businessHours)
         self.dayBusinessHourLabel.textColor = Const.RANKING_SECOND_RIGHT_COLOR
-        self.dayBusinessHourLabel.font = UIFont(name: Const.KARUTA_FONT_NORMAL, size: 12)
+        self.dayBusinessHourLabel.font = UIFont(name: Const.PECOMY_FONT_NORMAL, size: 12)
         
         // レビューリスト
         self.commentsView.setup(restaurant.reviewSubjects)
@@ -169,7 +169,7 @@ class RestaurantDetailView: UIView {
         // その他写真ラベル
         self.picturesViewTitleLabel.text = NSLocalizedString("PicturesViewTitle", comment: "")
         self.picturesViewTitleLabel.textColor = Const.RANKING_SECOND_RIGHT_COLOR
-        self.picturesViewTitleLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 14)
+        self.picturesViewTitleLabel.font = UIFont(name: Const.PECOMY_FONT_BOLD, size: 14)
         
         // separator
         self.middleSeparator.backgroundColor = UIColor(red: 230/255.0, green: 230/255.0, blue: 230/255.0, alpha: 1.0)
@@ -181,7 +181,7 @@ class RestaurantDetailView: UIView {
         // リッチタグラベル
         self.richTagsViewTitleLabel.text = NSLocalizedString("RichTagsTitle", comment: "")
         self.richTagsViewTitleLabel.textColor = Const.RANKING_SECOND_RIGHT_COLOR
-        self.richTagsViewTitleLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 14)
+        self.richTagsViewTitleLabel.font = UIFont(name: Const.PECOMY_FONT_BOLD, size: 14)
         
         self.richTagsView.backgroundColor = UIColor.clearColor()
         

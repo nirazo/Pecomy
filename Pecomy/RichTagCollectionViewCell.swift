@@ -22,7 +22,7 @@ class RichTagCollectionViewCell: UICollectionViewCell {
         self.imageView = UIImageView(frame: frame)
         self.categoryLabel = UILabel(frame: frame)
         self.categoryLabel.textColor = Const.RANKING_SECOND_RIGHT_COLOR
-        self.categoryLabel.font = UIFont(name: Const.KARUTA_FONT_NORMAL, size: 13)
+        self.categoryLabel.font = UIFont(name: Const.PECOMY_FONT_NORMAL, size: 13)
         super.init(frame: frame)
         self.contentView.addSubview(self.imageView)
         self.contentView.addSubview(self.categoryLabel)

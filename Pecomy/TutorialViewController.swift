@@ -23,7 +23,7 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
         let height = self.view.frame.maxY
         
         super.viewDidLoad()
-        self.view.backgroundColor = Const.KARUTA_THEME_COLOR
+        self.view.backgroundColor = Const.PECOMY_THEME_COLOR
         
         let scrollView = UIScrollView(frame: self.view.frame)
         scrollView.showsHorizontalScrollIndicator = false
@@ -59,7 +59,7 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
         closeButton.layer.masksToBounds = true
         closeButton.layer.cornerRadius = Const.CORNER_RADIUS
         closeButton.backgroundColor = .whiteColor()
-        closeButton.titleLabel?.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 14)
+        closeButton.titleLabel?.font = UIFont(name: Const.PECOMY_FONT_BOLD, size: 14)
         self.view.addSubview(closeButton)
         
         closeButton.snp_makeConstraints { (make) in

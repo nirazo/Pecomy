@@ -55,7 +55,7 @@ class CardView: MDCSwipeToChooseView {
             let imageView = UIImageView(image: R.image.noimage())
             imageView.contentMode = .ScaleAspectFill
             imageView.clipsToBounds = true
-            imageView.backgroundColor = Const.KARUTA_CARD_IMAGE_BACK_COLOR
+            imageView.backgroundColor = Const.PECOMY_CARD_IMAGE_BACK_COLOR
             self.restaurantImageViews.append(imageView)
         }
         

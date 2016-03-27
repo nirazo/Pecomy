@@ -29,7 +29,7 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = Const.KARUTA_RESULT_BACK_COLOR
+        self.view.backgroundColor = Const.PECOMY_RESULT_BACK_COLOR
         self.edgesForExtendedLayout = .None
         
         self.picConfig = RestaurantDetailViewPictureCollectionViewConfig(imageUrls: self.restaurant.imageUrls)

@@ -25,9 +25,9 @@ class OnetimeFilterCell: UICollectionViewCell {
         set {
             if newValue {
                 super.selected = true
-                self.backgroundColor = Const.KARUTA_THEME_COLOR
+                self.backgroundColor = Const.PECOMY_THEME_COLOR
                 self.label.textColor = UIColor.whiteColor()
-                self.layer.borderColor = Const.KARUTA_THEME_COLOR.CGColor
+                self.layer.borderColor = Const.PECOMY_THEME_COLOR.CGColor
             } else if newValue == false {
                 super.selected = false
                 self.backgroundColor = UIColor.whiteColor()
@@ -37,7 +37,7 @@ class OnetimeFilterCell: UICollectionViewCell {
         }
     }
     
-    init(frame: CGRect, cellString: String = "", color: UIColor = Const.KARUTA_THEME_COLOR) {
+    init(frame: CGRect, cellString: String = "", color: UIColor = Const.PECOMY_THEME_COLOR) {
         super.init(frame: frame)
         self.label.text = cellString
         self.commonInit()
@@ -62,7 +62,7 @@ class OnetimeFilterCell: UICollectionViewCell {
             make.center.equalTo(self.contentView)
             make.size.equalTo(self.contentView)
         }
-        self.label.font = UIFont(name: Const.KARUTA_FONT_NORMAL, size: defaultFontSize)
+        self.label.font = UIFont(name: Const.PECOMY_FONT_NORMAL, size: defaultFontSize)
         
         // 角丸
         self.layer.cornerRadius = Const.CORNER_RADIUS

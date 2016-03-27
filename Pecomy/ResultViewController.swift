@@ -52,11 +52,11 @@ class ResultViewController: UIViewController, ResultCardBaseDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = Const.KARUTA_RESULT_BACK_COLOR
+        self.view.backgroundColor = Const.PECOMY_RESULT_BACK_COLOR
         
-        self.navigationController?.navigationBar.tintColor = Const.KARUTA_THEME_COLOR
-        self.navigationController?.navigationBar.barTintColor = Const.KARUTA_RIGHT_BACKGROUND_COLOR
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: Const.KARUTA_THEME_COLOR]
+        self.navigationController?.navigationBar.tintColor = Const.PECOMY_THEME_COLOR
+        self.navigationController?.navigationBar.barTintColor = Const.PECOMY_RIGHT_BACKGROUND_COLOR
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: Const.PECOMY_THEME_COLOR]
         self.navigationController?.navigationBar.shadowImage = UIImage()
         
         let resetButoon = UIBarButtonItem(title: NSLocalizedString("Reset", comment: ""), style: .Plain, target: self, action: #selector(ResultViewController.resetTapped))
@@ -136,7 +136,7 @@ class ResultViewController: UIViewController, ResultCardBaseDelegate {
         tr.delegate = self
         self.topResultCard!.addGestureRecognizer(tr)
         
-        self.commentView = CommentContentView(frame: CGRectZero, comment: self.restaurants[0].reviewSubjects[0], backgroundColor: Const.KARUTA_RANK_COLOR[0], textColor: UIColor.whiteColor())
+        self.commentView = CommentContentView(frame: CGRectZero, comment: self.restaurants[0].reviewSubjects[0], backgroundColor: Const.PECOMY_RANK_COLOR[0], textColor: UIColor.whiteColor())
         self.contentView.addSubview(self.commentView!)
         self.commentView?.snp_makeConstraints{ (make) in
             make.top.equalTo(self.topResultCard!.snp_bottom).offset(10)
@@ -185,7 +185,7 @@ class ResultViewController: UIViewController, ResultCardBaseDelegate {
     private func layoutNoResult() {
         let label = UILabel()
         label.text = NSLocalizedString("NoResultAlertTitle", comment: "")
-        label.font = UIFont(name: Const.KARUTA_FONT_NORMAL, size: 17)
+        label.font = UIFont(name: Const.PECOMY_FONT_NORMAL, size: 17)
         label.numberOfLines = 0
         label.sizeToFit()
         label.textColor = UIColor.grayColor()

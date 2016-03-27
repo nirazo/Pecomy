@@ -79,7 +79,7 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = Const.KARUTA_TITLE
+        self.navigationItem.title = Const.PECOMY_TITLE
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainViewController.enterForeground(_:)), name:Const.WILL_ENTER_FOREGROUND_KEY, object: nil)
         
@@ -91,7 +91,7 @@ class MainViewController: UIViewController {
         // メッセージラベル
         self.messageLabel = UILabel(frame: CGRectZero)
         self.messageLabel.text = NSLocalizedString("MainComment", comment: "")
-        self.messageLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 22)
+        self.messageLabel.font = UIFont(name: Const.PECOMY_FONT_BOLD, size: 22)
         self.messageLabel.textColor = UIColor.whiteColor()
         self.messageLabel.textAlignment = .Center
         self.view.addSubview(self.messageLabel)
@@ -623,7 +623,7 @@ extension MainViewController: MDCSwipeToChooseDelegate {
 }
 
 
-//MARK: - KarutaLocationManagerDelegate
+//MARK: - PecomyLocationManagerDelegate
 extension MainViewController: PecomyLocationManagerDelegate {
     func showLocationEnableAlert() {
         let alertController = UIAlertController(title:NSLocalizedString("LocationAlertTitle", comment: ""),

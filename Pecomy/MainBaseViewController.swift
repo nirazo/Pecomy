@@ -32,7 +32,7 @@ class MainBaseViewController: UIViewController {
         
         //単色背景
         let bgView = UIView()
-        bgView.backgroundColor = Const.KARUTA_BASIC_BACKGROUND_COLOR
+        bgView.backgroundColor = Const.PECOMY_BASIC_BACKGROUND_COLOR
         self.view.addSubview(bgView)
         bgView.snp_makeConstraints { make in
             make.top.equalTo(self.view)
@@ -86,7 +86,7 @@ class MainBaseViewController: UIViewController {
         let navVC = UINavigationController()
         navVC.navigationBar.tintColor = UIColor.clearColor()
         navVC.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
-        navVC.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: Const.KARUTA_THEME_TEXT_COLOR]
+        navVC.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: Const.PECOMY_THEME_TEXT_COLOR]
         navVC.navigationBar.shadowImage = UIImage()
         return navVC
     }

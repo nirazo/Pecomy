@@ -42,7 +42,7 @@ class CardOverlayTextLabelView: UIView {
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height))
         label.text = text.uppercaseString
         label.textAlignment = .Center
-        label.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 24)
+        label.font = UIFont(name: Const.PECOMY_FONT_BOLD, size: 24)
         label.textColor = self.color
         self.addSubview(label)
     }

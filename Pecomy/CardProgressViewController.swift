@@ -51,8 +51,8 @@ class CardProgressViewController: UIViewController {
     private func setupSubViews() {
         let label = UILabel(frame: CGRectZero)
         label.text = NSLocalizedString("SearchingRestaurant", comment: "")
-        label.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 18)
-        label.textColor = Const.KARUTA_THEME_COLOR
+        label.font = UIFont(name: Const.PECOMY_FONT_BOLD, size: 18)
+        label.textColor = Const.PECOMY_THEME_COLOR
         label.textAlignment = .Center
         self.contentView.addSubview(label)
         label.snp_makeConstraints { make in
@@ -76,7 +76,7 @@ class CardProgressViewController: UIViewController {
         }
         
         progressBaseView.addSubview(self.progressView)
-        self.progressView.backgroundColor = Const.KARUTA_THEME_COLOR
+        self.progressView.backgroundColor = Const.PECOMY_THEME_COLOR
         self.progressView.snp_makeConstraints { make in
             make.top.equalTo(progressBaseView)
             make.left.equalTo(progressBaseView)

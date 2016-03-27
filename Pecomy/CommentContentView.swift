@@ -17,9 +17,9 @@ class CommentContentView: UIView {
     let contentView = UIView()
     var commentLabel = UILabel()
     var commentBgColor = UIColor.whiteColor()
-    var commentTextColor = Const.KARUTA_RANK_COLOR[0]
+    var commentTextColor = Const.PECOMY_RANK_COLOR[0]
     
-    init(frame: CGRect, comment: String, backgroundColor: UIColor = UIColor.whiteColor(), textColor: UIColor = Const.KARUTA_RANK_COLOR[0]) {
+    init(frame: CGRect, comment: String, backgroundColor: UIColor = UIColor.whiteColor(), textColor: UIColor = Const.PECOMY_RANK_COLOR[0]) {
         super.init(frame: frame)
         
         self.comment = comment
@@ -76,7 +76,7 @@ class CommentContentView: UIView {
         
         // コメント
         self.commentLabel.text = self.comment
-        self.commentLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 15)
+        self.commentLabel.font = UIFont(name: Const.PECOMY_FONT_BOLD, size: 15)
         self.commentLabel.textColor = self.commentTextColor
         self.commentLabel.numberOfLines = 2
         self.commentLabel.sizeToFit()

@@ -72,7 +72,7 @@ class OtherResultCardContentView: UIView {
         // 店名
         let restaurantNameLabel = UILabel(frame: CGRectZero)
         restaurantNameLabel.text = restaurant.shopName
-        restaurantNameLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 14)
+        restaurantNameLabel.font = UIFont(name: Const.PECOMY_FONT_BOLD, size: 14)
         restaurantNameLabel.numberOfLines = 1
         restaurantNameLabel.textColor = Const.RANKING_SECOND_COLOR
         restaurantNameLabel.sizeToFit()
@@ -88,7 +88,7 @@ class OtherResultCardContentView: UIView {
         // 距離ラベル
         let distanceLabel = UILabel(frame: CGRectZero)
         distanceLabel.text =  String(format: NSLocalizedString("CardDistanceFromText", comment: ""), Utils.meterToMinutes(restaurant.distance))
-        distanceLabel.font = UIFont(name: Const.KARUTA_FONT_NORMAL, size: 12)
+        distanceLabel.font = UIFont(name: Const.PECOMY_FONT_NORMAL, size: 12)
         distanceLabel.numberOfLines = 0
         distanceLabel.sizeToFit()
         distanceLabel.textColor = Const.RANKING_SECOND_RIGHT_COLOR
@@ -104,7 +104,7 @@ class OtherResultCardContentView: UIView {
         // 矢印ラベル
         let arrowLabel = UILabel(frame: CGRectZero)
         arrowLabel.text = ">"
-        arrowLabel.font = UIFont(name: Const.KARUTA_FONT_BOLD, size: 16)
+        arrowLabel.font = UIFont(name: Const.PECOMY_FONT_BOLD, size: 16)
         arrowLabel.numberOfLines = 1
         arrowLabel.sizeToFit()
         arrowLabel.textColor =  UIColor(red: 220/255.0, green: 220/255.0, blue: 220/255.0, alpha: 1.0)
