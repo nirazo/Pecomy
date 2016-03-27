@@ -1,15 +1,15 @@
 //
-//  KarutaApiRequest.swift
-//  Karuta
+//  PecomyApiRequest.swift
+//  Pecomy
 //
 //  Created by Kenzo on 2015/12/29.
-//  Copyright © 2015年 Karuta. All rights reserved.
+//  Copyright © 2016年 Pecomy. All rights reserved.
 //
 
 import Foundation
 import Alamofire
 
-public protocol KarutaApiRequest {
+public protocol PecomyApiRequest {
     associatedtype Response
     
     var endpoint: String{ get }
@@ -19,7 +19,7 @@ public protocol KarutaApiRequest {
     var params: [String:AnyObject]{ get }
 }
 
-extension KarutaApiRequest {
+extension PecomyApiRequest {
     var endpoint: String {
         return ""
     }

@@ -1,9 +1,9 @@
 //
-//  KarutaTests.swift
-//  KarutaTests
+//  PecomyTests.swift
+//  PecomyTests
 //
 //  Created by Kenzo on 2015/06/21.
-//  Copyright (c) 2015年 Karuta. All rights reserved.
+//  Copyright (c) 2016年 Pecomy. All rights reserved.
 //
 
 import UIKit

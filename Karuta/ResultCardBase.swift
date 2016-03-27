@@ -1,9 +1,9 @@
 //
 //  ResultCardBase.swift
-//  Karuta
+//  Pecomy
 //
 //  Created by Kenzo on 2015/08/10.
-//  Copyright (c) 2015年 Karuta. All rights reserved.
+//  Copyright (c) 2016年 Pecomy. All rights reserved.
 //
 
 import UIKit

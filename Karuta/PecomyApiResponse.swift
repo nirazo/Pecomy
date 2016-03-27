@@ -1,15 +1,15 @@
 //
-//  KarutaApiResponse.swift
-//  Karuta
+//  PecomyApiResponse.swift
+//  Pecomy
 //
 //  Created by Kenzo on 2015/12/29.
-//  Copyright © 2015年 Karuta. All rights reserved.
+//  Copyright © 2016年 Pecomy. All rights reserved.
 //
 
 import Foundation
 import ObjectMapper
 
-public class KarutaApiResponse: Mappable {
+public class PecomyApiResponse: Mappable {
     
     var code = 0
     var message = ""

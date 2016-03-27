@@ -1,15 +1,15 @@
 //
 //  CardRequest.swift
-//  Karuta
+//  Pecomy
 //
 //  Created by 韮澤賢三 on 2016/01/06.
-//  Copyright © 2016年 Karuta. All rights reserved.
+//  Copyright © 2016年 Pecomy. All rights reserved.
 //
 
 import Foundation
 import Alamofire
 
-class CardRequest: KarutaApiRequest {
+class CardRequest: PecomyApiRequest {
     typealias Response = CardResponse
         
     var endpoint: String

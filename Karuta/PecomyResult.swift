@@ -1,14 +1,14 @@
 //
-//  KarutaResult.swift
-//  Karuta
+//  PecomyResult.swift
+//  Pecomy
 //
 //  Created by Kenzo on 2015/12/29.
-//  Copyright © 2015年 Karuta. All rights reserved.
+//  Copyright © 2016年 Pecomy. All rights reserved.
 //
 
 import Foundation
 
-public enum KarutaResult<Value, Error> {
+public enum PecomyResult<Value, Error> {
 
     case Success(Value)
     case Failure(Error)

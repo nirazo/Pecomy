@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D27BB9CB1B36F4A900F8D902"
-               BuildableName = "Karuta.app"
-               BlueprintName = "Karuta"
-               ReferencedContainer = "container:Karuta.xcodeproj">
+               BuildableName = "Pecomy.app"
+               BlueprintName = "Pecomy"
+               ReferencedContainer = "container:Pecomy.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D27BB9E01B36F4A900F8D902"
-               BuildableName = "KarutaTests.xctest"
-               BlueprintName = "KarutaTests"
-               ReferencedContainer = "container:Karuta.xcodeproj">
+               BuildableName = "Pecomy.xctest"
+               BlueprintName = "PecomyTests"
+               ReferencedContainer = "container:Pecomy.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D27BB9E01B36F4A900F8D902"
-               BuildableName = "KarutaTests.xctest"
-               BlueprintName = "KarutaTests"
-               ReferencedContainer = "container:Karuta.xcodeproj">
+               BuildableName = "Pecomy.xctest"
+               BlueprintName = "PecomyTests"
+               ReferencedContainer = "container:Pecomy.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -57,9 +57,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D27BB9CB1B36F4A900F8D902"
-            BuildableName = "Karuta.app"
-            BlueprintName = "Karuta"
-            ReferencedContainer = "container:Karuta.xcodeproj">
+            BuildableName = "Pecomy.app"
+            BlueprintName = "Pecomy"
+            ReferencedContainer = "container:Pecomy.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -80,9 +80,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D27BB9CB1B36F4A900F8D902"
-            BuildableName = "Karuta.app"
-            BlueprintName = "Karuta"
-            ReferencedContainer = "container:Karuta.xcodeproj">
+            BuildableName = "Pecomy.app"
+            BlueprintName = "Pecomy"
+            ReferencedContainer = "container:Pecomy.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -99,14 +99,14 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D27BB9CB1B36F4A900F8D902"
-            BuildableName = "Karuta.app"
-            BlueprintName = "Karuta"
-            ReferencedContainer = "container:Karuta.xcodeproj">
+            BuildableName = "Pecomy.app"
+            BlueprintName = "Pecomy"
+            ReferencedContainer = "container:Pecomy.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
-      buildConfiguration = "Debug">
+      buildConfiguration = "Release">
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release"

@@ -1,15 +1,15 @@
 //
 //  CardResponse.swift
-//  Karuta
+//  Pecomy
 //
 //  Created by 韮澤賢三 on 2016/01/06.
-//  Copyright © 2016年 Karuta. All rights reserved.
+//  Copyright © 2016年 Pecomy. All rights reserved.
 //
 
 import Foundation
 import ObjectMapper
 
-class CardResponse: KarutaApiResponse {
+class CardResponse: PecomyApiResponse {
     var restaurant = Restaurant()
     var syncID = ""
     var resultAvailable = false

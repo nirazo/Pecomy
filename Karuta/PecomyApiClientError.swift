@@ -1,14 +1,14 @@
 //
-//  KarutaApiClientError.swift
-//  Karuta
+//  PecomyApiClientError.swift
+//  Pecomy
 //
 //  Created by 韮澤賢三 on 2016/01/05.
-//  Copyright © 2016年 Karuta. All rights reserved.
+//  Copyright © 2016年 Pecomy. All rights reserved.
 //
 
 import UIKit
 
-public enum KarutaApiClientErrorType: ErrorType {
+public enum PecomyApiClientErrorType: ErrorType {
     case JsonParse
     case Mapping
     case Timeout //ネットワーク不通によるエラー
@@ -37,21 +37,21 @@ public enum KarutaApiClientErrorType: ErrorType {
     }
 }
 
-public struct KarutaApiClientError {
-    var type = KarutaApiClientErrorType.Unknown
+public struct PecomyApiClientError {
+    var type = PecomyApiClientErrorType.Unknown
     var code = 0
-    var response: KarutaApiResponse?
+    var response: PecomyApiResponse?
     
-    init (code: Int?, response: KarutaApiResponse?){
+    init (code: Int?, response: PecomyApiResponse?){
         guard let response = response, code = code else {
             return
         }
         
-        type = KarutaApiClientErrorType(errorCode: code, message: response.message)
+        type = PecomyApiClientErrorType(errorCode: code, message: response.message)
         self.response = response
     }
     
-    init (type: KarutaApiClientErrorType) {
+    init (type: PecomyApiClientErrorType) {
         self.type = type
     }
 }

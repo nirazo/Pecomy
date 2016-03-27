@@ -1,32 +1,32 @@
 //
 //  ResultModel.swift
-//  Karuta
+//  Pecomy
 //
 //  Created by 韮澤賢三 on 2016/01/07.
-//  Copyright © 2016年 Karuta. All rights reserved.
+//  Copyright © 2016年 Pecomy. All rights reserved.
 //
 
 class ResultModel {
     var results = [Restaurant]()
     
-    private var session: KarutaApiClient.Session?
+    private var session: PecomyApiClient.Session?
     
     init() {
     }
     
-    func fetch(latitude: Double, longitude: Double, handler: ((KarutaResult<[Restaurant], KarutaApiClientError>) -> Void)) -> Bool {
+    func fetch(latitude: Double, longitude: Double, handler: ((PecomyResult<[Restaurant], PecomyApiClientError>) -> Void)) -> Bool {
         let request = ResultRequest(latitude: latitude, longitude: longitude)
-        self.session = KarutaApiClient.send(request) {[weak self] (response: KarutaResult<ResultRequest.Response, KarutaApiClientError>) -> Void in
+        self.session = PecomyApiClient.send(request) {[weak self] (response: PecomyResult<ResultRequest.Response, PecomyApiClientError>) -> Void in
             guard let strongSelf = self else {
                 return
             }
             switch response {
             case .Success(let value):
                 strongSelf.results = value.results
-                handler(KarutaResult(value: value.results))
+                handler(PecomyResult(value: value.results))
             case .Failure(let error):
                 // TODO: エラーコードによってエラーメッセージ詰めたりする
-                handler(KarutaResult(error: error))
+                handler(PecomyResult(error: error))
             }
             strongSelf.session = nil
         }

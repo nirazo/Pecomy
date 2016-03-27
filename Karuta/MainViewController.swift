@@ -1,9 +1,9 @@
 //
 //  MainViewController.swift
-//  Karuta
+//  Pecomy
 //
 //  Created by Kenzo on 2015/06/21.
-//  Copyright (c) 2015年 Karuta. All rights reserved.
+//  Copyright (c) 2016年 Pecomy. All rights reserved.
 //
 
 import UIKit
@@ -29,7 +29,7 @@ class MainViewController: UIViewController {
     // 現在のスワイプ数（結果画面行ったらリセット）
     var currentSwipeCount = 0
     
-    let locationManager = KarutaLocationManager()
+    let locationManager = PecomyLocationManager()
     let progressViewController = CardProgressViewController()
     
     let contentView = UIView()
@@ -300,7 +300,7 @@ class MainViewController: UIViewController {
     */
     func acquireCardWithLatitude(latitude: Double, longitude: Double, like: String? = nil, maxBudget: Budget, numOfPeople: NumOfPeople, genre: Genre, syncId: String? = nil, reset: Bool, completion: ((Bool)->())? = nil) {
         self.showIndicator()
-        self.restaurantModel.fetch(latitude, longitude: longitude, like: like, maxBudget: maxBudget, numOfPeople: numOfPeople, genre: genre, syncId: syncId, reset: reset, handler: {[weak self] (result: KarutaResult<Restaurant, KarutaApiClientError>) in
+        self.restaurantModel.fetch(latitude, longitude: longitude, like: like, maxBudget: maxBudget, numOfPeople: numOfPeople, genre: genre, syncId: syncId, reset: reset, handler: {[weak self] (result: PecomyResult<Restaurant, PecomyApiClientError>) in
             guard let strongSelf = self else {
                 return
             }
@@ -418,7 +418,7 @@ class MainViewController: UIViewController {
     
     func acquireResults() {
         self.resultModel.fetch(self.currentLatitude!, longitude: self.currentLongitude!,
-            handler: {[weak self] (result: KarutaResult<[Restaurant], KarutaApiClientError>) in
+            handler: {[weak self] (result: PecomyResult<[Restaurant], PecomyApiClientError>) in
                 guard let strongSelf = self else {
                     return
                 }
@@ -624,7 +624,7 @@ extension MainViewController: MDCSwipeToChooseDelegate {
 
 
 //MARK: - KarutaLocationManagerDelegate
-extension MainViewController: KarutaLocationManagerDelegate {
+extension MainViewController: PecomyLocationManagerDelegate {
     func showLocationEnableAlert() {
         let alertController = UIAlertController(title:NSLocalizedString("LocationAlertTitle", comment: ""),
             message: NSLocalizedString("LocationAlertMessage", comment: ""),

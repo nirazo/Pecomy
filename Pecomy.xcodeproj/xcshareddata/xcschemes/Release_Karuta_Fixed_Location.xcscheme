@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D27BB9CB1B36F4A900F8D902"
-               BuildableName = "Karuta.app"
-               BlueprintName = "Karuta"
-               ReferencedContainer = "container:Karuta.xcodeproj">
+               BuildableName = "Pecomy.app"
+               BlueprintName = "Pecomy"
+               ReferencedContainer = "container:Pecomy.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D27BB9CB1B36F4A900F8D902"
-            BuildableName = "Karuta.app"
-            BlueprintName = "Karuta"
-            ReferencedContainer = "container:Karuta.xcodeproj">
+            BuildableName = "Pecomy.app"
+            BlueprintName = "Pecomy"
+            ReferencedContainer = "container:Pecomy.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -56,9 +56,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D27BB9CB1B36F4A900F8D902"
-            BuildableName = "Karuta.app"
-            BlueprintName = "Karuta"
-            ReferencedContainer = "container:Karuta.xcodeproj">
+            BuildableName = "Pecomy.app"
+            BlueprintName = "Pecomy"
+            ReferencedContainer = "container:Pecomy.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -75,9 +75,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D27BB9CB1B36F4A900F8D902"
-            BuildableName = "Karuta.app"
-            BlueprintName = "Karuta"
-            ReferencedContainer = "container:Karuta.xcodeproj">
+            BuildableName = "Pecomy.app"
+            BlueprintName = "Pecomy"
+            ReferencedContainer = "container:Pecomy.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

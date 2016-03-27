@@ -1,29 +1,29 @@
 //
-//  KarutaLocationManager.swift
-//  Karuta
+//  PecomyLocationManager.swift
+//  Pecomy
 //
 //  Created by Kenzo on 2015/06/22.
-//  Copyright (c) 2015年 Karuta. All rights reserved.
+//  Copyright (c) 2016年 Pecomy. All rights reserved.
 //
 
 import UIKit
 import CoreLocation
 
 //possible errors
-enum KarutaLocationManagerErrors: Int {
+enum PecomyLocationManagerErrors: Int {
     case AuthorizationDenied
     case AuthorizationNotDetermined
     case InvalidLocation
 }
 
-protocol KarutaLocationManagerDelegate {
+protocol PecomyLocationManagerDelegate {
     func showLocationEnableAlert()
 }
 
-class KarutaLocationManager: NSObject, CLLocationManagerDelegate {
+class PecomyLocationManager: NSObject, CLLocationManagerDelegate {
     
     private var locationManager: CLLocationManager?
-    var delegate: KarutaLocationManagerDelegate!
+    var delegate: PecomyLocationManagerDelegate!
     
     deinit {
         locationManager?.delegate = nil
@@ -85,7 +85,7 @@ class KarutaLocationManager: NSObject, CLLocationManagerDelegate {
             }
         } else {
             didCompleteWithError(NSError(domain: self.classForCoder.description(),
-                code: KarutaLocationManagerErrors.InvalidLocation.rawValue,
+                code: PecomyLocationManagerErrors.InvalidLocation.rawValue,
                 userInfo: nil))
         }
     }

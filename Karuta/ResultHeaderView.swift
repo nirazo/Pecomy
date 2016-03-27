@@ -1,9 +1,9 @@
 //
 //  ResultHeaderView.swift
-//  Karuta
+//  Pecomy
 //
 //  Created by Kenzo on 2015/12/19.
-//  Copyright © 2015年 Karuta. All rights reserved.
+//  Copyright © 2016年 Pecomy. All rights reserved.
 //
 
 import UIKit
