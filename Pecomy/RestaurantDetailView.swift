@@ -91,7 +91,7 @@ class RestaurantDetailView: UIView {
         self.categoryLabelView.setCategory(self.restaurant.category)
         self.categoryLabelView.backgroundColor = Const.RANKING_TOP_COLOR
         
-        self.dayPriceIcon.image = R.image.noimage()
+        self.dayPriceIcon.image = R.image.time_day()
         // 値段ラベル
         if (self.restaurant.dayPriceMin.isEmpty && self.restaurant.dayPriceMax.isEmpty) {
             self.dayPriceLabel.text = "-"
@@ -103,7 +103,7 @@ class RestaurantDetailView: UIView {
         self.dayPriceLabel.textColor = UIColor(red: 128.0/255.0, green: 128.0/255.0, blue: 128.0/255.0, alpha: 1.0)
         self.dayPriceLabel.font = UIFont(name: Const.PECOMY_FONT_NORMAL, size: 12)
         
-        self.nightPriceIcon.image = R.image.noimage()
+        self.nightPriceIcon.image = R.image.time_night()
         if (self.restaurant.nightPriceMin.isEmpty && self.restaurant.nightPriceMax.isEmpty) {
             self.nightPriceLabel.text = "-"
         } else {

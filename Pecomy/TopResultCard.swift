@@ -83,7 +83,7 @@ class TopResultCard: ResultCardBase {
         self.categoryView.setCategory(self.restaurant.category)
         self.categoryView.backgroundColor = Const.RANKING_TOP_COLOR
         
-        self.dayPriceIcon.image = R.image.noimage()
+        self.dayPriceIcon.image = R.image.time_day()
         // 値段ラベル
         if (self.restaurant.dayPriceMin.isEmpty && self.restaurant.dayPriceMax.isEmpty) {
             self.dayPriceLabel.text = "-"
@@ -95,7 +95,7 @@ class TopResultCard: ResultCardBase {
         self.dayPriceLabel.textColor = Const.RANKING_SECOND_RIGHT_COLOR
         self.dayPriceLabel.font = UIFont(name: Const.PECOMY_FONT_NORMAL, size: 13)
         
-        self.nightPriceIcon.image = R.image.noimage()
+        self.nightPriceIcon.image = R.image.time_night()
         if (self.restaurant.nightPriceMin.isEmpty && self.restaurant.nightPriceMax.isEmpty) {
             self.dayPriceLabel.text = "-"
         } else {
@@ -130,6 +130,9 @@ class TopResultCard: ResultCardBase {
         // 画像のダウンロード
         self.acquireImages()
         
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(TopResultCard.resultTapped))
+        self.addGestureRecognizer(tapGesture)
+        
         self.layoutIfNeeded()
     }
     
@@ -145,7 +148,7 @@ class TopResultCard: ResultCardBase {
         }
     }
     
-    func resultTapped(sender: AnyObject) {
+    func resultTapped() {
         self.delegate?.detailButtonTapped(self.restaurant)
     }
 }
