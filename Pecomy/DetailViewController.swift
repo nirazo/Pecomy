@@ -53,6 +53,7 @@ class DetailViewController: UIViewController {
             strongSelf.navigationController?.pushViewController(mapVC, animated: true)
         }
         
+        self.picConfig?.delegate = self
         self.detailView?.setup(self.restaurant)
         self.detailView?.picturesView.delegate = self.picConfig
         self.detailView?.picturesView.dataSource = self.picConfig
@@ -107,5 +108,15 @@ class DetailViewController: UIViewController {
             ac.addAction(okAction)
             self.presentViewController(ac, animated: true, completion: nil)
         }
+    }
+}
+
+extension DetailViewController: DetailPictureCollectionViewConfigDelegate {
+    func pictureTapped(imageView imageView: UIImageView, index: Int, urlStrings: [String]) {
+        let photoVC = PhotoViewerViewController(imageUrlStrings: urlStrings, index: index)
+        photoVC.modalPresentationStyle = .OverCurrentContext
+        self.presentViewController(photoVC, animated: false, completion: nil)
+        UIApplication.sharedApplication().keyWindow?.addSubview(photoVC.view)
+        photoVC.display(view: self.view, imageView: imageView, yStartAdjustment: 0.0, yDestinationAdjustment: 0.0)
     }
 }

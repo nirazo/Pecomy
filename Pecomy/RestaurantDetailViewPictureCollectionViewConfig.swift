@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol DetailPictureCollectionViewConfigDelegate {
+    func pictureTapped(imageView imageView: UIImageView, index: Int, urlStrings: [String])
+}
+
 class RestaurantDetailViewPictureCollectionViewConfig: NSObject, UICollectionViewDelegate, UICollectionViewDataSource {
     
     private let kCellReuse : String = "PicCell"
@@ -17,6 +21,8 @@ class RestaurantDetailViewPictureCollectionViewConfig: NSObject, UICollectionVie
     init(imageUrls: [String]) {
         self.imageUrls = imageUrls
     }
+    
+    var delegate: DetailPictureCollectionViewConfigDelegate?
     
     //MARK: - UICollectionViewDelegate, UICollectionViewDataSource
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -47,5 +53,8 @@ class RestaurantDetailViewPictureCollectionViewConfig: NSObject, UICollectionVie
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let cell = collectionView.cellForItemAtIndexPath(indexPath) as? PictureCollectionViewCell
+        guard let c = cell else { return }
+        self.delegate?.pictureTapped(imageView: c.imageView, index: indexPath.row, urlStrings: self.imageUrls)
     }
 }

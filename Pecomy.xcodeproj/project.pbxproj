@@ -17,6 +17,7 @@
 		D203D3141B3E739600FC9DB8 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = D203D3131B3E739600FC9DB8 /* Const.swift */; };
 		D2092A2C1B637460008046D9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D2092A2E1B637460008046D9 /* Localizable.strings */; };
 		D2092A341B64D721008046D9 /* RestaurantModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2092A331B64D721008046D9 /* RestaurantModel.swift */; };
+		D20B53C81CB8FA8D0025EA58 /* PhotoViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20B53C71CB8FA8D0025EA58 /* PhotoViewerViewController.swift */; };
 		D20D9C1C1C9B1983003BA643 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D20D9C1B1C9B1983003BA643 /* Settings.bundle */; };
 		D22EC5591BCE34DD00A4B446 /* CategoryLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22EC5581BCE34DD00A4B446 /* CategoryLabelView.swift */; };
 		D23070731B4C30D100833167 /* PecomyLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23070721B4C30D100833167 /* PecomyLocationManager.swift */; };
@@ -99,6 +100,7 @@
 		D2092A2D1B637460008046D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D2092A2F1B637484008046D9 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D2092A331B64D721008046D9 /* RestaurantModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantModel.swift; sourceTree = "<group>"; };
+		D20B53C71CB8FA8D0025EA58 /* PhotoViewerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewerViewController.swift; sourceTree = "<group>"; };
 		D20D9C1B1C9B1983003BA643 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		D22EC5581BCE34DD00A4B446 /* CategoryLabelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryLabelView.swift; sourceTree = "<group>"; };
 		D23070721B4C30D100833167 /* PecomyLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PecomyLocationManager.swift; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 				D28901311C438FEC005BDF84 /* CommentsView.swift */,
 				D28901331C438FFF005BDF84 /* CommentContentView.swift */,
 				D28901351C439FC9005BDF84 /* TelButton.swift */,
+				D20B53C71CB8FA8D0025EA58 /* PhotoViewerViewController.swift */,
 			);
 			name = Detail;
 			sourceTree = "<group>";
@@ -508,7 +511,7 @@
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
-				ORGANIZATIONNAME = Karuta;
+				ORGANIZATIONNAME = Pecomy;
 				TargetAttributes = {
 					D27BB9CB1B36F4A900F8D902 = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -678,6 +681,7 @@
 				D2A594E81C8C77A400DE1012 /* R.generated.swift in Sources */,
 				D2DD65A21B7714DA0046A50C /* OtherResultsCard.swift in Sources */,
 				D2A99A1A1C12D3FA00C16F04 /* OnetimeFilterViewController.swift in Sources */,
+				D20B53C81CB8FA8D0025EA58 /* PhotoViewerViewController.swift in Sources */,
 				D27BB9D21B36F4A900F8D902 /* AppDelegate.swift in Sources */,
 				D253A9E21C321BCB00D65D20 /* Int.swift in Sources */,
 				164718BB1C3D274D00F50D33 /* ResultRequest.swift in Sources */,
