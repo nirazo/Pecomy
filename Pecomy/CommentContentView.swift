@@ -11,7 +11,7 @@ import UIKit
 class CommentContentView: UIView {
 
     
-    var imageView = UIImageView(image: R.image.comment_human())
+    var imageView = UIImageView()
     var commentBackGroundView = UIView()
     var comment = ""
     let contentView = UIView()
@@ -50,6 +50,7 @@ class CommentContentView: UIView {
             make.left.equalTo(self)
         }
         
+        self.imageView.image = self.pickCommentIcon()
         self.imageView.contentMode = .ScaleAspectFill
         self.imageView.clipsToBounds = true
         self.contentView.addSubview(self.imageView)
@@ -89,6 +90,11 @@ class CommentContentView: UIView {
             make.height.equalTo(self.commentBackGroundView)
             make.right.equalTo(self.commentBackGroundView).offset(-12)
         }
+    }
+    
+    private func pickCommentIcon() -> UIImage {
+        let n = arc4random() % 10 + 1
+        return UIImage(named: "comment_human\(n)")!
     }
     
     override func layoutSubviews() {

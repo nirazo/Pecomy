@@ -14,7 +14,7 @@ protocol ResultViewControllerDelegate {
     func resultViewController(controller: ResultViewController, backButtonTappedWithReset reset: Bool)
 }
 
-class ResultViewController: UIViewController, ResultCardBaseDelegate {
+class ResultViewController: UIViewController {
     
     let ANALYTICS_TRACKING_CODE = AnaylyticsTrackingCode.ResultViewController.rawValue
     
@@ -132,10 +132,6 @@ class ResultViewController: UIViewController, ResultCardBaseDelegate {
         self.topResultCard?.setupSubViews()
         self.topResultCard?.delegate = self
         
-        let tr = UITapGestureRecognizer(target: self, action: #selector(ResultViewController.cardTapped(_:)))
-        tr.delegate = self
-        self.topResultCard!.addGestureRecognizer(tr)
-        
         self.commentView = CommentContentView(frame: CGRectZero, comment: self.restaurants[0].reviewSubjects[0], backgroundColor: Const.PECOMY_RANK_COLOR[0], textColor: UIColor.whiteColor())
         self.contentView.addSubview(self.commentView!)
         self.commentView?.snp_makeConstraints{ (make) in
@@ -222,10 +218,6 @@ class ResultViewController: UIViewController, ResultCardBaseDelegate {
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     
-    func detailButtonTapped(restaurant: Restaurant) {
-        self.openDetailViewController(restaurant)
-    }
-    
     private func openDetailViewController(restaurant: Restaurant) {
         let detailVC = DetailViewController(restaurant: restaurant)
         detailVC.navigationItem.title = restaurant.shopName
@@ -233,7 +225,6 @@ class ResultViewController: UIViewController, ResultCardBaseDelegate {
         self.navigationItem.backBarButtonItem = backButtonItem
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
-
 }
 
 // MARK:- OtherResultCardDelegate method
@@ -243,13 +234,8 @@ extension ResultViewController: OtherResultCardDelegate {
     }
 }
 
-extension ResultViewController: UIGestureRecognizerDelegate {
-    func cardTapped(sender: AnyObject) {
-        guard let vc = sender as? ResultViewController, let card = vc.view as? TopResultCard else { return }
-        let detailVC = DetailViewController(restaurant: card.restaurant)
-        detailVC.navigationItem.title = card.restaurant.shopName
-        let backButtonItem = UIBarButtonItem(title: NSLocalizedString("Back", comment: ""), style: .Plain, target: nil, action: nil)
-        self.navigationItem.backBarButtonItem = backButtonItem
-        self.navigationController?.pushViewController(detailVC, animated: true)
+extension ResultViewController: ResultCardBaseDelegate {
+    func detailButtonTapped(restaurant: Restaurant) {
+        self.openDetailViewController(restaurant)
     }
 }
