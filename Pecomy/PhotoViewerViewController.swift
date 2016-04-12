@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 // MARK: - PhotoViewNavigationBar
 class PhotoViewNavigationBar: UIView {
@@ -66,23 +67,36 @@ class PhotoViewNavigationBar: UIView {
 
 // MARK: - PhotoPageView
 class PhotoPageView: UIView {
+    private var imageView: UIImageView
+    private var loadingIndicator = UIActivityIndicatorView()
+    
     var url: NSURL? {
         didSet {
             if let url = url {
-                imageView.sd_setImageWithURL(url)
+                self.loadingIndicator.startAnimating()
+                imageView.sd_setImageWithURL(url, completed: { [weak self] (image: UIImage!, error: NSError!, cacheType: SDImageCacheType, imageURL: NSURL!) in
+                    guard let strongSelf = self else { return }
+                    strongSelf.loadingIndicator.stopAnimating()
+                })
             } else {
                 imageView.image = nil
             }
         }
     }
     
-    private var imageView: UIImageView
-    
     override init(frame: CGRect) {
         self.imageView = UIImageView(frame: frame)
         super.init(frame: frame)
         self.imageView.contentMode = .ScaleAspectFit
         self.addSubview(self.imageView)
+        self.loadingIndicator.activityIndicatorViewStyle = .WhiteLarge
+        self.loadingIndicator.hidesWhenStopped = true
+        self.addSubview(self.loadingIndicator)
+        self.loadingIndicator.snp_makeConstraints { (make) in
+            make.width.equalTo(200)
+            make.height.equalTo(200)
+            make.center.equalTo(self)
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -260,6 +274,10 @@ class PhotoViewerViewController: UIViewController {
 }
 
 extension PhotoViewerViewController: UIScrollViewDelegate {
+    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+        self.scrollView.userInteractionEnabled = false
+    }
+    
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         self.scrollView.userInteractionEnabled = true
         
