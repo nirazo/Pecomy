@@ -33,7 +33,7 @@ class PhotoViewNavigationBar: UIView {
             UIColor(white: 0.0, alpha: opacity).CGColor,
             UIColor.clearColor().CGColor
         ]
-        gradient.frame = CGRect(x: 0.0, y: 0.0, width: self.bounds.size.width, height: gradientHeight)
+        gradient.frame = CGRect(x: 0.0, y: 0.0, width: self.bounds.size.width, height: self.bounds.size.height)
         layer.insertSublayer(gradient, atIndex: 0)
         self.gradientLayer = gradient
         
@@ -154,7 +154,7 @@ class PhotoViewerViewController: UIViewController {
             make.top.equalTo(self.view).offset(20)
             make.left.equalTo(self.view)
             make.width.equalTo(self.view)
-            make.height.equalTo(44)
+            make.height.equalTo(64)
         }
         self.navigationBar.closeButton.addTarget(self, action: #selector(PhotoViewerViewController.closePhoto), forControlEvents: .TouchUpInside)
         
@@ -204,7 +204,7 @@ class PhotoViewerViewController: UIViewController {
         
         UIView.animateWithDuration(self.displayDuration, delay: 0.0, options: .CurveEaseOut, animations: { () in
             transitionImageView.frame = endFrame
-            coverView.alpha = 1.0
+            self.coverView!.alpha = 1.0
         }) { (finished) in
             self.removeTransitionImageView()
             self.view.hidden = false

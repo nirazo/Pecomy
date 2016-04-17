@@ -117,6 +117,6 @@ extension DetailViewController: DetailPictureCollectionViewConfigDelegate {
         photoVC.modalPresentationStyle = .OverCurrentContext
         self.presentViewController(photoVC, animated: false, completion: nil)
         UIApplication.sharedApplication().keyWindow?.addSubview(photoVC.view)
-        photoVC.display(view: self.view, imageView: imageView, yStartAdjustment: 0.0, yDestinationAdjustment: 0.0)
+        photoVC.display(view: self.view, imageView: imageView)
     }
 }
