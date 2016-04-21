@@ -54,7 +54,7 @@ class RestaurantDetailViewPictureCollectionViewConfig: NSObject, UICollectionVie
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let cell = collectionView.cellForItemAtIndexPath(indexPath) as? PictureCollectionViewCell
-        guard let c = cell else { return }
+        guard let c = cell else { fatalError("PictureCollectionViewCell initialization error") }
         self.delegate?.pictureTapped(imageView: c.imageView, index: indexPath.row, urlStrings: self.imageUrls)
     }
 }

@@ -20,9 +20,10 @@ class RestaurantDetailViewRichTagCollectionViewConfig: NSObject, UICollectionVie
     
     //MARK: - UICollectionViewDelegate, UICollectionViewDataSource
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell : RichTagCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(kCellReuse, forIndexPath: indexPath) as! RichTagCollectionViewCell
-        cell.richTag = self.richTags[indexPath.row]
-        return cell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kCellReuse, forIndexPath: indexPath) as?RichTagCollectionViewCell
+        guard let c = cell else { fatalError("RichTagCollectionViewCell initialization error") }
+        c.richTag = self.richTags[indexPath.row]
+        return c
     }
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
