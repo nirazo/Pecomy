@@ -146,9 +146,9 @@
 		D292AA181C5FB30800D66A87 /* Budget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Budget.swift; sourceTree = "<group>"; };
 		D292AA1A1C5FB5CB00D66A87 /* NumOfPeople.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumOfPeople.swift; sourceTree = "<group>"; };
 		D292F7381B92DFFC005700AE /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
-		D2A594E71C8C77A400DE1012 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
-		D2A99A151C12D3E700C16F04 /* OnetimeFilterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnetimeFilterCell.swift; path = Pecomy/OnetimeFilterCell.swift; sourceTree = SOURCE_ROOT; };
-		D2A99A191C12D3FA00C16F04 /* OnetimeFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnetimeFilterViewController.swift; path = Pecomy/OnetimeFilterViewController.swift; sourceTree = SOURCE_ROOT; };
+		D2A594E71C8C77A400DE1012 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
+		D2A99A151C12D3E700C16F04 /* OnetimeFilterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnetimeFilterCell.swift; sourceTree = "<group>"; };
+		D2A99A191C12D3FA00C16F04 /* OnetimeFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnetimeFilterViewController.swift; sourceTree = "<group>"; };
 		D2A99A561C17367E00C16F04 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D2BE5F3B1C4B78AB00B47387 /* RichTag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RichTag.swift; sourceTree = "<group>"; };
 		D2C785F71B47C2A900517D55 /* Pecomy-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pecomy-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -185,7 +185,7 @@
 				164718B41C3D22AD00F50D33 /* CardRequest.swift */,
 				164718B61C3D22D700F50D33 /* CardResponse.swift */,
 			);
-			name = Card;
+			path = Card;
 			sourceTree = "<group>";
 		};
 		164718B31C3D226900F50D33 /* Result */ = {
@@ -194,7 +194,7 @@
 				164718BA1C3D274D00F50D33 /* ResultRequest.swift */,
 				164718B81C3D273C00F50D33 /* ResultResponse.swift */,
 			);
-			name = Result;
+			path = Result;
 			sourceTree = "<group>";
 		};
 		97BD974091507500A5B02BC4 /* Pods */ = {
@@ -213,31 +213,31 @@
 		D2092A321B64D702008046D9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D292AA181C5FB30800D66A87 /* Budget.swift */,
+				D2DEEF1D1BD72F7400FDBB8F /* Genre.swift */,
+				D292AA1A1C5FB5CB00D66A87 /* NumOfPeople.swift */,
 				D2092A331B64D721008046D9 /* RestaurantModel.swift */,
 				16AAD0381C3E835600ADCF87 /* ResultModel.swift */,
-				D2DEEF1D1BD72F7400FDBB8F /* Genre.swift */,
 				D2BE5F3B1C4B78AB00B47387 /* RichTag.swift */,
-				D292AA181C5FB30800D66A87 /* Budget.swift */,
-				D292AA1A1C5FB5CB00D66A87 /* NumOfPeople.swift */,
 			);
-			name = Model;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		D24B29221B78773400419B9B /* Detail */ = {
 			isa = PBXGroup;
 			children = (
 				D2EFEB5A1C567F180092DFC9 /* Map */,
-				D2EB3FAE1C4A1377005B630E /* RichTagsCollectionView */,
 				D2EB3FAD1C4A1362005B630E /* PicturesCollectionView */,
+				D2EB3FAE1C4A1377005B630E /* RichTagsCollectionView */,
+				D28901331C438FFF005BDF84 /* CommentContentView.swift */,
+				D28901311C438FEC005BDF84 /* CommentsView.swift */,
 				D24B29231B78775300419B9B /* DetailViewController.swift */,
+				D20B53C71CB8FA8D0025EA58 /* PhotoViewerViewController.swift */,
 				D289012D1C437D8E005BDF84 /* RestaurantDetailView.swift */,
 				D289012F1C437D9D005BDF84 /* RestaurantDetailView.xib */,
-				D28901311C438FEC005BDF84 /* CommentsView.swift */,
-				D28901331C438FFF005BDF84 /* CommentContentView.swift */,
 				D28901351C439FC9005BDF84 /* TelButton.swift */,
-				D20B53C71CB8FA8D0025EA58 /* PhotoViewerViewController.swift */,
 			);
-			name = Detail;
+			path = Detail;
 			sourceTree = "<group>";
 		};
 		D24B292C1B7895C900419B9B /* Tutorial */ = {
@@ -245,16 +245,16 @@
 			children = (
 				D24B292D1B7895DA00419B9B /* TutorialViewController.swift */,
 			);
-			name = Tutorial;
+			path = Tutorial;
 			sourceTree = "<group>";
 		};
 		D24B293F1B79CC0400419B9B /* Card */ = {
 			isa = PBXGroup;
 			children = (
-				D28A7A0B1B47AE900025371A /* CardView.swift */,
 				D2EFEB581C51282A0092DFC9 /* CardOverlayTextLabelView.swift */,
+				D28A7A0B1B47AE900025371A /* CardView.swift */,
 			);
-			name = Card;
+			path = Card;
 			sourceTree = "<group>";
 		};
 		D253A9E31C32217900D65D20 /* Entity */ = {
@@ -262,35 +262,35 @@
 			children = (
 				D253A9E41C32236900D65D20 /* Restaurant.swift */,
 			);
-			name = Entity;
+			path = Entity;
 			sourceTree = "<group>";
 		};
 		D253A9E61C322B5F00D65D20 /* APIClient */ = {
 			isa = PBXGroup;
 			children = (
-				164718B31C3D226900F50D33 /* Result */,
 				164718B21C3D226100F50D33 /* Card */,
+				164718B31C3D226900F50D33 /* Result */,
 				D253A9E71C322B7D00D65D20 /* PecomyApiClient.swift */,
+				16B6744D1C3BE59C009D039C /* PecomyApiClientError.swift */,
 				D253A9E91C32308E00D65D20 /* PecomyApiRequest.swift */,
 				D253A9EB1C32309900D65D20 /* PecomyApiResponse.swift */,
 				D253A9ED1C3233AF00D65D20 /* PecomyResult.swift */,
-				16B6744D1C3BE59C009D039C /* PecomyApiClientError.swift */,
 			);
-			name = APIClient;
+			path = APIClient;
 			sourceTree = "<group>";
 		};
 		D2597E1C1B523831000938B4 /* Result */ = {
 			isa = PBXGroup;
 			children = (
-				D2DD659F1B7714CA0046A50C /* TopResultCard.swift */,
-				D253A9DF1C310D7B00D65D20 /* TopResultCard.xib */,
-				D2DD65A11B7714DA0046A50C /* OtherResultsCard.swift */,
 				D2E36EC61C2D615D00DEE726 /* OtherResultCardContentView.swift */,
-				D24B291E1B772EFF00419B9B /* ResultViewController.swift */,
+				D2DD65A11B7714DA0046A50C /* OtherResultsCard.swift */,
 				D24B29201B78748A00419B9B /* ResultCardBase.swift */,
 				D24A2CC21C255D2A009ACA08 /* ResultHeaderView.swift */,
+				D24B291E1B772EFF00419B9B /* ResultViewController.swift */,
+				D2DD659F1B7714CA0046A50C /* TopResultCard.swift */,
+				D253A9DF1C310D7B00D65D20 /* TopResultCard.xib */,
 			);
-			name = Result;
+			path = Result;
 			sourceTree = "<group>";
 		};
 		D2731FDE1C79A82800E8E5E9 /* Profile */ = {
@@ -298,7 +298,7 @@
 			children = (
 				D2731FDF1C79A85300E8E5E9 /* ProfileViewController.swift */,
 			);
-			name = Profile;
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		D2731FE11C79A86700E8E5E9 /* RestaurantLog */ = {
@@ -306,29 +306,29 @@
 			children = (
 				D2731FE21C79A88000E8E5E9 /* RestaurantLogViewController.swift */,
 			);
-			name = RestaurantLog;
+			path = RestaurantLog;
 			sourceTree = "<group>";
 		};
 		D2731FE51C849D0500E8E5E9 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				D23070721B4C30D100833167 /* PecomyLocationManager.swift */,
-				D272F45B1B9C25E4009564A0 /* LoadingView.swift */,
 				D22EC5581BCE34DD00A4B446 /* CategoryLabelView.swift */,
 				D203D3131B3E739600FC9DB8 /* Const.swift */,
+				D272F45B1B9C25E4009564A0 /* LoadingView.swift */,
+				D23070721B4C30D100833167 /* PecomyLocationManager.swift */,
 				D292F7381B92DFFC005700AE /* Utils.swift */,
 			);
-			name = Common;
+			path = Common;
 			sourceTree = "<group>";
 		};
 		D27BB9C31B36F4A900F8D902 = {
 			isa = PBXGroup;
 			children = (
 				D27BB9CE1B36F4A900F8D902 /* Pecomy */,
-				D27BB9E41B36F4A900F8D902 /* PecomyTests */,
-				D27BB9CD1B36F4A900F8D902 /* Products */,
-				97BD974091507500A5B02BC4 /* Pods */,
 				F8EF51686E29749944A50697 /* Frameworks */,
+				D27BB9E41B36F4A900F8D902 /* PecomyTests */,
+				97BD974091507500A5B02BC4 /* Pods */,
+				D27BB9CD1B36F4A900F8D902 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -344,25 +344,9 @@
 		D27BB9CE1B36F4A900F8D902 /* Pecomy */ = {
 			isa = PBXGroup;
 			children = (
-				D27BB9D11B36F4A900F8D902 /* AppDelegate.swift */,
-				D2731FE51C849D0500E8E5E9 /* Common */,
-				D253A9E61C322B5F00D65D20 /* APIClient */,
-				D2597E1C1B523831000938B4 /* Result */,
-				D24B29221B78773400419B9B /* Detail */,
-				D253A9E31C32217900D65D20 /* Entity */,
-				D2DEEF221BD7557300FDBB8F /* OnetimeFilter */,
-				D2731FDE1C79A82800E8E5E9 /* Profile */,
-				D2DEEF1C1BD72F4900FDBB8F /* MainView */,
-				D2731FE11C79A86700E8E5E9 /* RestaurantLog */,
-				D2DEE6AD1C030F7F00861BDF /* Extension */,
-				D24B293F1B79CC0400419B9B /* Card */,
-				D24B292C1B7895C900419B9B /* Tutorial */,
-				D2092A321B64D702008046D9 /* Model */,
-				D27BB9D81B36F4A900F8D902 /* Images.xcassets */,
+				D2C9B2491CCB564E003A33B9 /* Classes */,
+				D2C9B24A1CCB5669003A33B9 /* Resources */,
 				D27BB9CF1B36F4A900F8D902 /* Supporting Files */,
-				D2C785F71B47C2A900517D55 /* Pecomy-Bridging-Header.h */,
-				D24B29451B79F56E00419B9B /* Launch Screen.xib */,
-				D2A99A561C17367E00C16F04 /* GoogleService-Info.plist */,
 			);
 			path = Pecomy;
 			sourceTree = "<group>";
@@ -370,19 +354,21 @@
 		D27BB9CF1B36F4A900F8D902 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				D2A594E71C8C77A400DE1012 /* R.generated.swift */,
+				D2A99A561C17367E00C16F04 /* GoogleService-Info.plist */,
 				D27BB9D01B36F4A900F8D902 /* Info.plist */,
 				D2092A2E1B637460008046D9 /* Localizable.strings */,
+				D2C785F71B47C2A900517D55 /* Pecomy-Bridging-Header.h */,
+				D2A594E71C8C77A400DE1012 /* R.generated.swift */,
 				D20D9C1B1C9B1983003BA643 /* Settings.bundle */,
 			);
-			name = "Supporting Files";
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		D27BB9E41B36F4A900F8D902 /* PecomyTests */ = {
 			isa = PBXGroup;
 			children = (
-				D27BB9E71B36F4A900F8D902 /* PecomyTests.swift */,
 				D27BB9E51B36F4A900F8D902 /* Supporting Files */,
+				D27BB9E71B36F4A900F8D902 /* PecomyTests.swift */,
 			);
 			path = PecomyTests;
 			sourceTree = "<group>";
@@ -392,7 +378,37 @@
 			children = (
 				D27BB9E61B36F4A900F8D902 /* Info.plist */,
 			);
-			name = "Supporting Files";
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D2C9B2491CCB564E003A33B9 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				D253A9E61C322B5F00D65D20 /* APIClient */,
+				D24B293F1B79CC0400419B9B /* Card */,
+				D2731FE51C849D0500E8E5E9 /* Common */,
+				D24B29221B78773400419B9B /* Detail */,
+				D253A9E31C32217900D65D20 /* Entity */,
+				D2DEE6AD1C030F7F00861BDF /* Extension */,
+				D2DEEF1C1BD72F4900FDBB8F /* MainView */,
+				D2092A321B64D702008046D9 /* Model */,
+				D2DEEF221BD7557300FDBB8F /* OnetimeFilter */,
+				D2731FDE1C79A82800E8E5E9 /* Profile */,
+				D2731FE11C79A86700E8E5E9 /* RestaurantLog */,
+				D2597E1C1B523831000938B4 /* Result */,
+				D24B292C1B7895C900419B9B /* Tutorial */,
+				D27BB9D11B36F4A900F8D902 /* AppDelegate.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		D2C9B24A1CCB5669003A33B9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D27BB9D81B36F4A900F8D902 /* Images.xcassets */,
+				D24B29451B79F56E00419B9B /* Launch Screen.xib */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		D2DEE6AD1C030F7F00861BDF /* Extension */ = {
@@ -400,38 +416,38 @@
 			children = (
 				D253A9E11C321BCB00D65D20 /* Int.swift */,
 			);
-			name = Extension;
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		D2DEEF1C1BD72F4900FDBB8F /* MainView */ = {
 			isa = PBXGroup;
 			children = (
-				D27BB9D31B36F4A900F8D902 /* MainViewController.swift */,
-				D2731FDC1C79A81200E8E5E9 /* MainBaseViewController.swift */,
-				D24B29401B79CC1D00419B9B /* CardProgressViewController.swift */,
 				D2731FE61C849DE800E8E5E9 /* BackgroundImagePicker.swift */,
+				D24B29401B79CC1D00419B9B /* CardProgressViewController.swift */,
+				D2731FDC1C79A81200E8E5E9 /* MainBaseViewController.swift */,
+				D27BB9D31B36F4A900F8D902 /* MainViewController.swift */,
 			);
-			name = MainView;
+			path = MainView;
 			sourceTree = "<group>";
 		};
 		D2DEEF221BD7557300FDBB8F /* OnetimeFilter */ = {
 			isa = PBXGroup;
 			children = (
-				D2A99A191C12D3FA00C16F04 /* OnetimeFilterViewController.swift */,
 				D2A99A151C12D3E700C16F04 /* OnetimeFilterCell.swift */,
 				D292AA161C5FAB8700D66A87 /* OnetimeFilterCollectionViewConfig.swift */,
+				D2A99A191C12D3FA00C16F04 /* OnetimeFilterViewController.swift */,
 			);
-			name = OnetimeFilter;
+			path = OnetimeFilter;
 			sourceTree = "<group>";
 		};
 		D2EB3FAD1C4A1362005B630E /* PicturesCollectionView */ = {
 			isa = PBXGroup;
 			children = (
-				D28901391C49FF24005BDF84 /* RestaurantDetailViewPictureCollectionViewConfig.swift */,
 				D289013D1C4A01E8005BDF84 /* PictureCollectionViewCell.swift */,
 				D28901421C4A09EF005BDF84 /* PictureCollectionViewFlowLayout.swift */,
+				D28901391C49FF24005BDF84 /* RestaurantDetailViewPictureCollectionViewConfig.swift */,
 			);
-			name = PicturesCollectionView;
+			path = PicturesCollectionView;
 			sourceTree = "<group>";
 		};
 		D2EB3FAE1C4A1377005B630E /* RichTagsCollectionView */ = {
@@ -440,7 +456,7 @@
 				D289013B1C49FF54005BDF84 /* RestaurantDetailViewRichTagCollectionViewConfig.swift */,
 				D289013F1C4A01FD005BDF84 /* RichTagCollectionViewCell.swift */,
 			);
-			name = RichTagsCollectionView;
+			path = RichTagsCollectionView;
 			sourceTree = "<group>";
 		};
 		D2EFEB5A1C567F180092DFC9 /* Map */ = {
@@ -448,7 +464,7 @@
 			children = (
 				D2EFEB5B1C567F2F0092DFC9 /* MapViewController.swift */,
 			);
-			name = Map;
+			path = Map;
 			sourceTree = "<group>";
 		};
 		F8EF51686E29749944A50697 /* Frameworks */ = {
@@ -609,7 +625,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"$PODS_ROOT/R.swift/rswift\" \"$SRCROOT\"";
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" \"$SRCROOT/Pecomy/Supporting Files\"";
 		};
 		D2BABE611B5A5D75005E8356 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -729,6 +745,7 @@
 				D2092A2F1B637484008046D9 /* ja */,
 			);
 			name = Localizable.strings;
+			path = .;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -794,14 +811,14 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				INFOPLIST_FILE = "$(SRCROOT)/Pecomy/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Pecomy/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DDEBUG -DFIXED_LOCATION";
 				PRODUCT_BUNDLE_IDENTIFIER = "me.karuta.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Karuta;
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "Pecomy/Pecomy-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Pecomy/Supporting Files/Pecomy-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -816,7 +833,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = PecomyTests/Info.plist;
+				INFOPLIST_FILE = "PecomyTests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "me.karuta.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Karuta;
@@ -880,7 +897,7 @@
 					"$(PROJECT_DIR)",
 				);
 				GCC_OPTIMIZATION_LEVEL = s;
-				INFOPLIST_FILE = "$(SRCROOT)/Pecomy/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Pecomy/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DRELEASE -DFIXED_LOCATION";
@@ -888,7 +905,7 @@
 				PRODUCT_NAME = Karuta;
 				PROVISIONING_PROFILE = "";
 				SWIFT_DISABLE_SAFETY_CHECKS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "Pecomy/Pecomy-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Pecomy/Supporting Files/Pecomy-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -899,7 +916,7 @@
 			baseConfigurationReference = D2092A281B6356FE008046D9 /* Pods-Pecomy.release_fixed_location.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = PecomyTests/Info.plist;
+				INFOPLIST_FILE = "PecomyTests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "me.karuta.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Karuta;
@@ -1008,14 +1025,14 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				INFOPLIST_FILE = "$(SRCROOT)/Pecomy/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Pecomy/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DDEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = "me.karuta.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Karuta;
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "Pecomy/Pecomy-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Pecomy/Supporting Files/Pecomy-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1036,7 +1053,7 @@
 					"$(PROJECT_DIR)",
 				);
 				GCC_OPTIMIZATION_LEVEL = s;
-				INFOPLIST_FILE = "$(SRCROOT)/Pecomy/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Pecomy/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DRELEASE";
@@ -1044,7 +1061,7 @@
 				PRODUCT_NAME = Karuta;
 				PROVISIONING_PROFILE = "";
 				SWIFT_DISABLE_SAFETY_CHECKS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "Pecomy/Pecomy-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Pecomy/Supporting Files/Pecomy-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1059,7 +1076,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = PecomyTests/Info.plist;
+				INFOPLIST_FILE = "PecomyTests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "me.karuta.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Karuta;
@@ -1072,7 +1089,7 @@
 			baseConfigurationReference = 3B06ABC94A9E1B8E1D89BFDB /* Pods-Pecomy.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = PecomyTests/Info.plist;
+				INFOPLIST_FILE = "PecomyTests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "me.karuta.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Karuta;
@@ -1136,7 +1153,7 @@
 					"$(PROJECT_DIR)",
 				);
 				GCC_OPTIMIZATION_LEVEL = s;
-				INFOPLIST_FILE = "$(SRCROOT)/Pecomy/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Pecomy/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DSTG";
@@ -1144,7 +1161,7 @@
 				PRODUCT_NAME = Karuta;
 				PROVISIONING_PROFILE = "";
 				SWIFT_DISABLE_SAFETY_CHECKS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "Pecomy/Pecomy-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Pecomy/Supporting Files/Pecomy-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1154,7 +1171,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = PecomyTests/Info.plist;
+				INFOPLIST_FILE = "PecomyTests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "me.karuta.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Karuta;
@@ -1218,7 +1235,7 @@
 					"$(PROJECT_DIR)",
 				);
 				GCC_OPTIMIZATION_LEVEL = s;
-				INFOPLIST_FILE = "$(SRCROOT)/Pecomy/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Pecomy/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DSTG -DFIXED_LOCATION";
@@ -1226,7 +1243,7 @@
 				PRODUCT_NAME = Karuta;
 				PROVISIONING_PROFILE = "";
 				SWIFT_DISABLE_SAFETY_CHECKS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "Pecomy/Pecomy-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Pecomy/Supporting Files/Pecomy-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1236,7 +1253,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = PecomyTests/Info.plist;
+				INFOPLIST_FILE = "PecomyTests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "me.karuta.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Karuta;
