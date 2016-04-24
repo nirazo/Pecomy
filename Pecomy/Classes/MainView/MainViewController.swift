@@ -30,7 +30,7 @@ class MainViewController: UIViewController {
     var currentSwipeCount = 0
     
     let locationManager = PecomyLocationManager()
-    let progressViewController = CardProgressViewController()
+    let progressBar = GameProgressBar(frame: .zero)
     
     let contentView = UIView()
     
@@ -102,17 +102,37 @@ class MainViewController: UIViewController {
             make.height.equalTo(22)
         }
         
+        // TODO: ビュー確認のため一時的に画面下部にビュー挿入。ほんとは引っ張る結果ビューが入る
+        let resultView = UIView()
+        
+        // 結果ビュー
+        resultView.backgroundColor = .whiteColor()
+        self.view.addSubview(resultView)
+        resultView.snp_makeConstraints { make in
+            make.bottom.equalTo(self.view)
+            make.height.equalTo(50)
+            make.left.right.equalTo(self.view)
+        }
+        
+        // 結果ビューラベル
+        let label = UILabel()
+        label.text = NSLocalizedString("SearchingRestaurant", comment: "")
+        label.textColor = UIColor(red: 118.0/255.0, green: 118.0/255.0, blue: 118.0/255.0, alpha: 1.0)
+        label.font = UIFont(name: Const.PECOMY_FONT_BOLD, size: 16)
+        label.textAlignment = .Center
+        resultView.addSubview(label)
+        label.snp_makeConstraints { make in
+            make.size.equalTo(resultView)
+            make.center.equalTo(resultView)
+        }
         
         // プログレスバー
-        self.addChildViewController(self.progressViewController)
-        self.progressViewController.didMoveToParentViewController(self)
-        
-        self.view.addSubview(self.progressViewController.view)
-        self.progressViewController.view.snp_makeConstraints { (make) in
-            make.left.equalTo(self.contentView).offset(10)
-            make.right.equalTo(self.contentView).offset(-10)
-            make.height.equalTo(60)
-            make.bottom.equalTo(self.contentView).offset(5)
+        self.view.addSubview(progressBar)
+        self.progressBar.snp_makeConstraints { make in
+            make.bottom.equalTo(resultView.snp_top).offset(-30)
+            make.width.equalTo(self.contentView).multipliedBy(0.75)
+            make.centerX.equalTo(self.contentView)
+            make.height.equalTo(10)
         }
         
         // ボタン配置
@@ -133,7 +153,7 @@ class MainViewController: UIViewController {
             make.width.equalTo(self.view).multipliedBy(0.25)
             make.height.equalTo(self.view.snp_width).multipliedBy(0.25)
             make.centerX.equalTo(self.view).offset(-self.view.frame.width/4)
-            make.bottom.equalTo(self.progressViewController.view.snp_top).offset(-20)
+            make.bottom.equalTo(self.progressBar.snp_top).offset(-20)
         }
         
         likeButton.snp_makeConstraints { (make) in
@@ -152,8 +172,8 @@ class MainViewController: UIViewController {
         self.categoryLabelView!.snp_makeConstraints { (make) in
             make.left.equalTo(dislikeButton.snp_right)
             make.right.equalTo(likeButton.snp_left)
-            make.top.equalTo(likeButton.snp_bottom).inset(30)
-            make.bottom.equalTo(self.progressViewController.view.snp_top).inset(-5)
+            make.height.equalTo(50)
+            make.centerY.equalTo(likeButton)
         }
         
         
@@ -250,7 +270,7 @@ class MainViewController: UIViewController {
         self.resetCards()
         self.currentSwipeCount = 0
         self.currentProgress = 0.0
-        self.progressViewController.reset()
+        self.progressBar.reset()
         self.canDisplayNextCard = true
     }
 
@@ -609,10 +629,10 @@ extension MainViewController: MDCSwipeToChooseDelegate {
         if (direction == .Right) {
             answer = "like"
             self.currentProgress += INCREMENT_LIKE
-            self.progressViewController.progressWithRatio(self.currentProgress)
+            self.progressBar.progressWithRatio(self.currentProgress)
         } else {
             self.currentProgress += INCREMENT_DISLIKE
-            self.progressViewController.progressWithRatio(self.currentProgress)
+            self.progressBar.progressWithRatio(self.currentProgress)
         }
 
         self.acquireCardWithLatitude(self.currentLatitude!, longitude: self.currentLongitude!, like: answer, maxBudget: self.currentBudget, numOfPeople: self.currentNumOfPeople, genre:self.currentGenre, syncId: cardView.syncID, reset: false)
