@@ -38,8 +38,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         #endif
         
-        let viewController = MainBaseViewController()
-        self.window?.rootViewController = viewController
+        let mainBaseVC = MainBaseViewController()
+        let navVC = self.createTransrateNavVC(mainBaseVC)
+        self.window?.rootViewController = navVC
         self.window!.makeKeyAndVisible()
         return true
     }
@@ -65,5 +66,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
         #endif
         return false
+    }
+    
+    // navVCを透明化
+    func createTransrateNavVC(rootVC: UIViewController) -> UINavigationController {
+        let navVC = UINavigationController(rootViewController: rootVC)
+        navVC.navigationBar.tintColor = UIColor.clearColor()
+        navVC.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        navVC.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: Const.PECOMY_THEME_TEXT_COLOR]
+        navVC.navigationBar.shadowImage = UIImage()
+        return navVC
     }
 }

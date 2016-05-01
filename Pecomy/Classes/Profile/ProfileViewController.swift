@@ -10,14 +10,12 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
+    static let title = "ユーザ"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = Const.PECOMY_BASIC_BACKGROUND_COLOR
         
-        // navbar透明化
-        self.navigationController?.navigationBar.tintColor = UIColor.clearColor()
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationItem.title = "prof"
         // Do any additional setup after loading the view.
     }

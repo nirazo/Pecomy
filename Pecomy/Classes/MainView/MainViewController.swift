@@ -13,6 +13,7 @@ import MDCSwipeToChoose
 import SnapKit
 
 class MainViewController: UIViewController {
+    static let title = Const.PECOMY_TITLE
     
     let ANALYTICS_TRACKING_CODE = AnaylyticsTrackingCode.MainViewController.rawValue
     
@@ -79,7 +80,6 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = Const.PECOMY_TITLE
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainViewController.enterForeground(_:)), name:Const.WILL_ENTER_FOREGROUND_KEY, object: nil)
         
