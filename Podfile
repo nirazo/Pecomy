@@ -14,6 +14,10 @@ target 'Pecomy' do
     pod 'Google/Analytics'
     pod 'GoogleMaps'
     pod 'ObjectMapper'
+    pod 'Bolts'
+    pod 'FBSDKCoreKit'
+    pod 'FBSDKShareKit'
+    pod 'FBSDKLoginKit'
 end
 
 target 'PecomyTests' do

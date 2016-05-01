@@ -10,6 +10,7 @@ import UIKit
 import Fabric
 import Crashlytics
 import GoogleMaps
+import FBSDKCoreKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -34,6 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         #if !RELEASE
             gai.logger.logLevel = GAILogLevel.Verbose  // remove before app release
+            FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         #endif
         
         let viewController = MainBaseViewController()
@@ -50,7 +52,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NSNotificationCenter.defaultCenter().postNotificationName(Const.WILL_ENTER_FOREGROUND_KEY, object: nil)
     }
     
-    func applicationDidBecomeActive(application: UIApplication) {}
+    func applicationDidBecomeActive(application: UIApplication) {
+        #if RELEASE
+            FBSDKAppEvents.activateApp()
+        #endif
+    }
     
     func applicationWillTerminate(application: UIApplication) {}
+    
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        #if RELEASE
+            return FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
+        #endif
+        return false
+    }
 }
