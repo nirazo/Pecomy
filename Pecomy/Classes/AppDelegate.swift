@@ -42,7 +42,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navVC = self.createTransrateNavVC(mainBaseVC)
         self.window?.rootViewController = navVC
         self.window!.makeKeyAndVisible()
-        return true
+        
+        //FBSDKSettings.setAppID("1675450129386792")
+        return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+
+        
+        //return true
     }
     
     func applicationWillResignActive(application: UIApplication) {}
@@ -54,18 +59,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidBecomeActive(application: UIApplication) {
-        #if RELEASE
-            FBSDKAppEvents.activateApp()
-        #endif
+        FBSDKAppEvents.activateApp()
     }
     
     func applicationWillTerminate(application: UIApplication) {}
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
-        #if RELEASE
-            return FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
-        #endif
-        return false
+        return FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
     }
     
     // navVCを透明化

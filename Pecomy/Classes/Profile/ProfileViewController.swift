@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FBSDKCoreKit
+import FBSDKLoginKit
 
 class ProfileViewController: UIViewController {
     
@@ -16,24 +18,51 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = Const.PECOMY_BASIC_BACKGROUND_COLOR
         
-        self.navigationItem.title = "prof"
-        // Do any additional setup after loading the view.
+        let loginButton = FBSDKLoginButton() // ボタンの作成
+        loginButton.center = self.view.center // 位置をcenterに設定
+        loginButton.delegate = self // 認証後の処理のためにdelegateを設定
+        //loginButton.readPermissions = ["public_profile"] // 欲しいデータに合わせてpermissionを設定
+        self.view.addSubview(loginButton) // viewにボタンを追加
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func fetchUserName(completion: (String?) -> ()) {
+        let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, email, name"])
+        var userName: String?
+        graphRequest.startWithCompletionHandler { (connection, result, error) in
+            if error != nil {
+                print("error!!")
+            } else {
+                print("fetched user: \(result)")
+                userName = result.valueForKey("name") as? String
+            }
+            completion(userName)
+        }
     }
-    */
+}
 
+extension ProfileViewController: FBSDKLoginButtonDelegate {
+    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+        print("ログイン開始")
+        if ((error) != nil)
+        {
+            print("error!")
+        }
+        else if result.isCancelled {
+            print("canceled!")
+        }
+        else {
+            self.fetchUserName { userName in
+                print("userName: \(userName)")
+            }
+        }
+    }
+    
+    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+        print("logged out")
+    }
 }
