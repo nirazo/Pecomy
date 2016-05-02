@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 class MainBaseViewController: UIViewController {
     
     var pagingBaseView = UIScrollView()
@@ -58,6 +57,7 @@ class MainBaseViewController: UIViewController {
         self.pagingBaseView.backgroundColor = UIColor.clearColor()
         
         let profileVC = ProfileViewController()
+        profileVC.delegate = self
         self.addChildViewController(profileVC)
         
         let mainVC = MainViewController()
@@ -104,5 +104,11 @@ extension MainBaseViewController: UIScrollViewDelegate {
             break
         }
 
+    }
+}
+
+extension MainBaseViewController: ProfileViewControllerDelegate {
+    func navTitleChanged(title: String) {
+        self.title = title
     }
 }

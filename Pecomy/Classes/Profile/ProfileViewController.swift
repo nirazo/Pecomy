@@ -10,9 +10,15 @@ import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit
 
+protocol ProfileViewControllerDelegate {
+    func navTitleChanged(title: String)
+}
+
 class ProfileViewController: UIViewController {
     
     static let title = "ユーザ"
+    let loginModel = LoginModel()
+    var delegate: ProfileViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,7 +63,18 @@ extension ProfileViewController: FBSDKLoginButtonDelegate {
         }
         else {
             self.fetchUserName { userName in
-                print("userName: \(userName)")
+                let currentToken = FBSDKAccessToken.currentAccessToken().tokenString
+                self.loginModel.fetch(currentToken, handler: {[weak self] (result: PecomyResult<String, PecomyApiClientError>) in
+                    guard let strongSelf = self, userName = userName else { return }
+                    
+                    switch result {
+                    case .Success(let token):
+                        print(token)
+                        strongSelf.delegate?.navTitleChanged(userName)
+                    case .Failure(let error):
+                        print("error: \(error)")
+                    }
+                })
             }
         }
     }

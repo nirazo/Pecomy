@@ -24,9 +24,13 @@ struct Const {
     static let API_GOOD_BASE = "http://karuta.me/dummy_good"
     static let API_BLACKLIST_BASE = "http://karuta.me/dummy_blacklist"
     #elseif STG
-    static let API_BASE_PATH = "http://karuta.me:10091/"
-    static let API_GOOD_BASE = "http://karuta.me:10091/dummy_good"
-    static let API_BLACKLIST_BASE = "http://karuta.me:10091/dummy_blacklist"
+//    static let API_BASE_PATH = "http://karuta.me:10091/"
+//    static let API_GOOD_BASE = "http://karuta.me:10091/dummy_good"
+//    static let API_BLACKLIST_BASE = "http://karuta.me:10091/dummy_blacklist"
+    static let API_BASE_PATH = "http://52.196.159.3:10090/"
+    static let API_GOOD_BASE = "http://52.196.159.3:10090/dummy_good"
+    static let API_BLACKLIST_BASE = "http://52.196.159.3:10090/dummy_blacklist"
+
     #endif
     
     #if FIXED_LOCATION

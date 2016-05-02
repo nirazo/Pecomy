@@ -19,6 +19,9 @@
 		D2092A341B64D721008046D9 /* RestaurantModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2092A331B64D721008046D9 /* RestaurantModel.swift */; };
 		D20B53C81CB8FA8D0025EA58 /* PhotoViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20B53C71CB8FA8D0025EA58 /* PhotoViewerViewController.swift */; };
 		D20D9C1C1C9B1983003BA643 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D20D9C1B1C9B1983003BA643 /* Settings.bundle */; };
+		D21F27971CD6F5D80028F956 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21F27961CD6F5D80028F956 /* LoginRequest.swift */; };
+		D21F27991CD6F60B0028F956 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21F27981CD6F60B0028F956 /* LoginResponse.swift */; };
+		D21F27A11CD6F97B0028F956 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21F27A01CD6F97B0028F956 /* LoginModel.swift */; };
 		D22EC5591BCE34DD00A4B446 /* CategoryLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22EC5581BCE34DD00A4B446 /* CategoryLabelView.swift */; };
 		D23070731B4C30D100833167 /* PecomyLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23070721B4C30D100833167 /* PecomyLocationManager.swift */; };
 		D24A2CC31C255D2A009ACA08 /* ResultHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24A2CC21C255D2A009ACA08 /* ResultHeaderView.swift */; };
@@ -102,6 +105,9 @@
 		D2092A331B64D721008046D9 /* RestaurantModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantModel.swift; sourceTree = "<group>"; };
 		D20B53C71CB8FA8D0025EA58 /* PhotoViewerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewerViewController.swift; sourceTree = "<group>"; };
 		D20D9C1B1C9B1983003BA643 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		D21F27961CD6F5D80028F956 /* LoginRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginRequest.swift; path = Login/LoginRequest.swift; sourceTree = "<group>"; };
+		D21F27981CD6F60B0028F956 /* LoginResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
+		D21F27A01CD6F97B0028F956 /* LoginModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		D22EC5581BCE34DD00A4B446 /* CategoryLabelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryLabelView.swift; sourceTree = "<group>"; };
 		D23070721B4C30D100833167 /* PecomyLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PecomyLocationManager.swift; sourceTree = "<group>"; };
 		D24A2CC21C255D2A009ACA08 /* ResultHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultHeaderView.swift; sourceTree = "<group>"; };
@@ -219,8 +225,18 @@
 				D2092A331B64D721008046D9 /* RestaurantModel.swift */,
 				16AAD0381C3E835600ADCF87 /* ResultModel.swift */,
 				D2BE5F3B1C4B78AB00B47387 /* RichTag.swift */,
+				D21F27A01CD6F97B0028F956 /* LoginModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		D21F27951CD6F5B10028F956 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				D21F27961CD6F5D80028F956 /* LoginRequest.swift */,
+				D21F27981CD6F60B0028F956 /* LoginResponse.swift */,
+			);
+			name = Login;
 			sourceTree = "<group>";
 		};
 		D24B29221B78773400419B9B /* Detail */ = {
@@ -268,6 +284,7 @@
 		D253A9E61C322B5F00D65D20 /* APIClient */ = {
 			isa = PBXGroup;
 			children = (
+				D21F27951CD6F5B10028F956 /* Login */,
 				164718B21C3D226100F50D33 /* Card */,
 				164718B31C3D226900F50D33 /* Result */,
 				D253A9E71C322B7D00D65D20 /* PecomyApiClient.swift */,
@@ -668,6 +685,7 @@
 				D23070731B4C30D100833167 /* PecomyLocationManager.swift in Sources */,
 				D292AA191C5FB30800D66A87 /* Budget.swift in Sources */,
 				D292AA1B1C5FB5CB00D66A87 /* NumOfPeople.swift in Sources */,
+				D21F27991CD6F60B0028F956 /* LoginResponse.swift in Sources */,
 				D203D3141B3E739600FC9DB8 /* Const.swift in Sources */,
 				D2A99A161C12D3E700C16F04 /* OnetimeFilterCell.swift in Sources */,
 				D27BB9D41B36F4A900F8D902 /* MainViewController.swift in Sources */,
@@ -680,6 +698,7 @@
 				D272F45C1B9C25E4009564A0 /* LoadingView.swift in Sources */,
 				164718B71C3D22D700F50D33 /* CardResponse.swift in Sources */,
 				D2092A341B64D721008046D9 /* RestaurantModel.swift in Sources */,
+				D21F27A11CD6F97B0028F956 /* LoginModel.swift in Sources */,
 				D292AA171C5FAB8700D66A87 /* OnetimeFilterCollectionViewConfig.swift in Sources */,
 				D28901361C439FC9005BDF84 /* TelButton.swift in Sources */,
 				D289013E1C4A01E8005BDF84 /* PictureCollectionViewCell.swift in Sources */,
@@ -705,6 +724,7 @@
 				D253A9EC1C32309900D65D20 /* PecomyApiResponse.swift in Sources */,
 				D289013C1C49FF54005BDF84 /* RestaurantDetailViewRichTagCollectionViewConfig.swift in Sources */,
 				D2E36EC71C2D615D00DEE726 /* OtherResultCardContentView.swift in Sources */,
+				D21F27971CD6F5D80028F956 /* LoginRequest.swift in Sources */,
 				D28901431C4A09EF005BDF84 /* PictureCollectionViewFlowLayout.swift in Sources */,
 				D253A9E51C32236900D65D20 /* Restaurant.swift in Sources */,
 				D24B291F1B772EFF00419B9B /* ResultViewController.swift in Sources */,
