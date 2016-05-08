@@ -22,6 +22,7 @@
 		D21F27971CD6F5D80028F956 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21F27961CD6F5D80028F956 /* LoginRequest.swift */; };
 		D21F27991CD6F60B0028F956 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21F27981CD6F60B0028F956 /* LoginResponse.swift */; };
 		D21F27A11CD6F97B0028F956 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21F27A01CD6F97B0028F956 /* LoginModel.swift */; };
+		D21F27A31CD70BA10028F956 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21F27A21CD70BA10028F956 /* KeychainManager.swift */; };
 		D22EC5591BCE34DD00A4B446 /* CategoryLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22EC5581BCE34DD00A4B446 /* CategoryLabelView.swift */; };
 		D23070731B4C30D100833167 /* PecomyLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23070721B4C30D100833167 /* PecomyLocationManager.swift */; };
 		D24A2CC31C255D2A009ACA08 /* ResultHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24A2CC21C255D2A009ACA08 /* ResultHeaderView.swift */; };
@@ -108,6 +109,7 @@
 		D21F27961CD6F5D80028F956 /* LoginRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginRequest.swift; path = Login/LoginRequest.swift; sourceTree = "<group>"; };
 		D21F27981CD6F60B0028F956 /* LoginResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		D21F27A01CD6F97B0028F956 /* LoginModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		D21F27A21CD70BA10028F956 /* KeychainManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		D22EC5581BCE34DD00A4B446 /* CategoryLabelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryLabelView.swift; sourceTree = "<group>"; };
 		D23070721B4C30D100833167 /* PecomyLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PecomyLocationManager.swift; sourceTree = "<group>"; };
 		D24A2CC21C255D2A009ACA08 /* ResultHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultHeaderView.swift; sourceTree = "<group>"; };
@@ -334,6 +336,7 @@
 				D272F45B1B9C25E4009564A0 /* LoadingView.swift */,
 				D23070721B4C30D100833167 /* PecomyLocationManager.swift */,
 				D292F7381B92DFFC005700AE /* Utils.swift */,
+				D21F27A21CD70BA10028F956 /* KeychainManager.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -724,6 +727,7 @@
 				D253A9EC1C32309900D65D20 /* PecomyApiResponse.swift in Sources */,
 				D289013C1C49FF54005BDF84 /* RestaurantDetailViewRichTagCollectionViewConfig.swift in Sources */,
 				D2E36EC71C2D615D00DEE726 /* OtherResultCardContentView.swift in Sources */,
+				D21F27A31CD70BA10028F956 /* KeychainManager.swift in Sources */,
 				D21F27971CD6F5D80028F956 /* LoginRequest.swift in Sources */,
 				D28901431C4A09EF005BDF84 /* PictureCollectionViewFlowLayout.swift in Sources */,
 				D253A9E51C32236900D65D20 /* Restaurant.swift in Sources */,

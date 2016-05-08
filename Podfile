@@ -18,6 +18,7 @@ target 'Pecomy' do
     pod 'FBSDKCoreKit'
     pod 'FBSDKShareKit'
     pod 'FBSDKLoginKit'
+    pod 'KeychainAccess'
 end
 
 target 'PecomyTests' do

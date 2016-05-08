@@ -36,14 +36,14 @@ class ProfileViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    // TODO: - FBのログインは別途FBLoginModelとかで切り出した方が良いかも
     func fetchUserName(completion: (String?) -> ()) {
-        let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, email, name"])
+        let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name"])
         var userName: String?
         graphRequest.startWithCompletionHandler { (connection, result, error) in
             if error != nil {
                 print("error!!")
             } else {
-                print("fetched user: \(result)")
                 userName = result.valueForKey("name") as? String
             }
             completion(userName)
@@ -66,12 +66,12 @@ extension ProfileViewController: FBSDKLoginButtonDelegate {
                 let currentToken = FBSDKAccessToken.currentAccessToken().tokenString
                 self.loginModel.fetch(currentToken, handler: {[weak self] (result: PecomyResult<String, PecomyApiClientError>) in
                     guard let strongSelf = self, userName = userName else { return }
-                    
                     switch result {
-                    case .Success(let token):
-                        print(token)
+                    case .Success(_):
                         strongSelf.delegate?.navTitleChanged(userName)
                     case .Failure(let error):
+                        let fb = FBSDKLoginManager()
+                        fb.logOut()
                         print("error: \(error)")
                     }
                 })
@@ -80,6 +80,6 @@ extension ProfileViewController: FBSDKLoginButtonDelegate {
     }
     
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
-        print("logged out")
+        KeychainManager.removeValue(Const.UserTokenKeychainKey)
     }
 }

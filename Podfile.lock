@@ -32,6 +32,7 @@ PODS:
   - GoogleSymbolUtilities (1.1.0)
   - GoogleUtilities (1.2.0):
     - GoogleSymbolUtilities (~> 1.0)
+  - KeychainAccess (2.3.5)
   - MDCSwipeToChoose (0.2.3)
   - ObjectMapper (1.1.5)
   - R.swift (2.0.0):
@@ -53,6 +54,7 @@ DEPENDENCIES:
   - FBSDKShareKit
   - Google/Analytics
   - GoogleMaps
+  - KeychainAccess
   - MDCSwipeToChoose
   - ObjectMapper
   - R.swift
@@ -75,6 +77,7 @@ SPEC CHECKSUMS:
   GoogleNetworkingUtilities: ec1e9911aca811eb18b7144394fee6168b607785
   GoogleSymbolUtilities: eb3965ea12710569c7b80db198a39e39b18613f7
   GoogleUtilities: 85f8ad6b251544286a97163133d042ec95f889c5
+  KeychainAccess: e283c1981a6c5655e1984cd411c6faf16fa165ae
   MDCSwipeToChoose: 56239d98b4558c66e7c3c9069482befd26092270
   ObjectMapper: 528b1a6677a6acac7747edd508576983e76a9148
   R.swift: ceb3d2897a26bb5811e08f531184bbba8e4a7110

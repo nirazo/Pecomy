@@ -94,4 +94,7 @@ struct Const {
     
     // ウインドウのサイズ
     static let WindowSize = UIScreen.mainScreen().bounds.size
+    
+    // Keychain
+    static let UserTokenKeychainKey = "PecomyUserToken"
 }
