@@ -53,8 +53,7 @@ class ProfileViewController: UIViewController {
 
 extension ProfileViewController: FBSDKLoginButtonDelegate {
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
-        print("ログイン開始")
-        if ((error) != nil)
+        if error != nil
         {
             print("error!")
         }

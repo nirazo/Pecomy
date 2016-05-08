@@ -348,7 +348,6 @@ class MainViewController: UIViewController {
                 }
                 completion?(true)
             case .Failure(let error):
-                print("error: \(error)")
                 switch error.type {
                 case .NoResult:
                     if (reset) {

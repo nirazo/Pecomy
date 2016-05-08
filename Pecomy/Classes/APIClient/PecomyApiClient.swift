@@ -52,7 +52,6 @@ class PecomyApiClient {
         let alamofireRequest = manager.request(request.method, url, parameters: request.params, encoding: request.encoding, headers: headers)
             .validate()
             .response {(httpRequest, httpResponse, data, error) in
-                print("request: \(httpRequest!.allHTTPHeaderFields)")
                 if let _ = httpRequest, _ = httpResponse {
                     do {
                         let options = NSJSONWritingOptions()

@@ -91,7 +91,6 @@ class MainBaseViewController: UIViewController {
 
 extension MainBaseViewController: UIScrollViewDelegate {
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-        print("didend")
         let currentPage = Int(scrollView.contentOffset.x / scrollView.frame.maxX)
         switch currentPage {
         case 0:
