@@ -37,7 +37,8 @@ struct Const {
     static let FIXED_LONGITUDE: Double = 0.0
     #endif
     
-    static let PECOMY_THEME_COLOR = UIColor(red: 78.0/255.0, green: 172.0/255.0, blue: 166.0/255.0, alpha: 1.0)
+//    static let PECOMY_THEME_COLOR = UIColor(red: 78.0/255.0, green: 172.0/255.0, blue: 166.0/255.0, alpha: 1.0)
+    static let PECOMY_THEME_COLOR = UIColor(red: 207.0/255.0, green: 83.0/255.0, blue: 41.0/255.0, alpha: 1.0)
     static let PECOMY_THEME_TEXT_COLOR = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 1.0)
     
     static let RANKING_TOP_COLOR = UIColor(red: 255.0/255.0, green: 170.0/255.0, blue: 0/255.0, alpha: 1.0)
