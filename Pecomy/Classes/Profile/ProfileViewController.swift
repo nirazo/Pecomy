@@ -27,27 +27,13 @@ class ProfileViewController: UIViewController {
         let loginButton = FBSDKLoginButton() // ボタンの作成
         loginButton.center = self.view.center // 位置をcenterに設定
         loginButton.delegate = self // 認証後の処理のためにdelegateを設定
-        //loginButton.readPermissions = ["public_profile"] // 欲しいデータに合わせてpermissionを設定
+        loginButton.readPermissions = ["public_profile", "email", "user_friends"] // 欲しいデータに合わせてpermissionを設定
         self.view.addSubview(loginButton) // viewにボタンを追加
         
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-    }
-    
-    // TODO: - FBのログインは別途FBLoginModelとかで切り出した方が良いかも
-    func fetchUserName(completion: (String?) -> ()) {
-        let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name"])
-        var userName: String?
-        graphRequest.startWithCompletionHandler { (connection, result, error) in
-            if error != nil {
-                print("error!!")
-            } else {
-                userName = result.valueForKey("name") as? String
-            }
-            completion(userName)
-        }
     }
 }
 
@@ -61,24 +47,23 @@ extension ProfileViewController: FBSDKLoginButtonDelegate {
             print("canceled!")
         }
         else {
-            self.fetchUserName { userName in
-                let currentToken = FBSDKAccessToken.currentAccessToken().tokenString
-                self.loginModel.fetch(currentToken, handler: {[weak self] (result: PecomyResult<String, PecomyApiClientError>) in
-                    guard let strongSelf = self, userName = userName else { return }
-                    switch result {
-                    case .Success(_):
-                        strongSelf.delegate?.navTitleChanged(userName)
-                    case .Failure(let error):
-                        let fb = FBSDKLoginManager()
-                        fb.logOut()
-                        print("error: \(error)")
-                    }
+            let currentToken = FBSDKAccessToken.currentAccessToken().tokenString
+            self.loginModel.fetch(currentToken, handler: {[weak self] (result: PecomyResult<PecomyUser, PecomyApiClientError>) in
+                guard let strongSelf = self else { return }
+                switch result {
+                case .Success(let user):
+                    strongSelf.delegate?.navTitleChanged(user.userName)
+                case .Failure(let error):
+                    let fb = FBSDKLoginManager()
+                    fb.logOut()
+                    KeychainManager.removePecomyUserToken()
+                    print("error: \(error)")
+                }
                 })
-            }
         }
     }
     
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
-        KeychainManager.removeValue(Const.UserTokenKeychainKey)
+        KeychainManager.removePecomyUserToken()
     }
 }

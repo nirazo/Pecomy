@@ -42,11 +42,11 @@ class PecomyApiClient {
         
         // ヘッダパラメータのセット
         var headers = [String: String]()
-        if let token = KeychainManager.getStringValue(Const.UserTokenKeychainKey) {
+        if let token = KeychainManager.getPecomyUserToken() {
             headers[self.loginHeaderKey] = "Bearer \(token)"
         }
         for (key, value) in request.headerParams {
-            headers = [key:value]
+            headers[key] = value
         }
         
         let alamofireRequest = manager.request(request.method, url, parameters: request.params, encoding: request.encoding, headers: headers)

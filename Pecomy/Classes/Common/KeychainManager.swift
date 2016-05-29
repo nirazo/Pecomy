@@ -12,27 +12,27 @@ import KeychainAccess
 class KeychainManager {
     private static let keychain = Keychain()
     
-    static func setStringValue(value: String, key: String) {
+    static func setPecomyUserToken(token: String) {
         do {
-          try self.keychain.set(value, key: key)
+          try self.keychain.set(token, key: Const.PecomyUserTokenKeychainKey)
         } catch let error {
-            fatalError("Keychain Error: failed to write value(\(value)) to key(\(key)) : \(error)")
+            fatalError("Keychain error: failed to set pecomy user token value(\(token)) to key(\(Const.PecomyUserTokenKeychainKey)) : \(error)")
         }
     }
     
-    static func getStringValue(key: String) -> String? {
+    static func getPecomyUserToken() -> String? {
         do {
-            return try self.keychain.getString(key)
+            return try self.keychain.getString(Const.PecomyUserTokenKeychainKey)
         } catch let error {
-            fatalError("Keychain Error: failed to get value for key(\(key)) : \(error)")
+            fatalError("Keychain Error: failed to get pecomy user token value for key(\(Const.PecomyUserTokenKeychainKey)) : \(error)")
         }
     }
     
-    static func removeValue(key: String) {
+    static func removePecomyUserToken() {
         do {
-            try self.keychain.remove(key)
+            try self.keychain.remove(Const.PecomyUserTokenKeychainKey)
         } catch let error {
-            fatalError("Keychain Error: failed to remove value for key(\(key)) : \(error)")
+            fatalError("Keychain Error: failed to remove pecomy user token value for key(\(Const.PecomyUserTokenKeychainKey)) : \(error)")
         }
     }
     

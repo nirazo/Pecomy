@@ -28,7 +28,7 @@ class MainBaseViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = Const.PECOMY_TITLE
+        self.title = Const.APP_TITLE
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainBaseViewController.enterForeground(_:)), name:Const.WILL_ENTER_FOREGROUND_KEY, object: nil)
         
         //単色背景
@@ -59,9 +59,11 @@ class MainBaseViewController: UIViewController {
         let profileVC = ProfileViewController()
         profileVC.delegate = self
         self.addChildViewController(profileVC)
+        profileVC.didMoveToParentViewController(self)
         
         let mainVC = MainViewController()
         self.addChildViewController(mainVC)
+        mainVC.didMoveToParentViewController(self)
         
         
         self.pagingBaseView.contentSize = CGSize(width: self.pagingBaseView.frame.width * CGFloat(self.childViewControllers.count), height: self.pagingBaseView.frame.height)

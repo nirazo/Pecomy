@@ -58,6 +58,7 @@
 		D28901401C4A01FD005BDF84 /* RichTagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D289013F1C4A01FD005BDF84 /* RichTagCollectionViewCell.swift */; };
 		D28901431C4A09EF005BDF84 /* PictureCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28901421C4A09EF005BDF84 /* PictureCollectionViewFlowLayout.swift */; };
 		D28A7A0C1B47AE900025371A /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A7A0B1B47AE900025371A /* CardView.swift */; };
+		D28B54131CFAE85D008FDCC1 /* PecomyUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28B54121CFAE85D008FDCC1 /* PecomyUser.swift */; };
 		D292AA171C5FAB8700D66A87 /* OnetimeFilterCollectionViewConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D292AA161C5FAB8700D66A87 /* OnetimeFilterCollectionViewConfig.swift */; };
 		D292AA191C5FB30800D66A87 /* Budget.swift in Sources */ = {isa = PBXBuildFile; fileRef = D292AA181C5FB30800D66A87 /* Budget.swift */; };
 		D292AA1B1C5FB5CB00D66A87 /* NumOfPeople.swift in Sources */ = {isa = PBXBuildFile; fileRef = D292AA1A1C5FB5CB00D66A87 /* NumOfPeople.swift */; };
@@ -149,6 +150,7 @@
 		D289013F1C4A01FD005BDF84 /* RichTagCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RichTagCollectionViewCell.swift; sourceTree = "<group>"; };
 		D28901421C4A09EF005BDF84 /* PictureCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		D28A7A0B1B47AE900025371A /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		D28B54121CFAE85D008FDCC1 /* PecomyUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PecomyUser.swift; sourceTree = "<group>"; };
 		D292AA161C5FAB8700D66A87 /* OnetimeFilterCollectionViewConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnetimeFilterCollectionViewConfig.swift; sourceTree = "<group>"; };
 		D292AA181C5FB30800D66A87 /* Budget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Budget.swift; sourceTree = "<group>"; };
 		D292AA1A1C5FB5CB00D66A87 /* NumOfPeople.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumOfPeople.swift; sourceTree = "<group>"; };
@@ -279,6 +281,7 @@
 			isa = PBXGroup;
 			children = (
 				D253A9E41C32236900D65D20 /* Restaurant.swift */,
+				D28B54121CFAE85D008FDCC1 /* PecomyUser.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -719,6 +722,7 @@
 				D24B292E1B7895DA00419B9B /* TutorialViewController.swift in Sources */,
 				D2A594E81C8C77A400DE1012 /* R.generated.swift in Sources */,
 				D2DD65A21B7714DA0046A50C /* OtherResultsCard.swift in Sources */,
+				D28B54131CFAE85D008FDCC1 /* PecomyUser.swift in Sources */,
 				D2A99A1A1C12D3FA00C16F04 /* OnetimeFilterViewController.swift in Sources */,
 				D20B53C81CB8FA8D0025EA58 /* PhotoViewerViewController.swift in Sources */,
 				D27BB9D21B36F4A900F8D902 /* AppDelegate.swift in Sources */,

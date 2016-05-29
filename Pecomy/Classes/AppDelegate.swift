@@ -35,15 +35,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         #if !RELEASE
             gai.logger.logLevel = GAILogLevel.Verbose  // remove before app release
-            FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         #endif
         
         let mainBaseVC = MainBaseViewController()
-        let navVC = self.createTransrateNavVC(mainBaseVC)
+        let navVC = self.createTranslucentNavVC(mainBaseVC)
         self.window?.rootViewController = navVC
         self.window!.makeKeyAndVisible()
         
-        //FBSDKSettings.setAppID("1675450129386792")
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
 
         
@@ -69,7 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     // navVCを透明化
-    func createTransrateNavVC(rootVC: UIViewController) -> UINavigationController {
+    func createTranslucentNavVC(rootVC: UIViewController) -> UINavigationController {
         let navVC = UINavigationController(rootViewController: rootVC)
         navVC.navigationBar.tintColor = UIColor.clearColor()
         navVC.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)

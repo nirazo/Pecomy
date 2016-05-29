@@ -13,7 +13,7 @@ import MDCSwipeToChoose
 import SnapKit
 
 class MainViewController: UIViewController {
-    static let title = Const.PECOMY_TITLE
+    static let title = Const.APP_TITLE
     
     let ANALYTICS_TRACKING_CODE = AnaylyticsTrackingCode.MainViewController.rawValue
     

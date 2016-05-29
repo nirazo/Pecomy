@@ -10,7 +10,7 @@ import Foundation
 import ObjectMapper
 
 class LoginResponse: PecomyApiResponse {
-    internal var pecomyToken = String()
+    internal var pecomyUser = PecomyUser()
     
     required init?(_ map: Map) {
         super.init(map)
@@ -18,6 +18,7 @@ class LoginResponse: PecomyApiResponse {
     
     override func mapping(map: Map) {
         super.mapping(map)
-        self.pecomyToken <- map["access_token"]
+        self.pecomyUser.accessToken <- map["access_token"]
+        self.pecomyUser.userName <- map["name"]
     }
 }

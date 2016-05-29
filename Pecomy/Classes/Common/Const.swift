@@ -20,16 +20,13 @@ struct Const {
     static let API_GOOD_BASE = "http://private-552a20-pecomyapi.apiary-mock.com/dummy_good"
     static let API_BLACKLIST_BASE = "http://private-552a20-pecomyapi.apiary-mock.com/dummy_blacklist"
     #elseif RELEASE
-    static let API_BASE_PATH = "http://karuta.me/"
-    static let API_GOOD_BASE = "http://karuta.me/dummy_good"
-    static let API_BLACKLIST_BASE = "http://karuta.me/dummy_blacklist"
+    static let API_BASE_PATH = "http://peco.my/"
+    static let API_GOOD_BASE = "http://peco.my/dummy_good"
+    static let API_BLACKLIST_BASE = "http://peco.my/dummy_blacklist"
     #elseif STG
-//    static let API_BASE_PATH = "http://karuta.me:10091/"
-//    static let API_GOOD_BASE = "http://karuta.me:10091/dummy_good"
-//    static let API_BLACKLIST_BASE = "http://karuta.me:10091/dummy_blacklist"
-    static let API_BASE_PATH = "http://52.196.159.3:10090/"
-    static let API_GOOD_BASE = "http://52.196.159.3:10090/dummy_good"
-    static let API_BLACKLIST_BASE = "http://52.196.159.3:10090/dummy_blacklist"
+    static let API_BASE_PATH = "http://peco.my:10090/"
+    static let API_GOOD_BASE = "http://peco.my:10090/dummy_good"
+    static let API_BLACKLIST_BASE = "http://peco.my:10090/dummy_blacklist"
 
     #endif
     
@@ -50,7 +47,7 @@ struct Const {
     static let BASIC_GRAY_COLOR = UIColor(red: 153.0/255.0, green: 153.0/255.0, blue: 153.0/255.0, alpha: 1.0)
     static let RIGHT_GRAY_COLOR = UIColor(red: 204.0/255.0, green: 204.0/255.0, blue: 204.0/255.0, alpha: 1.0)
     
-    static let PECOMY_TITLE = "Karuta"
+    static let APP_TITLE = "Karuta"
     
     static let PECOMY_RANK_COLOR = [UIColor(red: 255/255.0, green: 180.0/255.0, blue: 0.0/255.0, alpha: 1.0),
         UIColor(red: 124.0/255.0, green: 132.0/255.0, blue: 139.0/255.0, alpha: 1.0),
@@ -96,5 +93,5 @@ struct Const {
     static let WindowSize = UIScreen.mainScreen().bounds.size
     
     // Keychain
-    static let UserTokenKeychainKey = "PecomyUserToken"
+    static let PecomyUserTokenKeychainKey = "PecomyUserToken"
 }

@@ -13,9 +13,9 @@ class LoginRequest: PecomyApiRequest {
     typealias Response = LoginResponse
     
     var endpoint: String
-    var method: Alamofire.Method = Method.POST
+    var method: Alamofire.Method = .POST
     var params: [String: AnyObject] = [:]
-    var encoding: ParameterEncoding = ParameterEncoding.URL
+    var encoding: ParameterEncoding = .URL
     
     init(fbAccessToken: String) {
         endpoint = "login"
