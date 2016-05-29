@@ -1,0 +1,1309 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		164718B51C3D22AD00F50D33 /* CardRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164718B41C3D22AD00F50D33 /* CardRequest.swift */; };
+		164718B71C3D22D700F50D33 /* CardResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164718B61C3D22D700F50D33 /* CardResponse.swift */; };
+		164718B91C3D273C00F50D33 /* ResultResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164718B81C3D273C00F50D33 /* ResultResponse.swift */; };
+		164718BB1C3D274D00F50D33 /* ResultRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164718BA1C3D274D00F50D33 /* ResultRequest.swift */; };
+		16AAD0391C3E835600ADCF87 /* ResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AAD0381C3E835600ADCF87 /* ResultModel.swift */; };
+		16B6744E1C3BE59C009D039C /* PecomyApiClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B6744D1C3BE59C009D039C /* PecomyApiClientError.swift */; };
+		2CB568F7041EB25086535E91 /* Pods_Pecomy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49542B923B14A000A93FD141 /* Pods_Pecomy.framework */; };
+		D203D3141B3E739600FC9DB8 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = D203D3131B3E739600FC9DB8 /* Const.swift */; };
+		D2092A2C1B637460008046D9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D2092A2E1B637460008046D9 /* Localizable.strings */; };
+		D2092A341B64D721008046D9 /* RestaurantModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2092A331B64D721008046D9 /* RestaurantModel.swift */; };
+		D20B53C81CB8FA8D0025EA58 /* PhotoViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20B53C71CB8FA8D0025EA58 /* PhotoViewerViewController.swift */; };
+		D20D9C1C1C9B1983003BA643 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D20D9C1B1C9B1983003BA643 /* Settings.bundle */; };
+		D22EC5591BCE34DD00A4B446 /* CategoryLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22EC5581BCE34DD00A4B446 /* CategoryLabelView.swift */; };
+		D23070731B4C30D100833167 /* PecomyLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23070721B4C30D100833167 /* PecomyLocationManager.swift */; };
+		D24A2CC31C255D2A009ACA08 /* ResultHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24A2CC21C255D2A009ACA08 /* ResultHeaderView.swift */; };
+		D24B291F1B772EFF00419B9B /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24B291E1B772EFF00419B9B /* ResultViewController.swift */; };
+		D24B29211B78748A00419B9B /* ResultCardBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24B29201B78748A00419B9B /* ResultCardBase.swift */; };
+		D24B29241B78775300419B9B /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24B29231B78775300419B9B /* DetailViewController.swift */; };
+		D24B292E1B7895DA00419B9B /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24B292D1B7895DA00419B9B /* TutorialViewController.swift */; };
+		D24B29461B79F56E00419B9B /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D24B29451B79F56E00419B9B /* Launch Screen.xib */; };
+		D253A9E01C310D7B00D65D20 /* TopResultCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = D253A9DF1C310D7B00D65D20 /* TopResultCard.xib */; };
+		D253A9E21C321BCB00D65D20 /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = D253A9E11C321BCB00D65D20 /* Int.swift */; };
+		D253A9E51C32236900D65D20 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = D253A9E41C32236900D65D20 /* Restaurant.swift */; };
+		D253A9E81C322B7D00D65D20 /* PecomyApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D253A9E71C322B7D00D65D20 /* PecomyApiClient.swift */; };
+		D253A9EA1C32308E00D65D20 /* PecomyApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D253A9E91C32308E00D65D20 /* PecomyApiRequest.swift */; };
+		D253A9EC1C32309900D65D20 /* PecomyApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D253A9EB1C32309900D65D20 /* PecomyApiResponse.swift */; };
+		D253A9EE1C3233AF00D65D20 /* PecomyResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D253A9ED1C3233AF00D65D20 /* PecomyResult.swift */; };
+		D272F45C1B9C25E4009564A0 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D272F45B1B9C25E4009564A0 /* LoadingView.swift */; };
+		D2731FDD1C79A81200E8E5E9 /* MainBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2731FDC1C79A81200E8E5E9 /* MainBaseViewController.swift */; };
+		D2731FE01C79A85300E8E5E9 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2731FDF1C79A85300E8E5E9 /* ProfileViewController.swift */; };
+		D2731FE31C79A88000E8E5E9 /* RestaurantLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2731FE21C79A88000E8E5E9 /* RestaurantLogViewController.swift */; };
+		D2731FE71C849DE800E8E5E9 /* BackgroundImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2731FE61C849DE800E8E5E9 /* BackgroundImagePicker.swift */; };
+		D27BB9D21B36F4A900F8D902 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27BB9D11B36F4A900F8D902 /* AppDelegate.swift */; };
+		D27BB9D41B36F4A900F8D902 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27BB9D31B36F4A900F8D902 /* MainViewController.swift */; };
+		D27BB9D91B36F4A900F8D902 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D27BB9D81B36F4A900F8D902 /* Images.xcassets */; };
+		D27BB9E81B36F4A900F8D902 /* PecomyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27BB9E71B36F4A900F8D902 /* PecomyTests.swift */; };
+		D289012E1C437D8E005BDF84 /* RestaurantDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D289012D1C437D8E005BDF84 /* RestaurantDetailView.swift */; };
+		D28901301C437D9D005BDF84 /* RestaurantDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D289012F1C437D9D005BDF84 /* RestaurantDetailView.xib */; };
+		D28901321C438FEC005BDF84 /* CommentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28901311C438FEC005BDF84 /* CommentsView.swift */; };
+		D28901341C438FFF005BDF84 /* CommentContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28901331C438FFF005BDF84 /* CommentContentView.swift */; };
+		D28901361C439FC9005BDF84 /* TelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28901351C439FC9005BDF84 /* TelButton.swift */; };
+		D289013A1C49FF24005BDF84 /* RestaurantDetailViewPictureCollectionViewConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28901391C49FF24005BDF84 /* RestaurantDetailViewPictureCollectionViewConfig.swift */; };
+		D289013C1C49FF54005BDF84 /* RestaurantDetailViewRichTagCollectionViewConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D289013B1C49FF54005BDF84 /* RestaurantDetailViewRichTagCollectionViewConfig.swift */; };
+		D289013E1C4A01E8005BDF84 /* PictureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D289013D1C4A01E8005BDF84 /* PictureCollectionViewCell.swift */; };
+		D28901401C4A01FD005BDF84 /* RichTagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D289013F1C4A01FD005BDF84 /* RichTagCollectionViewCell.swift */; };
+		D28901431C4A09EF005BDF84 /* PictureCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28901421C4A09EF005BDF84 /* PictureCollectionViewFlowLayout.swift */; };
+		D28A7A0C1B47AE900025371A /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A7A0B1B47AE900025371A /* CardView.swift */; };
+		D292AA171C5FAB8700D66A87 /* OnetimeFilterCollectionViewConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D292AA161C5FAB8700D66A87 /* OnetimeFilterCollectionViewConfig.swift */; };
+		D292AA191C5FB30800D66A87 /* Budget.swift in Sources */ = {isa = PBXBuildFile; fileRef = D292AA181C5FB30800D66A87 /* Budget.swift */; };
+		D292AA1B1C5FB5CB00D66A87 /* NumOfPeople.swift in Sources */ = {isa = PBXBuildFile; fileRef = D292AA1A1C5FB5CB00D66A87 /* NumOfPeople.swift */; };
+		D292F7391B92DFFC005700AE /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D292F7381B92DFFC005700AE /* Utils.swift */; };
+		D2A594E81C8C77A400DE1012 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A594E71C8C77A400DE1012 /* R.generated.swift */; };
+		D2A99A161C12D3E700C16F04 /* OnetimeFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A99A151C12D3E700C16F04 /* OnetimeFilterCell.swift */; };
+		D2A99A1A1C12D3FA00C16F04 /* OnetimeFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A99A191C12D3FA00C16F04 /* OnetimeFilterViewController.swift */; };
+		D2A99A571C17367E00C16F04 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2A99A561C17367E00C16F04 /* GoogleService-Info.plist */; };
+		D2BE5F3C1C4B78AB00B47387 /* RichTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BE5F3B1C4B78AB00B47387 /* RichTag.swift */; };
+		D2C9B24C1CCB9099003A33B9 /* GameProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C9B24B1CCB9099003A33B9 /* GameProgressBar.swift */; };
+		D2DD65A01B7714CA0046A50C /* TopResultCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DD659F1B7714CA0046A50C /* TopResultCard.swift */; };
+		D2DD65A21B7714DA0046A50C /* OtherResultsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DD65A11B7714DA0046A50C /* OtherResultsCard.swift */; };
+		D2DEEF1E1BD72F7400FDBB8F /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DEEF1D1BD72F7400FDBB8F /* Genre.swift */; };
+		D2E36EC71C2D615D00DEE726 /* OtherResultCardContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E36EC61C2D615D00DEE726 /* OtherResultCardContentView.swift */; };
+		D2EFEB591C51282A0092DFC9 /* CardOverlayTextLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EFEB581C51282A0092DFC9 /* CardOverlayTextLabelView.swift */; };
+		D2EFEB5C1C567F2F0092DFC9 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EFEB5B1C567F2F0092DFC9 /* MapViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D27BB9E21B36F4A900F8D902 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D27BB9C41B36F4A900F8D902 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D27BB9CB1B36F4A900F8D902;
+			remoteInfo = Karuta;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		164718B41C3D22AD00F50D33 /* CardRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardRequest.swift; sourceTree = "<group>"; };
+		164718B61C3D22D700F50D33 /* CardResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardResponse.swift; sourceTree = "<group>"; };
+		164718B81C3D273C00F50D33 /* ResultResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultResponse.swift; sourceTree = "<group>"; };
+		164718BA1C3D274D00F50D33 /* ResultRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultRequest.swift; sourceTree = "<group>"; };
+		16AAD0381C3E835600ADCF87 /* ResultModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultModel.swift; sourceTree = "<group>"; };
+		16B6744D1C3BE59C009D039C /* PecomyApiClientError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PecomyApiClientError.swift; sourceTree = "<group>"; };
+		375106292F5446FE65E648DD /* Pods-Pecomy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pecomy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pecomy/Pods-Pecomy.debug.xcconfig"; sourceTree = "<group>"; };
+		3B06ABC94A9E1B8E1D89BFDB /* Pods-Pecomy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pecomy.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pecomy/Pods-Pecomy.release.xcconfig"; sourceTree = "<group>"; };
+		43B1BFF2A757DF7E24669461 /* Pods-Pecomy.stg.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pecomy.stg.xcconfig"; path = "Pods/Target Support Files/Pods-Pecomy/Pods-Pecomy.stg.xcconfig"; sourceTree = "<group>"; };
+		49542B923B14A000A93FD141 /* Pods_Pecomy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pecomy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		86F70B85C5A086B7590989E7 /* Pods-Pecomy.stg_fixed_location.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pecomy.stg_fixed_location.xcconfig"; path = "Pods/Target Support Files/Pods-Pecomy/Pods-Pecomy.stg_fixed_location.xcconfig"; sourceTree = "<group>"; };
+		D203D3131B3E739600FC9DB8 /* Const.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
+		D2092A261B6356B5008046D9 /* Pods-Pecomy.debug_fixed_location.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-Pecomy.debug_fixed_location.xcconfig"; path = "Pods/Target Support Files/Pods-Pecomy/Pods-Pecomy.debug_fixed_location.xcconfig"; sourceTree = "<group>"; };
+		D2092A281B6356FE008046D9 /* Pods-Pecomy.release_fixed_location.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-Pecomy.release_fixed_location.xcconfig"; path = "Pods/Target Support Files/Pods-Pecomy/Pods-Pecomy.release_fixed_location.xcconfig"; sourceTree = "<group>"; };
+		D2092A2D1B637460008046D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D2092A2F1B637484008046D9 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D2092A331B64D721008046D9 /* RestaurantModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantModel.swift; sourceTree = "<group>"; };
+		D20B53C71CB8FA8D0025EA58 /* PhotoViewerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewerViewController.swift; sourceTree = "<group>"; };
+		D20D9C1B1C9B1983003BA643 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		D22EC5581BCE34DD00A4B446 /* CategoryLabelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryLabelView.swift; sourceTree = "<group>"; };
+		D23070721B4C30D100833167 /* PecomyLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PecomyLocationManager.swift; sourceTree = "<group>"; };
+		D24A2CC21C255D2A009ACA08 /* ResultHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultHeaderView.swift; sourceTree = "<group>"; };
+		D24B291E1B772EFF00419B9B /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		D24B29201B78748A00419B9B /* ResultCardBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultCardBase.swift; sourceTree = "<group>"; };
+		D24B29231B78775300419B9B /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		D24B292D1B7895DA00419B9B /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
+		D24B29451B79F56E00419B9B /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
+		D253A9DF1C310D7B00D65D20 /* TopResultCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopResultCard.xib; sourceTree = "<group>"; };
+		D253A9E11C321BCB00D65D20 /* Int.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
+		D253A9E41C32236900D65D20 /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
+		D253A9E71C322B7D00D65D20 /* PecomyApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PecomyApiClient.swift; sourceTree = "<group>"; };
+		D253A9E91C32308E00D65D20 /* PecomyApiRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PecomyApiRequest.swift; sourceTree = "<group>"; };
+		D253A9EB1C32309900D65D20 /* PecomyApiResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PecomyApiResponse.swift; sourceTree = "<group>"; };
+		D253A9ED1C3233AF00D65D20 /* PecomyResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PecomyResult.swift; sourceTree = "<group>"; };
+		D272F45B1B9C25E4009564A0 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		D2731FDC1C79A81200E8E5E9 /* MainBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainBaseViewController.swift; sourceTree = "<group>"; };
+		D2731FDF1C79A85300E8E5E9 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		D2731FE21C79A88000E8E5E9 /* RestaurantLogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantLogViewController.swift; sourceTree = "<group>"; };
+		D2731FE61C849DE800E8E5E9 /* BackgroundImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundImagePicker.swift; sourceTree = "<group>"; };
+		D27BB9CC1B36F4A900F8D902 /* Karuta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Karuta.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D27BB9D01B36F4A900F8D902 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D27BB9D11B36F4A900F8D902 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D27BB9D31B36F4A900F8D902 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		D27BB9D81B36F4A900F8D902 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		D27BB9E11B36F4A900F8D902 /* Karuta.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Karuta.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D27BB9E61B36F4A900F8D902 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D27BB9E71B36F4A900F8D902 /* PecomyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PecomyTests.swift; sourceTree = "<group>"; };
+		D289012D1C437D8E005BDF84 /* RestaurantDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDetailView.swift; sourceTree = "<group>"; };
+		D289012F1C437D9D005BDF84 /* RestaurantDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RestaurantDetailView.xib; sourceTree = "<group>"; };
+		D28901311C438FEC005BDF84 /* CommentsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsView.swift; sourceTree = "<group>"; };
+		D28901331C438FFF005BDF84 /* CommentContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentContentView.swift; sourceTree = "<group>"; };
+		D28901351C439FC9005BDF84 /* TelButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TelButton.swift; sourceTree = "<group>"; };
+		D28901391C49FF24005BDF84 /* RestaurantDetailViewPictureCollectionViewConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDetailViewPictureCollectionViewConfig.swift; sourceTree = "<group>"; };
+		D289013B1C49FF54005BDF84 /* RestaurantDetailViewRichTagCollectionViewConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDetailViewRichTagCollectionViewConfig.swift; sourceTree = "<group>"; };
+		D289013D1C4A01E8005BDF84 /* PictureCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureCollectionViewCell.swift; sourceTree = "<group>"; };
+		D289013F1C4A01FD005BDF84 /* RichTagCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RichTagCollectionViewCell.swift; sourceTree = "<group>"; };
+		D28901421C4A09EF005BDF84 /* PictureCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		D28A7A0B1B47AE900025371A /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		D292AA161C5FAB8700D66A87 /* OnetimeFilterCollectionViewConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnetimeFilterCollectionViewConfig.swift; sourceTree = "<group>"; };
+		D292AA181C5FB30800D66A87 /* Budget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Budget.swift; sourceTree = "<group>"; };
+		D292AA1A1C5FB5CB00D66A87 /* NumOfPeople.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumOfPeople.swift; sourceTree = "<group>"; };
+		D292F7381B92DFFC005700AE /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		D2A594E71C8C77A400DE1012 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
+		D2A99A151C12D3E700C16F04 /* OnetimeFilterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnetimeFilterCell.swift; sourceTree = "<group>"; };
+		D2A99A191C12D3FA00C16F04 /* OnetimeFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnetimeFilterViewController.swift; sourceTree = "<group>"; };
+		D2A99A561C17367E00C16F04 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D2BE5F3B1C4B78AB00B47387 /* RichTag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RichTag.swift; sourceTree = "<group>"; };
+		D2C785F71B47C2A900517D55 /* Pecomy-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pecomy-Bridging-Header.h"; sourceTree = "<group>"; };
+		D2C9B24B1CCB9099003A33B9 /* GameProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameProgressBar.swift; sourceTree = "<group>"; };
+		D2DD659F1B7714CA0046A50C /* TopResultCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopResultCard.swift; sourceTree = "<group>"; };
+		D2DD65A11B7714DA0046A50C /* OtherResultsCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherResultsCard.swift; sourceTree = "<group>"; };
+		D2DEEF1D1BD72F7400FDBB8F /* Genre.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
+		D2E36EC61C2D615D00DEE726 /* OtherResultCardContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherResultCardContentView.swift; sourceTree = "<group>"; };
+		D2EFEB581C51282A0092DFC9 /* CardOverlayTextLabelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardOverlayTextLabelView.swift; sourceTree = "<group>"; };
+		D2EFEB5B1C567F2F0092DFC9 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D27BB9C91B36F4A900F8D902 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2CB568F7041EB25086535E91 /* Pods_Pecomy.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D27BB9DE1B36F4A900F8D902 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		164718B21C3D226100F50D33 /* Card */ = {
+			isa = PBXGroup;
+			children = (
+				164718B41C3D22AD00F50D33 /* CardRequest.swift */,
+				164718B61C3D22D700F50D33 /* CardResponse.swift */,
+			);
+			path = Card;
+			sourceTree = "<group>";
+		};
+		164718B31C3D226900F50D33 /* Result */ = {
+			isa = PBXGroup;
+			children = (
+				164718BA1C3D274D00F50D33 /* ResultRequest.swift */,
+				164718B81C3D273C00F50D33 /* ResultResponse.swift */,
+			);
+			path = Result;
+			sourceTree = "<group>";
+		};
+		97BD974091507500A5B02BC4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D2092A261B6356B5008046D9 /* Pods-Pecomy.debug_fixed_location.xcconfig */,
+				375106292F5446FE65E648DD /* Pods-Pecomy.debug.xcconfig */,
+				3B06ABC94A9E1B8E1D89BFDB /* Pods-Pecomy.release.xcconfig */,
+				D2092A281B6356FE008046D9 /* Pods-Pecomy.release_fixed_location.xcconfig */,
+				43B1BFF2A757DF7E24669461 /* Pods-Pecomy.stg.xcconfig */,
+				86F70B85C5A086B7590989E7 /* Pods-Pecomy.stg_fixed_location.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		D2092A321B64D702008046D9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D292AA181C5FB30800D66A87 /* Budget.swift */,
+				D2DEEF1D1BD72F7400FDBB8F /* Genre.swift */,
+				D292AA1A1C5FB5CB00D66A87 /* NumOfPeople.swift */,
+				D2092A331B64D721008046D9 /* RestaurantModel.swift */,
+				16AAD0381C3E835600ADCF87 /* ResultModel.swift */,
+				D2BE5F3B1C4B78AB00B47387 /* RichTag.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D24B29221B78773400419B9B /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				D2EFEB5A1C567F180092DFC9 /* Map */,
+				D2EB3FAD1C4A1362005B630E /* PicturesCollectionView */,
+				D2EB3FAE1C4A1377005B630E /* RichTagsCollectionView */,
+				D28901331C438FFF005BDF84 /* CommentContentView.swift */,
+				D28901311C438FEC005BDF84 /* CommentsView.swift */,
+				D24B29231B78775300419B9B /* DetailViewController.swift */,
+				D20B53C71CB8FA8D0025EA58 /* PhotoViewerViewController.swift */,
+				D289012D1C437D8E005BDF84 /* RestaurantDetailView.swift */,
+				D289012F1C437D9D005BDF84 /* RestaurantDetailView.xib */,
+				D28901351C439FC9005BDF84 /* TelButton.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		D24B292C1B7895C900419B9B /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				D24B292D1B7895DA00419B9B /* TutorialViewController.swift */,
+			);
+			path = Tutorial;
+			sourceTree = "<group>";
+		};
+		D24B293F1B79CC0400419B9B /* Card */ = {
+			isa = PBXGroup;
+			children = (
+				D2EFEB581C51282A0092DFC9 /* CardOverlayTextLabelView.swift */,
+				D28A7A0B1B47AE900025371A /* CardView.swift */,
+			);
+			path = Card;
+			sourceTree = "<group>";
+		};
+		D253A9E31C32217900D65D20 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				D253A9E41C32236900D65D20 /* Restaurant.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		D253A9E61C322B5F00D65D20 /* APIClient */ = {
+			isa = PBXGroup;
+			children = (
+				164718B21C3D226100F50D33 /* Card */,
+				164718B31C3D226900F50D33 /* Result */,
+				D253A9E71C322B7D00D65D20 /* PecomyApiClient.swift */,
+				16B6744D1C3BE59C009D039C /* PecomyApiClientError.swift */,
+				D253A9E91C32308E00D65D20 /* PecomyApiRequest.swift */,
+				D253A9EB1C32309900D65D20 /* PecomyApiResponse.swift */,
+				D253A9ED1C3233AF00D65D20 /* PecomyResult.swift */,
+			);
+			path = APIClient;
+			sourceTree = "<group>";
+		};
+		D2597E1C1B523831000938B4 /* Result */ = {
+			isa = PBXGroup;
+			children = (
+				D2E36EC61C2D615D00DEE726 /* OtherResultCardContentView.swift */,
+				D2DD65A11B7714DA0046A50C /* OtherResultsCard.swift */,
+				D24B29201B78748A00419B9B /* ResultCardBase.swift */,
+				D24A2CC21C255D2A009ACA08 /* ResultHeaderView.swift */,
+				D24B291E1B772EFF00419B9B /* ResultViewController.swift */,
+				D2DD659F1B7714CA0046A50C /* TopResultCard.swift */,
+				D253A9DF1C310D7B00D65D20 /* TopResultCard.xib */,
+			);
+			path = Result;
+			sourceTree = "<group>";
+		};
+		D2731FDE1C79A82800E8E5E9 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				D2731FDF1C79A85300E8E5E9 /* ProfileViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		D2731FE11C79A86700E8E5E9 /* RestaurantLog */ = {
+			isa = PBXGroup;
+			children = (
+				D2731FE21C79A88000E8E5E9 /* RestaurantLogViewController.swift */,
+			);
+			path = RestaurantLog;
+			sourceTree = "<group>";
+		};
+		D2731FE51C849D0500E8E5E9 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				D22EC5581BCE34DD00A4B446 /* CategoryLabelView.swift */,
+				D203D3131B3E739600FC9DB8 /* Const.swift */,
+				D272F45B1B9C25E4009564A0 /* LoadingView.swift */,
+				D23070721B4C30D100833167 /* PecomyLocationManager.swift */,
+				D292F7381B92DFFC005700AE /* Utils.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		D27BB9C31B36F4A900F8D902 = {
+			isa = PBXGroup;
+			children = (
+				D27BB9CE1B36F4A900F8D902 /* Pecomy */,
+				F8EF51686E29749944A50697 /* Frameworks */,
+				D27BB9E41B36F4A900F8D902 /* PecomyTests */,
+				97BD974091507500A5B02BC4 /* Pods */,
+				D27BB9CD1B36F4A900F8D902 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D27BB9CD1B36F4A900F8D902 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D27BB9CC1B36F4A900F8D902 /* Karuta.app */,
+				D27BB9E11B36F4A900F8D902 /* Karuta.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D27BB9CE1B36F4A900F8D902 /* Pecomy */ = {
+			isa = PBXGroup;
+			children = (
+				D2C9B2491CCB564E003A33B9 /* Classes */,
+				D2C9B24A1CCB5669003A33B9 /* Resources */,
+				D27BB9CF1B36F4A900F8D902 /* Supporting Files */,
+			);
+			path = Pecomy;
+			sourceTree = "<group>";
+		};
+		D27BB9CF1B36F4A900F8D902 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D2A99A561C17367E00C16F04 /* GoogleService-Info.plist */,
+				D27BB9D01B36F4A900F8D902 /* Info.plist */,
+				D2092A2E1B637460008046D9 /* Localizable.strings */,
+				D2C785F71B47C2A900517D55 /* Pecomy-Bridging-Header.h */,
+				D2A594E71C8C77A400DE1012 /* R.generated.swift */,
+				D20D9C1B1C9B1983003BA643 /* Settings.bundle */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D27BB9E41B36F4A900F8D902 /* PecomyTests */ = {
+			isa = PBXGroup;
+			children = (
+				D27BB9E51B36F4A900F8D902 /* Supporting Files */,
+				D27BB9E71B36F4A900F8D902 /* PecomyTests.swift */,
+			);
+			path = PecomyTests;
+			sourceTree = "<group>";
+		};
+		D27BB9E51B36F4A900F8D902 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D27BB9E61B36F4A900F8D902 /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D2C9B2491CCB564E003A33B9 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				D253A9E61C322B5F00D65D20 /* APIClient */,
+				D24B293F1B79CC0400419B9B /* Card */,
+				D2731FE51C849D0500E8E5E9 /* Common */,
+				D24B29221B78773400419B9B /* Detail */,
+				D253A9E31C32217900D65D20 /* Entity */,
+				D2DEE6AD1C030F7F00861BDF /* Extension */,
+				D2DEEF1C1BD72F4900FDBB8F /* MainView */,
+				D2092A321B64D702008046D9 /* Model */,
+				D2DEEF221BD7557300FDBB8F /* OnetimeFilter */,
+				D2731FDE1C79A82800E8E5E9 /* Profile */,
+				D2731FE11C79A86700E8E5E9 /* RestaurantLog */,
+				D2597E1C1B523831000938B4 /* Result */,
+				D24B292C1B7895C900419B9B /* Tutorial */,
+				D27BB9D11B36F4A900F8D902 /* AppDelegate.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		D2C9B24A1CCB5669003A33B9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D27BB9D81B36F4A900F8D902 /* Images.xcassets */,
+				D24B29451B79F56E00419B9B /* Launch Screen.xib */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		D2DEE6AD1C030F7F00861BDF /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				D253A9E11C321BCB00D65D20 /* Int.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		D2DEEF1C1BD72F4900FDBB8F /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				D2731FE61C849DE800E8E5E9 /* BackgroundImagePicker.swift */,
+				D2731FDC1C79A81200E8E5E9 /* MainBaseViewController.swift */,
+				D27BB9D31B36F4A900F8D902 /* MainViewController.swift */,
+				D2C9B24B1CCB9099003A33B9 /* GameProgressBar.swift */,
+			);
+			path = MainView;
+			sourceTree = "<group>";
+		};
+		D2DEEF221BD7557300FDBB8F /* OnetimeFilter */ = {
+			isa = PBXGroup;
+			children = (
+				D2A99A151C12D3E700C16F04 /* OnetimeFilterCell.swift */,
+				D292AA161C5FAB8700D66A87 /* OnetimeFilterCollectionViewConfig.swift */,
+				D2A99A191C12D3FA00C16F04 /* OnetimeFilterViewController.swift */,
+			);
+			path = OnetimeFilter;
+			sourceTree = "<group>";
+		};
+		D2EB3FAD1C4A1362005B630E /* PicturesCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				D289013D1C4A01E8005BDF84 /* PictureCollectionViewCell.swift */,
+				D28901421C4A09EF005BDF84 /* PictureCollectionViewFlowLayout.swift */,
+				D28901391C49FF24005BDF84 /* RestaurantDetailViewPictureCollectionViewConfig.swift */,
+			);
+			path = PicturesCollectionView;
+			sourceTree = "<group>";
+		};
+		D2EB3FAE1C4A1377005B630E /* RichTagsCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				D289013B1C49FF54005BDF84 /* RestaurantDetailViewRichTagCollectionViewConfig.swift */,
+				D289013F1C4A01FD005BDF84 /* RichTagCollectionViewCell.swift */,
+			);
+			path = RichTagsCollectionView;
+			sourceTree = "<group>";
+		};
+		D2EFEB5A1C567F180092DFC9 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				D2EFEB5B1C567F2F0092DFC9 /* MapViewController.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		F8EF51686E29749944A50697 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				49542B923B14A000A93FD141 /* Pods_Pecomy.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D27BB9CB1B36F4A900F8D902 /* Pecomy */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D27BB9EB1B36F4A900F8D902 /* Build configuration list for PBXNativeTarget "Pecomy" */;
+			buildPhases = (
+				0C308FCB760E8639769831EE /* Check Pods Manifest.lock */,
+				D22055CE1CA44D4F00447CC6 /* ShellScript */,
+				D27BB9C81B36F4A900F8D902 /* Sources */,
+				D27BB9C91B36F4A900F8D902 /* Frameworks */,
+				D27BB9CA1B36F4A900F8D902 /* Resources */,
+				96E3CF8C5FC94B7B5CCDD799 /* Embed Pods Frameworks */,
+				FAFBED2465E6647CCBAEE62A /* Copy Pods Resources */,
+				D2BABE611B5A5D75005E8356 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Pecomy;
+			productName = Karuta;
+			productReference = D27BB9CC1B36F4A900F8D902 /* Karuta.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D27BB9E01B36F4A900F8D902 /* PecomyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D27BB9EE1B36F4A900F8D902 /* Build configuration list for PBXNativeTarget "PecomyTests" */;
+			buildPhases = (
+				D27BB9DD1B36F4A900F8D902 /* Sources */,
+				D27BB9DE1B36F4A900F8D902 /* Frameworks */,
+				D27BB9DF1B36F4A900F8D902 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D27BB9E31B36F4A900F8D902 /* PBXTargetDependency */,
+			);
+			name = PecomyTests;
+			productName = KarutaTests;
+			productReference = D27BB9E11B36F4A900F8D902 /* Karuta.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D27BB9C41B36F4A900F8D902 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = Pecomy;
+				TargetAttributes = {
+					D27BB9CB1B36F4A900F8D902 = {
+						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = MRB6U66KNP;
+					};
+					D27BB9E01B36F4A900F8D902 = {
+						CreatedOnToolsVersion = 6.3.1;
+						TestTargetID = D27BB9CB1B36F4A900F8D902;
+					};
+				};
+			};
+			buildConfigurationList = D27BB9C71B36F4A900F8D902 /* Build configuration list for PBXProject "Pecomy" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				ja,
+			);
+			mainGroup = D27BB9C31B36F4A900F8D902;
+			productRefGroup = D27BB9CD1B36F4A900F8D902 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D27BB9CB1B36F4A900F8D902 /* Pecomy */,
+				D27BB9E01B36F4A900F8D902 /* PecomyTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D27BB9CA1B36F4A900F8D902 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D28901301C437D9D005BDF84 /* RestaurantDetailView.xib in Resources */,
+				D2092A2C1B637460008046D9 /* Localizable.strings in Resources */,
+				D2A99A571C17367E00C16F04 /* GoogleService-Info.plist in Resources */,
+				D24B29461B79F56E00419B9B /* Launch Screen.xib in Resources */,
+				D27BB9D91B36F4A900F8D902 /* Images.xcassets in Resources */,
+				D253A9E01C310D7B00D65D20 /* TopResultCard.xib in Resources */,
+				D20D9C1C1C9B1983003BA643 /* Settings.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D27BB9DF1B36F4A900F8D902 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0C308FCB760E8639769831EE /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		96E3CF8C5FC94B7B5CCDD799 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Pecomy/Pods-Pecomy-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D22055CE1CA44D4F00447CC6 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" \"$SRCROOT/Pecomy/Supporting Files\"";
+		};
+		D2BABE611B5A5D75005E8356 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 0f089c54e22e9e890bd0329f29839c99a9c5040c ef218175b8ad70668aabb5fdbbfae2c25d0f1a40a0f70aa08494fbb96d0e8e30\n";
+		};
+		FAFBED2465E6647CCBAEE62A /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Pecomy/Pods-Pecomy-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D27BB9C81B36F4A900F8D902 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D253A9EA1C32308E00D65D20 /* PecomyApiRequest.swift in Sources */,
+				D289012E1C437D8E005BDF84 /* RestaurantDetailView.swift in Sources */,
+				D28901321C438FEC005BDF84 /* CommentsView.swift in Sources */,
+				D23070731B4C30D100833167 /* PecomyLocationManager.swift in Sources */,
+				D292AA191C5FB30800D66A87 /* Budget.swift in Sources */,
+				D292AA1B1C5FB5CB00D66A87 /* NumOfPeople.swift in Sources */,
+				D203D3141B3E739600FC9DB8 /* Const.swift in Sources */,
+				D2A99A161C12D3E700C16F04 /* OnetimeFilterCell.swift in Sources */,
+				D27BB9D41B36F4A900F8D902 /* MainViewController.swift in Sources */,
+				16B6744E1C3BE59C009D039C /* PecomyApiClientError.swift in Sources */,
+				D2EFEB5C1C567F2F0092DFC9 /* MapViewController.swift in Sources */,
+				D292F7391B92DFFC005700AE /* Utils.swift in Sources */,
+				D2DEEF1E1BD72F7400FDBB8F /* Genre.swift in Sources */,
+				D253A9E81C322B7D00D65D20 /* PecomyApiClient.swift in Sources */,
+				D2EFEB591C51282A0092DFC9 /* CardOverlayTextLabelView.swift in Sources */,
+				D272F45C1B9C25E4009564A0 /* LoadingView.swift in Sources */,
+				164718B71C3D22D700F50D33 /* CardResponse.swift in Sources */,
+				D2092A341B64D721008046D9 /* RestaurantModel.swift in Sources */,
+				D292AA171C5FAB8700D66A87 /* OnetimeFilterCollectionViewConfig.swift in Sources */,
+				D28901361C439FC9005BDF84 /* TelButton.swift in Sources */,
+				D289013E1C4A01E8005BDF84 /* PictureCollectionViewCell.swift in Sources */,
+				D24A2CC31C255D2A009ACA08 /* ResultHeaderView.swift in Sources */,
+				164718B51C3D22AD00F50D33 /* CardRequest.swift in Sources */,
+				D2731FE01C79A85300E8E5E9 /* ProfileViewController.swift in Sources */,
+				D28901401C4A01FD005BDF84 /* RichTagCollectionViewCell.swift in Sources */,
+				D22EC5591BCE34DD00A4B446 /* CategoryLabelView.swift in Sources */,
+				D2DD65A01B7714CA0046A50C /* TopResultCard.swift in Sources */,
+				D2731FE71C849DE800E8E5E9 /* BackgroundImagePicker.swift in Sources */,
+				D24B29241B78775300419B9B /* DetailViewController.swift in Sources */,
+				D28A7A0C1B47AE900025371A /* CardView.swift in Sources */,
+				D253A9EE1C3233AF00D65D20 /* PecomyResult.swift in Sources */,
+				D2C9B24C1CCB9099003A33B9 /* GameProgressBar.swift in Sources */,
+				D24B292E1B7895DA00419B9B /* TutorialViewController.swift in Sources */,
+				D2A594E81C8C77A400DE1012 /* R.generated.swift in Sources */,
+				D2DD65A21B7714DA0046A50C /* OtherResultsCard.swift in Sources */,
+				D2A99A1A1C12D3FA00C16F04 /* OnetimeFilterViewController.swift in Sources */,
+				D20B53C81CB8FA8D0025EA58 /* PhotoViewerViewController.swift in Sources */,
+				D27BB9D21B36F4A900F8D902 /* AppDelegate.swift in Sources */,
+				D253A9E21C321BCB00D65D20 /* Int.swift in Sources */,
+				164718BB1C3D274D00F50D33 /* ResultRequest.swift in Sources */,
+				D253A9EC1C32309900D65D20 /* PecomyApiResponse.swift in Sources */,
+				D289013C1C49FF54005BDF84 /* RestaurantDetailViewRichTagCollectionViewConfig.swift in Sources */,
+				D2E36EC71C2D615D00DEE726 /* OtherResultCardContentView.swift in Sources */,
+				D28901431C4A09EF005BDF84 /* PictureCollectionViewFlowLayout.swift in Sources */,
+				D253A9E51C32236900D65D20 /* Restaurant.swift in Sources */,
+				D24B291F1B772EFF00419B9B /* ResultViewController.swift in Sources */,
+				164718B91C3D273C00F50D33 /* ResultResponse.swift in Sources */,
+				D2BE5F3C1C4B78AB00B47387 /* RichTag.swift in Sources */,
+				D289013A1C49FF24005BDF84 /* RestaurantDetailViewPictureCollectionViewConfig.swift in Sources */,
+				D28901341C438FFF005BDF84 /* CommentContentView.swift in Sources */,
+				D2731FDD1C79A81200E8E5E9 /* MainBaseViewController.swift in Sources */,
+				16AAD0391C3E835600ADCF87 /* ResultModel.swift in Sources */,
+				D2731FE31C79A88000E8E5E9 /* RestaurantLogViewController.swift in Sources */,
+				D24B29211B78748A00419B9B /* ResultCardBase.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D27BB9DD1B36F4A900F8D902 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D27BB9E81B36F4A900F8D902 /* PecomyTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D27BB9E31B36F4A900F8D902 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D27BB9CB1B36F4A900F8D902 /* Pecomy */;
+			targetProxy = D27BB9E21B36F4A900F8D902 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D2092A2E1B637460008046D9 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D2092A2D1B637460008046D9 /* Base */,
+				D2092A2F1B637484008046D9 /* ja */,
+			);
+			name = Localizable.strings;
+			path = .;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D2092A1F1B6351F7008046D9 /* Debug_fixed_location */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug_fixed_location;
+		};
+		D2092A201B6351F7008046D9 /* Debug_fixed_location */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D2092A261B6356B5008046D9 /* Pods-Pecomy.debug_fixed_location.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/Pecomy/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DDEBUG -DFIXED_LOCATION";
+				PRODUCT_BUNDLE_IDENTIFIER = "me.karuta.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = Karuta;
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Pecomy/Supporting Files/Pecomy-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug_fixed_location;
+		};
+		D2092A211B6351F7008046D9 /* Debug_fixed_location */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D2092A261B6356B5008046D9 /* Pods-Pecomy.debug_fixed_location.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "PecomyTests/Supporting Files/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "me.karuta.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = Karuta;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Karuta.app/Karuta";
+			};
+			name = Debug_fixed_location;
+		};
+		D2092A221B635211008046D9 /* Release_fixed_location */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_DISABLE_SAFETY_CHECKS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release_fixed_location;
+		};
+		D2092A231B635211008046D9 /* Release_fixed_location */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D2092A281B6356FE008046D9 /* Pods-Pecomy.release_fixed_location.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_OPTIMIZATION_LEVEL = s;
+				INFOPLIST_FILE = "$(SRCROOT)/Pecomy/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DRELEASE -DFIXED_LOCATION";
+				PRODUCT_BUNDLE_IDENTIFIER = "me.karuta.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = Karuta;
+				PROVISIONING_PROFILE = "";
+				SWIFT_DISABLE_SAFETY_CHECKS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Pecomy/Supporting Files/Pecomy-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release_fixed_location;
+		};
+		D2092A241B635211008046D9 /* Release_fixed_location */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D2092A281B6356FE008046D9 /* Pods-Pecomy.release_fixed_location.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "PecomyTests/Supporting Files/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "me.karuta.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = Karuta;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Karuta.app/Karuta";
+			};
+			name = Release_fixed_location;
+		};
+		D27BB9E91B36F4A900F8D902 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D27BB9EA1B36F4A900F8D902 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_DISABLE_SAFETY_CHECKS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D27BB9EC1B36F4A900F8D902 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 375106292F5446FE65E648DD /* Pods-Pecomy.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/Pecomy/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DDEBUG";
+				PRODUCT_BUNDLE_IDENTIFIER = "me.karuta.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = Karuta;
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Pecomy/Supporting Files/Pecomy-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D27BB9ED1B36F4A900F8D902 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3B06ABC94A9E1B8E1D89BFDB /* Pods-Pecomy.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_OPTIMIZATION_LEVEL = s;
+				INFOPLIST_FILE = "$(SRCROOT)/Pecomy/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DRELEASE";
+				PRODUCT_BUNDLE_IDENTIFIER = "me.karuta.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = Karuta;
+				PROVISIONING_PROFILE = "";
+				SWIFT_DISABLE_SAFETY_CHECKS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Pecomy/Supporting Files/Pecomy-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		D27BB9EF1B36F4A900F8D902 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 375106292F5446FE65E648DD /* Pods-Pecomy.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "PecomyTests/Supporting Files/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "me.karuta.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = Karuta;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Karuta.app/Karuta";
+			};
+			name = Debug;
+		};
+		D27BB9F01B36F4A900F8D902 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3B06ABC94A9E1B8E1D89BFDB /* Pods-Pecomy.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "PecomyTests/Supporting Files/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "me.karuta.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = Karuta;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Karuta.app/Karuta";
+			};
+			name = Release;
+		};
+		D2E922FC1BD4A05C00BD15F5 /* STG */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_DISABLE_SAFETY_CHECKS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = STG;
+		};
+		D2E922FD1BD4A05C00BD15F5 /* STG */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 43B1BFF2A757DF7E24669461 /* Pods-Pecomy.stg.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_OPTIMIZATION_LEVEL = s;
+				INFOPLIST_FILE = "$(SRCROOT)/Pecomy/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DSTG";
+				PRODUCT_BUNDLE_IDENTIFIER = "me.karuta.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = Karuta;
+				PROVISIONING_PROFILE = "";
+				SWIFT_DISABLE_SAFETY_CHECKS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Pecomy/Supporting Files/Pecomy-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = STG;
+		};
+		D2E922FE1BD4A05C00BD15F5 /* STG */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "PecomyTests/Supporting Files/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "me.karuta.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = Karuta;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Karuta.app/Karuta";
+			};
+			name = STG;
+		};
+		D2E923021BD4A12F00BD15F5 /* STG_fixed_location */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_DISABLE_SAFETY_CHECKS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = STG_fixed_location;
+		};
+		D2E923031BD4A12F00BD15F5 /* STG_fixed_location */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 86F70B85C5A086B7590989E7 /* Pods-Pecomy.stg_fixed_location.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_OPTIMIZATION_LEVEL = s;
+				INFOPLIST_FILE = "$(SRCROOT)/Pecomy/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DSTG -DFIXED_LOCATION";
+				PRODUCT_BUNDLE_IDENTIFIER = "me.karuta.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = Karuta;
+				PROVISIONING_PROFILE = "";
+				SWIFT_DISABLE_SAFETY_CHECKS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Pecomy/Supporting Files/Pecomy-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = STG_fixed_location;
+		};
+		D2E923041BD4A12F00BD15F5 /* STG_fixed_location */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "PecomyTests/Supporting Files/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "me.karuta.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = Karuta;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Karuta.app/Karuta";
+			};
+			name = STG_fixed_location;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D27BB9C71B36F4A900F8D902 /* Build configuration list for PBXProject "Pecomy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D27BB9E91B36F4A900F8D902 /* Debug */,
+				D2092A1F1B6351F7008046D9 /* Debug_fixed_location */,
+				D27BB9EA1B36F4A900F8D902 /* Release */,
+				D2E922FC1BD4A05C00BD15F5 /* STG */,
+				D2092A221B635211008046D9 /* Release_fixed_location */,
+				D2E923021BD4A12F00BD15F5 /* STG_fixed_location */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D27BB9EB1B36F4A900F8D902 /* Build configuration list for PBXNativeTarget "Pecomy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D27BB9EC1B36F4A900F8D902 /* Debug */,
+				D2092A201B6351F7008046D9 /* Debug_fixed_location */,
+				D27BB9ED1B36F4A900F8D902 /* Release */,
+				D2E922FD1BD4A05C00BD15F5 /* STG */,
+				D2092A231B635211008046D9 /* Release_fixed_location */,
+				D2E923031BD4A12F00BD15F5 /* STG_fixed_location */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D27BB9EE1B36F4A900F8D902 /* Build configuration list for PBXNativeTarget "PecomyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D27BB9EF1B36F4A900F8D902 /* Debug */,
+				D2092A211B6351F7008046D9 /* Debug_fixed_location */,
+				D27BB9F01B36F4A900F8D902 /* Release */,
+				D2E922FE1BD4A05C00BD15F5 /* STG */,
+				D2092A241B635211008046D9 /* Release_fixed_location */,
+				D2E923041BD4A12F00BD15F5 /* STG_fixed_location */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D27BB9C41B36F4A900F8D902 /* Project object */;
+}
