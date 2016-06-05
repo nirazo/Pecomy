@@ -12,6 +12,9 @@ class MainBaseViewController: UIViewController {
     
     var pagingBaseView = UIScrollView()
     var bgImageView = UIImageView(image: BackgroundImagePicker.pickImage())
+    var bgImageMaskView = UIView()
+    var imageShrinkPace: CGFloat = 0.0
+    var imageHeight: CGFloat = 0.0
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nil, bundle: nil)
@@ -41,14 +44,24 @@ class MainBaseViewController: UIViewController {
             make.width.equalTo(self.view)
             make.height.equalTo(self.view)
         }
-        
-        // 背景画像
-        self.view.addSubview(self.bgImageView)
-        bgImageView.snp_makeConstraints { make in
+        self.view.addSubview(self.bgImageMaskView)
+        bgImageMaskView.snp_makeConstraints { make in
             make.top.equalTo(self.view)
             make.left.equalTo(self.view)
             make.width.equalTo(self.view)
             make.height.equalTo(self.view).dividedBy(2.56)
+        }
+        
+        
+        // 背景画像
+        self.bgImageMaskView.backgroundColor = Const.PECOMY_BASIC_BACKGROUND_COLOR
+        self.bgImageMaskView.addSubview(self.bgImageView)
+        self.bgImageMaskView.clipsToBounds = true
+        bgImageView.snp_makeConstraints { make in
+            make.top.equalTo(self.bgImageMaskView)
+            make.left.equalTo(self.bgImageMaskView)
+            make.width.equalTo(self.bgImageMaskView)
+            make.height.equalTo(self.bgImageMaskView)
         }
         
         self.pagingBaseView.frame = self.view.bounds
@@ -80,6 +93,13 @@ class MainBaseViewController: UIViewController {
         
     }
 
+    override func viewDidLayoutSubviews() {
+        if (self.bgImageMaskView.frame.height != 0.0 && self.imageHeight == 0.0) {
+            self.imageHeight = self.bgImageMaskView.frame.size.height
+            self.imageShrinkPace = self.view.frame.width / (self.imageHeight - Size.navHeightIncludeStatusBar(self.navigationController!))
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -104,7 +124,19 @@ extension MainBaseViewController: UIScrollViewDelegate {
         default:
             break
         }
-
+    }
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        if (scrollView.contentOffset.x >= self.pagingBaseView.frame.width * CGFloat(1)) {
+            return
+        }
+        if (scrollView.contentOffset.x == 0) {
+            self.bgImageMaskView.frame.size.height = Size.navHeightIncludeStatusBar(self.navigationController!)
+        } else if (scrollView.contentOffset.x == self.view.frame.width) {
+            self.bgImageMaskView.frame.size.height = self.imageHeight
+        } else {
+            self.bgImageMaskView.frame.size.height = scrollView.contentOffset.x / self.imageShrinkPace + Size.navHeightIncludeStatusBar(self.navigationController!)
+        }
     }
 }
 
