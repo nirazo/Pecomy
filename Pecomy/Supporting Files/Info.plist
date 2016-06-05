@@ -19,7 +19,27 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1.4.3</string>
+	<string>2.0.0</string>
+    <key>CFBundleURLTypes</key>
+    <array>
+        <dict>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>fb1675450129386792</string>
+            </array>
+        </dict>
+    </array>
+    <key>FacebookAppID</key>
+    <string>1675450129386792</string>
+    <key>FacebookDisplayName</key>
+    <string>Pecomy</string>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+        <string>fbapi</string>
+        <string>fb-messenger-api</string>
+        <string>fbauth2</string>
+        <string>fbshareextension</string>
+    </array>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -38,6 +58,8 @@
 	<true/>
 	<key>NSAppTransportSecurity</key>
 	<dict>
+        <key>NSAllowsArbitraryLoads</key>
+        <true/>
 		<key>NSExceptionDomains</key>
 		<dict>
 			<key>google.co.jp</key>
@@ -72,7 +94,21 @@
 				<key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
 				<true/>
 			</dict>
-			<key>tabelog.com</key>
+            <key>karuta.me</key>
+            <dict>
+                <key>NSIncludesSubdomains</key>
+                <true/>
+                <key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
+                <true/>
+            </dict>
+            <key>peco.my</key>
+            <dict>
+                <key>NSIncludesSubdomains</key>
+                <true/>
+                <key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
+                <true/>
+            </dict>
+            <key>tabelog.com</key>
 			<dict>
 				<key>NSExceptionRequiresForwardSecrecy</key>
 				<false/>
@@ -90,7 +126,7 @@
 				<key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
 				<true/>
 			</dict>
-		</dict>
+        </dict>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>現在地に基づいた店舗の推薦を行うために位置情報を使用します</string>

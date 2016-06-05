@@ -3,7 +3,7 @@
 //  Pecomy
 //
 //  Created by Kenzo on 2015/12/29.
-//  Copyright © 2016年 Pecomy. All rights reserved.
+//  Copyright © 2016 Pecomy. All rights reserved.
 //
 
 import Foundation
@@ -20,6 +20,7 @@ class PecomyApiClient {
     }
     
     static var manager = Alamofire.Manager(configuration: PecomyApiClient.configuration)
+    static let loginHeaderKey = "Authorization"
     static let kTimeoutSecond = 10.0
     
     private static var configuration : NSURLSessionConfiguration {
@@ -40,13 +41,12 @@ class PecomyApiClient {
         let url = APIURL(request)
         
         // ヘッダパラメータのセット
-        var headers: [String:String]? = nil
+        var headers = [String: String]()
+        if let token = KeychainManager.getPecomyUserToken() {
+            headers[self.loginHeaderKey] = "Bearer \(token)"
+        }
         for (key, value) in request.headerParams {
-            if var headers = headers {
-                headers[key] = value
-            } else {
-                headers = [key:value]
-            }
+            headers[key] = value
         }
         
         let alamofireRequest = manager.request(request.method, url, parameters: request.params, encoding: request.encoding, headers: headers)

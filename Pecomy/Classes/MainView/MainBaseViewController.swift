@@ -3,7 +3,7 @@
 //  Pecomy
 //
 //  Created by Kenzo on 2016/02/21.
-//  Copyright © 2016年 Pecomy. All rights reserved.
+//  Copyright © 2016 Pecomy. All rights reserved.
 //
 
 import UIKit
@@ -19,6 +19,7 @@ class MainBaseViewController: UIViewController {
         self.pagingBaseView.bounces = false
         self.pagingBaseView.showsHorizontalScrollIndicator = false
         self.automaticallyAdjustsScrollViewInsets = false
+        self.pagingBaseView.delegate = self
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -27,7 +28,7 @@ class MainBaseViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.title = Const.APP_TITLE
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainBaseViewController.enterForeground(_:)), name:Const.WILL_ENTER_FOREGROUND_KEY, object: nil)
         
         //単色背景
@@ -51,18 +52,19 @@ class MainBaseViewController: UIViewController {
         }
         
         self.pagingBaseView.frame = self.view.bounds
+        
         self.view.addSubview(self.pagingBaseView)
         self.pagingBaseView.backgroundColor = UIColor.clearColor()
         
-        let mainViewController = MainViewController()
-        let mainNavVC = self.createTransrateNavVC()
-        mainNavVC.setViewControllers([mainViewController], animated: false)
+        let profileVC = ProfileViewController()
+        profileVC.delegate = self
+        self.addChildViewController(profileVC)
+        profileVC.didMoveToParentViewController(self)
         
-        self.addChildViewController(mainNavVC)
-//        let logViewController = RestaurantLogViewController()
-//        let logNavVC = self.createTransrateNavVC()
-//        logNavVC.setViewControllers([logViewController], animated: false)
-//        self.addChildViewController(logNavVC)
+        let mainVC = MainViewController()
+        self.addChildViewController(mainVC)
+        mainVC.didMoveToParentViewController(self)
+        
         
         self.pagingBaseView.contentSize = CGSize(width: self.pagingBaseView.frame.width * CGFloat(self.childViewControllers.count), height: self.pagingBaseView.frame.height)
         for (id, vc) in self.childViewControllers.enumerate() {
@@ -70,6 +72,7 @@ class MainBaseViewController: UIViewController {
             vc.didMoveToParentViewController(self)
             self.pagingBaseView.addSubview(vc.view)
         }
+        self.pagingBaseView.contentOffset.x = self.view.bounds.width
     }
     
     override func viewWillLayoutSubviews() {
@@ -81,19 +84,32 @@ class MainBaseViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
 
-    // navVCを透明化
-    func createTransrateNavVC() -> UINavigationController {
-        let navVC = UINavigationController()
-        navVC.navigationBar.tintColor = UIColor.clearColor()
-        navVC.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
-        navVC.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: Const.PECOMY_THEME_TEXT_COLOR]
-        navVC.navigationBar.shadowImage = UIImage()
-        return navVC
-    }
-
     // MARK: - Observer
     func enterForeground(notification: NSNotification){
         self.bgImageView.image = BackgroundImagePicker.pickImage()
     }
 
+}
+
+extension MainBaseViewController: UIScrollViewDelegate {
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        let currentPage = Int(scrollView.contentOffset.x / scrollView.frame.maxX)
+        switch currentPage {
+        case 0:
+            self.title = ProfileViewController.title
+        case 1:
+            self.title = MainViewController.title
+        case 2:
+            self.title = "test"
+        default:
+            break
+        }
+
+    }
+}
+
+extension MainBaseViewController: ProfileViewControllerDelegate {
+    func navTitleChanged(title: String) {
+        self.title = title
+    }
 }

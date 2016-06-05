@@ -14,6 +14,8 @@ target 'Pecomy' do
     pod 'Google/Analytics'
     pod 'GoogleMaps'
     pod 'ObjectMapper'
+    pod 'FBSDKLoginKit'
+    pod 'KeychainAccess'
 end
 
 target 'PecomyTests' do

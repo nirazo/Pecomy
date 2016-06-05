@@ -3,7 +3,7 @@
 //  Pecomy
 //
 //  Created by Kenzo on 2015/06/21.
-//  Copyright (c) 2016年 Pecomy. All rights reserved.
+//  Copyright (c) 2016 Pecomy. All rights reserved.
 //
 
 import UIKit
@@ -13,6 +13,7 @@ import MDCSwipeToChoose
 import SnapKit
 
 class MainViewController: UIViewController {
+    static let title = Const.APP_TITLE
     
     let ANALYTICS_TRACKING_CODE = AnaylyticsTrackingCode.MainViewController.rawValue
     
@@ -79,7 +80,6 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = Const.PECOMY_TITLE
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainViewController.enterForeground(_:)), name:Const.WILL_ENTER_FOREGROUND_KEY, object: nil)
         
