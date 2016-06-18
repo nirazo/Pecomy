@@ -5,12 +5,17 @@
   Created by Kenzo on 2015/07/25.
   Copyright (c) 2016 Pecomy. All rights reserved.
 */
+// Common
 "OK" = "OK";
 "Back" = "Back";
 "Close" = "Close";
 "Continue" = "Continue";
 "Reset" = "Reset";
 "Cancel" = "Cancel";
+"Favorite" = "Favorite";
+"Checkin" = "Checkin";
+
+//
 "LocationAlertTitle" = "Location service is not allowed";
 "LocationAlertMessage" = "Please turn on the location service to use Karuta.";
 "LocationAlertSettingButtonTitle" = "Setting";
@@ -69,3 +74,5 @@
 "BusinessHourTitle" = "Business Hour";
 "TelAlertMessage" = "Do you make a phone call to this restaurant?";
 "TelAlertTelButton" = "Call";
+// Profile
+"RecentView" = "Recent view";

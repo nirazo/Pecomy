@@ -24,7 +24,7 @@ struct Const {
     static let API_GOOD_BASE = "http://peco.my/dummy_good"
     static let API_BLACKLIST_BASE = "http://peco.my/dummy_blacklist"
     #elseif STG
-    static let API_BASE_PATH = "http://karuta.me:10090/"
+    static let API_BASE_PATH = "http://peco.my:10090/"
     static let API_GOOD_BASE = "http://peco.my:10090/dummy_good"
     static let API_BLACKLIST_BASE = "http://peco.my:10090/dummy_blacklist"
 
@@ -47,7 +47,7 @@ struct Const {
     static let BASIC_GRAY_COLOR = UIColor(red: 153.0/255.0, green: 153.0/255.0, blue: 153.0/255.0, alpha: 1.0)
     static let RIGHT_GRAY_COLOR = UIColor(red: 204.0/255.0, green: 204.0/255.0, blue: 204.0/255.0, alpha: 1.0)
     
-    static let APP_TITLE = "Karuta"
+    static let APP_TITLE = "Pecomy"
     
     static let PECOMY_RANK_COLOR = [UIColor(red: 255/255.0, green: 180.0/255.0, blue: 0.0/255.0, alpha: 1.0),
         UIColor(red: 124.0/255.0, green: 132.0/255.0, blue: 139.0/255.0, alpha: 1.0),
