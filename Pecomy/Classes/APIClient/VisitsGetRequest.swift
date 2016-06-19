@@ -1,5 +1,5 @@
 //
-//  FavoritesRequest.swift
+//  VisitsGetRequest.swift
 //  Pecomy
 //
 //  Created by Kenzo on 6/19/16.
@@ -9,8 +9,8 @@
 import Foundation
 import Alamofire
 
-class FavoritesGetRequest: PecomyApiRequest {
-    typealias Response = FavoritesGetResponse
+class VisitsGetRequest: PecomyApiRequest {
+    typealias Response = VisitsGetResponse
     
     var endpoint: String
     var method: Alamofire.Method = .GET
@@ -18,7 +18,7 @@ class FavoritesGetRequest: PecomyApiRequest {
     var encoding: ParameterEncoding = .URL
     
     init(latitude: Double, longitude: Double, orderBy: RestaurantListOrder) {
-        endpoint = "/user/favorites"
+        endpoint = "/user/visits"
         params = [
             "device_id": Utils.acquireDeviceID(),
             "latitude": latitude,

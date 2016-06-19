@@ -42,6 +42,11 @@ class ProfileViewController: UIViewController {
     let loginModel = LoginModel()
     let browsesModel = BrowsesModel()
     var browsesRestaurants = [Restaurant]()
+    let favoritesModel = FavoritesModel()
+    var favoritesRestaurants = [Restaurant]()
+    let visitsModel = VisitsModel()
+    var visitsRestaurants = [Restaurant]()
+    
     var delegate: ProfileViewControllerDelegate?
     let bgView = UIView()
     let userPhotoImageView = UIImageView()
@@ -95,7 +100,7 @@ class ProfileViewController: UIViewController {
         // お気に入りの数
         self.numOfFavoriteLabel.font = UIFont(name: Const.PECOMY_FONT_BOLD, size: 20)
         self.numOfFavoriteLabel.textAlignment = .Center
-        self.numOfFavoriteLabel.text = String(PecomyUser.sharedInstance.favorites.count)
+        self.numOfFavoriteLabel.text = self.loginModel.isLoggedIn() ? String(PecomyUser.sharedInstance.favorites.count):"-"
         self.view.addSubview(self.numOfFavoriteLabel)
         self.numOfFavoriteLabel.snp_makeConstraints { make in
             make.top.equalTo(self.view).offset(112.5)
@@ -121,7 +126,7 @@ class ProfileViewController: UIViewController {
         // チェックインの数
         self.numOfCheckinLabel.font = UIFont(name: Const.PECOMY_FONT_BOLD, size: 20)
         self.numOfCheckinLabel.textAlignment = .Center
-        self.numOfCheckinLabel.text = String(PecomyUser.sharedInstance.visits.count)
+        self.numOfCheckinLabel.text = self.loginModel.isLoggedIn() ? String(PecomyUser.sharedInstance.visits.count) : "-"
         self.view.addSubview(self.numOfCheckinLabel)
         self.numOfCheckinLabel.snp_makeConstraints { make in
             make.top.equalTo(self.view).offset(112.5)
@@ -169,19 +174,43 @@ class ProfileViewController: UIViewController {
         }
     }
     
-    private func updateBrowses() {
+    private func updateBrowsesList() {
         self.browsesModel.fetch(111.11, longitude: 111.11, orderBy: .Recent, handler: {[weak self](result: PecomyResult<PecomyUser, PecomyApiClientError>) in
             guard let strongSelf = self else { return }
             switch result {
             case .Success(let user):
                 strongSelf.browsesRestaurants = user.browses
                 strongSelf.tableView.reloadData()
-                print("updateBrowses!: \(user.browses.count)")
             case .Failure(let error):
                 print("error: \(error.code), \(error.response)")
             }
             })
     }
+    
+    private func updateFavoritesList() {
+        self.favoritesModel.fetch(111.11, longitude: 111.11, orderBy: .Recent, handler: {[weak self](result: PecomyResult<PecomyUser, PecomyApiClientError>) in
+            guard let strongSelf = self else { return }
+            switch result {
+            case .Success(let user):
+                strongSelf.numOfFavoriteLabel.text = String(user.favorites.count)
+            case .Failure(let error):
+                print("error: \(error.code), \(error.response)")
+            }
+            })
+    }
+    
+    private func updateVisitsList() {
+        self.visitsModel.fetch(111.11, longitude: 111.11, orderBy: .Recent, handler: {[weak self](result: PecomyResult<PecomyUser, PecomyApiClientError>) in
+            guard let strongSelf = self else { return }
+            switch result {
+            case .Success(let user):
+                strongSelf.numOfCheckinLabel.text = String(user.visits.count)
+            case .Failure(let error):
+                print("error: \(error.code), \(error.response)")
+            }
+            })
+    }
+
 }
 
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
@@ -192,7 +221,6 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("update: \(self.browsesRestaurants.count)")
         return self.browsesRestaurants.count
     }
     
@@ -232,7 +260,9 @@ extension ProfileViewController: FBSDKLoginButtonDelegate {
                 switch result {
                 case .Success(let user):
                     strongSelf.delegate?.navTitleChanged(user.userName)
-                    strongSelf.updateBrowses()
+                    strongSelf.updateBrowsesList()
+                    strongSelf.updateFavoritesList()
+                    strongSelf.updateVisitsList()
                 case .Failure(let error):
                     let fb = FBSDKLoginManager()
                     fb.logOut()

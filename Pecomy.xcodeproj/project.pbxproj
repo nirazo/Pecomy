@@ -76,6 +76,10 @@
 		D2C8E02B1D16411100E0EC6D /* BrowsesPutRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C8E02A1D16411100E0EC6D /* BrowsesPutRequest.swift */; };
 		D2C8E02D1D16412400E0EC6D /* BrowsesPutResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C8E02C1D16412400E0EC6D /* BrowsesPutResponse.swift */; };
 		D2C8E02F1D16436900E0EC6D /* BrowsesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C8E02E1D16436900E0EC6D /* BrowsesModel.swift */; };
+		D2C8E0311D16962700E0EC6D /* FavoritesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C8E0301D16962600E0EC6D /* FavoritesModel.swift */; };
+		D2C8E0331D16979C00E0EC6D /* VisitsGetRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C8E0321D16979C00E0EC6D /* VisitsGetRequest.swift */; };
+		D2C8E0351D1697A900E0EC6D /* VisitsGetResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C8E0341D1697A900E0EC6D /* VisitsGetResponse.swift */; };
+		D2C8E0371D16983D00E0EC6D /* VisitsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C8E0361D16983D00E0EC6D /* VisitsModel.swift */; };
 		D2C9B24C1CCB9099003A33B9 /* GameProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C9B24B1CCB9099003A33B9 /* GameProgressBar.swift */; };
 		D2DD65A01B7714CA0046A50C /* TopResultCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DD659F1B7714CA0046A50C /* TopResultCard.swift */; };
 		D2DD65A21B7714DA0046A50C /* OtherResultsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DD65A11B7714DA0046A50C /* OtherResultsCard.swift */; };
@@ -177,6 +181,10 @@
 		D2C8E02A1D16411100E0EC6D /* BrowsesPutRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowsesPutRequest.swift; sourceTree = "<group>"; };
 		D2C8E02C1D16412400E0EC6D /* BrowsesPutResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowsesPutResponse.swift; sourceTree = "<group>"; };
 		D2C8E02E1D16436900E0EC6D /* BrowsesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowsesModel.swift; sourceTree = "<group>"; };
+		D2C8E0301D16962600E0EC6D /* FavoritesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesModel.swift; sourceTree = "<group>"; };
+		D2C8E0321D16979C00E0EC6D /* VisitsGetRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitsGetRequest.swift; sourceTree = "<group>"; };
+		D2C8E0341D1697A900E0EC6D /* VisitsGetResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitsGetResponse.swift; sourceTree = "<group>"; };
+		D2C8E0361D16983D00E0EC6D /* VisitsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitsModel.swift; sourceTree = "<group>"; };
 		D2C9B24B1CCB9099003A33B9 /* GameProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameProgressBar.swift; sourceTree = "<group>"; };
 		D2DD659F1B7714CA0046A50C /* TopResultCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopResultCard.swift; sourceTree = "<group>"; };
 		D2DD65A11B7714DA0046A50C /* OtherResultsCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherResultsCard.swift; sourceTree = "<group>"; };
@@ -259,6 +267,8 @@
 		D200353D1D157A1D00F81114 /* Visits */ = {
 			isa = PBXGroup;
 			children = (
+				D2C8E0321D16979C00E0EC6D /* VisitsGetRequest.swift */,
+				D2C8E0341D1697A900E0EC6D /* VisitsGetResponse.swift */,
 			);
 			name = Visits;
 			sourceTree = "<group>";
@@ -274,6 +284,8 @@
 				D2BE5F3B1C4B78AB00B47387 /* RichTag.swift */,
 				D21F27A01CD6F97B0028F956 /* LoginModel.swift */,
 				D2C8E02E1D16436900E0EC6D /* BrowsesModel.swift */,
+				D2C8E0301D16962600E0EC6D /* FavoritesModel.swift */,
+				D2C8E0361D16983D00E0EC6D /* VisitsModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -744,9 +756,11 @@
 				D203D3141B3E739600FC9DB8 /* Const.swift in Sources */,
 				D2A99A161C12D3E700C16F04 /* OnetimeFilterCell.swift in Sources */,
 				D27BB9D41B36F4A900F8D902 /* MainViewController.swift in Sources */,
+				D2C8E0331D16979C00E0EC6D /* VisitsGetRequest.swift in Sources */,
 				16B6744E1C3BE59C009D039C /* PecomyApiClientError.swift in Sources */,
 				D2EFEB5C1C567F2F0092DFC9 /* MapViewController.swift in Sources */,
 				D292F7391B92DFFC005700AE /* Utils.swift in Sources */,
+				D2C8E0351D1697A900E0EC6D /* VisitsGetResponse.swift in Sources */,
 				D2DEEF1E1BD72F7400FDBB8F /* Genre.swift in Sources */,
 				D253A9E81C322B7D00D65D20 /* PecomyApiClient.swift in Sources */,
 				D2EFEB591C51282A0092DFC9 /* CardOverlayTextLabelView.swift in Sources */,
@@ -760,6 +774,7 @@
 				D2C8E02D1D16412400E0EC6D /* BrowsesPutResponse.swift in Sources */,
 				D28901361C439FC9005BDF84 /* TelButton.swift in Sources */,
 				D289013E1C4A01E8005BDF84 /* PictureCollectionViewCell.swift in Sources */,
+				D2C8E0371D16983D00E0EC6D /* VisitsModel.swift in Sources */,
 				D24A2CC31C255D2A009ACA08 /* ResultHeaderView.swift in Sources */,
 				164718B51C3D22AD00F50D33 /* CardRequest.swift in Sources */,
 				D2731FE01C79A85300E8E5E9 /* ProfileViewController.swift in Sources */,
@@ -784,6 +799,7 @@
 				D253A9EC1C32309900D65D20 /* PecomyApiResponse.swift in Sources */,
 				D289013C1C49FF54005BDF84 /* RestaurantDetailViewRichTagCollectionViewConfig.swift in Sources */,
 				D2E36EC71C2D615D00DEE726 /* OtherResultCardContentView.swift in Sources */,
+				D2C8E0311D16962700E0EC6D /* FavoritesModel.swift in Sources */,
 				D21F27A31CD70BA10028F956 /* KeychainManager.swift in Sources */,
 				D21F27971CD6F5D80028F956 /* LoginRequest.swift in Sources */,
 				D28901431C4A09EF005BDF84 /* PictureCollectionViewFlowLayout.swift in Sources */,
