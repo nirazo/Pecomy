@@ -82,7 +82,7 @@ class PecomyApiClient {
                 return PecomyResult.Failure(PecomyApiClientError(type: .Timeout))
             }
         }
-        
+                
         guard let validData: NSData = data else {
             return PecomyResult.Failure(PecomyApiClientError(type: .NoResult))
         }
@@ -90,6 +90,9 @@ class PecomyApiClient {
         var JSON: NSDictionary?
         do {
             JSON = try NSJSONSerialization.JSONObjectWithData(validData, options: .AllowFragments) as? NSDictionary
+            if JSON == nil {
+                JSON = NSDictionary()
+            }
         } catch {
             return .Failure(PecomyApiClientError(type: .JsonParse))
         }

@@ -9,8 +9,6 @@
 import KeychainAccess
 
 class LoginModel {
-//    var pecomyToken = String()
-//    var userName = String()
     
     private var session: PecomyApiClient.Session?
     
@@ -23,8 +21,9 @@ class LoginModel {
             guard let strongSelf = self else { return }
             switch response {
             case .Success(let value):
-                //strongSelf.pecomyToken = value.pecomyUser.accessToken
                 KeychainManager.setPecomyUserToken(value.pecomyUser.accessToken)
+                print("pecomyToken: \(value.pecomyUser.accessToken)")
+                print("deviceID: \(Utils.acquireDeviceID())")
                 
                 handler(PecomyResult(value: value.pecomyUser))
             case .Failure(let error):

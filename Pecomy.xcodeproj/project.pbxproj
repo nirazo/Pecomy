@@ -14,6 +14,10 @@
 		16AAD0391C3E835600ADCF87 /* ResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AAD0381C3E835600ADCF87 /* ResultModel.swift */; };
 		16B6744E1C3BE59C009D039C /* PecomyApiClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B6744D1C3BE59C009D039C /* PecomyApiClientError.swift */; };
 		2CB568F7041EB25086535E91 /* Pods_Pecomy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49542B923B14A000A93FD141 /* Pods_Pecomy.framework */; };
+		D200353F1D157A3700F81114 /* BrowsesGetRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D200353E1D157A3700F81114 /* BrowsesGetRequest.swift */; };
+		D20035411D157A4600F81114 /* BrowsesGetResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20035401D157A4600F81114 /* BrowsesGetResponse.swift */; };
+		D20035431D16388100F81114 /* FavoritesGetRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20035421D16388100F81114 /* FavoritesGetRequest.swift */; };
+		D20035451D1639AC00F81114 /* FavoritesGetResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20035441D1639AC00F81114 /* FavoritesGetResponse.swift */; };
 		D203D3141B3E739600FC9DB8 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = D203D3131B3E739600FC9DB8 /* Const.swift */; };
 		D2092A2C1B637460008046D9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D2092A2E1B637460008046D9 /* Localizable.strings */; };
 		D2092A341B64D721008046D9 /* RestaurantModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2092A331B64D721008046D9 /* RestaurantModel.swift */; };
@@ -69,6 +73,9 @@
 		D2A99A571C17367E00C16F04 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2A99A561C17367E00C16F04 /* GoogleService-Info.plist */; };
 		D2BDA9231D042FAA0096B8FC /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BDA9221D042FAA0096B8FC /* Size.swift */; };
 		D2BE5F3C1C4B78AB00B47387 /* RichTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BE5F3B1C4B78AB00B47387 /* RichTag.swift */; };
+		D2C8E02B1D16411100E0EC6D /* BrowsesPutRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C8E02A1D16411100E0EC6D /* BrowsesPutRequest.swift */; };
+		D2C8E02D1D16412400E0EC6D /* BrowsesPutResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C8E02C1D16412400E0EC6D /* BrowsesPutResponse.swift */; };
+		D2C8E02F1D16436900E0EC6D /* BrowsesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C8E02E1D16436900E0EC6D /* BrowsesModel.swift */; };
 		D2C9B24C1CCB9099003A33B9 /* GameProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C9B24B1CCB9099003A33B9 /* GameProgressBar.swift */; };
 		D2DD65A01B7714CA0046A50C /* TopResultCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DD659F1B7714CA0046A50C /* TopResultCard.swift */; };
 		D2DD65A21B7714DA0046A50C /* OtherResultsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DD65A11B7714DA0046A50C /* OtherResultsCard.swift */; };
@@ -100,6 +107,10 @@
 		43B1BFF2A757DF7E24669461 /* Pods-Pecomy.stg.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pecomy.stg.xcconfig"; path = "Pods/Target Support Files/Pods-Pecomy/Pods-Pecomy.stg.xcconfig"; sourceTree = "<group>"; };
 		49542B923B14A000A93FD141 /* Pods_Pecomy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pecomy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		86F70B85C5A086B7590989E7 /* Pods-Pecomy.stg_fixed_location.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pecomy.stg_fixed_location.xcconfig"; path = "Pods/Target Support Files/Pods-Pecomy/Pods-Pecomy.stg_fixed_location.xcconfig"; sourceTree = "<group>"; };
+		D200353E1D157A3700F81114 /* BrowsesGetRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowsesGetRequest.swift; sourceTree = "<group>"; };
+		D20035401D157A4600F81114 /* BrowsesGetResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowsesGetResponse.swift; sourceTree = "<group>"; };
+		D20035421D16388100F81114 /* FavoritesGetRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesGetRequest.swift; sourceTree = "<group>"; };
+		D20035441D1639AC00F81114 /* FavoritesGetResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesGetResponse.swift; sourceTree = "<group>"; };
 		D203D3131B3E739600FC9DB8 /* Const.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		D2092A261B6356B5008046D9 /* Pods-Pecomy.debug_fixed_location.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-Pecomy.debug_fixed_location.xcconfig"; path = "Pods/Target Support Files/Pods-Pecomy/Pods-Pecomy.debug_fixed_location.xcconfig"; sourceTree = "<group>"; };
 		D2092A281B6356FE008046D9 /* Pods-Pecomy.release_fixed_location.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-Pecomy.release_fixed_location.xcconfig"; path = "Pods/Target Support Files/Pods-Pecomy/Pods-Pecomy.release_fixed_location.xcconfig"; sourceTree = "<group>"; };
@@ -163,6 +174,9 @@
 		D2BDA9221D042FAA0096B8FC /* Size.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Size.swift; sourceTree = "<group>"; };
 		D2BE5F3B1C4B78AB00B47387 /* RichTag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RichTag.swift; sourceTree = "<group>"; };
 		D2C785F71B47C2A900517D55 /* Pecomy-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pecomy-Bridging-Header.h"; sourceTree = "<group>"; };
+		D2C8E02A1D16411100E0EC6D /* BrowsesPutRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowsesPutRequest.swift; sourceTree = "<group>"; };
+		D2C8E02C1D16412400E0EC6D /* BrowsesPutResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowsesPutResponse.swift; sourceTree = "<group>"; };
+		D2C8E02E1D16436900E0EC6D /* BrowsesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowsesModel.swift; sourceTree = "<group>"; };
 		D2C9B24B1CCB9099003A33B9 /* GameProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameProgressBar.swift; sourceTree = "<group>"; };
 		D2DD659F1B7714CA0046A50C /* TopResultCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopResultCard.swift; sourceTree = "<group>"; };
 		D2DD65A11B7714DA0046A50C /* OtherResultsCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherResultsCard.swift; sourceTree = "<group>"; };
@@ -222,6 +236,33 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		D200353B1D157A0800F81114 /* Browses */ = {
+			isa = PBXGroup;
+			children = (
+				D200353E1D157A3700F81114 /* BrowsesGetRequest.swift */,
+				D20035401D157A4600F81114 /* BrowsesGetResponse.swift */,
+				D2C8E02A1D16411100E0EC6D /* BrowsesPutRequest.swift */,
+				D2C8E02C1D16412400E0EC6D /* BrowsesPutResponse.swift */,
+			);
+			name = Browses;
+			sourceTree = "<group>";
+		};
+		D200353C1D157A1300F81114 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				D20035421D16388100F81114 /* FavoritesGetRequest.swift */,
+				D20035441D1639AC00F81114 /* FavoritesGetResponse.swift */,
+			);
+			name = Favorites;
+			sourceTree = "<group>";
+		};
+		D200353D1D157A1D00F81114 /* Visits */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Visits;
+			sourceTree = "<group>";
+		};
 		D2092A321B64D702008046D9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -232,6 +273,7 @@
 				16AAD0381C3E835600ADCF87 /* ResultModel.swift */,
 				D2BE5F3B1C4B78AB00B47387 /* RichTag.swift */,
 				D21F27A01CD6F97B0028F956 /* LoginModel.swift */,
+				D2C8E02E1D16436900E0EC6D /* BrowsesModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -291,6 +333,9 @@
 		D253A9E61C322B5F00D65D20 /* APIClient */ = {
 			isa = PBXGroup;
 			children = (
+				D200353D1D157A1D00F81114 /* Visits */,
+				D200353C1D157A1300F81114 /* Favorites */,
+				D200353B1D157A0800F81114 /* Browses */,
 				D21F27951CD6F5B10028F956 /* Login */,
 				164718B21C3D226100F50D33 /* Card */,
 				164718B31C3D226900F50D33 /* Result */,
@@ -690,6 +735,7 @@
 			files = (
 				D253A9EA1C32308E00D65D20 /* PecomyApiRequest.swift in Sources */,
 				D289012E1C437D8E005BDF84 /* RestaurantDetailView.swift in Sources */,
+				D20035411D157A4600F81114 /* BrowsesGetResponse.swift in Sources */,
 				D28901321C438FEC005BDF84 /* CommentsView.swift in Sources */,
 				D23070731B4C30D100833167 /* PecomyLocationManager.swift in Sources */,
 				D292AA191C5FB30800D66A87 /* Budget.swift in Sources */,
@@ -704,12 +750,14 @@
 				D2DEEF1E1BD72F7400FDBB8F /* Genre.swift in Sources */,
 				D253A9E81C322B7D00D65D20 /* PecomyApiClient.swift in Sources */,
 				D2EFEB591C51282A0092DFC9 /* CardOverlayTextLabelView.swift in Sources */,
+				D2C8E02B1D16411100E0EC6D /* BrowsesPutRequest.swift in Sources */,
 				D2BDA9231D042FAA0096B8FC /* Size.swift in Sources */,
 				D272F45C1B9C25E4009564A0 /* LoadingView.swift in Sources */,
 				164718B71C3D22D700F50D33 /* CardResponse.swift in Sources */,
 				D2092A341B64D721008046D9 /* RestaurantModel.swift in Sources */,
 				D21F27A11CD6F97B0028F956 /* LoginModel.swift in Sources */,
 				D292AA171C5FAB8700D66A87 /* OnetimeFilterCollectionViewConfig.swift in Sources */,
+				D2C8E02D1D16412400E0EC6D /* BrowsesPutResponse.swift in Sources */,
 				D28901361C439FC9005BDF84 /* TelButton.swift in Sources */,
 				D289013E1C4A01E8005BDF84 /* PictureCollectionViewCell.swift in Sources */,
 				D24A2CC31C255D2A009ACA08 /* ResultHeaderView.swift in Sources */,
@@ -725,6 +773,7 @@
 				D2C9B24C1CCB9099003A33B9 /* GameProgressBar.swift in Sources */,
 				D24B292E1B7895DA00419B9B /* TutorialViewController.swift in Sources */,
 				D2A594E81C8C77A400DE1012 /* R.generated.swift in Sources */,
+				D20035431D16388100F81114 /* FavoritesGetRequest.swift in Sources */,
 				D2DD65A21B7714DA0046A50C /* OtherResultsCard.swift in Sources */,
 				D28B54131CFAE85D008FDCC1 /* PecomyUser.swift in Sources */,
 				D2A99A1A1C12D3FA00C16F04 /* OnetimeFilterViewController.swift in Sources */,
@@ -738,14 +787,17 @@
 				D21F27A31CD70BA10028F956 /* KeychainManager.swift in Sources */,
 				D21F27971CD6F5D80028F956 /* LoginRequest.swift in Sources */,
 				D28901431C4A09EF005BDF84 /* PictureCollectionViewFlowLayout.swift in Sources */,
+				D20035451D1639AC00F81114 /* FavoritesGetResponse.swift in Sources */,
 				D253A9E51C32236900D65D20 /* Restaurant.swift in Sources */,
 				D24B291F1B772EFF00419B9B /* ResultViewController.swift in Sources */,
 				164718B91C3D273C00F50D33 /* ResultResponse.swift in Sources */,
 				D2BE5F3C1C4B78AB00B47387 /* RichTag.swift in Sources */,
 				D289013A1C49FF24005BDF84 /* RestaurantDetailViewPictureCollectionViewConfig.swift in Sources */,
 				D28901341C438FFF005BDF84 /* CommentContentView.swift in Sources */,
+				D200353F1D157A3700F81114 /* BrowsesGetRequest.swift in Sources */,
 				D2731FDD1C79A81200E8E5E9 /* MainBaseViewController.swift in Sources */,
 				16AAD0391C3E835600ADCF87 /* ResultModel.swift in Sources */,
+				D2C8E02F1D16436900E0EC6D /* BrowsesModel.swift in Sources */,
 				D2731FE31C79A88000E8E5E9 /* RestaurantLogViewController.swift in Sources */,
 				D24B29211B78748A00419B9B /* ResultCardBase.swift in Sources */,
 			);

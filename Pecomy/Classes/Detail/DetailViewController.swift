@@ -18,6 +18,8 @@ class DetailViewController: UIViewController {
     var picConfig: RestaurantDetailViewPictureCollectionViewConfig?
     var richTagConfig: RestaurantDetailViewRichTagCollectionViewConfig?
     
+    let browsesModel = BrowsesModel()
+    
     init(restaurant: Restaurant) {
         self.restaurant = restaurant
         super.init(nibName: nil, bundle: nil)
@@ -88,6 +90,17 @@ class DetailViewController: UIViewController {
         
         let builder = GAIDictionaryBuilder.createScreenView()
         tracker.send(builder.build() as [NSObject : AnyObject])
+        
+        // browses登録リクエスト
+        self.browsesModel.register(shopId: self.restaurant.shopID, handler: {[weak self](result: PecomyResult<PecomyApiResponse, PecomyApiClientError>) in
+            guard let strongSelf = self else { return }
+            switch result {
+            case .Success(_):
+                print("history registered!!: \(strongSelf.restaurant.shopID))")
+            case .Failure(let error):
+                print("history register error: \(error.code), \(error.response)")
+            }
+            })
     }
 
     override func didReceiveMemoryWarning() {

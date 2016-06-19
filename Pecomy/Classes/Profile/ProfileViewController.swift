@@ -40,6 +40,8 @@ class ProfileViewController: UIViewController {
     
     static let title = "個人設定"
     let loginModel = LoginModel()
+    let browsesModel = BrowsesModel()
+    var browsesRestaurants = [Restaurant]()
     var delegate: ProfileViewControllerDelegate?
     let bgView = UIView()
     let userPhotoImageView = UIImageView()
@@ -93,7 +95,7 @@ class ProfileViewController: UIViewController {
         // お気に入りの数
         self.numOfFavoriteLabel.font = UIFont(name: Const.PECOMY_FONT_BOLD, size: 20)
         self.numOfFavoriteLabel.textAlignment = .Center
-        self.numOfFavoriteLabel.text = "10000"
+        self.numOfFavoriteLabel.text = String(PecomyUser.sharedInstance.favorites.count)
         self.view.addSubview(self.numOfFavoriteLabel)
         self.numOfFavoriteLabel.snp_makeConstraints { make in
             make.top.equalTo(self.view).offset(112.5)
@@ -119,7 +121,7 @@ class ProfileViewController: UIViewController {
         // チェックインの数
         self.numOfCheckinLabel.font = UIFont(name: Const.PECOMY_FONT_BOLD, size: 20)
         self.numOfCheckinLabel.textAlignment = .Center
-        self.numOfCheckinLabel.text = "10000"
+        self.numOfCheckinLabel.text = String(PecomyUser.sharedInstance.visits.count)
         self.view.addSubview(self.numOfCheckinLabel)
         self.numOfCheckinLabel.snp_makeConstraints { make in
             make.top.equalTo(self.view).offset(112.5)
@@ -156,6 +158,8 @@ class ProfileViewController: UIViewController {
         
         // 最近見たお店のリスト
         self.tableView.delegate = self
+        self.tableView.dataSource = self
+        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "reuseIdentifier")
         self.view.addSubview(self.tableView)
         self.tableView.snp_makeConstraints { make in
             make.top.equalTo(recentHeaderView.snp_bottom)
@@ -163,6 +167,20 @@ class ProfileViewController: UIViewController {
             make.width.equalTo(self.view)
             make.bottom.equalTo(self.view)
         }
+    }
+    
+    private func updateBrowses() {
+        self.browsesModel.fetch(111.11, longitude: 111.11, orderBy: .Recent, handler: {[weak self](result: PecomyResult<PecomyUser, PecomyApiClientError>) in
+            guard let strongSelf = self else { return }
+            switch result {
+            case .Success(let user):
+                strongSelf.browsesRestaurants = user.browses
+                strongSelf.tableView.reloadData()
+                print("updateBrowses!: \(user.browses.count)")
+            case .Failure(let error):
+                print("error: \(error.code), \(error.response)")
+            }
+            })
     }
 }
 
@@ -174,13 +192,13 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        print("update: \(self.browsesRestaurants.count)")
+        return self.browsesRestaurants.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-        
-        
+        cell.textLabel?.text = self.browsesRestaurants[indexPath.row].shopName
         return cell
     }
     
@@ -214,6 +232,7 @@ extension ProfileViewController: FBSDKLoginButtonDelegate {
                 switch result {
                 case .Success(let user):
                     strongSelf.delegate?.navTitleChanged(user.userName)
+                    strongSelf.updateBrowses()
                 case .Failure(let error):
                     let fb = FBSDKLoginManager()
                     fb.logOut()

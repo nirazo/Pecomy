@@ -10,9 +10,17 @@ import Foundation
 import Foundation
 import ObjectMapper
 
-struct PecomyUser {
+class PecomyUser {
+    static let sharedInstance = PecomyUser()
     var accessToken = ""
     var userName = ""
+    var pictureUrl = ""
+    var browses = [Restaurant]()
+    var favorites = [Restaurant]()
+    var visits = [Restaurant]()
+    
+    private init() {
+    }
 }
 
 //extension PecomyUser: Mappable {

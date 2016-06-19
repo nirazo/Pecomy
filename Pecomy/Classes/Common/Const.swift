@@ -14,6 +14,13 @@ enum AnaylyticsTrackingCode: String {
     case ResultViewController = "ResultViewController"
 }
 
+// APIに投げる並び順定数
+// 別の場所に作ってあげたほうがいいと思うんだぜ
+enum RestaurantListOrder : String {
+    case Recent = "recent"
+    case Closest = "closest"
+}
+
 struct Const {
     #if DEBUG
     static let API_BASE_PATH = "http://private-552a20-pecomyapi.apiary-mock.com"
@@ -24,8 +31,8 @@ struct Const {
     static let API_GOOD_BASE = "http://peco.my/dummy_good"
     static let API_BLACKLIST_BASE = "http://peco.my/dummy_blacklist"
     #elseif STG
-    static let API_BASE_PATH = "http://peco.my:10090/"
-    static let API_GOOD_BASE = "http://peco.my:10090/dummy_good"
+    static let API_BASE_PATH = "http://peco.my/"
+    static let API_GOOD_BASE = "http://peco.my/dummy_good"
     static let API_BLACKLIST_BASE = "http://peco.my:10090/dummy_blacklist"
 
     #endif
