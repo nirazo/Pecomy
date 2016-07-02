@@ -23,6 +23,7 @@
 		D2092A341B64D721008046D9 /* RestaurantModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2092A331B64D721008046D9 /* RestaurantModel.swift */; };
 		D20B53C81CB8FA8D0025EA58 /* PhotoViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20B53C71CB8FA8D0025EA58 /* PhotoViewerViewController.swift */; };
 		D20D9C1C1C9B1983003BA643 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D20D9C1B1C9B1983003BA643 /* Settings.bundle */; };
+		D216E06D1D1847AF000FAB0F /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D216E06C1D1847AF000FAB0F /* AppState.swift */; };
 		D21F27971CD6F5D80028F956 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21F27961CD6F5D80028F956 /* LoginRequest.swift */; };
 		D21F27991CD6F60B0028F956 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21F27981CD6F60B0028F956 /* LoginResponse.swift */; };
 		D21F27A11CD6F97B0028F956 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21F27A01CD6F97B0028F956 /* LoginModel.swift */; };
@@ -123,6 +124,7 @@
 		D2092A331B64D721008046D9 /* RestaurantModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantModel.swift; sourceTree = "<group>"; };
 		D20B53C71CB8FA8D0025EA58 /* PhotoViewerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewerViewController.swift; sourceTree = "<group>"; };
 		D20D9C1B1C9B1983003BA643 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		D216E06C1D1847AF000FAB0F /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		D21F27961CD6F5D80028F956 /* LoginRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginRequest.swift; path = Login/LoginRequest.swift; sourceTree = "<group>"; };
 		D21F27981CD6F60B0028F956 /* LoginResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		D21F27A01CD6F97B0028F956 /* LoginModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
@@ -400,6 +402,7 @@
 				D292F7381B92DFFC005700AE /* Utils.swift */,
 				D21F27A21CD70BA10028F956 /* KeychainManager.swift */,
 				D2BDA9221D042FAA0096B8FC /* Size.swift */,
+				D216E06C1D1847AF000FAB0F /* AppState.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -748,6 +751,7 @@
 				D253A9EA1C32308E00D65D20 /* PecomyApiRequest.swift in Sources */,
 				D289012E1C437D8E005BDF84 /* RestaurantDetailView.swift in Sources */,
 				D20035411D157A4600F81114 /* BrowsesGetResponse.swift in Sources */,
+				D216E06D1D1847AF000FAB0F /* AppState.swift in Sources */,
 				D28901321C438FEC005BDF84 /* CommentsView.swift in Sources */,
 				D23070731B4C30D100833167 /* PecomyLocationManager.swift in Sources */,
 				D292AA191C5FB30800D66A87 /* Budget.swift in Sources */,

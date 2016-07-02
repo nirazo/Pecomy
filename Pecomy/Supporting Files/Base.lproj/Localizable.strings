@@ -75,4 +75,5 @@
 "TelAlertMessage" = "Do you make a phone call to this restaurant?";
 "TelAlertTelButton" = "Call";
 // Profile
+"ProfileTitle" = "Profile";
 "RecentView" = "Recent view";

@@ -36,4 +36,54 @@ class KeychainManager {
         }
     }
     
+    static func setPecomyUserName(name: String) {
+        do {
+            try self.keychain.set(name, key: Const.PecomyUserNameKeychainKey)
+        } catch let error {
+            fatalError("Keychain error: failed to set pecomy user name value(\(name)) to key(\(Const.PecomyUserNameKeychainKey)) : \(error)")
+        }
+    }
+    
+    static func getUserName() -> String? {
+        do {
+            return try self.keychain.getString(Const.PecomyUserNameKeychainKey)
+        } catch let error {
+            fatalError("Keychain Error: failed to get pecomy user name value for key(\(Const.PecomyUserNameKeychainKey)) : \(error)")
+        }
+    }
+    
+    static func removeUserName() {
+        do {
+            try self.keychain.remove(Const.PecomyUserNameKeychainKey)
+        } catch let error {
+            fatalError("Keychain Error: failed to remove pecomy user name value for key(\(Const.PecomyUserNameKeychainKey)) : \(error)")
+        }
+    }
+
+    
+    static func setPecomyUserPictureUrl(picURL: String) {
+        do {
+            try self.keychain.set(picURL, key: Const.PecomyUserPictureKeychainKey)
+        } catch let error {
+            fatalError("Keychain error: failed to set pecomy user pic value(\(picURL)) to key(\(Const.PecomyUserPictureKeychainKey)) : \(error)")
+        }
+    }
+    
+    static func getPecomyUserPictureUrl() -> String? {
+        do {
+            return try self.keychain.getString(Const.PecomyUserPictureKeychainKey)
+        } catch let error {
+            fatalError("Keychain Error: failed to get pecomy user pic value for key(\(Const.PecomyUserPictureKeychainKey)) : \(error)")
+        }
+    }
+    
+    static func removePecomyUserPictureUrl() {
+        do {
+            try self.keychain.remove(Const.PecomyUserPictureKeychainKey)
+        } catch let error {
+            fatalError("Keychain Error: failed to remove pecomy user pic value for key(\(Const.PecomyUserPictureKeychainKey)) : \(error)")
+        }
+    }
+
+    
 }

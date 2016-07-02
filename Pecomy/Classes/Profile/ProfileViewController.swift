@@ -10,9 +10,6 @@ import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit
 
-protocol ProfileViewControllerDelegate {
-    func navTitleChanged(title: String)
-}
 
 class RecentHeaderView: UIView {
     override init(frame: CGRect) {
@@ -38,7 +35,6 @@ class RecentHeaderView: UIView {
 
 class ProfileViewController: UIViewController {
     
-    static let title = "個人設定"
     let loginModel = LoginModel()
     let browsesModel = BrowsesModel()
     var browsesRestaurants = [Restaurant]()
@@ -47,7 +43,6 @@ class ProfileViewController: UIViewController {
     let visitsModel = VisitsModel()
     var visitsRestaurants = [Restaurant]()
     
-    var delegate: ProfileViewControllerDelegate?
     let bgView = UIView()
     let userPhotoImageView = UIImageView()
     let numOfFavoriteLabel = UILabel()
@@ -58,8 +53,36 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = Const.PECOMY_BASIC_BACKGROUND_COLOR
+        self.browsesRestaurants = PecomyUser.sharedInstance.browses
         
-        self.setupSubViews()
+        if LoginModel.isLoggedIn() {
+            let currentToken = FBSDKAccessToken.currentAccessToken().tokenString
+            self.loginModel.fetch(currentToken, handler: {[weak self] (result: PecomyResult<PecomyUser, PecomyApiClientError>) in
+                guard let strongSelf = self else { return }
+                switch result {
+                case .Success(_):
+                    strongSelf.updateBrowsesList()
+                    strongSelf.updateFavoritesList()
+                    strongSelf.updateVisitsList()
+                    strongSelf.updateUserPicture()
+                case .Failure(let error):
+                    let fb = FBSDKLoginManager()
+                    fb.logOut()
+                    KeychainManager.removePecomyUserToken()
+                    print("error occured and logout: \(error)")
+                }
+                strongSelf.setupSubViews()
+                })
+        } else {
+            self.setupSubViews()
+        }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.updateBrowsesList()
+        self.updateVisitsList()
+        self.updateFavoritesList()
     }
 
     override func didReceiveMemoryWarning() {
@@ -100,7 +123,7 @@ class ProfileViewController: UIViewController {
         // お気に入りの数
         self.numOfFavoriteLabel.font = UIFont(name: Const.PECOMY_FONT_BOLD, size: 20)
         self.numOfFavoriteLabel.textAlignment = .Center
-        self.numOfFavoriteLabel.text = self.loginModel.isLoggedIn() ? String(PecomyUser.sharedInstance.favorites.count):"-"
+        self.numOfFavoriteLabel.text = LoginModel.isLoggedIn() ? String(PecomyUser.sharedInstance.favorites.count) : "-"
         self.view.addSubview(self.numOfFavoriteLabel)
         self.numOfFavoriteLabel.snp_makeConstraints { make in
             make.top.equalTo(self.view).offset(112.5)
@@ -126,7 +149,7 @@ class ProfileViewController: UIViewController {
         // チェックインの数
         self.numOfCheckinLabel.font = UIFont(name: Const.PECOMY_FONT_BOLD, size: 20)
         self.numOfCheckinLabel.textAlignment = .Center
-        self.numOfCheckinLabel.text = self.loginModel.isLoggedIn() ? String(PecomyUser.sharedInstance.visits.count) : "-"
+        self.numOfCheckinLabel.text = LoginModel.isLoggedIn() ? String(PecomyUser.sharedInstance.visits.count) : "-"
         self.view.addSubview(self.numOfCheckinLabel)
         self.numOfCheckinLabel.snp_makeConstraints { make in
             make.top.equalTo(self.view).offset(112.5)
@@ -172,10 +195,11 @@ class ProfileViewController: UIViewController {
             make.width.equalTo(self.view)
             make.bottom.equalTo(self.view)
         }
+        self.tableView.reloadData()
     }
     
     private func updateBrowsesList() {
-        self.browsesModel.fetch(111.11, longitude: 111.11, orderBy: .Recent, handler: {[weak self](result: PecomyResult<PecomyUser, PecomyApiClientError>) in
+        self.browsesModel.fetch(AppState.sharedInstance.currentLatitude ?? 0.0, longitude: AppState.sharedInstance.currentLongitude ?? 0.0, orderBy: .Recent, handler: {[weak self](result: PecomyResult<PecomyUser, PecomyApiClientError>) in
             guard let strongSelf = self else { return }
             switch result {
             case .Success(let user):
@@ -187,8 +211,13 @@ class ProfileViewController: UIViewController {
             })
     }
     
+    private func clearBrowsesList() {
+        self.browsesRestaurants = []
+        self.tableView.reloadData()
+    }
+    
     private func updateFavoritesList() {
-        self.favoritesModel.fetch(111.11, longitude: 111.11, orderBy: .Recent, handler: {[weak self](result: PecomyResult<PecomyUser, PecomyApiClientError>) in
+        self.favoritesModel.fetch(AppState.sharedInstance.currentLatitude ?? 0.0, longitude: AppState.sharedInstance.currentLongitude ?? 0.0, orderBy: .Recent, handler: {[weak self](result: PecomyResult<PecomyUser, PecomyApiClientError>) in
             guard let strongSelf = self else { return }
             switch result {
             case .Success(let user):
@@ -199,8 +228,13 @@ class ProfileViewController: UIViewController {
             })
     }
     
+    private func clearFavoritesList() {
+        self.favoritesRestaurants = []
+        self.numOfFavoriteLabel.text = "-"
+    }
+    
     private func updateVisitsList() {
-        self.visitsModel.fetch(111.11, longitude: 111.11, orderBy: .Recent, handler: {[weak self](result: PecomyResult<PecomyUser, PecomyApiClientError>) in
+        self.visitsModel.fetch(AppState.sharedInstance.currentLatitude ?? 0.0, longitude: AppState.sharedInstance.currentLongitude ?? 0.0, orderBy: .Recent, handler: {[weak self](result: PecomyResult<PecomyUser, PecomyApiClientError>) in
             guard let strongSelf = self else { return }
             switch result {
             case .Success(let user):
@@ -209,6 +243,20 @@ class ProfileViewController: UIViewController {
                 print("error: \(error.code), \(error.response)")
             }
             })
+    }
+    
+    private func clearVisitsList() {
+        self.visitsRestaurants = []
+        self.numOfCheckinLabel.text = "-"
+    }
+    
+    private func updateUserPicture() {
+        guard let urlStr = KeychainManager.getPecomyUserPictureUrl(), picUrl = NSURL(string: urlStr) else { return }
+        self.userPhotoImageView.sd_setImageWithURL(picUrl, completed: { [weak self] _ in
+            guard let strongSelf = self else { return }
+            strongSelf.userPhotoImageView.layer.cornerRadius = strongSelf.userPhotoImageView.frame.size.width * 0.5
+            strongSelf.userPhotoImageView.clipsToBounds = true
+        })
     }
 
 }
@@ -258,11 +306,11 @@ extension ProfileViewController: FBSDKLoginButtonDelegate {
             self.loginModel.fetch(currentToken, handler: {[weak self] (result: PecomyResult<PecomyUser, PecomyApiClientError>) in
                 guard let strongSelf = self else { return }
                 switch result {
-                case .Success(let user):
-                    strongSelf.delegate?.navTitleChanged(user.userName)
+                case .Success(_):
                     strongSelf.updateBrowsesList()
                     strongSelf.updateFavoritesList()
                     strongSelf.updateVisitsList()
+                    strongSelf.updateUserPicture()
                 case .Failure(let error):
                     let fb = FBSDKLoginManager()
                     fb.logOut()
@@ -275,5 +323,8 @@ extension ProfileViewController: FBSDKLoginButtonDelegate {
     
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
         KeychainManager.removePecomyUserToken()
+        self.clearBrowsesList()
+        self.clearVisitsList()
+        self.clearFavoritesList()
     }
 }

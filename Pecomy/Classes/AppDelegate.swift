@@ -43,9 +43,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window!.makeKeyAndVisible()
         
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
-
-        
-        //return true
     }
     
     func applicationWillResignActive(application: UIApplication) {}
@@ -58,6 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidBecomeActive(application: UIApplication) {
         FBSDKAppEvents.activateApp()
+        // ログインしてたら値復元
     }
     
     func applicationWillTerminate(application: UIApplication) {}

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FBSDKCoreKit
+import FBSDKLoginKit
 
 class MainBaseViewController: UIViewController {
     
@@ -70,7 +72,6 @@ class MainBaseViewController: UIViewController {
         self.pagingBaseView.backgroundColor = UIColor.clearColor()
         
         let profileVC = ProfileViewController()
-        profileVC.delegate = self
         self.addChildViewController(profileVC)
         profileVC.didMoveToParentViewController(self)
         
@@ -116,7 +117,7 @@ extension MainBaseViewController: UIScrollViewDelegate {
         let currentPage = Int(scrollView.contentOffset.x / scrollView.frame.maxX)
         switch currentPage {
         case 0:
-            self.title = ProfileViewController.title
+            self.title = NSLocalizedString("ProfileTitle", comment: "")
         case 1:
             self.title = MainViewController.title
         case 2:
@@ -137,11 +138,5 @@ extension MainBaseViewController: UIScrollViewDelegate {
         } else {
             self.bgImageMaskView.frame.size.height = scrollView.contentOffset.x / self.imageShrinkPace + Size.navHeightIncludeStatusBar(self.navigationController!)
         }
-    }
-}
-
-extension MainBaseViewController: ProfileViewControllerDelegate {
-    func navTitleChanged(title: String) {
-        self.title = title
     }
 }

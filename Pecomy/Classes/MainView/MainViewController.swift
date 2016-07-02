@@ -45,8 +45,6 @@ class MainViewController: UIViewController {
     var resultModel = ResultModel()
     
     var stackedCards = [CardView]()
-    var currentLatitude: Double?
-    var currentLongitude: Double?
     
     // var results
     var currentResults = [Restaurant]()
@@ -190,7 +188,7 @@ class MainViewController: UIViewController {
             self.tutorialVC?.delegate = self
             self.presentViewController(tutorialVC!, animated: true, completion: nil)
         } else {
-            if (self.currentLatitude == nil || self.currentLongitude == nil) {
+            if (AppState.sharedInstance.currentLatitude == nil || AppState.sharedInstance.currentLongitude == nil) {
                 self.displayOnetimeFilterView()
             }
         }
@@ -209,7 +207,7 @@ class MainViewController: UIViewController {
     
     //MARK:- Observer
     func enterForeground(notification: NSNotification){
-        if self.currentLatitude == nil || self.currentLongitude == nil {
+        if AppState.sharedInstance.currentLatitude == nil || AppState.sharedInstance.currentLongitude == nil {
             self.reset()
             self.acquireFirstCard()
         } else {
@@ -227,11 +225,11 @@ class MainViewController: UIViewController {
                 guard let strongSelf = self else {
                     return
                 }
-                if (Utils.distanceBetweenLocations(strongSelf.currentLatitude!, fromLon: strongSelf.currentLongitude!, toLat: location!.coordinate.latitude, toLon: location!.coordinate.longitude) > Const.RETRY_DISTANCE) {
+                if (Utils.distanceBetweenLocations(AppState.sharedInstance.currentLatitude!, fromLon: AppState.sharedInstance.currentLongitude!, toLat: location!.coordinate.latitude, toLon: location!.coordinate.longitude) > Const.RETRY_DISTANCE) {
                     strongSelf.reset()
-                    strongSelf.currentLatitude = Double(location!.coordinate.latitude);
-                    strongSelf.currentLongitude = Double(location!.coordinate.longitude);
-                    strongSelf.acquireFirstCardsWithLocation(strongSelf.currentLatitude!, longitude: strongSelf.currentLongitude!)
+                    AppState.sharedInstance.currentLatitude = Double(location!.coordinate.latitude);
+                    AppState.sharedInstance.currentLongitude = Double(location!.coordinate.longitude);
+                    strongSelf.acquireFirstCardsWithLocation(AppState.sharedInstance.currentLatitude!, longitude: AppState.sharedInstance.currentLongitude!)
                 }
                 
                 }, failure: { [weak self] (error) in
@@ -248,8 +246,8 @@ class MainViewController: UIViewController {
     func reset() {
         self.resetViews()
         self.isLocationAcquired = false
-        self.currentLatitude = nil
-        self.currentLongitude = nil
+        AppState.sharedInstance.currentLatitude = nil
+        AppState.sharedInstance.currentLongitude = nil
         self.currentBudget = Budget.Unspecified
         self.currentNumOfPeople = NumOfPeople.One
         self.currentGenre = Genre.All
@@ -293,9 +291,9 @@ class MainViewController: UIViewController {
             guard let strongSelf = self else {
                 return
             }
-            strongSelf.currentLatitude = Double(location!.coordinate.latitude);
-            strongSelf.currentLongitude = Double(location!.coordinate.longitude);
-            strongSelf.acquireFirstCardsWithLocation(strongSelf.currentLatitude!, longitude: strongSelf.currentLongitude!)
+            AppState.sharedInstance.currentLatitude = Double(location!.coordinate.latitude);
+            AppState.sharedInstance.currentLongitude = Double(location!.coordinate.longitude);
+            strongSelf.acquireFirstCardsWithLocation(AppState.sharedInstance.currentLatitude!, longitude: AppState.sharedInstance.currentLongitude!)
             },
             failure: { [weak self] (error) in
                 guard let strongSelf = self else {
@@ -437,7 +435,7 @@ class MainViewController: UIViewController {
     */
     
     func acquireResults() {
-        self.resultModel.fetch(self.currentLatitude!, longitude: self.currentLongitude!,
+        self.resultModel.fetch(AppState.sharedInstance.currentLatitude!, longitude: AppState.sharedInstance.currentLongitude!,
             handler: {[weak self] (result: PecomyResult<[Restaurant], PecomyApiClientError>) in
                 guard let strongSelf = self else {
                     return
@@ -590,7 +588,7 @@ extension MainViewController: OnetimeFilterViewControllerDelegate {
         // reset cards and request
         self.resetViews()
         
-        if let lat = self.currentLatitude, lon = self.currentLongitude {
+        if let lat = AppState.sharedInstance.currentLatitude, lon = AppState.sharedInstance.currentLongitude {
             self.acquireFirstCardsWithLocation(lat, longitude: lon)
         } else {
             self.acquireFirstCard()
@@ -635,7 +633,7 @@ extension MainViewController: MDCSwipeToChooseDelegate {
             self.progressBar.progressWithRatio(self.currentProgress)
         }
 
-        self.acquireCardWithLatitude(self.currentLatitude!, longitude: self.currentLongitude!, like: answer, maxBudget: self.currentBudget, numOfPeople: self.currentNumOfPeople, genre:self.currentGenre, syncId: cardView.syncID, reset: false)
+        self.acquireCardWithLatitude(AppState.sharedInstance.currentLatitude!, longitude: AppState.sharedInstance.currentLongitude!, like: answer, maxBudget: self.currentBudget, numOfPeople: self.currentNumOfPeople, genre:self.currentGenre, syncId: cardView.syncID, reset: false)
         if (!self.canDisplayNextCard && self.contentView.subviews.count == 0) {
             self.acquireResults()
         }

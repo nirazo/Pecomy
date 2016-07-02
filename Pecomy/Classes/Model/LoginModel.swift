@@ -22,6 +22,8 @@ class LoginModel {
             switch response {
             case .Success(let value):
                 KeychainManager.setPecomyUserToken(value.pecomyUser.accessToken)
+                KeychainManager.setPecomyUserName(value.pecomyUser.userName)
+                KeychainManager.setPecomyUserPictureUrl(value.pecomyUser.pictureUrl)
                 print("pecomyToken: \(value.pecomyUser.accessToken)")
                 print("deviceID: \(Utils.acquireDeviceID())")
                 
@@ -34,11 +36,11 @@ class LoginModel {
         return true
     }
     
-    func currentPecomyToken() -> String? {
+    class func currentPecomyToken() -> String? {
         return KeychainManager.getPecomyUserToken()
     }
     
-    func isLoggedIn() -> Bool {
+    class func isLoggedIn() -> Bool {
         return KeychainManager.getPecomyUserToken() != nil
     }
 

@@ -22,14 +22,3 @@ class PecomyUser {
     private init() {
     }
 }
-
-//extension PecomyUser: Mappable {
-//    init?(_ map: Map) {
-//        mapping(map)
-//    }
-//    
-//    mutating func mapping(map: Map) {
-//        accessToken <- map["access_token"]
-//        userName <- map["name"]
-//    }
-//}

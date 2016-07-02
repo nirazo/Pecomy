@@ -101,4 +101,6 @@ struct Const {
     
     // Keychain
     static let PecomyUserTokenKeychainKey = "PecomyUserToken"
+    static let PecomyUserNameKeychainKey = "PecomyUserName"
+    static let PecomyUserPictureKeychainKey = "PecomyUserPicture"
 }

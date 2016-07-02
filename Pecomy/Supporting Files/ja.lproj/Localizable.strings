@@ -74,4 +74,5 @@
 "TelAlertMessage" = "この店舗に電話をかけますか？";
 "TelAlertTelButton" = "電話をかける";
 // Profile
+"ProfileTitle" = "個人設定";
 "RecentView" = "最近見たお店";
