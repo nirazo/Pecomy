@@ -68,7 +68,24 @@ class RestaurantListCell: UITableViewCell {
             make.width.equalTo(192.5)
             make.bottom.greaterThanOrEqualTo(self.contentView).offset(-18.5)
         }
-
+        
+        // チェックイン
+        self.checkinIcon.image = R.image.cell_checkin_off()
+        self.contentView.addSubview(self.checkinIcon)
+        self.checkinIcon.snp_makeConstraints { make in
+            make.left.equalTo(self.priceLabel.snp_right).offset(11)
+            make.bottom.equalTo(self.restaurantImageView)
+            make.width.height.equalTo(26)
+        }
+        
+        // お気に入り
+        self.favoriteIcon.image = R.image.cell_favorite_off()
+        self.contentView.addSubview(self.favoriteIcon)
+        self.favoriteIcon.snp_makeConstraints { make in
+            make.right.equalTo(self.genreLabel)
+            make.bottom.equalTo(self.restaurantImageView)
+            make.width.height.equalTo(26)
+        }
     }
     
     func configureCell(restaurant: Restaurant) {

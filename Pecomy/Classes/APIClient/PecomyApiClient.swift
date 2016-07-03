@@ -65,9 +65,6 @@ class PecomyApiClient {
                 print("rawData: \(str)")
                 switch response {
                 case .Success(let result):
-                    if let res = result as? BrowsesGetResponse {
-                        //print("result: \(res.pecomyUser.browses)")
-                    }
                     handler(PecomyResult<U, PecomyApiClientError>.Success(result))
                 case .Failure(let error):
                     handler(PecomyResult<U, PecomyApiClientError>(error: error))
