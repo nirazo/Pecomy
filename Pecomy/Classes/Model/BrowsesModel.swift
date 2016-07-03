@@ -15,14 +15,15 @@ class BrowsesModel {
     init() {
     }
     
-    func fetch(latitude: Double, longitude: Double, orderBy: RestaurantListOrder, handler: ((PecomyResult<PecomyUser, PecomyApiClientError>) -> Void)) -> Bool {
+    func fetch(latitude: Double, longitude: Double, orderBy: RestaurantListOrder, handler: ((PecomyResult<[Restaurant], PecomyApiClientError>) -> Void)) -> Bool {
         let request = BrowsesGetRequest(latitude: latitude, longitude: longitude, orderBy: orderBy)
         self.session = PecomyApiClient.send(request) { [weak self] (response: PecomyResult<BrowsesGetRequest.Response, PecomyApiClientError>) -> Void in
             guard let strongSelf = self else { return }
             
             switch response {
             case .Success(let value):
-                handler(PecomyResult(value: value.pecomyUser))
+//                handler(PecomyResult(value: value.pecomyUser.browses))
+                handler(PecomyResult(value: value.browses))
             case .Failure(let error):
                 // TODO: エラーコードによってエラーメッセージ詰めたりする
                 handler(PecomyResult(error: error))

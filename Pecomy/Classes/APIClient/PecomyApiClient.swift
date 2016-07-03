@@ -61,8 +61,13 @@ class PecomyApiClient {
                     }
                 }
                 let response: PecomyResult<U, PecomyApiClientError> = PecomyApiClient.mappingResponse(httpRequest, response: httpResponse, data: data, error: error)
+                let str = NSString(data: data!, encoding:NSUTF8StringEncoding)
+                print("rawData: \(str)")
                 switch response {
                 case .Success(let result):
+                    if let res = result as? BrowsesGetResponse {
+                        //print("result: \(res.pecomyUser.browses)")
+                    }
                     handler(PecomyResult<U, PecomyApiClientError>.Success(result))
                 case .Failure(let error):
                     handler(PecomyResult<U, PecomyApiClientError>(error: error))

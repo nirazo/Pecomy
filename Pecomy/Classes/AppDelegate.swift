@@ -67,7 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // navVCを透明化
     func createTranslucentNavVC(rootVC: UIViewController) -> UINavigationController {
         let navVC = UINavigationController(rootViewController: rootVC)
-        navVC.navigationBar.tintColor = UIColor.clearColor()
+        navVC.navigationBar.tintColor = .clearColor()
         navVC.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
         navVC.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: Const.PECOMY_THEME_TEXT_COLOR]
         navVC.navigationBar.shadowImage = UIImage()

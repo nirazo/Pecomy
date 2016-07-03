@@ -34,6 +34,8 @@ class DetailViewController: UIViewController {
         self.view.backgroundColor = Const.PECOMY_RESULT_BACK_COLOR
         self.edgesForExtendedLayout = .None
         
+        self.navigationController?.makeNavigationBarDefault()
+        
         self.picConfig = RestaurantDetailViewPictureCollectionViewConfig(imageUrls: self.restaurant.imageUrls)
         self.richTagConfig = RestaurantDetailViewRichTagCollectionViewConfig(richTags: self.restaurant.richTags)
         
@@ -96,7 +98,7 @@ class DetailViewController: UIViewController {
             guard let strongSelf = self else { return }
             switch result {
             case .Success(_):
-                print("history registered!!: \(strongSelf.restaurant.shopID))")
+                print("history registered!!: \(strongSelf.restaurant.shopID)")
             case .Failure(let error):
                 print("history register error: \(error.code), \(error.response)")
             }

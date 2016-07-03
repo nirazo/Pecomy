@@ -60,10 +60,10 @@ class MainBaseViewController: UIViewController {
         self.bgImageMaskView.addSubview(self.bgImageView)
         self.bgImageMaskView.clipsToBounds = true
         bgImageView.snp_makeConstraints { make in
-            make.top.equalTo(self.bgImageMaskView)
-            make.left.equalTo(self.bgImageMaskView)
-            make.width.equalTo(self.bgImageMaskView)
-            make.height.equalTo(self.bgImageMaskView)
+            make.top.equalTo(self.view)
+            make.left.equalTo(self.view)
+            make.width.equalTo(self.view)
+            make.height.equalTo(self.view).dividedBy(2.56)
         }
         
         self.pagingBaseView.frame = self.view.bounds
@@ -132,11 +132,28 @@ extension MainBaseViewController: UIScrollViewDelegate {
             return
         }
         if (scrollView.contentOffset.x == 0) {
-            self.bgImageMaskView.frame.size.height = Size.navHeightIncludeStatusBar(self.navigationController!)
+            self.bgImageMaskView.snp_remakeConstraints { make in
+                make.top.equalTo(self.view)
+                make.left.equalTo(self.view)
+                make.width.equalTo(self.view)
+                make.height.equalTo(Size.navHeightIncludeStatusBar(self.navigationController!))
+            }
         } else if (scrollView.contentOffset.x == self.view.frame.width) {
-            self.bgImageMaskView.frame.size.height = self.imageHeight
+            self.bgImageMaskView.snp_remakeConstraints { make in
+                make.top.equalTo(self.view)
+                make.left.equalTo(self.view)
+                make.width.equalTo(self.view)
+                make.height.equalTo(self.imageHeight)
+            }
         } else {
-            self.bgImageMaskView.frame.size.height = scrollView.contentOffset.x / self.imageShrinkPace + Size.navHeightIncludeStatusBar(self.navigationController!)
+            self.bgImageMaskView.snp_remakeConstraints { make in
+                make.top.equalTo(self.view)
+                make.left.equalTo(self.view)
+                make.width.equalTo(self.view)
+                make.height.equalTo(scrollView.contentOffset.x / self.imageShrinkPace + Size.navHeightIncludeStatusBar(self.navigationController!))
+            }
         }
+        self.bgImageMaskView.updateConstraintsIfNeeded()
+        self.bgImageMaskView.layoutIfNeeded()
     }
 }

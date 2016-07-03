@@ -11,6 +11,7 @@ import ObjectMapper
 
 class BrowsesGetResponse: PecomyApiResponse {
     internal var pecomyUser = PecomyUser.sharedInstance
+    internal var browses = [Restaurant]()
     
     required init?(_ map: Map) {
         super.init(map)
@@ -19,5 +20,6 @@ class BrowsesGetResponse: PecomyApiResponse {
     override func mapping(map: Map) {
         super.mapping(map)
         self.pecomyUser.browses <- map["browses"]
+        self.browses <- map["browses"]
     }
 }

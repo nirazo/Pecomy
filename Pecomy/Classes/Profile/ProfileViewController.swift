@@ -54,6 +54,9 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = Const.PECOMY_BASIC_BACKGROUND_COLOR
         self.browsesRestaurants = PecomyUser.sharedInstance.browses
+        self.tableView.estimatedRowHeight = 100
+        
+        self.navigationController?.makeNavigationBarTranslucent()
         
         if LoginModel.isLoggedIn() {
             let currentToken = FBSDKAccessToken.currentAccessToken().tokenString
@@ -80,6 +83,7 @@ class ProfileViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.makeNavigationBarTranslucent()
         self.updateBrowsesList()
         self.updateVisitsList()
         self.updateFavoritesList()
@@ -187,7 +191,7 @@ class ProfileViewController: UIViewController {
         // 最近見たお店のリスト
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "reuseIdentifier")
+        self.tableView.registerClass(RestaurantListCell.self, forCellReuseIdentifier: "reuseIdentifier")
         self.view.addSubview(self.tableView)
         self.tableView.snp_makeConstraints { make in
             make.top.equalTo(recentHeaderView.snp_bottom)
@@ -199,11 +203,11 @@ class ProfileViewController: UIViewController {
     }
     
     private func updateBrowsesList() {
-        self.browsesModel.fetch(AppState.sharedInstance.currentLatitude ?? 0.0, longitude: AppState.sharedInstance.currentLongitude ?? 0.0, orderBy: .Recent, handler: {[weak self](result: PecomyResult<PecomyUser, PecomyApiClientError>) in
+        self.browsesModel.fetch(AppState.sharedInstance.currentLatitude ?? 0.0, longitude: AppState.sharedInstance.currentLongitude ?? 0.0, orderBy: .Recent, handler: {[weak self](result: PecomyResult<[Restaurant], PecomyApiClientError>) in
             guard let strongSelf = self else { return }
             switch result {
-            case .Success(let user):
-                strongSelf.browsesRestaurants = user.browses
+            case .Success(let result):
+                strongSelf.browsesRestaurants = result
                 strongSelf.tableView.reloadData()
             case .Failure(let error):
                 print("error: \(error.code), \(error.response)")
@@ -273,9 +277,19 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-        cell.textLabel?.text = self.browsesRestaurants[indexPath.row].shopName
+        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as! RestaurantListCell
+        cell.configureCell(self.browsesRestaurants[indexPath.row])
         return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let cell = self.tableView.cellForRowAtIndexPath(indexPath) as! RestaurantListCell
+        let restaurant = cell.restaurant
+        let detailVC = DetailViewController(restaurant: restaurant)
+        detailVC.navigationItem.title = restaurant.shopName
+        let backButtonItem = UIBarButtonItem(title: NSLocalizedString("Back", comment: ""), style: .Plain, target: nil, action: nil)
+        self.navigationItem.backBarButtonItem = backButtonItem
+        self.navigationController?.pushViewController(detailVC, animated: true)
     }
     
     

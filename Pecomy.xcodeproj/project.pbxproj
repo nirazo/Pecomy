@@ -24,6 +24,8 @@
 		D20B53C81CB8FA8D0025EA58 /* PhotoViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20B53C71CB8FA8D0025EA58 /* PhotoViewerViewController.swift */; };
 		D20D9C1C1C9B1983003BA643 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D20D9C1B1C9B1983003BA643 /* Settings.bundle */; };
 		D216E06D1D1847AF000FAB0F /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D216E06C1D1847AF000FAB0F /* AppState.swift */; };
+		D216E06F1D27DA10000FAB0F /* RestaurantListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D216E06E1D27DA10000FAB0F /* RestaurantListCell.swift */; };
+		D216E0721D28B200000FAB0F /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D216E0711D28B200000FAB0F /* UINavigationController.swift */; };
 		D21F27971CD6F5D80028F956 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21F27961CD6F5D80028F956 /* LoginRequest.swift */; };
 		D21F27991CD6F60B0028F956 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21F27981CD6F60B0028F956 /* LoginResponse.swift */; };
 		D21F27A11CD6F97B0028F956 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21F27A01CD6F97B0028F956 /* LoginModel.swift */; };
@@ -125,6 +127,8 @@
 		D20B53C71CB8FA8D0025EA58 /* PhotoViewerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewerViewController.swift; sourceTree = "<group>"; };
 		D20D9C1B1C9B1983003BA643 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		D216E06C1D1847AF000FAB0F /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		D216E06E1D27DA10000FAB0F /* RestaurantListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantListCell.swift; sourceTree = "<group>"; };
+		D216E0711D28B200000FAB0F /* UINavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
 		D21F27961CD6F5D80028F956 /* LoginRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginRequest.swift; path = Login/LoginRequest.swift; sourceTree = "<group>"; };
 		D21F27981CD6F60B0028F956 /* LoginResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		D21F27A01CD6F97B0028F956 /* LoginModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
@@ -380,6 +384,7 @@
 			isa = PBXGroup;
 			children = (
 				D2731FDF1C79A85300E8E5E9 /* ProfileViewController.swift */,
+				D216E06E1D27DA10000FAB0F /* RestaurantListCell.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -501,6 +506,7 @@
 			isa = PBXGroup;
 			children = (
 				D253A9E11C321BCB00D65D20 /* Int.swift */,
+				D216E0711D28B200000FAB0F /* UINavigationController.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -771,6 +777,7 @@
 				D2C8E02B1D16411100E0EC6D /* BrowsesPutRequest.swift in Sources */,
 				D2BDA9231D042FAA0096B8FC /* Size.swift in Sources */,
 				D272F45C1B9C25E4009564A0 /* LoadingView.swift in Sources */,
+				D216E06F1D27DA10000FAB0F /* RestaurantListCell.swift in Sources */,
 				164718B71C3D22D700F50D33 /* CardResponse.swift in Sources */,
 				D2092A341B64D721008046D9 /* RestaurantModel.swift in Sources */,
 				D21F27A11CD6F97B0028F956 /* LoginModel.swift in Sources */,
@@ -804,6 +811,7 @@
 				D289013C1C49FF54005BDF84 /* RestaurantDetailViewRichTagCollectionViewConfig.swift in Sources */,
 				D2E36EC71C2D615D00DEE726 /* OtherResultCardContentView.swift in Sources */,
 				D2C8E0311D16962700E0EC6D /* FavoritesModel.swift in Sources */,
+				D216E0721D28B200000FAB0F /* UINavigationController.swift in Sources */,
 				D21F27A31CD70BA10028F956 /* KeychainManager.swift in Sources */,
 				D21F27971CD6F5D80028F956 /* LoginRequest.swift in Sources */,
 				D28901431C4A09EF005BDF84 /* PictureCollectionViewFlowLayout.swift in Sources */,
