@@ -7,6 +7,8 @@
 //
 
 import KeychainAccess
+import FBSDKCoreKit
+
 
 class LoginModel {
     
@@ -41,7 +43,7 @@ class LoginModel {
     }
     
     class func isLoggedIn() -> Bool {
-        return KeychainManager.getPecomyUserToken() != nil
+        return FBSDKAccessToken.currentAccessToken() != nil
     }
 
 }
