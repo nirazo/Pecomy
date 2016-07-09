@@ -26,6 +26,7 @@
 		D216E06D1D1847AF000FAB0F /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D216E06C1D1847AF000FAB0F /* AppState.swift */; };
 		D216E06F1D27DA10000FAB0F /* RestaurantListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D216E06E1D27DA10000FAB0F /* RestaurantListCell.swift */; };
 		D216E0721D28B200000FAB0F /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D216E0711D28B200000FAB0F /* UINavigationController.swift */; };
+		D216E0741D310A3E000FAB0F /* CheckinBottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D216E0731D310A3E000FAB0F /* CheckinBottomBar.swift */; };
 		D21F27971CD6F5D80028F956 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21F27961CD6F5D80028F956 /* LoginRequest.swift */; };
 		D21F27991CD6F60B0028F956 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21F27981CD6F60B0028F956 /* LoginResponse.swift */; };
 		D21F27A11CD6F97B0028F956 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21F27A01CD6F97B0028F956 /* LoginModel.swift */; };
@@ -129,6 +130,7 @@
 		D216E06C1D1847AF000FAB0F /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		D216E06E1D27DA10000FAB0F /* RestaurantListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantListCell.swift; sourceTree = "<group>"; };
 		D216E0711D28B200000FAB0F /* UINavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
+		D216E0731D310A3E000FAB0F /* CheckinBottomBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckinBottomBar.swift; sourceTree = "<group>"; };
 		D21F27961CD6F5D80028F956 /* LoginRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginRequest.swift; path = Login/LoginRequest.swift; sourceTree = "<group>"; };
 		D21F27981CD6F60B0028F956 /* LoginResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		D21F27A01CD6F97B0028F956 /* LoginModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
@@ -318,6 +320,7 @@
 				D289012D1C437D8E005BDF84 /* RestaurantDetailView.swift */,
 				D289012F1C437D9D005BDF84 /* RestaurantDetailView.xib */,
 				D28901351C439FC9005BDF84 /* TelButton.swift */,
+				D216E0731D310A3E000FAB0F /* CheckinBottomBar.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -785,6 +788,7 @@
 				D2C8E02D1D16412400E0EC6D /* BrowsesPutResponse.swift in Sources */,
 				D28901361C439FC9005BDF84 /* TelButton.swift in Sources */,
 				D289013E1C4A01E8005BDF84 /* PictureCollectionViewCell.swift in Sources */,
+				D216E0741D310A3E000FAB0F /* CheckinBottomBar.swift in Sources */,
 				D2C8E0371D16983D00E0EC6D /* VisitsModel.swift in Sources */,
 				D24A2CC31C255D2A009ACA08 /* ResultHeaderView.swift in Sources */,
 				164718B51C3D22AD00F50D33 /* CardRequest.swift in Sources */,

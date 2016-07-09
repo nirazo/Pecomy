@@ -73,6 +73,8 @@
 "BusinessHourTitle" = "営業時間";
 "TelAlertMessage" = "この店舗に電話をかけますか？";
 "TelAlertTelButton" = "電話をかける";
+"DoCheckin" = "チェックインする";
+"Checkedin" =  "チェックイン済";
 // Profile
 "ProfileTitle" = "個人設定";
 "RecentView" = "最近見たお店";

@@ -74,6 +74,8 @@
 "BusinessHourTitle" = "Business Hour";
 "TelAlertMessage" = "Do you make a phone call to this restaurant?";
 "TelAlertTelButton" = "Call";
+"DoCheckin" = "Check in";
+"Checkedin" =  "Already checked in";
 // Profile
 "ProfileTitle" = "Profile";
 "RecentView" = "Recent view";
