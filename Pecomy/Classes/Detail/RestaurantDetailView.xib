@@ -408,6 +408,7 @@
                 <outlet property="bottomSeparator" destination="815-77-EnA" id="jXB-b6-FRH"/>
                 <outlet property="businessHourTitleLabel" destination="QcX-bs-AN1" id="BiE-wp-S0J"/>
                 <outlet property="categoryLabelView" destination="yNq-eE-OeK" id="XU3-zP-a82"/>
+                <outlet property="checkinBottomBar" destination="vKy-71-pBl" id="kF5-91-OVL"/>
                 <outlet property="commentsView" destination="PTS-aa-FTO" id="5dD-Rv-K5w"/>
                 <outlet property="contentView" destination="Uso-O3-eSt" id="tPk-PK-Xb4"/>
                 <outlet property="dayBusinessHourLabel" destination="kvR-sk-403" id="Hxk-iE-f9z"/>

@@ -51,6 +51,9 @@ class RestaurantDetailView: UIView {
     @IBOutlet weak var richTagsView: UICollectionView!
     @IBOutlet weak var richTagViewHeightConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var checkinBottomBar: CheckinBottomBar!
+    
+    
     var mapTapView = UIView(frame: CGRectZero)
     var mapTappedAction : ((Restaurant) -> ())?
 

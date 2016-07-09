@@ -15,6 +15,8 @@ class CheckinBottomBar: UIView {
     let checkinButtonLabel = UILabel()
     let favoriteButton = UIButton()
     let checkedinIconImageView = UIImageView(image: R.image.detail_checkin_off())
+    var checkinTapped: (() -> Void)?
+    var favoriteTapped: (() -> Void)?
     
     var checkedin = false {
         didSet {
@@ -65,6 +67,7 @@ class CheckinBottomBar: UIView {
         
         
         self.checkinButton.backgroundColor = Const.PECOMY_THEME_COLOR
+        self.checkinButton.addTarget(self, action: #selector(checkinButtonTapped), forControlEvents: .TouchUpInside)
         self.checkinBaseView.addSubview(self.checkinButton)
         self.checkinButton.snp_makeConstraints { make in
             make.size.equalTo(self.checkinBaseView)
@@ -89,11 +92,20 @@ class CheckinBottomBar: UIView {
         }
         
         self.favoriteButton.setBackgroundImage(R.image.detail_favorite_off(), forState: .Normal)
+        self.favoriteButton.addTarget(self, action: #selector(favoriteButtonTapped), forControlEvents: .TouchUpInside)
         self.addSubview(self.favoriteButton)
         self.favoriteButton.snp_makeConstraints { make in
             make.centerY.equalTo(self)
             make.width.height.equalTo(24)
             make.right.equalTo(self).offset(-19)
         }
+    }
+    
+    func checkinButtonTapped() {
+        self.checkinTapped?()
+    }
+    
+    func favoriteButtonTapped() {
+        self.favoriteTapped?()
     }
 }

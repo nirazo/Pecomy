@@ -31,4 +31,21 @@ class VisitsModel {
         }
         return true
     }
+    
+    func register(shopId shopId: String, reviewScore: String, handler: ((PecomyResult<PecomyApiResponse, PecomyApiClientError>) -> Void)) -> Bool {
+        let request = VisitsPutRequest(shopID: shopId, reviewScore: reviewScore)
+        self.session = PecomyApiClient.send(request) { [weak self] (response: PecomyResult<VisitsPutRequest.Response, PecomyApiClientError>) -> Void in
+            guard let strongSelf = self else { return }
+            
+            switch response {
+            case .Success(let response):
+                handler(PecomyResult(value: response))
+            case .Failure(let error):
+                // TODO: エラーコードによってエラーメッセージ詰めたりする
+                handler(PecomyResult(error: error))
+            }
+            strongSelf.session = nil
+        }
+        return true
+    }
 }

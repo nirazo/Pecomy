@@ -19,6 +19,8 @@ class DetailViewController: UIViewController {
     var richTagConfig: RestaurantDetailViewRichTagCollectionViewConfig?
     
     let browsesModel = BrowsesModel()
+    let visitsModel = VisitsModel()
+    let favoriteModel = FavoritesModel()
     
     init(restaurant: Restaurant) {
         self.restaurant = restaurant
@@ -78,6 +80,32 @@ class DetailViewController: UIViewController {
         self.detailView?.picturesView.setNeedsLayout()
         
         self.detailView?.telButton.addTarget(self, action: #selector(DetailViewController.telButtonTapped(_:)), forControlEvents: .TouchUpInside)
+        
+        self.detailView?.checkinBottomBar.checkinTapped =  { () in
+            print("checkin tapped!")
+            self.visitsModel.register(shopId: self.restaurant.shopID, reviewScore: "1", handler: {[weak self](result: PecomyResult<PecomyApiResponse, PecomyApiClientError>) in
+                guard let strongSelf = self else { return }
+                switch result {
+                case .Success(_):
+                    print("checkin registered!!: \(strongSelf.restaurant.shopID)")
+                case .Failure(let error):
+                    print("checkin register error: \(error.code), \(error.response)")
+                }
+                })
+        }
+        
+        self.detailView?.checkinBottomBar.favoriteTapped =  { () in
+            print("favorite tapped!")
+            self.favoriteModel.register(shopId: self.restaurant.shopID, handler: {[weak self](result: PecomyResult<PecomyApiResponse, PecomyApiClientError>) in
+                guard let strongSelf = self else { return }
+                switch result {
+                case .Success(_):
+                    print("favorite registered!!: \(strongSelf.restaurant.shopID)")
+                case .Failure(let error):
+                    print("favorite register error: \(error.code), \(error.response)")
+                }
+                })
+        }
         
         self.detailView?.richTagsView.reloadData()
         self.detailView?.richTagsView.setNeedsLayout()
