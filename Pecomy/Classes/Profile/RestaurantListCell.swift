@@ -92,7 +92,6 @@ class RestaurantListCell: UITableViewCell {
         self.setupSubviews()
         self.restaurant = restaurant
         self.restaurantImageView.sd_setImageWithURL(NSURL(string: self.restaurant.imageUrls[0]))
-        self.restaurantImageView.backgroundColor = .redColor()
 
         self.titleLabel.text = self.restaurant.shopName
         

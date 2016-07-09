@@ -186,7 +186,7 @@ class ResultViewController: UIViewController {
         self.contentView.addSubview(label)
 
         label.snp_makeConstraints { (make) in
-            make.center.equalTo(self.view)
+            make.center.equalTo(self.contentView)
         }
     }
     
