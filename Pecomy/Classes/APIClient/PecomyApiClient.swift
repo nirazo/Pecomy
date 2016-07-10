@@ -62,7 +62,8 @@ class PecomyApiClient {
                 }
                 let response: PecomyResult<U, PecomyApiClientError> = PecomyApiClient.mappingResponse(httpRequest, response: httpResponse, data: data, error: error)
                 let str = NSString(data: data!, encoding:NSUTF8StringEncoding)
-                print("requestURL: \(httpRequest?.URLString)")
+                print("requestURL: \(httpResponse?.URL?.absoluteString)")
+                print("requestURL: \(request.params)")
                 //print("rawData: \(str)")
                 switch response {
                 case .Success(let result):

@@ -31,6 +31,7 @@
 		D216E0781D31267F000FAB0F /* VisitsPutResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D216E0771D31267F000FAB0F /* VisitsPutResponse.swift */; };
 		D216E07A1D312855000FAB0F /* FavoritePutRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D216E0791D312855000FAB0F /* FavoritePutRequest.swift */; };
 		D216E07C1D312860000FAB0F /* FavoritePutResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D216E07B1D312860000FAB0F /* FavoritePutResponse.swift */; };
+		D216E07E1D313AED000FAB0F /* RegisterPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D216E07D1D313AED000FAB0F /* RegisterPopupView.swift */; };
 		D21F27971CD6F5D80028F956 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21F27961CD6F5D80028F956 /* LoginRequest.swift */; };
 		D21F27991CD6F60B0028F956 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21F27981CD6F60B0028F956 /* LoginResponse.swift */; };
 		D21F27A11CD6F97B0028F956 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21F27A01CD6F97B0028F956 /* LoginModel.swift */; };
@@ -139,6 +140,7 @@
 		D216E0771D31267F000FAB0F /* VisitsPutResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitsPutResponse.swift; sourceTree = "<group>"; };
 		D216E0791D312855000FAB0F /* FavoritePutRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritePutRequest.swift; sourceTree = "<group>"; };
 		D216E07B1D312860000FAB0F /* FavoritePutResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritePutResponse.swift; sourceTree = "<group>"; };
+		D216E07D1D313AED000FAB0F /* RegisterPopupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterPopupView.swift; sourceTree = "<group>"; };
 		D21F27961CD6F5D80028F956 /* LoginRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginRequest.swift; path = Login/LoginRequest.swift; sourceTree = "<group>"; };
 		D21F27981CD6F60B0028F956 /* LoginResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		D21F27A01CD6F97B0028F956 /* LoginModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
@@ -333,6 +335,7 @@
 				D289012F1C437D9D005BDF84 /* RestaurantDetailView.xib */,
 				D28901351C439FC9005BDF84 /* TelButton.swift */,
 				D216E0731D310A3E000FAB0F /* CheckinBottomBar.swift */,
+				D216E07D1D313AED000FAB0F /* RegisterPopupView.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -775,6 +778,7 @@
 				D216E06D1D1847AF000FAB0F /* AppState.swift in Sources */,
 				D28901321C438FEC005BDF84 /* CommentsView.swift in Sources */,
 				D23070731B4C30D100833167 /* PecomyLocationManager.swift in Sources */,
+				D216E07E1D313AED000FAB0F /* RegisterPopupView.swift in Sources */,
 				D292AA191C5FB30800D66A87 /* Budget.swift in Sources */,
 				D292AA1B1C5FB5CB00D66A87 /* NumOfPeople.swift in Sources */,
 				D21F27991CD6F60B0028F956 /* LoginResponse.swift in Sources */,

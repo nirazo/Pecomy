@@ -75,6 +75,11 @@
 "TelAlertTelButton" = "電話をかける";
 "DoCheckin" = "チェックインする";
 "Checkedin" =  "チェックイン済";
+"CheckinReport" = "%@にチェックインしました！";
+"FavoriteReport" = "%@をお気に入りに追加しました！";
+"RegisterFailedAlertTitle" = "お店の登録に失敗しました";
+"RegisterFailedAlertMessage" = "ネットワーク環境の良い所で再度お試しください";
+
 // Profile
 "ProfileTitle" = "個人設定";
 "RecentView" = "最近見たお店";

@@ -22,6 +22,10 @@ class DetailViewController: UIViewController {
     let visitsModel = VisitsModel()
     let favoriteModel = FavoritesModel()
     
+    let loadingView = LoadingView()
+    // ポップアップ出す時の半透明ビュー
+    let bgCoverView = UIView(frame: UIScreen.mainScreen().bounds)
+    
     init(restaurant: Restaurant) {
         self.restaurant = restaurant
         super.init(nibName: nil, bundle: nil)
@@ -33,6 +37,11 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.bgCoverView.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.5)
+        let tr = UITapGestureRecognizer(target: self, action: #selector(DetailViewController.bgCoverViewTapped))
+        self.bgCoverView.addGestureRecognizer(tr)
+        
         self.view.backgroundColor = Const.PECOMY_RESULT_BACK_COLOR
         self.edgesForExtendedLayout = .None
         
@@ -81,6 +90,7 @@ class DetailViewController: UIViewController {
         
         self.detailView?.telButton.addTarget(self, action: #selector(DetailViewController.telButtonTapped(_:)), forControlEvents: .TouchUpInside)
         
+        // チェックインタップ時のアクション登録
         self.detailView?.checkinBottomBar.checkinTapped =  { () in
             print("checkin tapped!")
             self.visitsModel.register(shopId: self.restaurant.shopID, reviewScore: "1", handler: {[weak self](result: PecomyResult<PecomyApiResponse, PecomyApiClientError>) in
@@ -88,21 +98,34 @@ class DetailViewController: UIViewController {
                 switch result {
                 case .Success(_):
                     print("checkin registered!!: \(strongSelf.restaurant.shopID)")
+                    strongSelf.displayRegisterPopup(RegisterType.Checkin)
+                    strongSelf.detailView?.checkinBottomBar.checkedin = true
                 case .Failure(let error):
-                    print("checkin register error: \(error.code), \(error.response)")
+                    print("checkin register error: \(strongSelf.restaurant.shopID), \(error.code), \(error.response)")
+//                    strongSelf.displayRegisterPopup(RegisterType.Checkin)
+//                    strongSelf.detailView?.checkinBottomBar.checkedin = true
+                    strongSelf.showRegisterErrorAlert()
                 }
                 })
         }
         
-        self.detailView?.checkinBottomBar.favoriteTapped =  { () in
+        // お気に入りタップ時のアクション登録
+        self.detailView?.checkinBottomBar.favoriteTapped =  { [weak self]() in
+            guard let strongSelf = self else { return }
+            strongSelf.startLoading()
             print("favorite tapped!")
-            self.favoriteModel.register(shopId: self.restaurant.shopID, handler: {[weak self](result: PecomyResult<PecomyApiResponse, PecomyApiClientError>) in
-                guard let strongSelf = self else { return }
+            strongSelf.favoriteModel.register(shopId: strongSelf.restaurant.shopID, handler: {(result: PecomyResult<PecomyApiResponse, PecomyApiClientError>) in
+                strongSelf.stopLoading()
                 switch result {
                 case .Success(_):
                     print("favorite registered!!: \(strongSelf.restaurant.shopID)")
+                    strongSelf.displayRegisterPopup(RegisterType.Favorite)
+                    strongSelf.detailView?.checkinBottomBar.favorite = true
                 case .Failure(let error):
                     print("favorite register error: \(error.code), \(error.response)")
+//                    strongSelf.displayRegisterPopup(RegisterType.Favorite)
+//                    strongSelf.detailView?.checkinBottomBar.favorite = true
+                    strongSelf.showRegisterErrorAlert()
                 }
                 })
         }
@@ -152,6 +175,47 @@ class DetailViewController: UIViewController {
             self.presentViewController(ac, animated: true, completion: nil)
         }
     }
+    
+    //MARK: - Alert
+    // 登録時のアラート表示
+    func showRegisterErrorAlert() {
+        let alertController = UIAlertController(title:NSLocalizedString("RegisterFailedAlertTitle", comment: ""),
+                                                message: NSLocalizedString("RegisterFailedAlertMessage", comment: ""),
+                                                preferredStyle: .Alert)
+        let okAction = UIAlertAction(title: NSLocalizedString("OK", comment: ""),
+                                     style: .Default, handler: nil)
+        alertController.addAction(okAction)
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func startLoading() {
+        self.view.addSubview(self.loadingView)
+        self.loadingView.snp_makeConstraints { make in
+            make.center.equalTo(self.view)
+            make.size.equalTo(self.view)
+        }
+    }
+    
+    func stopLoading() {
+        self.loadingView.removeFromSuperview()
+    }
+    
+    func displayRegisterPopup(type: RegisterType) {
+        UIApplication.sharedApplication().keyWindow?.addSubview(self.bgCoverView)
+        
+        let registerPopup = RegisterPopupView(frame: .zero, shopName: self.restaurant.shopName, type: type)
+        self.bgCoverView.addSubview(registerPopup)
+        registerPopup.snp_makeConstraints { make in
+            make.center.equalTo(self.bgCoverView)
+            make.width.equalTo(260)
+            make.height.greaterThanOrEqualTo(180)
+        }
+    }
+    
+    func bgCoverViewTapped() {
+        self.bgCoverView.removeFromSuperview()
+    }
+
 }
 
 extension DetailViewController: DetailPictureCollectionViewConfigDelegate {

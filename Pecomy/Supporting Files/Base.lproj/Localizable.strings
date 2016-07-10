@@ -76,6 +76,10 @@
 "TelAlertTelButton" = "Call";
 "DoCheckin" = "Check in";
 "Checkedin" =  "Already checked in";
+"CheckinReport" = "You've checked in to %@!";
+"FavoriteReport" = "Add %@ to your favorite!";
+"RegisterFailedAlertTitle" = "Failed to register this restaurant";
+"RegisterFailedAlertMessage" = "Please try again at the better network environment.";
 // Profile
 "ProfileTitle" = "Profile";
 "RecentView" = "Recent view";

@@ -18,7 +18,7 @@ class VisitsPutRequest: PecomyApiRequest {
     var encoding: ParameterEncoding = .URL
     
     init(shopID: String, reviewScore: String) {
-        endpoint = "/user/visits"
+        endpoint = "user/visits"
         params = [
             "device_id": Utils.acquireDeviceID(),
             "shop_id": shopID,

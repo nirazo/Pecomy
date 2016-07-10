@@ -22,7 +22,6 @@ class BrowsesModel {
             
             switch response {
             case .Success(let value):
-//                handler(PecomyResult(value: value.pecomyUser.browses))
                 handler(PecomyResult(value: value.browses))
             case .Failure(let error):
                 // TODO: エラーコードによってエラーメッセージ詰めたりする

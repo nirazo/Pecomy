@@ -11,6 +11,7 @@ import ObjectMapper
 
 class VisitsPutResponse: PecomyApiResponse {
     let pecomyUser = PecomyUser.sharedInstance
+    var messageString = ""
     
     required init?(_ map: Map) {
         super.init(map)
@@ -18,6 +19,6 @@ class VisitsPutResponse: PecomyApiResponse {
     
     override func mapping(map: Map) {
         super.mapping(map)
-        //self.pecomyUser.visits <- map["visits"]
+        self.messageString <- map["message"]
     }
 }
