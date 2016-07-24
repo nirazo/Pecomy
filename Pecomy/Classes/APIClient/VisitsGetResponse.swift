@@ -18,6 +18,6 @@ class VisitsGetResponse: PecomyApiResponse {
     
     override func mapping(map: Map) {
         super.mapping(map)
-        self.pecomyUser.favorites <- map["visits"]
+        self.pecomyUser.visits <- map["visits"]
     }
 }

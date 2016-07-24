@@ -1,5 +1,5 @@
 //
-//  FavoritePutRequest.swift
+//  FavoritesPutRequest.swift
 //  Pecomy
 //
 //  Created by Kenzo on 7/9/16.
@@ -9,16 +9,16 @@
 import Foundation
 import Alamofire
 
-class FavoritePutRequest: PecomyApiRequest {
-    typealias Response = FavoritePutResponse
+class FavoritesPutRequest: PecomyApiRequest {
+    typealias Response = FavoritesPutResponse
     
     var endpoint: String
     var method: Alamofire.Method = .PUT
     var params: [String: AnyObject] = [:]
     var encoding: ParameterEncoding = .URL
     
-    init(shopID: String) {
-        endpoint = "/user/visits"
+    init(shopID: Int) {
+        endpoint = "/user/favorites"
         params = [
             "device_id": Utils.acquireDeviceID(),
             "shop_id": shopID

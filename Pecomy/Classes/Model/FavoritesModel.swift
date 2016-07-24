@@ -33,9 +33,9 @@ class FavoritesModel {
     }
     
     
-    func register(shopId shopId: String, handler: ((PecomyResult<PecomyApiResponse, PecomyApiClientError>) -> Void)) -> Bool {
-        let request = FavoritePutRequest(shopID: shopId)
-        self.session = PecomyApiClient.send(request) { [weak self] (response: PecomyResult<FavoritePutRequest.Response, PecomyApiClientError>) -> Void in
+    func register(shopId shopId: Int, handler: ((PecomyResult<PecomyApiResponse, PecomyApiClientError>) -> Void)) -> Bool {
+        let request = FavoritesPutRequest(shopID: shopId)
+        self.session = PecomyApiClient.send(request) { [weak self] (response: PecomyResult<FavoritesPutRequest.Response, PecomyApiClientError>) -> Void in
             guard let strongSelf = self else { return }
             
             switch response {

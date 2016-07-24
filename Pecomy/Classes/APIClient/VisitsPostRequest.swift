@@ -1,5 +1,5 @@
 //
-//  VisitsPutRequest.swift
+//  VisitsPostRequest.swift
 //  Pecomy
 //
 //  Created by Kenzo on 7/9/16.
@@ -9,15 +9,15 @@
 import Foundation
 import Alamofire
 
-class VisitsPutRequest: PecomyApiRequest {
-    typealias Response = VisitsPutResponse
+class VisitsPostRequest: PecomyApiRequest {
+    typealias Response = VisitsPostResponse
     
     var endpoint: String
-    var method: Alamofire.Method = .PUT
+    var method: Alamofire.Method = .POST
     var params: [String: AnyObject] = [:]
     var encoding: ParameterEncoding = .URL
     
-    init(shopID: String, reviewScore: String) {
+    init(shopID: Int, reviewScore: Int) {
         endpoint = "user/visits"
         params = [
             "device_id": Utils.acquireDeviceID(),

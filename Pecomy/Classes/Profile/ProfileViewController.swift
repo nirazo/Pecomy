@@ -242,6 +242,7 @@ class ProfileViewController: UIViewController {
             guard let strongSelf = self else { return }
             switch result {
             case .Success(let user):
+                print("visits: \(user.visits)")
                 strongSelf.numOfCheckinLabel.text = String(user.visits.count)
             case .Failure(let error):
                 print("error: \(error.code), \(error.response)")
@@ -287,6 +288,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         let restaurant = cell.restaurant
         let detailVC = DetailViewController(restaurant: restaurant)
         detailVC.navigationItem.title = restaurant.shopName
+        print("id: \(restaurant.shopID)")
         let backButtonItem = UIBarButtonItem(title: NSLocalizedString("Back", comment: ""), style: .Plain, target: nil, action: nil)
         self.navigationItem.backBarButtonItem = backButtonItem
         self.navigationController?.pushViewController(detailVC, animated: true)

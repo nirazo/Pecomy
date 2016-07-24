@@ -22,8 +22,7 @@ class VisitsGetRequest: PecomyApiRequest {
         params = [
             "device_id": Utils.acquireDeviceID(),
             "latitude": latitude,
-            "longitude": longitude,
-            "orderby": orderBy.rawValue
+            "longitude": longitude
         ]
     }
 }

@@ -93,7 +93,7 @@ class DetailViewController: UIViewController {
         // チェックインタップ時のアクション登録
         self.detailView?.checkinBottomBar.checkinTapped =  { () in
             print("checkin tapped!")
-            self.visitsModel.register(shopId: self.restaurant.shopID, reviewScore: "1", handler: {[weak self](result: PecomyResult<PecomyApiResponse, PecomyApiClientError>) in
+            self.visitsModel.register(shopId: self.restaurant.shopID, reviewScore: 1, handler: {[weak self](result: PecomyResult<PecomyApiResponse, PecomyApiClientError>) in
                 guard let strongSelf = self else { return }
                 switch result {
                 case .Success(_):
@@ -102,8 +102,6 @@ class DetailViewController: UIViewController {
                     strongSelf.detailView?.checkinBottomBar.checkedin = true
                 case .Failure(let error):
                     print("checkin register error: \(strongSelf.restaurant.shopID), \(error.code), \(error.response)")
-//                    strongSelf.displayRegisterPopup(RegisterType.Checkin)
-//                    strongSelf.detailView?.checkinBottomBar.checkedin = true
                     strongSelf.showRegisterErrorAlert()
                 }
                 })
@@ -123,8 +121,6 @@ class DetailViewController: UIViewController {
                     strongSelf.detailView?.checkinBottomBar.favorite = true
                 case .Failure(let error):
                     print("favorite register error: \(error.code), \(error.response)")
-//                    strongSelf.displayRegisterPopup(RegisterType.Favorite)
-//                    strongSelf.detailView?.checkinBottomBar.favorite = true
                     strongSelf.showRegisterErrorAlert()
                 }
                 })

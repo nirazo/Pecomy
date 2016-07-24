@@ -18,6 +18,14 @@ class MainBaseViewController: UIViewController {
     var imageShrinkPace: CGFloat = 0.0
     var imageHeight: CGFloat = 0.0
     
+    // 管理するViewController
+    let profileVC = ProfileViewController()
+    let mainVC = MainViewController()
+    
+    let userButton = UIBarButtonItem()
+    let settingsButton = UIBarButtonItem()
+    let cardButton = UIBarButtonItem()
+    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nil, bundle: nil)
         self.pagingBaseView.pagingEnabled = true
@@ -25,6 +33,16 @@ class MainBaseViewController: UIViewController {
         self.pagingBaseView.showsHorizontalScrollIndicator = false
         self.automaticallyAdjustsScrollViewInsets = false
         self.pagingBaseView.delegate = self
+        
+        self.userButton.target = self
+        self.userButton.image = R.image.icon_user()?.imageWithRenderingMode(.AlwaysOriginal)
+        self.userButton.action = #selector(MainBaseViewController.userButtonDidTap(_:))
+        self.settingsButton.target = self
+        self.settingsButton.image = R.image.icon_settings()?.imageWithRenderingMode(.AlwaysOriginal)
+        self.settingsButton.action = #selector(MainBaseViewController.settingsButtonDidTap(_:))
+        self.cardButton.target = self
+        self.cardButton.image = R.image.icon_card()?.imageWithRenderingMode(.AlwaysOriginal)
+        self.cardButton.action = #selector(MainBaseViewController.cardButtonDidTap(_:))
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -71,12 +89,10 @@ class MainBaseViewController: UIViewController {
         self.view.addSubview(self.pagingBaseView)
         self.pagingBaseView.backgroundColor = UIColor.clearColor()
         
-        let profileVC = ProfileViewController()
-        self.addChildViewController(profileVC)
+        self.addChildViewController(self.profileVC)
         profileVC.didMoveToParentViewController(self)
         
-        let mainVC = MainViewController()
-        self.addChildViewController(mainVC)
+        self.addChildViewController(self.mainVC)
         mainVC.didMoveToParentViewController(self)
         
         
@@ -87,6 +103,7 @@ class MainBaseViewController: UIViewController {
             self.pagingBaseView.addSubview(vc.view)
         }
         self.pagingBaseView.contentOffset.x = self.view.bounds.width
+        self.navigationItem.leftBarButtonItem = self.userButton
     }
     
     override func viewWillLayoutSubviews() {
@@ -109,17 +126,44 @@ class MainBaseViewController: UIViewController {
     func enterForeground(notification: NSNotification){
         self.bgImageView.image = BackgroundImagePicker.pickImage()
     }
+    
+    // MARK: - Button Action
+    func cardButtonDidTap(sender: UIBarButtonItem) {
+        print("card tapped")
+        self.pagingBaseView.setContentOffset(CGPoint(x: self.pagingBaseView.frame.width, y: 0), animated: true)
+    }
+    
+    func userButtonDidTap(sender: UIBarButtonItem) {
+        print("user tapped")
+        self.pagingBaseView.setContentOffset(.zero, animated: true)
+    }
+    
+    func settingsButtonDidTap(sender: UIBarButtonItem) {
+        print("settings tapped")
+    }
 
 }
 
 extension MainBaseViewController: UIScrollViewDelegate {
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        self.currentPageChanged(scrollView)
+    }
+    
+    func scrollViewDidEndScrollingAnimation(scrollView: UIScrollView) {
+        self.currentPageChanged(scrollView)
+    }
+    
+    private func currentPageChanged(scrollView: UIScrollView) {
         let currentPage = Int(scrollView.contentOffset.x / scrollView.frame.maxX)
         switch currentPage {
         case 0:
             self.title = NSLocalizedString("ProfileTitle", comment: "")
+            self.navigationItem.leftBarButtonItem = self.settingsButton
+            self.navigationItem.rightBarButtonItem = self.cardButton
         case 1:
             self.title = MainViewController.title
+            self.navigationItem.leftBarButtonItem = self.userButton
+            self.navigationItem.rightBarButtonItem = nil
         case 2:
             self.title = "test"
         default:

@@ -10,7 +10,7 @@ import Foundation
 import ObjectMapper
 
 struct Restaurant {
-    var shopID = ""
+    var shopID: Int = 0
     var shopName = ""
     var dayPriceMin = ""
     var dayPriceMax = ""
@@ -23,8 +23,8 @@ struct Restaurant {
     var richTags = [String]()
     var reviewSubjects = [String]()
     var holidays = ""
-    var latitude = ""
-    var longitude = ""
+    var latitude: Double = 0.0
+    var longitude: Double = 0.0
     var businessHours = ""
     var tel = ""
 }

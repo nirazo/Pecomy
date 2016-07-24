@@ -32,9 +32,9 @@ class VisitsModel {
         return true
     }
     
-    func register(shopId shopId: String, reviewScore: String, handler: ((PecomyResult<PecomyApiResponse, PecomyApiClientError>) -> Void)) -> Bool {
-        let request = VisitsPutRequest(shopID: shopId, reviewScore: reviewScore)
-        self.session = PecomyApiClient.send(request) { [weak self] (response: PecomyResult<VisitsPutRequest.Response, PecomyApiClientError>) -> Void in
+    func register(shopId shopId: Int, reviewScore: Int, handler: ((PecomyResult<PecomyApiResponse, PecomyApiClientError>) -> Void)) -> Bool {
+        let request = VisitsPostRequest(shopID: shopId, reviewScore: reviewScore)
+        self.session = PecomyApiClient.send(request) { [weak self] (response: PecomyResult<VisitsPostRequest.Response, PecomyApiClientError>) -> Void in
             guard let strongSelf = self else { return }
             
             switch response {

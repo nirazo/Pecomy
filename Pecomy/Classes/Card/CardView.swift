@@ -12,7 +12,7 @@ import MDCSwipeToChoose
 import SnapKit
 
 protocol CardViewDelegate {
-    func blackListButtonTapped(card: CardView, shopID: String)
+    func blackListButtonTapped(card: CardView, shopID: Int)
 }
 
 class CardView: MDCSwipeToChooseView {

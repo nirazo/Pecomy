@@ -692,12 +692,12 @@ extension MainViewController: ResultViewControllerDelegate {
 
 //MARK: - CardViewDelegate
 extension MainViewController: CardViewDelegate {
-    func blackListButtonTapped(card: CardView, shopID: String) {
+    func blackListButtonTapped(card: CardView, shopID: Int) {
         let ac = UIAlertController(title: "", message: NSLocalizedString("BlackListButtonSendMessage", comment: ""), preferredStyle: .Alert)
         let okAction = UIAlertAction(title: NSLocalizedString("OK", comment: ""),
             style: .Default, handler: { (action) in
                 let params = ["shop_id": shopID, "device_id": Utils.acquireDeviceID()]
-                Alamofire.request(.GET, Const.API_BLACKLIST_BASE, parameters: params, encoding: .URL).response {(httpRequest, httpResponse, data, error) in
+                Alamofire.request(.GET, Const.API_BLACKLIST_BASE, parameters: params as? [String : AnyObject], encoding: .URL).response {(httpRequest, httpResponse, data, error) in
                     // 現時点ではAPIが無いので、404を正とする
                     if (httpResponse!.statusCode == Const.STATUS_CODE_NOT_FOUND) {
                         card.blackListButton.enabled = false

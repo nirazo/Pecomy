@@ -27,10 +27,10 @@
 		D216E06F1D27DA10000FAB0F /* RestaurantListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D216E06E1D27DA10000FAB0F /* RestaurantListCell.swift */; };
 		D216E0721D28B200000FAB0F /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D216E0711D28B200000FAB0F /* UINavigationController.swift */; };
 		D216E0741D310A3E000FAB0F /* CheckinBottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D216E0731D310A3E000FAB0F /* CheckinBottomBar.swift */; };
-		D216E0761D312672000FAB0F /* VisitsPutRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D216E0751D312672000FAB0F /* VisitsPutRequest.swift */; };
-		D216E0781D31267F000FAB0F /* VisitsPutResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D216E0771D31267F000FAB0F /* VisitsPutResponse.swift */; };
-		D216E07A1D312855000FAB0F /* FavoritePutRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D216E0791D312855000FAB0F /* FavoritePutRequest.swift */; };
-		D216E07C1D312860000FAB0F /* FavoritePutResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D216E07B1D312860000FAB0F /* FavoritePutResponse.swift */; };
+		D216E0761D312672000FAB0F /* VisitsPostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D216E0751D312672000FAB0F /* VisitsPostRequest.swift */; };
+		D216E0781D31267F000FAB0F /* VisitsPostResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D216E0771D31267F000FAB0F /* VisitsPostResponse.swift */; };
+		D216E07A1D312855000FAB0F /* FavoritesPutRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D216E0791D312855000FAB0F /* FavoritesPutRequest.swift */; };
+		D216E07C1D312860000FAB0F /* FavoritesPutResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D216E07B1D312860000FAB0F /* FavoritesPutResponse.swift */; };
 		D216E07E1D313AED000FAB0F /* RegisterPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D216E07D1D313AED000FAB0F /* RegisterPopupView.swift */; };
 		D21F27971CD6F5D80028F956 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21F27961CD6F5D80028F956 /* LoginRequest.swift */; };
 		D21F27991CD6F60B0028F956 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21F27981CD6F60B0028F956 /* LoginResponse.swift */; };
@@ -136,10 +136,10 @@
 		D216E06E1D27DA10000FAB0F /* RestaurantListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantListCell.swift; sourceTree = "<group>"; };
 		D216E0711D28B200000FAB0F /* UINavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
 		D216E0731D310A3E000FAB0F /* CheckinBottomBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckinBottomBar.swift; sourceTree = "<group>"; };
-		D216E0751D312672000FAB0F /* VisitsPutRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitsPutRequest.swift; sourceTree = "<group>"; };
-		D216E0771D31267F000FAB0F /* VisitsPutResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitsPutResponse.swift; sourceTree = "<group>"; };
-		D216E0791D312855000FAB0F /* FavoritePutRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritePutRequest.swift; sourceTree = "<group>"; };
-		D216E07B1D312860000FAB0F /* FavoritePutResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritePutResponse.swift; sourceTree = "<group>"; };
+		D216E0751D312672000FAB0F /* VisitsPostRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitsPostRequest.swift; sourceTree = "<group>"; };
+		D216E0771D31267F000FAB0F /* VisitsPostResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitsPostResponse.swift; sourceTree = "<group>"; };
+		D216E0791D312855000FAB0F /* FavoritesPutRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesPutRequest.swift; sourceTree = "<group>"; };
+		D216E07B1D312860000FAB0F /* FavoritesPutResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesPutResponse.swift; sourceTree = "<group>"; };
 		D216E07D1D313AED000FAB0F /* RegisterPopupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterPopupView.swift; sourceTree = "<group>"; };
 		D21F27961CD6F5D80028F956 /* LoginRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginRequest.swift; path = Login/LoginRequest.swift; sourceTree = "<group>"; };
 		D21F27981CD6F60B0028F956 /* LoginResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
@@ -278,8 +278,8 @@
 			children = (
 				D20035421D16388100F81114 /* FavoritesGetRequest.swift */,
 				D20035441D1639AC00F81114 /* FavoritesGetResponse.swift */,
-				D216E0791D312855000FAB0F /* FavoritePutRequest.swift */,
-				D216E07B1D312860000FAB0F /* FavoritePutResponse.swift */,
+				D216E0791D312855000FAB0F /* FavoritesPutRequest.swift */,
+				D216E07B1D312860000FAB0F /* FavoritesPutResponse.swift */,
 			);
 			name = Favorites;
 			sourceTree = "<group>";
@@ -289,8 +289,8 @@
 			children = (
 				D2C8E0321D16979C00E0EC6D /* VisitsGetRequest.swift */,
 				D2C8E0341D1697A900E0EC6D /* VisitsGetResponse.swift */,
-				D216E0751D312672000FAB0F /* VisitsPutRequest.swift */,
-				D216E0771D31267F000FAB0F /* VisitsPutResponse.swift */,
+				D216E0751D312672000FAB0F /* VisitsPostRequest.swift */,
+				D216E0771D31267F000FAB0F /* VisitsPostResponse.swift */,
 			);
 			name = Visits;
 			sourceTree = "<group>";
@@ -786,13 +786,13 @@
 				D2A99A161C12D3E700C16F04 /* OnetimeFilterCell.swift in Sources */,
 				D27BB9D41B36F4A900F8D902 /* MainViewController.swift in Sources */,
 				D2C8E0331D16979C00E0EC6D /* VisitsGetRequest.swift in Sources */,
-				D216E0761D312672000FAB0F /* VisitsPutRequest.swift in Sources */,
+				D216E0761D312672000FAB0F /* VisitsPostRequest.swift in Sources */,
 				16B6744E1C3BE59C009D039C /* PecomyApiClientError.swift in Sources */,
 				D2EFEB5C1C567F2F0092DFC9 /* MapViewController.swift in Sources */,
 				D292F7391B92DFFC005700AE /* Utils.swift in Sources */,
 				D2C8E0351D1697A900E0EC6D /* VisitsGetResponse.swift in Sources */,
 				D2DEEF1E1BD72F7400FDBB8F /* Genre.swift in Sources */,
-				D216E07A1D312855000FAB0F /* FavoritePutRequest.swift in Sources */,
+				D216E07A1D312855000FAB0F /* FavoritesPutRequest.swift in Sources */,
 				D253A9E81C322B7D00D65D20 /* PecomyApiClient.swift in Sources */,
 				D2EFEB591C51282A0092DFC9 /* CardOverlayTextLabelView.swift in Sources */,
 				D2C8E02B1D16411100E0EC6D /* BrowsesPutRequest.swift in Sources */,
@@ -817,7 +817,7 @@
 				D2731FE71C849DE800E8E5E9 /* BackgroundImagePicker.swift in Sources */,
 				D24B29241B78775300419B9B /* DetailViewController.swift in Sources */,
 				D28A7A0C1B47AE900025371A /* CardView.swift in Sources */,
-				D216E07C1D312860000FAB0F /* FavoritePutResponse.swift in Sources */,
+				D216E07C1D312860000FAB0F /* FavoritesPutResponse.swift in Sources */,
 				D253A9EE1C3233AF00D65D20 /* PecomyResult.swift in Sources */,
 				D2C9B24C1CCB9099003A33B9 /* GameProgressBar.swift in Sources */,
 				D24B292E1B7895DA00419B9B /* TutorialViewController.swift in Sources */,
@@ -849,7 +849,7 @@
 				D2731FDD1C79A81200E8E5E9 /* MainBaseViewController.swift in Sources */,
 				16AAD0391C3E835600ADCF87 /* ResultModel.swift in Sources */,
 				D2C8E02F1D16436900E0EC6D /* BrowsesModel.swift in Sources */,
-				D216E0781D31267F000FAB0F /* VisitsPutResponse.swift in Sources */,
+				D216E0781D31267F000FAB0F /* VisitsPostResponse.swift in Sources */,
 				D2731FE31C79A88000E8E5E9 /* RestaurantLogViewController.swift in Sources */,
 				D24B29211B78748A00419B9B /* ResultCardBase.swift in Sources */,
 			);

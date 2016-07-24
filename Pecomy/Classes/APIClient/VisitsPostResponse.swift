@@ -1,5 +1,5 @@
 //
-//  FavoritePutResponse.swift
+//  VisitsPostResponse.swift
 //  Pecomy
 //
 //  Created by Kenzo on 7/9/16.
@@ -9,8 +9,9 @@
 import Foundation
 import ObjectMapper
 
-class FavoritePutResponse: PecomyApiResponse {
+class VisitsPostResponse: PecomyApiResponse {
     let pecomyUser = PecomyUser.sharedInstance
+    var messageString = ""
     
     required init?(_ map: Map) {
         super.init(map)
@@ -18,6 +19,6 @@ class FavoritePutResponse: PecomyApiResponse {
     
     override func mapping(map: Map) {
         super.mapping(map)
-        //self.pecomyUser.visits <- map["visits"]
+        self.messageString <- map["message"]
     }
 }

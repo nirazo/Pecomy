@@ -17,7 +17,7 @@ class BrowsesPutRequest: PecomyApiRequest {
     var params: [String: AnyObject] = [:]
     var encoding: ParameterEncoding = .URL
     
-    init(shopID: String) {
+    init(shopID: Int) {
         endpoint = "/user/browses"
         params = [
             "device_id": Utils.acquireDeviceID(),
