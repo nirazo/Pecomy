@@ -71,6 +71,18 @@ class FavoritesAndVisitsViewController: UIViewController {
         self.currentTableView(self.listType).reloadData()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.favoritesConfig.updateFavoritesList { [weak self] () in
+            guard let s = self else { return }
+            s.favoritesTableView.reloadData()
+        }
+        self.visitsConfig.updateVisitsList { [weak self] () in
+            guard let s = self else { return }
+            s.visitsTableView.reloadData()
+        }
+    }
+    
     func segmentChanged(sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case RestaurantListType.Favorites.hashValue:
@@ -104,6 +116,7 @@ class FavoritesAndVisitsViewController: UIViewController {
             return self.visitsTableView
         }
     }
+    
 }
 
 // MARK: - UITableViewDelegate Methods

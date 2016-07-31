@@ -90,6 +90,9 @@ class DetailViewController: UIViewController {
         
         self.detailView?.telButton.addTarget(self, action: #selector(DetailViewController.telButtonTapped(_:)), forControlEvents: .TouchUpInside)
         
+        self.detailView?.checkinBottomBar.checkedin = self.restaurant.visits > 0
+        self.detailView?.checkinBottomBar.favorite = self.restaurant.favorite
+        
         // チェックインタップ時のアクション登録
         self.detailView?.checkinBottomBar.checkinTapped =  { () in
             print("checkin tapped!")

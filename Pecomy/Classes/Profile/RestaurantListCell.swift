@@ -111,4 +111,13 @@ class RestaurantListCell: UITableViewCell {
         
         self.priceLabel.text = self.restaurant.businessHours
     }
+    
+    override func setHighlighted(highlighted: Bool, animated: Bool) {
+        super.setHighlighted(highlighted, animated: animated)
+        if (highlighted) {
+            self.alpha = 0.5
+        } else {
+            self.alpha = 1.0
+        }
+    }
 }

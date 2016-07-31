@@ -10,10 +10,24 @@ import Foundation
 
 class FavoritesTableViewConfig: NSObject {
     var restaurantList = [Restaurant]()
+    let favoritesModel = FavoritesModel()
     
     init(restaurantList: [Restaurant]) {
         super.init()
         self.restaurantList = restaurantList
+    }
+    
+    func updateFavoritesList(completion: (()->())? = nil) {
+        self.favoritesModel.fetch(AppState.sharedInstance.currentLatitude ?? 0.0, longitude: AppState.sharedInstance.currentLongitude ?? 0.0, orderBy: .Recent, handler: {[weak self](result: PecomyResult<PecomyUser, PecomyApiClientError>) in
+            guard let strongSelf = self else { return }
+            switch result {
+            case .Success(let user):
+                strongSelf.restaurantList = user.favorites
+                completion?()
+            case .Failure(let error):
+                print("error: \(error.code), \(error.response)")
+            }
+            })
     }
 }
 
