@@ -27,6 +27,8 @@ struct Restaurant {
     var longitude: Double = 0.0
     var businessHours = ""
     var tel = ""
+    var visits: Int = 0
+    var favorite = false
 }
 
 extension Restaurant: Mappable {
@@ -52,5 +54,7 @@ extension Restaurant: Mappable {
         longitude <- map["longitude"]
         businessHours <- map["business_hours"]
         tel <- map["tel"]
+        visits <- map["visits"]
+        favorite <- map["favorite"]
     }
 }

@@ -76,6 +76,9 @@
 		D292AA191C5FB30800D66A87 /* Budget.swift in Sources */ = {isa = PBXBuildFile; fileRef = D292AA181C5FB30800D66A87 /* Budget.swift */; };
 		D292AA1B1C5FB5CB00D66A87 /* NumOfPeople.swift in Sources */ = {isa = PBXBuildFile; fileRef = D292AA1A1C5FB5CB00D66A87 /* NumOfPeople.swift */; };
 		D292F7391B92DFFC005700AE /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D292F7381B92DFFC005700AE /* Utils.swift */; };
+		D2A2CB4C1D44E8E000DD717B /* FavoritesAndVisitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A2CB4B1D44E8E000DD717B /* FavoritesAndVisitsViewController.swift */; };
+		D2A2CB4E1D4D99B300DD717B /* FavoritesTableViewConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A2CB4D1D4D99B300DD717B /* FavoritesTableViewConfig.swift */; };
+		D2A2CB501D4D99C200DD717B /* VisitsTableViewConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A2CB4F1D4D99C200DD717B /* VisitsTableViewConfig.swift */; };
 		D2A594E81C8C77A400DE1012 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A594E71C8C77A400DE1012 /* R.generated.swift */; };
 		D2A99A161C12D3E700C16F04 /* OnetimeFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A99A151C12D3E700C16F04 /* OnetimeFilterCell.swift */; };
 		D2A99A1A1C12D3FA00C16F04 /* OnetimeFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A99A191C12D3FA00C16F04 /* OnetimeFilterViewController.swift */; };
@@ -189,6 +192,9 @@
 		D292AA181C5FB30800D66A87 /* Budget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Budget.swift; sourceTree = "<group>"; };
 		D292AA1A1C5FB5CB00D66A87 /* NumOfPeople.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumOfPeople.swift; sourceTree = "<group>"; };
 		D292F7381B92DFFC005700AE /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		D2A2CB4B1D44E8E000DD717B /* FavoritesAndVisitsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesAndVisitsViewController.swift; sourceTree = "<group>"; };
+		D2A2CB4D1D4D99B300DD717B /* FavoritesTableViewConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewConfig.swift; sourceTree = "<group>"; };
+		D2A2CB4F1D4D99C200DD717B /* VisitsTableViewConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitsTableViewConfig.swift; sourceTree = "<group>"; };
 		D2A594E71C8C77A400DE1012 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		D2A99A151C12D3E700C16F04 /* OnetimeFilterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnetimeFilterCell.swift; sourceTree = "<group>"; };
 		D2A99A191C12D3FA00C16F04 /* OnetimeFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnetimeFilterViewController.swift; sourceTree = "<group>"; };
@@ -403,6 +409,9 @@
 			children = (
 				D2731FDF1C79A85300E8E5E9 /* ProfileViewController.swift */,
 				D216E06E1D27DA10000FAB0F /* RestaurantListCell.swift */,
+				D2A2CB4B1D44E8E000DD717B /* FavoritesAndVisitsViewController.swift */,
+				D2A2CB4D1D4D99B300DD717B /* FavoritesTableViewConfig.swift */,
+				D2A2CB4F1D4D99C200DD717B /* VisitsTableViewConfig.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -795,6 +804,7 @@
 				D216E07A1D312855000FAB0F /* FavoritesPutRequest.swift in Sources */,
 				D253A9E81C322B7D00D65D20 /* PecomyApiClient.swift in Sources */,
 				D2EFEB591C51282A0092DFC9 /* CardOverlayTextLabelView.swift in Sources */,
+				D2A2CB4C1D44E8E000DD717B /* FavoritesAndVisitsViewController.swift in Sources */,
 				D2C8E02B1D16411100E0EC6D /* BrowsesPutRequest.swift in Sources */,
 				D2BDA9231D042FAA0096B8FC /* Size.swift in Sources */,
 				D272F45C1B9C25E4009564A0 /* LoadingView.swift in Sources */,
@@ -807,6 +817,7 @@
 				D28901361C439FC9005BDF84 /* TelButton.swift in Sources */,
 				D289013E1C4A01E8005BDF84 /* PictureCollectionViewCell.swift in Sources */,
 				D216E0741D310A3E000FAB0F /* CheckinBottomBar.swift in Sources */,
+				D2A2CB501D4D99C200DD717B /* VisitsTableViewConfig.swift in Sources */,
 				D2C8E0371D16983D00E0EC6D /* VisitsModel.swift in Sources */,
 				D24A2CC31C255D2A009ACA08 /* ResultHeaderView.swift in Sources */,
 				164718B51C3D22AD00F50D33 /* CardRequest.swift in Sources */,
@@ -852,6 +863,7 @@
 				D216E0781D31267F000FAB0F /* VisitsPostResponse.swift in Sources */,
 				D2731FE31C79A88000E8E5E9 /* RestaurantLogViewController.swift in Sources */,
 				D24B29211B78748A00419B9B /* ResultCardBase.swift in Sources */,
+				D2A2CB4E1D4D99B300DD717B /* FavoritesTableViewConfig.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
