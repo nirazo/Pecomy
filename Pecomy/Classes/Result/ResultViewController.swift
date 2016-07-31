@@ -57,10 +57,8 @@ class ResultViewController: UIViewController {
         
         self.navigationController?.makeNavigationBarDefault()
         
-        let resetButoon = UIBarButtonItem(title: NSLocalizedString("Reset", comment: ""), style: .Plain, target: self, action: #selector(ResultViewController.resetTapped))
-        self.navigationItem.rightBarButtonItem = resetButoon
         let continueButton = UIBarButtonItem(title: NSLocalizedString("Continue", comment: ""), style: .Plain, target: self, action: #selector(ResultViewController.continueTapped))
-        self.navigationItem.leftBarButtonItem = continueButton
+        self.navigationItem.rightBarButtonItem = continueButton
         
         switch self.restaurants.count {
         case 0:
@@ -192,11 +190,6 @@ class ResultViewController: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-    }
-    
-    // やり直すをタップした時の挙動
-    func resetTapped() {
-        self.delegate?.resultViewController(self, backButtonTappedWithReset: true)
     }
     
     // 続けるをタップした時の挙動

@@ -63,9 +63,6 @@ class MainViewController: UIViewController {
     
     let loadingIndicator = UIActivityIndicatorView()
     
-    // ビュー関連
-    var categoryLabelView: CategoryLabelView?
-    
     var onetimeFilterVC: OnetimeFilterViewController?
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
@@ -141,6 +138,10 @@ class MainViewController: UIViewController {
         likeButton.setImage(R.image.like_tapped(), forState: .Highlighted)
         likeButton.addTarget(self, action: #selector(MainViewController.likeButtonTapped), forControlEvents: .TouchUpInside)
         
+        let reloadButton = UIButton()
+        reloadButton.setImage(R.image.reload(), forState: .Normal)
+        reloadButton.addTarget(self, action: #selector(MainViewController.reloadTapped), forControlEvents: .TouchUpInside)
+        
         let dislikeButton = UIButton()
         dislikeButton.setImage(R.image.dislike_normal(), forState: .Normal)
         dislikeButton.setImage(R.image.dislike_tapped(), forState: .Highlighted)
@@ -148,6 +149,7 @@ class MainViewController: UIViewController {
         
         self.view.addSubview(likeButton)
         self.view.addSubview(dislikeButton)
+        self.view.addSubview(reloadButton)
         
         dislikeButton.snp_makeConstraints { (make) in
             make.width.equalTo(self.view).multipliedBy(0.25)
@@ -163,18 +165,20 @@ class MainViewController: UIViewController {
             make.bottom.equalTo(dislikeButton)
         }
         
-        // カテゴリ
-        self.categoryLabelView = CategoryLabelView(frame: CGRectZero, category: self.currentGenre.valueForDisplay())
-        self.view.addSubview(self.categoryLabelView!)
-        let tr = UITapGestureRecognizer(target: self, action: #selector(MainViewController.categoryTapped(_:)))
-        self.categoryLabelView!.addGestureRecognizer(tr)
-        
-        self.categoryLabelView!.snp_makeConstraints { (make) in
-            make.left.equalTo(dislikeButton.snp_right)
-            make.right.equalTo(likeButton.snp_left)
-            make.height.equalTo(50)
+        reloadButton.snp_makeConstraints { (make) in
+            make.centerX.equalTo(self.view)
             make.centerY.equalTo(likeButton)
+            make.width.equalTo(likeButton)//.multipliedBy(2/3)
+            make.height.equalTo(likeButton)//.multipliedBy(2/3)
         }
+        
+//        // カテゴリ        
+//        self.categoryLabelView!.snp_makeConstraints { (make) in
+//            make.left.equalTo(dislikeButton.snp_right)
+//            make.right.equalTo(likeButton.snp_left)
+//            make.height.equalTo(50)
+//            make.centerY.equalTo(likeButton)
+//        }
         
         
         // インジケータ
@@ -481,7 +485,7 @@ class MainViewController: UIViewController {
         self.swipeTopCardToWithDirection(.Left)
     }
     
-    func categoryTapped(sender:UITapGestureRecognizer) {
+    func reloadTapped() {
         self.onetimeFilterVC = OnetimeFilterViewController(budget: self.currentBudget, numOfPeople: self.currentNumOfPeople, genre: self.currentGenre)
         self.onetimeFilterVC!.delegate = self
         UIApplication.sharedApplication().keyWindow?.addSubview(self.onetimeFilterVC!.view)
@@ -572,15 +576,12 @@ extension MainViewController: OnetimeFilterViewControllerDelegate {
     }
     
     func startSearch(budget: Budget, numOfPeople: NumOfPeople, genre: Genre) {
-        guard let categoryLabelView = self.categoryLabelView else {
-            return
-        }
         // set filter
         self.currentBudget = budget
         self.currentNumOfPeople = numOfPeople
         self.currentGenre = genre
         
-        categoryLabelView.setCategory(genre.valueForDisplay())
+        //categoryLabelView.setCategory(genre.valueForDisplay())
         
         if let vc = self.onetimeFilterVC {
             vc.view.removeFromSuperview()
