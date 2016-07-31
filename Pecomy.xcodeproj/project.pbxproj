@@ -964,7 +964,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DDEBUG -DFIXED_LOCATION";
 				PRODUCT_BUNDLE_IDENTIFIER = "me.karuta.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = Karuta;
+				PRODUCT_NAME = Pecomy;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Pecomy/Supporting Files/Pecomy-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1050,7 +1050,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DRELEASE -DFIXED_LOCATION";
 				PRODUCT_BUNDLE_IDENTIFIER = "me.karuta.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = Karuta;
+				PRODUCT_NAME = Pecomy;
 				PROVISIONING_PROFILE = "";
 				SWIFT_DISABLE_SAFETY_CHECKS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Pecomy/Supporting Files/Pecomy-Bridging-Header.h";
@@ -1178,7 +1178,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DDEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = "me.karuta.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = Karuta;
+				PRODUCT_NAME = Pecomy;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Pecomy/Supporting Files/Pecomy-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1206,7 +1206,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DRELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = "me.karuta.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = Karuta;
+				PRODUCT_NAME = Pecomy;
 				PROVISIONING_PROFILE = "";
 				SWIFT_DISABLE_SAFETY_CHECKS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Pecomy/Supporting Files/Pecomy-Bridging-Header.h";
@@ -1306,7 +1306,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DSTG";
 				PRODUCT_BUNDLE_IDENTIFIER = "me.karuta.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = Karuta;
+				PRODUCT_NAME = Pecomy;
 				PROVISIONING_PROFILE = "";
 				SWIFT_DISABLE_SAFETY_CHECKS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Pecomy/Supporting Files/Pecomy-Bridging-Header.h";
@@ -1388,7 +1388,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DSTG -DFIXED_LOCATION";
 				PRODUCT_BUNDLE_IDENTIFIER = "me.karuta.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = Karuta;
+				PRODUCT_NAME = Pecomy;
 				PROVISIONING_PROFILE = "";
 				SWIFT_DISABLE_SAFETY_CHECKS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Pecomy/Supporting Files/Pecomy-Bridging-Header.h";
