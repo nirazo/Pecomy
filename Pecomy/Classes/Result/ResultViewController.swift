@@ -43,6 +43,7 @@ class ResultViewController: UIViewController {
     
     init(restaurants: [Restaurant]) {
         self.restaurants = restaurants
+        print("results: \(self.restaurants)")
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -54,10 +55,7 @@ class ResultViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = Const.PECOMY_RESULT_BACK_COLOR
         
-        self.navigationController?.navigationBar.tintColor = Const.PECOMY_THEME_COLOR
-        self.navigationController?.navigationBar.barTintColor = Const.PECOMY_RIGHT_BACKGROUND_COLOR
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: Const.PECOMY_THEME_COLOR]
-        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.makeNavigationBarDefault()
         
         let resetButoon = UIBarButtonItem(title: NSLocalizedString("Reset", comment: ""), style: .Plain, target: self, action: #selector(ResultViewController.resetTapped))
         self.navigationItem.rightBarButtonItem = resetButoon
@@ -188,7 +186,7 @@ class ResultViewController: UIViewController {
         self.contentView.addSubview(label)
 
         label.snp_makeConstraints { (make) in
-            make.center.equalTo(self.view)
+            make.center.equalTo(self.contentView)
         }
     }
     

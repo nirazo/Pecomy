@@ -5,12 +5,16 @@
   Created by Kenzo on 2015/07/25.
   Copyright (c) 2016 Pecomy. All rights reserved.
 */
+// Common
 "OK" = "OK";
 "Back" = "戻る";
 "Close" = "閉じる";
 "Continue" = "さらに続ける";
 "Reset" = "やり直す";
 "Cancel" = "キャンセル";
+"Favorite" = "お気に入り";
+"Checkin" = "チェックイン";
+//
 "LocationAlertTitle" = "位置情報サービスが無効です";
 "LocationAlertMessage" = "Karutaを使用するには、『プライバシー > 位置情報サービス』より位置情報サービスの利用をオンにしてください。";
 "LocationAlertSettingButtonTitle" = "設定";
@@ -69,3 +73,6 @@
 "BusinessHourTitle" = "営業時間";
 "TelAlertMessage" = "この店舗に電話をかけますか？";
 "TelAlertTelButton" = "電話をかける";
+// Profile
+"ProfileTitle" = "個人設定";
+"RecentView" = "最近見たお店";

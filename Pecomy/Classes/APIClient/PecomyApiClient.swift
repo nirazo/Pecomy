@@ -61,6 +61,9 @@ class PecomyApiClient {
                     }
                 }
                 let response: PecomyResult<U, PecomyApiClientError> = PecomyApiClient.mappingResponse(httpRequest, response: httpResponse, data: data, error: error)
+                let str = NSString(data: data!, encoding:NSUTF8StringEncoding)
+                print("requestURL: \(httpRequest?.URLString)")
+                //print("rawData: \(str)")
                 switch response {
                 case .Success(let result):
                     handler(PecomyResult<U, PecomyApiClientError>.Success(result))
@@ -82,7 +85,7 @@ class PecomyApiClient {
                 return PecomyResult.Failure(PecomyApiClientError(type: .Timeout))
             }
         }
-        
+                
         guard let validData: NSData = data else {
             return PecomyResult.Failure(PecomyApiClientError(type: .NoResult))
         }
@@ -90,6 +93,9 @@ class PecomyApiClient {
         var JSON: NSDictionary?
         do {
             JSON = try NSJSONSerialization.JSONObjectWithData(validData, options: .AllowFragments) as? NSDictionary
+            if JSON == nil {
+                JSON = NSDictionary()
+            }
         } catch {
             return .Failure(PecomyApiClientError(type: .JsonParse))
         }

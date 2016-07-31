@@ -10,7 +10,7 @@ import Foundation
 import ObjectMapper
 
 class LoginResponse: PecomyApiResponse {
-    internal var pecomyUser = PecomyUser()
+    internal var pecomyUser = PecomyUser.sharedInstance
     
     required init?(_ map: Map) {
         super.init(map)
@@ -20,5 +20,6 @@ class LoginResponse: PecomyApiResponse {
         super.mapping(map)
         self.pecomyUser.accessToken <- map["access_token"]
         self.pecomyUser.userName <- map["name"]
+        self.pecomyUser.pictureUrl <- map["picture"]
     }
 }

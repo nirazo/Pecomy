@@ -14,7 +14,7 @@ class CategoryLabelView: UIView {
     let MARGIN_CATEGORY_VERTICAL: CGFloat = 5.0     // カテゴリラベル内の上下マージン
     let MARGIN_CATEGORY_HORIZONTAL: CGFloat = 5.0   // カテゴリラベル内の左右マージン
     let DEFAULT_FONT_SIZE_CATEGORY: CGFloat = 11    // カテゴリラベルのフォントサイズ
-    let MAX_CATEGORY_NUM = 2                        // 表示するカテゴリの最大数
+    let MAX_CATEGORY_NUM = 1                        // 表示するカテゴリの最大数
     var categoryLabels = [UILabel]()
     var categoriesArray = [String]()
     

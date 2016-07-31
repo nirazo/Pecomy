@@ -7,11 +7,16 @@
 //
 
 import UIKit
+import FBSDKCoreKit
+import FBSDKLoginKit
 
 class MainBaseViewController: UIViewController {
     
     var pagingBaseView = UIScrollView()
     var bgImageView = UIImageView(image: BackgroundImagePicker.pickImage())
+    var bgImageMaskView = UIView()
+    var imageShrinkPace: CGFloat = 0.0
+    var imageHeight: CGFloat = 0.0
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nil, bundle: nil)
@@ -41,9 +46,19 @@ class MainBaseViewController: UIViewController {
             make.width.equalTo(self.view)
             make.height.equalTo(self.view)
         }
+        self.view.addSubview(self.bgImageMaskView)
+        bgImageMaskView.snp_makeConstraints { make in
+            make.top.equalTo(self.view)
+            make.left.equalTo(self.view)
+            make.width.equalTo(self.view)
+            make.height.equalTo(self.view).dividedBy(2.56)
+        }
+        
         
         // 背景画像
-        self.view.addSubview(self.bgImageView)
+        self.bgImageMaskView.backgroundColor = Const.PECOMY_BASIC_BACKGROUND_COLOR
+        self.bgImageMaskView.addSubview(self.bgImageView)
+        self.bgImageMaskView.clipsToBounds = true
         bgImageView.snp_makeConstraints { make in
             make.top.equalTo(self.view)
             make.left.equalTo(self.view)
@@ -57,7 +72,6 @@ class MainBaseViewController: UIViewController {
         self.pagingBaseView.backgroundColor = UIColor.clearColor()
         
         let profileVC = ProfileViewController()
-        profileVC.delegate = self
         self.addChildViewController(profileVC)
         profileVC.didMoveToParentViewController(self)
         
@@ -80,6 +94,13 @@ class MainBaseViewController: UIViewController {
         
     }
 
+    override func viewDidLayoutSubviews() {
+        if (self.bgImageMaskView.frame.height != 0.0 && self.imageHeight == 0.0) {
+            self.imageHeight = self.bgImageMaskView.frame.size.height
+            self.imageShrinkPace = self.view.frame.width / (self.imageHeight - Size.navHeightIncludeStatusBar(self.navigationController!))
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -96,7 +117,7 @@ extension MainBaseViewController: UIScrollViewDelegate {
         let currentPage = Int(scrollView.contentOffset.x / scrollView.frame.maxX)
         switch currentPage {
         case 0:
-            self.title = ProfileViewController.title
+            self.title = NSLocalizedString("ProfileTitle", comment: "")
         case 1:
             self.title = MainViewController.title
         case 2:
@@ -104,12 +125,35 @@ extension MainBaseViewController: UIScrollViewDelegate {
         default:
             break
         }
-
     }
-}
-
-extension MainBaseViewController: ProfileViewControllerDelegate {
-    func navTitleChanged(title: String) {
-        self.title = title
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        if (scrollView.contentOffset.x >= self.pagingBaseView.frame.width * CGFloat(1)) {
+            return
+        }
+        if (scrollView.contentOffset.x == 0) {
+            self.bgImageMaskView.snp_remakeConstraints { make in
+                make.top.equalTo(self.view)
+                make.left.equalTo(self.view)
+                make.width.equalTo(self.view)
+                make.height.equalTo(Size.navHeightIncludeStatusBar(self.navigationController!))
+            }
+        } else if (scrollView.contentOffset.x == self.view.frame.width) {
+            self.bgImageMaskView.snp_remakeConstraints { make in
+                make.top.equalTo(self.view)
+                make.left.equalTo(self.view)
+                make.width.equalTo(self.view)
+                make.height.equalTo(self.imageHeight)
+            }
+        } else {
+            self.bgImageMaskView.snp_remakeConstraints { make in
+                make.top.equalTo(self.view)
+                make.left.equalTo(self.view)
+                make.width.equalTo(self.view)
+                make.height.equalTo(scrollView.contentOffset.x / self.imageShrinkPace + Size.navHeightIncludeStatusBar(self.navigationController!))
+            }
+        }
+        self.bgImageMaskView.updateConstraintsIfNeeded()
+        self.bgImageMaskView.layoutIfNeeded()
     }
 }

@@ -14,6 +14,13 @@ enum AnaylyticsTrackingCode: String {
     case ResultViewController = "ResultViewController"
 }
 
+// APIに投げる並び順定数
+// 別の場所に作ってあげたほうがいいと思うんだぜ
+enum RestaurantListOrder : String {
+    case Recent = "recent"
+    case Closest = "closest"
+}
+
 struct Const {
     #if DEBUG
     static let API_BASE_PATH = "http://private-552a20-pecomyapi.apiary-mock.com"
@@ -24,8 +31,8 @@ struct Const {
     static let API_GOOD_BASE = "http://peco.my/dummy_good"
     static let API_BLACKLIST_BASE = "http://peco.my/dummy_blacklist"
     #elseif STG
-    static let API_BASE_PATH = "http://peco.my:10090/"
-    static let API_GOOD_BASE = "http://peco.my:10090/dummy_good"
+    static let API_BASE_PATH = "http://peco.my/"
+    static let API_GOOD_BASE = "http://peco.my/dummy_good"
     static let API_BLACKLIST_BASE = "http://peco.my:10090/dummy_blacklist"
 
     #endif
@@ -38,8 +45,7 @@ struct Const {
     static let FIXED_LONGITUDE: Double = 0.0
     #endif
     
-//    static let PECOMY_THEME_COLOR = UIColor(red: 78.0/255.0, green: 172.0/255.0, blue: 166.0/255.0, alpha: 1.0)
-    static let PECOMY_THEME_COLOR = UIColor(red: 207.0/255.0, green: 83.0/255.0, blue: 41.0/255.0, alpha: 1.0)
+    static let PECOMY_THEME_COLOR = UIColor(red: 41.0/255.0, green: 177.0/255.0, blue: 204.0/255.0, alpha: 1.0)
     static let PECOMY_THEME_TEXT_COLOR = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 1.0)
     
     static let RANKING_TOP_COLOR = UIColor(red: 255.0/255.0, green: 170.0/255.0, blue: 0/255.0, alpha: 1.0)
@@ -48,7 +54,7 @@ struct Const {
     static let BASIC_GRAY_COLOR = UIColor(red: 153.0/255.0, green: 153.0/255.0, blue: 153.0/255.0, alpha: 1.0)
     static let RIGHT_GRAY_COLOR = UIColor(red: 204.0/255.0, green: 204.0/255.0, blue: 204.0/255.0, alpha: 1.0)
     
-    static let APP_TITLE = "Karuta"
+    static let APP_TITLE = "Pecomy"
     
     static let PECOMY_RANK_COLOR = [UIColor(red: 255/255.0, green: 180.0/255.0, blue: 0.0/255.0, alpha: 1.0),
         UIColor(red: 124.0/255.0, green: 132.0/255.0, blue: 139.0/255.0, alpha: 1.0),
@@ -95,4 +101,6 @@ struct Const {
     
     // Keychain
     static let PecomyUserTokenKeychainKey = "PecomyUserToken"
+    static let PecomyUserNameKeychainKey = "PecomyUserName"
+    static let PecomyUserPictureKeychainKey = "PecomyUserPicture"
 }
