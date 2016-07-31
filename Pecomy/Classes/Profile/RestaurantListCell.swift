@@ -97,7 +97,18 @@ class RestaurantListCell: UITableViewCell {
         
         self.genreLabel.setCategory(self.restaurant.category)
         
-
+        if (self.restaurant.visits > 0) {
+            self.checkinIcon.image = R.image.cell_checkin_on()
+        } else {
+            self.checkinIcon.image = R.image.cell_checkin_off()
+        }
+        
+        if (self.restaurant.favorite) {
+            self.favoriteIcon.image = R.image.cell_favorite_on()
+        } else {
+            self.favoriteIcon.image = R.image.cell_favorite_off()
+        }
+        
         self.priceLabel.text = self.restaurant.businessHours
     }
 }
