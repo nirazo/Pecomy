@@ -139,7 +139,10 @@ class MainBaseViewController: UIViewController {
     }
     
     func settingsButtonDidTap(sender: UIBarButtonItem) {
-        print("settings tapped")
+        let settingsVC = SettingsViewController()
+        let navVC = UINavigationController(rootViewController: settingsVC)
+        settingsVC.navigationItem.title = NSLocalizedString("SettingsTitle", comment: "")
+        self.presentViewController(navVC, animated: true, completion: nil)
     }
 
 }

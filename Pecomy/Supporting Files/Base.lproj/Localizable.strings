@@ -83,3 +83,7 @@
 // Profile
 "ProfileTitle" = "Profile";
 "RecentView" = "Recent view";
+// Settings
+"SettingsTitle" = "Settings";
+"SettingsSocialSectionTitle" = "SNS";
+"SettingsSocialSectionFooter" = "You can bookmark or checkin with your Facebook account.";
