@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D27BB9CB1B36F4A900F8D902"
-               BuildableName = "Karuta.app"
+               BuildableName = "Pecomy.app"
                BlueprintName = "Pecomy"
                ReferencedContainer = "container:Pecomy.xcodeproj">
             </BuildableReference>
@@ -57,7 +57,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D27BB9CB1B36F4A900F8D902"
-            BuildableName = "Karuta.app"
+            BuildableName = "Pecomy.app"
             BlueprintName = "Pecomy"
             ReferencedContainer = "container:Pecomy.xcodeproj">
          </BuildableReference>
@@ -80,7 +80,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D27BB9CB1B36F4A900F8D902"
-            BuildableName = "Karuta.app"
+            BuildableName = "Pecomy.app"
             BlueprintName = "Pecomy"
             ReferencedContainer = "container:Pecomy.xcodeproj">
          </BuildableReference>
@@ -99,7 +99,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D27BB9CB1B36F4A900F8D902"
-            BuildableName = "Karuta.app"
+            BuildableName = "Pecomy.app"
             BlueprintName = "Pecomy"
             ReferencedContainer = "container:Pecomy.xcodeproj">
          </BuildableReference>

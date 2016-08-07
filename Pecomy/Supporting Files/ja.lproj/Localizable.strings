@@ -16,13 +16,13 @@
 "Checkin" = "チェックイン";
 //
 "LocationAlertTitle" = "位置情報サービスが無効です";
-"LocationAlertMessage" = "Karutaを使用するには、『プライバシー > 位置情報サービス』より位置情報サービスの利用をオンにしてください。";
+"LocationAlertMessage" = "Pecomyを使用するには、『プライバシー > 位置情報サービス』より位置情報サービスの利用をオンにしてください。";
 "LocationAlertSettingButtonTitle" = "設定";
 "LocationRetryAlertTitle" = "位置情報取得に失敗しました";
 "LocationRetryAlertMessage" = "下のボタンを押して再度取得して下さい。";
 "LocationRetryAlertRetryButtonTitle" = "もう一度";
 "OutOfRangeAlertTitle" = "お店が見つかりません";
-"OutOfRangeAlertMessage" = "現在Karutaは東京都と神奈川県のみに対応しております。恐れ入りますが、東京都内か神奈川県内でご利用ください。";
+"OutOfRangeAlertMessage" = "現在Pecomyは東京都と神奈川県のみに対応しております。恐れ入りますが、東京都内か神奈川県内でご利用ください。";
 "RestaurantNotFoundAroundHereAlertTitle" = "お店が見つかりません";
 "RestaurantNotFoundAroundHereAlertMessage" = "現在地近辺にこれ以上お店が見つかりません。条件を変えて再度検索してください。";
 "ServerErrorAlertTitle" = "サーバエラー";

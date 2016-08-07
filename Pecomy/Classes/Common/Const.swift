@@ -94,7 +94,7 @@ struct Const {
     static let WILL_ENTER_FOREGROUND_KEY = "applicationWillEnterForeground"
     
     // GoogleMaps SDKのAPIキー
-    static let GOOGLEMAP_API_KEY = "AIzaSyDoWEe-eYp1z0SaJ64JkQ2TuDzK1YOatmw"
+    static let GOOGLEMAP_API_KEY = "AIzaSyAEXL52glVXfls6JzlsQevrcHUDoJwr5iI"
     
     // ウインドウのサイズ
     static let WindowSize = UIScreen.mainScreen().bounds.size
