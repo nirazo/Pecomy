@@ -64,7 +64,6 @@ class ProfileViewController: UIViewController {
             let currentToken = FBSDKAccessToken.currentAccessToken().tokenString
             self.loginModel.fetch(currentToken, handler: {[weak self] (result: PecomyResult<PecomyUser, PecomyApiClientError>) in
                 guard let strongSelf = self else { return }
-                //strongSelf.setupSubViews()
                 switch result {
                 case .Success(_):
                     strongSelf.updateBrowsesList()
@@ -78,10 +77,9 @@ class ProfileViewController: UIViewController {
                     KeychainManager.removePecomyUserToken()
                     print("error occured and logout: \(error)")
                 }
-//                strongSelf.setupSubViews()
                 })
         } else {
-            //self.setupSubViews()
+            // do nothing
         }
     }
     

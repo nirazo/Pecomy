@@ -141,6 +141,9 @@ class MainViewController: UIViewController {
         let reloadButton = UIButton()
         reloadButton.setImage(R.image.reload(), forState: .Normal)
         reloadButton.addTarget(self, action: #selector(MainViewController.reloadTapped), forControlEvents: .TouchUpInside)
+        reloadButton.clipsToBounds = true
+        reloadButton.layer.cornerRadius = reloadButton.frame.size.width * 0.5
+
         
         let dislikeButton = UIButton()
         dislikeButton.setImage(R.image.dislike_normal(), forState: .Normal)
