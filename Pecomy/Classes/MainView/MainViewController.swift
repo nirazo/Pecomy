@@ -175,15 +175,6 @@ class MainViewController: UIViewController {
             make.height.equalTo(likeButton)//.multipliedBy(2/3)
         }
         
-//        // カテゴリ        
-//        self.categoryLabelView!.snp_makeConstraints { (make) in
-//            make.left.equalTo(dislikeButton.snp_right)
-//            make.right.equalTo(likeButton.snp_left)
-//            make.height.equalTo(50)
-//            make.centerY.equalTo(likeButton)
-//        }
-        
-        
         // インジケータ
         self.loadingIndicator.bounds = CGRectMake(0.0, 0.0, 50, 50)
         self.loadingIndicator.activityIndicatorViewStyle = .WhiteLarge
