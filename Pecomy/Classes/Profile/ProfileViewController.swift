@@ -411,6 +411,7 @@ extension ProfileViewController: FBSDKLoginButtonDelegate {
                     strongSelf.updateFavoritesList()
                     strongSelf.updateVisitsList()
                     strongSelf.updateUserPicture()
+                    strongSelf.updateUserName()
                 case .Failure(let error):
                     let fb = FBSDKLoginManager()
                     fb.logOut()
