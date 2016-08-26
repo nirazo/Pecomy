@@ -66,7 +66,7 @@ class RestaurantListCell: UITableViewCell {
             make.top.equalTo(self.titleLabel.snp_bottom).offset(24.3)
             make.left.equalTo(self.titleLabel)
             make.width.equalTo(192.5)
-            make.bottom.greaterThanOrEqualTo(self.contentView).offset(-18.5)
+            make.bottom.lessThanOrEqualTo(self.contentView).offset(-18.5)
         }
         
         // チェックイン
@@ -109,7 +109,7 @@ class RestaurantListCell: UITableViewCell {
             self.favoriteIcon.image = R.image.cell_favorite_off()
         }
         
-        self.priceLabel.text = self.restaurant.businessHours
+        self.priceLabel.text = self.restaurant.priceRange//businessHours
     }
     
     override func setHighlighted(highlighted: Bool, animated: Bool) {
