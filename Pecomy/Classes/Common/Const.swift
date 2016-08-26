@@ -38,8 +38,8 @@ struct Const {
     #endif
     
     #if FIXED_LOCATION
-    static let FIXED_LATITUDE: Double = 35.661959
-    static let FIXED_LONGITUDE: Double = 139.699789
+    static let FIXED_LATITUDE: Double = 35.531741
+    static let FIXED_LONGITUDE: Double = 139.494784
     #else
     static let FIXED_LATITUDE: Double = 0.0
     static let FIXED_LONGITUDE: Double = 0.0

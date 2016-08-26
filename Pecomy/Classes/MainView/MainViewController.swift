@@ -508,15 +508,18 @@ class MainViewController: UIViewController {
     }
     
     // 現在地付近にこれ以上店舗が見つからない場合のアラート表示
-    func showNotFoundRestaurantAroundHereAlert(completion: () -> Void) {
+    func showNotFoundRestaurantAroundHereAlert(completion: () -> Void, retry: () -> Void) {
         let alertController = UIAlertController(title:NSLocalizedString("RestaurantNotFoundAroundHereAlertTitle", comment: ""),
             message: NSLocalizedString("RestaurantNotFoundAroundHereAlertMessage", comment: ""),
             preferredStyle: .Alert)
-        let okAction = UIAlertAction(title: NSLocalizedString("OK", comment: ""),
-            style: .Default) { [weak self] action in
-                guard let _ = self else { return }
+        let retryAction = UIAlertAction(title: NSLocalizedString("RestaurantNotFoundAroundHereAlertRetry", comment: ""), style: .Default) { action in
+            retry()
+        }
+        let okAction = UIAlertAction(title: NSLocalizedString("RestaurantNotFoundAroundHereAlertDisplayResult", comment: ""),
+            style: .Default) { action in
                 completion()
         }
+        alertController.addAction(retryAction)
         alertController.addAction(okAction)
         self.presentViewController(alertController, animated: true, completion: nil)
     }
@@ -675,12 +678,16 @@ extension MainViewController: ResultViewControllerDelegate {
                 if !strongSelf.stackedCards.isEmpty {
                     strongSelf.displayStackedCard()
                 } else {
-                    strongSelf.showNotFoundRestaurantAroundHereAlert { () in
+                    strongSelf.showNotFoundRestaurantAroundHereAlert({ () in
                         strongSelf.displayResultViewWithShopList(strongSelf.currentResults)
-                    }
+                        }, retry: {() in
+                            strongSelf.reset()
+                            strongSelf.displayOnetimeFilterView()
+                    })
+                }
                 }
             }
-        })
+        )
     }
 }
 

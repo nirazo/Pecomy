@@ -109,7 +109,7 @@ class RestaurantListCell: UITableViewCell {
             self.favoriteIcon.image = R.image.cell_favorite_off()
         }
         
-        self.priceLabel.text = self.restaurant.priceRange//businessHours
+        self.priceLabel.text = self.restaurant.businessHours
     }
     
     override func setHighlighted(highlighted: Bool, animated: Bool) {

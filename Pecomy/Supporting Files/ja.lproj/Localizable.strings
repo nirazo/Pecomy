@@ -25,6 +25,8 @@
 "OutOfRangeAlertMessage" = "現在Pecomyは東京都と神奈川県のみに対応しております。恐れ入りますが、東京都内か神奈川県内でご利用ください。";
 "RestaurantNotFoundAroundHereAlertTitle" = "お店が見つかりません";
 "RestaurantNotFoundAroundHereAlertMessage" = "現在地近辺にこれ以上お店が見つかりません。条件を変えて再度検索してください。";
+"RestaurantNotFoundAroundHereAlertRetry" = "やり直す";
+"RestaurantNotFoundAroundHereAlertDisplayResult" = "結果を再表示";
 "ServerErrorAlertTitle" = "サーバエラー";
 "ServerErrorAlertMessage" = "サーバエラーが発生しました。OKボタンを押すとレストラン検索が再度始まります。";
 "NoResultAlertTitle" = "結果が見つかりませんでした";
