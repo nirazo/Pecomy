@@ -109,7 +109,7 @@ class RestaurantListCell: UITableViewCell {
             self.favoriteIcon.image = R.image.cell_favorite_off()
         }
         
-        self.priceLabel.text = self.restaurant.businessHours
+        self.priceLabel.text = (self.restaurant.dayPriceRange.isEmpty ? "" : self.restaurant.dayPriceRange + "\n") + self.restaurant.nightPriceRange
     }
     
     override func setHighlighted(highlighted: Bool, animated: Bool) {
