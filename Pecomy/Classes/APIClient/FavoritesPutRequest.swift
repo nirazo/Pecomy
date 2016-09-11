@@ -1,16 +1,16 @@
 //
-//  BrowsesPutRequest.swift
+//  FavoritesPutRequest.swift
 //  Pecomy
 //
-//  Created by Kenzo on 6/19/16.
+//  Created by Kenzo on 7/9/16.
 //  Copyright © 2016 Pecomy. All rights reserved.
 //
 
 import Foundation
 import Alamofire
 
-class BrowsesPutRequest: PecomyApiRequest {
-    typealias Response = BrowsesPutResponse
+class FavoritesPutRequest: PecomyApiRequest {
+    typealias Response = FavoritesPutResponse
     
     var endpoint: String
     var method: Alamofire.Method = .PUT
@@ -18,7 +18,7 @@ class BrowsesPutRequest: PecomyApiRequest {
     var encoding: ParameterEncoding = .URL
     
     init(shopID: Int) {
-        endpoint = "/user/browses"
+        endpoint = "/user/favorites"
         params = [
             "device_id": Utils.acquireDeviceID(),
             "shop_id": shopID

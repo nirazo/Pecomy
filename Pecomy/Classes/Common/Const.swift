@@ -27,13 +27,13 @@ struct Const {
     static let API_GOOD_BASE = "http://private-552a20-pecomyapi.apiary-mock.com/dummy_good"
     static let API_BLACKLIST_BASE = "http://private-552a20-pecomyapi.apiary-mock.com/dummy_blacklist"
     #elseif RELEASE
-    static let API_BASE_PATH = "http://peco.my/"
-    static let API_GOOD_BASE = "http://peco.my/dummy_good"
-    static let API_BLACKLIST_BASE = "http://peco.my/dummy_blacklist"
+    static let API_BASE_PATH = "http://api.peco.my/"
+    static let API_GOOD_BASE = "http://api.peco.my/dummy_good"
+    static let API_BLACKLIST_BASE = "http://api.peco.my/dummy_blacklist"
     #elseif STG
-    static let API_BASE_PATH = "http://peco.my/"
-    static let API_GOOD_BASE = "http://peco.my/dummy_good"
-    static let API_BLACKLIST_BASE = "http://peco.my:10090/dummy_blacklist"
+    static let API_BASE_PATH = "http://api.peco.my:10091/"
+    static let API_GOOD_BASE = "http://api.peco.my:10091/dummy_good"
+    static let API_BLACKLIST_BASE = "http://api.peco.my:10091/dummy_blacklist"
 
     #endif
     

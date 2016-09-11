@@ -8,7 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RestaurantDetailView" customModule="Karuta" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" userLabel="RestaurantDetailView" customClass="RestaurantDetailView" customModule="Karuta" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="745"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="793"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="orO-D3-HlC" customClass="UIScrollView">
@@ -361,22 +361,54 @@
                         <constraint firstItem="Uso-O3-eSt" firstAttribute="top" secondItem="orO-D3-HlC" secondAttribute="top" id="ltg-yu-4xF"/>
                         <constraint firstAttribute="bottom" secondItem="Uso-O3-eSt" secondAttribute="bottom" id="ptW-AI-Sa8"/>
                     </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="6Px-F8-Gcw"/>
+                        </mask>
+                    </variation>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vKy-71-pBl" customClass="CheckinBottomBar" customModule="Karuta" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="745" width="375" height="48"/>
+                    <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="065-kg-x8J"/>
+                        <constraint firstAttribute="height" constant="48" id="V0U-pw-n7l"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="065-kg-x8J"/>
+                        </mask>
+                    </variation>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="vKy-71-pBl" secondAttribute="bottom" id="35L-R7-uZi"/>
                 <constraint firstAttribute="trailing" secondItem="orO-D3-HlC" secondAttribute="trailing" id="9j3-o8-dfs"/>
+                <constraint firstItem="vKy-71-pBl" firstAttribute="top" secondItem="orO-D3-HlC" secondAttribute="bottom" id="K5k-4P-fPe"/>
+                <constraint firstAttribute="bottom" secondItem="orO-D3-HlC" secondAttribute="bottom" id="XhA-sR-MV1"/>
                 <constraint firstItem="Uso-O3-eSt" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" priority="250" id="bAR-P6-jFq"/>
+                <constraint firstAttribute="trailing" secondItem="vKy-71-pBl" secondAttribute="trailing" id="iJB-BB-R0X"/>
                 <constraint firstAttribute="bottom" secondItem="orO-D3-HlC" secondAttribute="bottom" id="iOn-53-9ZH"/>
                 <constraint firstItem="orO-D3-HlC" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="nNs-k3-xNF"/>
                 <constraint firstItem="orO-D3-HlC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="rwX-uS-sPb"/>
+                <constraint firstItem="vKy-71-pBl" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="wmF-zT-BbG"/>
                 <constraint firstItem="Uso-O3-eSt" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="woo-Xa-yBH"/>
+                <constraint firstItem="vKy-71-pBl" firstAttribute="top" secondItem="orO-D3-HlC" secondAttribute="bottom" id="xoK-Li-Iy6"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="XhA-sR-MV1"/>
+                    <exclude reference="iOn-53-9ZH"/>
+                    <exclude reference="K5k-4P-fPe"/>
+                </mask>
+            </variation>
             <connections>
                 <outlet property="bottomSeparator" destination="815-77-EnA" id="jXB-b6-FRH"/>
                 <outlet property="businessHourTitleLabel" destination="QcX-bs-AN1" id="BiE-wp-S0J"/>
                 <outlet property="categoryLabelView" destination="yNq-eE-OeK" id="XU3-zP-a82"/>
+                <outlet property="checkinBottomBar" destination="vKy-71-pBl" id="kF5-91-OVL"/>
                 <outlet property="commentsView" destination="PTS-aa-FTO" id="5dD-Rv-K5w"/>
                 <outlet property="contentView" destination="Uso-O3-eSt" id="tPk-PK-Xb4"/>
                 <outlet property="dayBusinessHourLabel" destination="kvR-sk-403" id="Hxk-iE-f9z"/>

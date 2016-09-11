@@ -9,7 +9,7 @@
 "OK" = "OK";
 "Back" = "戻る";
 "Close" = "閉じる";
-"Continue" = "さらに続ける";
+"Continue" = "続けて探す";
 "Reset" = "やり直す";
 "Cancel" = "キャンセル";
 "Favorite" = "お気に入り";
@@ -73,6 +73,13 @@
 "BusinessHourTitle" = "営業時間";
 "TelAlertMessage" = "この店舗に電話をかけますか？";
 "TelAlertTelButton" = "電話をかける";
+"DoCheckin" = "チェックインする";
+"Checkedin" =  "チェックイン済";
+"CheckinReport" = "%@にチェックインしました！";
+"FavoriteReport" = "%@をお気に入りに追加しました！";
+"RegisterFailedAlertTitle" = "お店の登録に失敗しました";
+"RegisterFailedAlertMessage" = "ネットワーク環境の良い所で再度お試しください";
+
 // Profile
 "ProfileTitle" = "個人設定";
 "RecentView" = "最近見たお店";

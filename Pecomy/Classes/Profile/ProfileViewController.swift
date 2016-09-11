@@ -127,7 +127,7 @@ class ProfileViewController: UIViewController {
         // お気に入りの数
         self.numOfFavoriteLabel.font = UIFont(name: Const.PECOMY_FONT_BOLD, size: 20)
         self.numOfFavoriteLabel.textAlignment = .Center
-        self.numOfFavoriteLabel.text = LoginModel.isLoggedIn() ? String(PecomyUser.sharedInstance.favorites.count) : "-"
+        self.numOfFavoriteLabel.text = LoginModel.isLoggedIn() ? String(self.favoritesRestaurants.count) : "-"
         self.view.addSubview(self.numOfFavoriteLabel)
         self.numOfFavoriteLabel.snp_makeConstraints { make in
             make.top.equalTo(self.view).offset(112.5)
@@ -150,10 +150,20 @@ class ProfileViewController: UIViewController {
             make.height.equalTo(18.5)
         }
         
+        // 「お気に入り」の透明ボタン
+        let favoritesButton = UIButton()
+        favoritesButton.addTarget(self, action: #selector(ProfileViewController.pushFavoritesList), forControlEvents: .TouchUpInside)
+        favoritesButton.backgroundColor = .clearColor()
+        self.view.addSubview(favoritesButton)
+        favoritesButton.snp_makeConstraints { make in
+            make.center.equalTo(numOfFavoriteLabel)
+            make.size.equalTo(numOfFavoriteLabel)
+        }
+        
         // チェックインの数
         self.numOfCheckinLabel.font = UIFont(name: Const.PECOMY_FONT_BOLD, size: 20)
         self.numOfCheckinLabel.textAlignment = .Center
-        self.numOfCheckinLabel.text = LoginModel.isLoggedIn() ? String(PecomyUser.sharedInstance.visits.count) : "-"
+        self.numOfCheckinLabel.text = LoginModel.isLoggedIn() ? String(self.visitsRestaurants.count) : "-"
         self.view.addSubview(self.numOfCheckinLabel)
         self.numOfCheckinLabel.snp_makeConstraints { make in
             make.top.equalTo(self.view).offset(112.5)
@@ -176,11 +186,21 @@ class ProfileViewController: UIViewController {
             make.height.equalTo(18.5)
         }
         
+        // 「チェックイン」の透明ボタン
+        let visitsButton = UIButton()
+        visitsButton.addTarget(self, action: #selector(ProfileViewController.pushVisitsList), forControlEvents: .TouchUpInside)
+        visitsButton.backgroundColor = .clearColor()
+        self.view.addSubview(visitsButton)
+        visitsButton.snp_makeConstraints { make in
+            make.center.equalTo(numOfCheckinLabel)
+            make.size.equalTo(numOfCheckinLabel)
+        }
+        
         self.view.backgroundColor = .clearColor()
         
         // 最近見たお店ヘッダー
         let recentHeaderView = RecentHeaderView()
-        self.view.addSubview(recentHeaderView)
+        self.numOfCheckinLabel.addSubview(recentHeaderView)
         recentHeaderView.snp_makeConstraints { make in
             make.top.equalTo(self.fbLoginButton.snp_bottom).offset(12)
             make.left.equalTo(self.view)
@@ -200,6 +220,20 @@ class ProfileViewController: UIViewController {
             make.bottom.equalTo(self.view)
         }
         self.tableView.reloadData()
+    }
+    
+    func pushFavoritesList() {
+        print("favorites!")
+        let vc = FavoritesAndVisitsViewController(type: .Favorites, favoritesList: self.favoritesRestaurants, visitsList: self.visitsRestaurants)
+        vc.navigationItem.title = "favorites"
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func pushVisitsList() {
+        print("visits!")
+        let vc = FavoritesAndVisitsViewController(type: .Visits, favoritesList: self.favoritesRestaurants, visitsList: self.visitsRestaurants)
+        vc.navigationItem.title = "visits"
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     private func updateBrowsesList() {
@@ -225,6 +259,7 @@ class ProfileViewController: UIViewController {
             guard let strongSelf = self else { return }
             switch result {
             case .Success(let user):
+                strongSelf.favoritesRestaurants = user.favorites
                 strongSelf.numOfFavoriteLabel.text = String(user.favorites.count)
             case .Failure(let error):
                 print("error: \(error.code), \(error.response)")
@@ -242,6 +277,8 @@ class ProfileViewController: UIViewController {
             guard let strongSelf = self else { return }
             switch result {
             case .Success(let user):
+                print("visits: \(user.visits)")
+                strongSelf.visitsRestaurants = user.visits
                 strongSelf.numOfCheckinLabel.text = String(user.visits.count)
             case .Failure(let error):
                 print("error: \(error.code), \(error.response)")
@@ -287,6 +324,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         let restaurant = cell.restaurant
         let detailVC = DetailViewController(restaurant: restaurant)
         detailVC.navigationItem.title = restaurant.shopName
+        print("id: \(restaurant.shopID)")
         let backButtonItem = UIBarButtonItem(title: NSLocalizedString("Back", comment: ""), style: .Plain, target: nil, action: nil)
         self.navigationItem.backBarButtonItem = backButtonItem
         self.navigationController?.pushViewController(detailVC, animated: true)

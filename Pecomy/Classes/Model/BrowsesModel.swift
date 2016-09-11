@@ -22,7 +22,6 @@ class BrowsesModel {
             
             switch response {
             case .Success(let value):
-//                handler(PecomyResult(value: value.pecomyUser.browses))
                 handler(PecomyResult(value: value.browses))
             case .Failure(let error):
                 // TODO: エラーコードによってエラーメッセージ詰めたりする
@@ -33,7 +32,7 @@ class BrowsesModel {
         return true
     }
     
-    func register(shopId shopId: String, handler: ((PecomyResult<PecomyApiResponse, PecomyApiClientError>) -> Void)) -> Bool {
+    func register(shopId shopId: Int, handler: ((PecomyResult<PecomyApiResponse, PecomyApiClientError>) -> Void)) -> Bool {
         let request = BrowsesPutRequest(shopID: shopId)
         self.session = PecomyApiClient.send(request) { [weak self] (response: PecomyResult<BrowsesPutRequest.Response, PecomyApiClientError>) -> Void in
             guard let strongSelf = self else { return }

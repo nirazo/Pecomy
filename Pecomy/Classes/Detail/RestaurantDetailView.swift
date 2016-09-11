@@ -51,6 +51,9 @@ class RestaurantDetailView: UIView {
     @IBOutlet weak var richTagsView: UICollectionView!
     @IBOutlet weak var richTagViewHeightConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var checkinBottomBar: CheckinBottomBar!
+    
+    
     var mapTapView = UIView(frame: CGRectZero)
     var mapTappedAction : ((Restaurant) -> ())?
 
@@ -122,8 +125,8 @@ class RestaurantDetailView: UIView {
         self.distanceLabel.textColor = UIColor(red: 108/255.0, green: 108/255.0, blue: 108/255.0, alpha: 1.0)
         
         // 地図
-        let lat = Double(self.restaurant.latitude) ?? 0.0
-        let lon = Double(self.restaurant.longitude) ?? 0.0
+        let lat = self.restaurant.latitude
+        let lon = self.restaurant.longitude
         let camera = GMSCameraPosition.cameraWithLatitude(lat,longitude: lon, zoom: 15)
         self.mapView.camera = camera
         self.mapView.myLocationEnabled = true
