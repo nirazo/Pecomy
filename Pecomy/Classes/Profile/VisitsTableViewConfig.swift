@@ -43,7 +43,7 @@ extension VisitsTableViewConfig: UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("visitsReuseIdentifier", forIndexPath: indexPath) as! RestaurantListCell
-        cell.configureCell(self.restaurantList[indexPath.row])
+        cell.configureCell(self.restaurantList[indexPath.row], type: .Visits)
         return cell
     }
 }

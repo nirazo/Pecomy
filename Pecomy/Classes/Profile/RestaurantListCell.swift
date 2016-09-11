@@ -88,7 +88,7 @@ class RestaurantListCell: UITableViewCell {
         }
     }
     
-    func configureCell(restaurant: Restaurant) {
+    func configureCell(restaurant: Restaurant, type: RestaurantListType? = nil) {
         self.setupSubviews()
         self.restaurant = restaurant
         self.restaurantImageView.sd_setImageWithURL(NSURL(string: self.restaurant.imageUrls[0]))
@@ -97,13 +97,13 @@ class RestaurantListCell: UITableViewCell {
         
         self.genreLabel.setCategory(self.restaurant.category)
         
-        if (self.restaurant.visits > 0) {
+        if (self.restaurant.visits > 0 || type == .Visits) {
             self.checkinIcon.image = R.image.cell_checkin_on()
         } else {
             self.checkinIcon.image = R.image.cell_checkin_off()
         }
         
-        if (self.restaurant.favorite) {
+        if (self.restaurant.favorite || type == .Favorites) {
             self.favoriteIcon.image = R.image.cell_favorite_on()
         } else {
             self.favoriteIcon.image = R.image.cell_favorite_off()

@@ -42,7 +42,7 @@ extension FavoritesTableViewConfig: UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("favoritesReuseIdentifier", forIndexPath: indexPath) as! RestaurantListCell
-        cell.configureCell(self.restaurantList[indexPath.row])
+        cell.configureCell(self.restaurantList[indexPath.row], type: .Favorites)
         return cell
     }
 }
