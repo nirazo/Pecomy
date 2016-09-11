@@ -58,7 +58,7 @@ class ResultViewController: UIViewController {
         self.navigationController?.makeNavigationBarDefault()
         
         let continueButton = UIBarButtonItem(title: NSLocalizedString("Continue", comment: ""), style: .Plain, target: self, action: #selector(ResultViewController.continueTapped))
-        self.navigationItem.rightBarButtonItem = continueButton
+        self.navigationItem.leftBarButtonItem = continueButton
         
         switch self.restaurants.count {
         case 0:
