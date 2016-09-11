@@ -24,7 +24,7 @@ class RestaurantModel {
             
             switch response {
             case .Success(let value):
-                print("restaurant: \(value.restaurant)")
+                //print("restaurant: \(value.restaurant)")
                 strongSelf.restaurant = value.restaurant
                 strongSelf.syncID = value.syncID
                 strongSelf.resultAvailable = value.resultAvailable

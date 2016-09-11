@@ -43,7 +43,7 @@ class ResultViewController: UIViewController {
     
     init(restaurants: [Restaurant]) {
         self.restaurants = restaurants
-        print("results: \(self.restaurants)")
+        //print("results: \(self.restaurants)")
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -130,7 +130,7 @@ class ResultViewController: UIViewController {
         
         var reviewSubject = ""
         var commentViewHeight = 0
-        if (!self.restaurants[0].reviewSubjects[0].isEmpty) {
+        if (!self.restaurants[0].reviewSubjects.isEmpty) {
             reviewSubject = self.restaurants[0].reviewSubjects[0]
             commentViewHeight = 40
         }
@@ -164,7 +164,6 @@ class ResultViewController: UIViewController {
                 make.right.equalTo(self.otherResultsBaseView)
                 make.top.equalTo(self.otherResultsBaseView).offset(18)
             }
-            
             let otherRestaurants = [Restaurant](self.restaurants[1...self.restaurants.count-1])
             self.otherResultsCard = OtherResultsCard(frame: CGRectZero, restaurants: otherRestaurants, delegate: self)
             self.otherResultsCard!.delegate = self
