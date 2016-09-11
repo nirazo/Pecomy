@@ -105,7 +105,6 @@ class FavoritesAndVisitsViewController: UIViewController {
             make.bottom.equalTo(self.view)
         }
         self.currentTableView(self.listType).reloadData()
-        print("top: \(self.currentTableView(self.listType).frame.origin.y)")
     }
     
     private func currentTableView(type: RestaurantListType) -> UITableView {

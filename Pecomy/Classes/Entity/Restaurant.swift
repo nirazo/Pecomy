@@ -30,6 +30,7 @@ struct Restaurant {
     var tel = ""
     var visits: Int = 0
     var favorite = false
+    var timestamp = ""
     
     var dayPriceRange: String {
         get {
@@ -98,5 +99,6 @@ extension Restaurant: Mappable {
         tel <- map["tel"]
         visits <- map["visits"]
         favorite <- map["favorite"]
+        timestamp <- map["timestamp"]
     }
 }

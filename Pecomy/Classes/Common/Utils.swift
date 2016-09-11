@@ -48,4 +48,15 @@ class Utils {
     class func meterToMinutes(meter: Double) -> Int{
         return Int(ceil(meter/60))
     }
+    
+    /**
+     yyyy-MM-dd HH:mm:ssを日付のみの文字列に変換
+     - parameter dateStr: 日付文字列
+     - returns: 日付
+     */
+    class func dateStringToShortDateString(dateStr: String) -> String {
+        let replacedStr = dateStr.stringByReplacingOccurrencesOfString("-", withString: "/")
+        let separetedArray = replacedStr.componentsSeparatedByString(" ")
+        return separetedArray[0]
+    }
 }
