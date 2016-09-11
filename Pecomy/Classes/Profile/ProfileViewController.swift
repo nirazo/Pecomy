@@ -43,6 +43,7 @@ class ProfileViewController: UIViewController {
     var visitsRestaurants = [Restaurant]()
     
     let bgView = UIView()
+    let favAndCheckinBgView = UIView()
     let userPhotoImageView = UIImageView()
     let numOfFavoriteLabel = UILabel()
     let numOfCheckinLabel = UILabel()
@@ -133,28 +134,35 @@ class ProfileViewController: UIViewController {
             self.userNameLabel.hidden = true
         }
         
+        self.view.addSubview(self.favAndCheckinBgView)
+        self.favAndCheckinBgView.snp_makeConstraints { make in
+            make.top.equalTo(self.userPhotoImageView)
+            make.left.equalTo(self.userPhotoImageView.snp_right)
+            make.right.equalTo(self.view)
+            make.bottom.equalTo(self.userPhotoImageView)
+        }
         
         // セパレータ
         let userInfoSeparator = UIView()
         userInfoSeparator.backgroundColor = UIColor(red: 179.0/255.0, green: 179.0/255.0, blue: 179.0/255.0, alpha: 1.0)
-        self.view.addSubview(userInfoSeparator)
+        self.favAndCheckinBgView.addSubview(userInfoSeparator)
         userInfoSeparator.snp_makeConstraints { make in
-            make.top.equalTo(self.view).offset(104)
-            make.left.equalTo(self.view).offset(249)
+            make.top.equalTo(self.favAndCheckinBgView).offset(20)
+            make.center.equalTo(self.favAndCheckinBgView)
             make.width.equalTo(1.5)
-            make.height.equalTo(60)
+            make.bottom.equalTo(self.favAndCheckinBgView).offset(-20)
         }
         
         // お気に入りの数
         self.numOfFavoriteLabel.font = UIFont(name: Const.PECOMY_FONT_BOLD, size: 20)
         self.numOfFavoriteLabel.textAlignment = .Center
         self.numOfFavoriteLabel.text = LoginModel.isLoggedIn() ? String(self.favoritesRestaurants.count) : "-"
-        self.view.addSubview(self.numOfFavoriteLabel)
+        self.favAndCheckinBgView.addSubview(self.numOfFavoriteLabel)
         self.numOfFavoriteLabel.snp_makeConstraints { make in
-            make.top.equalTo(self.view).offset(112.5)
-            make.left.equalTo(self.userPhotoImageView.snp_right).offset(5.5)
-            make.right.equalTo(userInfoSeparator.snp_left).offset(-5)
-            make.height.equalTo(30.5)
+            make.top.equalTo(userInfoSeparator).offset(8)
+            make.centerX.equalTo(self.favAndCheckinBgView).dividedBy(2)
+            make.centerY.equalTo(self.favAndCheckinBgView)
+            make.height.equalTo(15.5)
         }
         
         // 「お気に入り」のテキスト
@@ -163,7 +171,7 @@ class ProfileViewController: UIViewController {
         favoriteTextLabel.textAlignment = .Center
         favoriteTextLabel.text = NSLocalizedString("Favorite", comment: "")
         favoriteTextLabel.textColor = UIColor(red: 153.0/255.0, green: 153.0/255.0, blue: 153.0/255.0, alpha: 1.0)
-        self.view.addSubview(favoriteTextLabel)
+        self.favAndCheckinBgView.addSubview(favoriteTextLabel)
         favoriteTextLabel.snp_makeConstraints { make in
             make.top.equalTo(self.numOfFavoriteLabel.snp_bottom)
             make.centerX.equalTo(self.numOfFavoriteLabel)
@@ -175,7 +183,7 @@ class ProfileViewController: UIViewController {
         let favoritesButton = UIButton()
         favoritesButton.addTarget(self, action: #selector(ProfileViewController.pushFavoritesList), forControlEvents: .TouchUpInside)
         favoritesButton.backgroundColor = .clearColor()
-        self.view.addSubview(favoritesButton)
+        self.favAndCheckinBgView.addSubview(favoritesButton)
         favoritesButton.snp_makeConstraints { make in
             make.center.equalTo(numOfFavoriteLabel)
             make.size.equalTo(numOfFavoriteLabel)
@@ -185,12 +193,12 @@ class ProfileViewController: UIViewController {
         self.numOfCheckinLabel.font = UIFont(name: Const.PECOMY_FONT_BOLD, size: 20)
         self.numOfCheckinLabel.textAlignment = .Center
         self.numOfCheckinLabel.text = LoginModel.isLoggedIn() ? String(self.visitsRestaurants.count) : "-"
-        self.view.addSubview(self.numOfCheckinLabel)
+        self.favAndCheckinBgView.addSubview(self.numOfCheckinLabel)
         self.numOfCheckinLabel.snp_makeConstraints { make in
-            make.top.equalTo(self.view).offset(112.5)
-            make.left.equalTo(userInfoSeparator.snp_right).offset(5)
-            make.right.equalTo(self.view).offset(-10)
-            make.height.equalTo(30.5)
+            make.top.equalTo(userInfoSeparator).offset(8)
+            make.centerX.equalTo(self.favAndCheckinBgView).multipliedBy(1.5)
+            make.centerY.equalTo(self.favAndCheckinBgView)
+            make.height.equalTo(15.5)
         }
         
         // 「チェックイン」のテキスト
@@ -199,7 +207,7 @@ class ProfileViewController: UIViewController {
         checkinTextLabel.textAlignment = .Center
         checkinTextLabel.text = NSLocalizedString("Checkin", comment: "")
         checkinTextLabel.textColor = UIColor(red: 153.0/255.0, green: 153.0/255.0, blue: 153.0/255.0, alpha: 1.0)
-        self.view.addSubview(checkinTextLabel)
+        self.favAndCheckinBgView.addSubview(checkinTextLabel)
         checkinTextLabel.snp_makeConstraints { make in
             make.top.equalTo(self.numOfCheckinLabel.snp_bottom)
             make.centerX.equalTo(self.numOfCheckinLabel)
@@ -211,7 +219,7 @@ class ProfileViewController: UIViewController {
         let visitsButton = UIButton()
         visitsButton.addTarget(self, action: #selector(ProfileViewController.pushVisitsList), forControlEvents: .TouchUpInside)
         visitsButton.backgroundColor = .clearColor()
-        self.view.addSubview(visitsButton)
+        self.favAndCheckinBgView.addSubview(visitsButton)
         visitsButton.snp_makeConstraints { make in
             make.center.equalTo(numOfCheckinLabel)
             make.size.equalTo(numOfCheckinLabel)

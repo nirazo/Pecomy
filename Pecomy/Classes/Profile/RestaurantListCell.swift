@@ -29,12 +29,12 @@ class RestaurantListCell: UITableViewCell {
     }
     
     private func setupSubviews() {
+        self.restaurantImageView.contentMode = .Redraw
         self.contentView.addSubview(self.restaurantImageView)
         self.restaurantImageView.snp_makeConstraints { make in
             make.left.equalTo(self.contentView).offset(15)
             make.top.equalTo(self.contentView).offset(24)
-            make.width.equalTo(70)
-            make.height.equalTo(70)
+            make.width.height.equalTo(self.contentView.snp_width).dividedBy(4.5)
             make.bottom.lessThanOrEqualTo(self.contentView).offset(-20)
         }
         
@@ -46,7 +46,6 @@ class RestaurantListCell: UITableViewCell {
         self.titleLabel.snp_makeConstraints { make in
             make.top.equalTo(self.restaurantImageView)
             make.left.equalTo(self.restaurantImageView.snp_right).offset(10)
-            make.width.equalTo(192.5)
         }
 
         
@@ -54,8 +53,9 @@ class RestaurantListCell: UITableViewCell {
         self.contentView.addSubview(self.genreLabel)
         self.genreLabel.snp_makeConstraints { make in
             make.top.equalTo(self.titleLabel)
-            make.left.greaterThanOrEqualTo(self.titleLabel.snp_right).offset(20.5)
-            make.right.equalTo(self.contentView).offset(-20)
+            make.left.greaterThanOrEqualTo(self.titleLabel.snp_right).offset(20)
+            make.left.lessThanOrEqualTo(self.titleLabel.snp_right).offset(40)
+            make.right.equalTo(self.contentView).offset(-15)
         }
         
         
@@ -67,7 +67,7 @@ class RestaurantListCell: UITableViewCell {
         self.priceLabel.snp_makeConstraints { make in
             make.top.equalTo(self.titleLabel.snp_bottom).offset(24.3)
             make.left.equalTo(self.titleLabel)
-            make.width.equalTo(192.5)
+            //make.width.equalTo(self.titleLabel)
             make.bottom.lessThanOrEqualTo(self.contentView).offset(-25)
         }
         
@@ -84,6 +84,7 @@ class RestaurantListCell: UITableViewCell {
         self.favoriteIcon.image = R.image.cell_favorite_off()
         self.contentView.addSubview(self.favoriteIcon)
         self.favoriteIcon.snp_makeConstraints { make in
+            make.left.equalTo(self.checkinIcon.snp_right).offset(7)
             make.right.equalTo(self.genreLabel)
             make.bottom.equalTo(self.restaurantImageView)
             make.width.height.equalTo(26)
