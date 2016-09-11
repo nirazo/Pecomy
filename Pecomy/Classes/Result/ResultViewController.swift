@@ -128,13 +128,19 @@ class ResultViewController: UIViewController {
         self.topResultCard?.setupSubViews()
         self.topResultCard?.delegate = self
         
-        self.commentView = CommentContentView(frame: CGRectZero, comment: self.restaurants[0].reviewSubjects[0], backgroundColor: Const.PECOMY_RANK_COLOR[0], textColor: UIColor.whiteColor())
+        var reviewSubject = ""
+        var commentViewHeight = 0
+        if (!self.restaurants[0].reviewSubjects[0].isEmpty) {
+            reviewSubject = self.restaurants[0].reviewSubjects[0]
+            commentViewHeight = 40
+        }
+        self.commentView = CommentContentView(frame: CGRectZero, comment: reviewSubject, backgroundColor: Const.PECOMY_RANK_COLOR[0], textColor: UIColor.whiteColor())
         self.contentView.addSubview(self.commentView!)
         self.commentView?.snp_makeConstraints{ (make) in
             make.top.equalTo(self.topResultCard!.snp_bottom).offset(10)
             make.left.equalTo(self.topResultCard!)
             make.width.equalTo(self.topResultCard!)
-            make.height.equalTo(40)
+            make.height.equalTo(commentViewHeight)
         }
         
         // その他のベースとなるビュー
