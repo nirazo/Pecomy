@@ -104,6 +104,8 @@ class MainBaseViewController: UIViewController {
         }
         self.pagingBaseView.contentOffset.x = self.view.bounds.width
         self.navigationItem.leftBarButtonItem = self.userButton
+        
+        self.navigationController?.interactivePopGestureRecognizer?.enabled = false
     }
     
     override func viewWillLayoutSubviews() {
