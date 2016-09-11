@@ -16,6 +16,8 @@ class RestaurantListCell: UITableViewCell {
     var genreLabel = CategoryLabelView(frame: .zero, category: "")
     var checkinIcon = UIImageView()
     var favoriteIcon = UIImageView()
+    var timestampLabel = UILabel()
+    var cellType: RestaurantListType = .None
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -66,7 +68,7 @@ class RestaurantListCell: UITableViewCell {
             make.top.equalTo(self.titleLabel.snp_bottom).offset(24.3)
             make.left.equalTo(self.titleLabel)
             make.width.equalTo(192.5)
-            make.bottom.lessThanOrEqualTo(self.contentView).offset(-18.5)
+            make.bottom.lessThanOrEqualTo(self.contentView).offset(-25)
         }
         
         // チェックイン
@@ -86,15 +88,25 @@ class RestaurantListCell: UITableViewCell {
             make.bottom.equalTo(self.restaurantImageView)
             make.width.height.equalTo(26)
         }
+        
+        // 時刻ラベル
+        self.timestampLabel.font = UIFont(name: Const.PECOMY_FONT_NORMAL, size: 10)
+        self.timestampLabel.textColor = Const.RANKING_SECOND_RIGHT_COLOR
+        self.timestampLabel.numberOfLines = 0
+        self.contentView.addSubview(self.timestampLabel)
+        self.timestampLabel.snp_makeConstraints { make in
+            make.top.greaterThanOrEqualTo(self.favoriteIcon.snp_bottom).offset(10)
+            make.right.equalTo(self.favoriteIcon.snp_right)
+            make.bottom.equalTo(self.contentView).offset(-12)
+        }
     }
     
-    func configureCell(restaurant: Restaurant, type: RestaurantListType? = nil) {
+    func configureCell(restaurant: Restaurant, type: RestaurantListType = .None) {
         self.setupSubviews()
+        self.cellType = type
         self.restaurant = restaurant
         self.restaurantImageView.sd_setImageWithURL(NSURL(string: self.restaurant.imageUrls[0]))
-
         self.titleLabel.text = self.restaurant.shopName
-        
         self.genreLabel.setCategory(self.restaurant.category)
         
         if (self.restaurant.visits > 0 || type == .Visits) {
@@ -107,6 +119,10 @@ class RestaurantListCell: UITableViewCell {
             self.favoriteIcon.image = R.image.cell_favorite_on()
         } else {
             self.favoriteIcon.image = R.image.cell_favorite_off()
+        }
+        
+        if (self.cellType != .None) {
+            self.timestampLabel.text = String(format: NSLocalizedString("RegisteredTime", comment: ""), Utils.dateStringToTimeString(self.restaurant.timestamp))
         }
         
         self.priceLabel.text = (self.restaurant.dayPriceRange.isEmpty ? "" : self.restaurant.dayPriceRange + "\n") + self.restaurant.nightPriceRange

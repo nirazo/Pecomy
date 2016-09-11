@@ -9,7 +9,7 @@
 import Foundation
 
 enum RestaurantListType {
-    case Favorites, Visits
+    case Favorites, Visits, None
 }
 
 class FavoritesAndVisitsViewController: UIViewController {
@@ -113,6 +113,8 @@ class FavoritesAndVisitsViewController: UIViewController {
             return self.favoritesTableView
         case .Visits:
             return self.visitsTableView
+        default:
+            fatalError()
         }
     }
     

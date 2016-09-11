@@ -59,4 +59,15 @@ class Utils {
         let separetedArray = replacedStr.componentsSeparatedByString(" ")
         return separetedArray[0]
     }
+    
+    /**
+     yyyy-MM-dd HH:mm:ssを時刻のみの文字列に変換
+     - parameter dateStr: 日付文字列
+     - returns: 時刻
+     */
+    class func dateStringToTimeString(dateStr: String) -> String {
+        let replacedStr = dateStr.stringByReplacingOccurrencesOfString("-", withString: "/")
+        let separetedArray = replacedStr.componentsSeparatedByString(" ")
+        return separetedArray[1]
+    }
 }

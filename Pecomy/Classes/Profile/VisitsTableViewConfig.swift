@@ -22,7 +22,6 @@ class VisitsTableViewConfig: NSObject {
             guard let strongSelf = self else { return }
             switch result {
             case .Success(let user):
-                //print("visits: \(user.visits)")
                 strongSelf.sectionedRestaurantList = strongSelf.createSectionedRestaurantList(user.visits)
                 completion?()
             case .Failure(let error):

@@ -85,6 +85,7 @@
 // Profile
 "ProfileTitle" = "Profile";
 "RecentView" = "Recent view";
+"RegisteredTime" = "Registered at %@";
 // Settings
 "SettingsTitle" = "Settings";
 "SettingsSocialSectionTitle" = "SNS";

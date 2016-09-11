@@ -84,6 +84,7 @@
 // Profile
 "ProfileTitle" = "個人設定";
 "RecentView" = "最近見たお店";
+"RegisteredTime" = "%@に登録";
 // Settings
 "SettingsTitle" = "設定";
 "SettingsSocialSectionTitle" = "ソーシャル連携";
