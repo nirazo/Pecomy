@@ -16,6 +16,8 @@ class RestaurantListCell: UITableViewCell {
     var genreLabel = CategoryLabelView(frame: .zero, category: "")
     var checkinIcon = UIImageView()
     var favoriteIcon = UIImageView()
+    var timestampLabel = UILabel()
+    var cellType: RestaurantListType = .None
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -27,12 +29,12 @@ class RestaurantListCell: UITableViewCell {
     }
     
     private func setupSubviews() {
+        self.restaurantImageView.contentMode = .Redraw
         self.contentView.addSubview(self.restaurantImageView)
         self.restaurantImageView.snp_makeConstraints { make in
             make.left.equalTo(self.contentView).offset(15)
             make.top.equalTo(self.contentView).offset(24)
-            make.width.equalTo(70)
-            make.height.equalTo(70)
+            make.width.height.equalTo(self.contentView.snp_width).dividedBy(4.5)
             make.bottom.lessThanOrEqualTo(self.contentView).offset(-20)
         }
         
@@ -44,7 +46,6 @@ class RestaurantListCell: UITableViewCell {
         self.titleLabel.snp_makeConstraints { make in
             make.top.equalTo(self.restaurantImageView)
             make.left.equalTo(self.restaurantImageView.snp_right).offset(10)
-            make.width.equalTo(192.5)
         }
 
         
@@ -52,8 +53,9 @@ class RestaurantListCell: UITableViewCell {
         self.contentView.addSubview(self.genreLabel)
         self.genreLabel.snp_makeConstraints { make in
             make.top.equalTo(self.titleLabel)
-            make.left.greaterThanOrEqualTo(self.titleLabel.snp_right).offset(20.5)
-            make.right.equalTo(self.contentView).offset(-20)
+            make.left.greaterThanOrEqualTo(self.titleLabel.snp_right).offset(20)
+            make.left.lessThanOrEqualTo(self.titleLabel.snp_right).offset(40)
+            make.right.equalTo(self.contentView).offset(-15)
         }
         
         
@@ -65,8 +67,8 @@ class RestaurantListCell: UITableViewCell {
         self.priceLabel.snp_makeConstraints { make in
             make.top.equalTo(self.titleLabel.snp_bottom).offset(24.3)
             make.left.equalTo(self.titleLabel)
-            make.width.equalTo(192.5)
-            make.bottom.greaterThanOrEqualTo(self.contentView).offset(-18.5)
+            //make.width.equalTo(self.titleLabel)
+            make.bottom.lessThanOrEqualTo(self.contentView).offset(-25)
         }
         
         // チェックイン
@@ -82,34 +84,49 @@ class RestaurantListCell: UITableViewCell {
         self.favoriteIcon.image = R.image.cell_favorite_off()
         self.contentView.addSubview(self.favoriteIcon)
         self.favoriteIcon.snp_makeConstraints { make in
+            make.left.equalTo(self.checkinIcon.snp_right).offset(7)
             make.right.equalTo(self.genreLabel)
             make.bottom.equalTo(self.restaurantImageView)
             make.width.height.equalTo(26)
         }
+        
+        // 時刻ラベル
+        self.timestampLabel.font = UIFont(name: Const.PECOMY_FONT_NORMAL, size: 10)
+        self.timestampLabel.textColor = Const.RANKING_SECOND_RIGHT_COLOR
+        self.timestampLabel.numberOfLines = 0
+        self.contentView.addSubview(self.timestampLabel)
+        self.timestampLabel.snp_makeConstraints { make in
+            make.top.greaterThanOrEqualTo(self.favoriteIcon.snp_bottom).offset(10)
+            make.right.equalTo(self.favoriteIcon.snp_right)
+            make.bottom.equalTo(self.contentView).offset(-12)
+        }
     }
     
-    func configureCell(restaurant: Restaurant) {
+    func configureCell(restaurant: Restaurant, type: RestaurantListType = .None) {
         self.setupSubviews()
+        self.cellType = type
         self.restaurant = restaurant
         self.restaurantImageView.sd_setImageWithURL(NSURL(string: self.restaurant.imageUrls[0]))
-
         self.titleLabel.text = self.restaurant.shopName
-        
         self.genreLabel.setCategory(self.restaurant.category)
         
-        if (self.restaurant.visits > 0) {
+        if (self.restaurant.visits > 0 || type == .Visits) {
             self.checkinIcon.image = R.image.cell_checkin_on()
         } else {
             self.checkinIcon.image = R.image.cell_checkin_off()
         }
         
-        if (self.restaurant.favorite) {
+        if (self.restaurant.favorite || type == .Favorites) {
             self.favoriteIcon.image = R.image.cell_favorite_on()
         } else {
             self.favoriteIcon.image = R.image.cell_favorite_off()
         }
         
-        self.priceLabel.text = self.restaurant.businessHours
+        if (self.cellType != .None) {
+            self.timestampLabel.text = String(format: NSLocalizedString("RegisteredTime", comment: ""), Utils.dateStringToTimeString(self.restaurant.timestamp))
+        }
+        
+        self.priceLabel.text = (self.restaurant.dayPriceRange.isEmpty ? "" : self.restaurant.dayPriceRange + "\n") + self.restaurant.nightPriceRange
     }
     
     override func setHighlighted(highlighted: Bool, animated: Bool) {

@@ -104,6 +104,8 @@ class MainBaseViewController: UIViewController {
         }
         self.pagingBaseView.contentOffset.x = self.view.bounds.width
         self.navigationItem.leftBarButtonItem = self.userButton
+        
+        self.navigationController?.interactivePopGestureRecognizer?.enabled = false
     }
     
     override func viewWillLayoutSubviews() {
@@ -139,7 +141,10 @@ class MainBaseViewController: UIViewController {
     }
     
     func settingsButtonDidTap(sender: UIBarButtonItem) {
-        print("settings tapped")
+        let settingsVC = SettingsViewController()
+        let navVC = UINavigationController(rootViewController: settingsVC)
+        settingsVC.navigationItem.title = NSLocalizedString("SettingsTitle", comment: "")
+        self.presentViewController(navVC, animated: true, completion: nil)
     }
 
 }

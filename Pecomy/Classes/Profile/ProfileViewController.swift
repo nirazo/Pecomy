@@ -10,7 +10,6 @@ import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit
 
-
 class RecentHeaderView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -44,10 +43,12 @@ class ProfileViewController: UIViewController {
     var visitsRestaurants = [Restaurant]()
     
     let bgView = UIView()
+    let favAndCheckinBgView = UIView()
     let userPhotoImageView = UIImageView()
     let numOfFavoriteLabel = UILabel()
     let numOfCheckinLabel = UILabel()
     let fbLoginButton = FBSDKLoginButton()
+    let userNameLabel = UILabel()
     let tableView = UITableView()
     
     override func viewDidLoad() {
@@ -58,6 +59,8 @@ class ProfileViewController: UIViewController {
         
         self.navigationController?.makeNavigationBarTranslucent()
         
+        self.setupSubViews()
+        
         if LoginModel.isLoggedIn() {
             let currentToken = FBSDKAccessToken.currentAccessToken().tokenString
             self.loginModel.fetch(currentToken, handler: {[weak self] (result: PecomyResult<PecomyUser, PecomyApiClientError>) in
@@ -67,6 +70,7 @@ class ProfileViewController: UIViewController {
                     strongSelf.updateBrowsesList()
                     strongSelf.updateFavoritesList()
                     strongSelf.updateVisitsList()
+                    strongSelf.updateUserName()
                     strongSelf.updateUserPicture()
                 case .Failure(let error):
                     let fb = FBSDKLoginManager()
@@ -74,10 +78,9 @@ class ProfileViewController: UIViewController {
                     KeychainManager.removePecomyUserToken()
                     print("error occured and logout: \(error)")
                 }
-                strongSelf.setupSubViews()
                 })
         } else {
-            self.setupSubViews()
+            // do nothing
         }
     }
     
@@ -87,6 +90,8 @@ class ProfileViewController: UIViewController {
         self.updateBrowsesList()
         self.updateVisitsList()
         self.updateFavoritesList()
+        self.updateUserPicture()
+        self.updateUserName()
     }
 
     override func didReceiveMemoryWarning() {
@@ -94,8 +99,10 @@ class ProfileViewController: UIViewController {
     }
     
     private func setupSubViews() {
-        
+        self.userPhotoImageView.clipsToBounds = true
+        self.userPhotoImageView.layer.cornerRadius = self.userPhotoImageView.frame.size.width * 0.5
         self.userPhotoImageView.image = R.image.comment_human1()
+        
         self.view.addSubview(self.userPhotoImageView)
         self.userPhotoImageView.snp_makeConstraints { make in
             make.top.equalTo(84)
@@ -113,27 +120,49 @@ class ProfileViewController: UIViewController {
             make.height.equalTo(22)
         }
         
+        self.userNameLabel.font = UIFont(name: Const.PECOMY_FONT_BOLD, size: 17)
+        self.view.addSubview(self.userNameLabel)
+        self.userNameLabel.snp_makeConstraints { make in
+            make.top.equalTo(self.userPhotoImageView.snp_bottom).offset(12)
+            make.left.equalTo(self.userPhotoImageView)
+            make.height.equalTo(22)
+        }
+        if(LoginModel.isLoggedIn()) {
+            self.userNameLabel.text = PecomyUser.sharedInstance.userName
+            self.fbLoginButton.hidden = true
+        } else {
+            self.userNameLabel.hidden = true
+        }
+        
+        self.view.addSubview(self.favAndCheckinBgView)
+        self.favAndCheckinBgView.snp_makeConstraints { make in
+            make.top.equalTo(self.userPhotoImageView)
+            make.left.equalTo(self.userPhotoImageView.snp_right)
+            make.right.equalTo(self.view)
+            make.bottom.equalTo(self.userPhotoImageView)
+        }
+        
         // セパレータ
         let userInfoSeparator = UIView()
         userInfoSeparator.backgroundColor = UIColor(red: 179.0/255.0, green: 179.0/255.0, blue: 179.0/255.0, alpha: 1.0)
-        self.view.addSubview(userInfoSeparator)
+        self.favAndCheckinBgView.addSubview(userInfoSeparator)
         userInfoSeparator.snp_makeConstraints { make in
-            make.top.equalTo(self.view).offset(104)
-            make.left.equalTo(self.view).offset(249)
+            make.top.equalTo(self.favAndCheckinBgView).offset(20)
+            make.center.equalTo(self.favAndCheckinBgView)
             make.width.equalTo(1.5)
-            make.height.equalTo(60)
+            make.bottom.equalTo(self.favAndCheckinBgView).offset(-20)
         }
         
         // お気に入りの数
         self.numOfFavoriteLabel.font = UIFont(name: Const.PECOMY_FONT_BOLD, size: 20)
         self.numOfFavoriteLabel.textAlignment = .Center
         self.numOfFavoriteLabel.text = LoginModel.isLoggedIn() ? String(self.favoritesRestaurants.count) : "-"
-        self.view.addSubview(self.numOfFavoriteLabel)
+        self.favAndCheckinBgView.addSubview(self.numOfFavoriteLabel)
         self.numOfFavoriteLabel.snp_makeConstraints { make in
-            make.top.equalTo(self.view).offset(112.5)
-            make.left.equalTo(self.userPhotoImageView.snp_right).offset(5.5)
-            make.right.equalTo(userInfoSeparator.snp_left).offset(-5)
-            make.height.equalTo(30.5)
+            make.top.equalTo(userInfoSeparator).offset(8)
+            make.centerX.equalTo(self.favAndCheckinBgView).dividedBy(2)
+            make.centerY.equalTo(self.favAndCheckinBgView)
+            make.height.equalTo(15.5)
         }
         
         // 「お気に入り」のテキスト
@@ -142,7 +171,7 @@ class ProfileViewController: UIViewController {
         favoriteTextLabel.textAlignment = .Center
         favoriteTextLabel.text = NSLocalizedString("Favorite", comment: "")
         favoriteTextLabel.textColor = UIColor(red: 153.0/255.0, green: 153.0/255.0, blue: 153.0/255.0, alpha: 1.0)
-        self.view.addSubview(favoriteTextLabel)
+        self.favAndCheckinBgView.addSubview(favoriteTextLabel)
         favoriteTextLabel.snp_makeConstraints { make in
             make.top.equalTo(self.numOfFavoriteLabel.snp_bottom)
             make.centerX.equalTo(self.numOfFavoriteLabel)
@@ -154,7 +183,7 @@ class ProfileViewController: UIViewController {
         let favoritesButton = UIButton()
         favoritesButton.addTarget(self, action: #selector(ProfileViewController.pushFavoritesList), forControlEvents: .TouchUpInside)
         favoritesButton.backgroundColor = .clearColor()
-        self.view.addSubview(favoritesButton)
+        self.favAndCheckinBgView.addSubview(favoritesButton)
         favoritesButton.snp_makeConstraints { make in
             make.center.equalTo(numOfFavoriteLabel)
             make.size.equalTo(numOfFavoriteLabel)
@@ -164,12 +193,12 @@ class ProfileViewController: UIViewController {
         self.numOfCheckinLabel.font = UIFont(name: Const.PECOMY_FONT_BOLD, size: 20)
         self.numOfCheckinLabel.textAlignment = .Center
         self.numOfCheckinLabel.text = LoginModel.isLoggedIn() ? String(self.visitsRestaurants.count) : "-"
-        self.view.addSubview(self.numOfCheckinLabel)
+        self.favAndCheckinBgView.addSubview(self.numOfCheckinLabel)
         self.numOfCheckinLabel.snp_makeConstraints { make in
-            make.top.equalTo(self.view).offset(112.5)
-            make.left.equalTo(userInfoSeparator.snp_right).offset(5)
-            make.right.equalTo(self.view).offset(-10)
-            make.height.equalTo(30.5)
+            make.top.equalTo(userInfoSeparator).offset(8)
+            make.centerX.equalTo(self.favAndCheckinBgView).multipliedBy(1.5)
+            make.centerY.equalTo(self.favAndCheckinBgView)
+            make.height.equalTo(15.5)
         }
         
         // 「チェックイン」のテキスト
@@ -178,7 +207,7 @@ class ProfileViewController: UIViewController {
         checkinTextLabel.textAlignment = .Center
         checkinTextLabel.text = NSLocalizedString("Checkin", comment: "")
         checkinTextLabel.textColor = UIColor(red: 153.0/255.0, green: 153.0/255.0, blue: 153.0/255.0, alpha: 1.0)
-        self.view.addSubview(checkinTextLabel)
+        self.favAndCheckinBgView.addSubview(checkinTextLabel)
         checkinTextLabel.snp_makeConstraints { make in
             make.top.equalTo(self.numOfCheckinLabel.snp_bottom)
             make.centerX.equalTo(self.numOfCheckinLabel)
@@ -190,7 +219,7 @@ class ProfileViewController: UIViewController {
         let visitsButton = UIButton()
         visitsButton.addTarget(self, action: #selector(ProfileViewController.pushVisitsList), forControlEvents: .TouchUpInside)
         visitsButton.backgroundColor = .clearColor()
-        self.view.addSubview(visitsButton)
+        self.favAndCheckinBgView.addSubview(visitsButton)
         visitsButton.snp_makeConstraints { make in
             make.center.equalTo(numOfCheckinLabel)
             make.size.equalTo(numOfCheckinLabel)
@@ -202,7 +231,7 @@ class ProfileViewController: UIViewController {
         let recentHeaderView = RecentHeaderView()
         self.numOfCheckinLabel.addSubview(recentHeaderView)
         recentHeaderView.snp_makeConstraints { make in
-            make.top.equalTo(self.fbLoginButton.snp_bottom).offset(12)
+            make.top.equalTo(self.userPhotoImageView.snp_bottom).offset(51)
             make.left.equalTo(self.view)
             make.width.equalTo(self.view)
             make.height.equalTo(32)
@@ -237,6 +266,7 @@ class ProfileViewController: UIViewController {
     }
     
     private func updateBrowsesList() {
+        if(LoginModel.isLoggedIn()) {
         self.browsesModel.fetch(AppState.sharedInstance.currentLatitude ?? 0.0, longitude: AppState.sharedInstance.currentLongitude ?? 0.0, orderBy: .Recent, handler: {[weak self](result: PecomyResult<[Restaurant], PecomyApiClientError>) in
             guard let strongSelf = self else { return }
             switch result {
@@ -247,6 +277,9 @@ class ProfileViewController: UIViewController {
                 print("error: \(error.code), \(error.response)")
             }
             })
+        } else {
+            self.clearBrowsesList()
+        }
     }
     
     private func clearBrowsesList() {
@@ -255,6 +288,7 @@ class ProfileViewController: UIViewController {
     }
     
     private func updateFavoritesList() {
+        if(LoginModel.isLoggedIn()) {
         self.favoritesModel.fetch(AppState.sharedInstance.currentLatitude ?? 0.0, longitude: AppState.sharedInstance.currentLongitude ?? 0.0, orderBy: .Recent, handler: {[weak self](result: PecomyResult<PecomyUser, PecomyApiClientError>) in
             guard let strongSelf = self else { return }
             switch result {
@@ -265,6 +299,9 @@ class ProfileViewController: UIViewController {
                 print("error: \(error.code), \(error.response)")
             }
             })
+        } else {
+            self.clearFavoritesList()
+        }
     }
     
     private func clearFavoritesList() {
@@ -273,6 +310,7 @@ class ProfileViewController: UIViewController {
     }
     
     private func updateVisitsList() {
+        if(LoginModel.isLoggedIn()) {
         self.visitsModel.fetch(AppState.sharedInstance.currentLatitude ?? 0.0, longitude: AppState.sharedInstance.currentLongitude ?? 0.0, orderBy: .Recent, handler: {[weak self](result: PecomyResult<PecomyUser, PecomyApiClientError>) in
             guard let strongSelf = self else { return }
             switch result {
@@ -284,6 +322,9 @@ class ProfileViewController: UIViewController {
                 print("error: \(error.code), \(error.response)")
             }
             })
+        } else {
+            self.clearVisitsList()
+        }
     }
     
     private func clearVisitsList() {
@@ -292,12 +333,27 @@ class ProfileViewController: UIViewController {
     }
     
     private func updateUserPicture() {
+        if(LoginModel.isLoggedIn()) {
         guard let urlStr = KeychainManager.getPecomyUserPictureUrl(), picUrl = NSURL(string: urlStr) else { return }
         self.userPhotoImageView.sd_setImageWithURL(picUrl, completed: { [weak self] _ in
             guard let strongSelf = self else { return }
             strongSelf.userPhotoImageView.layer.cornerRadius = strongSelf.userPhotoImageView.frame.size.width * 0.5
-            strongSelf.userPhotoImageView.clipsToBounds = true
         })
+        } else {
+            self.userPhotoImageView.image = R.image.comment_human1()
+        }
+    }
+    
+    private func updateUserName() {
+        if (LoginModel.isLoggedIn()) {
+            self.fbLoginButton.hidden = true
+            self.userNameLabel.text = PecomyUser.sharedInstance.userName
+            self.userNameLabel.hidden = false
+
+        } else {
+            self.userNameLabel.hidden = true
+            self.fbLoginButton.hidden = false
+        }
     }
 
 }
@@ -363,6 +419,7 @@ extension ProfileViewController: FBSDKLoginButtonDelegate {
                     strongSelf.updateFavoritesList()
                     strongSelf.updateVisitsList()
                     strongSelf.updateUserPicture()
+                    strongSelf.updateUserName()
                 case .Failure(let error):
                     let fb = FBSDKLoginManager()
                     fb.logOut()
@@ -378,5 +435,7 @@ extension ProfileViewController: FBSDKLoginButtonDelegate {
         self.clearBrowsesList()
         self.clearVisitsList()
         self.clearFavoritesList()
+        self.updateUserPicture()
+        self.updateUserName()
     }
 }

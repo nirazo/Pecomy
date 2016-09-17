@@ -43,7 +43,7 @@ class ResultViewController: UIViewController {
     
     init(restaurants: [Restaurant]) {
         self.restaurants = restaurants
-        print("results: \(self.restaurants)")
+        //print("results: \(self.restaurants)")
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -58,7 +58,7 @@ class ResultViewController: UIViewController {
         self.navigationController?.makeNavigationBarDefault()
         
         let continueButton = UIBarButtonItem(title: NSLocalizedString("Continue", comment: ""), style: .Plain, target: self, action: #selector(ResultViewController.continueTapped))
-        self.navigationItem.rightBarButtonItem = continueButton
+        self.navigationItem.leftBarButtonItem = continueButton
         
         switch self.restaurants.count {
         case 0:
@@ -128,13 +128,19 @@ class ResultViewController: UIViewController {
         self.topResultCard?.setupSubViews()
         self.topResultCard?.delegate = self
         
-        self.commentView = CommentContentView(frame: CGRectZero, comment: self.restaurants[0].reviewSubjects[0], backgroundColor: Const.PECOMY_RANK_COLOR[0], textColor: UIColor.whiteColor())
+        var reviewSubject = ""
+        var commentViewHeight = 0
+        if (!self.restaurants[0].reviewSubjects.isEmpty) {
+            reviewSubject = self.restaurants[0].reviewSubjects[0]
+            commentViewHeight = 40
+        }
+        self.commentView = CommentContentView(frame: CGRectZero, comment: reviewSubject, backgroundColor: Const.PECOMY_RANK_COLOR[0], textColor: UIColor.whiteColor())
         self.contentView.addSubview(self.commentView!)
         self.commentView?.snp_makeConstraints{ (make) in
             make.top.equalTo(self.topResultCard!.snp_bottom).offset(10)
             make.left.equalTo(self.topResultCard!)
             make.width.equalTo(self.topResultCard!)
-            make.height.equalTo(40)
+            make.height.equalTo(commentViewHeight)
         }
         
         // その他のベースとなるビュー
@@ -158,7 +164,6 @@ class ResultViewController: UIViewController {
                 make.right.equalTo(self.otherResultsBaseView)
                 make.top.equalTo(self.otherResultsBaseView).offset(18)
             }
-            
             let otherRestaurants = [Restaurant](self.restaurants[1...self.restaurants.count-1])
             self.otherResultsCard = OtherResultsCard(frame: CGRectZero, restaurants: otherRestaurants, delegate: self)
             self.otherResultsCard!.delegate = self

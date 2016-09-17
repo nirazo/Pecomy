@@ -9,7 +9,7 @@
 import Foundation
 
 enum RestaurantListType {
-    case Favorites, Visits
+    case Favorites, Visits, None
 }
 
 class FavoritesAndVisitsViewController: UIViewController {
@@ -105,7 +105,6 @@ class FavoritesAndVisitsViewController: UIViewController {
             make.bottom.equalTo(self.view)
         }
         self.currentTableView(self.listType).reloadData()
-        print("top: \(self.currentTableView(self.listType).frame.origin.y)")
     }
     
     private func currentTableView(type: RestaurantListType) -> UITableView {
@@ -114,6 +113,8 @@ class FavoritesAndVisitsViewController: UIViewController {
             return self.favoritesTableView
         case .Visits:
             return self.visitsTableView
+        default:
+            fatalError()
         }
     }
     
