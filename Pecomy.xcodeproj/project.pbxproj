@@ -1067,7 +1067,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "Pecomy/Supporting Files/Pecomy-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 2.3;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug_fixed_location;
 		};
@@ -1160,7 +1160,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "Pecomy/Supporting Files/Pecomy-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 2.3;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release_fixed_location;
 		};
@@ -1296,7 +1296,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "Pecomy/Supporting Files/Pecomy-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 2.3;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1327,7 +1327,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "Pecomy/Supporting Files/Pecomy-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 2.3;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -1434,7 +1434,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "Pecomy/Supporting Files/Pecomy-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 2.3;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = STG;
 		};
@@ -1523,7 +1523,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "Pecomy/Supporting Files/Pecomy-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 2.3;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = STG_fixed_location;
 		};
