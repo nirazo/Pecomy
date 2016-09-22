@@ -69,7 +69,7 @@ class TutorialViewController: UIViewController {
     
     func changeRootViewController(viewController: UINavigationController) {
         
-        let snapShot: UIView = UIApplication.sharedApplication().keyWindow!.snapshotViewAfterScreenUpdates(true)
+        let snapShot: UIView = UIApplication.sharedApplication().keyWindow!.snapshotViewAfterScreenUpdates(true)!
         viewController.view.addSubview(snapShot)
         UIApplication.sharedApplication().keyWindow?.rootViewController = viewController
         
