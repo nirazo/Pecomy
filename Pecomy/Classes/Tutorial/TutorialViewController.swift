@@ -38,7 +38,7 @@ class TutorialViewController: UIViewController {
         for i in 0 ..< self.imgTitleArr.count {
             let img = UIImage(named:self.imgTitleArr[i])
             let iv = UIImageView(image:img)
-            iv.contentMode = .ScaleAspectFill
+            iv.contentMode = .ScaleAspectFit
             iv.frame = CGRectMake(CGFloat(i) * width, 0, width, height)
             scrollView.addSubview(iv)
         }
@@ -69,7 +69,7 @@ class TutorialViewController: UIViewController {
     
     func changeRootViewController(viewController: UINavigationController) {
         
-        let snapShot: UIView = UIApplication.sharedApplication().keyWindow!.snapshotViewAfterScreenUpdates(true)
+        let snapShot: UIView = UIApplication.sharedApplication().keyWindow!.snapshotViewAfterScreenUpdates(true)!
         viewController.view.addSubview(snapShot)
         UIApplication.sharedApplication().keyWindow?.rootViewController = viewController
         

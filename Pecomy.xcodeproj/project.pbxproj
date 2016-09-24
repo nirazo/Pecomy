@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15D01B0B246363B9EC4A0869 /* Pods_PecomyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA68ADEC914A7D698F95730B /* Pods_PecomyTests.framework */; };
 		164718B51C3D22AD00F50D33 /* CardRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164718B41C3D22AD00F50D33 /* CardRequest.swift */; };
 		164718B71C3D22D700F50D33 /* CardResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164718B61C3D22D700F50D33 /* CardResponse.swift */; };
 		164718B91C3D273C00F50D33 /* ResultResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164718B81C3D273C00F50D33 /* ResultResponse.swift */; };
 		164718BB1C3D274D00F50D33 /* ResultRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164718BA1C3D274D00F50D33 /* ResultRequest.swift */; };
 		16AAD0391C3E835600ADCF87 /* ResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AAD0381C3E835600ADCF87 /* ResultModel.swift */; };
 		16B6744E1C3BE59C009D039C /* PecomyApiClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B6744D1C3BE59C009D039C /* PecomyApiClientError.swift */; };
-		2CB568F7041EB25086535E91 /* Pods_Pecomy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49542B923B14A000A93FD141 /* Pods_Pecomy.framework */; };
+		769D88357BB42E484D3F0235 /* Pods_Pecomy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EC7D600B743D634D4FC1BC1 /* Pods_Pecomy.framework */; };
 		D200353F1D157A3700F81114 /* BrowsesGetRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D200353E1D157A3700F81114 /* BrowsesGetRequest.swift */; };
 		D20035411D157A4600F81114 /* BrowsesGetResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20035401D157A4600F81114 /* BrowsesGetResponse.swift */; };
 		D20035431D16388100F81114 /* FavoritesGetRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20035421D16388100F81114 /* FavoritesGetRequest.swift */; };
@@ -119,18 +120,24 @@
 		164718BA1C3D274D00F50D33 /* ResultRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultRequest.swift; sourceTree = "<group>"; };
 		16AAD0381C3E835600ADCF87 /* ResultModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultModel.swift; sourceTree = "<group>"; };
 		16B6744D1C3BE59C009D039C /* PecomyApiClientError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PecomyApiClientError.swift; sourceTree = "<group>"; };
-		375106292F5446FE65E648DD /* Pods-Pecomy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pecomy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pecomy/Pods-Pecomy.debug.xcconfig"; sourceTree = "<group>"; };
-		3B06ABC94A9E1B8E1D89BFDB /* Pods-Pecomy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pecomy.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pecomy/Pods-Pecomy.release.xcconfig"; sourceTree = "<group>"; };
-		43B1BFF2A757DF7E24669461 /* Pods-Pecomy.stg.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pecomy.stg.xcconfig"; path = "Pods/Target Support Files/Pods-Pecomy/Pods-Pecomy.stg.xcconfig"; sourceTree = "<group>"; };
-		49542B923B14A000A93FD141 /* Pods_Pecomy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pecomy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		86F70B85C5A086B7590989E7 /* Pods-Pecomy.stg_fixed_location.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pecomy.stg_fixed_location.xcconfig"; path = "Pods/Target Support Files/Pods-Pecomy/Pods-Pecomy.stg_fixed_location.xcconfig"; sourceTree = "<group>"; };
+		18045603334593887209AED3 /* Pods-PecomyTests.stg_fixed_location.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PecomyTests.stg_fixed_location.xcconfig"; path = "Pods/Target Support Files/Pods-PecomyTests/Pods-PecomyTests.stg_fixed_location.xcconfig"; sourceTree = "<group>"; };
+		26771F1E4D8ABA3D61136137 /* Pods-PecomyTests.debug_fixed_location.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PecomyTests.debug_fixed_location.xcconfig"; path = "Pods/Target Support Files/Pods-PecomyTests/Pods-PecomyTests.debug_fixed_location.xcconfig"; sourceTree = "<group>"; };
+		4BB908796996BA50A37E0113 /* Pods-Pecomy.stg_fixed_location.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pecomy.stg_fixed_location.xcconfig"; path = "Pods/Target Support Files/Pods-Pecomy/Pods-Pecomy.stg_fixed_location.xcconfig"; sourceTree = "<group>"; };
+		567DD2B37E3CE0AF5D14091C /* Pods-Pecomy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pecomy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pecomy/Pods-Pecomy.debug.xcconfig"; sourceTree = "<group>"; };
+		5CCC3043166E2FED1EBBD2C8 /* Pods-PecomyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PecomyTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PecomyTests/Pods-PecomyTests.debug.xcconfig"; sourceTree = "<group>"; };
+		6BCC241C257616DBBAB1583C /* Pods-Pecomy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pecomy.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pecomy/Pods-Pecomy.release.xcconfig"; sourceTree = "<group>"; };
+		73D3397E978999A81C80AEB2 /* Pods-Pecomy.release_fixed_location.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pecomy.release_fixed_location.xcconfig"; path = "Pods/Target Support Files/Pods-Pecomy/Pods-Pecomy.release_fixed_location.xcconfig"; sourceTree = "<group>"; };
+		78C52831487604F3DC7CF551 /* Pods-PecomyTests.stg.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PecomyTests.stg.xcconfig"; path = "Pods/Target Support Files/Pods-PecomyTests/Pods-PecomyTests.stg.xcconfig"; sourceTree = "<group>"; };
+		7EC7D600B743D634D4FC1BC1 /* Pods_Pecomy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pecomy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		92BC5B091076DD70931C07B2 /* Pods-Pecomy.stg.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pecomy.stg.xcconfig"; path = "Pods/Target Support Files/Pods-Pecomy/Pods-Pecomy.stg.xcconfig"; sourceTree = "<group>"; };
+		946574EBBB0928CACC2B3317 /* Pods-PecomyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PecomyTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PecomyTests/Pods-PecomyTests.release.xcconfig"; sourceTree = "<group>"; };
+		9F01671B20737EB87B55E9EF /* Pods-PecomyTests.release_fixed_location.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PecomyTests.release_fixed_location.xcconfig"; path = "Pods/Target Support Files/Pods-PecomyTests/Pods-PecomyTests.release_fixed_location.xcconfig"; sourceTree = "<group>"; };
+		AA68ADEC914A7D698F95730B /* Pods_PecomyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PecomyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D200353E1D157A3700F81114 /* BrowsesGetRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowsesGetRequest.swift; sourceTree = "<group>"; };
 		D20035401D157A4600F81114 /* BrowsesGetResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowsesGetResponse.swift; sourceTree = "<group>"; };
 		D20035421D16388100F81114 /* FavoritesGetRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesGetRequest.swift; sourceTree = "<group>"; };
 		D20035441D1639AC00F81114 /* FavoritesGetResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesGetResponse.swift; sourceTree = "<group>"; };
 		D203D3131B3E739600FC9DB8 /* Const.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
-		D2092A261B6356B5008046D9 /* Pods-Pecomy.debug_fixed_location.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-Pecomy.debug_fixed_location.xcconfig"; path = "Pods/Target Support Files/Pods-Pecomy/Pods-Pecomy.debug_fixed_location.xcconfig"; sourceTree = "<group>"; };
-		D2092A281B6356FE008046D9 /* Pods-Pecomy.release_fixed_location.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-Pecomy.release_fixed_location.xcconfig"; path = "Pods/Target Support Files/Pods-Pecomy/Pods-Pecomy.release_fixed_location.xcconfig"; sourceTree = "<group>"; };
 		D2092A2D1B637460008046D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D2092A2F1B637484008046D9 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D2092A331B64D721008046D9 /* RestaurantModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantModel.swift; sourceTree = "<group>"; };
@@ -218,6 +225,7 @@
 		D2E36EC61C2D615D00DEE726 /* OtherResultCardContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherResultCardContentView.swift; sourceTree = "<group>"; };
 		D2EFEB581C51282A0092DFC9 /* CardOverlayTextLabelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardOverlayTextLabelView.swift; sourceTree = "<group>"; };
 		D2EFEB5B1C567F2F0092DFC9 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		E475E6CB9898249594D4D5E7 /* Pods-Pecomy.debug_fixed_location.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pecomy.debug_fixed_location.xcconfig"; path = "Pods/Target Support Files/Pods-Pecomy/Pods-Pecomy.debug_fixed_location.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,7 +233,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2CB568F7041EB25086535E91 /* Pods_Pecomy.framework in Frameworks */,
+				769D88357BB42E484D3F0235 /* Pods_Pecomy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,6 +241,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15D01B0B246363B9EC4A0869 /* Pods_PecomyTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,15 +266,21 @@
 			path = Result;
 			sourceTree = "<group>";
 		};
-		97BD974091507500A5B02BC4 /* Pods */ = {
+		2793047DDB53976CAAC26994 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				D2092A261B6356B5008046D9 /* Pods-Pecomy.debug_fixed_location.xcconfig */,
-				375106292F5446FE65E648DD /* Pods-Pecomy.debug.xcconfig */,
-				3B06ABC94A9E1B8E1D89BFDB /* Pods-Pecomy.release.xcconfig */,
-				D2092A281B6356FE008046D9 /* Pods-Pecomy.release_fixed_location.xcconfig */,
-				43B1BFF2A757DF7E24669461 /* Pods-Pecomy.stg.xcconfig */,
-				86F70B85C5A086B7590989E7 /* Pods-Pecomy.stg_fixed_location.xcconfig */,
+				567DD2B37E3CE0AF5D14091C /* Pods-Pecomy.debug.xcconfig */,
+				E475E6CB9898249594D4D5E7 /* Pods-Pecomy.debug_fixed_location.xcconfig */,
+				6BCC241C257616DBBAB1583C /* Pods-Pecomy.release.xcconfig */,
+				92BC5B091076DD70931C07B2 /* Pods-Pecomy.stg.xcconfig */,
+				73D3397E978999A81C80AEB2 /* Pods-Pecomy.release_fixed_location.xcconfig */,
+				4BB908796996BA50A37E0113 /* Pods-Pecomy.stg_fixed_location.xcconfig */,
+				5CCC3043166E2FED1EBBD2C8 /* Pods-PecomyTests.debug.xcconfig */,
+				26771F1E4D8ABA3D61136137 /* Pods-PecomyTests.debug_fixed_location.xcconfig */,
+				946574EBBB0928CACC2B3317 /* Pods-PecomyTests.release.xcconfig */,
+				78C52831487604F3DC7CF551 /* Pods-PecomyTests.stg.xcconfig */,
+				9F01671B20737EB87B55E9EF /* Pods-PecomyTests.release_fixed_location.xcconfig */,
+				18045603334593887209AED3 /* Pods-PecomyTests.stg_fixed_location.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -445,10 +460,10 @@
 			isa = PBXGroup;
 			children = (
 				D27BB9CE1B36F4A900F8D902 /* Pecomy */,
-				F8EF51686E29749944A50697 /* Frameworks */,
 				D27BB9E41B36F4A900F8D902 /* PecomyTests */,
-				97BD974091507500A5B02BC4 /* Pods */,
 				D27BB9CD1B36F4A900F8D902 /* Products */,
+				2793047DDB53976CAAC26994 /* Pods */,
+				E206B12EB06A8D33FD78456A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -597,10 +612,11 @@
 			path = Map;
 			sourceTree = "<group>";
 		};
-		F8EF51686E29749944A50697 /* Frameworks */ = {
+		E206B12EB06A8D33FD78456A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				49542B923B14A000A93FD141 /* Pods_Pecomy.framework */,
+				7EC7D600B743D634D4FC1BC1 /* Pods_Pecomy.framework */,
+				AA68ADEC914A7D698F95730B /* Pods_PecomyTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -612,14 +628,15 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D27BB9EB1B36F4A900F8D902 /* Build configuration list for PBXNativeTarget "Pecomy" */;
 			buildPhases = (
-				0C308FCB760E8639769831EE /* Check Pods Manifest.lock */,
+				D95DB6AD063AE24A85477928 /* [CP] Check Pods Manifest.lock */,
 				D22055CE1CA44D4F00447CC6 /* ShellScript */,
 				D27BB9C81B36F4A900F8D902 /* Sources */,
 				D27BB9C91B36F4A900F8D902 /* Frameworks */,
 				D27BB9CA1B36F4A900F8D902 /* Resources */,
-				96E3CF8C5FC94B7B5CCDD799 /* Embed Pods Frameworks */,
-				FAFBED2465E6647CCBAEE62A /* Copy Pods Resources */,
 				D2BABE611B5A5D75005E8356 /* ShellScript */,
+				15525B42BF2841880CFA7969 /* [CP] Embed Pods Frameworks */,
+				300B87D524B4556F9D6128DD /* [CP] Copy Pods Resources */,
+				595AC5E2E67211DEDAE17D5A /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -634,9 +651,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D27BB9EE1B36F4A900F8D902 /* Build configuration list for PBXNativeTarget "PecomyTests" */;
 			buildPhases = (
+				D020F47637BAAD5A6DBC496A /* [CP] Check Pods Manifest.lock */,
 				D27BB9DD1B36F4A900F8D902 /* Sources */,
 				D27BB9DE1B36F4A900F8D902 /* Frameworks */,
 				D27BB9DF1B36F4A900F8D902 /* Resources */,
+				DFDE9FB04AD435616863FA75 /* [CP] Embed Pods Frameworks */,
+				760BA23314E59088D8C713C0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -656,15 +676,17 @@
 			attributes = {
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = Pecomy;
 				TargetAttributes = {
 					D27BB9CB1B36F4A900F8D902 = {
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = MRB6U66KNP;
+						LastSwiftMigration = 0800;
 					};
 					D27BB9E01B36F4A900F8D902 = {
 						CreatedOnToolsVersion = 6.3.1;
+						LastSwiftMigration = 0800;
 						TestTargetID = D27BB9CB1B36F4A900F8D902;
 					};
 				};
@@ -714,22 +736,37 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0C308FCB760E8639769831EE /* Check Pods Manifest.lock */ = {
+		15525B42BF2841880CFA7969 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Pecomy/Pods-Pecomy-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		96E3CF8C5FC94B7B5CCDD799 /* Embed Pods Frameworks */ = {
+		300B87D524B4556F9D6128DD /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Pecomy/Pods-Pecomy-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		595AC5E2E67211DEDAE17D5A /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -742,6 +779,36 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Pecomy/Pods-Pecomy-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		760BA23314E59088D8C713C0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PecomyTests/Pods-PecomyTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D020F47637BAAD5A6DBC496A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		D22055CE1CA44D4F00447CC6 /* ShellScript */ = {
@@ -770,19 +837,34 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Fabric/run\" 0f089c54e22e9e890bd0329f29839c99a9c5040c ef218175b8ad70668aabb5fdbbfae2c25d0f1a40a0f70aa08494fbb96d0e8e30\n";
 		};
-		FAFBED2465E6647CCBAEE62A /* Copy Pods Resources */ = {
+		D95DB6AD063AE24A85477928 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Pecomy/Pods-Pecomy-resources.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		DFDE9FB04AD435616863FA75 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PecomyTests/Pods-PecomyTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -915,6 +997,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -924,8 +1007,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -959,8 +1044,9 @@
 		};
 		D2092A201B6351F7008046D9 /* Debug_fixed_location */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D2092A261B6356B5008046D9 /* Pods-Pecomy.debug_fixed_location.xcconfig */;
+			baseConfigurationReference = E475E6CB9898249594D4D5E7 /* Pods-Pecomy.debug_fixed_location.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
@@ -980,13 +1066,14 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Pecomy/Supporting Files/Pecomy-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				SWIFT_VERSION = 2.3;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug_fixed_location;
 		};
 		D2092A211B6351F7008046D9 /* Debug_fixed_location */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D2092A261B6356B5008046D9 /* Pods-Pecomy.debug_fixed_location.xcconfig */;
+			baseConfigurationReference = 26771F1E4D8ABA3D61136137 /* Pods-PecomyTests.debug_fixed_location.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -997,6 +1084,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "my.peco.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Pecomy;
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pecomy.app/Pecomy";
 			};
 			name = Debug_fixed_location;
@@ -1005,6 +1093,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1014,8 +1103,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1037,15 +1128,16 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_DISABLE_SAFETY_CHECKS = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release_fixed_location;
 		};
 		D2092A231B635211008046D9 /* Release_fixed_location */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D2092A281B6356FE008046D9 /* Pods-Pecomy.release_fixed_location.xcconfig */;
+			baseConfigurationReference = 73D3397E978999A81C80AEB2 /* Pods-Pecomy.release_fixed_location.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
@@ -1066,20 +1158,22 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_DISABLE_SAFETY_CHECKS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Pecomy/Supporting Files/Pecomy-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 2.3;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release_fixed_location;
 		};
 		D2092A241B635211008046D9 /* Release_fixed_location */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D2092A281B6356FE008046D9 /* Pods-Pecomy.release_fixed_location.xcconfig */;
+			baseConfigurationReference = 9F01671B20737EB87B55E9EF /* Pods-PecomyTests.release_fixed_location.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = "PecomyTests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "my.peco.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Pecomy;
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pecomy.app/Pecomy";
 			};
 			name = Release_fixed_location;
@@ -1088,6 +1182,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1097,8 +1192,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1134,6 +1231,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1143,8 +1241,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1166,15 +1266,16 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_DISABLE_SAFETY_CHECKS = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		D27BB9EC1B36F4A900F8D902 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 375106292F5446FE65E648DD /* Pods-Pecomy.debug.xcconfig */;
+			baseConfigurationReference = 567DD2B37E3CE0AF5D14091C /* Pods-Pecomy.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
@@ -1194,14 +1295,16 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Pecomy/Supporting Files/Pecomy-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				SWIFT_VERSION = 2.3;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		D27BB9ED1B36F4A900F8D902 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B06ABC94A9E1B8E1D89BFDB /* Pods-Pecomy.release.xcconfig */;
+			baseConfigurationReference = 6BCC241C257616DBBAB1583C /* Pods-Pecomy.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
@@ -1222,14 +1325,15 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_DISABLE_SAFETY_CHECKS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Pecomy/Supporting Files/Pecomy-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 2.3;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 		D27BB9EF1B36F4A900F8D902 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 375106292F5446FE65E648DD /* Pods-Pecomy.debug.xcconfig */;
+			baseConfigurationReference = 5CCC3043166E2FED1EBBD2C8 /* Pods-PecomyTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1240,19 +1344,21 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "my.peco.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Pecomy;
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pecomy.app/Pecomy";
 			};
 			name = Debug;
 		};
 		D27BB9F01B36F4A900F8D902 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B06ABC94A9E1B8E1D89BFDB /* Pods-Pecomy.release.xcconfig */;
+			baseConfigurationReference = 946574EBBB0928CACC2B3317 /* Pods-PecomyTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = "PecomyTests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "my.peco.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Pecomy;
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pecomy.app/Pecomy";
 			};
 			name = Release;
@@ -1261,6 +1367,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1270,8 +1377,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1300,8 +1409,9 @@
 		};
 		D2E922FD1BD4A05C00BD15F5 /* STG */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 43B1BFF2A757DF7E24669461 /* Pods-Pecomy.stg.xcconfig */;
+			baseConfigurationReference = 92BC5B091076DD70931C07B2 /* Pods-Pecomy.stg.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
@@ -1323,18 +1433,21 @@
 				SWIFT_DISABLE_SAFETY_CHECKS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Pecomy/Supporting Files/Pecomy-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				SWIFT_VERSION = 2.3;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = STG;
 		};
 		D2E922FE1BD4A05C00BD15F5 /* STG */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 78C52831487604F3DC7CF551 /* Pods-PecomyTests.stg.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = "PecomyTests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "my.peco.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Pecomy;
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pecomy.app/Pecomy";
 			};
 			name = STG;
@@ -1343,6 +1456,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1352,8 +1466,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1382,8 +1498,9 @@
 		};
 		D2E923031BD4A12F00BD15F5 /* STG_fixed_location */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 86F70B85C5A086B7590989E7 /* Pods-Pecomy.stg_fixed_location.xcconfig */;
+			baseConfigurationReference = 4BB908796996BA50A37E0113 /* Pods-Pecomy.stg_fixed_location.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
@@ -1405,18 +1522,21 @@
 				SWIFT_DISABLE_SAFETY_CHECKS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Pecomy/Supporting Files/Pecomy-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				SWIFT_VERSION = 2.3;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = STG_fixed_location;
 		};
 		D2E923041BD4A12F00BD15F5 /* STG_fixed_location */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 18045603334593887209AED3 /* Pods-PecomyTests.stg_fixed_location.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = "PecomyTests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "my.peco.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Pecomy;
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pecomy.app/Pecomy";
 			};
 			name = STG_fixed_location;
