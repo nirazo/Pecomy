@@ -315,7 +315,7 @@ class ProfileViewController: UIViewController {
             guard let strongSelf = self else { return }
             switch result {
             case .Success(let user):
-                print("visits: \(user.visits)")
+                //print("visits: \(user.visits)")
                 strongSelf.visitsRestaurants = user.visits
                 strongSelf.numOfCheckinLabel.text = String(user.visits.count)
             case .Failure(let error):
@@ -380,31 +380,17 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         let restaurant = cell.restaurant
         let detailVC = DetailViewController(restaurant: restaurant)
         detailVC.navigationItem.title = restaurant.shopName
-        print("id: \(restaurant.shopID)")
         let backButtonItem = UIBarButtonItem(title: NSLocalizedString("Back", comment: ""), style: .Plain, target: nil, action: nil)
         self.navigationItem.backBarButtonItem = backButtonItem
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
-    
-    
-    /*
-     // Override to support editing the table view.
-     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-     if editingStyle == .Delete {
-     // Delete the row from the data source
-     tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-     } else if editingStyle == .Insert {
-     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-     }
-     }
-     */
 }
 
 extension ProfileViewController: FBSDKLoginButtonDelegate {
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
         if error != nil
         {
-            print("error!")
+            print("error!: \(error)")
         }
         else if result.isCancelled {
             print("canceled!")

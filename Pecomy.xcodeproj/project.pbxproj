@@ -87,6 +87,8 @@
 		D2A99A571C17367E00C16F04 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2A99A561C17367E00C16F04 /* GoogleService-Info.plist */; };
 		D2BDA9231D042FAA0096B8FC /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BDA9221D042FAA0096B8FC /* Size.swift */; };
 		D2BE5F3C1C4B78AB00B47387 /* RichTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BE5F3B1C4B78AB00B47387 /* RichTag.swift */; };
+		D2C71EE61DA0B64300E5422E /* LoginIntroduceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C71EE51DA0B64300E5422E /* LoginIntroduceViewController.swift */; };
+		D2C71EE81DA102CF00E5422E /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C71EE71DA102CF00E5422E /* UIImage.swift */; };
 		D2C8E02B1D16411100E0EC6D /* BrowsesPutRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C8E02A1D16411100E0EC6D /* BrowsesPutRequest.swift */; };
 		D2C8E02D1D16412400E0EC6D /* BrowsesPutResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C8E02C1D16412400E0EC6D /* BrowsesPutResponse.swift */; };
 		D2C8E02F1D16436900E0EC6D /* BrowsesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C8E02E1D16436900E0EC6D /* BrowsesModel.swift */; };
@@ -210,6 +212,9 @@
 		D2A99A561C17367E00C16F04 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D2BDA9221D042FAA0096B8FC /* Size.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Size.swift; sourceTree = "<group>"; };
 		D2BE5F3B1C4B78AB00B47387 /* RichTag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RichTag.swift; sourceTree = "<group>"; };
+		D2C71ED31D979CD900E5422E /* Pecomy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Pecomy.entitlements; sourceTree = "<group>"; };
+		D2C71EE51DA0B64300E5422E /* LoginIntroduceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginIntroduceViewController.swift; path = Login/LoginIntroduceViewController.swift; sourceTree = "<group>"; };
+		D2C71EE71DA102CF00E5422E /* UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		D2C785F71B47C2A900517D55 /* Pecomy-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pecomy-Bridging-Header.h"; sourceTree = "<group>"; };
 		D2C8E02A1D16411100E0EC6D /* BrowsesPutRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowsesPutRequest.swift; sourceTree = "<group>"; };
 		D2C8E02C1D16412400E0EC6D /* BrowsesPutResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowsesPutResponse.swift; sourceTree = "<group>"; };
@@ -479,6 +484,7 @@
 		D27BB9CE1B36F4A900F8D902 /* Pecomy */ = {
 			isa = PBXGroup;
 			children = (
+				D2C71ED31D979CD900E5422E /* Pecomy.entitlements */,
 				D2C9B2491CCB564E003A33B9 /* Classes */,
 				D2C9B24A1CCB5669003A33B9 /* Resources */,
 				D27BB9CF1B36F4A900F8D902 /* Supporting Files */,
@@ -524,9 +530,18 @@
 			name = Settings;
 			sourceTree = "<group>";
 		};
+		D2C71EE41DA0B5F200E5422E /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				D2C71EE51DA0B64300E5422E /* LoginIntroduceViewController.swift */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
 		D2C9B2491CCB564E003A33B9 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				D2C71EE41DA0B5F200E5422E /* Login */,
 				D253A9E61C322B5F00D65D20 /* APIClient */,
 				D24B293F1B79CC0400419B9B /* Card */,
 				D2731FE51C849D0500E8E5E9 /* Common */,
@@ -560,6 +575,7 @@
 			children = (
 				D253A9E11C321BCB00D65D20 /* Int.swift */,
 				D216E0711D28B200000FAB0F /* UINavigationController.swift */,
+				D2C71EE71DA102CF00E5422E /* UIImage.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -683,6 +699,11 @@
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = MRB6U66KNP;
 						LastSwiftMigration = 0800;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 					D27BB9E01B36F4A900F8D902 = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -895,6 +916,7 @@
 				D2C8E0351D1697A900E0EC6D /* VisitsGetResponse.swift in Sources */,
 				D2DEEF1E1BD72F7400FDBB8F /* Genre.swift in Sources */,
 				D216E07A1D312855000FAB0F /* FavoritesPutRequest.swift in Sources */,
+				D2C71EE61DA0B64300E5422E /* LoginIntroduceViewController.swift in Sources */,
 				D253A9E81C322B7D00D65D20 /* PecomyApiClient.swift in Sources */,
 				D2EFEB591C51282A0092DFC9 /* CardOverlayTextLabelView.swift in Sources */,
 				D2A2CB531D574C4F00DD717B /* SettingsViewController.swift in Sources */,
@@ -906,6 +928,7 @@
 				164718B71C3D22D700F50D33 /* CardResponse.swift in Sources */,
 				D2092A341B64D721008046D9 /* RestaurantModel.swift in Sources */,
 				D21F27A11CD6F97B0028F956 /* LoginModel.swift in Sources */,
+				D2C71EE81DA102CF00E5422E /* UIImage.swift in Sources */,
 				D292AA171C5FAB8700D66A87 /* OnetimeFilterCollectionViewConfig.swift in Sources */,
 				D2C8E02D1D16412400E0EC6D /* BrowsesPutResponse.swift in Sources */,
 				D28901361C439FC9005BDF84 /* TelButton.swift in Sources */,
@@ -1050,6 +1073,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Pecomy/Pecomy.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
@@ -1141,6 +1165,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Pecomy/Pecomy.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
@@ -1279,6 +1304,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Pecomy/Pecomy.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
@@ -1308,6 +1334,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Pecomy/Pecomy.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
@@ -1415,6 +1442,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Pecomy/Pecomy.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
@@ -1504,6 +1532,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Pecomy/Pecomy.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;

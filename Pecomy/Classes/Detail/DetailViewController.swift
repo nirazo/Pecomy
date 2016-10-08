@@ -94,39 +94,29 @@ class DetailViewController: UIViewController {
         self.detailView?.checkinBottomBar.favorite = self.restaurant.favorite
         
         // チェックインタップ時のアクション登録
-        self.detailView?.checkinBottomBar.checkinTapped =  { () in
-            print("checkin tapped!")
-            self.visitsModel.register(shopId: self.restaurant.shopID, reviewScore: 1, handler: {[weak self](result: PecomyResult<PecomyApiResponse, PecomyApiClientError>) in
-                guard let strongSelf = self else { return }
-                switch result {
-                case .Success(_):
-                    print("checkin registered!!: \(strongSelf.restaurant.shopID)")
-                    strongSelf.displayRegisterPopup(RegisterType.Checkin)
-                    strongSelf.detailView?.checkinBottomBar.checkedin = true
-                case .Failure(let error):
-                    print("checkin register error: \(strongSelf.restaurant.shopID), \(error.code), \(error.response)")
-                    strongSelf.showRegisterErrorAlert()
+        self.detailView?.checkinBottomBar.checkinTapped =  {  [weak self]() in
+            guard let strongSelf = self else { return }
+            if (!LoginModel.isLoggedIn()) {
+                let vc = LoginIntroduceViewController { () in
+                    strongSelf.registerCheckin()
                 }
-                })
+                strongSelf.presentViewController(vc, animated: true, completion: nil)
+            } else {
+                strongSelf.registerCheckin()
+            }
         }
         
         // お気に入りタップ時のアクション登録
         self.detailView?.checkinBottomBar.favoriteTapped =  { [weak self]() in
             guard let strongSelf = self else { return }
-            strongSelf.startLoading()
-            print("favorite tapped!")
-            strongSelf.favoriteModel.register(shopId: strongSelf.restaurant.shopID, handler: {(result: PecomyResult<PecomyApiResponse, PecomyApiClientError>) in
-                strongSelf.stopLoading()
-                switch result {
-                case .Success(_):
-                    print("favorite registered!!: \(strongSelf.restaurant.shopID)")
-                    strongSelf.displayRegisterPopup(RegisterType.Favorite)
-                    strongSelf.detailView?.checkinBottomBar.favorite = true
-                case .Failure(let error):
-                    print("favorite register error: \(error.code), \(error.response)")
-                    strongSelf.showRegisterErrorAlert()
+            if (!LoginModel.isLoggedIn()) {
+                let vc = LoginIntroduceViewController { () in
+                    strongSelf.registerBookmark()
                 }
-                })
+                strongSelf.presentViewController(vc, animated: true, completion: nil)
+            } else {
+                strongSelf.registerBookmark()
+            }
         }
         
         self.detailView?.richTagsView.reloadData()
@@ -213,6 +203,42 @@ class DetailViewController: UIViewController {
     
     func bgCoverViewTapped() {
         self.bgCoverView.removeFromSuperview()
+    }
+    
+    func registerCheckin() {
+        self.startLoading()
+        print("checkin tapped!")
+        self.visitsModel.register(shopId: self.restaurant.shopID, reviewScore: 1, handler: {[weak self](result: PecomyResult<PecomyApiResponse, PecomyApiClientError>) in
+            guard let strongSelf = self else { return }
+            strongSelf.stopLoading()
+            switch result {
+            case .Success(_):
+                print("checkin registered!!: \(strongSelf.restaurant.shopID)")
+                strongSelf.displayRegisterPopup(RegisterType.Checkin)
+                strongSelf.detailView?.checkinBottomBar.checkedin = true
+            case .Failure(let error):
+                print("checkin register error: \(strongSelf.restaurant.shopID), \(error.code), \(error.response)")
+                strongSelf.showRegisterErrorAlert()
+            }
+            })
+    }
+    
+    func registerBookmark() {
+        self.startLoading()
+        print("favorite tapped!")
+        self.favoriteModel.register(shopId: self.restaurant.shopID, handler: {[weak self](result: PecomyResult<PecomyApiResponse, PecomyApiClientError>) in
+            guard let strongSelf = self else { return }
+            strongSelf.stopLoading()
+            switch result {
+            case .Success(_):
+                print("favorite registered!!: \(strongSelf.restaurant.shopID)")
+                strongSelf.displayRegisterPopup(RegisterType.Favorite)
+                strongSelf.detailView?.checkinBottomBar.favorite = true
+            case .Failure(let error):
+                print("favorite register error: \(error.code), \(error.response)")
+                strongSelf.showRegisterErrorAlert()
+            }
+        })
     }
 
 }

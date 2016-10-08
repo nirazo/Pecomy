@@ -26,8 +26,8 @@ class LoginModel {
                 KeychainManager.setPecomyUserToken(value.pecomyUser.accessToken)
                 KeychainManager.setPecomyUserName(value.pecomyUser.userName)
                 KeychainManager.setPecomyUserPictureUrl(value.pecomyUser.pictureUrl)
-                print("pecomyToken: \(value.pecomyUser.accessToken)")
-                print("deviceID: \(Utils.acquireDeviceID())")
+                //print("pecomyToken: \(value.pecomyUser.accessToken)")
+                //print("deviceID: \(Utils.acquireDeviceID())")
                 
                 handler(PecomyResult(value: value.pecomyUser))
             case .Failure(let error):
