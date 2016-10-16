@@ -89,3 +89,10 @@
 "SettingsTitle" = "設定";
 "SettingsSocialSectionTitle" = "ソーシャル連携";
 "SettingsSocialSectionFooter" = "Facebookでログインすると、「お気に入り」や「チェックイン」のデータを保存できます。";
+// Login
+"LoginIntroduceSentence" = "ログインすることであなたにオススメのレストランをより高精度に提案できます。また、チェックインとお気に入りの機能も使用できるようになります。";
+"LoginSubTitle" = "Facebookログインして\nペコミーをもっとあなた好みに";
+"LoginDescribeSentence" = "ログインすることで以下の機能を利用することができます。";
+"LoginFeature1" = "あなたの好みを学習";
+"LoginFeature2" = "お気に入り機能";
+"LoginFeature3" = "チェックイン";

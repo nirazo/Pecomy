@@ -90,3 +90,10 @@
 "SettingsTitle" = "Settings";
 "SettingsSocialSectionTitle" = "SNS";
 "SettingsSocialSectionFooter" = "You can bookmark or checkin with your Facebook account.";
+// Login
+"LoginIntroduceSentence" = "After you log in, We can suggest good restaurant to you with higher accuracy, And you can use check-in and bookmark function.";
+"LoginSubTitle" = "Make your Pecomy experience wonderful with Facebook login";
+"LoginDescribeSentence" = "You can use functions below with logging in";
+"LoginFeature1" = "Learn your favorites";
+"LoginFeature2" = "Favorites function";
+"LoginFeature3" = "Checkin function";

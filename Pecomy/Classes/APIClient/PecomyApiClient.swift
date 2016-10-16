@@ -61,14 +61,17 @@ class PecomyApiClient {
                     }
                 }
                 let response: PecomyResult<U, PecomyApiClientError> = PecomyApiClient.mappingResponse(httpRequest, response: httpResponse, data: data, error: error)
-//                let str = NSString(data: data!, encoding:NSUTF8StringEncoding)
-//                print("requestURL: \(httpResponse?.URL?.absoluteString)")
-//                print("requestURL: \(request.params)")
-//                print("rawData: \(str)")
+/*                let str = NSString(data: data!, encoding:NSUTF8StringEncoding)
+                print("requestURL: \(httpResponse?.URL?.absoluteString)")
+                print("requestURL: \(request.params)")
+                print("rawData: \(str)")*/
                 switch response {
                 case .Success(let result):
                     handler(PecomyResult<U, PecomyApiClientError>.Success(result))
                 case .Failure(let error):
+                    if (error.type == PecomyApiClientErrorType.Unauthorized) {
+                        KeychainManager.removePecomyUserToken()
+                    }
                     handler(PecomyResult<U, PecomyApiClientError>(error: error))
                 }
         }

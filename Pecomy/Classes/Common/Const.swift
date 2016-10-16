@@ -66,6 +66,8 @@ struct Const {
     static let PECOMY_BASIC_BACKGROUND_COLOR = UIColor(red: 235.0/255.0, green: 231.0/255.0, blue: 225.0/255.0, alpha: 1.0)
     static let PECOMY_RIGHT_BACKGROUND_COLOR = UIColor(red: 248.0/255.0, green: 248.0/255.0, blue: 248.0/255.0, alpha: 1.0)
     
+    static let PECOMY_DARK_FONT_COLOR = UIColor(red: 51.0/255.0, green: 51.0/255.0, blue: 51.0/255.0, alpha: 1.0)
+    
     // フォント
     static let PECOMY_FONT_NORMAL = ".HiraKakuInterface-W3"
     static let PECOMY_FONT_BOLD = ".HiraKakuInterface-W6"

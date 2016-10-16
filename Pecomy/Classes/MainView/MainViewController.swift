@@ -184,6 +184,7 @@ class MainViewController: UIViewController {
         
         // 初回起動のときはtutorial出す
         if (!NSUserDefaults.standardUserDefaults().boolForKey(Const.UD_KEY_HAS_LAUNCHED)) {
+            KeychainManager.removePecomyUserToken()
             self.tutorialVC = TutorialViewController()
             self.tutorialVC?.delegate = self
             self.presentViewController(tutorialVC!, animated: true, completion: nil)
