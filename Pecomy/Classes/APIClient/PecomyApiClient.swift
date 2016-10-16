@@ -69,6 +69,9 @@ class PecomyApiClient {
                 case .Success(let result):
                     handler(PecomyResult<U, PecomyApiClientError>.Success(result))
                 case .Failure(let error):
+                    if (error.type == PecomyApiClientErrorType.Unauthorized) {
+                        KeychainManager.removePecomyUserToken()
+                    }
                     handler(PecomyResult<U, PecomyApiClientError>(error: error))
                 }
         }
