@@ -3,7 +3,7 @@
 //  Pecomy
 //
 //  Created by Kenzo on 2016/01/11.
-//  Copyright © 2016年 Pecomy. All rights reserved.
+//  Copyright © 2016 Pecomy. All rights reserved.
 //
 
 import UIKit
@@ -51,6 +51,9 @@ class RestaurantDetailView: UIView {
     @IBOutlet weak var richTagsView: UICollectionView!
     @IBOutlet weak var richTagViewHeightConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var checkinBottomBar: CheckinBottomBar!
+    
+    
     var mapTapView = UIView(frame: CGRectZero)
     var mapTappedAction : ((Restaurant) -> ())?
 
@@ -93,10 +96,10 @@ class RestaurantDetailView: UIView {
         
         self.dayPriceIcon.image = R.image.time_day()
         // 値段ラベル
-        if (self.restaurant.dayPriceMin.isEmpty && self.restaurant.dayPriceMax.isEmpty) {
+        if (self.restaurant.dayPriceRangeWithoutLabel.isEmpty) {
             self.dayPriceLabel.text = "-"
         } else {
-            self.dayPriceLabel.text = "\(Utils.formatPriceString(self.restaurant.dayPriceMin))〜\(Utils.formatPriceString(self.restaurant.dayPriceMax))"
+            self.dayPriceLabel.text = "\(self.restaurant.dayPriceRangeWithoutLabel)"
         }
         self.dayPriceLabel.numberOfLines = 1
         self.dayPriceLabel.sizeToFit()
@@ -104,10 +107,10 @@ class RestaurantDetailView: UIView {
         self.dayPriceLabel.font = UIFont(name: Const.PECOMY_FONT_NORMAL, size: 12)
         
         self.nightPriceIcon.image = R.image.time_night()
-        if (self.restaurant.nightPriceMin.isEmpty && self.restaurant.nightPriceMax.isEmpty) {
+        if (self.restaurant.nightPriceRangeWithoutLabel.isEmpty) {
             self.nightPriceLabel.text = "-"
         } else {
-            self.nightPriceLabel.text = "\(Utils.formatPriceString(self.restaurant.nightPriceMin))〜\(Utils.formatPriceString(self.restaurant.nightPriceMax))"
+            self.nightPriceLabel.text = "\(self.restaurant.nightPriceRangeWithoutLabel)"
         }
         self.nightPriceLabel.numberOfLines = 1
         self.nightPriceLabel.sizeToFit()
@@ -122,8 +125,8 @@ class RestaurantDetailView: UIView {
         self.distanceLabel.textColor = UIColor(red: 108/255.0, green: 108/255.0, blue: 108/255.0, alpha: 1.0)
         
         // 地図
-        let lat = Double(self.restaurant.latitude) ?? 0.0
-        let lon = Double(self.restaurant.longitude) ?? 0.0
+        let lat = self.restaurant.latitude
+        let lon = self.restaurant.longitude
         let camera = GMSCameraPosition.cameraWithLatitude(lat,longitude: lon, zoom: 15)
         self.mapView.camera = camera
         self.mapView.myLocationEnabled = true

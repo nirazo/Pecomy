@@ -3,13 +3,14 @@
 //  Pecomy
 //
 //  Created by Kenzo on 2015/06/21.
-//  Copyright (c) 2015年 Pecomy. All rights reserved.
+//  Copyright (c) 2015 Pecomy. All rights reserved.
 //
 
 import UIKit
 import Fabric
 import Crashlytics
 import GoogleMaps
+import FBSDKCoreKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -36,10 +37,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             gai.logger.logLevel = GAILogLevel.Verbose  // remove before app release
         #endif
         
-        let viewController = MainBaseViewController()
-        self.window?.rootViewController = viewController
+        let mainBaseVC = MainBaseViewController()
+        let navVC = self.createTranslucentNavVC(mainBaseVC)
+        self.window?.rootViewController = navVC
         self.window!.makeKeyAndVisible()
-        return true
+        
+        return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
     
     func applicationWillResignActive(application: UIApplication) {}
@@ -50,7 +53,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NSNotificationCenter.defaultCenter().postNotificationName(Const.WILL_ENTER_FOREGROUND_KEY, object: nil)
     }
     
-    func applicationDidBecomeActive(application: UIApplication) {}
+    func applicationDidBecomeActive(application: UIApplication) {
+        FBSDKAppEvents.activateApp()
+        // ログインしてたら値復元
+    }
     
     func applicationWillTerminate(application: UIApplication) {}
+    
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        return FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
+    }
+    
+    // navVCを透明化
+    func createTranslucentNavVC(rootVC: UIViewController) -> UINavigationController {
+        let navVC = UINavigationController(rootViewController: rootVC)
+        navVC.navigationBar.tintColor = .clearColor()
+        navVC.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        navVC.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: Const.PECOMY_THEME_TEXT_COLOR]
+        navVC.navigationBar.shadowImage = UIImage()
+        return navVC
+    }
 }

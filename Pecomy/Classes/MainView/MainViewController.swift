@@ -3,7 +3,7 @@
 //  Pecomy
 //
 //  Created by Kenzo on 2015/06/21.
-//  Copyright (c) 2016年 Pecomy. All rights reserved.
+//  Copyright (c) 2016 Pecomy. All rights reserved.
 //
 
 import UIKit
@@ -13,6 +13,7 @@ import MDCSwipeToChoose
 import SnapKit
 
 class MainViewController: UIViewController {
+    static let title = Const.APP_TITLE
     
     let ANALYTICS_TRACKING_CODE = AnaylyticsTrackingCode.MainViewController.rawValue
     
@@ -44,8 +45,6 @@ class MainViewController: UIViewController {
     var resultModel = ResultModel()
     
     var stackedCards = [CardView]()
-    var currentLatitude: Double?
-    var currentLongitude: Double?
     
     // var results
     var currentResults = [Restaurant]()
@@ -64,9 +63,6 @@ class MainViewController: UIViewController {
     
     let loadingIndicator = UIActivityIndicatorView()
     
-    // ビュー関連
-    var categoryLabelView: CategoryLabelView?
-    
     var onetimeFilterVC: OnetimeFilterViewController?
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
@@ -79,7 +75,8 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = Const.PECOMY_TITLE
+        
+        self.navigationController?.makeNavigationBarTranslucent()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainViewController.enterForeground(_:)), name:Const.WILL_ENTER_FOREGROUND_KEY, object: nil)
         
@@ -141,6 +138,13 @@ class MainViewController: UIViewController {
         likeButton.setImage(R.image.like_tapped(), forState: .Highlighted)
         likeButton.addTarget(self, action: #selector(MainViewController.likeButtonTapped), forControlEvents: .TouchUpInside)
         
+        let reloadButton = UIButton()
+        reloadButton.setImage(R.image.reload(), forState: .Normal)
+        reloadButton.addTarget(self, action: #selector(MainViewController.reloadTapped), forControlEvents: .TouchUpInside)
+        reloadButton.clipsToBounds = true
+        reloadButton.layer.cornerRadius = reloadButton.frame.size.width * 0.5
+
+        
         let dislikeButton = UIButton()
         dislikeButton.setImage(R.image.dislike_normal(), forState: .Normal)
         dislikeButton.setImage(R.image.dislike_tapped(), forState: .Highlighted)
@@ -148,6 +152,7 @@ class MainViewController: UIViewController {
         
         self.view.addSubview(likeButton)
         self.view.addSubview(dislikeButton)
+        self.view.addSubview(reloadButton)
         
         dislikeButton.snp_makeConstraints { (make) in
             make.width.equalTo(self.view).multipliedBy(0.25)
@@ -163,19 +168,12 @@ class MainViewController: UIViewController {
             make.bottom.equalTo(dislikeButton)
         }
         
-        // カテゴリ
-        self.categoryLabelView = CategoryLabelView(frame: CGRectZero, category: self.currentGenre.valueForDisplay())
-        self.view.addSubview(self.categoryLabelView!)
-        let tr = UITapGestureRecognizer(target: self, action: #selector(MainViewController.categoryTapped(_:)))
-        self.categoryLabelView!.addGestureRecognizer(tr)
-        
-        self.categoryLabelView!.snp_makeConstraints { (make) in
-            make.left.equalTo(dislikeButton.snp_right)
-            make.right.equalTo(likeButton.snp_left)
-            make.height.equalTo(50)
+        reloadButton.snp_makeConstraints { (make) in
+            make.centerX.equalTo(self.view)
             make.centerY.equalTo(likeButton)
+            make.width.equalTo(likeButton)//.multipliedBy(2/3)
+            make.height.equalTo(likeButton)//.multipliedBy(2/3)
         }
-        
         
         // インジケータ
         self.loadingIndicator.bounds = CGRectMake(0.0, 0.0, 50, 50)
@@ -186,11 +184,12 @@ class MainViewController: UIViewController {
         
         // 初回起動のときはtutorial出す
         if (!NSUserDefaults.standardUserDefaults().boolForKey(Const.UD_KEY_HAS_LAUNCHED)) {
+            KeychainManager.removePecomyUserToken()
             self.tutorialVC = TutorialViewController()
             self.tutorialVC?.delegate = self
             self.presentViewController(tutorialVC!, animated: true, completion: nil)
         } else {
-            if (self.currentLatitude == nil || self.currentLongitude == nil) {
+            if (AppState.sharedInstance.currentLatitude == nil || AppState.sharedInstance.currentLongitude == nil) {
                 self.displayOnetimeFilterView()
             }
         }
@@ -209,7 +208,7 @@ class MainViewController: UIViewController {
     
     //MARK:- Observer
     func enterForeground(notification: NSNotification){
-        if self.currentLatitude == nil || self.currentLongitude == nil {
+        if AppState.sharedInstance.currentLatitude == nil || AppState.sharedInstance.currentLongitude == nil {
             self.reset()
             self.acquireFirstCard()
         } else {
@@ -227,11 +226,11 @@ class MainViewController: UIViewController {
                 guard let strongSelf = self else {
                     return
                 }
-                if (Utils.distanceBetweenLocations(strongSelf.currentLatitude!, fromLon: strongSelf.currentLongitude!, toLat: location!.coordinate.latitude, toLon: location!.coordinate.longitude) > Const.RETRY_DISTANCE) {
+                if (Utils.distanceBetweenLocations(AppState.sharedInstance.currentLatitude!, fromLon: AppState.sharedInstance.currentLongitude!, toLat: location!.coordinate.latitude, toLon: location!.coordinate.longitude) > Const.RETRY_DISTANCE) {
                     strongSelf.reset()
-                    strongSelf.currentLatitude = Double(location!.coordinate.latitude);
-                    strongSelf.currentLongitude = Double(location!.coordinate.longitude);
-                    strongSelf.acquireFirstCardsWithLocation(strongSelf.currentLatitude!, longitude: strongSelf.currentLongitude!)
+                    AppState.sharedInstance.currentLatitude = Double(location!.coordinate.latitude);
+                    AppState.sharedInstance.currentLongitude = Double(location!.coordinate.longitude);
+                    strongSelf.acquireFirstCardsWithLocation(AppState.sharedInstance.currentLatitude!, longitude: AppState.sharedInstance.currentLongitude!)
                 }
                 
                 }, failure: { [weak self] (error) in
@@ -248,8 +247,8 @@ class MainViewController: UIViewController {
     func reset() {
         self.resetViews()
         self.isLocationAcquired = false
-        self.currentLatitude = nil
-        self.currentLongitude = nil
+        AppState.sharedInstance.currentLatitude = nil
+        AppState.sharedInstance.currentLongitude = nil
         self.currentBudget = Budget.Unspecified
         self.currentNumOfPeople = NumOfPeople.One
         self.currentGenre = Genre.All
@@ -293,9 +292,9 @@ class MainViewController: UIViewController {
             guard let strongSelf = self else {
                 return
             }
-            strongSelf.currentLatitude = Double(location!.coordinate.latitude);
-            strongSelf.currentLongitude = Double(location!.coordinate.longitude);
-            strongSelf.acquireFirstCardsWithLocation(strongSelf.currentLatitude!, longitude: strongSelf.currentLongitude!)
+            AppState.sharedInstance.currentLatitude = Double(location!.coordinate.latitude);
+            AppState.sharedInstance.currentLongitude = Double(location!.coordinate.longitude);
+            strongSelf.acquireFirstCardsWithLocation(AppState.sharedInstance.currentLatitude!, longitude: AppState.sharedInstance.currentLongitude!)
             },
             failure: { [weak self] (error) in
                 guard let strongSelf = self else {
@@ -437,7 +436,7 @@ class MainViewController: UIViewController {
     */
     
     func acquireResults() {
-        self.resultModel.fetch(self.currentLatitude!, longitude: self.currentLongitude!,
+        self.resultModel.fetch(AppState.sharedInstance.currentLatitude!, longitude: AppState.sharedInstance.currentLongitude!,
             handler: {[weak self] (result: PecomyResult<[Restaurant], PecomyApiClientError>) in
                 guard let strongSelf = self else {
                     return
@@ -481,7 +480,7 @@ class MainViewController: UIViewController {
         self.swipeTopCardToWithDirection(.Left)
     }
     
-    func categoryTapped(sender:UITapGestureRecognizer) {
+    func reloadTapped() {
         self.onetimeFilterVC = OnetimeFilterViewController(budget: self.currentBudget, numOfPeople: self.currentNumOfPeople, genre: self.currentGenre)
         self.onetimeFilterVC!.delegate = self
         UIApplication.sharedApplication().keyWindow?.addSubview(self.onetimeFilterVC!.view)
@@ -510,15 +509,18 @@ class MainViewController: UIViewController {
     }
     
     // 現在地付近にこれ以上店舗が見つからない場合のアラート表示
-    func showNotFoundRestaurantAroundHereAlert(completion: () -> Void) {
+    func showNotFoundRestaurantAroundHereAlert(completion: () -> Void, retry: () -> Void) {
         let alertController = UIAlertController(title:NSLocalizedString("RestaurantNotFoundAroundHereAlertTitle", comment: ""),
             message: NSLocalizedString("RestaurantNotFoundAroundHereAlertMessage", comment: ""),
             preferredStyle: .Alert)
-        let okAction = UIAlertAction(title: NSLocalizedString("OK", comment: ""),
-            style: .Default) { [weak self] action in
-                guard let _ = self else { return }
+        let retryAction = UIAlertAction(title: NSLocalizedString("RestaurantNotFoundAroundHereAlertRetry", comment: ""), style: .Default) { action in
+            retry()
+        }
+        let okAction = UIAlertAction(title: NSLocalizedString("RestaurantNotFoundAroundHereAlertDisplayResult", comment: ""),
+            style: .Default) { action in
                 completion()
         }
+        alertController.addAction(retryAction)
         alertController.addAction(okAction)
         self.presentViewController(alertController, animated: true, completion: nil)
     }
@@ -572,15 +574,12 @@ extension MainViewController: OnetimeFilterViewControllerDelegate {
     }
     
     func startSearch(budget: Budget, numOfPeople: NumOfPeople, genre: Genre) {
-        guard let categoryLabelView = self.categoryLabelView else {
-            return
-        }
         // set filter
         self.currentBudget = budget
         self.currentNumOfPeople = numOfPeople
         self.currentGenre = genre
         
-        categoryLabelView.setCategory(genre.valueForDisplay())
+        //categoryLabelView.setCategory(genre.valueForDisplay())
         
         if let vc = self.onetimeFilterVC {
             vc.view.removeFromSuperview()
@@ -590,7 +589,7 @@ extension MainViewController: OnetimeFilterViewControllerDelegate {
         // reset cards and request
         self.resetViews()
         
-        if let lat = self.currentLatitude, lon = self.currentLongitude {
+        if let lat = AppState.sharedInstance.currentLatitude, lon = AppState.sharedInstance.currentLongitude {
             self.acquireFirstCardsWithLocation(lat, longitude: lon)
         } else {
             self.acquireFirstCard()
@@ -635,7 +634,7 @@ extension MainViewController: MDCSwipeToChooseDelegate {
             self.progressBar.progressWithRatio(self.currentProgress)
         }
 
-        self.acquireCardWithLatitude(self.currentLatitude!, longitude: self.currentLongitude!, like: answer, maxBudget: self.currentBudget, numOfPeople: self.currentNumOfPeople, genre:self.currentGenre, syncId: cardView.syncID, reset: false)
+        self.acquireCardWithLatitude(AppState.sharedInstance.currentLatitude!, longitude: AppState.sharedInstance.currentLongitude!, like: answer, maxBudget: self.currentBudget, numOfPeople: self.currentNumOfPeople, genre:self.currentGenre, syncId: cardView.syncID, reset: false)
         if (!self.canDisplayNextCard && self.contentView.subviews.count == 0) {
             self.acquireResults()
         }
@@ -680,24 +679,28 @@ extension MainViewController: ResultViewControllerDelegate {
                 if !strongSelf.stackedCards.isEmpty {
                     strongSelf.displayStackedCard()
                 } else {
-                    strongSelf.showNotFoundRestaurantAroundHereAlert { () in
+                    strongSelf.showNotFoundRestaurantAroundHereAlert({ () in
                         strongSelf.displayResultViewWithShopList(strongSelf.currentResults)
-                    }
+                        }, retry: {() in
+                            strongSelf.reset()
+                            strongSelf.displayOnetimeFilterView()
+                    })
+                }
                 }
             }
-        })
+        )
     }
 }
 
 
 //MARK: - CardViewDelegate
 extension MainViewController: CardViewDelegate {
-    func blackListButtonTapped(card: CardView, shopID: String) {
+    func blackListButtonTapped(card: CardView, shopID: Int) {
         let ac = UIAlertController(title: "", message: NSLocalizedString("BlackListButtonSendMessage", comment: ""), preferredStyle: .Alert)
         let okAction = UIAlertAction(title: NSLocalizedString("OK", comment: ""),
             style: .Default, handler: { (action) in
                 let params = ["shop_id": shopID, "device_id": Utils.acquireDeviceID()]
-                Alamofire.request(.GET, Const.API_BLACKLIST_BASE, parameters: params, encoding: .URL).response {(httpRequest, httpResponse, data, error) in
+                Alamofire.request(.GET, Const.API_BLACKLIST_BASE, parameters: params as? [String : AnyObject], encoding: .URL).response {(httpRequest, httpResponse, data, error) in
                     // 現時点ではAPIが無いので、404を正とする
                     if (httpResponse!.statusCode == Const.STATUS_CODE_NOT_FOUND) {
                         card.blackListButton.enabled = false

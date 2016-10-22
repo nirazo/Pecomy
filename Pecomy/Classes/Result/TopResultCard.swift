@@ -3,7 +3,7 @@
 //  Pecomy
 //
 //  Created by Kenzo on 2015/08/09.
-//  Copyright (c) 2016年 Pecomy. All rights reserved.
+//  Copyright (c) 2016 Pecomy. All rights reserved.
 //
 
 import UIKit
@@ -85,10 +85,10 @@ class TopResultCard: ResultCardBase {
         
         self.dayPriceIcon.image = R.image.time_day()
         // 値段ラベル
-        if (self.restaurant.dayPriceMin.isEmpty && self.restaurant.dayPriceMax.isEmpty) {
+        if (self.restaurant.dayPriceRangeWithoutLabel.isEmpty) {
             self.dayPriceLabel.text = "-"
         } else {
-        self.dayPriceLabel.text = "\(Utils.formatPriceString(self.restaurant.dayPriceMin))〜\(Utils.formatPriceString(self.restaurant.dayPriceMax))"
+        self.dayPriceLabel.text = "\(self.restaurant.dayPriceRangeWithoutLabel)"
         }
         self.dayPriceLabel.numberOfLines = 2
         self.dayPriceLabel.sizeToFit()
@@ -96,10 +96,10 @@ class TopResultCard: ResultCardBase {
         self.dayPriceLabel.font = UIFont(name: Const.PECOMY_FONT_NORMAL, size: 13)
         
         self.nightPriceIcon.image = R.image.time_night()
-        if (self.restaurant.nightPriceMin.isEmpty && self.restaurant.nightPriceMax.isEmpty) {
-            self.dayPriceLabel.text = "-"
+        if (self.restaurant.nightPriceRangeWithoutLabel.isEmpty) {
+            self.nightPriceLabel.text = "-"
         } else {
-            self.nightPriceLabel.text = "\(Utils.formatPriceString(self.restaurant.nightPriceMin))〜\(Utils.formatPriceString(self.restaurant.nightPriceMax))"
+            self.nightPriceLabel.text = "\(self.restaurant.nightPriceRangeWithoutLabel)"
         }
         self.nightPriceLabel.numberOfLines = 2
         self.nightPriceLabel.sizeToFit()

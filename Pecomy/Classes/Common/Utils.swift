@@ -3,7 +3,7 @@
 //  Pecomy
 //
 //  Created by Kenzo on 2015/08/30.
-//  Copyright (c) 2016年 Pecomy. All rights reserved.
+//  Copyright (c) 2016 Pecomy. All rights reserved.
 //
 
 import Foundation
@@ -47,5 +47,27 @@ class Utils {
      */
     class func meterToMinutes(meter: Double) -> Int{
         return Int(ceil(meter/60))
+    }
+    
+    /**
+     yyyy-MM-dd HH:mm:ssを日付のみの文字列に変換
+     - parameter dateStr: 日付文字列
+     - returns: 日付
+     */
+    class func dateStringToShortDateString(dateStr: String) -> String {
+        let replacedStr = dateStr.stringByReplacingOccurrencesOfString("-", withString: "/")
+        let separetedArray = replacedStr.componentsSeparatedByString(" ")
+        return separetedArray[0]
+    }
+    
+    /**
+     yyyy-MM-dd HH:mm:ssを時刻のみの文字列に変換
+     - parameter dateStr: 日付文字列
+     - returns: 時刻
+     */
+    class func dateStringToTimeString(dateStr: String) -> String {
+        let replacedStr = dateStr.stringByReplacingOccurrencesOfString("-", withString: "/")
+        let separetedArray = replacedStr.componentsSeparatedByString(" ")
+        return separetedArray[1]
     }
 }

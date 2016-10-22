@@ -3,24 +3,30 @@
   Pecomy
 
   Created by Kenzo on 2015/07/25.
-  Copyright (c) 2016年 Pecomy. All rights reserved.
+  Copyright (c) 2016 Pecomy. All rights reserved.
 */
+// Common
 "OK" = "OK";
 "Back" = "戻る";
 "Close" = "閉じる";
-"Continue" = "さらに続ける";
+"Continue" = "続けて探す";
 "Reset" = "やり直す";
 "Cancel" = "キャンセル";
+"Favorite" = "お気に入り";
+"Checkin" = "チェックイン";
+//
 "LocationAlertTitle" = "位置情報サービスが無効です";
-"LocationAlertMessage" = "Karutaを使用するには、『プライバシー > 位置情報サービス』より位置情報サービスの利用をオンにしてください。";
+"LocationAlertMessage" = "Pecomyを使用するには、『プライバシー > 位置情報サービス』より位置情報サービスの利用をオンにしてください。";
 "LocationAlertSettingButtonTitle" = "設定";
 "LocationRetryAlertTitle" = "位置情報取得に失敗しました";
 "LocationRetryAlertMessage" = "下のボタンを押して再度取得して下さい。";
 "LocationRetryAlertRetryButtonTitle" = "もう一度";
 "OutOfRangeAlertTitle" = "お店が見つかりません";
-"OutOfRangeAlertMessage" = "現在Karutaは東京都と神奈川県のみに対応しております。恐れ入りますが、東京都内か神奈川県内でご利用ください。";
+"OutOfRangeAlertMessage" = "現在Pecomyは東京都と神奈川県のみに対応しております。恐れ入りますが、東京都内か神奈川県内でご利用ください。";
 "RestaurantNotFoundAroundHereAlertTitle" = "お店が見つかりません";
 "RestaurantNotFoundAroundHereAlertMessage" = "現在地近辺にこれ以上お店が見つかりません。条件を変えて再度検索してください。";
+"RestaurantNotFoundAroundHereAlertRetry" = "やり直す";
+"RestaurantNotFoundAroundHereAlertDisplayResult" = "結果を再表示";
 "ServerErrorAlertTitle" = "サーバエラー";
 "ServerErrorAlertMessage" = "サーバエラーが発生しました。OKボタンを押すとレストラン検索が再度始まります。";
 "NoResultAlertTitle" = "結果が見つかりませんでした";
@@ -69,3 +75,24 @@
 "BusinessHourTitle" = "営業時間";
 "TelAlertMessage" = "この店舗に電話をかけますか？";
 "TelAlertTelButton" = "電話をかける";
+"DoCheckin" = "チェックインする";
+"Checkedin" =  "チェックイン済";
+"CheckinReport" = "%@にチェックインしました！";
+"FavoriteReport" = "%@をお気に入りに追加しました！";
+"RegisterFailedAlertTitle" = "お店の登録に失敗しました";
+"RegisterFailedAlertMessage" = "ネットワーク環境の良い所で再度お試しください";
+// Profile
+"ProfileTitle" = "個人設定";
+"RecentView" = "最近見たお店";
+"RegisteredTime" = "%@に登録";
+// Settings
+"SettingsTitle" = "設定";
+"SettingsSocialSectionTitle" = "ソーシャル連携";
+"SettingsSocialSectionFooter" = "Facebookでログインすると、「お気に入り」や「チェックイン」のデータを保存できます。";
+// Login
+"LoginIntroduceSentence" = "ログインすることであなたにオススメのレストランをより高精度に提案できます。また、チェックインとお気に入りの機能も使用できるようになります。";
+"LoginSubTitle" = "Facebookログインして\nペコミーをもっとあなた好みに";
+"LoginDescribeSentence" = "ログインすることで以下の機能を利用することができます。";
+"LoginFeature1" = "あなたの好みを学習";
+"LoginFeature2" = "お気に入り機能";
+"LoginFeature3" = "チェックイン";

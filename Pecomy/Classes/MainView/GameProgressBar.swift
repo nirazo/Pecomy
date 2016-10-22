@@ -3,7 +3,7 @@
 //  Pecomy
 //
 //  Created by Kenzo on 2016/04/23.
-//  Copyright © 2016年 Pecomy. All rights reserved.
+//  Copyright © 2016 Pecomy. All rights reserved.
 //
 
 import UIKit

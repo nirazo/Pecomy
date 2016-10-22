@@ -3,7 +3,7 @@
 //  Pecomy
 //
 //  Created by 韮澤賢三 on 2016/01/05.
-//  Copyright © 2016年 Pecomy. All rights reserved.
+//  Copyright © 2016 Pecomy. All rights reserved.
 //
 
 import UIKit
@@ -16,6 +16,7 @@ public enum PecomyApiClientErrorType: ErrorType {
     case Unknown //どのエラーにも該当しないエラー
     
     case InvalidID // 400
+    case Unauthorized // 401
     case ServerError // 500
     case NoResult // 404
     
@@ -27,6 +28,8 @@ public enum PecomyApiClientErrorType: ErrorType {
         switch code {
         case 400:
             self = .InvalidID
+        case 401:
+            self = .Unauthorized
         case 500:
             self = .ServerError
         case 404:

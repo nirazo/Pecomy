@@ -3,7 +3,7 @@
 //  Pecomy
 //
 //  Created by Kenzo on 2015/12/29.
-//  Copyright © 2016年 Pecomy. All rights reserved.
+//  Copyright © 2016 Pecomy. All rights reserved.
 //
 
 import Foundation
@@ -20,6 +20,7 @@ class PecomyApiClient {
     }
     
     static var manager = Alamofire.Manager(configuration: PecomyApiClient.configuration)
+    static let loginHeaderKey = "Authorization"
     static let kTimeoutSecond = 10.0
     
     private static var configuration : NSURLSessionConfiguration {
@@ -40,13 +41,12 @@ class PecomyApiClient {
         let url = APIURL(request)
         
         // ヘッダパラメータのセット
-        var headers: [String:String]? = nil
+        var headers = [String: String]()
+        if let token = KeychainManager.getPecomyUserToken() {
+            headers[self.loginHeaderKey] = "Bearer \(token)"
+        }
         for (key, value) in request.headerParams {
-            if var headers = headers {
-                headers[key] = value
-            } else {
-                headers = [key:value]
-            }
+            headers[key] = value
         }
         
         let alamofireRequest = manager.request(request.method, url, parameters: request.params, encoding: request.encoding, headers: headers)
@@ -61,10 +61,17 @@ class PecomyApiClient {
                     }
                 }
                 let response: PecomyResult<U, PecomyApiClientError> = PecomyApiClient.mappingResponse(httpRequest, response: httpResponse, data: data, error: error)
+/*                let str = NSString(data: data!, encoding:NSUTF8StringEncoding)
+                print("requestURL: \(httpResponse?.URL?.absoluteString)")
+                print("requestURL: \(request.params)")
+                print("rawData: \(str)")*/
                 switch response {
                 case .Success(let result):
                     handler(PecomyResult<U, PecomyApiClientError>.Success(result))
                 case .Failure(let error):
+                    if (error.type == PecomyApiClientErrorType.Unauthorized) {
+                        KeychainManager.removePecomyUserToken()
+                    }
                     handler(PecomyResult<U, PecomyApiClientError>(error: error))
                 }
         }
@@ -82,7 +89,7 @@ class PecomyApiClient {
                 return PecomyResult.Failure(PecomyApiClientError(type: .Timeout))
             }
         }
-        
+                
         guard let validData: NSData = data else {
             return PecomyResult.Failure(PecomyApiClientError(type: .NoResult))
         }
@@ -90,6 +97,9 @@ class PecomyApiClient {
         var JSON: NSDictionary?
         do {
             JSON = try NSJSONSerialization.JSONObjectWithData(validData, options: .AllowFragments) as? NSDictionary
+            if JSON == nil {
+                JSON = NSDictionary()
+            }
         } catch {
             return .Failure(PecomyApiClientError(type: .JsonParse))
         }

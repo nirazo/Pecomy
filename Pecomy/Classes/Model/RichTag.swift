@@ -3,7 +3,7 @@
 //  Pecomy
 //
 //  Created by Kenzo on 2016/01/17.
-//  Copyright © 2016年 Pecomy. All rights reserved.
+//  Copyright © 2016 Pecomy. All rights reserved.
 //
 
 enum RichTag: String {

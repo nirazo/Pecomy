@@ -3,7 +3,7 @@
 //  Pecomy
 //
 //  Created by Kenzo on 2015/07/04.
-//  Copyright (c) 2016年 Pecomy. All rights reserved.
+//  Copyright (c) 2016 Pecomy. All rights reserved.
 //
 
 import UIKit
@@ -12,7 +12,7 @@ import MDCSwipeToChoose
 import SnapKit
 
 protocol CardViewDelegate {
-    func blackListButtonTapped(card: CardView, shopID: String)
+    func blackListButtonTapped(card: CardView, shopID: Int)
 }
 
 class CardView: MDCSwipeToChooseView {

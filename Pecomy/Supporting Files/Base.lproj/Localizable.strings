@@ -3,28 +3,35 @@
   Pecomy
 
   Created by Kenzo on 2015/07/25.
-  Copyright (c) 2016年 Pecomy. All rights reserved.
+  Copyright (c) 2016 Pecomy. All rights reserved.
 */
+// Common
 "OK" = "OK";
 "Back" = "Back";
 "Close" = "Close";
 "Continue" = "Continue";
 "Reset" = "Reset";
 "Cancel" = "Cancel";
+"Favorite" = "Favorite";
+"Checkin" = "Checkin";
+
+//
 "LocationAlertTitle" = "Location service is not allowed";
-"LocationAlertMessage" = "Please turn on the location service to use Karuta.";
+"LocationAlertMessage" = "Please turn on the location service to use Pecomy.";
 "LocationAlertSettingButtonTitle" = "Setting";
 "LocationRetryAlertTitle" = "Failed to get location";
 "LocationRetryAlertMessage" = "Please try again";
 "LocationRetryAlertRetryButtonTitle" = "Retry";
 "OutOfRangeAlertTitle" = "Cannot find restaurant";
-"OutOfRangeAlertMessage" = "Now you can only use Karuta in Tokyo and Kanagawa area. Please use this app in Tokyo and Kanagawa.";
+"OutOfRangeAlertMessage" = "Now you can only use Pecomy in Tokyo and Kanagawa area. Please use this app in Tokyo and Kanagawa.";
 "RestaurantNotFoundAroundHereAlertTitle" = "Cannot find restaurant";
 "RestaurantNotFoundAroundHereAlertMessage" = "No restaurant was found around here. Please retry with different conditions.";
+"RestaurantNotFoundAroundHereAlertRetry" = "Retry";
+"RestaurantNotFoundAroundHereAlertDisplayResult" = "Redisplay result";
 "ServerErrorAlertTitle" = "Server Error";
 "ServerErrorAlertMessage" = "Server error occured. Please retry with tapping OK button.";
 "NoResultAlertTitle" = "Cannot find result";
-"NoResultAlertMessage" = "Karuta cannot find restaurant for you around here. Please try again after changing time or place.";
+"NoResultAlertMessage" = "Pecomy cannot find restaurant for you around here. Please try again after changing time or place.";
 "SearchingRestaurant" = "Searching your favorite restaurant...";
 "ResultTitle" = "Recommended restaurants";
 "CloseTutorial" = "start";
@@ -69,3 +76,24 @@
 "BusinessHourTitle" = "Business Hour";
 "TelAlertMessage" = "Do you make a phone call to this restaurant?";
 "TelAlertTelButton" = "Call";
+"DoCheckin" = "Check in";
+"Checkedin" =  "Already checked in";
+"CheckinReport" = "You've checked in to %@!";
+"FavoriteReport" = "Add %@ to your favorite!";
+"RegisterFailedAlertTitle" = "Failed to register this restaurant";
+"RegisterFailedAlertMessage" = "Please try again at the better network environment.";
+// Profile
+"ProfileTitle" = "Profile";
+"RecentView" = "Recent view";
+"RegisteredTime" = "Registered at %@";
+// Settings
+"SettingsTitle" = "Settings";
+"SettingsSocialSectionTitle" = "SNS";
+"SettingsSocialSectionFooter" = "You can bookmark or checkin with your Facebook account.";
+// Login
+"LoginIntroduceSentence" = "After you log in, We can suggest good restaurant to you with higher accuracy, And you can use check-in and bookmark function.";
+"LoginSubTitle" = "Make your Pecomy experience wonderful with Facebook login";
+"LoginDescribeSentence" = "You can use functions below with logging in";
+"LoginFeature1" = "Learn your favorites";
+"LoginFeature2" = "Favorites function";
+"LoginFeature3" = "Checkin function";
