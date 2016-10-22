@@ -27,6 +27,8 @@ class ResultViewController: UIViewController {
 
     let restaurants: [Restaurant]
     
+    let displayMessage: String
+    
     var topResultCard: TopResultCard?
     
     var otherResultsCard: OtherResultsCard?
@@ -41,9 +43,9 @@ class ResultViewController: UIViewController {
     
     var delegate: ResultViewControllerDelegate?
     
-    init(restaurants: [Restaurant]) {
+    init(restaurants: [Restaurant], displayMessage: String) {
         self.restaurants = restaurants
-        //print("results: \(self.restaurants)")
+        self.displayMessage = displayMessage
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -66,7 +68,9 @@ class ResultViewController: UIViewController {
             self.showNoResultAlert()
         default:
             self.setupLayout()
-            break
+            if (!self.displayMessage.isEmpty) {
+                self.displayAlertWithMessage(self.displayMessage)
+            }
         }
     }
     
@@ -220,6 +224,16 @@ class ResultViewController: UIViewController {
         let backButtonItem = UIBarButtonItem(title: NSLocalizedString("Back", comment: ""), style: .Plain, target: nil, action: nil)
         self.navigationItem.backBarButtonItem = backButtonItem
         self.navigationController?.pushViewController(detailVC, animated: true)
+    }
+    
+    private func displayAlertWithMessage(message: String) {
+        let alertController = UIAlertController(title:nil,
+                                                message: message,
+                                                preferredStyle: .Alert)
+        let okAction = UIAlertAction(title: NSLocalizedString("OK", comment: ""),
+                                     style: .Default, handler: nil)
+        alertController.addAction(okAction)
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
 }
 
