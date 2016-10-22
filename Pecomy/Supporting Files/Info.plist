@@ -87,6 +87,13 @@
 				<key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
 				<true/>
 			</dict>
+            <key>peco.my</key>
+            <dict>
+                <key>NSIncludesSubdomains</key>
+                <true/>
+                <key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
+                <true/>
+            </dict>
 			<key>private-552a20-pecomyapi.apiary-mock.com</key>
 			<dict>
 				<key>NSIncludesSubdomains</key>
