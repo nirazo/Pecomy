@@ -43,9 +43,9 @@ class CardView: MDCSwipeToChooseView {
     var isFlicked = false
     
     init(frame: CGRect, restaurant: Restaurant, syncID:String, options: MDCSwipeToChooseViewOptions) {
-        options.likedText = NSLocalizedString("CardLikeText", comment: "")
+        options.likedText = R.string.localizable.cardLikeText()
         options.likedColor = Const.CARD_LIKE_COLOR
-        options.nopeText = NSLocalizedString("CardDislikeText", comment: "")
+        options.nopeText = R.string.localizable.cardDislikeText()
         options.nopeColor = Const.CARD_DISLIKE_COLOR
         
         self.restaurant = restaurant
@@ -137,12 +137,23 @@ class CardView: MDCSwipeToChooseView {
     func acquireImages() {
         let loopCount = self.restaurant!.imageUrls.count < NUM_OF_IMAGES ? self.restaurant!.imageUrls.count: NUM_OF_IMAGES
         for i in 0..<loopCount {
+            let loadingIndicator = UIActivityIndicatorView()
+            loadingIndicator.activityIndicatorViewStyle = .WhiteLarge
+            loadingIndicator.hidesWhenStopped = true
+            self.restaurantImageViews[i].addSubview(loadingIndicator)
+            loadingIndicator.snp_makeConstraints { make in
+                make.center.equalTo(self.restaurantImageViews[i])
+                make.width.height.equalTo(50)
+            }
+            loadingIndicator.startAnimating()
             self.restaurantImageViews[i].sd_setImageWithURL(NSURL(string: self.restaurant!.imageUrls[i]), completed: {[weak self](image: UIImage!, error: NSError!, cacheType: SDImageCacheType, imageURL: NSURL!) in
-                self!.restaurantImageViews[i].alpha = 0
+                guard let strongSelf = self else { return }
+                strongSelf.restaurantImageViews[i].alpha = 0
                 UIView.animateWithDuration(0.5, delay: 0.0, options: .CurveEaseInOut, animations: {() -> Void in
-                    self?.restaurantImageViews[i].contentMode = .ScaleAspectFill
-                    self!.restaurantImageViews[i].alpha = 1
+                    strongSelf.restaurantImageViews[i].contentMode = .ScaleAspectFill
+                    strongSelf.restaurantImageViews[i].alpha = 1
                     }, completion: nil)
+                loadingIndicator.stopAnimating()
                 })
         }
     }
