@@ -35,6 +35,8 @@ class ResultViewController: UIViewController {
     
     var otherResultsBaseView = UIView()
     
+    let topHeaderBaseView = UIView()
+    
     let firstRankHeader = ResultHeaderView(frame: CGRectZero, section: 0)
     
     let secondRankHeader = ResultHeaderView(frame: CGRectZero, section: 1)
@@ -59,8 +61,13 @@ class ResultViewController: UIViewController {
         
         self.navigationController?.makeNavigationBarDefault()
         
-        let continueButton = UIBarButtonItem(title: NSLocalizedString("Continue", comment: ""), style: .Plain, target: self, action: #selector(ResultViewController.continueTapped))
-        self.navigationItem.leftBarButtonItem = continueButton
+        if (displayMessage.isEmpty) {
+            let continueButton = UIBarButtonItem(title: R.string.localizable.continueString(), style: .Plain, target: self, action: #selector(ResultViewController.continueTapped))
+            self.navigationItem.leftBarButtonItem = continueButton
+        } else {
+            let resetButton = UIBarButtonItem(title: R.string.localizable.reset(), style: .Plain, target: self, action: #selector(ResultViewController.resetTapped))
+            self.navigationItem.leftBarButtonItem = resetButton
+        }
         
         switch self.restaurants.count {
         case 0:
@@ -68,9 +75,6 @@ class ResultViewController: UIViewController {
             self.showNoResultAlert()
         default:
             self.setupLayout()
-            if (!self.displayMessage.isEmpty) {
-                self.displayAlertWithMessage(self.displayMessage)
-            }
         }
     }
     
@@ -110,23 +114,43 @@ class ResultViewController: UIViewController {
             make.top.equalTo(self.scrollView)
         }
         
-        // 1位
-        self.contentView.addSubview(self.firstRankHeader)
-        self.firstRankHeader.snp_makeConstraints { (make) in
-            make.left.equalTo(self.contentView).offset(16)
-            make.height.equalTo(55)
-            make.width.equalTo(self.contentView).offset(-32)
-            make.right.equalTo(self.contentView).offset(-16)
-            make.top.equalTo(self.contentView).offset(16)
+        self.topHeaderBaseView.backgroundColor = .clearColor()
+        self.contentView.addSubview(self.topHeaderBaseView)
+        self.topHeaderBaseView.snp_makeConstraints { make in
+            make.top.equalTo(self.contentView)
+            make.width.equalTo(self.contentView)
+            make.centerX.equalTo(self.contentView)
+            make.height.greaterThanOrEqualTo(10)
         }
         
+        if (!self.displayMessage.isEmpty) {
+            let messageLabelView = ResultMessageHeaderView(message: self.displayMessage)
+            self.topHeaderBaseView.addSubview(messageLabelView)
+            messageLabelView.snp_makeConstraints { make in
+                make.top.equalTo(self.topHeaderBaseView)
+                make.left.equalTo(self.topHeaderBaseView)
+                make.bottom.equalTo(self.topHeaderBaseView)
+                make.right.equalTo(self.topHeaderBaseView)
+                make.height.greaterThanOrEqualTo(20)
+            }
+        } else {
+            // 1位
+            self.topHeaderBaseView.addSubview(self.firstRankHeader)
+            self.firstRankHeader.snp_makeConstraints { make in
+                make.top.equalTo(self.topHeaderBaseView).offset(16)
+                make.left.equalTo(self.topHeaderBaseView).offset(16)
+                make.right.equalTo(self.topHeaderBaseView).offset(-16)
+                make.bottom.equalTo(self.topHeaderBaseView)
+                make.height.equalTo(55)
+            }
+        }
         self.topResultCard = TopResultCard.instance()
         self.topResultCard?.setup(self.restaurants[0])
         self.contentView.addSubview(topResultCard!)
-        self.topResultCard?.snp_makeConstraints { (make) in
+        self.topResultCard?.snp_makeConstraints { make in
             make.width.equalTo(self.contentView).offset(-RESULT_MARGIN*2)
             make.centerX.equalTo(self.contentView)
-            make.top.equalTo(self.firstRankHeader.snp_bottom).offset(8)
+            make.top.equalTo(self.topHeaderBaseView.snp_bottom).offset(8)
             make.height.greaterThanOrEqualTo(100)
         }
         self.topResultCard?.setupSubViews()
@@ -204,6 +228,11 @@ class ResultViewController: UIViewController {
     // 続けるをタップした時の挙動
     func continueTapped() {
         self.delegate?.resultViewController(self, backButtonTappedWithReset: false)
+    }
+    
+    // ゲーム画面に戻ってresetする場合
+    func resetTapped() {
+        self.delegate?.resultViewController(self, backButtonTappedWithReset: true)
     }
 
     //MARK: - Alerts

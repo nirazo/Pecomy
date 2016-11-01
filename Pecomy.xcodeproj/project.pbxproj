@@ -20,6 +20,7 @@
 		D20035431D16388100F81114 /* FavoritesGetRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20035421D16388100F81114 /* FavoritesGetRequest.swift */; };
 		D20035451D1639AC00F81114 /* FavoritesGetResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20035441D1639AC00F81114 /* FavoritesGetResponse.swift */; };
 		D203D3141B3E739600FC9DB8 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = D203D3131B3E739600FC9DB8 /* Const.swift */; };
+		D2050C171DC4336E001711F0 /* ResultMessageHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2050C161DC4336E001711F0 /* ResultMessageHeaderView.swift */; };
 		D2092A2C1B637460008046D9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D2092A2E1B637460008046D9 /* Localizable.strings */; };
 		D2092A341B64D721008046D9 /* RestaurantModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2092A331B64D721008046D9 /* RestaurantModel.swift */; };
 		D20B53C81CB8FA8D0025EA58 /* PhotoViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20B53C71CB8FA8D0025EA58 /* PhotoViewerViewController.swift */; };
@@ -140,6 +141,7 @@
 		D20035421D16388100F81114 /* FavoritesGetRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesGetRequest.swift; sourceTree = "<group>"; };
 		D20035441D1639AC00F81114 /* FavoritesGetResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesGetResponse.swift; sourceTree = "<group>"; };
 		D203D3131B3E739600FC9DB8 /* Const.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
+		D2050C161DC4336E001711F0 /* ResultMessageHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultMessageHeaderView.swift; sourceTree = "<group>"; };
 		D2092A2D1B637460008046D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D2092A2F1B637484008046D9 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D2092A331B64D721008046D9 /* RestaurantModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantModel.swift; sourceTree = "<group>"; };
@@ -419,6 +421,7 @@
 				D2DD65A11B7714DA0046A50C /* OtherResultsCard.swift */,
 				D24B29201B78748A00419B9B /* ResultCardBase.swift */,
 				D24A2CC21C255D2A009ACA08 /* ResultHeaderView.swift */,
+				D2050C161DC4336E001711F0 /* ResultMessageHeaderView.swift */,
 				D24B291E1B772EFF00419B9B /* ResultViewController.swift */,
 				D2DD659F1B7714CA0046A50C /* TopResultCard.swift */,
 				D253A9DF1C310D7B00D65D20 /* TopResultCard.xib */,
@@ -937,6 +940,7 @@
 				D2A2CB501D4D99C200DD717B /* VisitsTableViewConfig.swift in Sources */,
 				D2C8E0371D16983D00E0EC6D /* VisitsModel.swift in Sources */,
 				D24A2CC31C255D2A009ACA08 /* ResultHeaderView.swift in Sources */,
+				D2050C171DC4336E001711F0 /* ResultMessageHeaderView.swift in Sources */,
 				164718B51C3D22AD00F50D33 /* CardRequest.swift in Sources */,
 				D2731FE01C79A85300E8E5E9 /* ProfileViewController.swift in Sources */,
 				D28901401C4A01FD005BDF84 /* RichTagCollectionViewCell.swift in Sources */,
