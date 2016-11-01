@@ -437,18 +437,16 @@ class MainViewController: UIViewController {
     
     func acquireResults() {
         self.resultModel.fetch(AppState.sharedInstance.currentLatitude!, longitude: AppState.sharedInstance.currentLongitude!,
-            handler: {[weak self] (result: PecomyResult<[Restaurant], PecomyApiClientError>) in
-                guard let strongSelf = self else {
-                    return
-                }
+            handler: {[weak self] (result: PecomyResult<ResultResponse, PecomyApiClientError>) in
+                guard let strongSelf = self else { return }
                 switch result {
                 case .Success(let res):
-                    strongSelf.currentResults = res
-                    strongSelf.displayResultViewWithShopList(strongSelf.currentResults)
+                    strongSelf.currentResults = res.results
+                    strongSelf.displayResultViewWithShopList(strongSelf.currentResults, message: res.displayMessage)
                 case .Failure(let error):
                     switch error.type{
                     case .NoResult:
-                        strongSelf.displayResultViewWithShopList([Restaurant]())
+                        strongSelf.displayResultViewWithShopList([Restaurant](), message: "")
                     case .ServerError:
                         strongSelf.showServerErrorAlert()
                     default:
@@ -459,8 +457,8 @@ class MainViewController: UIViewController {
         )
     }
     
-    func displayResultViewWithShopList(restaurants: [Restaurant]) {
-        let resultVC = ResultViewController(restaurants: restaurants)
+    func displayResultViewWithShopList(restaurants: [Restaurant], message: String) {
+        let resultVC = ResultViewController(restaurants: restaurants, displayMessage: message)
         resultVC.delegate = self
         
         if (self.navigationController?.viewControllers.count == 1) {
@@ -578,9 +576,7 @@ extension MainViewController: OnetimeFilterViewControllerDelegate {
         self.currentBudget = budget
         self.currentNumOfPeople = numOfPeople
         self.currentGenre = genre
-        
-        //categoryLabelView.setCategory(genre.valueForDisplay())
-        
+                
         if let vc = self.onetimeFilterVC {
             vc.view.removeFromSuperview()
         }
@@ -680,7 +676,7 @@ extension MainViewController: ResultViewControllerDelegate {
                     strongSelf.displayStackedCard()
                 } else {
                     strongSelf.showNotFoundRestaurantAroundHereAlert({ () in
-                        strongSelf.displayResultViewWithShopList(strongSelf.currentResults)
+                        strongSelf.displayResultViewWithShopList(strongSelf.currentResults, message: "")
                         }, retry: {() in
                             strongSelf.reset()
                             strongSelf.displayOnetimeFilterView()

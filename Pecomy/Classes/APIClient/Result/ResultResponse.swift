@@ -11,6 +11,7 @@ import ObjectMapper
 
 class ResultResponse: PecomyApiResponse {
     internal var results = [Restaurant]()
+    internal var displayMessage = ""
     
     required init?(_ map: Map) {
         super.init(map)
@@ -19,5 +20,6 @@ class ResultResponse: PecomyApiResponse {
     override func mapping(map: Map) {
         super.mapping(map)
         self.results <- map["results"]
+        self.displayMessage <- map["message"]
     }
 }

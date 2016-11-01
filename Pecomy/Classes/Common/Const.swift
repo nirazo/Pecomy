@@ -23,7 +23,7 @@ enum RestaurantListOrder : String {
 
 struct Const {
     #if DEBUG
-    static let API_BASE_PATH = "http://private-552a20-pecomyapi.apiary-mock.com"
+    static let API_BASE_PATH = "https://private-552a20-pecomyapi.apiary-mock.com/"
     static let API_GOOD_BASE = "http://private-552a20-pecomyapi.apiary-mock.com/dummy_good"
     static let API_BLACKLIST_BASE = "http://private-552a20-pecomyapi.apiary-mock.com/dummy_blacklist"
     #elseif RELEASE
