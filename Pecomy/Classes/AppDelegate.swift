@@ -19,7 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let cGoogleMapsAPIKey = Const.GOOGLEMAP_API_KEY
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        Fabric.with([Crashlytics()])
+        #if RELEASE
+            Fabric.with([Crashlytics()])
+        #endif
         GMSServices.provideAPIKey(cGoogleMapsAPIKey)
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)

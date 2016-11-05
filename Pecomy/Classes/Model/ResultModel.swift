@@ -14,16 +14,14 @@ class ResultModel {
     init() {
     }
     
-    func fetch(latitude: Double, longitude: Double, handler: ((PecomyResult<[Restaurant], PecomyApiClientError>) -> Void)) -> Bool {
+    func fetch(latitude: Double, longitude: Double, handler: ((PecomyResult<ResultRequest.Response, PecomyApiClientError>) -> Void)) -> Bool {
         let request = ResultRequest(latitude: latitude, longitude: longitude)
         self.session = PecomyApiClient.send(request) {[weak self] (response: PecomyResult<ResultRequest.Response, PecomyApiClientError>) -> Void in
-            guard let strongSelf = self else {
-                return
-            }
+            guard let strongSelf = self else { return }
             switch response {
             case .Success(let value):
-                strongSelf.results = value.results
-                handler(PecomyResult(value: value.results))
+                //strongSelf.results = value.results
+                handler(PecomyResult(value: value))
             case .Failure(let error):
                 // TODO: エラーコードによってエラーメッセージ詰めたりする
                 handler(PecomyResult(error: error))
