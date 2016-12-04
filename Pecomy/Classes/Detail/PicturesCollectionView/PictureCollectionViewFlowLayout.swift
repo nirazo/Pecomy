@@ -9,8 +9,8 @@
 import UIKit
 
 class PictureCollectionViewFlowLayout: UICollectionViewFlowLayout {
-    override func prepareLayout() {
-        super.prepareLayout()
-        self.scrollDirection = .Horizontal
+    override func prepare() {
+        super.prepare()
+        self.scrollDirection = .horizontal
     }
 }

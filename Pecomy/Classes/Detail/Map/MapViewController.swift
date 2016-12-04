@@ -25,9 +25,9 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let mapView = GMSMapView(frame: CGRectZero)
+        let mapView = GMSMapView(frame: .zero)
         self.view.addSubview(mapView)
-        mapView.snp_makeConstraints { (make) in
+        mapView.snp.makeConstraints { (make) in
             make.top.equalTo(self.view)
             make.left.equalTo(self.view)
             make.size.equalTo(self.view)
@@ -37,11 +37,11 @@ class MapViewController: UIViewController {
             return
         }
         // 地図
-        let lat = Double(restaurant.latitude) ?? 0.0
-        let lon = Double(restaurant.longitude) ?? 0.0
-        let camera = GMSCameraPosition.cameraWithLatitude(lat,longitude: lon, zoom: 17)
+        let lat = Double(restaurant.latitude)
+        let lon = Double(restaurant.longitude)
+        let camera = GMSCameraPosition.camera(withLatitude: lat,longitude: lon, zoom: 17)
         mapView.camera = camera
-        mapView.myLocationEnabled = true
+        mapView.isMyLocationEnabled = true
         
         let marker = GMSMarker()
         marker.position = CLLocationCoordinate2DMake(lat, lon)

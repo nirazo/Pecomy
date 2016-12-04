@@ -26,7 +26,7 @@ class RichTagCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         self.contentView.addSubview(self.imageView)
         self.contentView.addSubview(self.categoryLabel)
-        self.contentView.backgroundColor = UIColor.clearColor()
+        self.contentView.backgroundColor = .clear
         
         self.imageView.snp_makeConstraints { (make) in
             make.left.equalTo(self.contentView)

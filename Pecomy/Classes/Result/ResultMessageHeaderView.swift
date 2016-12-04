@@ -19,13 +19,13 @@ class ResultMessageHeaderView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setupLayout(message: String) {
+    fileprivate func setupLayout(_ message: String) {
         self.backgroundColor = Const.RANKING_TOP_COLOR
         let messageLabel = UILabel()
         messageLabel.text = message
         messageLabel.font = UIFont(name: Const.PECOMY_FONT_BOLD, size: 16)
-        messageLabel.textAlignment = .Center
-        messageLabel.textColor = .whiteColor()
+        messageLabel.textAlignment = .center
+        messageLabel.textColor = .white
         messageLabel.numberOfLines = 0
         self.addSubview(messageLabel)
         messageLabel.snp_makeConstraints { make in

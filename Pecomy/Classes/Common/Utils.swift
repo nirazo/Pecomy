@@ -12,13 +12,13 @@ import CoreLocation
 // 中身が増えてきたらUtilは分けていこうかと
 class Utils {
     class func acquireDeviceID() -> String {
-        return UIDevice.currentDevice().identifierForVendor!.UUIDString
+        return UIDevice.current.identifierForVendor!.uuidString
     }
     
-    class func distanceBetweenLocations(fromLat: Double, fromLon: Double, toLat: Double, toLon: Double) -> CLLocationDistance {
+    class func distanceBetweenLocations(_ fromLat: Double, fromLon: Double, toLat: Double, toLon: Double) -> CLLocationDistance {
         let from = CLLocation(latitude: fromLat, longitude: fromLon)
         let to = CLLocation(latitude: toLat, longitude: toLon)
-        return to.distanceFromLocation(from)
+        return to.distance(from: from)
     }
     
     /**
@@ -26,18 +26,18 @@ class Utils {
      - parameter origPrice: 元の値段文字列
      - returns: 頭に￥が付いた、3桁区切りカンマがついた値段文字列
     */
-    class func formatPriceString(origPrice: String) -> String {
+    class func formatPriceString(_ origPrice: String) -> String {
         let price = Int(origPrice)
         guard let intPrice = price else {
             return ""
         }
-        let num = NSNumber(integer: intPrice)
-        let formatter = NSNumberFormatter()
-        formatter.numberStyle = NSNumberFormatterStyle.DecimalStyle
+        let num = NSNumber(value: intPrice)
+        let formatter = NumberFormatter()
+        formatter.numberStyle = NumberFormatter.Style.decimal
         formatter.groupingSeparator = ","
         formatter.groupingSize = 3
         
-        return "￥\(formatter.stringFromNumber(num)!)"
+        return "￥\(formatter.string(from: num)!)"
     }
     
     /**
@@ -45,7 +45,7 @@ class Utils {
      - parameter meter: 距離（メートル）
      - returns: 分
      */
-    class func meterToMinutes(meter: Double) -> Int{
+    class func meterToMinutes(_ meter: Double) -> Int{
         return Int(ceil(meter/60))
     }
     
@@ -54,9 +54,9 @@ class Utils {
      - parameter dateStr: 日付文字列
      - returns: 日付
      */
-    class func dateStringToShortDateString(dateStr: String) -> String {
-        let replacedStr = dateStr.stringByReplacingOccurrencesOfString("-", withString: "/")
-        let separetedArray = replacedStr.componentsSeparatedByString(" ")
+    class func dateStringToShort(_ dateStr: String) -> String {
+        let replacedStr = dateStr.replacingOccurrences(of: "-", with: "/")
+        let separetedArray = replacedStr.components(separatedBy: " ")
         return separetedArray[0]
     }
     
@@ -65,9 +65,9 @@ class Utils {
      - parameter dateStr: 日付文字列
      - returns: 時刻
      */
-    class func dateStringToTimeString(dateStr: String) -> String {
-        let replacedStr = dateStr.stringByReplacingOccurrencesOfString("-", withString: "/")
-        let separetedArray = replacedStr.componentsSeparatedByString(" ")
+    class func dateStringToTimeString(_ dateStr: String) -> String {
+        let replacedStr = dateStr.replacingOccurrences(of: "-", with: "/")
+        let separetedArray = replacedStr.components(separatedBy: " ")
         return separetedArray[1]
     }
 }

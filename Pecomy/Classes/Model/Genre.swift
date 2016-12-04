@@ -9,17 +9,17 @@
 import Foundation
 
 enum Genre: Int {
-    case All, Cafe, Drinking, Restaurant, _counter//Ramen
+    case all, cafe, drinking, restaurant, _counter//Ramen
     
     func valueForDisplay() -> String {
         switch self {
-        case .All:
+        case .all:
             return NSLocalizedString("CategoryAll", comment: "")
-        case .Cafe:
+        case .cafe:
             return NSLocalizedString("CategoryCafe", comment: "")
-        case .Drinking:
+        case .drinking:
             return NSLocalizedString("CategoryDrinking", comment: "")
-        case .Restaurant:
+        case .restaurant:
             return NSLocalizedString("CategoryRestaurant", comment: "")
 //        case .Ramen:
 //            return NSLocalizedString("CategoryRamen", comment: "")

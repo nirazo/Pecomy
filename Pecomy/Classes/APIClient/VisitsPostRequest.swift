@@ -13,9 +13,9 @@ class VisitsPostRequest: PecomyApiRequest {
     typealias Response = VisitsPostResponse
     
     var endpoint: String
-    var method: Alamofire.Method = .POST
-    var params: [String: AnyObject] = [:]
-    var encoding: ParameterEncoding = .URL
+    var method: HTTPMethod = .post
+    var params: [String: Any] = [:]
+    var encoding: ParameterEncoding = URLEncoding.default
     
     init(shopID: Int, reviewScore: Int) {
         endpoint = "user/visits"

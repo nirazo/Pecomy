@@ -10,7 +10,7 @@ import UIKit
 import SDWebImage
 
 protocol OtherResultCardContentDelegate {
-    func contentTapped(restaurant: Restaurant)
+    func contentTapped(_ restaurant: Restaurant)
 }
 
 class OtherResultCardContentView: UIView {
@@ -26,12 +26,12 @@ class OtherResultCardContentView: UIView {
         self.restaurant = restaurant
         
         // パーツ群を置くビュー
-        self.contentView.backgroundColor = UIColor.whiteColor()
+        self.contentView.backgroundColor = .white
         self.contentView.layer.masksToBounds = true
         
         self.addSubview(contentView)
         
-        self.backgroundColor = UIColor.clearColor()
+        self.backgroundColor = .clear
         self.layer.masksToBounds = false
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(OtherResultCardContentView.tapped))
@@ -44,13 +44,13 @@ class OtherResultCardContentView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setupSubViews() {
+    fileprivate func setupSubViews() {
         
         guard let restaurant = self.restaurant else {
             return
         }
         
-        self.backgroundColor = UIColor.whiteColor()
+        self.backgroundColor = .white
         
         self.contentView.snp_makeConstraints { (make) in
             make.size.equalTo(self)
@@ -58,7 +58,7 @@ class OtherResultCardContentView: UIView {
             make.left.equalTo(self)
         }
         
-        self.imageView.contentMode = .ScaleAspectFill
+        self.imageView.contentMode = .scaleAspectFill
         self.imageView.clipsToBounds = true
         self.contentView.addSubview(self.imageView)
         self.imageView.snp_makeConstraints { (make) in
@@ -70,7 +70,7 @@ class OtherResultCardContentView: UIView {
         }
         
         // 店名
-        let restaurantNameLabel = UILabel(frame: CGRectZero)
+        let restaurantNameLabel = UILabel(frame: .zero)
         restaurantNameLabel.text = restaurant.shopName
         restaurantNameLabel.font = UIFont(name: Const.PECOMY_FONT_BOLD, size: 14)
         restaurantNameLabel.numberOfLines = 1
@@ -86,7 +86,7 @@ class OtherResultCardContentView: UIView {
         }
         
         // 距離ラベル
-        let distanceLabel = UILabel(frame: CGRectZero)
+        let distanceLabel = UILabel(frame: .zero)
         distanceLabel.text =  String(format: NSLocalizedString("CardDistanceFromText", comment: ""), Utils.meterToMinutes(restaurant.distance))
         distanceLabel.font = UIFont(name: Const.PECOMY_FONT_NORMAL, size: 12)
         distanceLabel.numberOfLines = 0
@@ -102,7 +102,7 @@ class OtherResultCardContentView: UIView {
         }
         
         // 矢印ラベル
-        let arrowLabel = UILabel(frame: CGRectZero)
+        let arrowLabel = UILabel(frame: .zero)
         arrowLabel.text = ">"
         arrowLabel.font = UIFont(name: Const.PECOMY_FONT_BOLD, size: 16)
         arrowLabel.numberOfLines = 1
@@ -110,12 +110,12 @@ class OtherResultCardContentView: UIView {
         arrowLabel.textColor =  UIColor(red: 220/255.0, green: 220/255.0, blue: 220/255.0, alpha: 1.0)
         self.contentView.addSubview(arrowLabel)
         
-        arrowLabel.snp_makeConstraints { (make) in
+        arrowLabel.snp.makeConstraints { (make) in
             make.right.equalTo(self.contentView).offset(-8)
             make.centerY.equalTo(self.contentView)
         }
 
-        let imageurls = restaurant.imageUrls.flatMap{NSURL(string: $0)}
+        let imageurls = restaurant.imageUrls.flatMap{URL(string: $0)}
         self.acquireImage(imageurls.first!)
     }
     
@@ -123,20 +123,20 @@ class OtherResultCardContentView: UIView {
         super.layoutSubviews()
     }
     
-    private func acquireImage(url: NSURL?) {
+    fileprivate func acquireImage(_ url: URL?) {
         guard let url = url else {
             self.imageView.image = R.image.noimage()
             return
         }
-        self.imageView.sd_setImageWithURL(url, completed: {[weak self](image: UIImage!, error: NSError!, cacheType: SDImageCacheType, imageURL: NSURL!) in
+        self.imageView.sd_setImage(with: url) { [weak self] (image, error, imageCacheType, imageURL) in
             guard let strongSelf = self else {
                 return
             }
             strongSelf.imageView.alpha = 0
-            UIView.animateWithDuration(0.5, delay: 0.0, options: .CurveEaseInOut, animations: {() -> Void in
+            UIView.animate(withDuration: 0.5, delay: 0.0, options: UIViewAnimationOptions(), animations: {() -> Void in
                 strongSelf.imageView.alpha = 1
                 }, completion: nil)
-            })
+            }
     }
     
     func tapped() {

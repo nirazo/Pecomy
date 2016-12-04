@@ -9,12 +9,12 @@
 import UIKit
 
 protocol ResultCardBaseDelegate {
-    func detailButtonTapped(restaurant: Restaurant)
+    func detailButtonTapped(_ restaurant: Restaurant)
 }
 
 class ResultCardBase: UIView {
     
-    private let CORNER_RADIUS: CGFloat = 5.0
+    fileprivate let CORNER_RADIUS: CGFloat = 5.0
 
     init(frame: CGRect, restaurant: Restaurant, imageNum: Int, color: UIColor, delegate: ResultCardBaseDelegate) {
         super.init(frame: frame)
@@ -29,10 +29,10 @@ class ResultCardBase: UIView {
     
     func commonInit() {
         self.layer.masksToBounds = false
-        self.backgroundColor = UIColor.whiteColor()
+        self.backgroundColor = UIColor.white
         self.layer.cornerRadius = CORNER_RADIUS
         self.layer.shadowOpacity = 0.7
-        self.layer.shadowColor = UIColor.grayColor().CGColor
+        self.layer.shadowColor = UIColor.gray.cgColor
         self.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
 
     }

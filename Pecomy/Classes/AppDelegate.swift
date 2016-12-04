@@ -18,13 +18,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     let cGoogleMapsAPIKey = Const.GOOGLEMAP_API_KEY
     
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         #if RELEASE
             Fabric.with([Crashlytics()])
         #endif
         GMSServices.provideAPIKey(cGoogleMapsAPIKey)
         
-        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        self.window = UIWindow(frame: UIScreen.main.bounds)
         
         // Configure tracker from GoogleService-Info.plist.
         var configureError:NSError?
@@ -33,10 +33,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Optional: configure GAI options.
         let gai = GAI.sharedInstance()
-        gai.trackUncaughtExceptions = true  // report uncaught exceptions
+        gai?.trackUncaughtExceptions = true  // report uncaught exceptions
         
         #if !RELEASE
-            gai.logger.logLevel = GAILogLevel.Verbose  // remove before app release
+            gai?.logger.logLevel = GAILogLevel.verbose  // remove before app release
         #endif
         
         let mainBaseVC = MainBaseViewController()
@@ -47,30 +47,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
     
-    func applicationWillResignActive(application: UIApplication) {}
+    func applicationWillResignActive(_ application: UIApplication) {}
     
-    func applicationDidEnterBackground(application: UIApplication) {}
+    func applicationDidEnterBackground(_ application: UIApplication) {}
     
-    func applicationWillEnterForeground(application: UIApplication) {
-        NSNotificationCenter.defaultCenter().postNotificationName(Const.WILL_ENTER_FOREGROUND_KEY, object: nil)
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Const.WILL_ENTER_FOREGROUND_KEY), object: nil)
     }
     
-    func applicationDidBecomeActive(application: UIApplication) {
+    func applicationDidBecomeActive(_ application: UIApplication) {
         FBSDKAppEvents.activateApp()
         // ログインしてたら値復元
     }
     
-    func applicationWillTerminate(application: UIApplication) {}
+    func applicationWillTerminate(_ application: UIApplication) {}
     
-    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
-        return FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        return FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
     }
     
     // navVCを透明化
-    func createTranslucentNavVC(rootVC: UIViewController) -> UINavigationController {
+    func createTranslucentNavVC(_ rootVC: UIViewController) -> UINavigationController {
         let navVC = UINavigationController(rootViewController: rootVC)
-        navVC.navigationBar.tintColor = .clearColor()
-        navVC.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        navVC.navigationBar.tintColor = .clear
+        navVC.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navVC.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: Const.PECOMY_THEME_TEXT_COLOR]
         navVC.navigationBar.shadowImage = UIImage()
         return navVC

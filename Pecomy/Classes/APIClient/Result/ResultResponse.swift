@@ -13,12 +13,12 @@ class ResultResponse: PecomyApiResponse {
     internal var results = [Restaurant]()
     internal var displayMessage = ""
     
-    required init?(_ map: Map) {
-        super.init(map)
+    required init?(map: Map) {
+        super.init(map: map)
     }
     
     override func mapping(map: Map) {
-        super.mapping(map)
+        super.mapping(map: map)
         self.results <- map["results"]
         self.displayMessage <- map["message"]
     }

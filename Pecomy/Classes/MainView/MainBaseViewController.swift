@@ -26,22 +26,22 @@ class MainBaseViewController: UIViewController {
     let settingsButton = UIBarButtonItem()
     let cardButton = UIBarButtonItem()
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nil, bundle: nil)
-        self.pagingBaseView.pagingEnabled = true
+        self.pagingBaseView.isPagingEnabled = true
         self.pagingBaseView.bounces = false
         self.pagingBaseView.showsHorizontalScrollIndicator = false
         self.automaticallyAdjustsScrollViewInsets = false
         self.pagingBaseView.delegate = self
         
         self.userButton.target = self
-        self.userButton.image = R.image.icon_user()?.imageWithRenderingMode(.AlwaysOriginal)
+        self.userButton.image = R.image.icon_user()?.withRenderingMode(.alwaysOriginal)
         self.userButton.action = #selector(MainBaseViewController.userButtonDidTap(_:))
         self.settingsButton.target = self
-        self.settingsButton.image = R.image.icon_settings()?.imageWithRenderingMode(.AlwaysOriginal)
+        self.settingsButton.image = R.image.icon_settings()?.withRenderingMode(.alwaysOriginal)
         self.settingsButton.action = #selector(MainBaseViewController.settingsButtonDidTap(_:))
         self.cardButton.target = self
-        self.cardButton.image = R.image.icon_card()?.imageWithRenderingMode(.AlwaysOriginal)
+        self.cardButton.image = R.image.icon_card()?.withRenderingMode(.alwaysOriginal)
         self.cardButton.action = #selector(MainBaseViewController.cardButtonDidTap(_:))
     }
 
@@ -52,20 +52,20 @@ class MainBaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = Const.APP_TITLE
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainBaseViewController.enterForeground(_:)), name:Const.WILL_ENTER_FOREGROUND_KEY, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MainBaseViewController.enterForeground(_:)), name:NSNotification.Name(rawValue: Const.WILL_ENTER_FOREGROUND_KEY), object: nil)
         
         //単色背景
         let bgView = UIView()
         bgView.backgroundColor = Const.PECOMY_BASIC_BACKGROUND_COLOR
         self.view.addSubview(bgView)
-        bgView.snp_makeConstraints { make in
+        bgView.snp.makeConstraints { make in
             make.top.equalTo(self.view)
             make.left.equalTo(self.view)
             make.width.equalTo(self.view)
             make.height.equalTo(self.view)
         }
         self.view.addSubview(self.bgImageMaskView)
-        bgImageMaskView.snp_makeConstraints { make in
+        bgImageMaskView.snp.makeConstraints { make in
             make.top.equalTo(self.view)
             make.left.equalTo(self.view)
             make.width.equalTo(self.view)
@@ -77,7 +77,7 @@ class MainBaseViewController: UIViewController {
         self.bgImageMaskView.backgroundColor = Const.PECOMY_BASIC_BACKGROUND_COLOR
         self.bgImageMaskView.addSubview(self.bgImageView)
         self.bgImageMaskView.clipsToBounds = true
-        bgImageView.snp_makeConstraints { make in
+        bgImageView.snp.makeConstraints { make in
             make.top.equalTo(self.view)
             make.left.equalTo(self.view)
             make.width.equalTo(self.view)
@@ -87,25 +87,25 @@ class MainBaseViewController: UIViewController {
         self.pagingBaseView.frame = self.view.bounds
         
         self.view.addSubview(self.pagingBaseView)
-        self.pagingBaseView.backgroundColor = UIColor.clearColor()
+        self.pagingBaseView.backgroundColor = UIColor.clear
         
         self.addChildViewController(self.profileVC)
-        profileVC.didMoveToParentViewController(self)
+        profileVC.didMove(toParentViewController: self)
         
         self.addChildViewController(self.mainVC)
-        mainVC.didMoveToParentViewController(self)
+        mainVC.didMove(toParentViewController: self)
         
         
         self.pagingBaseView.contentSize = CGSize(width: self.pagingBaseView.frame.width * CGFloat(self.childViewControllers.count), height: self.pagingBaseView.frame.height)
-        for (id, vc) in self.childViewControllers.enumerate() {
+        for (id, vc) in self.childViewControllers.enumerated() {
             vc.view.frame = CGRect(x: self.pagingBaseView.frame.width * CGFloat(id), y: 0.0, width: self.pagingBaseView.frame.width, height: self.pagingBaseView.frame.height)
-            vc.didMoveToParentViewController(self)
+            vc.didMove(toParentViewController: self)
             self.pagingBaseView.addSubview(vc.view)
         }
         self.pagingBaseView.contentOffset.x = self.view.bounds.width
         self.navigationItem.leftBarButtonItem = self.userButton
         
-        self.navigationController?.interactivePopGestureRecognizer?.enabled = false
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
     
     override func viewWillLayoutSubviews() {
@@ -125,40 +125,40 @@ class MainBaseViewController: UIViewController {
     }
 
     // MARK: - Observer
-    func enterForeground(notification: NSNotification){
+    func enterForeground(_ notification: Notification){
         self.bgImageView.image = BackgroundImagePicker.pickImage()
     }
     
     // MARK: - Button Action
-    func cardButtonDidTap(sender: UIBarButtonItem) {
+    func cardButtonDidTap(_ sender: UIBarButtonItem) {
         print("card tapped")
         self.pagingBaseView.setContentOffset(CGPoint(x: self.pagingBaseView.frame.width, y: 0), animated: true)
     }
     
-    func userButtonDidTap(sender: UIBarButtonItem) {
+    func userButtonDidTap(_ sender: UIBarButtonItem) {
         print("user tapped")
         self.pagingBaseView.setContentOffset(.zero, animated: true)
     }
     
-    func settingsButtonDidTap(sender: UIBarButtonItem) {
+    func settingsButtonDidTap(_ sender: UIBarButtonItem) {
         let settingsVC = SettingsViewController()
         let navVC = UINavigationController(rootViewController: settingsVC)
         settingsVC.navigationItem.title = NSLocalizedString("SettingsTitle", comment: "")
-        self.presentViewController(navVC, animated: true, completion: nil)
+        self.present(navVC, animated: true, completion: nil)
     }
 
 }
 
 extension MainBaseViewController: UIScrollViewDelegate {
-    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         self.currentPageChanged(scrollView)
     }
     
-    func scrollViewDidEndScrollingAnimation(scrollView: UIScrollView) {
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
         self.currentPageChanged(scrollView)
     }
     
-    private func currentPageChanged(scrollView: UIScrollView) {
+    fileprivate func currentPageChanged(_ scrollView: UIScrollView) {
         let currentPage = Int(scrollView.contentOffset.x / scrollView.frame.maxX)
         switch currentPage {
         case 0:
@@ -176,26 +176,26 @@ extension MainBaseViewController: UIScrollViewDelegate {
         }
     }
     
-    func scrollViewDidScroll(scrollView: UIScrollView) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if (scrollView.contentOffset.x >= self.pagingBaseView.frame.width * CGFloat(1)) {
             return
         }
         if (scrollView.contentOffset.x == 0) {
-            self.bgImageMaskView.snp_remakeConstraints { make in
+            self.bgImageMaskView.snp.remakeConstraints { make in
                 make.top.equalTo(self.view)
                 make.left.equalTo(self.view)
                 make.width.equalTo(self.view)
                 make.height.equalTo(Size.navHeightIncludeStatusBar(self.navigationController!))
             }
         } else if (scrollView.contentOffset.x == self.view.frame.width) {
-            self.bgImageMaskView.snp_remakeConstraints { make in
+            self.bgImageMaskView.snp.remakeConstraints { make in
                 make.top.equalTo(self.view)
                 make.left.equalTo(self.view)
                 make.width.equalTo(self.view)
                 make.height.equalTo(self.imageHeight)
             }
         } else {
-            self.bgImageMaskView.snp_remakeConstraints { make in
+            self.bgImageMaskView.snp.remakeConstraints { make in
                 make.top.equalTo(self.view)
                 make.left.equalTo(self.view)
                 make.width.equalTo(self.view)

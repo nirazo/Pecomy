@@ -15,7 +15,7 @@ class ResultHeaderView: UIView {
     
     init(frame: CGRect, section: Int) {
         super.init(frame: frame)
-        self.headerLabel.textAlignment = .Center
+        self.headerLabel.textAlignment = .center
         switch section {
         case 0:
             self.rankIcon.image = R.image.rank_first()

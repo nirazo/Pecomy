@@ -12,12 +12,12 @@ import ObjectMapper
 class LoginResponse: PecomyApiResponse {
     internal var pecomyUser = PecomyUser.sharedInstance
     
-    required init?(_ map: Map) {
-        super.init(map)
+    required init?(map: Map) {
+        super.init(map: map)
     }
     
     override func mapping(map: Map) {
-        super.mapping(map)
+        super.mapping(map: map)
         self.pecomyUser.accessToken <- map["access_token"]
         self.pecomyUser.userName <- map["name"]
         self.pecomyUser.pictureUrl <- map["picture"]

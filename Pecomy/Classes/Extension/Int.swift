@@ -10,13 +10,13 @@ import Foundation
 
 extension Int {
     func toThreeDigitComma() -> String{
-        let num = NSNumber(integer: self)
+        let num = NSNumber(value: self as Int)
         
-        let formatter = NSNumberFormatter()
-        formatter.numberStyle = NSNumberFormatterStyle.DecimalStyle
+        let formatter = NumberFormatter()
+        formatter.numberStyle = NumberFormatter.Style.decimal
         formatter.groupingSeparator = ","
         formatter.groupingSize = 3
-        let result = formatter.stringFromNumber(num) ?? ""
+        let result = formatter.string(from: num) ?? ""
         return result
     }
 }

@@ -9,7 +9,7 @@
 import UIKit
 
 enum OnetimeSections {
-    case Budget, People, Genre, _counter
+    case budget, people, genre, _counter
 }
 
 class OnetimeFilterCollectionViewConfig: NSObject {
@@ -18,7 +18,7 @@ class OnetimeFilterCollectionViewConfig: NSObject {
     var currentNumOfPeople: NumOfPeople
     var currentGenre: Genre
     
-    init(budget: Budget = .Unspecified, numOfPeople: NumOfPeople = .One, genre: Genre = .All) {
+    init(budget: Budget = .unspecified, numOfPeople: NumOfPeople = .one, genre: Genre = .all) {
         self.currentBudget = budget
         self.currentNumOfPeople = numOfPeople
         self.currentGenre = genre
@@ -29,29 +29,29 @@ class OnetimeFilterCollectionViewConfig: NSObject {
 
 extension OnetimeFilterCollectionViewConfig: UICollectionViewDataSource {
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell : OnetimeFilterCell = collectionView.dequeueReusableCellWithReuseIdentifier(self.kCellReuse, forIndexPath: indexPath) as! OnetimeFilterCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell : OnetimeFilterCell = collectionView.dequeueReusableCell(withReuseIdentifier: self.kCellReuse, for: indexPath) as! OnetimeFilterCell
         switch indexPath.section {
-        case OnetimeSections.Budget.hashValue:
+        case OnetimeSections.budget.hashValue:
             guard let budget = Budget(rawValue: indexPath.row) else { return cell }
             cell.labelString = budget.valueForDisplay()
             if (indexPath.row == self.currentBudget.rawValue) {
-                cell.selected = true
-                collectionView.selectItemAtIndexPath(indexPath, animated: false, scrollPosition: .None)
+                cell.isSelected = true
+                collectionView.selectItem(at: indexPath, animated: false, scrollPosition: UICollectionViewScrollPosition())
             }
-        case OnetimeSections.People.hashValue:
+        case OnetimeSections.people.hashValue:
             guard let people = NumOfPeople(rawValue: indexPath.row) else { return cell }
             cell.labelString = people.valueForDisplay()
             if (indexPath.row == self.currentNumOfPeople.rawValue) {
-                cell.selected = true
-                collectionView.selectItemAtIndexPath(indexPath, animated: false, scrollPosition: .None)
+                cell.isSelected = true
+                collectionView.selectItem(at: indexPath, animated: false, scrollPosition: UICollectionViewScrollPosition())
             }
-        case OnetimeSections.Genre.hashValue:
+        case OnetimeSections.genre.hashValue:
             guard let genre = Genre(rawValue: indexPath.row) else { return cell }
             cell.labelString = genre.valueForDisplay()
             if (indexPath.row == self.currentGenre.rawValue) {
-                cell.selected = true
-                collectionView.selectItemAtIndexPath(indexPath, animated: false, scrollPosition: .None)
+                cell.isSelected = true
+                collectionView.selectItem(at: indexPath, animated: false, scrollPosition: UICollectionViewScrollPosition())
             }
         default:
             return cell
@@ -59,41 +59,41 @@ extension OnetimeFilterCollectionViewConfig: UICollectionViewDataSource {
         return cell
     }
     
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return OnetimeSections._counter.hashValue
     }
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
-        case OnetimeSections.Budget.hashValue:
+        case OnetimeSections.budget.hashValue:
             return Budget._counter.hashValue
-        case OnetimeSections.People.hashValue:
+        case OnetimeSections.people.hashValue:
             return NumOfPeople._counter.hashValue
-        case OnetimeSections.Genre.hashValue:
+        case OnetimeSections.genre.hashValue:
             return Genre._counter.hashValue
         default:
             return 0
         }
     }
     
-    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         var headerView: UICollectionReusableView? = nil
         
         if (kind == UICollectionElementKindSectionHeader) {
-            headerView = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: "HeaderView", forIndexPath: indexPath)
+            headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "HeaderView", for: indexPath)
             
-            headerView!.backgroundColor = UIColor.whiteColor()
+            headerView!.backgroundColor = UIColor.white
             let label = UILabel(frame: CGRect(x: 0, y: 0, width: 150, height: 18))
             label.font = UIFont(name: Const.PECOMY_FONT_NORMAL, size: 13)
             label.textColor = Const.RANKING_SECOND_RIGHT_COLOR
             
             switch indexPath.section {
-            case OnetimeSections.Budget.hashValue:
+            case OnetimeSections.budget.hashValue:
                 label.text = NSLocalizedString("BudgetTitle", comment: "")
-            case OnetimeSections.People.hashValue:
+            case OnetimeSections.people.hashValue:
                 label.text = NSLocalizedString("NumOfPeopleTitle", comment: "")
-            case OnetimeSections.Genre.hashValue:
+            case OnetimeSections.genre.hashValue:
                 label.text = NSLocalizedString("GenreTitle", comment: "")
             default: break
             }

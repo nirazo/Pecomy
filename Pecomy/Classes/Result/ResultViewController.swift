@@ -11,7 +11,7 @@ import Alamofire
 import SnapKit
 
 protocol ResultViewControllerDelegate {
-    func resultViewController(controller: ResultViewController, backButtonTappedWithReset reset: Bool)
+    func resultViewController(_ controller: ResultViewController, backButtonTappedWithReset reset: Bool)
 }
 
 class ResultViewController: UIViewController {
@@ -37,9 +37,9 @@ class ResultViewController: UIViewController {
     
     let topHeaderBaseView = UIView()
     
-    let firstRankHeader = ResultHeaderView(frame: CGRectZero, section: 0)
+    let firstRankHeader = ResultHeaderView(frame: .zero, section: 0)
     
-    let secondRankHeader = ResultHeaderView(frame: CGRectZero, section: 1)
+    let secondRankHeader = ResultHeaderView(frame: .zero, section: 1)
     
     var commentView: CommentContentView?
     
@@ -62,10 +62,10 @@ class ResultViewController: UIViewController {
         self.navigationController?.makeNavigationBarDefault()
         
         if (displayMessage.isEmpty) {
-            let continueButton = UIBarButtonItem(title: R.string.localizable.continueString(), style: .Plain, target: self, action: #selector(ResultViewController.continueTapped))
+            let continueButton = UIBarButtonItem(title: R.string.localizable.continueString(), style: .plain, target: self, action: #selector(ResultViewController.continueTapped))
             self.navigationItem.leftBarButtonItem = continueButton
         } else {
-            let resetButton = UIBarButtonItem(title: R.string.localizable.reset(), style: .Plain, target: self, action: #selector(ResultViewController.resetTapped))
+            let resetButton = UIBarButtonItem(title: R.string.localizable.reset(), style: .plain, target: self, action: #selector(ResultViewController.resetTapped))
             self.navigationItem.leftBarButtonItem = resetButton
         }
         
@@ -78,15 +78,15 @@ class ResultViewController: UIViewController {
         }
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         // Google Analytics
-        let tracker = GAI.sharedInstance().defaultTracker
-        tracker.set(kGAIScreenName, value: self.ANALYTICS_TRACKING_CODE)
-        
-        let builder = GAIDictionaryBuilder.createScreenView()
-        tracker.send(builder.build() as [NSObject : AnyObject])
+        if let tracker = GAI.sharedInstance().defaultTracker{
+            tracker.set(kGAIDescription, value: self.ANALYTICS_TRACKING_CODE)
+            let builder: NSObject = GAIDictionaryBuilder.createScreenView().build()
+            tracker.send(builder as! [NSObject : AnyObject])
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -95,11 +95,11 @@ class ResultViewController: UIViewController {
     }
     
     // 結果が存在する場合のレイアウト
-    private func setupLayout() {
+    fileprivate func setupLayout() {
         self.scrollView.contentInset = UIEdgeInsetsMake(0, 0, 32, 0)
         self.scrollView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.scrollView)
-        self.scrollView.snp_makeConstraints { (make) in
+        self.scrollView.snp.makeConstraints { (make) in
             make.width.equalTo(self.view)
             make.centerX.equalTo(self.view)
             make.top.equalTo(self.view)
@@ -114,7 +114,7 @@ class ResultViewController: UIViewController {
             make.top.equalTo(self.scrollView)
         }
         
-        self.topHeaderBaseView.backgroundColor = .clearColor()
+        self.topHeaderBaseView.backgroundColor = .clear
         self.contentView.addSubview(self.topHeaderBaseView)
         self.topHeaderBaseView.snp_makeConstraints { make in
             make.top.equalTo(self.contentView)
@@ -162,7 +162,7 @@ class ResultViewController: UIViewController {
             reviewSubject = self.restaurants[0].reviewSubjects[0]
             commentViewHeight = 40
         }
-        self.commentView = CommentContentView(frame: CGRectZero, comment: reviewSubject, backgroundColor: Const.PECOMY_RANK_COLOR[0], textColor: UIColor.whiteColor())
+        self.commentView = CommentContentView(frame: .zero, comment: reviewSubject, backgroundColor: Const.PECOMY_RANK_COLOR[0], textColor: .white)
         self.contentView.addSubview(self.commentView!)
         self.commentView?.snp_makeConstraints{ (make) in
             make.top.equalTo(self.topResultCard!.snp_bottom).offset(10)
@@ -172,7 +172,7 @@ class ResultViewController: UIViewController {
         }
         
         // その他のベースとなるビュー
-        self.otherResultsBaseView.backgroundColor = UIColor.clearColor()
+        self.otherResultsBaseView.backgroundColor = .clear
         self.contentView.addSubview(self.otherResultsBaseView)
         self.otherResultsBaseView.snp_makeConstraints { (make) in
             make.top.equalTo(self.commentView!.snp_bottom)
@@ -182,7 +182,7 @@ class ResultViewController: UIViewController {
             make.right.equalTo(self.topResultCard!)
         }
         if self.restaurants.count < 2 {
-            self.otherResultsBaseView.hidden = true
+            self.otherResultsBaseView.isHidden = true
         } else {
             self.otherResultsBaseView.addSubview(self.secondRankHeader)
             self.secondRankHeader.snp_makeConstraints { (make) in
@@ -193,7 +193,7 @@ class ResultViewController: UIViewController {
                 make.top.equalTo(self.otherResultsBaseView).offset(18)
             }
             let otherRestaurants = [Restaurant](self.restaurants[1...self.restaurants.count-1])
-            self.otherResultsCard = OtherResultsCard(frame: CGRectZero, restaurants: otherRestaurants, delegate: self)
+            self.otherResultsCard = OtherResultsCard(frame: .zero, restaurants: otherRestaurants, delegate: self)
             self.otherResultsCard!.delegate = self
             self.otherResultsBaseView.addSubview(self.otherResultsCard!)
             self.otherResultsCard!.snp_makeConstraints { (make) in
@@ -207,13 +207,13 @@ class ResultViewController: UIViewController {
     }
     
     // 結果が0件の時のレイアウト
-    private func layoutNoResult() {
+    fileprivate func layoutNoResult() {
         let label = UILabel()
         label.text = NSLocalizedString("NoResultAlertTitle", comment: "")
         label.font = UIFont(name: Const.PECOMY_FONT_NORMAL, size: 17)
         label.numberOfLines = 0
         label.sizeToFit()
-        label.textColor = UIColor.grayColor()
+        label.textColor = .gray
         self.contentView.addSubview(label)
 
         label.snp_makeConstraints { (make) in
@@ -240,41 +240,41 @@ class ResultViewController: UIViewController {
     func showNoResultAlert() {
         let alertController = UIAlertController(title:NSLocalizedString("NoResultAlertTitle", comment: ""),
             message: NSLocalizedString("NoResultAlertMessage", comment: ""),
-            preferredStyle: .Alert)
+            preferredStyle: .alert)
         let okAction = UIAlertAction(title: NSLocalizedString("OK", comment: ""),
-            style: .Default, handler: nil)
+            style: .default, handler: nil)
         alertController.addAction(okAction)
-        self.presentViewController(alertController, animated: true, completion: nil)
+        self.present(alertController, animated: true, completion: nil)
     }
     
-    private func openDetailViewController(restaurant: Restaurant) {
+    fileprivate func openDetailViewController(_ restaurant: Restaurant) {
         let detailVC = DetailViewController(restaurant: restaurant)
         detailVC.navigationItem.title = restaurant.shopName
-        let backButtonItem = UIBarButtonItem(title: NSLocalizedString("Back", comment: ""), style: .Plain, target: nil, action: nil)
+        let backButtonItem = UIBarButtonItem(title: NSLocalizedString("Back", comment: ""), style: .plain, target: nil, action: nil)
         self.navigationItem.backBarButtonItem = backButtonItem
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
     
-    private func displayAlertWithMessage(message: String) {
+    fileprivate func displayAlertWithMessage(_ message: String) {
         let alertController = UIAlertController(title:nil,
                                                 message: message,
-                                                preferredStyle: .Alert)
+                                                preferredStyle: .alert)
         let okAction = UIAlertAction(title: NSLocalizedString("OK", comment: ""),
-                                     style: .Default, handler: nil)
+                                     style: .default, handler: nil)
         alertController.addAction(okAction)
-        self.presentViewController(alertController, animated: true, completion: nil)
+        self.present(alertController, animated: true, completion: nil)
     }
 }
 
 // MARK:- OtherResultCardDelegate method
 extension ResultViewController: OtherResultCardDelegate {
-    func contentTapped(restaurant: Restaurant) {
+    func contentTapped(_ restaurant: Restaurant) {
         self.openDetailViewController(restaurant)
     }
 }
 
 extension ResultViewController: ResultCardBaseDelegate {
-    func detailButtonTapped(restaurant: Restaurant) {
+    func detailButtonTapped(_ restaurant: Restaurant) {
         self.openDetailViewController(restaurant)
     }
 }

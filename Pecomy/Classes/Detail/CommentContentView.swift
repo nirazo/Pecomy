@@ -16,10 +16,10 @@ class CommentContentView: UIView {
     var comment = ""
     let contentView = UIView()
     var commentLabel = UILabel()
-    var commentBgColor = UIColor.whiteColor()
+    var commentBgColor = UIColor.white
     var commentTextColor = Const.PECOMY_RANK_COLOR[0]
     
-    init(frame: CGRect, comment: String, backgroundColor: UIColor = UIColor.whiteColor(), textColor: UIColor = Const.PECOMY_RANK_COLOR[0]) {
+    init(frame: CGRect, comment: String, backgroundColor: UIColor = UIColor.white, textColor: UIColor = Const.PECOMY_RANK_COLOR[0]) {
         super.init(frame: frame)
         
         self.comment = comment
@@ -27,12 +27,12 @@ class CommentContentView: UIView {
         self.commentTextColor = textColor
         
         // パーツ群を置くビュー
-        self.contentView.backgroundColor = UIColor.clearColor()
+        self.contentView.backgroundColor = UIColor.clear
         self.contentView.layer.masksToBounds = true
         
         self.addSubview(contentView)
         
-        self.backgroundColor = UIColor.clearColor()
+        self.backgroundColor = UIColor.clear
         self.layer.masksToBounds = false
         
         self.setupSubViews()
@@ -42,7 +42,7 @@ class CommentContentView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setupSubViews() {
+    fileprivate func setupSubViews() {
                 
         self.contentView.snp_makeConstraints { (make) in
             make.size.equalTo(self)
@@ -51,7 +51,7 @@ class CommentContentView: UIView {
         }
         
         self.imageView.image = self.pickCommentIcon()
-        self.imageView.contentMode = .ScaleAspectFill
+        self.imageView.contentMode = .scaleAspectFill
         self.imageView.clipsToBounds = true
         self.contentView.addSubview(self.imageView)
         self.imageView.snp_makeConstraints { (make) in
@@ -92,7 +92,7 @@ class CommentContentView: UIView {
         }
     }
     
-    private func pickCommentIcon() -> UIImage {
+    fileprivate func pickCommentIcon() -> UIImage {
         let n = arc4random() % 10 + 1
         return UIImage(named: "comment_human\(n)")!
     }

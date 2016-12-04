@@ -12,7 +12,7 @@ import MDCSwipeToChoose
 import SnapKit
 
 protocol CardViewDelegate {
-    func blackListButtonTapped(card: CardView, shopID: Int)
+    func blackListButtonTapped(_ card: CardView, shopID: Int)
 }
 
 class CardView: MDCSwipeToChooseView {
@@ -53,7 +53,7 @@ class CardView: MDCSwipeToChooseView {
         
         for _ in 0..<self.NUM_OF_IMAGES {
             let imageView = UIImageView(image: R.image.noimage())
-            imageView.contentMode = .ScaleAspectFill
+            imageView.contentMode = .scaleAspectFill
             imageView.clipsToBounds = true
             imageView.backgroundColor = Const.PECOMY_CARD_IMAGE_BACK_COLOR
             self.restaurantImageViews.append(imageView)
@@ -87,22 +87,22 @@ class CardView: MDCSwipeToChooseView {
         // ドロップシャドウ
         self.shadow.frame = self.bounds
         shadow.layer.masksToBounds = false
-        self.insertSubview(self.shadow, atIndex: 0)
-        shadow.backgroundColor = UIColor.whiteColor()
+        self.insertSubview(self.shadow, at: 0)
+        shadow.backgroundColor = UIColor.white
         shadow.layer.cornerRadius = 5.0
-        shadow.layer.shadowOffset = CGSizeMake(0.5, 1.0)
+        shadow.layer.shadowOffset = CGSize(width: 0.5, height: 1.0)
         shadow.layer.shadowRadius = 0.7
-        shadow.layer.shadowColor = UIColor.grayColor().CGColor
+        shadow.layer.shadowColor = UIColor.gray.cgColor
         shadow.layer.shadowOpacity = 0.9
         
         // パーツ群を置くビュー
         self.contentView = UIView(frame: self.bounds)
-        self.contentView.backgroundColor = UIColor.whiteColor()
+        self.contentView.backgroundColor = UIColor.white
         
         self.contentView.layer.cornerRadius = 5.0
         self.contentView.layer.masksToBounds = true
         
-        self.insertSubview(self.contentView, atIndex: 1)
+        self.insertSubview(self.contentView, at: 1)
         
         // 画像
         for i in 0..<NUM_OF_IMAGES {
@@ -116,10 +116,10 @@ class CardView: MDCSwipeToChooseView {
         
         #if !RELEASE
         // ブラックリストボタン(Releaseバージョンには乗せない)
-        self.blackListButton.setImage(R.image.nogood_normal(), forState: .Normal)
-        self.blackListButton.setImage(R.image.nogood_tapped(), forState: .Highlighted)
-        self.blackListButton.setImage(R.image.nogood_highlighted(), forState: .Disabled)
-        self.blackListButton.addTarget(self, action: #selector(CardView.blackListButtonTapped), forControlEvents: .TouchUpInside)
+        self.blackListButton.setImage(R.image.nogood_normal(), for: .normal)
+        self.blackListButton.setImage(R.image.nogood_tapped(), for: .highlighted)
+        self.blackListButton.setImage(R.image.nogood_highlighted(), for: .disabled)
+        self.blackListButton.addTarget(self, action: #selector(CardView.blackListButtonTapped), for: .touchUpInside)
         self.contentView.addSubview(self.blackListButton)
         
         self.blackListButton.snp_makeConstraints { (make) in
@@ -135,26 +135,27 @@ class CardView: MDCSwipeToChooseView {
     }
     
     func acquireImages() {
-        let loopCount = self.restaurant!.imageUrls.count < NUM_OF_IMAGES ? self.restaurant!.imageUrls.count: NUM_OF_IMAGES
+        guard let restaurant = self.restaurant else { return }
+        let loopCount = restaurant.imageUrls.count < NUM_OF_IMAGES ? restaurant.imageUrls.count: NUM_OF_IMAGES
         for i in 0..<loopCount {
             let loadingIndicator = UIActivityIndicatorView()
-            loadingIndicator.activityIndicatorViewStyle = .WhiteLarge
+            loadingIndicator.activityIndicatorViewStyle = .whiteLarge
             loadingIndicator.hidesWhenStopped = true
             self.restaurantImageViews[i].addSubview(loadingIndicator)
-            loadingIndicator.snp_makeConstraints { make in
+            loadingIndicator.snp.makeConstraints { make in
                 make.center.equalTo(self.restaurantImageViews[i])
                 make.width.height.equalTo(50)
             }
             loadingIndicator.startAnimating()
-            self.restaurantImageViews[i].sd_setImageWithURL(NSURL(string: self.restaurant!.imageUrls[i]), completed: {[weak self](image: UIImage!, error: NSError!, cacheType: SDImageCacheType, imageURL: NSURL!) in
+            self.restaurantImageViews[i].sd_setImage(with: URL(string: restaurant.imageUrls[i])) { [weak self] (image, error, imageCacheType, imageUrl) in
                 guard let strongSelf = self else { return }
                 strongSelf.restaurantImageViews[i].alpha = 0
-                UIView.animateWithDuration(0.5, delay: 0.0, options: .CurveEaseInOut, animations: {() -> Void in
-                    strongSelf.restaurantImageViews[i].contentMode = .ScaleAspectFill
+                UIView.animate(withDuration: 0.5, delay: 0.0, options:  [.curveEaseIn, .curveEaseOut], animations: {() -> Void in
+                    strongSelf.restaurantImageViews[i].contentMode = .scaleAspectFill
                     strongSelf.restaurantImageViews[i].alpha = 1
                     }, completion: nil)
                 loadingIndicator.stopAnimating()
-                })
+                }
         }
     }
     
@@ -167,7 +168,7 @@ class CardView: MDCSwipeToChooseView {
     func constructLikedVieww() {
 
         self.likedView.removeFromSuperview()
-        let frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)
+        let frame = CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height)
         self.likedView = UIView(frame: frame)
         self.likedView.backgroundColor = UIColor(red: 230.0/255.0, green: 77.0/255.0, blue: 74.0/255.0, alpha:1.0)
         self.likedView.alpha = 0.0
@@ -177,20 +178,20 @@ class CardView: MDCSwipeToChooseView {
         self.likedLabelView = CardOverlayTextLabelView(
             frame: CGRect(x: MDCSwipeToChooseViewHorizontalPadding,
                 y: MDCSwipeToChooseViewTopPadding,
-                width: CGRectGetMidX(self.bounds),
+                width: self.bounds.midX,
                 height: MDCSwipeToChooseViewLabelHeight),
             text: self.options.likedText)
         
         self.likedLabelView.alpha = 0.0
         self.addSubview(self.likedLabelView)
 
-        self.likedLabelView.transform = CGAffineTransformRotate(CGAffineTransformIdentity, CGFloat(Double(self.options.likedRotationAngle)*(M_PI/180.0)))
+        self.likedLabelView.transform = CGAffineTransform.identity.rotated(by: CGFloat(Double(self.options.likedRotationAngle)*(M_PI/180.0)))
     }
     
     // 「イマイチ」の時にかぶせるビュー
     func constructNopeView() {
         self.nopeView.removeFromSuperview()
-        let frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)
+        let frame = CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height)
         self.nopeView = UIView(frame: frame)
         self.nopeView.backgroundColor = UIColor(red: 75.0/255.0, green: 140.0/255.0, blue: 231.0/255.0, alpha: 1.0)
         self.nopeView.alpha = 0.0
@@ -198,25 +199,25 @@ class CardView: MDCSwipeToChooseView {
         self.addSubview(self.nopeView)
         
         
-        let width = CGRectGetMidX(self.bounds);
-        let xOrigin = CGRectGetMaxX(self.bounds) - width - MDCSwipeToChooseViewHorizontalPadding
+        let width = self.bounds.midX;
+        let xOrigin = self.bounds.maxX - width - MDCSwipeToChooseViewHorizontalPadding
         
         self.nopeLabelView = CardOverlayTextLabelView(frame: CGRect(
             x: xOrigin,
             y: MDCSwipeToChooseViewTopPadding,
-            width: CGRectGetMidX(self.bounds),
+            width: self.bounds.midX,
             height: MDCSwipeToChooseViewLabelHeight),
             text: self.options.nopeText)
         
         self.nopeLabelView.alpha = 0.0
         self.addSubview(self.nopeLabelView)
         
-        self.nopeLabelView.transform = CGAffineTransformRotate(CGAffineTransformIdentity, CGFloat(Double(self.options.nopeRotationAngle)*(M_PI/180.0)))
+        self.nopeLabelView.transform = CGAffineTransform.identity.rotated(by: CGFloat(Double(self.options.nopeRotationAngle)*(M_PI/180.0)))
     }
     
     
     //setup
-    private func setupSwipeToChoose() {
+    fileprivate func setupSwipeToChoose() {
         let options = MDCSwipeOptions()
         options.delegate = self.options.delegate
         options.threshold = self.options.threshold
@@ -225,19 +226,19 @@ class CardView: MDCSwipeToChooseView {
             guard let strongSelf = self else {
                 return
             }
-            if (state.direction == .None) {
+            if (state?.direction == .none) {
                 strongSelf.likedView.alpha = 0.0
                 strongSelf.likedLabelView.alpha = 0.0
                 strongSelf.nopeView.alpha = 0.0
                 strongSelf.nopeLabelView.alpha = 0.0
-            } else if (state.direction == .Left) {
+            } else if (state?.direction == .left) {
                 strongSelf.likedView.alpha = 0.0
                 strongSelf.likedLabelView.alpha = 0.0
-                strongSelf.nopeView.alpha = state.thresholdRatio/2
-                strongSelf.nopeLabelView.alpha = state.thresholdRatio
-            } else if (state.direction == .Right) {
-                strongSelf.likedView.alpha = state.thresholdRatio/2
-                strongSelf.likedLabelView.alpha = state.thresholdRatio
+                strongSelf.nopeView.alpha = (state?.thresholdRatio)!/2
+                strongSelf.nopeLabelView.alpha = (state?.thresholdRatio)!
+            } else if (state?.direction == .right) {
+                strongSelf.likedView.alpha = (state?.thresholdRatio)!/2
+                strongSelf.likedLabelView.alpha = (state?.thresholdRatio)!
                 strongSelf.nopeView.alpha = 0.0
                 strongSelf.nopeLabelView.alpha = 0.0
             }
@@ -246,6 +247,6 @@ class CardView: MDCSwipeToChooseView {
                 strongSelf.options.onPan(state);
             }
         }
-        self.mdc_swipeToChooseSetup(options)
+        self.mdc_swipe(toChooseSetup: options)
     }
 }

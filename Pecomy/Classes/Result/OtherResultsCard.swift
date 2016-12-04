@@ -10,20 +10,20 @@ import UIKit
 import SDWebImage
 
 protocol OtherResultCardDelegate {
-    func contentTapped(restaurant: Restaurant)
+    func contentTapped(_ restaurant: Restaurant)
 }
 
 class OtherResultsCard: UIView {
     
-    private let shadow = UIView()
+    fileprivate let shadow = UIView()
     let contentView = UIView()
-    private let CORNER_RADIUS: CGFloat = 5.0
+    fileprivate let CORNER_RADIUS: CGFloat = 5.0
     
     // 描画系定数
-    private let NUM_OF_IMAGES = 1
-    private let TEXT_MARGIN_X: CGFloat = 10.0
-    private let TEXT_MARGIN_Y: CGFloat = 5.0
-    private let SEPARATOR_WIDTH: CGFloat = 1.0
+    fileprivate let NUM_OF_IMAGES = 1
+    fileprivate let TEXT_MARGIN_X: CGFloat = 10.0
+    fileprivate let TEXT_MARGIN_Y: CGFloat = 5.0
+    fileprivate let SEPARATOR_WIDTH: CGFloat = 1.0
     
     var restaurants = [Restaurant]()
     var restaurantsCards = [OtherResultCardContentView]()
@@ -38,21 +38,21 @@ class OtherResultsCard: UIView {
         // ドロップシャドウ
         self.shadow.layer.masksToBounds = false
         self.addSubview(shadow)
-        self.shadow.backgroundColor = UIColor.whiteColor()
+        self.shadow.backgroundColor = .white
         self.shadow.layer.cornerRadius = CORNER_RADIUS
         self.shadow.layer.shadowOpacity = 0.7
-        self.shadow.layer.shadowColor = UIColor.grayColor().CGColor
+        self.shadow.layer.shadowColor =  UIColor.gray.cgColor
         self.shadow.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
         
         // パーツ群を置くビュー
-        self.contentView.backgroundColor = UIColor.whiteColor()
+        self.contentView.backgroundColor = .white
         
         self.contentView.layer.cornerRadius = CORNER_RADIUS
         self.contentView.layer.masksToBounds = true
         
         self.addSubview(contentView)
 
-        self.backgroundColor = UIColor.whiteColor()
+        self.backgroundColor = .white
         self.layer.cornerRadius = CORNER_RADIUS
         self.layer.masksToBounds = false
         self.setupSubViews()
@@ -69,7 +69,7 @@ class OtherResultsCard: UIView {
             make.left.equalTo(self)
         }
         self.contentView.layer.frame = self.contentView.bounds
-        self.contentView.backgroundColor = UIColor.whiteColor()
+        self.contentView.backgroundColor = .white
         
         self.shadow.snp_makeConstraints { (make) in
             make.center.equalTo(self.contentView)
@@ -78,7 +78,7 @@ class OtherResultsCard: UIView {
         self.shadow.layer.frame = self.shadow.bounds
         
         for i in 0 ..< self.restaurants.count {
-            let content = OtherResultCardContentView(frame: CGRectZero, restaurant: self.restaurants[i])
+            let content = OtherResultCardContentView(frame: .zero, restaurant: self.restaurants[i])
             content.delegate = self
             self.restaurantsCards.append(content)
             self.contentView.addSubview(self.restaurantsCards[i])
@@ -96,7 +96,7 @@ class OtherResultsCard: UIView {
             }
             if (i != self.restaurants.count-1) {
                 // separator
-                let separator = UIView(frame: CGRectZero)
+                let separator = UIView(frame: .zero)
                 separator.backgroundColor = UIColor(red: 220/255.0, green: 220/255.0, blue: 220/255.0, alpha: 1.0)
                 self.contentView.addSubview(separator)
                 separator.snp_makeConstraints { (make) in
@@ -111,7 +111,7 @@ class OtherResultsCard: UIView {
 }
 
 extension OtherResultsCard: OtherResultCardContentDelegate {
-    func contentTapped(restaurant: Restaurant) {
+    func contentTapped(_ restaurant: Restaurant) {
         self.delegate?.contentTapped(restaurant)
     }
 }

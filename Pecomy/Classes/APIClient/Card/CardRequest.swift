@@ -13,12 +13,12 @@ class CardRequest: PecomyApiRequest {
     typealias Response = CardResponse
         
     var endpoint: String
-    var method: Alamofire.Method = Method.GET
-    var params: [String: AnyObject] = [:]
-    var encoding: ParameterEncoding = ParameterEncoding.URL
+    var method: HTTPMethod = .get
+    var params: [String: Any] = [:]
+    var encoding: ParameterEncoding = URLEncoding.default
     
     
-    init(latitude: Double, longitude: Double, like: String? = nil, maxBudget: Budget = .Unspecified, numOfPeople: NumOfPeople = .One, genre: Genre = .All, syncId: String? = nil, reset: Bool = false) {
+    init(latitude: Double, longitude: Double, like: String? = nil, maxBudget: Budget = .unspecified, numOfPeople: NumOfPeople = .one, genre: Genre = .all, syncId: String? = nil, reset: Bool = false) {
         endpoint = "card"
         params = [
             "device_id" : Utils.acquireDeviceID(),
@@ -32,37 +32,37 @@ class CardRequest: PecomyApiRequest {
         if let like = like {
             params["answer"] = like
         }
-        if (genre != .All) {
+        if (genre != .all) {
             params["select_category_group"] = self.genreRequestValue(genre)
         }
-        if (maxBudget != .Unspecified) {
+        if (maxBudget != .unspecified) {
             params["onetime_price_max"] = self.budgetRequestValue(maxBudget)
         }
     }
     
     //MARK:- Request param's value string for each query
-    private func budgetRequestValue(budget: Budget) -> String {
+    fileprivate func budgetRequestValue(_ budget: Budget) -> String {
         switch budget {
-        case .Unspecified:
+        case .unspecified:
             return ""
-        case .LessThanThousand:
+        case .lessThanThousand:
             return "1000"
-        case .LessThanTwoThousand:
+        case .lessThanTwoThousand:
             return "2000"
         default:
             return ""
         }
     }
     
-    private func genreRequestValue(genre: Genre) -> String {
+    fileprivate func genreRequestValue(_ genre: Genre) -> String {
         switch genre {
-        case .All:
+        case .all:
             return "all"
-        case .Cafe:
+        case .cafe:
             return "cafe"
-        case .Drinking:
+        case .drinking:
             return "drinking"
-        case .Restaurant:
+        case .restaurant:
             return "restaurant"
 //        case .Ramen:
 //            return "ramen"
@@ -71,13 +71,13 @@ class CardRequest: PecomyApiRequest {
         }
     }
     
-    private func numOfPeopleRequestValue(numOfpeople: NumOfPeople) -> String {
+    fileprivate func numOfPeopleRequestValue(_ numOfpeople: NumOfPeople) -> String {
         switch numOfpeople {
-        case .One:
+        case .one:
             return "1"
-        case .Two:
+        case .two:
             return "2"
-        case .MoreThanThree:
+        case .moreThanThree:
             return ""
         default:
             return ""

@@ -10,20 +10,20 @@ import Foundation
 
 class BrowsesModel {
     
-    private var session: PecomyApiClient.Session?
+    fileprivate var session: PecomyApiClient.Session?
     
     init() {
     }
     
-    func fetch(latitude: Double, longitude: Double, orderBy: RestaurantListOrder, handler: ((PecomyResult<[Restaurant], PecomyApiClientError>) -> Void)) -> Bool {
+    func fetch(_ latitude: Double, longitude: Double, orderBy: RestaurantListOrder, handler: @escaping ((PecomyResult<[Restaurant], PecomyApiClientError>) -> Void)) -> Bool {
         let request = BrowsesGetRequest(latitude: latitude, longitude: longitude, orderBy: orderBy)
         self.session = PecomyApiClient.send(request) { [weak self] (response: PecomyResult<BrowsesGetRequest.Response, PecomyApiClientError>) -> Void in
             guard let strongSelf = self else { return }
             
             switch response {
-            case .Success(let value):
+            case .success(let value):
                 handler(PecomyResult(value: value.browses))
-            case .Failure(let error):
+            case .failure(let error):
                 // TODO: エラーコードによってエラーメッセージ詰めたりする
                 handler(PecomyResult(error: error))
             }
@@ -32,15 +32,15 @@ class BrowsesModel {
         return true
     }
     
-    func register(shopId shopId: Int, handler: ((PecomyResult<PecomyApiResponse, PecomyApiClientError>) -> Void)) -> Bool {
+    func register(_ shopId: Int, handler: @escaping ((PecomyResult<PecomyApiResponse, PecomyApiClientError>) -> Void)) -> Bool {
         let request = BrowsesPutRequest(shopID: shopId)
         self.session = PecomyApiClient.send(request) { [weak self] (response: PecomyResult<BrowsesPutRequest.Response, PecomyApiClientError>) -> Void in
             guard let strongSelf = self else { return }
             
             switch response {
-            case .Success(let response):
+            case .success(let response):
                 handler(PecomyResult(value: response))
-            case .Failure(let error):
+            case .failure(let error):
                 // TODO: エラーコードによってエラーメッセージ詰めたりする
                 handler(PecomyResult(error: error))
             }

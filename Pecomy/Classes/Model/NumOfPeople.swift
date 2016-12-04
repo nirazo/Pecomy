@@ -9,15 +9,15 @@
 import UIKit
 
 enum NumOfPeople: Int {
-    case One, Two, MoreThanThree, _counter
+    case one, two, moreThanThree, _counter
     
     func valueForDisplay() -> String {
         switch self {
-        case .One:
+        case .one:
             return NSLocalizedString("OnePerson", comment: "")
-        case .Two:
+        case .two:
             return NSLocalizedString("TwoPeople", comment: "")
-        case .MoreThanThree:
+        case .moreThanThree:
             return NSLocalizedString("OverThreePeople", comment: "")
         default:
             return ""

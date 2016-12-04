@@ -13,9 +13,9 @@ class BrowsesPutRequest: PecomyApiRequest {
     typealias Response = BrowsesPutResponse
     
     var endpoint: String
-    var method: Alamofire.Method = .PUT
-    var params: [String: AnyObject] = [:]
-    var encoding: ParameterEncoding = .URL
+    var method: HTTPMethod = .put
+    var params: [String: Any] = [:]
+    var encoding: ParameterEncoding = URLEncoding.default
     
     init(shopID: Int) {
         endpoint = "/user/browses"

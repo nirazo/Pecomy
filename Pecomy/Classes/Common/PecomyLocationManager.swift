@@ -11,9 +11,9 @@ import CoreLocation
 
 //possible errors
 enum PecomyLocationManagerErrors: Int {
-    case AuthorizationDenied
-    case AuthorizationNotDetermined
-    case InvalidLocation
+    case authorizationDenied
+    case authorizationNotDetermined
+    case invalidLocation
 }
 
 protocol PecomyLocationManagerDelegate {
@@ -22,7 +22,7 @@ protocol PecomyLocationManagerDelegate {
 
 class PecomyLocationManager: NSObject, CLLocationManagerDelegate {
     
-    private var locationManager: CLLocationManager?
+    fileprivate var locationManager: CLLocationManager?
     var delegate: PecomyLocationManagerDelegate!
     
     deinit {
@@ -30,67 +30,67 @@ class PecomyLocationManager: NSObject, CLLocationManagerDelegate {
         locationManager = nil
     }
     
-    typealias LocationClosure = (location: CLLocation?)->()
-    typealias LocationErrorClosure = (error: NSError?)->()
-    private var didCompleteWithSuccess = LocationClosure?()
-    private var didCompleteWithFailure = LocationErrorClosure?()
+    typealias LocationClosure = (CLLocation?) -> Void
+    typealias LocationErrorClosure = (Error?) -> Void
+    fileprivate var didCompleteWithSuccess: LocationClosure?
+    fileprivate var didCompleteWithFailure: LocationErrorClosure?
     
     
-    private func didCompleteWithSuccess(location: CLLocation?) {
+    fileprivate func didCompleteWithSuccess(_ location: CLLocation?) {
         locationManager?.stopUpdatingLocation()
         #if FIXED_LOCATION
             let stubLocation = CLLocation(latitude: Const.FIXED_LATITUDE, longitude: Const.FIXED_LONGITUDE)
             didCompleteWithSuccess?(location: stubLocation)
         #else
-            didCompleteWithSuccess?(location: location)
+            didCompleteWithSuccess?(location)
         #endif
         locationManager?.delegate = nil
         locationManager = nil
     }
     
-    private func didCompleteWithError(error: NSError?) {
+    fileprivate func didCompleteWithError(_ error: Error?) {
         locationManager?.stopUpdatingLocation()
         #if FIXED_LOCATION
             let stubLocation = CLLocation(latitude: Const.FIXED_LATITUDE, longitude: Const.FIXED_LONGITUDE)
             didCompleteWithSuccess?(location: stubLocation)
         #else
-            didCompleteWithFailure?(error: error)
+            didCompleteWithFailure?(error)
         #endif
         locationManager?.delegate = nil
         locationManager = nil
     }
     
-    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+    internal func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
-        case .NotDetermined:
+        case .notDetermined:
             self.requestPermission()
             break
-        case .AuthorizedWhenInUse, .AuthorizedAlways:
+        case .authorizedWhenInUse, .authorizedAlways:
             self.locationManager!.startUpdatingLocation()
             break
-        case .Denied, .Restricted:
+        case .denied, .restricted:
             self.delegate.showLocationEnableAlert()
             break
         }
     }
     
-    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         didCompleteWithError(error)
     }
     
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    internal func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
             if (-(location.timestamp.timeIntervalSinceNow) < 15.0) {
                 didCompleteWithSuccess(location)
             }
         } else {
             didCompleteWithError(NSError(domain: self.classForCoder.description(),
-                code: PecomyLocationManagerErrors.InvalidLocation.rawValue,
+                code: PecomyLocationManagerErrors.invalidLocation.rawValue,
                 userInfo: nil))
         }
     }
     
-    func fetchWithCompletion(success: LocationClosure, failure: LocationErrorClosure) {
+    func fetchWithCompletion(_ success: @escaping LocationClosure, failure: @escaping LocationErrorClosure) {
         
         if (!CLLocationManager.locationServicesEnabled()) {
             delegate.showLocationEnableAlert()
@@ -105,10 +105,10 @@ class PecomyLocationManager: NSObject, CLLocationManagerDelegate {
     }
     
     
-    private func requestPermission() {
-        if (NSBundle.mainBundle().objectForInfoDictionaryKey("NSLocationWhenInUseUsageDescription") != nil) {
+    fileprivate func requestPermission() {
+        if (Bundle.main.object(forInfoDictionaryKey: "NSLocationWhenInUseUsageDescription") != nil) {
             locationManager!.requestWhenInUseAuthorization()
-        } else if (NSBundle.mainBundle().objectForInfoDictionaryKey("NSLocationAlwaysUsageDescription") != nil) {
+        } else if (Bundle.main.object(forInfoDictionaryKey: "NSLocationAlwaysUsageDescription") != nil) {
             locationManager!.requestAlwaysAuthorization()
         } else {
             fatalError("To use location in iOS8 you need to define either NSLocationWhenInUseUsageDescription or NSLocationAlwaysUsageDescription in the app bundle's Info.plist file")

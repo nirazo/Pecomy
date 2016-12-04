@@ -15,8 +15,8 @@ class RestaurantLogViewController: UIViewController {
         self.view.backgroundColor = Const.PECOMY_BASIC_BACKGROUND_COLOR
         
         // navbar透明化
-        self.navigationController?.navigationBar.tintColor = UIColor.clearColor()
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        self.navigationController?.navigationBar.tintColor = UIColor.clear
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationItem.title = "log"
         // Do any additional setup after loading the view.
