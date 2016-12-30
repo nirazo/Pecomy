@@ -16,7 +16,7 @@ public protocol PecomyApiRequest {
     var method: HTTPMethod{ get }
     var encoding: ParameterEncoding{ get }
     var headerParams: [String:String] { get }
-    var params: [String:AnyObject]{ get }
+    var params: [String:Any]{ get }
 }
 
 extension PecomyApiRequest {

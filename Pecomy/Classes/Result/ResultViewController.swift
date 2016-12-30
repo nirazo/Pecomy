@@ -108,7 +108,7 @@ class ResultViewController: UIViewController {
         }
         
         self.scrollView.addSubview(self.contentView)
-        self.contentView.snp_makeConstraints { (make) in
+        self.contentView.snp.makeConstraints { (make) in
             make.width.equalTo(self.scrollView)
             make.centerX.equalTo(self.scrollView)
             make.top.equalTo(self.scrollView)
@@ -116,7 +116,7 @@ class ResultViewController: UIViewController {
         
         self.topHeaderBaseView.backgroundColor = .clear
         self.contentView.addSubview(self.topHeaderBaseView)
-        self.topHeaderBaseView.snp_makeConstraints { make in
+        self.topHeaderBaseView.snp.makeConstraints { make in
             make.top.equalTo(self.contentView)
             make.width.equalTo(self.contentView)
             make.centerX.equalTo(self.contentView)
@@ -126,7 +126,7 @@ class ResultViewController: UIViewController {
         if (!self.displayMessage.isEmpty) {
             let messageLabelView = ResultMessageHeaderView(message: self.displayMessage)
             self.topHeaderBaseView.addSubview(messageLabelView)
-            messageLabelView.snp_makeConstraints { make in
+            messageLabelView.snp.makeConstraints { make in
                 make.top.equalTo(self.topHeaderBaseView)
                 make.left.equalTo(self.topHeaderBaseView)
                 make.bottom.equalTo(self.topHeaderBaseView)
@@ -136,7 +136,7 @@ class ResultViewController: UIViewController {
         } else {
             // 1位
             self.topHeaderBaseView.addSubview(self.firstRankHeader)
-            self.firstRankHeader.snp_makeConstraints { make in
+            self.firstRankHeader.snp.makeConstraints { make in
                 make.top.equalTo(self.topHeaderBaseView).offset(16)
                 make.left.equalTo(self.topHeaderBaseView).offset(16)
                 make.right.equalTo(self.topHeaderBaseView).offset(-16)
@@ -147,10 +147,10 @@ class ResultViewController: UIViewController {
         self.topResultCard = TopResultCard.instance()
         self.topResultCard?.setup(self.restaurants[0])
         self.contentView.addSubview(topResultCard!)
-        self.topResultCard?.snp_makeConstraints { make in
+        self.topResultCard?.snp.makeConstraints { make in
             make.width.equalTo(self.contentView).offset(-RESULT_MARGIN*2)
             make.centerX.equalTo(self.contentView)
-            make.top.equalTo(self.topHeaderBaseView.snp_bottom).offset(8)
+            make.top.equalTo(self.topHeaderBaseView.snp.bottom).offset(8)
             make.height.greaterThanOrEqualTo(100)
         }
         self.topResultCard?.setupSubViews()
@@ -164,8 +164,8 @@ class ResultViewController: UIViewController {
         }
         self.commentView = CommentContentView(frame: .zero, comment: reviewSubject, backgroundColor: Const.PECOMY_RANK_COLOR[0], textColor: .white)
         self.contentView.addSubview(self.commentView!)
-        self.commentView?.snp_makeConstraints{ (make) in
-            make.top.equalTo(self.topResultCard!.snp_bottom).offset(10)
+        self.commentView?.snp.makeConstraints{ (make) in
+            make.top.equalTo(self.topResultCard!.snp.bottom).offset(10)
             make.left.equalTo(self.topResultCard!)
             make.width.equalTo(self.topResultCard!)
             make.height.equalTo(commentViewHeight)
@@ -174,8 +174,8 @@ class ResultViewController: UIViewController {
         // その他のベースとなるビュー
         self.otherResultsBaseView.backgroundColor = .clear
         self.contentView.addSubview(self.otherResultsBaseView)
-        self.otherResultsBaseView.snp_makeConstraints { (make) in
-            make.top.equalTo(self.commentView!.snp_bottom)
+        self.otherResultsBaseView.snp.makeConstraints { (make) in
+            make.top.equalTo(self.commentView!.snp.bottom)
             make.left.equalTo(self.topResultCard!)
             make.width.equalTo(self.topResultCard!)
             make.bottom.equalTo(self.contentView)
@@ -185,7 +185,7 @@ class ResultViewController: UIViewController {
             self.otherResultsBaseView.isHidden = true
         } else {
             self.otherResultsBaseView.addSubview(self.secondRankHeader)
-            self.secondRankHeader.snp_makeConstraints { (make) in
+            self.secondRankHeader.snp.makeConstraints { (make) in
                 make.left.equalTo(self.otherResultsBaseView)
                 make.height.equalTo(55)
                 make.width.equalTo(self.otherResultsBaseView)
@@ -196,10 +196,10 @@ class ResultViewController: UIViewController {
             self.otherResultsCard = OtherResultsCard(frame: .zero, restaurants: otherRestaurants, delegate: self)
             self.otherResultsCard!.delegate = self
             self.otherResultsBaseView.addSubview(self.otherResultsCard!)
-            self.otherResultsCard!.snp_makeConstraints { (make) in
+            self.otherResultsCard!.snp.makeConstraints { (make) in
                 make.width.equalTo(self.otherResultsBaseView)
                 make.centerX.equalTo(self.otherResultsBaseView)
-                make.top.equalTo(self.secondRankHeader.snp_bottom).offset(8)
+                make.top.equalTo(self.secondRankHeader.snp.bottom).offset(8)
                 make.bottom.equalTo(self.otherResultsBaseView)
             }
         }
@@ -216,7 +216,7 @@ class ResultViewController: UIViewController {
         label.textColor = .gray
         self.contentView.addSubview(label)
 
-        label.snp_makeConstraints { (make) in
+        label.snp.makeConstraints { (make) in
             make.center.equalTo(self.contentView)
         }
     }

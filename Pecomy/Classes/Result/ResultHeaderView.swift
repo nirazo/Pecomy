@@ -43,15 +43,15 @@ class ResultHeaderView: UIView {
     
     func setupViews() {
         self.addSubview(self.rankIcon)
-        self.rankIcon.snp_makeConstraints { (make) in
+        self.rankIcon.snp.makeConstraints { (make) in
             make.top.equalTo(self)
             make.centerX.equalTo(self)
             make.height.equalTo(21)
             make.width.equalTo(24)
         }
         self.addSubview(self.headerLabel)
-        self.headerLabel.snp_makeConstraints { (make) in
-            make.top.equalTo(self.rankIcon.snp_bottom).offset(4)
+        self.headerLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(self.rankIcon.snp.bottom).offset(4)
             make.centerX.equalTo(self)
             make.width.equalTo(self)
             make.height.equalTo(30)

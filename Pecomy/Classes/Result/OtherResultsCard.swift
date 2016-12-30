@@ -63,7 +63,7 @@ class OtherResultsCard: UIView {
     }
     
     func setupSubViews() {
-        self.contentView.snp_makeConstraints { (make) in
+        self.contentView.snp.makeConstraints { (make) in
             make.size.equalTo(self)
             make.top.equalTo(self)
             make.left.equalTo(self)
@@ -71,7 +71,7 @@ class OtherResultsCard: UIView {
         self.contentView.layer.frame = self.contentView.bounds
         self.contentView.backgroundColor = .white
         
-        self.shadow.snp_makeConstraints { (make) in
+        self.shadow.snp.makeConstraints { (make) in
             make.center.equalTo(self.contentView)
             make.size.equalTo(self.contentView)
         }
@@ -82,13 +82,13 @@ class OtherResultsCard: UIView {
             content.delegate = self
             self.restaurantsCards.append(content)
             self.contentView.addSubview(self.restaurantsCards[i])
-            self.restaurantsCards[i].snp_makeConstraints { (make) in
+            self.restaurantsCards[i].snp.makeConstraints { (make) in
                 make.left.equalTo(self.contentView)
                 make.width.equalTo(self.contentView)
                 if i == 0 {
                     make.top.equalTo(self.contentView)
                 } else {
-                    make.top.equalTo(self.restaurantsCards[i-1].snp_bottom).offset(self.SEPARATOR_WIDTH)
+                    make.top.equalTo(self.restaurantsCards[i-1].snp.bottom).offset(self.SEPARATOR_WIDTH)
                 }
                 if i == self.restaurants.count-1 {
                     make.bottom.equalTo(self.contentView)
@@ -99,8 +99,8 @@ class OtherResultsCard: UIView {
                 let separator = UIView(frame: .zero)
                 separator.backgroundColor = UIColor(red: 220/255.0, green: 220/255.0, blue: 220/255.0, alpha: 1.0)
                 self.contentView.addSubview(separator)
-                separator.snp_makeConstraints { (make) in
-                    make.top.equalTo(self.restaurantsCards[i].snp_bottom).offset(0)
+                separator.snp.makeConstraints { (make) in
+                    make.top.equalTo(self.restaurantsCards[i].snp.bottom).offset(0)
                     make.left.equalTo(self.contentView)
                     make.width.equalTo(self.contentView)
                     make.height.equalTo(self.SEPARATOR_WIDTH)

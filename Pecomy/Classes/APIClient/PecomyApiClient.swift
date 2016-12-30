@@ -52,6 +52,7 @@ class PecomyApiClient {
         let alamofireRequest = manager.request(url, method: request.method, parameters: request.params, encoding: request.encoding, headers: headers)
             .validate()
             .response {(alamoResponse) in
+//                print("apiclientParams: \(request.params)")
                 if let _ = alamoResponse.request, let _ = alamoResponse.response {
                     do {
                         let options = JSONSerialization.WritingOptions()
@@ -61,10 +62,10 @@ class PecomyApiClient {
                     }
                 }
                 let response: PecomyResult<U, PecomyApiClientError> = PecomyApiClient.mappingResponse(request: alamoResponse.request, response: alamoResponse.response, data: alamoResponse.data, error: alamoResponse.error)
-                /*let str = NSString(data: data!, encoding:NSUTF8StringEncoding)
-                print("requestURL: \(httpResponse?.URL?.absoluteString)")
-                print("requestParams: \(request.params)")
-                print("rawData: \(str)")*/
+//                let str = String(data: alamoResponse.data!, encoding: .utf8) //NSString(data: data!, encoding:NSUTF8StringEncoding)
+//                print("requestURL: \(String(describing: alamoResponse.request))")
+//                print("requestParams: \(request.params)")
+//                print("rawData: \(str)")
                 switch response {
                 case .success(let result):
                     handler(PecomyResult<U, PecomyApiClientError>.success(result))

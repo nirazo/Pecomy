@@ -695,7 +695,7 @@
 			attributes = {
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = Pecomy;
 				TargetAttributes = {
 					D27BB9CB1B36F4A900F8D902 = {

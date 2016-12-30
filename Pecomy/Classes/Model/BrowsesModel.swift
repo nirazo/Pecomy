@@ -15,7 +15,7 @@ class BrowsesModel {
     init() {
     }
     
-    func fetch(_ latitude: Double, longitude: Double, orderBy: RestaurantListOrder, handler: @escaping ((PecomyResult<[Restaurant], PecomyApiClientError>) -> Void)) -> Bool {
+    func fetch(_ latitude: Double, longitude: Double, orderBy: RestaurantListOrder, handler: @escaping ((PecomyResult<[Restaurant], PecomyApiClientError>) -> Void)) {
         let request = BrowsesGetRequest(latitude: latitude, longitude: longitude, orderBy: orderBy)
         self.session = PecomyApiClient.send(request) { [weak self] (response: PecomyResult<BrowsesGetRequest.Response, PecomyApiClientError>) -> Void in
             guard let strongSelf = self else { return }
@@ -29,10 +29,10 @@ class BrowsesModel {
             }
             strongSelf.session = nil
         }
-        return true
+        return
     }
     
-    func register(_ shopId: Int, handler: @escaping ((PecomyResult<PecomyApiResponse, PecomyApiClientError>) -> Void)) -> Bool {
+    func register(_ shopId: Int, handler: @escaping ((PecomyResult<PecomyApiResponse, PecomyApiClientError>) -> Void)) {
         let request = BrowsesPutRequest(shopID: shopId)
         self.session = PecomyApiClient.send(request) { [weak self] (response: PecomyResult<BrowsesPutRequest.Response, PecomyApiClientError>) -> Void in
             guard let strongSelf = self else { return }
@@ -46,6 +46,6 @@ class BrowsesModel {
             }
             strongSelf.session = nil
         }
-        return true
+        return
     }
 }

@@ -70,7 +70,7 @@ class OnetimeFilterViewController: UIViewController {
         
         self.contentView.backgroundColor = UIColor.white
         self.view.addSubview(self.contentView)
-        self.contentView.snp_makeConstraints { (make) in
+        self.contentView.snp.makeConstraints { (make) in
             make.left.equalTo(self.view).offset(10)
             make.top.equalTo(self.view).offset(44)
             make.right.equalTo(self.view).offset(-10)
@@ -84,7 +84,7 @@ class OnetimeFilterViewController: UIViewController {
         titleLabel.textColor = Const.PECOMY_THEME_COLOR
         titleLabel.textAlignment = .center
         self.view.addSubview(titleLabel)
-        titleLabel.snp_makeConstraints { (make) in
+        titleLabel.snp.makeConstraints { (make) in
             make.top.equalTo(self.contentView).offset(25)
             make.centerX.equalTo(self.contentView)
             make.height.equalTo(34.5)
@@ -119,17 +119,17 @@ class OnetimeFilterViewController: UIViewController {
         default:
             titleBottomMargin = 50.0
         }
-        self.collectionView.snp_makeConstraints { (make) in
+        self.collectionView.snp.makeConstraints { (make) in
             make.left.equalTo(self.contentView).offset(16)
             make.right.equalTo(self.contentView).offset(-16)
-            make.top.equalTo(titleLabel.snp_bottom).offset(titleBottomMargin)
-            make.bottom.equalTo(self.contentView.snp_bottom).offset(-64)
+            make.top.equalTo(titleLabel.snp.bottom).offset(titleBottomMargin)
+            make.bottom.equalTo(self.contentView.snp.bottom).offset(-64)
         }
         
         self.bottomButtonsBgView.backgroundColor = UIColor(red: 235.0/255.0, green: 231.0/255.0, blue: 225.0/255.0, alpha: 1.0)
         self.contentView.addSubview(self.bottomButtonsBgView)
-        self.bottomButtonsBgView.snp_makeConstraints { (make) in
-            make.top.equalTo(self.collectionView.snp_bottom)
+        self.bottomButtonsBgView.snp.makeConstraints { (make) in
+            make.top.equalTo(self.collectionView.snp.bottom)
             make.left.equalTo(self.contentView)
             make.right.equalTo(self.contentView)
             make.bottom.equalTo(self.contentView)
@@ -152,20 +152,20 @@ class OnetimeFilterViewController: UIViewController {
             self.cancelButton.addTarget(self, action: #selector(OnetimeFilterViewController.cancelButtonTapped(_:)), for: .touchUpInside)
             
             self.bottomButtonsBgView.addSubview(self.cancelButton)
-            self.cancelButton.snp_makeConstraints { (make) in
+            self.cancelButton.snp.makeConstraints { (make) in
                 make.top.equalTo(self.bottomButtonsBgView).offset(10)
                 make.left.equalTo(self.bottomButtonsBgView).offset(10)
-                make.width.equalTo(self.bottomButtonsBgView.snp_width).dividedBy(2.61)
+                make.width.equalTo(self.bottomButtonsBgView.snp.width).dividedBy(2.61)
                 make.height.equalTo(44)
             }
-            self.startButton.snp_makeConstraints { (make) in
+            self.startButton.snp.makeConstraints { (make) in
                 make.top.equalTo(self.bottomButtonsBgView).offset(10)
-                make.left.equalTo(self.cancelButton.snp_right).offset(10)
+                make.left.equalTo(self.cancelButton.snp.right).offset(10)
                 make.right.equalTo(self.bottomButtonsBgView).offset(-10)
                 make.height.equalTo(44)
             }
         } else {
-            self.startButton.snp_makeConstraints { (make) in
+            self.startButton.snp.makeConstraints { (make) in
                 make.top.equalTo(self.bottomButtonsBgView).offset(10)
                 make.left.equalTo(self.contentView).offset(10)
                 make.right.equalTo(self.contentView).offset(-10)

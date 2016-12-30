@@ -16,9 +16,8 @@ class RestaurantModel {
     init() {
     }
     
-    func fetch(_ latitude: Double, longitude: Double, like: String? = nil, maxBudget: Budget, numOfPeople: NumOfPeople, genre: Genre, syncId: String? = nil, reset: Bool, handler: @escaping ((PecomyResult<Restaurant, PecomyApiClientError>) -> Void)) -> Bool {
+    func fetch(_ latitude: Double, longitude: Double, like: String? = nil, maxBudget: Budget, numOfPeople: NumOfPeople, genre: Genre, syncId: String? = nil, reset: Bool, handler: @escaping ((PecomyResult<Restaurant, PecomyApiClientError>) -> Void)) {
         let request = CardRequest(latitude: latitude, longitude: longitude, like: like, maxBudget: maxBudget, genre: genre, syncId: syncId, reset: reset)
-        request.headerParams
         self.session = PecomyApiClient.send(request) {[weak self] (response: PecomyResult<CardRequest.Response, PecomyApiClientError>) -> Void in
             guard let strongSelf = self else { return }
             
@@ -35,6 +34,6 @@ class RestaurantModel {
             
             strongSelf.session = nil
         }
-        return true
+        return
     }
 }

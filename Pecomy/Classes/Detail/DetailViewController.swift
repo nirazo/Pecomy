@@ -78,7 +78,7 @@ class DetailViewController: UIViewController {
         self.detailView?.richTagsView.delegate = self.richTagConfig
         self.detailView?.richTagsView.dataSource = self.richTagConfig
         self.view.addSubview(detailView!)
-        self.detailView?.snp_makeConstraints { (make) in
+        self.detailView?.snp.makeConstraints { (make) in
             make.left.equalTo(self.view)
             make.width.equalTo(self.view)
             make.top.equalTo(self.view)
@@ -180,7 +180,7 @@ class DetailViewController: UIViewController {
     
     func startLoading() {
         self.view.addSubview(self.loadingView)
-        self.loadingView.snp_makeConstraints { make in
+        self.loadingView.snp.makeConstraints { make in
             make.center.equalTo(self.view)
             make.size.equalTo(self.view)
         }
@@ -195,7 +195,7 @@ class DetailViewController: UIViewController {
         
         let registerPopup = RegisterPopupView(frame: .zero, shopName: self.restaurant.shopName, type: type)
         self.bgCoverView.addSubview(registerPopup)
-        registerPopup.snp_makeConstraints { make in
+        registerPopup.snp.makeConstraints { make in
             make.center.equalTo(self.bgCoverView)
             make.width.equalTo(260)
             make.height.greaterThanOrEqualTo(180)

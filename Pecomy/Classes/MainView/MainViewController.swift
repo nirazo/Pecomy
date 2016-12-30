@@ -422,9 +422,9 @@ class MainViewController: UIViewController {
     }
     
     // カードのベースとなるCGRectを返す
-    func baseCardRect() -> CGRect{
-        let rect = CGRect(x: 0, y: 0, width: self.view.frame.width*0.8, height: self.view.frame.width*0.8)
-        rect.offsetBy(dx: (self.view.frame.width - rect.size.width)/2, dy: (self.view.frame.height - rect.size.height)/2 - 40)
+    func baseCardRect() -> CGRect {
+        var rect = CGRect(x: 0, y: 0, width: self.view.frame.width*0.8, height: self.view.frame.width*0.8)
+        rect = rect.offsetBy(dx: (self.view.frame.width - rect.size.width)/2, dy: (self.view.frame.height - rect.size.height)/2 - 40)
         return rect
     }
     

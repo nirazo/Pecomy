@@ -15,7 +15,7 @@ class FavoritesModel {
     init() {
     }
     
-    func fetch(_ latitude: Double, longitude: Double, orderBy: RestaurantListOrder, handler: @escaping ((PecomyResult<PecomyUser, PecomyApiClientError>) -> Void)) -> Bool {
+    func fetch(_ latitude: Double, longitude: Double, orderBy: RestaurantListOrder, handler: @escaping ((PecomyResult<PecomyUser, PecomyApiClientError>) -> Void)) {
         let request = FavoritesGetRequest(latitude: latitude, longitude: longitude, orderBy: orderBy)
         self.session = PecomyApiClient.send(request) { [weak self] (response: PecomyResult<FavoritesGetRequest.Response, PecomyApiClientError>) -> Void in
             guard let strongSelf = self else { return }
@@ -29,11 +29,11 @@ class FavoritesModel {
             }
             strongSelf.session = nil
         }
-        return true
+        return
     }
     
     
-    func register(_ shopId: Int, handler: @escaping ((PecomyResult<PecomyApiResponse, PecomyApiClientError>) -> Void)) -> Bool {
+    func register(_ shopId: Int, handler: @escaping ((PecomyResult<PecomyApiResponse, PecomyApiClientError>) -> Void)) {
         let request = FavoritesPutRequest(shopID: shopId)
         self.session = PecomyApiClient.send(request) { [weak self] (response: PecomyResult<FavoritesPutRequest.Response, PecomyApiClientError>) -> Void in
             guard let strongSelf = self else { return }
@@ -47,6 +47,6 @@ class FavoritesModel {
             }
             strongSelf.session = nil
         }
-        return true
+        return
     }
 }

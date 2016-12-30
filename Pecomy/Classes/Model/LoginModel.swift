@@ -17,7 +17,7 @@ class LoginModel {
     init() {
     }
     
-    func fetch(_ fbAccessToken: String, handler: @escaping ((PecomyResult<PecomyUser, PecomyApiClientError>) -> Void)) -> Bool {
+    func fetch(_ fbAccessToken: String, handler: @escaping ((PecomyResult<PecomyUser, PecomyApiClientError>) -> Void)) {
         let request = LoginRequest(fbAccessToken: fbAccessToken)
         self.session = PecomyApiClient.send(request) {[weak self] (response: PecomyResult<LoginRequest.Response, PecomyApiClientError>) -> Void in
             guard let strongSelf = self else { return }
@@ -35,7 +35,7 @@ class LoginModel {
             }
             strongSelf.session = nil
         }
-        return true
+        return
     }
     
     class func currentPecomyToken() -> String? {

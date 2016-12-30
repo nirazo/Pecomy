@@ -44,7 +44,7 @@ class CategoryLabelView: UIView {
         self.addSubview(self.contentView)
         self.contentView.backgroundColor = UIColor.clear
         
-        self.contentView.snp_makeConstraints { (make) in
+        self.contentView.snp.makeConstraints { (make) in
             make.centerX.equalTo(self)
             make.centerY.equalTo(self)
             make.left.equalTo(self).offset(MARGIN_CATEGORY_HORIZONTAL)
@@ -88,12 +88,12 @@ class CategoryLabelView: UIView {
             self.categoryLabels.append(categoryLabel)
             self.contentView.addSubview(self.categoryLabels[i])
             
-            self.categoryLabels[i].snp_makeConstraints { (make) in
+            self.categoryLabels[i].snp.makeConstraints { (make) in
                 make.centerX.equalTo(self.contentView)
                 if i == 0 {
                     make.top.equalTo(self.contentView)
                 } else {
-                    make.top.equalTo(self.categoryLabels[i-1].snp_bottom).offset(MARGIN_CATEGORY_VERTICAL)
+                    make.top.equalTo(self.categoryLabels[i-1].snp.bottom).offset(MARGIN_CATEGORY_VERTICAL)
                 }
                 make.left.equalTo(self.contentView)
                 make.right.equalTo(self.contentView)

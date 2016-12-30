@@ -38,7 +38,7 @@ class PhotoViewNavigationBar: UIView {
         self.gradientLayer = gradient
         
         self.addSubview(self.closeButton)
-        self.closeButton.snp_makeConstraints { make in
+        self.closeButton.snp.makeConstraints { make in
             make.top.equalTo(self)
             make.left.equalTo(self).offset(16)
             make.width.equalTo(80)
@@ -48,7 +48,7 @@ class PhotoViewNavigationBar: UIView {
         closeLabel.text = NSLocalizedString("Close", comment: "")
         closeLabel.textColor = .white
         self.closeButton.addSubview(closeLabel)
-        closeLabel.snp_makeConstraints { make in
+        closeLabel.snp.makeConstraints { make in
             make.center.equalTo(self.closeButton)
             make.size.equalTo(self.closeButton)
         }
@@ -57,7 +57,7 @@ class PhotoViewNavigationBar: UIView {
         self.indexLabel.font = UIFont(name: Const.PECOMY_FONT_NORMAL, size: 18)
         self.indexLabel.textAlignment = .center
         self.addSubview(self.indexLabel)
-        self.indexLabel.snp_makeConstraints { make in
+        self.indexLabel.snp.makeConstraints { make in
             make.center.equalTo(self)
             make.width.equalTo(150)
             make.height.equalTo(self)
@@ -92,7 +92,7 @@ class PhotoPageView: UIView {
         self.loadingIndicator.activityIndicatorViewStyle = .whiteLarge
         self.loadingIndicator.hidesWhenStopped = true
         self.addSubview(self.loadingIndicator)
-        self.loadingIndicator.snp_makeConstraints { (make) in
+        self.loadingIndicator.snp.makeConstraints { (make) in
             make.width.equalTo(200)
             make.height.equalTo(200)
             make.center.equalTo(self)
@@ -142,7 +142,7 @@ class PhotoViewerViewController: UIViewController {
         self.scrollView.delegate = self
         self.scrollView.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: self.opacity)
         self.view.addSubview(self.scrollView)
-        self.scrollView.snp_makeConstraints { make in
+        self.scrollView.snp.makeConstraints { make in
             make.top.equalTo(self.view)
             make.left.equalTo(self.view).offset(-20)
             make.right.equalTo(self.view).offset(20)
@@ -150,7 +150,7 @@ class PhotoViewerViewController: UIViewController {
         }
         
         self.view.addSubview(self.navigationBar)
-        self.navigationBar.snp_makeConstraints { make in
+        self.navigationBar.snp.makeConstraints { make in
             make.top.equalTo(self.view).offset(20)
             make.left.equalTo(self.view)
             make.width.equalTo(self.view)

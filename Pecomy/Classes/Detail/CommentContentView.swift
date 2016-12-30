@@ -44,7 +44,7 @@ class CommentContentView: UIView {
     
     fileprivate func setupSubViews() {
                 
-        self.contentView.snp_makeConstraints { (make) in
+        self.contentView.snp.makeConstraints { (make) in
             make.size.equalTo(self)
             make.top.equalTo(self)
             make.left.equalTo(self)
@@ -54,7 +54,7 @@ class CommentContentView: UIView {
         self.imageView.contentMode = .scaleAspectFill
         self.imageView.clipsToBounds = true
         self.contentView.addSubview(self.imageView)
-        self.imageView.snp_makeConstraints { (make) in
+        self.imageView.snp.makeConstraints { (make) in
             make.width.equalTo(40)
             make.height.equalTo(40)
             make.left.equalTo(self)
@@ -67,9 +67,9 @@ class CommentContentView: UIView {
         self.commentBackGroundView.layer.masksToBounds = true
         self.commentBackGroundView.backgroundColor = self.commentBgColor
         self.addSubview(self.commentBackGroundView)
-        self.commentBackGroundView.snp_makeConstraints { (make) in
+        self.commentBackGroundView.snp.makeConstraints { (make) in
             make.height.equalTo(40)
-            make.left.equalTo(self.imageView.snp_right).offset(12)
+            make.left.equalTo(self.imageView.snp.right).offset(12)
             make.top.equalTo(self)
             make.right.lessThanOrEqualTo(self).offset(-12)
             make.bottom.equalTo(self)
@@ -83,7 +83,7 @@ class CommentContentView: UIView {
         self.commentLabel.sizeToFit()
         self.addSubview(self.commentLabel)
         
-        self.commentLabel.snp_makeConstraints { (make) in
+        self.commentLabel.snp.makeConstraints { (make) in
             make.left.equalTo(self.commentBackGroundView).offset(12)
             make.top.equalTo(self.commentBackGroundView)
             make.bottom.equalTo(self.commentBackGroundView)

@@ -52,7 +52,7 @@ class OtherResultCardContentView: UIView {
         
         self.backgroundColor = .white
         
-        self.contentView.snp_makeConstraints { (make) in
+        self.contentView.snp.makeConstraints { (make) in
             make.size.equalTo(self)
             make.top.equalTo(self)
             make.left.equalTo(self)
@@ -61,7 +61,7 @@ class OtherResultCardContentView: UIView {
         self.imageView.contentMode = .scaleAspectFill
         self.imageView.clipsToBounds = true
         self.contentView.addSubview(self.imageView)
-        self.imageView.snp_makeConstraints { (make) in
+        self.imageView.snp.makeConstraints { (make) in
             make.width.equalTo(80)
             make.height.equalTo(80)
             make.left.equalTo(self)
@@ -78,8 +78,8 @@ class OtherResultCardContentView: UIView {
         restaurantNameLabel.sizeToFit()
         self.contentView.addSubview(restaurantNameLabel)
         
-        restaurantNameLabel.snp_makeConstraints { (make) in
-            make.left.equalTo(self.imageView.snp_right).offset(12)
+        restaurantNameLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(self.imageView.snp.right).offset(12)
             make.top.equalTo(self).offset(14)
             make.height.greaterThanOrEqualTo(14)
             make.right.equalTo(self).offset(-10)
@@ -94,7 +94,7 @@ class OtherResultCardContentView: UIView {
         distanceLabel.textColor = Const.RANKING_SECOND_RIGHT_COLOR
         self.contentView.addSubview(distanceLabel)
         
-        distanceLabel.snp_makeConstraints { (make) in
+        distanceLabel.snp.makeConstraints { (make) in
             make.left.equalTo(restaurantNameLabel)
             make.bottom.equalTo(self).offset(-14)
             make.height.greaterThanOrEqualTo(12)

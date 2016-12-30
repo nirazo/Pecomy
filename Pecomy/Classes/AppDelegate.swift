@@ -26,18 +26,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.window = UIWindow(frame: UIScreen.main.bounds)
         
-        // Configure tracker from GoogleService-Info.plist.
-        var configureError:NSError?
-        GGLContext.sharedInstance().configureWithError(&configureError)
-        assert(configureError == nil, "Error configuring Google services: \(configureError)")
-        
-        // Optional: configure GAI options.
-        let gai = GAI.sharedInstance()
-        gai?.trackUncaughtExceptions = true  // report uncaught exceptions
-        
-        #if !RELEASE
-            gai?.logger.logLevel = GAILogLevel.verbose  // remove before app release
-        #endif
+        // GA
+//        // Configure tracker from GoogleService-Info.plist.
+//        var configureError:NSError?
+//        GGLContext.sharedInstance().configureWithError(&configureError)
+//        assert(configureError == nil, "Error configuring Google services: \(configureError)")
+//        
+//        // Optional: configure GAI options.
+//        let gai = GAI.sharedInstance()
+//        gai?.trackUncaughtExceptions = true  // report uncaught exceptions
+//        
+//        #if !RELEASE
+//            gai?.logger.logLevel = GAILogLevel.verbose  // remove before app release
+//        #endif
         
         let mainBaseVC = MainBaseViewController()
         let navVC = self.createTranslucentNavVC(mainBaseVC)
@@ -45,6 +46,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window!.makeKeyAndVisible()
         
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        return FBSDKApplicationDelegate.sharedInstance().application(app, open: url, options: options)
     }
     
     func applicationWillResignActive(_ application: UIApplication) {}

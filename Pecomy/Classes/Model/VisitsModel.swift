@@ -15,7 +15,7 @@ class VisitsModel {
     init() {
     }
     
-    func fetch(_ latitude: Double, longitude: Double, orderBy: RestaurantListOrder, handler: @escaping ((PecomyResult<PecomyUser, PecomyApiClientError>) -> Void)) -> Bool {
+    func fetch(_ latitude: Double, longitude: Double, orderBy: RestaurantListOrder, handler: @escaping ((PecomyResult<PecomyUser, PecomyApiClientError>) -> Void)) {
         let request = VisitsGetRequest(latitude: latitude, longitude: longitude, orderBy: orderBy)
         self.session = PecomyApiClient.send(request) { [weak self] (response: PecomyResult<VisitsGetRequest.Response, PecomyApiClientError>) -> Void in
             guard let strongSelf = self else { return }
@@ -29,10 +29,10 @@ class VisitsModel {
             }
             strongSelf.session = nil
         }
-        return true
+        return
     }
     
-    func register(_ shopId: Int, reviewScore: Int, handler: @escaping ((PecomyResult<PecomyApiResponse, PecomyApiClientError>) -> Void)) -> Bool {
+    func register(_ shopId: Int, reviewScore: Int, handler: @escaping ((PecomyResult<PecomyApiResponse, PecomyApiClientError>) -> Void)) {
         let request = VisitsPostRequest(shopID: shopId, reviewScore: reviewScore)
         self.session = PecomyApiClient.send(request) { [weak self] (response: PecomyResult<VisitsPostRequest.Response, PecomyApiClientError>) -> Void in
             guard let strongSelf = self else { return }
@@ -46,6 +46,6 @@ class VisitsModel {
             }
             strongSelf.session = nil
         }
-        return true
+        return
     }
 }
