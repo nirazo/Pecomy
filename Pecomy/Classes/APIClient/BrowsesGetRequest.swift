@@ -21,9 +21,9 @@ class BrowsesGetRequest: PecomyApiRequest {
         endpoint = "/user/browses"
         params = [
             "device_id": Utils.acquireDeviceID(),
-            "latitude": latitude as AnyObject,
-            "longitude": longitude as AnyObject,
-            "orderby": orderBy.rawValue as AnyObject
+            "latitude": latitude,
+            "longitude": longitude,
+            "orderby": orderBy.rawValue
         ]
     }
 }

@@ -84,12 +84,6 @@ class PecomyApiClient {
     }
     
     private class func mappingResponse<T>(request: URLRequest?, response: HTTPURLResponse?, data: Data?, error: Error?) -> PecomyResult<T, PecomyApiClientError> where T: Mappable, T: PecomyApiResponse {
-//        if let error = error {
-//            // AlamofireのエラーかつStatusCodeValidationFailed以外の場合は一律APIのタイムアウトに丸める
-//            if error._domain != AFError.domain || error.code != AFError.Code.StatusCodeValidationFailed.rawValue {
-//                return PecomyResult.failure(PecomyApiClientError(type: .timeout))
-//            }
-//        }
         
         guard let validData = data else {
             return PecomyResult.failure(PecomyApiClientError(type: .noResult))
