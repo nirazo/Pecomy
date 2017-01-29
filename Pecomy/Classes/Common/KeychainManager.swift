@@ -10,9 +10,9 @@ import Foundation
 import KeychainAccess
 
 class KeychainManager {
-    private static let keychain = Keychain()
+    fileprivate static let keychain = Keychain()
     
-    static func setPecomyUserToken(token: String) {
+    static func setPecomyUserToken(_ token: String) {
         do {
           try self.keychain.set(token, key: Const.PecomyUserTokenKeychainKey)
         } catch let error {
@@ -36,7 +36,7 @@ class KeychainManager {
         }
     }
     
-    static func setPecomyUserName(name: String) {
+    static func setPecomyUserName(_ name: String) {
         do {
             try self.keychain.set(name, key: Const.PecomyUserNameKeychainKey)
         } catch let error {
@@ -61,7 +61,7 @@ class KeychainManager {
     }
 
     
-    static func setPecomyUserPictureUrl(picURL: String) {
+    static func setPecomyUserPictureUrl(_ picURL: String) {
         do {
             try self.keychain.set(picURL, key: Const.PecomyUserPictureKeychainKey)
         } catch let error {

@@ -13,35 +13,35 @@ class PictureCollectionViewCell: UICollectionViewCell {
     var imageView: UIImageView
     var urlString = "" {
         didSet {
-            let url = NSURL(string: urlString)
-            self.imageView.sd_setImageWithURL(url, completed: {[weak self](image: UIImage!, error: NSError!, cacheType: SDImageCacheType, imageURL: NSURL!) in
+            let url = URL(string: urlString)
+            self.imageView.sd_setImage(with: url) {[weak self] (image, error, imageCacheType, imageURL) in
                 guard let strongSelf = self else {
                     return
                 }
                 strongSelf.imageView.alpha = 0
-                UIView.animateWithDuration(0.5, delay: 0.0, options: .CurveEaseInOut, animations: {() -> Void in
+                UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseInOut, animations: {() -> Void in
                     strongSelf.imageView.alpha = 1
                     }, completion: nil)
-                })
+                }
         }
     }
     
     override init(frame: CGRect) {
         self.imageView = UIImageView(image: R.image.noimage())
-        self.imageView.contentMode = .ScaleAspectFill
+        self.imageView.contentMode = .scaleAspectFill
         self.imageView.clipsToBounds = true
         super.init(frame: frame)
         self.contentView.layer.cornerRadius = 5.0
         self.contentView.layer.masksToBounds = true
         self.contentView.addSubview(self.imageView)
-        self.contentView.backgroundColor = UIColor.clearColor()
+        self.contentView.backgroundColor = .clear
         
-        self.imageView.snp_makeConstraints { (make) in
+        self.imageView.snp.makeConstraints { (make) in
             make.centerX.equalTo(self.contentView)
             make.centerY.equalTo(self.contentView)
             make.size.equalTo(self.contentView)
         }
-        self.userInteractionEnabled = true
+        self.isUserInteractionEnabled = true
     }
     
     required init?(coder aDecoder: NSCoder) {

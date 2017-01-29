@@ -20,13 +20,13 @@ class FeatureTextLabel: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupSubViews(text: String) {
+    func setupSubViews(_ text: String) {
         let checkImage = UIImageView(image: R.image.login_check())
         self.addSubview(checkImage)
-        checkImage.snp_makeConstraints { make in
+        checkImage.snp.makeConstraints { make in
             make.top.equalTo(self)
             make.height.equalTo(self)
-            make.width.equalTo(self.snp_height)
+            make.width.equalTo(self.snp.height)
             make.left.equalTo(self)
         }
         
@@ -36,9 +36,9 @@ class FeatureTextLabel: UIView {
         label.numberOfLines = 0
         label.text = text
         self.addSubview(label)
-        label.snp_makeConstraints { make in
+        label.snp.makeConstraints { make in
             make.centerY.equalTo(self)
-            make.left.equalTo(checkImage.snp_right).offset(10.5)
+            make.left.equalTo(checkImage.snp.right).offset(10.5)
             make.height.equalTo(self)
         }
     }
@@ -61,7 +61,7 @@ class LoginIntroduceViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .whiteColor()
+        self.view.backgroundColor = .white
         self.setupSubViews()
     }
 
@@ -69,32 +69,32 @@ class LoginIntroduceViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    private func setupSubViews() {
+    fileprivate func setupSubViews() {
         let backgroundView = UIImageView(image: R.image.login_background())
-        backgroundView.contentMode = .ScaleAspectFill
+        backgroundView.contentMode = .scaleAspectFill
         backgroundView.clipsToBounds = true
         self.view.addSubview(backgroundView)
-        backgroundView.snp_makeConstraints { make in
+        backgroundView.snp.makeConstraints { make in
             make.top.equalTo(self.view)
             make.centerX.equalTo(self.view)
             make.height.equalTo(self.view).multipliedBy(0.53)
         }
         
         let closeButton = UIButton()
-        let closeImage = R.image.close()?.tint(.whiteColor())
-        closeButton.setImage(closeImage, forState: .Normal)
-        closeButton.addTarget(self, action: #selector(LoginIntroduceViewController.closeDisplay), forControlEvents: .TouchUpInside)
+        let closeImage = R.image.close()?.tint(.white)
+        closeButton.setImage(closeImage, for: .normal)
+        closeButton.addTarget(self, action: #selector(LoginIntroduceViewController.closeDisplay), for: .touchUpInside)
         self.view.addSubview(closeButton)
-        closeButton.snp_makeConstraints { make in
+        closeButton.snp.makeConstraints { make in
             make.top.equalTo(self.view).offset(35)
             make.right.equalTo(self.view).offset(-21)
             make.size.equalTo(21)
         }
         
         let logoImageView = UIImageView(image: R.image.login_logo())
-        logoImageView.contentMode = .ScaleAspectFill
+        logoImageView.contentMode = .scaleAspectFill
         self.view.addSubview(logoImageView)
-        logoImageView.snp_makeConstraints { make in
+        logoImageView.snp.makeConstraints { make in
             make.top.equalTo(self.view).offset(97)
             make.centerX.equalTo(self.view)
             make.width.equalTo(self.view).multipliedBy(0.73)
@@ -108,12 +108,12 @@ class LoginIntroduceViewController: UIViewController {
         attrText.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: NSMakeRange(0, attrText.length))
         
         subTitleLabel.font = UIFont(name: Const.PECOMY_FONT_BOLD, size: 19)
-        subTitleLabel.textColor = .whiteColor()
+        subTitleLabel.textColor = .white
         subTitleLabel.numberOfLines = 0
         subTitleLabel.attributedText = attrText
-        subTitleLabel.textAlignment = .Center
+        subTitleLabel.textAlignment = .center
         self.view.addSubview(subTitleLabel)
-        subTitleLabel.snp_makeConstraints { make in
+        subTitleLabel.snp.makeConstraints { make in
             make.bottom.equalTo(backgroundView).offset(-66)
             make.centerX.equalTo(logoImageView)
             make.left.equalTo(self.view).offset(30)
@@ -126,8 +126,8 @@ class LoginIntroduceViewController: UIViewController {
         loginDescribeLabel.numberOfLines = 0
         loginDescribeLabel.text = R.string.localizable.loginDescribeSentence()
         self.view.addSubview(loginDescribeLabel)
-        loginDescribeLabel.snp_makeConstraints { make in
-            make.top.equalTo(backgroundView.snp_bottom).offset(16)
+        loginDescribeLabel.snp.makeConstraints { make in
+            make.top.equalTo(backgroundView.snp.bottom).offset(16)
             make.centerX.equalTo(self.view)
             make.left.equalTo(self.view).offset(30)
             make.right.equalTo(self.view).offset(-30)
@@ -135,24 +135,24 @@ class LoginIntroduceViewController: UIViewController {
         
         let featureLabel1 = FeatureTextLabel(text: R.string.localizable.loginFeature1())
         self.view.addSubview(featureLabel1)
-        featureLabel1.snp_makeConstraints { make in
-            make.top.equalTo(loginDescribeLabel.snp_bottom).offset(30)
+        featureLabel1.snp.makeConstraints { make in
+            make.top.equalTo(loginDescribeLabel.snp.bottom).offset(30)
             make.left.equalTo(self.view).offset(35)
             make.height.equalTo(24)
         }
         
         let featureLabel2 = FeatureTextLabel(text: R.string.localizable.loginFeature2())
         self.view.addSubview(featureLabel2)
-        featureLabel2.snp_makeConstraints { make in
-            make.top.equalTo(featureLabel1.snp_bottom).offset(14)
+        featureLabel2.snp.makeConstraints { make in
+            make.top.equalTo(featureLabel1.snp.bottom).offset(14)
             make.left.equalTo(featureLabel1)
             make.height.equalTo(24)
         }
         
         let featureLabel3 = FeatureTextLabel(text: R.string.localizable.loginFeature3())
         self.view.addSubview(featureLabel3)
-        featureLabel3.snp_makeConstraints { make in
-            make.top.equalTo(featureLabel2.snp_bottom).offset(14)
+        featureLabel3.snp.makeConstraints { make in
+            make.top.equalTo(featureLabel2.snp.bottom).offset(14)
             make.left.equalTo(featureLabel1)
             make.height.equalTo(24)
         }
@@ -161,7 +161,7 @@ class LoginIntroduceViewController: UIViewController {
         let loginButton = FBSDKLoginButton()
         loginButton.delegate = self
         self.view.addSubview(loginButton)
-        loginButton.snp_makeConstraints { make in
+        loginButton.snp.makeConstraints { make in
             make.centerX.equalTo(self.view)
             make.height.equalTo(50)
             make.left.equalTo(self.view).offset(30)
@@ -171,12 +171,18 @@ class LoginIntroduceViewController: UIViewController {
     }
     
     func closeDisplay() {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
 }
 
 extension LoginIntroduceViewController: FBSDKLoginButtonDelegate {
-    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+    /*!
+     @abstract Sent to the delegate when the button was used to login.
+     @param loginButton the sender
+     @param result The results of the login
+     @param error The error (if any) from the login
+     */
+    public func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         if error != nil
         {
             print("error!: \(error)")
@@ -185,14 +191,14 @@ extension LoginIntroduceViewController: FBSDKLoginButtonDelegate {
             print("canceled!")
         }
         else {
-            let currentToken = FBSDKAccessToken.currentAccessToken().tokenString
-            self.loginModel.fetch(currentToken, handler: { [weak self](result: PecomyResult<PecomyUser, PecomyApiClientError>) in
+            let currentToken = FBSDKAccessToken.current().tokenString
+            self.loginModel.fetch(currentToken!, handler: { [weak self](result: PecomyResult<PecomyUser, PecomyApiClientError>) in
                 guard let strongSelf = self else { return }
                 switch result {
-                case .Success(_):
+                case .success(_):
                     print("success!")
-                    strongSelf.dismissViewControllerAnimated(true, completion: strongSelf.completionHandlerWithLoggedIn)
-                case .Failure(let error):
+                    strongSelf.dismiss(animated: true, completion: strongSelf.completionHandlerWithLoggedIn)
+                case .failure(let error):
                     let fb = FBSDKLoginManager()
                     fb.logOut()
                     KeychainManager.removePecomyUserToken()
@@ -202,7 +208,7 @@ extension LoginIntroduceViewController: FBSDKLoginButtonDelegate {
         }
     }
     
-    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
     }
 }
 

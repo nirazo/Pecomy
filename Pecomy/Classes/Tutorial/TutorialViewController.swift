@@ -29,27 +29,27 @@ class TutorialViewController: UIViewController {
         self.scrollView.frame = self.view.bounds
         self.scrollView.showsHorizontalScrollIndicator = false
         self.scrollView.showsVerticalScrollIndicator = false
-        self.scrollView.pagingEnabled = true
+        self.scrollView.isPagingEnabled = true
         self.scrollView.delegate = self
-        self.scrollView.contentSize = CGSizeMake(CGFloat(self.imgTitleArr.count)*width, 0)
+        self.scrollView.contentSize = CGSize(width: CGFloat(self.imgTitleArr.count)*width, height: 0)
         self.view.addSubview(self.scrollView)
         
         //各ページの作成
         for i in 0 ..< self.imgTitleArr.count {
             let img = UIImage(named:self.imgTitleArr[i])
             let iv = UIImageView(image:img)
-            iv.contentMode = .ScaleAspectFit
-            iv.frame = CGRectMake(CGFloat(i) * width, 0, width, height)
+            iv.contentMode = .scaleAspectFit
+            iv.frame = CGRect(x: CGFloat(i) * width, y: 0, width: width, height: height)
             scrollView.addSubview(iv)
         }
         
         //閉じるボタン
         let closeButton = UIButton(frame: .zero)
-        closeButton.backgroundColor = .clearColor()
-        closeButton.addTarget(self, action: #selector(TutorialViewController.startTapped(_:)), forControlEvents:.TouchUpInside)
+        closeButton.backgroundColor = .clear
+        closeButton.addTarget(self, action: #selector(TutorialViewController.startTapped(_:)), for:.touchUpInside)
         self.view.addSubview(closeButton)
         
-        closeButton.snp_makeConstraints { (make) in
+        closeButton.snp.makeConstraints { (make) in
             make.left.equalTo(self.view).offset(50)
             make.width.equalTo(self.view)
             make.bottom.equalTo(self.view)
@@ -57,23 +57,23 @@ class TutorialViewController: UIViewController {
         }
     }
     
-    func startTapped(sender: UIButton) {
+    func startTapped(_ sender: UIButton) {
         if(self.currentPage == self.imgTitleArr.count - 1) {
-            NSUserDefaults.standardUserDefaults().setBool(true, forKey: Const.UD_KEY_HAS_LAUNCHED)
-            NSUserDefaults.standardUserDefaults().synchronize()
+            UserDefaults.standard.set(true, forKey: Const.UD_KEY_HAS_LAUNCHED)
+            UserDefaults.standard.synchronize()
             self.delegate?.startTapped()
         } else {
             self.scrollView.setContentOffset(CGPoint(x: self.scrollView.frame.width * CGFloat(self.currentPage+1), y: 0), animated: true)
         }
     }
     
-    func changeRootViewController(viewController: UINavigationController) {
+    func changeRootViewController(_ viewController: UINavigationController) {
         
-        let snapShot: UIView = UIApplication.sharedApplication().keyWindow!.snapshotViewAfterScreenUpdates(true)!
+        let snapShot: UIView = UIApplication.shared.keyWindow!.snapshotView(afterScreenUpdates: true)!
         viewController.view.addSubview(snapShot)
-        UIApplication.sharedApplication().keyWindow?.rootViewController = viewController
+        UIApplication.shared.keyWindow?.rootViewController = viewController
         
-        UIView.animateWithDuration(0.3,
+        UIView.animate(withDuration: 0.3,
             animations: { () in
                 snapShot.layer.opacity = 0
                 snapShot.layer.transform = CATransform3DMakeScale(1.5, 1.5, 1.5)
@@ -90,11 +90,11 @@ class TutorialViewController: UIViewController {
 
 extension TutorialViewController: UIScrollViewDelegate {
     
-    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         self.currentPage = Int(scrollView.contentOffset.x / scrollView.frame.maxX)
     }
     
-    func scrollViewDidEndScrollingAnimation(scrollView: UIScrollView) {
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
         self.currentPage = Int(scrollView.contentOffset.x / scrollView.frame.maxX)
     }
 }

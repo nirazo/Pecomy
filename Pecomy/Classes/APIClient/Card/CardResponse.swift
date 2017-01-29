@@ -14,12 +14,12 @@ class CardResponse: PecomyApiResponse {
     var syncID = ""
     var resultAvailable = false
     
-    required init?(_ map: Map) {
-        super.init(map)
+    required init?(map: Map) {
+        super.init(map: map)
     }
     
-    override internal func mapping(map: Map) {
-        super.mapping(map)
+    override func mapping(map: Map) {
+        super.mapping(map: map)
         self.restaurant <- map["card"]
         self.syncID <- map["sync_id"]
         self.resultAvailable <- map["result_available"]

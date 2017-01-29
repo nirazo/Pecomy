@@ -10,29 +10,29 @@ import UIKit
 
 class OnetimeFilterCell: UICollectionViewCell {
     
-    private let defaultFontSize: CGFloat = 15.0    // ラベルのフォントサイズ
-    private let label = UILabel()
+    fileprivate let defaultFontSize: CGFloat = 15.0    // ラベルのフォントサイズ
+    fileprivate let label = UILabel()
     var labelString = "" {
         didSet {
             self.label.text = labelString
         }
     }
     
-    override var selected: Bool {
+    override var isSelected: Bool {
         get {
-            return super.selected
+            return super.isSelected
         }
         set {
             if newValue {
-                super.selected = true
+                super.isSelected = true
                 self.backgroundColor = Const.PECOMY_THEME_COLOR
-                self.label.textColor = UIColor.whiteColor()
-                self.layer.borderColor = Const.PECOMY_THEME_COLOR.CGColor
+                self.label.textColor = UIColor.white
+                self.layer.borderColor = Const.PECOMY_THEME_COLOR.cgColor
             } else if newValue == false {
-                super.selected = false
-                self.backgroundColor = UIColor.whiteColor()
+                super.isSelected = false
+                self.backgroundColor = UIColor.white
                 self.label.textColor = Const.BASIC_GRAY_COLOR
-                self.layer.borderColor = Const.RIGHT_GRAY_COLOR.CGColor
+                self.layer.borderColor = Const.RIGHT_GRAY_COLOR.cgColor
             }
         }
     }
@@ -55,10 +55,10 @@ class OnetimeFilterCell: UICollectionViewCell {
     }
     
     func commonInit() {
-        self.label.textAlignment = .Center
+        self.label.textAlignment = .center
         self.label.textColor = Const.BASIC_GRAY_COLOR
         self.contentView.addSubview(self.label)
-        self.label.snp_makeConstraints { (make) in
+        self.label.snp.makeConstraints { (make) in
             make.center.equalTo(self.contentView)
             make.size.equalTo(self.contentView)
         }
@@ -67,6 +67,6 @@ class OnetimeFilterCell: UICollectionViewCell {
         // 角丸
         self.layer.cornerRadius = Const.CORNER_RADIUS
         self.layer.borderWidth = 1.0
-        self.layer.borderColor = Const.RIGHT_GRAY_COLOR.CGColor
+        self.layer.borderColor = Const.RIGHT_GRAY_COLOR.cgColor
     }
 }

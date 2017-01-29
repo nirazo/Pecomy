@@ -13,12 +13,12 @@ import GoogleMaps
 class TopResultCard: ResultCardBase {
     
     // 描画系定数
-    private let BASE_WIDTH: CGFloat = 343.0
-    private let NUM_OF_IMAGES = 3
-    private let CORNER_RADIUS: CGFloat = 5.0
-    private let SEPARATOR_LINE_WIDTH : CGFloat = 1.0
-    private let TEXT_MARGIN_X: CGFloat = 16.0
-    private let TEXT_MARGIN_Y: CGFloat = 10.0
+    fileprivate let BASE_WIDTH: CGFloat = 343.0
+    fileprivate let NUM_OF_IMAGES = 3
+    fileprivate let CORNER_RADIUS: CGFloat = 5.0
+    fileprivate let SEPARATOR_LINE_WIDTH : CGFloat = 1.0
+    fileprivate let TEXT_MARGIN_X: CGFloat = 16.0
+    fileprivate let TEXT_MARGIN_Y: CGFloat = 10.0
     
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var mainImageView: UIImageView!
@@ -36,7 +36,7 @@ class TopResultCard: ResultCardBase {
     var delegate: ResultCardBaseDelegate?
     
     class func instance() -> TopResultCard {
-        return R.nib.topResultCard().instantiateWithOwner(self, options: nil)[0] as! TopResultCard
+        return R.nib.topResultCard().instantiate(withOwner: self, options: nil)[0] as! TopResultCard
     }
         
     init(frame: CGRect, restaurant: Restaurant, delegate: ResultCardBaseDelegate) {
@@ -44,7 +44,7 @@ class TopResultCard: ResultCardBase {
         self.setupSubViews()
     }
     
-    func setup(restaurant: Restaurant) {
+    func setup(_ restaurant: Restaurant) {
         self.restaurant = restaurant
     }
     
@@ -55,28 +55,28 @@ class TopResultCard: ResultCardBase {
     func setupSubViews() {
         
         // パーツ群を置くビュー
-        self.contentView.backgroundColor = UIColor.whiteColor()
+        self.contentView.backgroundColor = .white
         
         self.contentView.layer.cornerRadius = CORNER_RADIUS
         self.contentView.layer.masksToBounds = true
-        self.contentView.backgroundColor = UIColor.whiteColor()
+        self.contentView.backgroundColor = .white
         
-        self.backgroundColor = UIColor.clearColor()
+        self.backgroundColor = .clear
         self.layer.cornerRadius = CORNER_RADIUS
         self.layer.masksToBounds = false
         
         // 画像
         self.mainImageView.image = R.image.noimage()
-        self.mainImageView.contentMode = .ScaleAspectFill
+        self.mainImageView.contentMode = .scaleAspectFill
         self.mainImageView.clipsToBounds = true
         
         // レストラン名のラベル
         self.restaurantNameLabel.text = self.restaurant.shopName
-        self.restaurantNameLabel.backgroundColor = UIColor.whiteColor()
+        self.restaurantNameLabel.backgroundColor = .white
         self.restaurantNameLabel.font = UIFont(name: Const.PECOMY_FONT_BOLD, size: 24)
         self.restaurantNameLabel.numberOfLines = 2
         self.restaurantNameLabel.textColor = Const.RANKING_TOP_COLOR
-        self.restaurantNameLabel.textAlignment = .Center
+        self.restaurantNameLabel.textAlignment = .center
         self.restaurantNameLabel.sizeToFit()
         
         // カテゴリ
@@ -114,14 +114,14 @@ class TopResultCard: ResultCardBase {
         self.distanceLabel.textColor = Const.RANKING_SECOND_RIGHT_COLOR
         
         // 地図
-        let lat = Double(self.restaurant.latitude) ?? 0.0
-        let lon = Double(self.restaurant.longitude) ?? 0.0
+        let lat = Double(self.restaurant.latitude)
+        let lon = Double(self.restaurant.longitude)
 
-        let camera = GMSCameraPosition.cameraWithLatitude(lat,longitude: lon, zoom: 15)
+        let camera = GMSCameraPosition.camera(withLatitude: lat,longitude: lon, zoom: 15)
         self.mapView.camera = camera
-        self.mapView.myLocationEnabled = true
+        self.mapView.isMyLocationEnabled = true
 
-        mapView.userInteractionEnabled = false
+        mapView.isUserInteractionEnabled = false
         
         let marker = GMSMarker()
         marker.position = CLLocationCoordinate2DMake(lat, lon)
@@ -137,14 +137,14 @@ class TopResultCard: ResultCardBase {
     }
     
     // TODO: - Refactoring
-    private func acquireImages() {
+    fileprivate func acquireImages() {
         if self.restaurant.imageUrls.count >= 1 {
-            self.mainImageView.sd_setImageWithURL(NSURL(string: self.restaurant.imageUrls[0]), completed: {[weak self](image: UIImage!, error: NSError!, cacheType: SDImageCacheType, imageURL: NSURL!) in
+            self.mainImageView.sd_setImage(with: URL(string: self.restaurant.imageUrls[0])) {[weak self] (image, error, imageCacheType, imageURL) in
                 self!.mainImageView.alpha = 0
-                UIView.animateWithDuration(0.5, delay: 0.0, options: .CurveEaseInOut, animations: {() -> Void in
+                UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseInOut, animations: {() -> Void in
                     self!.mainImageView.alpha = 1
                     }, completion: nil)
-                })
+                }
         }
     }
     

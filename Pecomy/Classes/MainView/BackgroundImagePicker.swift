@@ -17,9 +17,9 @@ class BackgroundImagePicker {
      それ以外は昼の画像
      */
     class func pickImage() -> UIImage {
-        let currentDate = NSDate()
-        let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
-        let hour = calendar.components(NSCalendarUnit.Hour, fromDate: currentDate).hour
+        let currentDate = Date()
+        let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
+        let hour = calendar.component(.hour, from: currentDate)
         let n = arc4random() % 3 + 1
         if (6 < hour && hour < 18) {
             return UIImage(named: "background_afternoon\(n)")!

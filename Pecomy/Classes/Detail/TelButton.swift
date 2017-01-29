@@ -34,20 +34,20 @@ class TelButton: UIButton {
         self.backgroundColor = UIColor(red: 61/255, green: 204/255, blue: 60/255, alpha: 1.0)
         self.addSubview(self.telImage)
         
-        self.telImage.snp_makeConstraints { (make) in
+        self.telImage.snp.makeConstraints { (make) in
             make.left.equalTo(self).offset(8)
             make.centerY.equalTo(self)
             make.size.width.equalTo(28)
             make.size.height.equalTo(28)
         }
         
-        let label = UILabel(frame: CGRectZero)
+        let label = UILabel(frame: .zero)
         label.text = self.telString
         label.font = self.FONT_TEL
-        label.textColor = UIColor.whiteColor()
+        label.textColor = .white
         self.addSubview(label)
-        label.snp_makeConstraints { (make) in
-            make.left.equalTo(self.telImage.snp_right).offset(8)
+        label.snp.makeConstraints { (make) in
+            make.left.equalTo(self.telImage.snp.right).offset(8)
             make.top.equalTo(self)
             make.bottom.equalTo(self)
             make.right.equalTo(self).offset(-8)

@@ -36,10 +36,10 @@ struct Restaurant {
         get {
             var price = ""
             let pattern = "\\[昼\\](?!.*  ).+?999"
-            let regex = try! NSRegularExpression(pattern: pattern, options: .CaseInsensitive)
-            let matches: [NSTextCheckingResult] = regex.matchesInString(self.priceRange, options: [], range: NSMakeRange(0, self.priceRange.characters.count))
-            for (idx, match) in matches.enumerate() {
-                price = NSString(string: self.priceRange).substringWithRange(match.rangeAtIndex(idx))
+            let regex = try! NSRegularExpression(pattern: pattern, options: .caseInsensitive)
+            let matches: [NSTextCheckingResult] = regex.matches(in: self.priceRange, options: [], range: NSMakeRange(0, self.priceRange.characters.count))
+            for (idx, match) in matches.enumerated() {
+                price = NSString(string: self.priceRange).substring(with: match.rangeAt(idx))
             }
             return String(price)
         }
@@ -48,7 +48,7 @@ struct Restaurant {
     // [昼]を消したdayRange
     var dayPriceRangeWithoutLabel: String {
         get {
-            return self.dayPriceRange.stringByReplacingOccurrencesOfString("[昼]", withString: "")
+            return self.dayPriceRange.replacingOccurrences(of: "[昼]", with: "")
         }
     }
     
@@ -56,10 +56,10 @@ struct Restaurant {
         get {
             var price = ""
             let pattern = "\\[夜\\][^  ].+?999"
-            let regex = try! NSRegularExpression(pattern: pattern, options: .CaseInsensitive)
-            let matches: [NSTextCheckingResult] = regex.matchesInString(self.priceRange, options: [], range: NSMakeRange(0, self.priceRange.characters.count))
-            for (idx, match) in matches.enumerate() {
-                price = NSString(string: self.priceRange).substringWithRange(match.rangeAtIndex(idx))
+            let regex = try! NSRegularExpression(pattern: pattern, options: .caseInsensitive)
+            let matches: [NSTextCheckingResult] = regex.matches(in: self.priceRange, options: [], range: NSMakeRange(0, self.priceRange.characters.count))
+            for (idx, match) in matches.enumerated() {
+                price = NSString(string: self.priceRange).substring(with: match.rangeAt(idx))
             }
             return String(price)
         }
@@ -68,14 +68,14 @@ struct Restaurant {
     // [夜]を消したnightPriceRange
     var nightPriceRangeWithoutLabel: String {
         get {
-            return self.nightPriceRange.stringByReplacingOccurrencesOfString("[夜]", withString: "")
+            return self.nightPriceRange.replacingOccurrences(of: "[夜]", with: "")
         }
     }
 }
 
 extension Restaurant: Mappable {
-    init?(_ map: Map) {
-        mapping(map)
+    init?(map: Map) {
+        mapping(map: map)
     }
     
     mutating func mapping(map: Map) {

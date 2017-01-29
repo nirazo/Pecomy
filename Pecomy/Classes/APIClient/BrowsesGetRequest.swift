@@ -13,9 +13,9 @@ class BrowsesGetRequest: PecomyApiRequest {
     typealias Response = BrowsesGetResponse
     
     var endpoint: String
-    var method: Alamofire.Method = .GET
-    var params: [String: AnyObject] = [:]
-    var encoding: ParameterEncoding = .URL
+    var method: HTTPMethod = .get
+    var params: [String: Any] = [:]
+    var encoding: ParameterEncoding = URLEncoding.default
     
     init(latitude: Double, longitude: Double, orderBy: RestaurantListOrder) {
         endpoint = "/user/browses"

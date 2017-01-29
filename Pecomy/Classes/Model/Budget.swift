@@ -9,15 +9,15 @@
 import UIKit
 
 enum Budget: Int {
-    case Unspecified, LessThanThousand, LessThanTwoThousand, _counter
+    case unspecified, lessThanThousand, lessThanTwoThousand, _counter
     
     func valueForDisplay() -> String {
         switch self {
-        case .Unspecified:
+        case .unspecified:
             return NSLocalizedString("Unspecified", comment: "")
-        case .LessThanThousand:
+        case .lessThanThousand:
             return NSLocalizedString("LessThanThousand", comment: "")
-        case .LessThanTwoThousand:
+        case .lessThanTwoThousand:
             return NSLocalizedString("LessThanTwoThousand", comment: "")
         default:
             return ""

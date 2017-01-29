@@ -19,6 +19,6 @@ class PecomyUser {
     var favorites = [Restaurant]()
     var visits = [Restaurant]()
     
-    private init() {
+    fileprivate init() {
     }
 }

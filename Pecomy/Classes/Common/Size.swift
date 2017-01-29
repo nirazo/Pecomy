@@ -11,14 +11,14 @@ import UIKit
 struct Size {
     
     static func statusBarHeight() -> CGFloat {
-        return UIApplication.sharedApplication().statusBarFrame.height
+        return UIApplication.shared.statusBarFrame.height
     }
     
-    static func navBarHeight(navigationController: UINavigationController) -> CGFloat {
+    static func navBarHeight(_ navigationController: UINavigationController) -> CGFloat {
         return navigationController.navigationBar.frame.size.height
     }
     
-    static func navHeightIncludeStatusBar(navigationController: UINavigationController) -> CGFloat {
+    static func navHeightIncludeStatusBar(_ navigationController: UINavigationController) -> CGFloat {
         return statusBarHeight() + navBarHeight(navigationController)
     }
 }

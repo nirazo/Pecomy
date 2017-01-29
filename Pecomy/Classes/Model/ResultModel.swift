@@ -9,26 +9,26 @@
 class ResultModel {
     var results = [Restaurant]()
     
-    private var session: PecomyApiClient.Session?
+    fileprivate var session: PecomyApiClient.Session?
     
     init() {
     }
     
-    func fetch(latitude: Double, longitude: Double, handler: ((PecomyResult<ResultRequest.Response, PecomyApiClientError>) -> Void)) -> Bool {
+    func fetch(_ latitude: Double, longitude: Double, handler: @escaping ((PecomyResult<ResultRequest.Response, PecomyApiClientError>) -> Void)) {
         let request = ResultRequest(latitude: latitude, longitude: longitude)
         self.session = PecomyApiClient.send(request) {[weak self] (response: PecomyResult<ResultRequest.Response, PecomyApiClientError>) -> Void in
             guard let strongSelf = self else { return }
             switch response {
-            case .Success(let value):
-                //strongSelf.results = value.results
+            case .success(let value):
+                strongSelf.results = value.results
                 handler(PecomyResult(value: value))
-            case .Failure(let error):
+            case .failure(let error):
                 // TODO: エラーコードによってエラーメッセージ詰めたりする
                 handler(PecomyResult(error: error))
             }
             strongSelf.session = nil
         }
-        return true
+        return
     }
 
 }

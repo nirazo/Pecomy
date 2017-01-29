@@ -13,10 +13,10 @@ public protocol PecomyApiRequest {
     associatedtype Response
     
     var endpoint: String{ get }
-    var method: Alamofire.Method{ get }
+    var method: HTTPMethod{ get }
     var encoding: ParameterEncoding{ get }
     var headerParams: [String:String] { get }
-    var params: [String:AnyObject]{ get }
+    var params: [String:Any]{ get }
 }
 
 extension PecomyApiRequest {

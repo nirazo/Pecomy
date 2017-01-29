@@ -13,9 +13,9 @@ class ResultRequest: PecomyApiRequest {
     typealias Response = ResultResponse
     
     var endpoint: String
-    var method: Alamofire.Method = Method.GET
-    var params: [String: AnyObject] = [:]
-    var encoding: ParameterEncoding = ParameterEncoding.URL
+    var method: HTTPMethod = .get
+    var params: [String: Any] = [:]
+    var encoding: ParameterEncoding = URLEncoding.default
     
     init(latitude: Double, longitude: Double) {
         endpoint = "results"

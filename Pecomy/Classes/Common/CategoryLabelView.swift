@@ -22,8 +22,8 @@ class CategoryLabelView: UIView {
     
     init(frame: CGRect, category: String, color: UIColor = Const.PECOMY_THEME_COLOR) {
         // カテゴリのsplit
-        let replacedCategory = category.stringByReplacingOccurrencesOfString("（.*）", withString: "", options: .RegularExpressionSearch, range: nil)
-        self.categoriesArray = replacedCategory.componentsSeparatedByString("・")
+        let replacedCategory = category.replacingOccurrences(of: "（.*）", with: "", options: .regularExpression, range: nil)
+        self.categoriesArray = replacedCategory.components(separatedBy: "・")
         if (self.categoriesArray.count > MAX_CATEGORY_NUM) {
             self.categoriesArray = [String](self.categoriesArray[0..<MAX_CATEGORY_NUM])
         }
@@ -42,9 +42,9 @@ class CategoryLabelView: UIView {
     
     func commonInit() {
         self.addSubview(self.contentView)
-        self.contentView.backgroundColor = UIColor.clearColor()
+        self.contentView.backgroundColor = UIColor.clear
         
-        self.contentView.snp_makeConstraints { (make) in
+        self.contentView.snp.makeConstraints { (make) in
             make.centerX.equalTo(self)
             make.centerY.equalTo(self)
             make.left.equalTo(self).offset(MARGIN_CATEGORY_HORIZONTAL)
@@ -57,10 +57,10 @@ class CategoryLabelView: UIView {
         self.setupSubViews()
     }
     
-    func setCategory(category: String) {
+    func setCategory(_ category: String) {
         // カテゴリのsplit
-        let replacedCategory = category.stringByReplacingOccurrencesOfString("（.*）", withString: "", options: .RegularExpressionSearch, range: nil)
-        self.categoriesArray = replacedCategory.componentsSeparatedByString("・")
+        let replacedCategory = category.replacingOccurrences(of: "（.*）", with: "", options: .regularExpression, range: nil)
+        self.categoriesArray = replacedCategory.components(separatedBy: "・")
         if (self.categoriesArray.count > MAX_CATEGORY_NUM) {
             self.categoriesArray = [String](self.categoriesArray[0..<MAX_CATEGORY_NUM])
         }
@@ -80,7 +80,7 @@ class CategoryLabelView: UIView {
             categoryLabel.text = self.categoriesArray[i]
             categoryLabel.font = UIFont(name: Const.PECOMY_FONT_BOLD, size: DEFAULT_FONT_SIZE_CATEGORY)
             categoryLabel.numberOfLines = 1
-            categoryLabel.textAlignment = .Center
+            categoryLabel.textAlignment = .center
             categoryLabel.textColor = Const.PECOMY_THEME_TEXT_COLOR
             categoryLabel.adjustsFontSizeToFitWidth = true
             self.addSubview(categoryLabel)
@@ -88,12 +88,12 @@ class CategoryLabelView: UIView {
             self.categoryLabels.append(categoryLabel)
             self.contentView.addSubview(self.categoryLabels[i])
             
-            self.categoryLabels[i].snp_makeConstraints { (make) in
+            self.categoryLabels[i].snp.makeConstraints { (make) in
                 make.centerX.equalTo(self.contentView)
                 if i == 0 {
                     make.top.equalTo(self.contentView)
                 } else {
-                    make.top.equalTo(self.categoryLabels[i-1].snp_bottom).offset(MARGIN_CATEGORY_VERTICAL)
+                    make.top.equalTo(self.categoryLabels[i-1].snp.bottom).offset(MARGIN_CATEGORY_VERTICAL)
                 }
                 make.left.equalTo(self.contentView)
                 make.right.equalTo(self.contentView)
