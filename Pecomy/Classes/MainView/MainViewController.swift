@@ -183,7 +183,11 @@ class MainViewController: UIViewController {
         self.view.addSubview(self.loadingIndicator)
         
         // 初回起動のときはtutorial出す
-        if (!UserDefaults.standard.bool(forKey: Const.UD_KEY_HAS_LAUNCHED)) {
+        let userDefaults = UserDefaults.standard
+        if (!userDefaults.bool(forKey: Const.UD_KEY_HAS_LAUNCHED)) {
+            userDefaults.register(defaults: [Const.isFixLocationKey: false])
+            userDefaults.register(defaults: [Const.fixedLatitudeKey: 35.659931])
+            userDefaults.register(defaults: [Const.fixedLongitudeKey: 139.701516])
             KeychainManager.removePecomyUserToken()
             self.tutorialVC = TutorialViewController()
             self.tutorialVC?.delegate = self

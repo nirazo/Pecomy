@@ -9,12 +9,14 @@
 import UIKit
 
 fileprivate enum DebugSectionType: Int {
-    case location
+    case location, _counter
     
     func sectionTitle() -> String? {
         switch self {
         case .location:
             return R.string.localizable.debugSettingsLocationSection()
+        default:
+            return nil
         }
     }
     
@@ -22,6 +24,8 @@ fileprivate enum DebugSectionType: Int {
         switch self {
         case .location:
             return "locationCell"
+        default:
+            return nil
         }
     }
 }
@@ -36,7 +40,7 @@ class DebugSettingsViewController: UIViewController {
         self.tableView.snp.makeConstraints { make in
             make.center.size.equalToSuperview()
         }
-        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: self.cellIdentifier)
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "locationCell")
         self.tableView.register(TableViewSwitchCell.self, forCellReuseIdentifier: "locationSwitch")
         self.tableView.estimatedRowHeight = 50
         self.tableView.dataSource = self
@@ -47,19 +51,30 @@ class DebugSettingsViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tableView.reloadData()
+    }
 }
 
 extension DebugSettingsViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return DebugSectionType._counter.rawValue
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        let sectionType = DebugSectionType(rawValue: section)!
+        switch sectionType {
+        case .location:
+            return 2
+        default:
+            return 1
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let sectionType = DebugSectionType(rawValue: indexPath.row)
+        let sectionType = DebugSectionType(rawValue: indexPath.section)
         guard let type = sectionType else {
             return tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
         }
@@ -69,19 +84,26 @@ extension DebugSettingsViewController: UITableViewDataSource {
             var identifier = ""
             if indexPath.row == 0 {
                 identifier = "locationSwitch"
+                let ud = UserDefaults.standard
                 let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! TableViewSwitchCell
-                cell.configureCell(withTitle: R.string.localizable.fixLocationSettingTitle(), switchState: AppState.sharedInstance.useFixedLocation) { (isOn) in
-                    AppState.sharedInstance.useFixedLocation = isOn
-                    print("fixed: \(isOn)")
+                cell.configureCell(withTitle: R.string.localizable.fixLocationSettingTitle(), switchState: ud.bool(forKey: Const.isFixLocationKey)) { (isOn) in
+                    ud.set(isOn, forKey: Const.isFixLocationKey)
+                    ud.synchronize()
                 }
                 return cell
             } else if indexPath.row == 1 {
                 identifier = "locationCell"
                 let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
+                cell.textLabel?.font = UIFont(name: Const.PECOMY_FONT_NORMAL, size: 14)
+                cell.textLabel?.text = "lat: \(Const.fixedLatitude), lon: \(Const.fixedLongitude)"
+                cell.accessoryType = .disclosureIndicator
+                cell.selectionStyle = .none
                 return cell
             } else {
                 return tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
             }
+        default:
+            fatalError("Unforgiven section")
         }
     }
     
@@ -91,5 +113,17 @@ extension DebugSettingsViewController: UITableViewDataSource {
 }
 
 extension DebugSettingsViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let sectionType = DebugSectionType(rawValue: indexPath.section)
+        guard let type = sectionType else { return }
+        switch type {
+        case .location:
+            if indexPath.row == 1 {
+                let mapVC = DebugMapViewController()
+                self.navigationController?.pushViewController(mapVC, animated: true)
+            }
+        default:
+            fatalError("Unforgiven section")
+        }
+    }
 }

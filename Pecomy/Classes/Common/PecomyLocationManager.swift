@@ -39,7 +39,7 @@ class PecomyLocationManager: NSObject, CLLocationManagerDelegate {
     fileprivate func didCompleteWithSuccess(_ location: CLLocation?) {
         locationManager?.stopUpdatingLocation()
         #if FIXED_LOCATION
-            let stubLocation = CLLocation(latitude: Const.FIXED_LATITUDE, longitude: Const.FIXED_LONGITUDE)
+            let stubLocation = CLLocation(latitude: Const.fixedLatitude, longitude: Const.fixedLongitude)
             didCompleteWithSuccess?(stubLocation)
         #else
             didCompleteWithSuccess?(location)
@@ -51,7 +51,7 @@ class PecomyLocationManager: NSObject, CLLocationManagerDelegate {
     fileprivate func didCompleteWithError(_ error: Error?) {
         locationManager?.stopUpdatingLocation()
         #if FIXED_LOCATION
-            let stubLocation = CLLocation(latitude: Const.FIXED_LATITUDE, longitude: Const.FIXED_LONGITUDE)
+            let stubLocation = CLLocation(latitude: Const.fixedLatitude, longitude: Const.fixedLongitude)
             didCompleteWithSuccess?(stubLocation)
         #else
             didCompleteWithFailure?(error)

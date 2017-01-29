@@ -60,6 +60,7 @@
 		D2731FE71C849DE800E8E5E9 /* BackgroundImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2731FE61C849DE800E8E5E9 /* BackgroundImagePicker.swift */; };
 		D27A69F81E3DF892006B7CE3 /* DebugSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27A69F71E3DF892006B7CE3 /* DebugSettingsViewController.swift */; };
 		D27A69FA1E3E1B31006B7CE3 /* TableViewSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27A69F91E3E1B31006B7CE3 /* TableViewSwitchCell.swift */; };
+		D27A69FC1E3E2FF2006B7CE3 /* DebugMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27A69FB1E3E2FF2006B7CE3 /* DebugMapViewController.swift */; };
 		D27BB9D21B36F4A900F8D902 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27BB9D11B36F4A900F8D902 /* AppDelegate.swift */; };
 		D27BB9D41B36F4A900F8D902 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27BB9D31B36F4A900F8D902 /* MainViewController.swift */; };
 		D27BB9D91B36F4A900F8D902 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D27BB9D81B36F4A900F8D902 /* Images.xcassets */; };
@@ -184,6 +185,7 @@
 		D2731FE61C849DE800E8E5E9 /* BackgroundImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundImagePicker.swift; sourceTree = "<group>"; };
 		D27A69F71E3DF892006B7CE3 /* DebugSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DebugSettingsViewController.swift; path = Debug/DebugSettingsViewController.swift; sourceTree = "<group>"; };
 		D27A69F91E3E1B31006B7CE3 /* TableViewSwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewSwitchCell.swift; sourceTree = "<group>"; };
+		D27A69FB1E3E2FF2006B7CE3 /* DebugMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DebugMapViewController.swift; path = Debug/DebugMapViewController.swift; sourceTree = "<group>"; };
 		D27BB9CC1B36F4A900F8D902 /* Pecomy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pecomy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D27BB9D01B36F4A900F8D902 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D27BB9D11B36F4A900F8D902 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -473,6 +475,7 @@
 			isa = PBXGroup;
 			children = (
 				D27A69F71E3DF892006B7CE3 /* DebugSettingsViewController.swift */,
+				D27A69FB1E3E2FF2006B7CE3 /* DebugMapViewController.swift */,
 			);
 			name = Debug;
 			sourceTree = "<group>";
@@ -955,6 +958,7 @@
 				D2A2CB501D4D99C200DD717B /* VisitsTableViewConfig.swift in Sources */,
 				D2C8E0371D16983D00E0EC6D /* VisitsModel.swift in Sources */,
 				D24A2CC31C255D2A009ACA08 /* ResultHeaderView.swift in Sources */,
+				D27A69FC1E3E2FF2006B7CE3 /* DebugMapViewController.swift in Sources */,
 				D2050C171DC4336E001711F0 /* ResultMessageHeaderView.swift in Sources */,
 				164718B51C3D22AD00F50D33 /* CardRequest.swift in Sources */,
 				D2731FE01C79A85300E8E5E9 /* ProfileViewController.swift in Sources */,
