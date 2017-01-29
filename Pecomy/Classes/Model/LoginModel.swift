@@ -12,17 +12,17 @@ import FBSDKCoreKit
 
 class LoginModel {
     
-    private var session: PecomyApiClient.Session?
+    fileprivate var session: PecomyApiClient.Session?
     
     init() {
     }
     
-    func fetch(fbAccessToken: String, handler: ((PecomyResult<PecomyUser, PecomyApiClientError>) -> Void)) -> Bool {
+    func fetch(_ fbAccessToken: String, handler: @escaping ((PecomyResult<PecomyUser, PecomyApiClientError>) -> Void)) {
         let request = LoginRequest(fbAccessToken: fbAccessToken)
         self.session = PecomyApiClient.send(request) {[weak self] (response: PecomyResult<LoginRequest.Response, PecomyApiClientError>) -> Void in
             guard let strongSelf = self else { return }
             switch response {
-            case .Success(let value):
+            case .success(let value):
                 KeychainManager.setPecomyUserToken(value.pecomyUser.accessToken)
                 KeychainManager.setPecomyUserName(value.pecomyUser.userName)
                 KeychainManager.setPecomyUserPictureUrl(value.pecomyUser.pictureUrl)
@@ -30,12 +30,12 @@ class LoginModel {
                 //print("deviceID: \(Utils.acquireDeviceID())")
                 
                 handler(PecomyResult(value: value.pecomyUser))
-            case .Failure(let error):
+            case .failure(let error):
                 handler(PecomyResult(error: error))
             }
             strongSelf.session = nil
         }
-        return true
+        return
     }
     
     class func currentPecomyToken() -> String? {
@@ -43,7 +43,7 @@ class LoginModel {
     }
     
     class func isLoggedIn() -> Bool {
-        return FBSDKAccessToken.currentAccessToken() != nil
+        return FBSDKAccessToken.current() != nil
     }
 
 }

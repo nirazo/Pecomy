@@ -26,16 +26,16 @@ class RichTagCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         self.contentView.addSubview(self.imageView)
         self.contentView.addSubview(self.categoryLabel)
-        self.contentView.backgroundColor = UIColor.clearColor()
+        self.contentView.backgroundColor = .clear
         
-        self.imageView.snp_makeConstraints { (make) in
+        self.imageView.snp.makeConstraints { (make) in
             make.left.equalTo(self.contentView)
             make.centerY.equalTo(self.contentView)
             make.width.equalTo(32)
             make.height.equalTo(32)
         }
-        self.categoryLabel.snp_makeConstraints { (make) in
-            make.left.equalTo(self.imageView.snp_right).offset(8)
+        self.categoryLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(self.imageView.snp.right).offset(8)
             make.height.equalTo(self)
             make.top.equalTo(self)
             make.right.equalTo(self)

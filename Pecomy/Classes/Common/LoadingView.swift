@@ -14,9 +14,9 @@ class LoadingView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = UIColor.blackColor()
+        self.backgroundColor = UIColor.black
         self.alpha = 0.5
-        self.loadingIndicator.activityIndicatorViewStyle = .WhiteLarge
+        self.loadingIndicator.activityIndicatorViewStyle = .whiteLarge
         self.loadingIndicator.hidesWhenStopped = true
         self.setupSubviews()
     }
@@ -27,7 +27,7 @@ class LoadingView: UIView {
     
     func setupSubviews() {
         self.addSubview(self.loadingIndicator)
-        self.loadingIndicator.snp_makeConstraints { (make) in
+        self.loadingIndicator.snp.makeConstraints { (make) in
             make.width.equalTo(50)
             make.height.equalTo(50)
             make.center.equalTo(self)

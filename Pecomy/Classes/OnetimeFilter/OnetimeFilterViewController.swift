@@ -9,35 +9,35 @@
 import UIKit
 
 enum DeviceType {
-    case IPhone4, IPhone5, IPhone6, IPhone6Plus, Other
+    case iPhone4, iPhone5, iPhone6, iPhone6Plus, other
     
     init(size: CGSize) {
         switch size {
-        case CGSize(width: 320.0, height: 480.0): self = .IPhone4
-        case CGSize(width: 320.0, height: 568.0): self = .IPhone5
-        case CGSize(width: 375.0, height: 667.0): self = .IPhone6
-        case CGSize(width: 414.0, height: 736.0): self = .IPhone6Plus
-        default: self = .Other
+        case CGSize(width: 320.0, height: 480.0): self = .iPhone4
+        case CGSize(width: 320.0, height: 568.0): self = .iPhone5
+        case CGSize(width: 375.0, height: 667.0): self = .iPhone6
+        case CGSize(width: 414.0, height: 736.0): self = .iPhone6Plus
+        default: self = .other
         }
     }
 }
 
 protocol OnetimeFilterViewControllerDelegate {
     func closeButtonTapped()
-    func startSearch(budget: Budget, numOfPeople: NumOfPeople, genre: Genre)
+    func startSearch(_ budget: Budget, numOfPeople: NumOfPeople, genre: Genre)
 }
 
 class OnetimeFilterViewController: UIViewController {
-    private let kCellReuse: String = "Cell"
-    private let kHeaderReuse: String = "HeaderView"
-    private let contentView = UIView()
-    private var collectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: UICollectionViewFlowLayout())
-    private let collectionViewConfig: OnetimeFilterCollectionViewConfig
-    private let bottomButtonsBgView = UIView(frame: CGRectZero)
-    private let cancelButton = UIButton(frame: CGRectZero)
-    private let startButton = UIButton(frame: CGRectZero)
+    fileprivate let kCellReuse: String = "Cell"
+    fileprivate let kHeaderReuse: String = "HeaderView"
+    fileprivate let contentView = UIView()
+    fileprivate var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+    fileprivate let collectionViewConfig: OnetimeFilterCollectionViewConfig
+    fileprivate let bottomButtonsBgView = UIView(frame: .zero)
+    fileprivate let cancelButton = UIButton(frame: .zero)
+    fileprivate let startButton = UIButton(frame: .zero)
     
-    private let deviceType = DeviceType(size: UIScreen.mainScreen().bounds.size)
+    fileprivate let deviceType = DeviceType(size: UIScreen.main.bounds.size)
     
     var delegate: OnetimeFilterViewControllerDelegate?
     
@@ -47,7 +47,7 @@ class OnetimeFilterViewController: UIViewController {
     
     var enableCancel: Bool
     
-    init(budget: Budget = .Unspecified, numOfPeople: NumOfPeople = .One, genre: Genre = .All, enableCancel: Bool = true) {
+    init(budget: Budget = .unspecified, numOfPeople: NumOfPeople = .one, genre: Genre = .all, enableCancel: Bool = true) {
         self.collectionViewConfig = OnetimeFilterCollectionViewConfig(budget: budget, numOfPeople: numOfPeople, genre: genre)
         self.enableCancel = enableCancel
         self.currentBudget = budget
@@ -68,9 +68,9 @@ class OnetimeFilterViewController: UIViewController {
         
         self.view.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.4)
         
-        self.contentView.backgroundColor = UIColor.whiteColor()
+        self.contentView.backgroundColor = UIColor.white
         self.view.addSubview(self.contentView)
-        self.contentView.snp_makeConstraints { (make) in
+        self.contentView.snp.makeConstraints { (make) in
             make.left.equalTo(self.view).offset(10)
             make.top.equalTo(self.view).offset(44)
             make.right.equalTo(self.view).offset(-10)
@@ -78,13 +78,13 @@ class OnetimeFilterViewController: UIViewController {
         }
         
         // タイトル
-        let titleLabel = UILabel(frame: CGRectZero)
+        let titleLabel = UILabel(frame: .zero)
         titleLabel.text = NSLocalizedString("OnetimeFilterTitle", comment: "")
         titleLabel.font = UIFont(name: Const.PECOMY_FONT_BOLD, size: 22)
         titleLabel.textColor = Const.PECOMY_THEME_COLOR
-        titleLabel.textAlignment = .Center
+        titleLabel.textAlignment = .center
         self.view.addSubview(titleLabel)
-        titleLabel.snp_makeConstraints { (make) in
+        titleLabel.snp.makeConstraints { (make) in
             make.top.equalTo(self.contentView).offset(25)
             make.centerX.equalTo(self.contentView)
             make.height.equalTo(34.5)
@@ -93,7 +93,7 @@ class OnetimeFilterViewController: UIViewController {
         
         // レイアウト作成
         let flowLayout = UICollectionViewFlowLayout()
-        self.collectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: flowLayout)
+        self.collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
 
         self.collectionView.center = self.view.center
         
@@ -101,35 +101,35 @@ class OnetimeFilterViewController: UIViewController {
         
         self.collectionView.delegate = self
         self.collectionView.dataSource = self.collectionViewConfig
-        self.collectionView.backgroundColor = UIColor.whiteColor()
-        self.collectionView.registerClass(OnetimeFilterCell.self, forCellWithReuseIdentifier: kCellReuse)
-        self.collectionView.registerClass(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: kHeaderReuse)
+        self.collectionView.backgroundColor = .white
+        self.collectionView.register(OnetimeFilterCell.self, forCellWithReuseIdentifier: kCellReuse)
+        self.collectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: kHeaderReuse)
         self.collectionView.allowsMultipleSelection = true
         
         self.view.addSubview(self.collectionView)
         
         var titleBottomMargin: CGFloat = 0
         switch self.deviceType {
-        case .IPhone4:
+        case .iPhone4:
             titleBottomMargin = 10
-        case .IPhone5:
+        case .iPhone5:
             titleBottomMargin = 15
-        case .IPhone6, .IPhone6Plus:
+        case .iPhone6, .iPhone6Plus:
             titleBottomMargin = 50.0
         default:
             titleBottomMargin = 50.0
         }
-        self.collectionView.snp_makeConstraints { (make) in
+        self.collectionView.snp.makeConstraints { (make) in
             make.left.equalTo(self.contentView).offset(16)
             make.right.equalTo(self.contentView).offset(-16)
-            make.top.equalTo(titleLabel.snp_bottom).offset(titleBottomMargin)
-            make.bottom.equalTo(self.contentView.snp_bottom).offset(-64)
+            make.top.equalTo(titleLabel.snp.bottom).offset(titleBottomMargin)
+            make.bottom.equalTo(self.contentView.snp.bottom).offset(-64)
         }
         
         self.bottomButtonsBgView.backgroundColor = UIColor(red: 235.0/255.0, green: 231.0/255.0, blue: 225.0/255.0, alpha: 1.0)
         self.contentView.addSubview(self.bottomButtonsBgView)
-        self.bottomButtonsBgView.snp_makeConstraints { (make) in
-            make.top.equalTo(self.collectionView.snp_bottom)
+        self.bottomButtonsBgView.snp.makeConstraints { (make) in
+            make.top.equalTo(self.collectionView.snp.bottom)
             make.left.equalTo(self.contentView)
             make.right.equalTo(self.contentView)
             make.bottom.equalTo(self.contentView)
@@ -139,33 +139,33 @@ class OnetimeFilterViewController: UIViewController {
         self.startButton.layer.cornerRadius = Const.CORNER_RADIUS
         self.startButton.backgroundColor = Const.PECOMY_THEME_COLOR
         self.startButton.titleLabel?.font = UIFont(name: Const.PECOMY_FONT_BOLD, size: 18)
-        self.startButton.setTitle(NSLocalizedString("StartTitle", comment: ""), forState: .Normal)
+        self.startButton.setTitle(NSLocalizedString("StartTitle", comment: ""), for: UIControlState())
         self.bottomButtonsBgView.addSubview(self.startButton)
-        self.startButton.addTarget(self, action: #selector(OnetimeFilterViewController.startButtonTapped(_:)), forControlEvents: .TouchUpInside)
+        self.startButton.addTarget(self, action: #selector(OnetimeFilterViewController.startButtonTapped(_:)), for: .touchUpInside)
         
         if (self.enableCancel) {
             // キャンセルボタン
             self.cancelButton.layer.cornerRadius = Const.CORNER_RADIUS
             self.cancelButton.backgroundColor = UIColor(red: 129.0/255.0, green: 152.0/255.0, blue: 178.0/255.0, alpha: 1.0)
             self.cancelButton.titleLabel?.font = UIFont(name: Const.PECOMY_FONT_BOLD, size: 18)
-            self.cancelButton.setTitle(NSLocalizedString("Cancel", comment: ""), forState: .Normal)
-            self.cancelButton.addTarget(self, action: #selector(OnetimeFilterViewController.cancelButtonTapped(_:)), forControlEvents: .TouchUpInside)
+            self.cancelButton.setTitle(NSLocalizedString("Cancel", comment: ""), for: UIControlState())
+            self.cancelButton.addTarget(self, action: #selector(OnetimeFilterViewController.cancelButtonTapped(_:)), for: .touchUpInside)
             
             self.bottomButtonsBgView.addSubview(self.cancelButton)
-            self.cancelButton.snp_makeConstraints { (make) in
+            self.cancelButton.snp.makeConstraints { (make) in
                 make.top.equalTo(self.bottomButtonsBgView).offset(10)
                 make.left.equalTo(self.bottomButtonsBgView).offset(10)
-                make.width.equalTo(self.bottomButtonsBgView.snp_width).dividedBy(2.61)
+                make.width.equalTo(self.bottomButtonsBgView.snp.width).dividedBy(2.61)
                 make.height.equalTo(44)
             }
-            self.startButton.snp_makeConstraints { (make) in
+            self.startButton.snp.makeConstraints { (make) in
                 make.top.equalTo(self.bottomButtonsBgView).offset(10)
-                make.left.equalTo(self.cancelButton.snp_right).offset(10)
+                make.left.equalTo(self.cancelButton.snp.right).offset(10)
                 make.right.equalTo(self.bottomButtonsBgView).offset(-10)
                 make.height.equalTo(44)
             }
         } else {
-            self.startButton.snp_makeConstraints { (make) in
+            self.startButton.snp.makeConstraints { (make) in
                 make.top.equalTo(self.bottomButtonsBgView).offset(10)
                 make.left.equalTo(self.contentView).offset(10)
                 make.right.equalTo(self.contentView).offset(-10)
@@ -175,79 +175,79 @@ class OnetimeFilterViewController: UIViewController {
     }
     
     //MARK: - button callbacks
-    func cancelButtonTapped(sender: AnyObject) {
+    func cancelButtonTapped(_ sender: AnyObject) {
         if (self.enableCancel) {
             self.delegate?.closeButtonTapped()
         }
     }
     
-    func startButtonTapped(sender: AnyObject) {
+    func startButtonTapped(_ sender: AnyObject) {
         self.delegate?.startSearch(self.currentBudget, numOfPeople: self.currentNumOfPeople, genre: self.currentGenre)
     }
 }
 
 extension OnetimeFilterViewController: UICollectionViewDelegate {
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let selectedItems = collectionView.indexPathsForSelectedItems()
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedItems = collectionView.indexPathsForSelectedItems
         guard let selecteds = selectedItems else { return }
         for index in selecteds {
             if ((index.section == indexPath.section) && (index.row != indexPath.row)) {
-                collectionView.deselectItemAtIndexPath(index, animated: false)
+                collectionView.deselectItem(at: index, animated: false)
             }
         }
         switch indexPath.section {
-            case OnetimeSections.Budget.hashValue:
+            case OnetimeSections.budget.hashValue:
             self.currentBudget = Budget(rawValue: indexPath.row)!
-            case OnetimeSections.People.hashValue:
+            case OnetimeSections.people.hashValue:
             self.currentNumOfPeople = NumOfPeople(rawValue: indexPath.row)!
-            case OnetimeSections.Genre.hashValue:
+            case OnetimeSections.genre.hashValue:
             self.currentGenre = Genre(rawValue: indexPath.row)!
         default:
             break
         }
     }
     
-    func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
-        collectionView.selectItemAtIndexPath(indexPath, animated: false, scrollPosition: .None)
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        collectionView.selectItem(at: indexPath, animated: false, scrollPosition: UICollectionViewScrollPosition())
     }
 
     
     // MARK: - UICollectionViewDelegateFlowLayout
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
         let viewSize = collectionView.frame.size
         var cellHeight: CGFloat = 0.0
         switch self.deviceType {
-        case .IPhone4:
+        case .iPhone4:
             cellHeight = 30
-        case .IPhone5:
+        case .iPhone5:
             cellHeight = 40
-        case .IPhone6, .IPhone6Plus:
+        case .iPhone6, .iPhone6Plus:
             cellHeight = 48
         default:
             cellHeight = 48
         }
         
-        if(indexPath.section == OnetimeSections.Genre.hashValue && indexPath.row == Genre.All.hashValue) {
+        if(indexPath.section == OnetimeSections.genre.hashValue && indexPath.row == Genre.all.hashValue) {
             return CGSize(width: viewSize.width, height: cellHeight)
         } else {
             return CGSize(width: (viewSize.width-20)/3, height: cellHeight) // The size of one cell
         }
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSizeMake(150, 18)  // Header size
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: 150, height: 18)  // Header size
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
         
         var bottomMargin: CGFloat = 0.0
         switch self.deviceType {
-        case .IPhone4:
+        case .iPhone4:
             bottomMargin = 10
-        case .IPhone5:
+        case .iPhone5:
             bottomMargin = 20
-        case .IPhone6, .IPhone6Plus:
+        case .iPhone6, .iPhone6Plus:
             bottomMargin = 30
         default:
             bottomMargin = 30
@@ -255,11 +255,11 @@ extension OnetimeFilterViewController: UICollectionViewDelegate {
         return UIEdgeInsetsMake(5, 0, bottomMargin, 0)
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
         return 9.9
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
         return 10.0
     }
 }

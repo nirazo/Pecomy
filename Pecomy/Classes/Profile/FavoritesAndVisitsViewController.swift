@@ -9,7 +9,7 @@
 import Foundation
 
 enum RestaurantListType {
-    case Favorites, Visits, None
+    case favorites, visits, none
 }
 
 class FavoritesAndVisitsViewController: UIViewController {
@@ -32,10 +32,10 @@ class FavoritesAndVisitsViewController: UIViewController {
         // TableView初期設定
         self.favoritesTableView.delegate = self
         self.favoritesTableView.dataSource = self.favoritesConfig
-        self.favoritesTableView.registerClass(RestaurantListCell.self, forCellReuseIdentifier: self.favoritesCellIdentifier)
+        self.favoritesTableView.register(RestaurantListCell.self, forCellReuseIdentifier: self.favoritesCellIdentifier)
         self.visitsTableView.delegate = self
         self.visitsTableView.dataSource = self.visitsConfig
-        self.visitsTableView.registerClass(RestaurantListCell.self, forCellReuseIdentifier: self.visitsCellIdentifier)
+        self.visitsTableView.register(RestaurantListCell.self, forCellReuseIdentifier: self.visitsCellIdentifier)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -46,32 +46,32 @@ class FavoritesAndVisitsViewController: UIViewController {
         super.viewDidLoad()
         
         self.navigationController?.makeNavigationBarDefault()
-        self.edgesForExtendedLayout = .None
+        self.edgesForExtendedLayout = []
         
-        let backButtonItem = UIBarButtonItem(title: NSLocalizedString("Back", comment: ""), style: .Plain, target: nil, action: nil)
+        let backButtonItem = UIBarButtonItem(title: NSLocalizedString("Back", comment: ""), style: .plain, target: nil, action: nil)
         self.navigationItem.backBarButtonItem = backButtonItem
         
         // segmentedControl
         self.segmentedControl.sizeToFit()
         self.segmentedControl.selectedSegmentIndex = self.listType.hashValue
-        self.segmentedControl.addTarget(self, action: #selector(FavoritesAndVisitsViewController.segmentChanged(_:)), forControlEvents: .ValueChanged)
+        self.segmentedControl.addTarget(self, action: #selector(FavoritesAndVisitsViewController.segmentChanged(_:)), for: .valueChanged)
         self.navigationItem.titleView = self.segmentedControl
         
         self.view.addSubview(self.currentTableView(self.listType))
-        self.currentTableView(self.listType).snp_remakeConstraints { make in
+        self.currentTableView(self.listType).snp.remakeConstraints { make in
             make.top.equalTo(self.view)
             make.left.equalTo(self.view)
             make.right.equalTo(self.view)
             make.bottom.equalTo(self.view)
         }
         
-        self.view.backgroundColor = .redColor()
+        self.view.backgroundColor = .red
         self.favoritesTableView.estimatedRowHeight = 80
         self.visitsTableView.estimatedRowHeight = 80
         self.currentTableView(self.listType).reloadData()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.favoritesConfig.updateFavoritesList { [weak self] () in
             guard let s = self else { return }
@@ -83,22 +83,22 @@ class FavoritesAndVisitsViewController: UIViewController {
         }
     }
     
-    func segmentChanged(sender: UISegmentedControl) {
+    func segmentChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
-        case RestaurantListType.Favorites.hashValue:
-            if (self.listType == .Favorites) { return }
+        case RestaurantListType.favorites.hashValue:
+            if (self.listType == .favorites) { return }
             self.view.addSubview(self.favoritesTableView)
             self.currentTableView(self.listType).removeFromSuperview()
-            self.listType = .Favorites
-        case RestaurantListType.Visits.hashValue:
-            if (self.listType == .Visits) { return }
+            self.listType = .favorites
+        case RestaurantListType.visits.hashValue:
+            if (self.listType == .visits) { return }
             self.view.addSubview(self.visitsTableView)
             self.currentTableView(self.listType).removeFromSuperview()
-            self.listType = .Visits
+            self.listType = .visits
         default:
             return
         }
-        self.currentTableView(self.listType).snp_makeConstraints { make in
+        self.currentTableView(self.listType).snp.makeConstraints { make in
             make.top.equalTo(self.view)
             make.left.equalTo(self.view)
             make.right.equalTo(self.view)
@@ -107,11 +107,11 @@ class FavoritesAndVisitsViewController: UIViewController {
         self.currentTableView(self.listType).reloadData()
     }
     
-    private func currentTableView(type: RestaurantListType) -> UITableView {
+    fileprivate func currentTableView(_ type: RestaurantListType) -> UITableView {
         switch type {
-        case .Favorites:
+        case .favorites:
             return self.favoritesTableView
-        case .Visits:
+        case .visits:
             return self.visitsTableView
         default:
             fatalError()
@@ -122,13 +122,13 @@ class FavoritesAndVisitsViewController: UIViewController {
 
 // MARK: - UITableViewDelegate Methods
 extension FavoritesAndVisitsViewController: UITableViewDelegate {
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let cell = self.currentTableView(self.listType).cellForRowAtIndexPath(indexPath) as! RestaurantListCell
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = self.currentTableView(self.listType).cellForRow(at: indexPath) as! RestaurantListCell
         let restaurant = cell.restaurant
         let detailVC = DetailViewController(restaurant: restaurant)
         detailVC.navigationItem.title = restaurant.shopName
         print("id: \(restaurant.shopID)")
-        let backButtonItem = UIBarButtonItem(title: NSLocalizedString("Back", comment: ""), style: .Plain, target: nil, action: nil)
+        let backButtonItem = UIBarButtonItem(title: NSLocalizedString("Back", comment: ""), style: .plain, target: nil, action: nil)
         self.navigationItem.backBarButtonItem = backButtonItem
         self.navigationController?.pushViewController(detailVC, animated: true)
     }

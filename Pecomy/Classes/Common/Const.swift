@@ -86,8 +86,8 @@ struct Const {
     static let STATUS_CODE_BAD_REQUEST = 400
     
     // カード上のテキスト
-    static let CARD_LIKE_COLOR = UIColor.whiteColor()
-    static let CARD_DISLIKE_COLOR = UIColor.whiteColor()
+    static let CARD_LIKE_COLOR = UIColor.white
+    static let CARD_DISLIKE_COLOR = UIColor.white
     
     // 角丸の半径
     static let CORNER_RADIUS: CGFloat = 5.0
@@ -99,7 +99,7 @@ struct Const {
     static let GOOGLEMAP_API_KEY = "AIzaSyAEXL52glVXfls6JzlsQevrcHUDoJwr5iI"
     
     // ウインドウのサイズ
-    static let WindowSize = UIScreen.mainScreen().bounds.size
+    static let WindowSize = UIScreen.main.bounds.size
     
     // Keychain
     static let PecomyUserTokenKeychainKey = "PecomyUserToken"

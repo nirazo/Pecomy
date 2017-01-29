@@ -14,6 +14,6 @@ class AppState {
     var currentLatitude: Double?
     var currentLongitude: Double?
     
-    private init() {
+    fileprivate init() {
     }
 }

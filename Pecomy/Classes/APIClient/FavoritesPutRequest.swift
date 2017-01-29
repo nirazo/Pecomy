@@ -13,9 +13,9 @@ class FavoritesPutRequest: PecomyApiRequest {
     typealias Response = FavoritesPutResponse
     
     var endpoint: String
-    var method: Alamofire.Method = .PUT
-    var params: [String: AnyObject] = [:]
-    var encoding: ParameterEncoding = .URL
+    var method: HTTPMethod = .put
+    var params: [String: Any] = [:]
+    var encoding: ParameterEncoding = URLEncoding.default
     
     init(shopID: Int) {
         endpoint = "/user/favorites"

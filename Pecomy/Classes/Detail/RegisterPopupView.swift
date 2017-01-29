@@ -9,29 +9,29 @@
 import Foundation
 
 enum RegisterType {
-    case Checkin, Favorite
+    case checkin, favorite
     
     func iconImage() -> UIImage {
         switch self {
-        case .Checkin:
+        case .checkin:
             return R.image.modal_checkin()!
-        case .Favorite:
+        case .favorite:
             return R.image.modal_favorite()!
         }
     }
     
-    func reportString(shopName: String) -> NSAttributedString {
+    func reportString(_ shopName: String) -> NSAttributedString {
         var str = ""
         switch self {
-        case .Checkin:
+        case .checkin:
             str = String(format: NSLocalizedString("CheckinReport", comment: ""), shopName)
-        case .Favorite:
+        case .favorite:
             str = String(format: NSLocalizedString("FavoriteReport", comment: ""), shopName)
         }
         return self.makeAttrText(str, shopName: shopName)
     }
     
-    private func makeAttrText(text: String, shopName: String) -> NSAttributedString {
+    fileprivate func makeAttrText(_ text: String, shopName: String) -> NSAttributedString {
         let attrText = NSMutableAttributedString(string: text)
         let shopNameRange = NSMakeRange(0, shopName.characters.count)
         attrText.beginEditing()
@@ -45,7 +45,7 @@ enum RegisterType {
 class RegisterPopupView: UIView {
     
     let iconView = UIImageView()
-    var type = RegisterType.Checkin
+    var type = RegisterType.checkin
     let reportLabel = UILabel()
     var shopName = ""
     
@@ -63,23 +63,23 @@ class RegisterPopupView: UIView {
     
     func commonInit() {
         self.layer.cornerRadius = Const.CORNER_RADIUS
-        self.backgroundColor = .whiteColor()
+        self.backgroundColor = .white
         
         self.iconView.image = self.type.iconImage()
         self.addSubview(self.iconView)
-        self.iconView.snp_makeConstraints { make in
+        self.iconView.snp.makeConstraints { make in
             make.top.equalTo(self).offset(28)
             make.centerX.equalTo(self)
             make.width.height.equalTo(70)
         }
         
         self.reportLabel.font = UIFont(name: Const.PECOMY_FONT_NORMAL, size: 14)
-        self.reportLabel.textAlignment = .Center
+        self.reportLabel.textAlignment = .center
         self.reportLabel.numberOfLines = 0
         self.reportLabel.attributedText = self.type.reportString(self.shopName)
         self.addSubview(self.reportLabel)
-        self.reportLabel.snp_makeConstraints { make in
-            make.top.equalTo(self.iconView.snp_bottom).offset(20)
+        self.reportLabel.snp.makeConstraints { make in
+            make.top.equalTo(self.iconView.snp.bottom).offset(20)
             make.left.equalTo(self).offset(15)
             make.right.equalTo(self).offset(-15)
             make.bottom.equalTo(self).offset(-20)

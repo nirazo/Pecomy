@@ -10,14 +10,14 @@ import Foundation
 
 public enum PecomyResult<Value, Error> {
 
-    case Success(Value)
-    case Failure(Error)
+    case success(Value)
+    case failure(Error)
     
     public init(value: Value) {
-        self = .Success(value)
+        self = .success(value)
     }
     
     public init(error: Error) {
-        self = .Failure(error)
+        self = .failure(error)
     }
 }

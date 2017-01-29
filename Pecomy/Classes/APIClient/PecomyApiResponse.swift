@@ -9,18 +9,18 @@
 import Foundation
 import ObjectMapper
 
-public class PecomyApiResponse: Mappable {
+open class PecomyApiResponse: Mappable {
     
     var code = 0
     var message = ""
     
     public init() {}
     
-    public required init?(_ map: Map) {
-        mapping(map)
+    public required init?(map: Map) {
+        mapping(map: map)
     }
     
-    public func mapping(map: Map) {
+    open func mapping(map: Map) {
         code <- map["body.code"]
         message <- map["message"]
     }

@@ -12,12 +12,12 @@ import ObjectMapper
 class BrowsesPutResponse: PecomyApiResponse {
     let pecomyUser = PecomyUser.sharedInstance
     
-    required init?(_ map: Map) {
-        super.init(map)
+    required init?(map: Map) {
+        super.init(map: map)
     }
     
     override func mapping(map: Map) {
-        super.mapping(map)
+        super.mapping(map: map)
         self.pecomyUser.browses <- map["browses"]
     }
 }

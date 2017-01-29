@@ -15,8 +15,8 @@ protocol RestaurantDetailViewDelegate {
 }
 
 enum RestaurantDetailCollectionViewTag: Int {
-    case PicturesView
-    case RichTagView
+    case picturesView
+    case richTagView
 }
 
 class RestaurantDetailView: UIView {
@@ -54,11 +54,11 @@ class RestaurantDetailView: UIView {
     @IBOutlet weak var checkinBottomBar: CheckinBottomBar!
     
     
-    var mapTapView = UIView(frame: CGRectZero)
+    var mapTapView = UIView(frame: .zero)
     var mapTappedAction : ((Restaurant) -> ())?
 
     class func instance() -> RestaurantDetailView {
-        return R.nib.restaurantDetailView.instantiateWithOwner(self, options: nil)[0] as! RestaurantDetailView
+        return R.nib.restaurantDetailView.instantiate(withOwner: self, options: nil)[0] as! RestaurantDetailView
     }
     
     init(frame: CGRect, restaurant: Restaurant) {
@@ -71,7 +71,7 @@ class RestaurantDetailView: UIView {
         super.init(coder: aDecoder)
     }
     
-    func setup(restaurant: Restaurant) {
+    func setup(_ restaurant: Restaurant) {
         self.restaurant = restaurant
     }
     
@@ -79,12 +79,12 @@ class RestaurantDetailView: UIView {
         
         // 画像
         self.restaurantImageView.image = R.image.noimage()
-        self.restaurantImageView.contentMode = .ScaleAspectFill
+        self.restaurantImageView.contentMode = .scaleAspectFill
         self.restaurantImageView.clipsToBounds = true
         
         // レストラン名のラベル
         self.restaurantNameLabel.text = self.restaurant.shopName
-        self.restaurantNameLabel.backgroundColor = UIColor.whiteColor()
+        self.restaurantNameLabel.backgroundColor = UIColor.white
         self.restaurantNameLabel.font = UIFont(name: Const.PECOMY_FONT_BOLD, size: 16)
         self.restaurantNameLabel.numberOfLines = 2
         self.restaurantNameLabel.textColor = Const.RANKING_TOP_COLOR
@@ -127,30 +127,30 @@ class RestaurantDetailView: UIView {
         // 地図
         let lat = self.restaurant.latitude
         let lon = self.restaurant.longitude
-        let camera = GMSCameraPosition.cameraWithLatitude(lat,longitude: lon, zoom: 15)
+        let camera = GMSCameraPosition.camera(withLatitude: lat,longitude: lon, zoom: 15)
         self.mapView.camera = camera
-        self.mapView.myLocationEnabled = true
+        self.mapView.isMyLocationEnabled = true
         
-        self.mapView.userInteractionEnabled = false
+        self.mapView.isUserInteractionEnabled = false
         
         let marker = GMSMarker()
         marker.position = CLLocationCoordinate2DMake(lat, lon)
         marker.map = mapView
         
         // 地図のグラデーション
-        gradientLayer.colors = [UIColor.clearColor().CGColor, UIColor.whiteColor().CGColor]
-        gradientLayer.startPoint = CGPointMake(0.0, 0.5)   //開始ポイント
-        gradientLayer.endPoint = CGPointMake(0.4, 0.5)    //終了ポイント
+        gradientLayer.colors = [UIColor.clear.cgColor, UIColor.white.cgColor]
+        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.5)   //開始ポイント
+        gradientLayer.endPoint = CGPoint(x: 0.4, y: 0.5)    //終了ポイント
         self.mapView.layer.mask = self.gradientLayer
         
-        self.mapTapView.backgroundColor = UIColor.clearColor()
+        self.mapTapView.backgroundColor = UIColor.clear
         self.addSubview(self.mapTapView)
-        self.mapTapView.snp_makeConstraints { (make) in
+        self.mapTapView.snp.makeConstraints { (make) in
             make.top.equalTo(self.mapView)
             make.left.equalTo(self.mapView)
             make.size.equalTo(self.mapView)
         }
-        let tr = UITapGestureRecognizer(target: self, action: #selector(RestaurantDetailView.mapViewTapped(_:)))
+        let tr = UITapGestureRecognizer(target: self, action: #selector(RestaurantDetailView.mapViewTapped(_ :)))
         self.mapTapView.addGestureRecognizer(tr)
         
         
@@ -167,7 +167,7 @@ class RestaurantDetailView: UIView {
         self.dayBusinessHourLabel.font = UIFont(name: Const.PECOMY_FONT_NORMAL, size: 12)
         
         // レビューリスト
-        self.commentsView.setup(restaurant.reviewSubjects)
+        self.commentsView.setup(withComments: restaurant.reviewSubjects)
         
         // その他写真ラベル
         self.picturesViewTitleLabel.text = NSLocalizedString("PicturesViewTitle", comment: "")
@@ -179,14 +179,14 @@ class RestaurantDetailView: UIView {
         self.bottomSeparator.backgroundColor = UIColor(red: 230/255.0, green: 230/255.0, blue: 230/255.0, alpha: 1.0)
         
         // その他の写真
-        self.picturesView.backgroundColor = UIColor.clearColor()
+        self.picturesView.backgroundColor = UIColor.clear
         
         // リッチタグラベル
         self.richTagsViewTitleLabel.text = NSLocalizedString("RichTagsTitle", comment: "")
         self.richTagsViewTitleLabel.textColor = Const.RANKING_SECOND_RIGHT_COLOR
         self.richTagsViewTitleLabel.font = UIFont(name: Const.PECOMY_FONT_BOLD, size: 14)
         
-        self.richTagsView.backgroundColor = UIColor.clearColor()
+        self.richTagsView.backgroundColor = UIColor.clear
         
         // 画像のダウンロード
         self.acquireImages()
@@ -198,36 +198,34 @@ class RestaurantDetailView: UIView {
         super.layoutSubviews()
         self.gradientLayer.frame = self.mapView.layer.bounds
         self.picturesView.collectionViewLayout = PictureCollectionViewFlowLayout()
-        self.picturesView.registerClass(PictureCollectionViewCell.self, forCellWithReuseIdentifier: "PicCell")
-        self.richTagsView.registerClass(RichTagCollectionViewCell.self, forCellWithReuseIdentifier: "TagCell")
+        self.picturesView.register(PictureCollectionViewCell.self, forCellWithReuseIdentifier: "PicCell")
+        self.richTagsView.register(RichTagCollectionViewCell.self, forCellWithReuseIdentifier: "TagCell")
         
         self.richTagViewHeightConstraint.constant = self.richTagsView.contentSize.height
     }
     
-    private func acquireImages() {
+    fileprivate func acquireImages() {
         if self.restaurant.imageUrls.count == 0 {
             return
         }
-        let url = NSURL(string: self.restaurant.imageUrls[0])
-        self.restaurantImageView.sd_setImageWithURL(url, completed: {[weak self](image: UIImage!, error: NSError!, cacheType: SDImageCacheType, imageURL: NSURL!) in
-            guard let strongSelf = self else {
-                return
-            }
+        guard let url = URL(string: self.restaurant.imageUrls[0]) else { return }
+        self.restaurantImageView.sd_setImage(with: url) { [weak self](image, error, cacheType, imageURL) in
+            guard let strongSelf = self else { return }
             strongSelf.restaurantImageView.alpha = 0
             strongSelf.commentsView.image = image
-            UIView.animateWithDuration(0.5, delay: 0.0, options: .CurveEaseInOut, animations: {() -> Void in
+            UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseInOut, animations: {() -> Void in
                 strongSelf.restaurantImageView.alpha = 1
                 }, completion: nil)
-            })
+            }
     }
     
-    func mapViewTapped(sender: AnyObject) {
+    func mapViewTapped(_ sender: AnyObject) {
         self.mapTappedAction?(self.restaurant)
     }
     
-    func replaceBusinessHour(hour: String) -> String {
+    func replaceBusinessHour(_ hour: String) -> String {
         let pattern = "(?<=.)[\\[]"
-        return hour.stringByReplacingOccurrencesOfString(pattern, withString: "\n[", options: .RegularExpressionSearch)
+        return hour.replacingOccurrences(of: pattern, with: "\n[", options: .regularExpression)
     }
     
 }

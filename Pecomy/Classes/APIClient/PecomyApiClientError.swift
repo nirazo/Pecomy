@@ -6,47 +6,45 @@
 //  Copyright © 2016 Pecomy. All rights reserved.
 //
 
-import UIKit
-
-public enum PecomyApiClientErrorType: ErrorType {
-    case JsonParse
-    case Mapping
-    case Timeout //ネットワーク不通によるエラー
-    case Cancelled //キャンセル実行時のエラー
-    case Unknown //どのエラーにも該当しないエラー
+public enum PecomyApiClientErrorType: Error {
+    case jsonParse
+    case mapping
+    case timeout //ネットワーク不通によるエラー
+    case cancelled //キャンセル実行時のエラー
+    case unknown //どのエラーにも該当しないエラー
     
-    case InvalidID // 400
-    case Unauthorized // 401
-    case ServerError // 500
-    case NoResult // 404
+    case invalidID // 400
+    case unauthorized // 401
+    case serverError // 500
+    case noResult // 404
     
     init(errorCode: Int?, message: String) {
         guard let code = errorCode else {
-            self = .Unknown
+            self = .unknown
             return
         }
         switch code {
         case 400:
-            self = .InvalidID
+            self = .invalidID
         case 401:
-            self = .Unauthorized
+            self = .unauthorized
         case 500:
-            self = .ServerError
+            self = .serverError
         case 404:
-            self = .NoResult
+            self = .noResult
         default:
-            self = .Unknown
+            self = .unknown
         }
     }
 }
 
 public struct PecomyApiClientError {
-    var type = PecomyApiClientErrorType.Unknown
+    var type = PecomyApiClientErrorType.unknown
     var code = 0
     var response: PecomyApiResponse?
     
     init (code: Int?, response: PecomyApiResponse?){
-        guard let response = response, code = code else {
+        guard let response = response, let code = code else {
             return
         }
         
