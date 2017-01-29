@@ -40,7 +40,7 @@ class PecomyLocationManager: NSObject, CLLocationManagerDelegate {
         locationManager?.stopUpdatingLocation()
         #if FIXED_LOCATION
             let stubLocation = CLLocation(latitude: Const.FIXED_LATITUDE, longitude: Const.FIXED_LONGITUDE)
-            didCompleteWithSuccess?(location: stubLocation)
+            didCompleteWithSuccess?(stubLocation)
         #else
             didCompleteWithSuccess?(location)
         #endif
@@ -52,7 +52,7 @@ class PecomyLocationManager: NSObject, CLLocationManagerDelegate {
         locationManager?.stopUpdatingLocation()
         #if FIXED_LOCATION
             let stubLocation = CLLocation(latitude: Const.FIXED_LATITUDE, longitude: Const.FIXED_LONGITUDE)
-            didCompleteWithSuccess?(location: stubLocation)
+            didCompleteWithSuccess?(stubLocation)
         #else
             didCompleteWithFailure?(error)
         #endif
