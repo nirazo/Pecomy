@@ -58,6 +58,8 @@
 		D2731FE01C79A85300E8E5E9 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2731FDF1C79A85300E8E5E9 /* ProfileViewController.swift */; };
 		D2731FE31C79A88000E8E5E9 /* RestaurantLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2731FE21C79A88000E8E5E9 /* RestaurantLogViewController.swift */; };
 		D2731FE71C849DE800E8E5E9 /* BackgroundImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2731FE61C849DE800E8E5E9 /* BackgroundImagePicker.swift */; };
+		D27A69F81E3DF892006B7CE3 /* DebugSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27A69F71E3DF892006B7CE3 /* DebugSettingsViewController.swift */; };
+		D27A69FA1E3E1B31006B7CE3 /* TableViewSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27A69F91E3E1B31006B7CE3 /* TableViewSwitchCell.swift */; };
 		D27BB9D21B36F4A900F8D902 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27BB9D11B36F4A900F8D902 /* AppDelegate.swift */; };
 		D27BB9D41B36F4A900F8D902 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27BB9D31B36F4A900F8D902 /* MainViewController.swift */; };
 		D27BB9D91B36F4A900F8D902 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D27BB9D81B36F4A900F8D902 /* Images.xcassets */; };
@@ -180,6 +182,8 @@
 		D2731FDF1C79A85300E8E5E9 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D2731FE21C79A88000E8E5E9 /* RestaurantLogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantLogViewController.swift; sourceTree = "<group>"; };
 		D2731FE61C849DE800E8E5E9 /* BackgroundImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundImagePicker.swift; sourceTree = "<group>"; };
+		D27A69F71E3DF892006B7CE3 /* DebugSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DebugSettingsViewController.swift; path = Debug/DebugSettingsViewController.swift; sourceTree = "<group>"; };
+		D27A69F91E3E1B31006B7CE3 /* TableViewSwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewSwitchCell.swift; sourceTree = "<group>"; };
 		D27BB9CC1B36F4A900F8D902 /* Pecomy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pecomy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D27BB9D01B36F4A900F8D902 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D27BB9D11B36F4A900F8D902 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -460,8 +464,17 @@
 				D21F27A21CD70BA10028F956 /* KeychainManager.swift */,
 				D2BDA9221D042FAA0096B8FC /* Size.swift */,
 				D216E06C1D1847AF000FAB0F /* AppState.swift */,
+				D27A69F91E3E1B31006B7CE3 /* TableViewSwitchCell.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		D27A69F61E3DF872006B7CE3 /* Debug */ = {
+			isa = PBXGroup;
+			children = (
+				D27A69F71E3DF892006B7CE3 /* DebugSettingsViewController.swift */,
+			);
+			name = Debug;
 			sourceTree = "<group>";
 		};
 		D27BB9C31B36F4A900F8D902 = {
@@ -556,6 +569,7 @@
 				D2DEEF221BD7557300FDBB8F /* OnetimeFilter */,
 				D2731FDE1C79A82800E8E5E9 /* Profile */,
 				D2A2CB511D574C2500DD717B /* Settings */,
+				D27A69F61E3DF872006B7CE3 /* Debug */,
 				D2731FE11C79A86700E8E5E9 /* RestaurantLog */,
 				D2597E1C1B523831000938B4 /* Result */,
 				D24B292C1B7895C900419B9B /* Tutorial */,
@@ -907,6 +921,7 @@
 				D216E07E1D313AED000FAB0F /* RegisterPopupView.swift in Sources */,
 				D292AA191C5FB30800D66A87 /* Budget.swift in Sources */,
 				D292AA1B1C5FB5CB00D66A87 /* NumOfPeople.swift in Sources */,
+				D27A69F81E3DF892006B7CE3 /* DebugSettingsViewController.swift in Sources */,
 				D21F27991CD6F60B0028F956 /* LoginResponse.swift in Sources */,
 				D203D3141B3E739600FC9DB8 /* Const.swift in Sources */,
 				D2A99A161C12D3E700C16F04 /* OnetimeFilterCell.swift in Sources */,
@@ -953,6 +968,7 @@
 				D253A9EE1C3233AF00D65D20 /* PecomyResult.swift in Sources */,
 				D2C9B24C1CCB9099003A33B9 /* GameProgressBar.swift in Sources */,
 				D24B292E1B7895DA00419B9B /* TutorialViewController.swift in Sources */,
+				D27A69FA1E3E1B31006B7CE3 /* TableViewSwitchCell.swift in Sources */,
 				D2A594E81C8C77A400DE1012 /* R.generated.swift in Sources */,
 				D20035431D16388100F81114 /* FavoritesGetRequest.swift in Sources */,
 				D2DD65A21B7714DA0046A50C /* OtherResultsCard.swift in Sources */,
@@ -1074,9 +1090,9 @@
 			baseConfigurationReference = E475E6CB9898249594D4D5E7 /* Pods-Pecomy.debug_fixed_location.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon_debug;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-debug";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				BUNDLE_ID_SUFFIX = _debug;
+				BUNDLE_ID_SUFFIX = "-debug";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Pecomy/Pecomy.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1307,9 +1323,9 @@
 			baseConfigurationReference = 567DD2B37E3CE0AF5D14091C /* Pods-Pecomy.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon_debug;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-debug";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				BUNDLE_ID_SUFFIX = _debug;
+				BUNDLE_ID_SUFFIX = "-debug";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Pecomy/Pecomy.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1447,9 +1463,9 @@
 			baseConfigurationReference = 92BC5B091076DD70931C07B2 /* Pods-Pecomy.stg.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon_debug;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-debug";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				BUNDLE_ID_SUFFIX = _debug;
+				BUNDLE_ID_SUFFIX = "-debug";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Pecomy/Pecomy.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1538,9 +1554,9 @@
 			baseConfigurationReference = 4BB908796996BA50A37E0113 /* Pods-Pecomy.stg_fixed_location.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon_debug;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-debug";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				BUNDLE_ID_SUFFIX = _debug;
+				BUNDLE_ID_SUFFIX = "-debug";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Pecomy/Pecomy.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";

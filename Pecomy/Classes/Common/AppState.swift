@@ -14,6 +14,9 @@ class AppState {
     var currentLatitude: Double?
     var currentLongitude: Double?
     
+    // Debug Settings
+    var useFixedLocation = false
+    
     fileprivate init() {
     }
 }
