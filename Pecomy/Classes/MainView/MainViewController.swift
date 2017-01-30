@@ -171,8 +171,8 @@ class MainViewController: UIViewController {
         reloadButton.snp.makeConstraints { (make) in
             make.centerX.equalTo(self.view)
             make.centerY.equalTo(likeButton)
-            make.width.equalTo(likeButton)//.multipliedBy(2/3)
-            make.height.equalTo(likeButton)//.multipliedBy(2/3)
+            make.width.equalTo(likeButton)
+            make.height.equalTo(likeButton)
         }
         
         // インジケータ
