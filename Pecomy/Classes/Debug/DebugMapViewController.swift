@@ -59,7 +59,6 @@ class DebugMapViewController: UIViewController {
             Const.fixedLongitude = mapPoint.longitude
         }
     }
-
 }
 
 extension DebugMapViewController: MKMapViewDelegate {

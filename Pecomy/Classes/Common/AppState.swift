@@ -41,9 +41,6 @@ class AppState {
         }
     }
     
-    // Debug Settings
-    var useFixedLocation = false
-    
     fileprivate init() {
     }
 }
