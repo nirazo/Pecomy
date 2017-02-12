@@ -62,7 +62,7 @@ class PecomyApiClient {
                     }
                 }
                 let response: PecomyResult<U, PecomyApiClientError> = PecomyApiClient.mappingResponse(request: alamoResponse.request, response: alamoResponse.response, data: alamoResponse.data, error: alamoResponse.error)
-//                let str = String(data: alamoResponse.data!, encoding: .utf8) //NSString(data: data!, encoding:NSUTF8StringEncoding)
+//                let str = String(data: alamoResponse.data!, encoding: .utf8) 
 //                print("requestURL: \(String(describing: alamoResponse.request))")
 //                print("requestParams: \(request.params)")
 //                print("rawData: \(str)")

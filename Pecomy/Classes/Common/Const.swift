@@ -37,14 +37,6 @@ struct Const {
 
     #endif
     
-    #if FIXED_LOCATION
-    static let FIXED_LATITUDE: Double = 35.659931
-    static let FIXED_LONGITUDE: Double = 139.701516
-    #else
-    static let FIXED_LATITUDE: Double = 0.0
-    static let FIXED_LONGITUDE: Double = 0.0
-    #endif
-    
     static let PECOMY_THEME_COLOR = UIColor(red: 41.0/255.0, green: 177.0/255.0, blue: 204.0/255.0, alpha: 1.0)
     static let PECOMY_THEME_TEXT_COLOR = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 1.0)
     
@@ -105,4 +97,34 @@ struct Const {
     static let PecomyUserTokenKeychainKey = "PecomyUserToken"
     static let PecomyUserNameKeychainKey = "PecomyUserName"
     static let PecomyUserPictureKeychainKey = "PecomyUserPicture"
+    
+    // UserDefaults
+    static let fixedLatitudeKey = "fixedLatitude"
+    static let fixedLongitudeKey = "fixedLongitude"
+    static let isFixLocationKey = "isFixLocation"
+    
+    static var fixedLatitude: Double {
+        get {
+            let userDefaults = UserDefaults.standard
+            return userDefaults.double(forKey: fixedLatitudeKey)
+        }
+        set(lat) {
+            let userDefaults = UserDefaults.standard
+            userDefaults.set(lat, forKey: fixedLatitudeKey)
+            userDefaults.synchronize()
+        }
+    }
+    
+    static var fixedLongitude: Double {
+        get {
+            let userDefaults = UserDefaults.standard
+            return userDefaults.double(forKey: fixedLongitudeKey)
+        }
+        set(lon) {
+            let userDefaults = UserDefaults.standard
+            userDefaults.set(lon, forKey: fixedLongitudeKey)
+            userDefaults.synchronize()
+        }
+    }
+
 }

@@ -171,8 +171,8 @@ class MainViewController: UIViewController {
         reloadButton.snp.makeConstraints { (make) in
             make.centerX.equalTo(self.view)
             make.centerY.equalTo(likeButton)
-            make.width.equalTo(likeButton)//.multipliedBy(2/3)
-            make.height.equalTo(likeButton)//.multipliedBy(2/3)
+            make.width.equalTo(likeButton)
+            make.height.equalTo(likeButton)
         }
         
         // インジケータ
@@ -183,7 +183,11 @@ class MainViewController: UIViewController {
         self.view.addSubview(self.loadingIndicator)
         
         // 初回起動のときはtutorial出す
-        if (!UserDefaults.standard.bool(forKey: Const.UD_KEY_HAS_LAUNCHED)) {
+        let ud = UserDefaults.standard
+        if (!ud.bool(forKey: Const.UD_KEY_HAS_LAUNCHED)) {
+            ud.register(defaults: [Const.isFixLocationKey: false])
+            ud.register(defaults: [Const.fixedLatitudeKey: 35.659931])
+            ud.register(defaults: [Const.fixedLongitudeKey: 139.701516])
             KeychainManager.removePecomyUserToken()
             self.tutorialVC = TutorialViewController()
             self.tutorialVC?.delegate = self

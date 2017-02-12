@@ -58,6 +58,9 @@
 		D2731FE01C79A85300E8E5E9 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2731FDF1C79A85300E8E5E9 /* ProfileViewController.swift */; };
 		D2731FE31C79A88000E8E5E9 /* RestaurantLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2731FE21C79A88000E8E5E9 /* RestaurantLogViewController.swift */; };
 		D2731FE71C849DE800E8E5E9 /* BackgroundImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2731FE61C849DE800E8E5E9 /* BackgroundImagePicker.swift */; };
+		D27A69F81E3DF892006B7CE3 /* DebugSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27A69F71E3DF892006B7CE3 /* DebugSettingsViewController.swift */; };
+		D27A69FA1E3E1B31006B7CE3 /* TableViewSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27A69F91E3E1B31006B7CE3 /* TableViewSwitchCell.swift */; };
+		D27A69FC1E3E2FF2006B7CE3 /* DebugMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27A69FB1E3E2FF2006B7CE3 /* DebugMapViewController.swift */; };
 		D27BB9D21B36F4A900F8D902 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27BB9D11B36F4A900F8D902 /* AppDelegate.swift */; };
 		D27BB9D41B36F4A900F8D902 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27BB9D31B36F4A900F8D902 /* MainViewController.swift */; };
 		D27BB9D91B36F4A900F8D902 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D27BB9D81B36F4A900F8D902 /* Images.xcassets */; };
@@ -180,6 +183,9 @@
 		D2731FDF1C79A85300E8E5E9 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D2731FE21C79A88000E8E5E9 /* RestaurantLogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantLogViewController.swift; sourceTree = "<group>"; };
 		D2731FE61C849DE800E8E5E9 /* BackgroundImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundImagePicker.swift; sourceTree = "<group>"; };
+		D27A69F71E3DF892006B7CE3 /* DebugSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DebugSettingsViewController.swift; path = Debug/DebugSettingsViewController.swift; sourceTree = "<group>"; };
+		D27A69F91E3E1B31006B7CE3 /* TableViewSwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewSwitchCell.swift; sourceTree = "<group>"; };
+		D27A69FB1E3E2FF2006B7CE3 /* DebugMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DebugMapViewController.swift; path = Debug/DebugMapViewController.swift; sourceTree = "<group>"; };
 		D27BB9CC1B36F4A900F8D902 /* Pecomy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pecomy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D27BB9D01B36F4A900F8D902 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D27BB9D11B36F4A900F8D902 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -460,8 +466,18 @@
 				D21F27A21CD70BA10028F956 /* KeychainManager.swift */,
 				D2BDA9221D042FAA0096B8FC /* Size.swift */,
 				D216E06C1D1847AF000FAB0F /* AppState.swift */,
+				D27A69F91E3E1B31006B7CE3 /* TableViewSwitchCell.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		D27A69F61E3DF872006B7CE3 /* Debug */ = {
+			isa = PBXGroup;
+			children = (
+				D27A69F71E3DF892006B7CE3 /* DebugSettingsViewController.swift */,
+				D27A69FB1E3E2FF2006B7CE3 /* DebugMapViewController.swift */,
+			);
+			name = Debug;
 			sourceTree = "<group>";
 		};
 		D27BB9C31B36F4A900F8D902 = {
@@ -556,6 +572,7 @@
 				D2DEEF221BD7557300FDBB8F /* OnetimeFilter */,
 				D2731FDE1C79A82800E8E5E9 /* Profile */,
 				D2A2CB511D574C2500DD717B /* Settings */,
+				D27A69F61E3DF872006B7CE3 /* Debug */,
 				D2731FE11C79A86700E8E5E9 /* RestaurantLog */,
 				D2597E1C1B523831000938B4 /* Result */,
 				D24B292C1B7895C900419B9B /* Tutorial */,
@@ -907,6 +924,7 @@
 				D216E07E1D313AED000FAB0F /* RegisterPopupView.swift in Sources */,
 				D292AA191C5FB30800D66A87 /* Budget.swift in Sources */,
 				D292AA1B1C5FB5CB00D66A87 /* NumOfPeople.swift in Sources */,
+				D27A69F81E3DF892006B7CE3 /* DebugSettingsViewController.swift in Sources */,
 				D21F27991CD6F60B0028F956 /* LoginResponse.swift in Sources */,
 				D203D3141B3E739600FC9DB8 /* Const.swift in Sources */,
 				D2A99A161C12D3E700C16F04 /* OnetimeFilterCell.swift in Sources */,
@@ -940,6 +958,7 @@
 				D2A2CB501D4D99C200DD717B /* VisitsTableViewConfig.swift in Sources */,
 				D2C8E0371D16983D00E0EC6D /* VisitsModel.swift in Sources */,
 				D24A2CC31C255D2A009ACA08 /* ResultHeaderView.swift in Sources */,
+				D27A69FC1E3E2FF2006B7CE3 /* DebugMapViewController.swift in Sources */,
 				D2050C171DC4336E001711F0 /* ResultMessageHeaderView.swift in Sources */,
 				164718B51C3D22AD00F50D33 /* CardRequest.swift in Sources */,
 				D2731FE01C79A85300E8E5E9 /* ProfileViewController.swift in Sources */,
@@ -953,6 +972,7 @@
 				D253A9EE1C3233AF00D65D20 /* PecomyResult.swift in Sources */,
 				D2C9B24C1CCB9099003A33B9 /* GameProgressBar.swift in Sources */,
 				D24B292E1B7895DA00419B9B /* TutorialViewController.swift in Sources */,
+				D27A69FA1E3E1B31006B7CE3 /* TableViewSwitchCell.swift in Sources */,
 				D2A594E81C8C77A400DE1012 /* R.generated.swift in Sources */,
 				D20035431D16388100F81114 /* FavoritesGetRequest.swift in Sources */,
 				D2DD65A21B7714DA0046A50C /* OtherResultsCard.swift in Sources */,
@@ -1020,193 +1040,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		D2092A1F1B6351F7008046D9 /* Debug_fixed_location */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_BITCODE = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-			};
-			name = Debug_fixed_location;
-		};
-		D2092A201B6351F7008046D9 /* Debug_fixed_location */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E475E6CB9898249594D4D5E7 /* Pods-Pecomy.debug_fixed_location.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = Pecomy/Pecomy.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-				);
-				INFOPLIST_FILE = "$(SRCROOT)/Pecomy/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DDEBUG -DFIXED_LOCATION";
-				PRODUCT_BUNDLE_IDENTIFIER = "my.peco.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = Pecomy;
-				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "Pecomy/Supporting Files/Pecomy-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Debug_fixed_location;
-		};
-		D2092A211B6351F7008046D9 /* Debug_fixed_location */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 26771F1E4D8ABA3D61136137 /* Pods-PecomyTests.debug_fixed_location.xcconfig */;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "PecomyTests/Supporting Files/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "my.peco.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = Pecomy;
-				SWIFT_VERSION = 2.3;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pecomy.app/Pecomy";
-			};
-			name = Debug_fixed_location;
-		};
-		D2092A221B635211008046D9 /* Release_fixed_location */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_BITCODE = NO;
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = s;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = iphoneos;
-				SWIFT_DISABLE_SAFETY_CHECKS = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release_fixed_location;
-		};
-		D2092A231B635211008046D9 /* Release_fixed_location */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 73D3397E978999A81C80AEB2 /* Pods-Pecomy.release_fixed_location.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = Pecomy/Pecomy.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-				);
-				GCC_OPTIMIZATION_LEVEL = s;
-				INFOPLIST_FILE = "$(SRCROOT)/Pecomy/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DRELEASE -DFIXED_LOCATION";
-				PRODUCT_BUNDLE_IDENTIFIER = "my.peco.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = Pecomy;
-				PROVISIONING_PROFILE = "";
-				SWIFT_DISABLE_SAFETY_CHECKS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "Pecomy/Supporting Files/Pecomy-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Release_fixed_location;
-		};
-		D2092A241B635211008046D9 /* Release_fixed_location */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9F01671B20737EB87B55E9EF /* Pods-PecomyTests.release_fixed_location.xcconfig */;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = "PecomyTests/Supporting Files/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "my.peco.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = Pecomy;
-				SWIFT_VERSION = 2.3;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pecomy.app/Pecomy";
-			};
-			name = Release_fixed_location;
-		};
 		D27BB9E91B36F4A900F8D902 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1304,9 +1137,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 567DD2B37E3CE0AF5D14091C /* Pods-Pecomy.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-debug";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				BUNDLE_ID_SUFFIX = "-debug";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Pecomy/Pecomy.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1334,9 +1168,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6BCC241C257616DBBAB1583C /* Pods-Pecomy.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				BUNDLE_ID_SUFFIX = "";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Pecomy/Pecomy.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1442,9 +1277,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 92BC5B091076DD70931C07B2 /* Pods-Pecomy.stg.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-debug";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				BUNDLE_ID_SUFFIX = "-debug";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Pecomy/Pecomy.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1484,96 +1320,6 @@
 			};
 			name = STG;
 		};
-		D2E923021BD4A12F00BD15F5 /* STG_fixed_location */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_BITCODE = NO;
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = s;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = iphoneos;
-				SWIFT_DISABLE_SAFETY_CHECKS = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = STG_fixed_location;
-		};
-		D2E923031BD4A12F00BD15F5 /* STG_fixed_location */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4BB908796996BA50A37E0113 /* Pods-Pecomy.stg_fixed_location.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = Pecomy/Pecomy.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-				);
-				GCC_OPTIMIZATION_LEVEL = s;
-				INFOPLIST_FILE = "$(SRCROOT)/Pecomy/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DSTG -DFIXED_LOCATION";
-				PRODUCT_BUNDLE_IDENTIFIER = "my.peco.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = Pecomy;
-				PROVISIONING_PROFILE = "";
-				SWIFT_DISABLE_SAFETY_CHECKS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "Pecomy/Supporting Files/Pecomy-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = STG_fixed_location;
-		};
-		D2E923041BD4A12F00BD15F5 /* STG_fixed_location */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 18045603334593887209AED3 /* Pods-PecomyTests.stg_fixed_location.xcconfig */;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = "PecomyTests/Supporting Files/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "my.peco.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = Pecomy;
-				SWIFT_VERSION = 2.3;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pecomy.app/Pecomy";
-			};
-			name = STG_fixed_location;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1581,11 +1327,8 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D27BB9E91B36F4A900F8D902 /* Debug */,
-				D2092A1F1B6351F7008046D9 /* Debug_fixed_location */,
 				D27BB9EA1B36F4A900F8D902 /* Release */,
 				D2E922FC1BD4A05C00BD15F5 /* STG */,
-				D2092A221B635211008046D9 /* Release_fixed_location */,
-				D2E923021BD4A12F00BD15F5 /* STG_fixed_location */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1594,11 +1337,8 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D27BB9EC1B36F4A900F8D902 /* Debug */,
-				D2092A201B6351F7008046D9 /* Debug_fixed_location */,
 				D27BB9ED1B36F4A900F8D902 /* Release */,
 				D2E922FD1BD4A05C00BD15F5 /* STG */,
-				D2092A231B635211008046D9 /* Release_fixed_location */,
-				D2E923031BD4A12F00BD15F5 /* STG_fixed_location */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1607,11 +1347,8 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D27BB9EF1B36F4A900F8D902 /* Debug */,
-				D2092A211B6351F7008046D9 /* Debug_fixed_location */,
 				D27BB9F01B36F4A900F8D902 /* Release */,
 				D2E922FE1BD4A05C00BD15F5 /* STG */,
-				D2092A241B635211008046D9 /* Release_fixed_location */,
-				D2E923041BD4A12F00BD15F5 /* STG_fixed_location */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

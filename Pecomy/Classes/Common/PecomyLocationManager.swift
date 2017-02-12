@@ -38,24 +38,26 @@ class PecomyLocationManager: NSObject, CLLocationManagerDelegate {
     
     fileprivate func didCompleteWithSuccess(_ location: CLLocation?) {
         locationManager?.stopUpdatingLocation()
-        #if FIXED_LOCATION
-            let stubLocation = CLLocation(latitude: Const.FIXED_LATITUDE, longitude: Const.FIXED_LONGITUDE)
+        let ud = UserDefaults.standard
+        if ud.bool(forKey: Const.isFixLocationKey) { // Debugモードで位置情報固定時
+            let stubLocation = CLLocation(latitude: Const.fixedLatitude, longitude: Const.fixedLongitude)
             didCompleteWithSuccess?(stubLocation)
-        #else
+        } else {
             didCompleteWithSuccess?(location)
-        #endif
+        }
         locationManager?.delegate = nil
         locationManager = nil
     }
     
     fileprivate func didCompleteWithError(_ error: Error?) {
         locationManager?.stopUpdatingLocation()
-        #if FIXED_LOCATION
-            let stubLocation = CLLocation(latitude: Const.FIXED_LATITUDE, longitude: Const.FIXED_LONGITUDE)
+        let ud = UserDefaults.standard
+        if ud.bool(forKey: Const.isFixLocationKey) { // Debugモードで位置情報固定時
+            let stubLocation = CLLocation(latitude: Const.fixedLatitude, longitude: Const.fixedLongitude)
             didCompleteWithSuccess?(stubLocation)
-        #else
+        } else {
             didCompleteWithFailure?(error)
-        #endif
+        }
         locationManager?.delegate = nil
         locationManager = nil
     }

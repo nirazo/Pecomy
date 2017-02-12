@@ -11,8 +11,35 @@ import Foundation
 class AppState {
     static let sharedInstance = AppState()
     
-    var currentLatitude: Double?
-    var currentLongitude: Double?
+    private var currentLat: Double?
+    var currentLatitude: Double? {
+        get {
+            let ud = UserDefaults.standard
+            if ud.bool(forKey: Const.isFixLocationKey) {
+                return Const.fixedLatitude
+            } else {
+                return self.currentLat
+            }
+        }
+        set(lat) {
+            self.currentLat = lat
+        }
+    }
+    
+    private var currentLon: Double?
+    var currentLongitude: Double? {
+        get {
+            let ud = UserDefaults.standard
+            if ud.bool(forKey: Const.isFixLocationKey) {
+                return Const.fixedLongitude
+            } else {
+                return self.currentLon
+            }
+        }
+        set(lon) {
+            self.currentLon = lon
+        }
+    }
     
     fileprivate init() {
     }

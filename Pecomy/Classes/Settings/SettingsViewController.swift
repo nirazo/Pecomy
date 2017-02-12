@@ -40,38 +40,84 @@ class SettingsViewController: UIViewController {
 
 extension SettingsViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        #if RELEASE
+            return 1
+        #else
+            return 2
+        #endif
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        #if RELEASE
+            return 1
+        #else
+            switch section {
+            case 0:
+                return 1
+            case 1:
+                return 1
+            default:
+                return 1
+            }
+        #endif
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: self.cellIdentifier, for: indexPath)
-        cell.contentView.addSubview(self.fbLoginButton)
-        self.fbLoginButton.snp.makeConstraints { make in
-            make.left.equalTo(cell.contentView).offset(16)
-            make.centerY.equalTo(cell)
+        switch indexPath.section {
+        case 0:
+            let cell = tableView.dequeueReusableCell(withIdentifier: self.cellIdentifier, for: indexPath)
+            cell.contentView.addSubview(self.fbLoginButton)
+            self.fbLoginButton.snp.makeConstraints { make in
+                make.left.equalTo(cell.contentView).offset(16)
+                make.centerY.equalTo(cell)
+            }
+            return cell
+        case 1: // デバッグモード
+            let cell = tableView.dequeueReusableCell(withIdentifier: self.cellIdentifier, for: indexPath)
+            cell.textLabel?.text = R.string.localizable.settingsDebug()
+            cell.accessoryType = .disclosureIndicator
+            cell.selectionStyle = .none
+            return cell
+        default:
+            let cell = tableView.dequeueReusableCell(withIdentifier: self.cellIdentifier, for: indexPath)
+            return cell
         }
-        return cell
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return NSLocalizedString("SettingsSocialSectionTitle", comment: "")
+        switch section {
+        case 0:
+            return NSLocalizedString("SettingsSocialSectionTitle", comment: "")
+        case 1:
+            return R.string.localizable.settingsDebug()
+        default:
+            return ""
+        }
     }
     
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        if(LoginModel.isLoggedIn()) {
+        switch section {
+        case 0:
+            if(LoginModel.isLoggedIn()) {
             return ""
         } else {
             return NSLocalizedString("SettingsSocialSectionFooter", comment: "")
+        }
+        case 1:
+            return ""
+        default:
+            return ""
         }
     }
 }
 
 extension SettingsViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 1 && indexPath.row == 0 {
+            let debugSettingsVC = DebugSettingsViewController()
+            self.navigationController?.pushViewController(debugSettingsVC, animated: true)
+        }
+    }
 }
 
 extension SettingsViewController: FBSDKLoginButtonDelegate {
