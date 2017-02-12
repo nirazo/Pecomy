@@ -1210,7 +1210,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "my.peco.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Pecomy;
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pecomy.app/Pecomy";
 			};
 			name = Debug;
@@ -1224,7 +1224,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "my.peco.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Pecomy;
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pecomy.app/Pecomy";
 			};
 			name = Release;
@@ -1315,7 +1315,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "my.peco.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Pecomy;
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pecomy.app/Pecomy";
 			};
 			name = STG;
