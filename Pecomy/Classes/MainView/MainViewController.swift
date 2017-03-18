@@ -21,7 +21,7 @@ class MainViewController: UIViewController {
     let FOOTER_HEIGHT: CGFloat = 34.0
     
     // like, dislikeのスワイプ増分
-    let INCREMENT_LIKE: Float = 0.16
+    let INCREMENT_LIKE: Float = 0.10
     let INCREMENT_DISLIKE: Float = 0.10
     
     // 結果表示後、何枚めくったら再度結果を出すか(2枚先出しするので実際の数-2っす)
@@ -193,9 +193,7 @@ class MainViewController: UIViewController {
             self.tutorialVC?.delegate = self
             self.present(tutorialVC!, animated: true, completion: nil)
         } else {
-            if (AppState.sharedInstance.currentLatitude == nil || AppState.sharedInstance.currentLongitude == nil) {
-                self.displayOnetimeFilterView()
-            }
+            self.displayOnetimeFilterView()
         }
     }
     
@@ -446,6 +444,7 @@ class MainViewController: UIViewController {
                 switch result {
                 case .success(let res):
                     strongSelf.currentResults = res.results
+                    
                     strongSelf.displayResultViewWithShopList(restaurants: strongSelf.currentResults, message: res.displayMessage)
                 case .failure(let error):
                     switch error.type{
@@ -636,7 +635,10 @@ extension MainViewController: MDCSwipeToChooseDelegate {
 
         self.acquireCardWithLatitude(latitude: AppState.sharedInstance.currentLatitude!, longitude: AppState.sharedInstance.currentLongitude!, like: answer, maxBudget: self.currentBudget, numOfPeople: self.currentNumOfPeople, genre:self.currentGenre, syncId: cardView.syncID, reset: false)
         if (!self.canDisplayNextCard && self.contentView.subviews.count == 0) {
-            self.acquireResults()
+            self.currentProgress = 1.0
+            self.progressBar.progress(withRatio: self.currentProgress) { () in
+                self.acquireResults()
+            }
         }
     }
 }

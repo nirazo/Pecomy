@@ -39,23 +39,30 @@ class GameProgressBar: UIView {
     }
     
     // 進捗率を渡してプログレスバーを進める（戻す）
-    func progress(withRatio: Float) {
+    func progress(withRatio: Float, completion: (()->())? = nil) {
         UIView.animate(withDuration: 0.2, animations: { [weak self] () in
             guard let strongSelf = self else { return }
-            let r = withRatio > 0.95 ? 0.95 : withRatio
+            if withRatio >= 1.0 {
+                strongSelf.progressView.backgroundColor = Const.RANKING_TOP_COLOR
+            } else {
+                strongSelf.progressView.backgroundColor = Const.PECOMY_THEME_COLOR
+            }
             strongSelf.progressView.snp.remakeConstraints { make in
-                make.top.equalTo(strongSelf)
-                make.left.equalTo(strongSelf)
-                make.height.equalTo(strongSelf)
-                make.width.equalTo(strongSelf.snp.width).multipliedBy(r)
+                make.top.left.height.equalTo(strongSelf)
+                make.width.equalTo(strongSelf.snp.width).multipliedBy(withRatio)
             }
             strongSelf.layoutIfNeeded()
-            })
+        }) { _ in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) { () in
+                completion?()
+            }
+        }
     }
     
     // プログレスバーをリセット
     func reset() {
         self.progressView.frame.size = CGSize(width: 0.0, height: self.frame.size.height)
+        self.progressView.backgroundColor = Const.PECOMY_THEME_COLOR
     }
 
 }
