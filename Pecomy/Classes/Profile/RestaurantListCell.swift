@@ -29,6 +29,7 @@ class RestaurantListCell: UITableViewCell {
     }
     
     fileprivate func setupSubviews() {
+        // サムネ画像
         self.restaurantImageView.contentMode = .redraw
         self.contentView.addSubview(self.restaurantImageView)
         self.restaurantImageView.snp.makeConstraints { make in
@@ -46,6 +47,7 @@ class RestaurantListCell: UITableViewCell {
         self.titleLabel.snp.makeConstraints { make in
             make.top.equalTo(self.restaurantImageView)
             make.left.equalTo(self.restaurantImageView.snp.right).offset(10)
+            make.right.equalTo(self.contentView).offset(-80)
         }
 
         
@@ -53,11 +55,9 @@ class RestaurantListCell: UITableViewCell {
         self.contentView.addSubview(self.genreLabel)
         self.genreLabel.snp.makeConstraints { make in
             make.top.equalTo(self.titleLabel)
-            make.left.greaterThanOrEqualTo(self.titleLabel.snp.right).offset(20)
-            make.left.lessThanOrEqualTo(self.titleLabel.snp.right).offset(40)
+            make.left.equalTo(self.titleLabel.snp.right).offset(6)
             make.right.equalTo(self.contentView).offset(-15)
         }
-        
         
         // 価格ラベル
         self.priceLabel.font = UIFont(name: Const.PECOMY_FONT_NORMAL, size: 12)
@@ -67,7 +67,6 @@ class RestaurantListCell: UITableViewCell {
         self.priceLabel.snp.makeConstraints { make in
             make.top.equalTo(self.titleLabel.snp.bottom).offset(24.3)
             make.left.equalTo(self.titleLabel)
-            //make.width.equalTo(self.titleLabel)
             make.bottom.lessThanOrEqualTo(self.contentView).offset(-25)
         }
         

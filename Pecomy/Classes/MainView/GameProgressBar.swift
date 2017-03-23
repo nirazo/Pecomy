@@ -53,7 +53,7 @@ class GameProgressBar: UIView {
             }
             strongSelf.layoutIfNeeded()
         }) { _ in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) { () in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.20) { () in
                 completion?()
             }
         }

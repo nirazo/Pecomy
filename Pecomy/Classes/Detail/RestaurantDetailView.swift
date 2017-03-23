@@ -92,7 +92,9 @@ class RestaurantDetailView: UIView {
         
         // カテゴリ
         self.categoryLabelView.setCategory(self.restaurant.category)
-        self.categoryLabelView.backgroundColor = Const.RANKING_TOP_COLOR
+        if (!self.restaurant.category.isEmpty) {
+            self.categoryLabelView.backgroundColor = Const.RANKING_TOP_COLOR
+        }
         
         self.dayPriceIcon.image = R.image.time_day()
         // 値段ラベル
