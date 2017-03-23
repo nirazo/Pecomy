@@ -64,6 +64,11 @@ class CategoryLabelView: UIView {
         if (self.categoriesArray.count > MAX_CATEGORY_NUM) {
             self.categoriesArray = [String](self.categoriesArray[0..<MAX_CATEGORY_NUM])
         }
+        if category.isEmpty {
+            self.backgroundColor = .clear
+        } else {
+            self.backgroundColor = Const.PECOMY_THEME_COLOR
+        }
         self.setupSubViews()
     }
     

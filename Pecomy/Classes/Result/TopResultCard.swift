@@ -81,7 +81,9 @@ class TopResultCard: ResultCardBase {
         
         // カテゴリ
         self.categoryView.setCategory(self.restaurant.category)
-        self.categoryView.backgroundColor = Const.RANKING_TOP_COLOR
+        if (!self.restaurant.category.isEmpty) {
+            self.categoryView.backgroundColor = Const.RANKING_TOP_COLOR
+        }
         
         self.dayPriceIcon.image = R.image.time_day()
         // 値段ラベル
