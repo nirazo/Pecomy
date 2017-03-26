@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SDWebImage
 import MDCSwipeToChoose
 import SnapKit
 
@@ -147,15 +146,15 @@ class CardView: MDCSwipeToChooseView {
                 make.width.height.equalTo(50)
             }
             loadingIndicator.startAnimating()
-            self.restaurantImageViews[i].sd_setImage(with: URL(string: restaurant.imageUrls[i])) { [weak self] (image, error, imageCacheType, imageUrl) in
+            self.restaurantImageViews[i].kf.setImage(with: URL(string: restaurant.imageUrls[i]), placeholder: nil, options: nil, progressBlock: nil) { [weak self] (image, error, imageCacheType, imageUrl) in
                 guard let strongSelf = self else { return }
                 strongSelf.restaurantImageViews[i].alpha = 0
                 UIView.animate(withDuration: 0.5, delay: 0.0, options:  [.curveEaseIn, .curveEaseOut], animations: {() -> Void in
                     strongSelf.restaurantImageViews[i].contentMode = .scaleAspectFill
                     strongSelf.restaurantImageViews[i].alpha = 1
-                    }, completion: nil)
+                }, completion: nil)
                 loadingIndicator.stopAnimating()
-                }
+            }
         }
     }
     

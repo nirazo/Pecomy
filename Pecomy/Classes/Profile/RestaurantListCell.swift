@@ -105,7 +105,13 @@ class RestaurantListCell: UITableViewCell {
         self.setupSubviews()
         self.cellType = type
         self.restaurant = restaurant
-        self.restaurantImageView.sd_setImage(with: URL(string: self.restaurant.imageUrls[0]))
+        self.restaurantImageView.kf.setImage(with: URL(string: self.restaurant.imageUrls[0]), placeholder: nil, options: nil, progressBlock: nil) { [weak self] (image, error, imageCacheType, imageURL) in
+            guard let strongSelf = self else { return }
+            strongSelf.restaurantImageView.alpha = 0
+            UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseInOut, animations: {() -> Void in
+                strongSelf.restaurantImageView.alpha = 1
+            }, completion: nil)
+        }
         self.titleLabel.text = self.restaurant.shopName
         self.genreLabel.setCategory(self.restaurant.category)
         

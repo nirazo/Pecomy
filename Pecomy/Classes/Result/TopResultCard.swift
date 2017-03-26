@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SDWebImage
 import GoogleMaps
 
 class TopResultCard: ResultCardBase {
@@ -141,12 +140,12 @@ class TopResultCard: ResultCardBase {
     // TODO: - Refactoring
     fileprivate func acquireImages() {
         if self.restaurant.imageUrls.count >= 1 {
-            self.mainImageView.sd_setImage(with: URL(string: self.restaurant.imageUrls[0])) {[weak self] (image, error, imageCacheType, imageURL) in
+            self.mainImageView.kf.setImage(with: URL(string: self.restaurant.imageUrls[0]), placeholder: nil, options: nil, progressBlock: nil) { [weak self] (image, error, imageCacheType, imageURL) in
                 self!.mainImageView.alpha = 0
                 UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseInOut, animations: {() -> Void in
                     self!.mainImageView.alpha = 1
-                    }, completion: nil)
-                }
+                }, completion: nil)
+            }
         }
     }
     

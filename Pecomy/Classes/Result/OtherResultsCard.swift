@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SDWebImage
 
 protocol OtherResultCardDelegate {
     func contentTapped(_ restaurant: Restaurant)
