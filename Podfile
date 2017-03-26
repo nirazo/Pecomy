@@ -7,7 +7,6 @@ target 'Pecomy' do
     pod 'Fabric'
     pod 'Crashlytics'
     pod 'MDCSwipeToChoose'
-    pod 'SDWebImage'
     pod 'Alamofire'
     pod 'SwiftyJSON'
     pod 'SnapKit'
@@ -16,6 +15,7 @@ target 'Pecomy' do
     pod 'ObjectMapper'
     pod 'FBSDKLoginKit'
     pod 'KeychainAccess'
+    pod 'Kingfisher'
 end
 
 target 'PecomyTests' do

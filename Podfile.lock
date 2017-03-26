@@ -42,14 +42,12 @@ PODS:
   - GoogleToolboxForMac/NSData+zlib (2.1.1):
     - GoogleToolboxForMac/Defines (= 2.1.1)
   - KeychainAccess (3.0.1)
+  - Kingfisher (3.4.0)
   - MDCSwipeToChoose (0.2.3)
   - ObjectMapper (2.2.2)
   - R.swift (3.2.0):
     - R.swift.Library (~> 3.0.2)
   - R.swift.Library (3.0.2)
-  - SDWebImage (4.0.0):
-    - SDWebImage/Core (= 4.0.0)
-  - SDWebImage/Core (4.0.0)
   - SnapKit (3.1.2)
   - SwiftyJSON (3.1.4)
 
@@ -61,10 +59,10 @@ DEPENDENCIES:
   - Google/Analytics
   - GoogleMaps
   - KeychainAccess
+  - Kingfisher
   - MDCSwipeToChoose
   - ObjectMapper
   - R.swift
-  - SDWebImage
   - SnapKit
   - SwiftyJSON
 
@@ -85,14 +83,14 @@ SPEC CHECKSUMS:
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   KeychainAccess: 017ea25e313a49eda10bb19b0bb0760fb1edfe1a
+  Kingfisher: 5690cfb3d1bddf3a98d679a3a34d0b7294974ed2
   MDCSwipeToChoose: 56239d98b4558c66e7c3c9069482befd26092270
   ObjectMapper: 9e385c2295bcc4e16eabbcfc85db801442bba545
   R.swift: 207a372a2b5977caef440c696a368009460641d1
   R.swift.Library: fbdec16c9802ad104fc1ba53415dc190e6ec5c73
-  SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
   SnapKit: 12b24f569cb7c143acc9c22b9d91b23e7b1c84a2
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: b4f13aba8bf6bf2740456336488cb48872b4fac4
+PODFILE CHECKSUM: 176596a8f6c55e2f648ff7db4dbf08c74c22cea8
 
 COCOAPODS: 1.1.1

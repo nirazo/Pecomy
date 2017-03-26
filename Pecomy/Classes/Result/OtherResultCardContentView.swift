@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SDWebImage
+import Kingfisher
 
 protocol OtherResultCardContentDelegate {
     func contentTapped(_ restaurant: Restaurant)
@@ -128,15 +128,13 @@ class OtherResultCardContentView: UIView {
             self.imageView.image = R.image.noimage()
             return
         }
-        self.imageView.sd_setImage(with: url) { [weak self] (image, error, imageCacheType, imageURL) in
-            guard let strongSelf = self else {
-                return
-            }
+        self.imageView.kf.setImage(with: url, placeholder: R.image.noimage(), options: nil, progressBlock: nil) { [weak self] (image, error, imageCacheType, imageURL) in
+            guard let strongSelf = self else { return }
             strongSelf.imageView.alpha = 0
             UIView.animate(withDuration: 0.5, delay: 0.0, options: UIViewAnimationOptions(), animations: {() -> Void in
                 strongSelf.imageView.alpha = 1
-                }, completion: nil)
-            }
+            }, completion: nil)
+        }
     }
     
     func tapped() {

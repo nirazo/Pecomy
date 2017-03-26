@@ -9,6 +9,7 @@
 import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit
+import Kingfisher
 
 class RecentHeaderView: UIView {
     override init(frame: CGRect) {
@@ -331,11 +332,11 @@ class ProfileViewController: UIViewController {
     
     fileprivate func updateUserPicture() {
         if(LoginModel.isLoggedIn()) {
-        guard let urlStr = KeychainManager.getPecomyUserPictureUrl(), let picUrl = URL(string: urlStr) else { return }
-        self.userPhotoImageView.sd_setImage(with: picUrl, completed: { [weak self] _ in
-            guard let strongSelf = self else { return }
-            strongSelf.userPhotoImageView.layer.cornerRadius = strongSelf.userPhotoImageView.frame.size.width * 0.5
-        })
+            guard let urlStr = KeychainManager.getPecomyUserPictureUrl(), let picUrl = URL(string: urlStr) else { return }
+            self.userPhotoImageView.kf.setImage(with: picUrl, placeholder: nil, options: nil, progressBlock: nil) { [weak self] _ in
+                guard let strongSelf = self else { return }
+                strongSelf.userPhotoImageView.layer.cornerRadius = strongSelf.userPhotoImageView.frame.size.width * 0.5
+            }
         } else {
             self.userPhotoImageView.image = R.image.comment_human1()
         }

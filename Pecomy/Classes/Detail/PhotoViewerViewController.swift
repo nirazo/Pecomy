@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SDWebImage
+import Kingfisher
 
 // MARK: - PhotoViewNavigationBar
 class PhotoViewNavigationBar: UIView {
@@ -74,7 +74,8 @@ class PhotoPageView: UIView {
         didSet {
             if let url = url {
                 self.loadingIndicator.startAnimating()
-                imageView.sd_setImage(with: url) { [weak self] (image, error, imageCacheType, imageURL) in
+                imageView.kf.setImage(with: url, placeholder: nil, options: nil, progressBlock: nil) {
+                    [weak self] (image, error, imageCacheType, imageURL) in
                     guard let strongSelf = self else { return }
                     strongSelf.loadingIndicator.stopAnimating()
                 }
