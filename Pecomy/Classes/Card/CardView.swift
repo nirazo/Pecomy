@@ -118,7 +118,7 @@ class CardView: MDCSwipeToChooseView {
         self.blackListButton.setImage(R.image.nogood_normal(), for: .normal)
         self.blackListButton.setImage(R.image.nogood_tapped(), for: .highlighted)
         self.blackListButton.setImage(R.image.nogood_highlighted(), for: .disabled)
-        self.blackListButton.addTarget(self, action: #selector(CardView.blackListButtonTapped), for: .touchUpInside)
+        self.blackListButton.addTarget(self, action: #selector(blackListButtonTapped), for: .touchUpInside)
         self.contentView.addSubview(self.blackListButton)
         
         self.blackListButton.snp.makeConstraints { (make) in
@@ -158,7 +158,7 @@ class CardView: MDCSwipeToChooseView {
         }
     }
     
-    func blackListButtonTapped() {
+    @objc func blackListButtonTapped() {
         self.delegate?.blackListButtonTapped(self, shopID: self.restaurant!.shopID)
     }
     

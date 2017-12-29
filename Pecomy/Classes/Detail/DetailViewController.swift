@@ -39,7 +39,7 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         
         self.bgCoverView.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.5)
-        let tr = UITapGestureRecognizer(target: self, action: #selector(DetailViewController.bgCoverViewTapped))
+        let tr = UITapGestureRecognizer(target: self, action: #selector(bgCoverViewTapped))
         self.bgCoverView.addGestureRecognizer(tr)
         
         self.view.backgroundColor = Const.PECOMY_RESULT_BACK_COLOR
@@ -88,7 +88,7 @@ class DetailViewController: UIViewController {
         self.detailView?.picturesView.reloadData()
         self.detailView?.picturesView.setNeedsLayout()
         
-        self.detailView?.telButton.addTarget(self, action: #selector(DetailViewController.telButtonTapped(_:)), for: .touchUpInside)
+        self.detailView?.telButton.addTarget(self, action: #selector(telButtonTapped(_:)), for: .touchUpInside)
         
         self.detailView?.checkinBottomBar.checkedin = self.restaurant.visits > 0
         self.detailView?.checkinBottomBar.favorite = self.restaurant.favorite
@@ -150,7 +150,7 @@ class DetailViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    func telButtonTapped(_ sender: AnyObject) {
+    @objc func telButtonTapped(_ sender: AnyObject) {
         let telURL = URL(string: "tel://\(self.restaurant.tel)")
         if let telURL = telURL {
             let ac = UIAlertController(title: "", message: NSLocalizedString("TelAlertMessage", comment: ""), preferredStyle: .alert)
@@ -202,7 +202,7 @@ class DetailViewController: UIViewController {
         }
     }
     
-    func bgCoverViewTapped() {
+    @objc func bgCoverViewTapped() {
         self.bgCoverView.removeFromSuperview()
     }
     

@@ -36,13 +36,13 @@ class MainBaseViewController: UIViewController {
         
         self.userButton.target = self
         self.userButton.image = R.image.icon_user()?.withRenderingMode(.alwaysOriginal)
-        self.userButton.action = #selector(MainBaseViewController.userButtonDidTap(_:))
+        self.userButton.action = #selector(userButtonDidTap(_:))
         self.settingsButton.target = self
         self.settingsButton.image = R.image.icon_settings()?.withRenderingMode(.alwaysOriginal)
-        self.settingsButton.action = #selector(MainBaseViewController.settingsButtonDidTap(_:))
+        self.settingsButton.action = #selector(settingsButtonDidTap(_:))
         self.cardButton.target = self
         self.cardButton.image = R.image.icon_card()?.withRenderingMode(.alwaysOriginal)
-        self.cardButton.action = #selector(MainBaseViewController.cardButtonDidTap(_:))
+        self.cardButton.action = #selector(cardButtonDidTap(_:))
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -52,7 +52,7 @@ class MainBaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = Const.APP_TITLE
-        NotificationCenter.default.addObserver(self, selector: #selector(MainBaseViewController.enterForeground(_:)), name:NSNotification.Name(rawValue: Const.WILL_ENTER_FOREGROUND_KEY), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(enterForeground(_:)), name:NSNotification.Name(rawValue: Const.WILL_ENTER_FOREGROUND_KEY), object: nil)
         
         //単色背景
         let bgView = UIView()
@@ -125,22 +125,22 @@ class MainBaseViewController: UIViewController {
     }
 
     // MARK: - Observer
-    func enterForeground(_ notification: Notification){
+    @objc func enterForeground(_ notification: Notification){
         self.bgImageView.image = BackgroundImagePicker.pickImage()
     }
     
     // MARK: - Button Action
-    func cardButtonDidTap(_ sender: UIBarButtonItem) {
+    @objc func cardButtonDidTap(_ sender: UIBarButtonItem) {
         print("card tapped")
         self.pagingBaseView.setContentOffset(CGPoint(x: self.pagingBaseView.frame.width, y: 0), animated: true)
     }
     
-    func userButtonDidTap(_ sender: UIBarButtonItem) {
+    @objc func userButtonDidTap(_ sender: UIBarButtonItem) {
         print("user tapped")
         self.pagingBaseView.setContentOffset(.zero, animated: true)
     }
     
-    func settingsButtonDidTap(_ sender: UIBarButtonItem) {
+    @objc func settingsButtonDidTap(_ sender: UIBarButtonItem) {
         let settingsVC = SettingsViewController()
         let navVC = UINavigationController(rootViewController: settingsVC)
         settingsVC.navigationItem.title = NSLocalizedString("SettingsTitle", comment: "")

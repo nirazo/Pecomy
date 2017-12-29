@@ -78,7 +78,7 @@ class MainViewController: UIViewController {
         
         self.navigationController?.makeNavigationBarTranslucent()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.enterForeground(notification:)), name:NSNotification.Name(rawValue: Const.WILL_ENTER_FOREGROUND_KEY), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(enterForeground(notification:)), name:NSNotification.Name(rawValue: Const.WILL_ENTER_FOREGROUND_KEY), object: nil)
         
         // カードを配置するための透明ビュー
         contentView.frame = self.view.bounds
@@ -136,11 +136,11 @@ class MainViewController: UIViewController {
         let likeButton = UIButton()
         likeButton.setImage(R.image.like_normal(), for: .normal)
         likeButton.setImage(R.image.like_tapped(), for: .highlighted)
-        likeButton.addTarget(self, action: #selector(MainViewController.likeButtonTapped), for: .touchUpInside)
+        likeButton.addTarget(self, action: #selector(likeButtonTapped), for: .touchUpInside)
         
         let reloadButton = UIButton()
         reloadButton.setImage(R.image.reload(), for: .normal)
-        reloadButton.addTarget(self, action: #selector(MainViewController.reloadTapped), for: .touchUpInside)
+        reloadButton.addTarget(self, action: #selector(reloadTapped), for: .touchUpInside)
         reloadButton.clipsToBounds = true
         reloadButton.layer.cornerRadius = reloadButton.frame.size.width * 0.5
 
@@ -148,7 +148,7 @@ class MainViewController: UIViewController {
         let dislikeButton = UIButton()
         dislikeButton.setImage(R.image.dislike_normal(), for: .normal)
         dislikeButton.setImage(R.image.dislike_tapped(), for: .highlighted)
-        dislikeButton.addTarget(self, action: #selector(MainViewController.dislikeButtonTapped), for: .touchUpInside)
+        dislikeButton.addTarget(self, action: #selector(dislikeButtonTapped), for: .touchUpInside)
         
         self.view.addSubview(likeButton)
         self.view.addSubview(dislikeButton)
@@ -209,7 +209,7 @@ class MainViewController: UIViewController {
     }
     
     //MARK:- Observer
-    func enterForeground(notification: NSNotification){
+    @objc func enterForeground(notification: NSNotification){
         if AppState.sharedInstance.currentLatitude == nil || AppState.sharedInstance.currentLongitude == nil {
             self.reset()
             self.acquireFirstCard()
@@ -473,15 +473,15 @@ class MainViewController: UIViewController {
     }
     
     //MARK: - Button tapped Callbacks
-    func likeButtonTapped() {
+    @objc func likeButtonTapped() {
         self.swipeTopCard(toDirection: .right)
     }
     
-    func dislikeButtonTapped() {
+    @objc func dislikeButtonTapped() {
         self.swipeTopCard(toDirection: .left)
     }
     
-    func reloadTapped() {
+    @objc func reloadTapped() {
         self.onetimeFilterVC = OnetimeFilterViewController(budget: self.currentBudget, numOfPeople: self.currentNumOfPeople, genre: self.currentGenre)
         self.onetimeFilterVC!.delegate = self
         UIApplication.shared.keyWindow?.addSubview(self.onetimeFilterVC!.view)
@@ -719,7 +719,7 @@ extension MainViewController: CardViewDelegate {
 //MARK: - TutorialDelegate
 extension MainViewController: TutorialDelegate {
     func startTapped() {
-        self.dismiss(animated: true) { _ in
+        self.dismiss(animated: true) { () in
             self.displayOnetimeFilterView()
             self.tutorialVC = nil
         }

@@ -141,7 +141,7 @@ class OnetimeFilterViewController: UIViewController {
         self.startButton.titleLabel?.font = UIFont(name: Const.PECOMY_FONT_BOLD, size: 18)
         self.startButton.setTitle(NSLocalizedString("StartTitle", comment: ""), for: UIControlState())
         self.bottomButtonsBgView.addSubview(self.startButton)
-        self.startButton.addTarget(self, action: #selector(OnetimeFilterViewController.startButtonTapped(_:)), for: .touchUpInside)
+        self.startButton.addTarget(self, action: #selector(startButtonTapped(_:)), for: .touchUpInside)
         
         if (self.enableCancel) {
             // キャンセルボタン
@@ -149,7 +149,7 @@ class OnetimeFilterViewController: UIViewController {
             self.cancelButton.backgroundColor = UIColor(red: 129.0/255.0, green: 152.0/255.0, blue: 178.0/255.0, alpha: 1.0)
             self.cancelButton.titleLabel?.font = UIFont(name: Const.PECOMY_FONT_BOLD, size: 18)
             self.cancelButton.setTitle(NSLocalizedString("Cancel", comment: ""), for: UIControlState())
-            self.cancelButton.addTarget(self, action: #selector(OnetimeFilterViewController.cancelButtonTapped(_:)), for: .touchUpInside)
+            self.cancelButton.addTarget(self, action: #selector(cancelButtonTapped(_:)), for: .touchUpInside)
             
             self.bottomButtonsBgView.addSubview(self.cancelButton)
             self.cancelButton.snp.makeConstraints { (make) in
@@ -175,13 +175,13 @@ class OnetimeFilterViewController: UIViewController {
     }
     
     //MARK: - button callbacks
-    func cancelButtonTapped(_ sender: AnyObject) {
+    @objc func cancelButtonTapped(_ sender: AnyObject) {
         if (self.enableCancel) {
             self.delegate?.closeButtonTapped()
         }
     }
     
-    func startButtonTapped(_ sender: AnyObject) {
+    @objc func startButtonTapped(_ sender: AnyObject) {
         self.delegate?.startSearch(self.currentBudget, numOfPeople: self.currentNumOfPeople, genre: self.currentGenre)
     }
 }

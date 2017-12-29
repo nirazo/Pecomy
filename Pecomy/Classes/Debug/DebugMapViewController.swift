@@ -47,7 +47,7 @@ class DebugMapViewController: UIViewController {
     }
     
 
-    func longPress(sender: UILongPressGestureRecognizer) {
+    @objc func longPress(sender: UILongPressGestureRecognizer) {
         if (sender.state == .began){
             let location = sender.location(in: self.mapView)
             let mapPoint = self.mapView.convert(location, toCoordinateFrom: self.mapView)

@@ -83,7 +83,7 @@ class LoginIntroduceViewController: UIViewController {
         let closeButton = UIButton()
         let closeImage = R.image.close()?.tint(.white)
         closeButton.setImage(closeImage, for: .normal)
-        closeButton.addTarget(self, action: #selector(LoginIntroduceViewController.closeDisplay), for: .touchUpInside)
+        closeButton.addTarget(self, action: #selector(closeDisplay), for: .touchUpInside)
         self.view.addSubview(closeButton)
         closeButton.snp.makeConstraints { make in
             make.top.equalTo(self.view).offset(35)
@@ -105,7 +105,7 @@ class LoginIntroduceViewController: UIViewController {
         let attrText = NSMutableAttributedString(string: R.string.localizable.loginSubTitle())
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineHeightMultiple = 1.8
-        attrText.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: NSMakeRange(0, attrText.length))
+        attrText.addAttribute(NSAttributedStringKey.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attrText.length))
         
         subTitleLabel.font = UIFont(name: Const.PECOMY_FONT_BOLD, size: 19)
         subTitleLabel.textColor = .white
@@ -170,7 +170,7 @@ class LoginIntroduceViewController: UIViewController {
         }
     }
     
-    func closeDisplay() {
+    @objc func closeDisplay() {
         self.dismiss(animated: true, completion: nil)
     }
 }

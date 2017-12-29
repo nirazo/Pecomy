@@ -249,14 +249,14 @@ class ProfileViewController: UIViewController {
         self.tableView.reloadData()
     }
     
-    func pushFavoritesList() {
+    @objc func pushFavoritesList() {
         print("favorites!")
         let vc = FavoritesAndVisitsViewController(type: .favorites, favoritesList: self.favoritesRestaurants, visitsList: self.visitsRestaurants)
         vc.navigationItem.title = "favorites"
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    func pushVisitsList() {
+    @objc func pushVisitsList() {
         print("visits!")
         let vc = FavoritesAndVisitsViewController(type: .visits, favoritesList: self.favoritesRestaurants, visitsList: self.visitsRestaurants)
         vc.navigationItem.title = "visits"
@@ -333,7 +333,7 @@ class ProfileViewController: UIViewController {
     fileprivate func updateUserPicture() {
         if(LoginModel.isLoggedIn()) {
             guard let urlStr = KeychainManager.getPecomyUserPictureUrl(), let picUrl = URL(string: urlStr) else { return }
-            self.userPhotoImageView.kf.setImage(with: picUrl, placeholder: nil, options: nil, progressBlock: nil) { [weak self] _ in
+            self.userPhotoImageView.kf.setImage(with: picUrl, placeholder: nil, options: nil, progressBlock: nil) { [weak self] (_, _, _, _) in
                 guard let strongSelf = self else { return }
                 strongSelf.userPhotoImageView.layer.cornerRadius = strongSelf.userPhotoImageView.frame.size.width * 0.5
             }

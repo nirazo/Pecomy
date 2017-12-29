@@ -33,7 +33,7 @@ class TableViewSwitchCell: UITableViewCell {
         self.cellSwitch.isOn = switchState
     }
     
-    func switchTapped(sender: UISwitch) {
+    @objc func switchTapped(sender: UISwitch) {
         self.switchChanged?(sender.isOn)
     }
 }

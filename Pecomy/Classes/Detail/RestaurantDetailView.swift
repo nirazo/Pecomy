@@ -152,7 +152,7 @@ class RestaurantDetailView: UIView {
             make.left.equalTo(self.mapView)
             make.size.equalTo(self.mapView)
         }
-        let tr = UITapGestureRecognizer(target: self, action: #selector(RestaurantDetailView.mapViewTapped(_ :)))
+        let tr = UITapGestureRecognizer(target: self, action: #selector(mapViewTapped(_ :)))
         self.mapTapView.addGestureRecognizer(tr)
         
         
@@ -221,7 +221,7 @@ class RestaurantDetailView: UIView {
         }
     }
     
-    func mapViewTapped(_ sender: AnyObject) {
+    @objc func mapViewTapped(_ sender: AnyObject) {
         self.mapTappedAction?(self.restaurant)
     }
     

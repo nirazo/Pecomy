@@ -40,13 +40,23 @@ class TutorialViewController: UIViewController {
             let iv = UIImageView(image:img)
             iv.contentMode = .scaleAspectFit
             iv.frame = CGRect(x: CGFloat(i) * width, y: 0, width: width, height: height)
+//            iv.snp.makeConstraints { make in
+//                make.left.equalTo(view).multipliedBy(CGFloat(i))
+//                make.width.equalTo(view)
+//                make.height.equalTo(view)
+//                if #available(iOS 11, *) {
+//                    make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+//                } else {
+//                    make.bottom.equalTo(view)
+//                }
+//            }
             scrollView.addSubview(iv)
         }
         
         //閉じるボタン
         let closeButton = UIButton(frame: .zero)
         closeButton.backgroundColor = .clear
-        closeButton.addTarget(self, action: #selector(TutorialViewController.startTapped(_:)), for:.touchUpInside)
+        closeButton.addTarget(self, action: #selector(startTapped(_:)), for:.touchUpInside)
         self.view.addSubview(closeButton)
         
         closeButton.snp.makeConstraints { (make) in
@@ -57,7 +67,7 @@ class TutorialViewController: UIViewController {
         }
     }
     
-    func startTapped(_ sender: UIButton) {
+    @objc func startTapped(_ sender: UIButton) {
         if(self.currentPage == self.imgTitleArr.count - 1) {
             UserDefaults.standard.set(true, forKey: Const.UD_KEY_HAS_LAUNCHED)
             UserDefaults.standard.synchronize()

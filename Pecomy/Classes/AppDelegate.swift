@@ -74,7 +74,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navVC = UINavigationController(rootViewController: rootVC)
         navVC.navigationBar.tintColor = .clear
         navVC.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navVC.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: Const.PECOMY_THEME_TEXT_COLOR]
+        navVC.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: Const.PECOMY_THEME_TEXT_COLOR]
         navVC.navigationBar.shadowImage = UIImage()
         return navVC
     }
