@@ -17,6 +17,7 @@ enum DeviceType {
         case CGSize(width: 320.0, height: 568.0): self = .iPhone5
         case CGSize(width: 375.0, height: 667.0): self = .iPhone6
         case CGSize(width: 414.0, height: 736.0): self = .iPhone6Plus
+        //case CGSize(width: 375.0, height: 812.0): self = .iPhoneX
         default: self = .other
         }
     }
@@ -214,7 +215,11 @@ extension OnetimeFilterViewController: UICollectionViewDelegate {
 
     
     // MARK: - UICollectionViewDelegateFlowLayout
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
+
+}
+
+extension OnetimeFilterViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let viewSize = collectionView.frame.size
         var cellHeight: CGFloat = 0.0
         switch self.deviceType {
@@ -227,20 +232,20 @@ extension OnetimeFilterViewController: UICollectionViewDelegate {
         default:
             cellHeight = 48
         }
-        
+
         if(indexPath.section == OnetimeSections.genre.hashValue && indexPath.row == Genre.all.hashValue) {
             return CGSize(width: viewSize.width, height: cellHeight)
         } else {
             return CGSize(width: (viewSize.width-20)/3, height: cellHeight) // The size of one cell
         }
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: 150, height: 18)  // Header size
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-        
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+
         var bottomMargin: CGFloat = 0.0
         switch self.deviceType {
         case .iPhone4:
@@ -254,12 +259,12 @@ extension OnetimeFilterViewController: UICollectionViewDelegate {
         }
         return UIEdgeInsetsMake(5, 0, bottomMargin, 0)
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
+
+    internal func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 9.9
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 10.0
     }
 }

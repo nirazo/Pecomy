@@ -503,6 +503,7 @@
 		D27BB9CE1B36F4A900F8D902 /* Pecomy */ = {
 			isa = PBXGroup;
 			children = (
+				D27BB9D11B36F4A900F8D902 /* AppDelegate.swift */,
 				D2C71ED31D979CD900E5422E /* Pecomy.entitlements */,
 				D2C9B2491CCB564E003A33B9 /* Classes */,
 				D2C9B24A1CCB5669003A33B9 /* Resources */,
@@ -576,7 +577,6 @@
 				D2731FE11C79A86700E8E5E9 /* RestaurantLog */,
 				D2597E1C1B523831000938B4 /* Result */,
 				D24B292C1B7895C900419B9B /* Tutorial */,
-				D27BB9D11B36F4A900F8D902 /* AppDelegate.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
