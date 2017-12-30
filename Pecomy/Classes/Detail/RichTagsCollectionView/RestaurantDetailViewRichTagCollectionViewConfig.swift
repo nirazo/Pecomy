@@ -40,7 +40,6 @@ class RestaurantDetailViewRichTagCollectionViewConfig: NSObject, UICollectionVie
 }
 
 extension RestaurantDetailViewRichTagCollectionViewConfig: UICollectionViewDelegateFlowLayout {
-    // MARK: - UICollectionViewDelegateFlowLayout
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let screenSize = UIScreen.main.bounds
         return CGSize(width: screenSize.width/2-26, height: 32) // The size of one cell

@@ -106,7 +106,11 @@ class ProfileViewController: UIViewController {
         
         self.view.addSubview(self.userPhotoImageView)
         self.userPhotoImageView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(84)
+            if #available(iOS 11, *) {
+                make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(20)
+            } else {
+                make.top.equalToSuperview().offset(84)
+            }
             make.left.equalTo(19.5)
             make.size.equalTo(100)
         }
@@ -136,7 +140,7 @@ class ProfileViewController: UIViewController {
         
         self.view.addSubview(self.favAndCheckinBgView)
         self.favAndCheckinBgView.snp.makeConstraints { make in
-            make.top.equalTo(84)
+            make.top.equalTo(userPhotoImageView)
             make.left.equalTo(self.userPhotoImageView.snp.right)
             make.right.equalTo(self.view)
             make.bottom.equalTo(self.userPhotoImageView)
@@ -250,14 +254,12 @@ class ProfileViewController: UIViewController {
     }
     
     @objc func pushFavoritesList() {
-        print("favorites!")
         let vc = FavoritesAndVisitsViewController(type: .favorites, favoritesList: self.favoritesRestaurants, visitsList: self.visitsRestaurants)
         vc.navigationItem.title = "favorites"
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func pushVisitsList() {
-        print("visits!")
         let vc = FavoritesAndVisitsViewController(type: .visits, favoritesList: self.favoritesRestaurants, visitsList: self.visitsRestaurants)
         vc.navigationItem.title = "visits"
         self.navigationController?.pushViewController(vc, animated: true)

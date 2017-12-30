@@ -47,7 +47,6 @@ class RestaurantDetailViewPictureCollectionViewConfig: NSObject, UICollectionVie
 }
 
 extension RestaurantDetailViewPictureCollectionViewConfig: UICollectionViewDelegateFlowLayout {
-    // MARK: - UICollectionViewDelegateFlowLayout
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 100, height: 100) // The size of one cell
     }
