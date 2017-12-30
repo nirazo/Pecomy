@@ -16,41 +16,53 @@ class TutorialViewController: UIViewController {
 
     var delegate: TutorialDelegate?
     var currentPage = 0
-    let imgTitleArr = ["tutorial_01", "tutorial_02", "tutorial_03"]
     let scrollView = UIScrollView()
+    let contentView = UIView()
+    let imageViews = [
+        UIImageView(image: R.image.tutorial_01()),
+        UIImageView(image: R.image.tutorial_02()),
+        UIImageView(image: R.image.tutorial_03())
+    ]
     
     override func viewDidLoad() {
-        let width = self.view.frame.maxX
-        let height = self.view.frame.maxY
-        
         super.viewDidLoad()
         self.view.backgroundColor = Const.PECOMY_THEME_COLOR
-        
-        self.scrollView.frame = self.view.bounds
+
         self.scrollView.showsHorizontalScrollIndicator = false
         self.scrollView.showsVerticalScrollIndicator = false
         self.scrollView.isPagingEnabled = true
         self.scrollView.delegate = self
-        self.scrollView.contentSize = CGSize(width: CGFloat(self.imgTitleArr.count)*width, height: 0)
         self.view.addSubview(self.scrollView)
-        
+        scrollView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        scrollView.addSubview(contentView)
+        contentView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+
         //各ページの作成
-        for i in 0 ..< self.imgTitleArr.count {
-            let img = UIImage(named:self.imgTitleArr[i])
-            let iv = UIImageView(image:img)
-            iv.contentMode = .scaleAspectFit
-            iv.frame = CGRect(x: CGFloat(i) * width, y: 0, width: width, height: height)
-//            iv.snp.makeConstraints { make in
-//                make.left.equalTo(view).multipliedBy(CGFloat(i))
-//                make.width.equalTo(view)
-//                make.height.equalTo(view)
-//                if #available(iOS 11, *) {
-//                    make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
-//                } else {
-//                    make.bottom.equalTo(view)
-//                }
-//            }
-            scrollView.addSubview(iv)
+        for i in 0 ..< imageViews.count {
+            imageViews[i].contentMode = .scaleToFill
+            contentView.addSubview(imageViews[i])
+            imageViews[i].snp.makeConstraints { make in
+                if i == 0 {
+                    make.left.equalTo(scrollView)
+                } else if i == imageViews.count - 1 {
+                    make.left.equalTo(imageViews[i-1].snp.right)
+                    make.right.equalTo(contentView)
+                } else {
+                    make.left.equalTo(imageViews[i-1].snp.right)
+                }
+                if #available(iOS 11, *) {
+                    make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+                    make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+                } else {
+                    make.top.equalTo(view)
+                    make.bottom.equalTo(view)
+                }
+                make.width.equalTo(view)
+            }
         }
         
         //閉じるボタン
@@ -60,15 +72,15 @@ class TutorialViewController: UIViewController {
         self.view.addSubview(closeButton)
         
         closeButton.snp.makeConstraints { (make) in
-            make.left.equalTo(self.view).offset(50)
-            make.width.equalTo(self.view)
-            make.bottom.equalTo(self.view)
+            make.left.equalTo(view)
+            make.width.equalTo(view)
+            make.bottom.equalTo(imageViews[0])
             make.height.equalTo(48)
         }
     }
     
     @objc func startTapped(_ sender: UIButton) {
-        if(self.currentPage == self.imgTitleArr.count - 1) {
+        if(self.currentPage == self.imageViews.count - 1) {
             UserDefaults.standard.set(true, forKey: Const.UD_KEY_HAS_LAUNCHED)
             UserDefaults.standard.synchronize()
             self.delegate?.startTapped()
