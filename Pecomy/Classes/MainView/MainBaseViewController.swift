@@ -136,7 +136,6 @@ class MainBaseViewController: UIViewController {
     }
     
     @objc func userButtonDidTap(_ sender: UIBarButtonItem) {
-        print("user tapped")
         self.pagingBaseView.setContentOffset(.zero, animated: true)
     }
     

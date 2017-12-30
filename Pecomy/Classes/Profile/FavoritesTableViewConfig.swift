@@ -25,7 +25,7 @@ class FavoritesTableViewConfig: NSObject {
                 strongSelf.sectionedRestaurantList = strongSelf.createSectionedRestaurantList(user.favorites)
                 completion?()
             case .failure(let error):
-                print("error: \(error.code), \(error.response)")
+                print("error: \(error.code), \(String(describing: error.response))")
             }
             })
     }

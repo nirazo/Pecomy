@@ -185,7 +185,7 @@ class CardView: MDCSwipeToChooseView {
         self.likedLabelView.alpha = 0.0
         self.addSubview(self.likedLabelView)
 
-        self.likedLabelView.transform = CGAffineTransform.identity.rotated(by: CGFloat(Double(self.options.likedRotationAngle)*(M_PI/180.0)))
+        self.likedLabelView.transform = CGAffineTransform.identity.rotated(by: CGFloat(Double(self.options.likedRotationAngle)*(.pi/180.0)))
     }
     
     // 「イマイチ」の時にかぶせるビュー
@@ -212,7 +212,7 @@ class CardView: MDCSwipeToChooseView {
         self.nopeLabelView.alpha = 0.0
         self.addSubview(self.nopeLabelView)
         
-        self.nopeLabelView.transform = CGAffineTransform.identity.rotated(by: CGFloat(Double(self.options.nopeRotationAngle)*(M_PI/180.0)))
+        self.nopeLabelView.transform = CGAffineTransform.identity.rotated(by: CGFloat(Double(self.options.nopeRotationAngle)*(.pi/180.0)))
     }
     
     

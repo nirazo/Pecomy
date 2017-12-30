@@ -70,8 +70,8 @@
                                         <constraint firstAttribute="width" constant="16" id="k0P-ty-GoO"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="￥1,000〜￥1,999" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6r4-mN-J8r">
-                                    <rect key="frame" x="40" y="82" width="97" height="12"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="￥1,000〜￥1,999" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6r4-mN-J8r">
+                                    <rect key="frame" x="40" y="82" width="99.5" height="12"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="12" id="zKx-qf-JLj"/>
                                     </constraints>
@@ -79,8 +79,8 @@
                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="￥3,000〜￥4,999" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xi9-Vu-K5x">
-                                    <rect key="frame" x="40" y="104" width="101" height="12"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="￥3,000〜￥4,999" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xi9-Vu-K5x">
+                                    <rect key="frame" x="40" y="104" width="103" height="12"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="12" id="w00-69-7xU"/>
                                     </constraints>

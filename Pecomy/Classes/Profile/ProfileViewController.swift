@@ -274,7 +274,7 @@ class ProfileViewController: UIViewController {
                 strongSelf.browsesRestaurants = result
                 strongSelf.tableView.reloadData()
             case .failure(let error):
-                print("error: \(error.code), \(error.response)")
+                print("error: \(error.code), \(String(describing: error.response))")
             }
             })
         } else {
@@ -296,7 +296,7 @@ class ProfileViewController: UIViewController {
                 strongSelf.favoritesRestaurants = user.favorites
                 strongSelf.numOfFavoriteLabel.text = String(user.favorites.count)
             case .failure(let error):
-                print("error: \(error.code), \(error.response)")
+                print("error: \(error.code), \(String(describing: error.response))")
             }
             })
         } else {
@@ -319,7 +319,7 @@ class ProfileViewController: UIViewController {
                 strongSelf.visitsRestaurants = user.visits
                 strongSelf.numOfCheckinLabel.text = String(user.visits.count)
             case .failure(let error):
-                print("error: \(error.code), \(error.response)")
+                print("error: \(error.code), \(String(describing: error.response))")
             }
             })
         } else {

@@ -141,7 +141,7 @@ class DetailViewController: UIViewController {
             case .success(_):
                 print("history registered!!: \(strongSelf.restaurant.shopID)")
             case .failure(let error):
-                print("history register error: \(error.code), \(error.response)")
+                print("history register error: \(error.code), \(String(describing: error.response))")
             }
             })
     }
@@ -218,7 +218,7 @@ class DetailViewController: UIViewController {
                 strongSelf.displayRegisterPopup(RegisterType.checkin)
                 strongSelf.detailView?.checkinBottomBar.checkedin = true
             case .failure(let error):
-                print("checkin register error: \(strongSelf.restaurant.shopID), \(error.code), \(error.response)")
+                print("checkin register error: \(strongSelf.restaurant.shopID), \(error.code), \(String(describing: error.response))")
                 strongSelf.showRegisterErrorAlert()
             }
             })
@@ -236,7 +236,7 @@ class DetailViewController: UIViewController {
                 strongSelf.displayRegisterPopup(RegisterType.favorite)
                 strongSelf.detailView?.checkinBottomBar.favorite = true
             case .failure(let error):
-                print("favorite register error: \(error.code), \(error.response)")
+                print("favorite register error: \(error.code), \(String(describing: error.response))")
                 strongSelf.showRegisterErrorAlert()
             }
         })
