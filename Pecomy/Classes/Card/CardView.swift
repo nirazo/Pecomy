@@ -118,7 +118,7 @@ class CardView: MDCSwipeToChooseView {
         self.blackListButton.setImage(R.image.nogood_normal(), for: .normal)
         self.blackListButton.setImage(R.image.nogood_tapped(), for: .highlighted)
         self.blackListButton.setImage(R.image.nogood_highlighted(), for: .disabled)
-        self.blackListButton.addTarget(self, action: #selector(CardView.blackListButtonTapped), for: .touchUpInside)
+        self.blackListButton.addTarget(self, action: #selector(blackListButtonTapped), for: .touchUpInside)
         self.contentView.addSubview(self.blackListButton)
         
         self.blackListButton.snp.makeConstraints { (make) in
@@ -158,7 +158,7 @@ class CardView: MDCSwipeToChooseView {
         }
     }
     
-    func blackListButtonTapped() {
+    @objc func blackListButtonTapped() {
         self.delegate?.blackListButtonTapped(self, shopID: self.restaurant!.shopID)
     }
     
@@ -185,7 +185,7 @@ class CardView: MDCSwipeToChooseView {
         self.likedLabelView.alpha = 0.0
         self.addSubview(self.likedLabelView)
 
-        self.likedLabelView.transform = CGAffineTransform.identity.rotated(by: CGFloat(Double(self.options.likedRotationAngle)*(M_PI/180.0)))
+        self.likedLabelView.transform = CGAffineTransform.identity.rotated(by: CGFloat(Double(self.options.likedRotationAngle)*(.pi/180.0)))
     }
     
     // 「イマイチ」の時にかぶせるビュー
@@ -212,7 +212,7 @@ class CardView: MDCSwipeToChooseView {
         self.nopeLabelView.alpha = 0.0
         self.addSubview(self.nopeLabelView)
         
-        self.nopeLabelView.transform = CGAffineTransform.identity.rotated(by: CGFloat(Double(self.options.nopeRotationAngle)*(M_PI/180.0)))
+        self.nopeLabelView.transform = CGAffineTransform.identity.rotated(by: CGFloat(Double(self.options.nopeRotationAngle)*(.pi/180.0)))
     }
     
     

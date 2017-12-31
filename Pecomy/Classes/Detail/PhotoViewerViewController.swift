@@ -157,7 +157,7 @@ class PhotoViewerViewController: UIViewController {
             make.width.equalTo(self.view)
             make.height.equalTo(64)
         }
-        self.navigationBar.closeButton.addTarget(self, action: #selector(PhotoViewerViewController.closePhoto), for: .touchUpInside)
+        self.navigationBar.closeButton.addTarget(self, action: #selector(closePhoto), for: .touchUpInside)
         
         self.view.layoutIfNeeded()
         self.setUpPages()
@@ -214,7 +214,7 @@ class PhotoViewerViewController: UIViewController {
     }
     
     
-    func closePhoto() {
+    @objc func closePhoto() {
         UIView.animate(withDuration: self.displayDuration, animations: { () in
             self.view.alpha = 0.0
         }, completion: { finished in

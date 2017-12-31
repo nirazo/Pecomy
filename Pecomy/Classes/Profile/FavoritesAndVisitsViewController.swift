@@ -54,7 +54,7 @@ class FavoritesAndVisitsViewController: UIViewController {
         // segmentedControl
         self.segmentedControl.sizeToFit()
         self.segmentedControl.selectedSegmentIndex = self.listType.hashValue
-        self.segmentedControl.addTarget(self, action: #selector(FavoritesAndVisitsViewController.segmentChanged(_:)), for: .valueChanged)
+        self.segmentedControl.addTarget(self, action: #selector(segmentChanged(_:)), for: .valueChanged)
         self.navigationItem.titleView = self.segmentedControl
         
         self.view.addSubview(self.currentTableView(self.listType))
@@ -83,7 +83,7 @@ class FavoritesAndVisitsViewController: UIViewController {
         }
     }
     
-    func segmentChanged(_ sender: UISegmentedControl) {
+    @objc func segmentChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case RestaurantListType.favorites.hashValue:
             if (self.listType == .favorites) { return }

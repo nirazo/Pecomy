@@ -131,7 +131,7 @@ class TopResultCard: ResultCardBase {
         // 画像のダウンロード
         self.acquireImages()
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(TopResultCard.resultTapped))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(resultTapped))
         self.addGestureRecognizer(tapGesture)
         
         self.layoutIfNeeded()
@@ -149,7 +149,7 @@ class TopResultCard: ResultCardBase {
         }
     }
     
-    func resultTapped() {
+    @objc func resultTapped() {
         self.delegate?.detailButtonTapped(self.restaurant)
     }
 }

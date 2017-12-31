@@ -106,7 +106,11 @@ class ProfileViewController: UIViewController {
         
         self.view.addSubview(self.userPhotoImageView)
         self.userPhotoImageView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(84)
+            if #available(iOS 11, *) {
+                make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(20)
+            } else {
+                make.top.equalToSuperview().offset(84)
+            }
             make.left.equalTo(19.5)
             make.size.equalTo(100)
         }
@@ -136,7 +140,7 @@ class ProfileViewController: UIViewController {
         
         self.view.addSubview(self.favAndCheckinBgView)
         self.favAndCheckinBgView.snp.makeConstraints { make in
-            make.top.equalTo(84)
+            make.top.equalTo(userPhotoImageView)
             make.left.equalTo(self.userPhotoImageView.snp.right)
             make.right.equalTo(self.view)
             make.bottom.equalTo(self.userPhotoImageView)
@@ -249,15 +253,13 @@ class ProfileViewController: UIViewController {
         self.tableView.reloadData()
     }
     
-    func pushFavoritesList() {
-        print("favorites!")
+    @objc func pushFavoritesList() {
         let vc = FavoritesAndVisitsViewController(type: .favorites, favoritesList: self.favoritesRestaurants, visitsList: self.visitsRestaurants)
         vc.navigationItem.title = "favorites"
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    func pushVisitsList() {
-        print("visits!")
+    @objc func pushVisitsList() {
         let vc = FavoritesAndVisitsViewController(type: .visits, favoritesList: self.favoritesRestaurants, visitsList: self.visitsRestaurants)
         vc.navigationItem.title = "visits"
         self.navigationController?.pushViewController(vc, animated: true)
@@ -272,7 +274,7 @@ class ProfileViewController: UIViewController {
                 strongSelf.browsesRestaurants = result
                 strongSelf.tableView.reloadData()
             case .failure(let error):
-                print("error: \(error.code), \(error.response)")
+                print("error: \(error.code), \(String(describing: error.response))")
             }
             })
         } else {
@@ -294,7 +296,7 @@ class ProfileViewController: UIViewController {
                 strongSelf.favoritesRestaurants = user.favorites
                 strongSelf.numOfFavoriteLabel.text = String(user.favorites.count)
             case .failure(let error):
-                print("error: \(error.code), \(error.response)")
+                print("error: \(error.code), \(String(describing: error.response))")
             }
             })
         } else {
@@ -317,7 +319,7 @@ class ProfileViewController: UIViewController {
                 strongSelf.visitsRestaurants = user.visits
                 strongSelf.numOfCheckinLabel.text = String(user.visits.count)
             case .failure(let error):
-                print("error: \(error.code), \(error.response)")
+                print("error: \(error.code), \(String(describing: error.response))")
             }
             })
         } else {
@@ -333,7 +335,7 @@ class ProfileViewController: UIViewController {
     fileprivate func updateUserPicture() {
         if(LoginModel.isLoggedIn()) {
             guard let urlStr = KeychainManager.getPecomyUserPictureUrl(), let picUrl = URL(string: urlStr) else { return }
-            self.userPhotoImageView.kf.setImage(with: picUrl, placeholder: nil, options: nil, progressBlock: nil) { [weak self] _ in
+            self.userPhotoImageView.kf.setImage(with: picUrl, placeholder: nil, options: nil, progressBlock: nil) { [weak self] (_, _, _, _) in
                 guard let strongSelf = self else { return }
                 strongSelf.userPhotoImageView.layer.cornerRadius = strongSelf.userPhotoImageView.frame.size.width * 0.5
             }

@@ -37,9 +37,9 @@ struct Restaurant {
             var price = ""
             let pattern = "\\[昼\\](?!.*  ).+?999"
             let regex = try! NSRegularExpression(pattern: pattern, options: .caseInsensitive)
-            let matches: [NSTextCheckingResult] = regex.matches(in: self.priceRange, options: [], range: NSMakeRange(0, self.priceRange.characters.count))
+            let matches: [NSTextCheckingResult] = regex.matches(in: self.priceRange, options: [], range: NSMakeRange(0, self.priceRange.count))
             for (idx, match) in matches.enumerated() {
-                price = NSString(string: self.priceRange).substring(with: match.rangeAt(idx))
+                price = NSString(string: self.priceRange).substring(with: match.range(at: idx))
             }
             return String(price)
         }
@@ -57,9 +57,9 @@ struct Restaurant {
             var price = ""
             let pattern = "\\[夜\\][^  ].+?999"
             let regex = try! NSRegularExpression(pattern: pattern, options: .caseInsensitive)
-            let matches: [NSTextCheckingResult] = regex.matches(in: self.priceRange, options: [], range: NSMakeRange(0, self.priceRange.characters.count))
+            let matches: [NSTextCheckingResult] = regex.matches(in: self.priceRange, options: [], range: NSMakeRange(0, self.priceRange.count))
             for (idx, match) in matches.enumerated() {
-                price = NSString(string: self.priceRange).substring(with: match.rangeAt(idx))
+                price = NSString(string: self.priceRange).substring(with: match.range(at: idx))
             }
             return String(price)
         }

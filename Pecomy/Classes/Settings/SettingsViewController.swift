@@ -33,7 +33,7 @@ class SettingsViewController: UIViewController {
         self.navigationItem.leftBarButtonItem = closeButtonItem
     }
     
-    func close() {
+    @objc func close() {
         self.dismiss(animated: true, completion: nil)
     }
 }

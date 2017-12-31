@@ -34,7 +34,7 @@ class OtherResultCardContentView: UIView {
         self.backgroundColor = .clear
         self.layer.masksToBounds = false
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(OtherResultCardContentView.tapped))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapped))
         self.addGestureRecognizer(tapGesture)
                 
         self.setupSubViews()
@@ -137,7 +137,7 @@ class OtherResultCardContentView: UIView {
         }
     }
     
-    func tapped() {
+    @objc func tapped() {
         self.delegate?.contentTapped(self.restaurant!)
     }
 }

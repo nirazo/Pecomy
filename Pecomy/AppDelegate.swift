@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Configure tracker from GoogleService-Info.plist.
         var configureError:NSError?
         GGLContext.sharedInstance().configureWithError(&configureError)
-        assert(configureError == nil, "Error configuring Google services: \(configureError)")
+        assert(configureError == nil, "Error configuring Google services: \(String(describing: configureError))")
         
         // Optional: configure GAI options.
         let gai = GAI.sharedInstance()
@@ -74,7 +74,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navVC = UINavigationController(rootViewController: rootVC)
         navVC.navigationBar.tintColor = .clear
         navVC.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navVC.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: Const.PECOMY_THEME_TEXT_COLOR]
+        navVC.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: Const.PECOMY_THEME_TEXT_COLOR]
         navVC.navigationBar.shadowImage = UIImage()
         return navVC
     }

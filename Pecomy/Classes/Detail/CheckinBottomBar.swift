@@ -101,11 +101,11 @@ class CheckinBottomBar: UIView {
         }
     }
     
-    func checkinButtonTapped() {
+    @objc func checkinButtonTapped() {
         self.checkinTapped?()
     }
     
-    func favoriteButtonTapped() {
+    @objc func favoriteButtonTapped() {
         self.favoriteTapped?()
     }
 }

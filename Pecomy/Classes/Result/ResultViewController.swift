@@ -62,10 +62,10 @@ class ResultViewController: UIViewController {
         self.navigationController?.makeNavigationBarDefault()
         
         if (displayMessage.isEmpty) {
-            let continueButton = UIBarButtonItem(title: R.string.localizable.continueString(), style: .plain, target: self, action: #selector(ResultViewController.continueTapped))
+            let continueButton = UIBarButtonItem(title: R.string.localizable.continueString(), style: .plain, target: self, action: #selector(continueTapped))
             self.navigationItem.leftBarButtonItem = continueButton
         } else {
-            let resetButton = UIBarButtonItem(title: R.string.localizable.reset(), style: .plain, target: self, action: #selector(ResultViewController.resetTapped))
+            let resetButton = UIBarButtonItem(title: R.string.localizable.reset(), style: .plain, target: self, action: #selector(resetTapped))
             self.navigationItem.leftBarButtonItem = resetButton
         }
         
@@ -226,12 +226,12 @@ class ResultViewController: UIViewController {
     }
     
     // 続けるをタップした時の挙動
-    func continueTapped() {
+    @objc func continueTapped() {
         self.delegate?.resultViewController(self, backButtonTappedWithReset: false)
     }
     
     // ゲーム画面に戻ってresetする場合
-    func resetTapped() {
+    @objc func resetTapped() {
         self.delegate?.resultViewController(self, backButtonTappedWithReset: true)
     }
 

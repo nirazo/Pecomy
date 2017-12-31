@@ -37,7 +37,7 @@ class PecomyApiClient {
         return Const.API_BASE_PATH + request.endpoint
     }
     
-    class func send<T: PecomyApiRequest, U>(_ request: T, handler: @escaping (PecomyResult<U, PecomyApiClientError>) -> () = {r in} ) -> Session where U: Mappable, U: PecomyApiResponse {
+    class func send<T: PecomyApiRequest, U>(_ request: T, handler: @escaping (PecomyResult<U, PecomyApiClientError>) -> () = {r in} ) -> Session where U: PecomyApiResponse {
         let url = APIURL(request: request)
         
         // ヘッダパラメータのセット
@@ -83,7 +83,7 @@ class PecomyApiClient {
         session.alamofireRequest?.cancel()
     }
     
-    private class func mappingResponse<T>(request: URLRequest?, response: HTTPURLResponse?, data: Data?, error: Error?) -> PecomyResult<T, PecomyApiClientError> where T: Mappable, T: PecomyApiResponse {
+    private class func mappingResponse<T>(request: URLRequest?, response: HTTPURLResponse?, data: Data?, error: Error?) -> PecomyResult<T, PecomyApiClientError> where T: PecomyApiResponse {
         
         guard let validData = data else {
             return PecomyResult.failure(PecomyApiClientError(type: .noResult))
