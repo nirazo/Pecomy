@@ -78,17 +78,6 @@ class ResultViewController: UIViewController {
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        // Google Analytics
-        if let tracker = GAI.sharedInstance().defaultTracker{
-            tracker.set(kGAIDescription, value: self.ANALYTICS_TRACKING_CODE)
-            let builder: NSObject = GAIDictionaryBuilder.createScreenView().build()
-            tracker.send(builder as! [NSObject : AnyObject])
-        }
-    }
-    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         self.scrollView.contentSize = self.contentView.frame.size

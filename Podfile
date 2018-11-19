@@ -10,7 +10,6 @@ target 'Pecomy' do
     pod 'Alamofire'
     pod 'SwiftyJSON'
     pod 'SnapKit'
-    pod 'Google/Analytics'
     pod 'GoogleMaps'
     pod 'ObjectMapper'
     pod 'FBSDKLoginKit'

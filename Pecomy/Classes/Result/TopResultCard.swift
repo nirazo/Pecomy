@@ -35,7 +35,7 @@ class TopResultCard: ResultCardBase {
     var delegate: ResultCardBaseDelegate?
     
     class func instance() -> TopResultCard {
-        return R.nib.topResultCard().instantiate(withOwner: self, options: nil)[0] as! TopResultCard
+        return R.nib.topResultCard(owner: nil)!
     }
         
     init(frame: CGRect, restaurant: Restaurant, delegate: ResultCardBaseDelegate) {

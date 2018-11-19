@@ -197,17 +197,6 @@ class MainViewController: UIViewController {
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        // Google Analytics
-//        let tracker = GAI.sharedInstance().defaultTracker
-//        tracker?.set(kGAIScreenName, value: self.ANALYTICS_TRACKING_CODE)
-//        
-//        let builder = GAIDictionaryBuilder.createScreenView()
-//        tracker?.send(builder?.build() as [NSObject : AnyObject])
-    }
-    
     //MARK:- Observer
     @objc func enterForeground(notification: NSNotification){
         if AppState.sharedInstance.currentLatitude == nil || AppState.sharedInstance.currentLongitude == nil {
@@ -652,8 +641,8 @@ extension MainViewController: PecomyLocationManagerDelegate {
             preferredStyle: .alert)
         let settingAction = UIAlertAction(title: NSLocalizedString("LocationAlertSettingButtonTitle", comment: ""),
             style: .default, handler: { (action) in
-                let url = NSURL(string: UIApplication.openSettingsURLString)
-                UIApplication.shared.openURL(url! as URL)
+                let url = URL(string: UIApplication.openSettingsURLString)!
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
         })
         let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""),
             style: .default, handler: nil)

@@ -13,28 +13,11 @@ PODS:
     - Bolts (~> 1.9)
   - FBSDKLoginKit (4.38.1):
     - FBSDKCoreKit
-  - FirebaseAnalytics (3.9.0):
-    - FirebaseCore (~> 3.6)
-    - FirebaseInstanceID (~> 1.0)
-    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
-  - FirebaseCore (3.6.0):
-    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
-  - FirebaseInstanceID (1.0.10):
-    - FirebaseCore (~> 3.6)
-  - Google/Analytics (3.1.0):
-    - Google/Core
-    - GoogleAnalytics (~> 3.12)
-  - Google/Core (3.1.0):
-    - FirebaseAnalytics (~> 3.2)
-  - GoogleAnalytics (3.17.0)
   - GoogleMaps (2.7.0):
     - GoogleMaps/Maps (= 2.7.0)
   - GoogleMaps/Base (2.7.0)
   - GoogleMaps/Maps (2.7.0):
     - GoogleMaps/Base
-  - GoogleToolboxForMac/Defines (2.1.4)
-  - "GoogleToolboxForMac/NSData+zlib (2.1.4)":
-    - GoogleToolboxForMac/Defines (= 2.1.4)
   - KeychainAccess (3.1.2)
   - Kingfisher (4.10.1)
   - MDCSwipeToChoose (0.2.3)
@@ -50,7 +33,6 @@ DEPENDENCIES:
   - Crashlytics
   - Fabric
   - FBSDKLoginKit
-  - Google/Analytics
   - GoogleMaps
   - KeychainAccess
   - Kingfisher
@@ -68,13 +50,7 @@ SPEC REPOS:
     - Fabric
     - FBSDKCoreKit
     - FBSDKLoginKit
-    - FirebaseAnalytics
-    - FirebaseCore
-    - FirebaseInstanceID
-    - Google
-    - GoogleAnalytics
     - GoogleMaps
-    - GoogleToolboxForMac
     - KeychainAccess
     - Kingfisher
     - MDCSwipeToChoose
@@ -91,13 +67,7 @@ SPEC CHECKSUMS:
   Fabric: d2b22f443ba195d8a7cc204da230977c72733b40
   FBSDKCoreKit: 8d47857400e2f5bdea697a80daff882e91c84ef6
   FBSDKLoginKit: 4621c690d9dd8628031a4791497062183ea34b0d
-  FirebaseAnalytics: e5fe8486efc01bec33f6bf82e2fa9fce4b124052
-  FirebaseCore: 9691ee2ade70c098d7cf92440f4303f16d83ca75
-  FirebaseInstanceID: b9eedd6846fb5e1f0f7279e1deaa7a7e4cf8392e
-  Google: 98da4b1a60ed0beb80a290387a28333406a1eb90
-  GoogleAnalytics: f42cc53a87a51fe94334821868d9c8481ff47a7b
   GoogleMaps: f79af95cb24d869457b1f961c93d3ce8b2f3b848
-  GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
   KeychainAccess: b3816fddcf28aa29d94b10ec305cd52be14c472b
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
   MDCSwipeToChoose: 56239d98b4558c66e7c3c9069482befd26092270
@@ -107,6 +77,6 @@ SPEC CHECKSUMS:
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: 147b7c4cb751b65837ece9b03a63f9d977a4a7d9
+PODFILE CHECKSUM: a62b17ee14a225edcfd6fb150b759189bfc65bc2
 
 COCOAPODS: 1.5.3

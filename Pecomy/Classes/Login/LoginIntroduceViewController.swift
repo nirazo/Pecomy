@@ -189,7 +189,7 @@ extension LoginIntroduceViewController: FBSDKLoginButtonDelegate {
     public func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         if error != nil
         {
-            print("error!: \(error)")
+            print("error!: \(String(describing: error))")
         }
         else if result.isCancelled {
             print("canceled!")

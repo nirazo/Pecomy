@@ -126,14 +126,6 @@ class DetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        // Google Analytics
-        
-        let tracker = GAI.sharedInstance().defaultTracker
-        tracker?.set(kGAIScreenName, value: self.ANALYTICS_TRACKING_CODE)
-        
-        let builder = GAIDictionaryBuilder.createScreenView()
-        tracker?.send(builder?.build() as [NSObject : AnyObject]!)
-        
         // browses登録リクエスト
         self.browsesModel.register(self.restaurant.shopID, handler: {[weak self](result: PecomyResult<PecomyApiResponse, PecomyApiClientError>) in
             guard let strongSelf = self else { return }
@@ -156,7 +148,7 @@ class DetailViewController: UIViewController {
             let ac = UIAlertController(title: "", message: NSLocalizedString("TelAlertMessage", comment: ""), preferredStyle: .alert)
             let okAction = UIAlertAction(title: NSLocalizedString("TelAlertTelButton", comment: ""),
                 style: .default, handler: { (action) in
-                    UIApplication.shared.openURL(telURL)
+                    UIApplication.shared.open(telURL, options: [:], completionHandler: nil)
             })
             let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""),
                 style: .default, handler: nil)
