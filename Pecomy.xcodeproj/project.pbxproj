@@ -85,7 +85,6 @@
 		D2A2CB4E1D4D99B300DD717B /* FavoritesTableViewConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A2CB4D1D4D99B300DD717B /* FavoritesTableViewConfig.swift */; };
 		D2A2CB501D4D99C200DD717B /* VisitsTableViewConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A2CB4F1D4D99C200DD717B /* VisitsTableViewConfig.swift */; };
 		D2A2CB531D574C4F00DD717B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A2CB521D574C4F00DD717B /* SettingsViewController.swift */; };
-		D2A594E81C8C77A400DE1012 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A594E71C8C77A400DE1012 /* R.generated.swift */; };
 		D2A99A161C12D3E700C16F04 /* OnetimeFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A99A151C12D3E700C16F04 /* OnetimeFilterCell.swift */; };
 		D2A99A1A1C12D3FA00C16F04 /* OnetimeFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A99A191C12D3FA00C16F04 /* OnetimeFilterViewController.swift */; };
 		D2A99A571C17367E00C16F04 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2A99A561C17367E00C16F04 /* GoogleService-Info.plist */; };
@@ -107,6 +106,7 @@
 		D2E36EC71C2D615D00DEE726 /* OtherResultCardContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E36EC61C2D615D00DEE726 /* OtherResultCardContentView.swift */; };
 		D2EFEB591C51282A0092DFC9 /* CardOverlayTextLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EFEB581C51282A0092DFC9 /* CardOverlayTextLabelView.swift */; };
 		D2EFEB5C1C567F2F0092DFC9 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EFEB5B1C567F2F0092DFC9 /* MapViewController.swift */; };
+		D72E11F521A2DF5100080B52 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72E11F421A2DF5100080B52 /* R.generated.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -191,7 +191,7 @@
 		D27BB9D11B36F4A900F8D902 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D27BB9D31B36F4A900F8D902 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		D27BB9D81B36F4A900F8D902 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		D27BB9E11B36F4A900F8D902 /* Pecomy.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Pecomy.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D27BB9E11B36F4A900F8D902 /* PecomyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PecomyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D27BB9E61B36F4A900F8D902 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D27BB9E71B36F4A900F8D902 /* PecomyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PecomyTests.swift; sourceTree = "<group>"; };
 		D289012D1C437D8E005BDF84 /* RestaurantDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDetailView.swift; sourceTree = "<group>"; };
@@ -214,7 +214,6 @@
 		D2A2CB4D1D4D99B300DD717B /* FavoritesTableViewConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewConfig.swift; sourceTree = "<group>"; };
 		D2A2CB4F1D4D99C200DD717B /* VisitsTableViewConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitsTableViewConfig.swift; sourceTree = "<group>"; };
 		D2A2CB521D574C4F00DD717B /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = Settings/SettingsViewController.swift; sourceTree = "<group>"; };
-		D2A594E71C8C77A400DE1012 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		D2A99A151C12D3E700C16F04 /* OnetimeFilterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnetimeFilterCell.swift; sourceTree = "<group>"; };
 		D2A99A191C12D3FA00C16F04 /* OnetimeFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnetimeFilterViewController.swift; sourceTree = "<group>"; };
 		D2A99A561C17367E00C16F04 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -238,6 +237,7 @@
 		D2E36EC61C2D615D00DEE726 /* OtherResultCardContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherResultCardContentView.swift; sourceTree = "<group>"; };
 		D2EFEB581C51282A0092DFC9 /* CardOverlayTextLabelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardOverlayTextLabelView.swift; sourceTree = "<group>"; };
 		D2EFEB5B1C567F2F0092DFC9 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		D72E11F421A2DF5100080B52 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		E475E6CB9898249594D4D5E7 /* Pods-Pecomy.debug_fixed_location.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pecomy.debug_fixed_location.xcconfig"; path = "Pods/Target Support Files/Pods-Pecomy/Pods-Pecomy.debug_fixed_location.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -495,7 +495,7 @@
 			isa = PBXGroup;
 			children = (
 				D27BB9CC1B36F4A900F8D902 /* Pecomy.app */,
-				D27BB9E11B36F4A900F8D902 /* Pecomy.xctest */,
+				D27BB9E11B36F4A900F8D902 /* PecomyTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -519,7 +519,7 @@
 				D27BB9D01B36F4A900F8D902 /* Info.plist */,
 				D2092A2E1B637460008046D9 /* Localizable.strings */,
 				D2C785F71B47C2A900517D55 /* Pecomy-Bridging-Header.h */,
-				D2A594E71C8C77A400DE1012 /* R.generated.swift */,
+				D72E11F421A2DF5100080B52 /* R.generated.swift */,
 				D20D9C1B1C9B1983003BA643 /* Settings.bundle */,
 			);
 			path = "Supporting Files";
@@ -672,7 +672,6 @@
 				D2BABE611B5A5D75005E8356 /* ShellScript */,
 				15525B42BF2841880CFA7969 /* [CP] Embed Pods Frameworks */,
 				300B87D524B4556F9D6128DD /* [CP] Copy Pods Resources */,
-				595AC5E2E67211DEDAE17D5A /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -691,8 +690,6 @@
 				D27BB9DD1B36F4A900F8D902 /* Sources */,
 				D27BB9DE1B36F4A900F8D902 /* Frameworks */,
 				D27BB9DF1B36F4A900F8D902 /* Resources */,
-				DFDE9FB04AD435616863FA75 /* [CP] Embed Pods Frameworks */,
-				760BA23314E59088D8C713C0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -701,7 +698,7 @@
 			);
 			name = PecomyTests;
 			productName = KarutaTests;
-			productReference = D27BB9E11B36F4A900F8D902 /* Pecomy.xctest */;
+			productReference = D27BB9E11B36F4A900F8D902 /* PecomyTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -712,7 +709,7 @@
 			attributes = {
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = Pecomy;
 				TargetAttributes = {
 					D27BB9CB1B36F4A900F8D902 = {
@@ -783,9 +780,34 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Pecomy/Pods-Pecomy-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/MDCSwipeToChoose/MDCSwipeToChoose.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDCSwipeToChoose.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -798,43 +820,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Pecomy/Pods-Pecomy-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Pecomy/Pods-Pecomy-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		595AC5E2E67211DEDAE17D5A /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Pecomy/Pods-Pecomy-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		760BA23314E59088D8C713C0 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PecomyTests/Pods-PecomyTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D020F47637BAAD5A6DBC496A /* [CP] Check Pods Manifest.lock */ = {
@@ -843,13 +838,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PecomyTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D22055CE1CA44D4F00447CC6 /* Run Script [R.swift] */ = {
@@ -861,10 +859,11 @@
 			);
 			name = "Run Script [R.swift]";
 			outputPaths = (
+				"$SRCROOT/Pecomy/Supporting Files/R.generated.swift",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/Pecomy/Supporting Files\"";
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/Pecomy/Supporting Files\"\n";
 		};
 		D2BABE611B5A5D75005E8356 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -885,28 +884,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Pecomy-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		DFDE9FB04AD435616863FA75 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PecomyTests/Pods-PecomyTests-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -963,6 +950,7 @@
 				D2050C171DC4336E001711F0 /* ResultMessageHeaderView.swift in Sources */,
 				164718B51C3D22AD00F50D33 /* CardRequest.swift in Sources */,
 				D2731FE01C79A85300E8E5E9 /* ProfileViewController.swift in Sources */,
+				D72E11F521A2DF5100080B52 /* R.generated.swift in Sources */,
 				D28901401C4A01FD005BDF84 /* RichTagCollectionViewCell.swift in Sources */,
 				D22EC5591BCE34DD00A4B446 /* CategoryLabelView.swift in Sources */,
 				D2DD65A01B7714CA0046A50C /* TopResultCard.swift in Sources */,
@@ -974,7 +962,6 @@
 				D2C9B24C1CCB9099003A33B9 /* GameProgressBar.swift in Sources */,
 				D24B292E1B7895DA00419B9B /* TutorialViewController.swift in Sources */,
 				D27A69FA1E3E1B31006B7CE3 /* TableViewSwitchCell.swift in Sources */,
-				D2A594E81C8C77A400DE1012 /* R.generated.swift in Sources */,
 				D20035431D16388100F81114 /* FavoritesGetRequest.swift in Sources */,
 				D2DD65A21B7714DA0046A50C /* OtherResultsCard.swift in Sources */,
 				D28B54131CFAE85D008FDCC1 /* PecomyUser.swift in Sources */,
@@ -1054,12 +1041,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -1088,11 +1077,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_MODULE_NAME = "";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -1109,12 +1100,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -1137,11 +1130,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_MODULE_NAME = "";
 				SDKROOT = iphoneos;
 				SWIFT_DISABLE_SAFETY_CHECKS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.2;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1150,7 +1145,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 567DD2B37E3CE0AF5D14091C /* Pods-Pecomy.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-debug";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				BUNDLE_ID_SUFFIX = "-debug";
@@ -1159,20 +1154,23 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
+				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
+				IBC_MODULE = Pecomy;
 				INFOPLIST_FILE = "$(SRCROOT)/Pecomy/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DDEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = "my.peco.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_MODULE_NAME = Pecomy;
 				PRODUCT_NAME = Pecomy;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Pecomy/Supporting Files/Pecomy-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1181,7 +1179,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6BCC241C257616DBBAB1583C /* Pods-Pecomy.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				BUNDLE_ID_SUFFIX = "";
@@ -1195,17 +1193,19 @@
 					"$(PROJECT_DIR)",
 				);
 				GCC_OPTIMIZATION_LEVEL = s;
+				IBC_MODULE = Pecomy;
 				INFOPLIST_FILE = "$(SRCROOT)/Pecomy/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DRELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = "my.peco.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_MODULE_NAME = Pecomy;
 				PRODUCT_NAME = Pecomy;
 				PROVISIONING_PROFILE = "";
 				SWIFT_DISABLE_SAFETY_CHECKS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Pecomy/Supporting Files/Pecomy-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -1222,9 +1222,10 @@
 				INFOPLIST_FILE = "PecomyTests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "my.peco.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = Pecomy;
+				PRODUCT_MODULE_NAME = PecomyTests;
+				PRODUCT_NAME = PecomyTests;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pecomy.app/Pecomy";
 			};
 			name = Debug;
@@ -1237,9 +1238,10 @@
 				INFOPLIST_FILE = "PecomyTests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "my.peco.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = Pecomy;
+				PRODUCT_MODULE_NAME = PecomyTests;
+				PRODUCT_NAME = PecomyTests;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pecomy.app/Pecomy";
 			};
 			name = Release;
@@ -1257,12 +1259,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -1285,11 +1289,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_MODULE_NAME = "";
 				SDKROOT = iphoneos;
 				SWIFT_DISABLE_SAFETY_CHECKS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 4.2;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = STG;
@@ -1298,7 +1304,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 92BC5B091076DD70931C07B2 /* Pods-Pecomy.stg.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-debug";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				BUNDLE_ID_SUFFIX = "-debug";
@@ -1312,17 +1318,19 @@
 					"$(PROJECT_DIR)",
 				);
 				GCC_OPTIMIZATION_LEVEL = s;
+				IBC_MODULE = Pecomy;
 				INFOPLIST_FILE = "$(SRCROOT)/Pecomy/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DSTG";
 				PRODUCT_BUNDLE_IDENTIFIER = "my.peco.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_MODULE_NAME = Pecomy;
 				PRODUCT_NAME = Pecomy;
 				PROVISIONING_PROFILE = "";
 				SWIFT_DISABLE_SAFETY_CHECKS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Pecomy/Supporting Files/Pecomy-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = STG;
@@ -1335,9 +1343,10 @@
 				INFOPLIST_FILE = "PecomyTests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "my.peco.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = Pecomy;
+				PRODUCT_MODULE_NAME = PecomyTests;
+				PRODUCT_NAME = PecomyTests;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pecomy.app/Pecomy";
 			};
 			name = STG;

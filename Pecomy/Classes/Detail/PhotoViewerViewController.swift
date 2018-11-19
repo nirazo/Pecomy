@@ -90,7 +90,7 @@ class PhotoPageView: UIView {
         super.init(frame: frame)
         self.imageView.contentMode = .scaleAspectFit
         self.addSubview(self.imageView)
-        self.loadingIndicator.activityIndicatorViewStyle = .whiteLarge
+        self.loadingIndicator.style = .whiteLarge
         self.loadingIndicator.hidesWhenStopped = true
         self.addSubview(self.loadingIndicator)
         self.loadingIndicator.snp.makeConstraints { (make) in

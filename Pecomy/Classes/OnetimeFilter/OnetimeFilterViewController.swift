@@ -104,7 +104,7 @@ class OnetimeFilterViewController: UIViewController {
         self.collectionView.dataSource = self.collectionViewConfig
         self.collectionView.backgroundColor = .white
         self.collectionView.register(OnetimeFilterCell.self, forCellWithReuseIdentifier: kCellReuse)
-        self.collectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: kHeaderReuse)
+        self.collectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: kHeaderReuse)
         self.collectionView.allowsMultipleSelection = true
         
         self.view.addSubview(self.collectionView)
@@ -140,7 +140,7 @@ class OnetimeFilterViewController: UIViewController {
         self.startButton.layer.cornerRadius = Const.CORNER_RADIUS
         self.startButton.backgroundColor = Const.PECOMY_THEME_COLOR
         self.startButton.titleLabel?.font = UIFont(name: Const.PECOMY_FONT_BOLD, size: 18)
-        self.startButton.setTitle(NSLocalizedString("StartTitle", comment: ""), for: UIControlState())
+        self.startButton.setTitle(NSLocalizedString("StartTitle", comment: ""), for: UIControl.State())
         self.bottomButtonsBgView.addSubview(self.startButton)
         self.startButton.addTarget(self, action: #selector(startButtonTapped(_:)), for: .touchUpInside)
         
@@ -149,7 +149,7 @@ class OnetimeFilterViewController: UIViewController {
             self.cancelButton.layer.cornerRadius = Const.CORNER_RADIUS
             self.cancelButton.backgroundColor = UIColor(red: 129.0/255.0, green: 152.0/255.0, blue: 178.0/255.0, alpha: 1.0)
             self.cancelButton.titleLabel?.font = UIFont(name: Const.PECOMY_FONT_BOLD, size: 18)
-            self.cancelButton.setTitle(NSLocalizedString("Cancel", comment: ""), for: UIControlState())
+            self.cancelButton.setTitle(NSLocalizedString("Cancel", comment: ""), for: UIControl.State())
             self.cancelButton.addTarget(self, action: #selector(cancelButtonTapped(_:)), for: .touchUpInside)
             
             self.bottomButtonsBgView.addSubview(self.cancelButton)
@@ -210,7 +210,7 @@ extension OnetimeFilterViewController: UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        collectionView.selectItem(at: indexPath, animated: false, scrollPosition: UICollectionViewScrollPosition())
+        collectionView.selectItem(at: indexPath, animated: false, scrollPosition: UICollectionView.ScrollPosition())
     }
 
     
@@ -257,7 +257,7 @@ extension OnetimeFilterViewController: UICollectionViewDelegateFlowLayout {
         default:
             bottomMargin = 30
         }
-        return UIEdgeInsetsMake(5, 0, bottomMargin, 0)
+        return UIEdgeInsets(top: 5, left: 0, bottom: bottomMargin, right: 0)
     }
 
     internal func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {

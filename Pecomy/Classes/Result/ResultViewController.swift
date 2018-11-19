@@ -96,7 +96,7 @@ class ResultViewController: UIViewController {
     
     // 結果が存在する場合のレイアウト
     fileprivate func setupLayout() {
-        self.scrollView.contentInset = UIEdgeInsetsMake(0, 0, 32, 0)
+        self.scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 32, right: 0)
         self.scrollView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.scrollView)
         self.scrollView.snp.makeConstraints { (make) in

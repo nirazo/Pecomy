@@ -109,7 +109,7 @@ class LoginIntroduceViewController: UIViewController {
         let attrText = NSMutableAttributedString(string: R.string.localizable.loginSubTitle())
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineHeightMultiple = 1.8
-        attrText.addAttribute(NSAttributedStringKey.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attrText.length))
+        attrText.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attrText.length))
         
         subTitleLabel.font = UIFont(name: Const.PECOMY_FONT_BOLD, size: 19)
         subTitleLabel.textColor = .white

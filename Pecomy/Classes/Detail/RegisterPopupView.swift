@@ -35,8 +35,8 @@ enum RegisterType {
         let attrText = NSMutableAttributedString(string: text)
         let shopNameRange = NSMakeRange(0, shopName.count)
         attrText.beginEditing()
-        attrText.addAttribute(NSAttributedStringKey.foregroundColor, value: Const.RANKING_TOP_COLOR, range: shopNameRange)
-        attrText.addAttribute(NSAttributedStringKey.font, value: UIFont(name: Const.PECOMY_FONT_BOLD, size: 14)!, range: shopNameRange)
+        attrText.addAttribute(NSAttributedString.Key.foregroundColor, value: Const.RANKING_TOP_COLOR, range: shopNameRange)
+        attrText.addAttribute(NSAttributedString.Key.font, value: UIFont(name: Const.PECOMY_FONT_BOLD, size: 14)!, range: shopNameRange)
         attrText.endEditing()
         return attrText
     }

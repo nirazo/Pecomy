@@ -138,7 +138,7 @@ class CardView: MDCSwipeToChooseView {
         let loopCount = restaurant.imageUrls.count < NUM_OF_IMAGES ? restaurant.imageUrls.count: NUM_OF_IMAGES
         for i in 0..<loopCount {
             let loadingIndicator = UIActivityIndicatorView()
-            loadingIndicator.activityIndicatorViewStyle = .whiteLarge
+            loadingIndicator.style = .whiteLarge
             loadingIndicator.hidesWhenStopped = true
             self.restaurantImageViews[i].addSubview(loadingIndicator)
             loadingIndicator.snp.makeConstraints { make in

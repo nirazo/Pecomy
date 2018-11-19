@@ -1,9 +1,9 @@
 # Uncomment this line to define a global platform for your project
-platform :ios, '9.0'
+platform :ios, '10.0'
 use_frameworks!
 
 target 'Pecomy' do
-    pod 'R.swift'
+    pod 'R.swift', '~> 5.0.0.alpha.2'
     pod 'Fabric'
     pod 'Crashlytics'
     pod 'MDCSwipeToChoose'

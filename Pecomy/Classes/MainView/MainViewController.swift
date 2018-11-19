@@ -177,7 +177,7 @@ class MainViewController: UIViewController {
         
         // インジケータ
         self.loadingIndicator.bounds = CGRect(x: 0.0, y: 0.0, width: 50.0, height: 50.0)
-        self.loadingIndicator.activityIndicatorViewStyle = .whiteLarge
+        self.loadingIndicator.style = .whiteLarge
         self.loadingIndicator.center = self.view.center
         self.loadingIndicator.hidesWhenStopped = true
         self.view.addSubview(self.loadingIndicator)
@@ -372,7 +372,7 @@ class MainViewController: UIViewController {
             card.bounds.origin.y = card.bounds.origin.y - self.cardOffsetY()
             card.alpha = 0
             self.contentView.addSubview(card)
-            self.contentView.sendSubview(toBack: card)
+            self.contentView.sendSubviewToBack(card)
             UIView.animate(withDuration: 0.3,
                 animations: {
                     card.alpha = 1
@@ -652,7 +652,7 @@ extension MainViewController: PecomyLocationManagerDelegate {
             preferredStyle: .alert)
         let settingAction = UIAlertAction(title: NSLocalizedString("LocationAlertSettingButtonTitle", comment: ""),
             style: .default, handler: { (action) in
-                let url = NSURL(string: UIApplicationOpenSettingsURLString)
+                let url = NSURL(string: UIApplication.openSettingsURLString)
                 UIApplication.shared.openURL(url! as URL)
         })
         let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""),

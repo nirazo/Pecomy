@@ -37,21 +37,21 @@ extension OnetimeFilterCollectionViewConfig: UICollectionViewDataSource {
             cell.labelString = budget.valueForDisplay()
             if (indexPath.row == self.currentBudget.rawValue) {
                 cell.isSelected = true
-                collectionView.selectItem(at: indexPath, animated: false, scrollPosition: UICollectionViewScrollPosition())
+                collectionView.selectItem(at: indexPath, animated: false, scrollPosition: UICollectionView.ScrollPosition())
             }
         case OnetimeSections.people.hashValue:
             guard let people = NumOfPeople(rawValue: indexPath.row) else { return cell }
             cell.labelString = people.valueForDisplay()
             if (indexPath.row == self.currentNumOfPeople.rawValue) {
                 cell.isSelected = true
-                collectionView.selectItem(at: indexPath, animated: false, scrollPosition: UICollectionViewScrollPosition())
+                collectionView.selectItem(at: indexPath, animated: false, scrollPosition: UICollectionView.ScrollPosition())
             }
         case OnetimeSections.genre.hashValue:
             guard let genre = Genre(rawValue: indexPath.row) else { return cell }
             cell.labelString = genre.valueForDisplay()
             if (indexPath.row == self.currentGenre.rawValue) {
                 cell.isSelected = true
-                collectionView.selectItem(at: indexPath, animated: false, scrollPosition: UICollectionViewScrollPosition())
+                collectionView.selectItem(at: indexPath, animated: false, scrollPosition: UICollectionView.ScrollPosition())
             }
         default:
             return cell
@@ -80,8 +80,8 @@ extension OnetimeFilterCollectionViewConfig: UICollectionViewDataSource {
         
         var headerView: UICollectionReusableView? = nil
         
-        if (kind == UICollectionElementKindSectionHeader) {
-            headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "HeaderView", for: indexPath)
+        if (kind == UICollectionView.elementKindSectionHeader) {
+            headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeaderView", for: indexPath)
             
             headerView!.backgroundColor = UIColor.white
             let label = UILabel(frame: CGRect(x: 0, y: 0, width: 150, height: 18))

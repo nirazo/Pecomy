@@ -15,7 +15,7 @@ class RestaurantDetailViewRichTagCollectionViewConfig: NSObject, UICollectionVie
     var richTags = [RichTag]()
     
     init(richTags: [String]) {
-        self.richTags = richTags.flatMap { RichTag(rawValue: $0) }
+        self.richTags = richTags.compactMap { RichTag(rawValue: $0) }
     }
     
     //MARK: - UICollectionViewDelegate, UICollectionViewDataSource
@@ -51,7 +51,7 @@ extension RestaurantDetailViewRichTagCollectionViewConfig: UICollectionViewDeleg
 
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsetsMake(12, 0, 0, 0)
+        return UIEdgeInsets(top: 12, left: 0, bottom: 0, right: 0)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {

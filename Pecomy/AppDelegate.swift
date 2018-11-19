@@ -18,8 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     let cGoogleMapsAPIKey = Const.GOOGLEMAP_API_KEY
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        Fabric.with([Crashlytics()])
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        Fabric.with([Crashlytics.self])
         GMSServices.provideAPIKey(cGoogleMapsAPIKey)
         
         self.window = UIWindow(frame: UIScreen.main.bounds)
@@ -46,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
     
-    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         return FBSDKApplicationDelegate.sharedInstance().application(app, open: url, options: options)
     }
     
@@ -74,7 +74,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navVC = UINavigationController(rootViewController: rootVC)
         navVC.navigationBar.tintColor = .clear
         navVC.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navVC.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: Const.PECOMY_THEME_TEXT_COLOR]
+        navVC.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: Const.PECOMY_THEME_TEXT_COLOR]
         navVC.navigationBar.shadowImage = UIImage()
         return navVC
     }

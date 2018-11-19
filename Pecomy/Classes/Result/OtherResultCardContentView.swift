@@ -115,7 +115,7 @@ class OtherResultCardContentView: UIView {
             make.centerY.equalTo(self.contentView)
         }
 
-        let imageurls = restaurant.imageUrls.flatMap{URL(string: $0)}
+        let imageurls = restaurant.imageUrls.compactMap{URL(string: $0)}
         self.acquireImage(imageurls.first!)
     }
     
@@ -131,7 +131,7 @@ class OtherResultCardContentView: UIView {
         self.imageView.kf.setImage(with: url, placeholder: R.image.noimage(), options: nil, progressBlock: nil) { [weak self] (image, error, imageCacheType, imageURL) in
             guard let strongSelf = self else { return }
             strongSelf.imageView.alpha = 0
-            UIView.animate(withDuration: 0.5, delay: 0.0, options: UIViewAnimationOptions(), animations: {() -> Void in
+            UIView.animate(withDuration: 0.5, delay: 0.0, options: UIView.AnimationOptions(), animations: {() -> Void in
                 strongSelf.imageView.alpha = 1
             }, completion: nil)
         }

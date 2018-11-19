@@ -89,17 +89,17 @@ class MainBaseViewController: UIViewController {
         self.view.addSubview(self.pagingBaseView)
         self.pagingBaseView.backgroundColor = UIColor.clear
         
-        self.addChildViewController(self.profileVC)
-        profileVC.didMove(toParentViewController: self)
+        self.addChild(self.profileVC)
+        profileVC.didMove(toParent: self)
         
-        self.addChildViewController(self.mainVC)
-        mainVC.didMove(toParentViewController: self)
+        self.addChild(self.mainVC)
+        mainVC.didMove(toParent: self)
         
         
-        self.pagingBaseView.contentSize = CGSize(width: self.pagingBaseView.frame.width * CGFloat(self.childViewControllers.count), height: self.pagingBaseView.frame.height)
-        for (id, vc) in self.childViewControllers.enumerated() {
+        self.pagingBaseView.contentSize = CGSize(width: self.pagingBaseView.frame.width * CGFloat(self.children.count), height: self.pagingBaseView.frame.height)
+        for (id, vc) in self.children.enumerated() {
             vc.view.frame = CGRect(x: self.pagingBaseView.frame.width * CGFloat(id), y: 0.0, width: self.pagingBaseView.frame.width, height: self.pagingBaseView.frame.height)
-            vc.didMove(toParentViewController: self)
+            vc.didMove(toParent: self)
             self.pagingBaseView.addSubview(vc.view)
         }
         self.pagingBaseView.contentOffset.x = self.view.bounds.width

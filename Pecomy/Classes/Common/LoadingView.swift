@@ -16,7 +16,7 @@ class LoadingView: UIView {
         super.init(frame: frame)
         self.backgroundColor = UIColor.black
         self.alpha = 0.5
-        self.loadingIndicator.activityIndicatorViewStyle = .whiteLarge
+        self.loadingIndicator.style = .whiteLarge
         self.loadingIndicator.hidesWhenStopped = true
         self.setupSubviews()
     }

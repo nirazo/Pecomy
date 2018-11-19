@@ -56,7 +56,7 @@ extension RestaurantDetailViewPictureCollectionViewConfig: UICollectionViewDeleg
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsetsMake(0, 10, 0, 10) // margin between cells
+        return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10) // margin between cells
     }
 
 }
